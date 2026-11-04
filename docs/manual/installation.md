@@ -38,6 +38,19 @@ Replace `0.0.2` with the version you downloaded. The package manager resolves th
 
 Open **Devcel Studio** from the application menu. A managed desktop that does not permit normal package installation is not made compatible by extracting selected libraries into a workspace.
 
+## Open on macOS
+
+1. In **About This Mac**, check whether your Mac uses an Intel processor or Apple Silicon.
+2. Download `devcel-studio-<version>-macos-x64.dmg` for Intel or `devcel-studio-<version>-macos-arm64.dmg` for Apple Silicon.
+3. Open the DMG, drag **devcel-studio.app** to **Applications**, eject the disk image, then open the app from Applications.
+
+The current macOS packaging uses ad-hoc signing and is not notarized by Apple.
+A downloaded build may be blocked by Gatekeeper. Use only a source you trust;
+consult your administrator or build locally if installation is blocked. These
+packages still require native acceptance testing before general distribution.
+To update, quit Studio and replace the application with the new matching build.
+User projects and settings are stored separately from the application bundle.
+
 ## Open Studio
 
 1. Open Devcel Studio from your applications or extracted application folder.
