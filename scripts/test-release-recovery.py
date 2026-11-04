@@ -34,7 +34,7 @@ class RecoveryTests(unittest.TestCase):
                       'status': 'completed', 'conclusion': 'success',
                       'started_at': '2026-01-01T00:00:00Z', 'completed_at': '2026-01-01T00:02:00Z'}
                      for i, name in enumerate(('validate', *r.BUILDS.values()), 1)]
-        self.artifacts = [{'id': i, 'name': name, 'digest': 'sha256:'+str(i)*64, 'size_in_bytes': 100,
+        self.artifacts = [{'id': i, 'name': name, 'digest': 'sha256:'+format(i, '064x'), 'size_in_bytes': 100,
                            'expired': False, 'created_at': '2026-01-01T00:01:00Z',
                            'updated_at': '2026-01-01T00:01:01Z', 'expires_at': '2030-01-01T00:00:00Z',
                            'workflow_run': {'id': 123, 'repository_id': 1, 'head_repository_id': 1, 'head_sha': A}}
@@ -62,7 +62,7 @@ class RecoveryTests(unittest.TestCase):
     def test_exact_build_artifacts_are_pinned_to_distinct_publisher_and_source(self):
         plan = self.inspect()
         self.assertEqual((plan['publisher'], plan['commit']), (B, A))
-        self.assertEqual([a['id'] for a in plan['artifacts']], [5, 6, 7, 8])
+        self.assertEqual([a['id'] for a in plan['artifacts']], [5, 6, 7, 8, 9, 10])
         self.assertEqual(plan['tag_identity'], {'object': T, 'type': 'tag', 'commit': A})
         self.assertIn('actions/runs/123/attempts/2/jobs?per_page=100', self.calls)
 
@@ -191,7 +191,7 @@ class RecoveryTests(unittest.TestCase):
                 r.prepare()
                 self.assertEqual(json.loads(r.plan_path().read_text()), plan)
             self.assertEqual(output.read_text().splitlines(),
-                             ['tag=v0.1.0', 'commit='+A, 'run_id=123', 'artifact_ids=5,6,7,8'])
+                             ['tag=v0.1.0', 'commit='+A, 'run_id=123', 'artifact_ids=5,6,7,8,9,10'])
         with patch.dict(os.environ, {'RUNNER_TEMP': str(r.ROOT)}):
             with self.assertRaisesRegex(ValueError, 'outside'): r.plan_path()
 

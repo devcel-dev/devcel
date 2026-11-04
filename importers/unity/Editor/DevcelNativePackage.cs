@@ -16,6 +16,7 @@ namespace Devcel.Unity.Editor
         [Serializable] private sealed class Manifest {
             public int schema_version; public string source_fingerprint;
             public NativeBinary native_runtime;
+            public NativeBinary[] player_runtimes;
         }
         [Serializable] private sealed class NativeBinary { public string path, sha256; }
         internal static PackageInfo Installed => Array.Find(PackageInfo.GetAllRegisteredPackages(), item => item.name == Name);
@@ -58,6 +59,26 @@ namespace Devcel.Unity.Editor
                 current = Path.Combine(current, part);
                 if ((File.GetAttributes(current) & FileAttributes.ReparsePoint) != 0) throw new IOException("Linked native payload paths are unsupported.");
             }
+        }
+
+        internal static void ValidatePlayer(string root, string relative)
+        {
+            SafePath(root, Path.Combine(root, "Tools~/manifest.json"));
+            var manifest = JsonUtility.FromJson<Manifest>(File.ReadAllText(Path.Combine(root, "Tools~/manifest.json")));
+            NativeBinary entry = null;
+            foreach (var item in manifest.player_runtimes ?? Array.Empty<NativeBinary>())
+                if (item.path == relative)
+                {
+                    if (entry != null) throw new IOException("Duplicate mobile runtime manifest entry.");
+                    entry = item;
+                }
+            if (entry == null) throw new IOException("Mobile runtime is missing from this distribution. Install the complete release UPM tarball: " + relative);
+            string path = Path.Combine(root, relative);
+            SafePath(root, path);
+            using (var input = File.OpenRead(path))
+            using (var sha = SHA256.Create())
+                if (!string.Equals(BitConverter.ToString(sha.ComputeHash(input)).Replace("-", ""), entry.sha256, StringComparison.OrdinalIgnoreCase))
+                    throw new IOException("Mobile runtime checksum mismatch: " + relative);
         }
 
         [MenuItem("Devcel/Install Matching Native Tools", priority = 3)]

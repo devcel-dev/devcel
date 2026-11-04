@@ -8,6 +8,7 @@ import unittest
 import zipfile
 
 import unity_upm
+from test_unity_mobile import fixture as mobile_fixture
 
 
 def fixture_entries(platform, version='0.1.0'):
@@ -38,6 +39,23 @@ def write_zip(path, values):
 
 
 class UpmTests(unittest.TestCase):
+    def test_mobile_payloads_augment_each_editor_without_replacing_its_runtime(self):
+        for platform in unity_upm.RUNTIMES:
+            with self.subTest(platform=platform), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                values = fixture_entries(platform)
+                write_zip(root/'source.zip', values)
+                mobile = {system: root/(system+'.zip') for system in ('android', 'ios')}
+                for system, path in mobile.items():
+                    mobile_fixture(path, system)
+                package = unity_upm.create(root/'source.zip', root, '0.1.0', platform, mobile)
+                with tarfile.open(package) as archive:
+                    manifest = json.load(archive.extractfile('package/Tools~/manifest.json'))
+                    self.assertEqual(manifest['native_runtime']['path'], unity_upm.RUNTIMES[platform])
+                    self.assertEqual({x['path'] for x in manifest['player_runtimes']},
+                                     {'Plugins/Android/arm64-v8a/libdevcel_runtime.so', 'Plugins/iOS/libdevcel_runtime.a'})
+                    self.assertIn('package/ThirdPartyNotices/AndroidNDK-NOTICE.txt', archive.getnames())
+
     def test_all_platforms_preserve_every_byte_and_use_upm_root(self):
         for platform in unity_upm.RUNTIMES:
             with self.subTest(platform=platform), tempfile.TemporaryDirectory() as directory:

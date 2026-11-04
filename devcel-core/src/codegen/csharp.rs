@@ -63,8 +63,12 @@ fn emit_native(s: &mut String) {
     s.push_str(
         r#"    internal static class DevcelNative
     {
-        // Runtime DLL name (rename and deploy it for the target platform).
+        // iOS device Players statically link the runtime into UnityFramework.
+#if UNITY_IOS && !UNITY_EDITOR
+        const string DLL = "__Internal";
+#else
         const string DLL = "devcel_runtime";
+#endif
 
         [DllImport(DLL, CallingConvention = CallingConvention.Cdecl)] internal static extern uint devcel_rt_api_version();
         [DllImport(DLL, CallingConvention = CallingConvention.Cdecl)] private static extern IntPtr devcel_rt_row_uuid(IntPtr db, int table, int row, out int length);

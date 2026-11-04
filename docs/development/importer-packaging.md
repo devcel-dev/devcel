@@ -75,7 +75,7 @@ Always build distributable binaries from the source matching their stated licens
 
 ## Unity Package Manager release assets
 
-Release publication converts each validated Unity ZIP into `org.devcel.unity-<version>-<rid>.tgz` and includes it in `SHA256SUMS.txt`. This applies to every native release platform, including both macOS Editor architectures when enabled by the release matrix. Each tarball has a `package/` root and preserves all files from `devcel-unity/`, including plugin `.meta` files, notices and matching source. It excludes only the ZIP's outer `INSTALL.txt`. No platform payloads are merged. The conversion checks package/manifest versions, source fingerprint, native payload hashes and required files; it never runs the CLI or establishes Unity compatibility.
+Release publication converts each validated Unity ZIP into `org.devcel.unity-<version>-<rid>.tgz` and includes it in `SHA256SUMS.txt`. Each tarball has a `package/` root and retains the desktop package files, including plugin `.meta` files, notices and matching source, except the outer `INSTALL.txt`. Publication also adds the verified Android ARM64 and iOS ARM64 device runtimes, their build metadata and NDK notices, and extends the native manifest with `player_runtimes` hashes. The Editor runtime stays platform-specific. The conversion checks version, repository, commit, native source fingerprint, binary formats and payload hashes; it never runs the CLI or establishes Unity compatibility.
 
 The version remains generated from `devcel-studio/src-tauri/tauri.conf.json`; do not add a version to the source Unity template. Recovery deterministically recreates the same tarballs from the recorded ZIP bytes, without rebuilding binaries. For a local generated ZIP, run:
 
@@ -85,6 +85,8 @@ python scripts/test_unity_upm.py
 ```
 
 The complete tarball needs no `org.devcel.native` companion. That legacy companion installer remains for separately generated SDK/native setups; do not combine it with a full tarball. See the [Unity SDK guide](../../importers/unity/README.md) for installation and explicit updates. Test tarball installation in Unity and import/Player execution separately from archive checks.
+
+The local command above produces a desktop-only tarball. Supply both `--mobile-android` and `--mobile-ios` archives to include mobile Players; the release pipeline requires both. See [mobile build and acceptance instructions](../../importers/unity/Documentation~/MOBILE.md). Release recovery also pins the two mobile build job artifacts. The desktop ZIPs remain desktop-only installation alternatives.
 
 ## Platform acceptance
 

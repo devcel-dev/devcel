@@ -24,7 +24,12 @@ namespace Devcel.Unity
     {
         public const uint RuntimeApiVersion = 1;
 
-        [DllImport("devcel_runtime", CallingConvention = CallingConvention.Cdecl)]
+#if UNITY_IOS && !UNITY_EDITOR
+        private const string NativeLibrary = "__Internal";
+#else
+        private const string NativeLibrary = "devcel_runtime";
+#endif
+        [DllImport(NativeLibrary, CallingConvention = CallingConvention.Cdecl)]
         private static extern uint devcel_rt_api_version();
 
         /// <summary>Reject an incompatible native runtime before opening a schema-v1 bundle.</summary>

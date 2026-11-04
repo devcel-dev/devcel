@@ -78,7 +78,7 @@ Importer packaging on GitHub-hosted runners leaves its final temporary source di
 
 No personal access token or additional secret is needed. The preparation and tag-creation jobs use the built-in `GITHUB_TOKEN` and the run continues directly into the existing build and publication jobs. [Events created with this token do not start another push workflow](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow), so a manual release builds each platform once.
 
-All four native build jobs must pass before publication. They build Studio packages and all nine importer packages with native bundled CLI binaries. The Linux job generates a compact `SOURCE-ACCESS.json` with immutable commit/source links, exact registry artifacts and reviewed preferred dependency-source locations, and checks the upstream source URLs. See [Source delivery](source-delivery.md). The publication job confirms that the tag still points to the built commit, verifies the complete asset set, creates SHA-256 checksums, creates a draft, uploads the assets, and publishes it after every upload succeeds. Validation and build jobs have read-only repository permissions; only dispatch-only source preparation, tag creation and publication receive `contents: write`.
+All four desktop native build jobs and both mobile runtime jobs must pass before publication. Desktop jobs build Studio packages and all nine importer packages with native bundled CLI binaries. Mobile jobs build Android ARM64 and iOS ARM64 device Player libraries from the same commit. Publication verifies their provenance and adds both to each complete Unity UPM tarball. The Linux job generates a compact `SOURCE-ACCESS.json` with immutable commit/source links, exact registry artifacts and reviewed preferred dependency-source locations, and checks the upstream source URLs. See [Source delivery](source-delivery.md). The publication job confirms that the tag still points to the built commit, verifies the complete asset set, creates SHA-256 checksums, creates a draft, uploads the assets, and publishes it after every upload succeeds. Validation and build jobs have read-only repository permissions; only dispatch-only source preparation, tag creation and publication receive `contents: write`.
 
 Published assets include:
 
@@ -115,7 +115,7 @@ Recovery does not prepare versions, create or replace tags, or build packages.
 
 The selected run must belong to this repository's release workflow, originate
 from a version-tag push or a default-branch manual release, and have successful
-validation and all four native build jobs. Recovery pins artifact IDs and digests
+validation, all four desktop native build jobs and both mobile runtime jobs. Recovery pins artifact IDs and digests
 from that attempt and rejects missing, duplicate, expired, or changed artifacts.
 A manual release's initial run commit can precede its version-preparation commit;
 the built source is checked independently against the unchanged release tag,

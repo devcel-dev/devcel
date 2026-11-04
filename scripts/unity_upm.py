@@ -5,12 +5,14 @@ native plugin metadata, matching source, and generated version requirements.
 """
 import gzip
 import hashlib
+import io
 import json
 from pathlib import Path, PurePosixPath
 import re
 import stat
 import tarfile
 import zipfile
+import unity_mobile
 
 
 RUNTIMES = {
@@ -80,7 +82,7 @@ def validate(archive, entries, version, platform):
             raise ValueError('Missing UPM package file: ' + name)
 
 
-def create(source, destination, version, platform):
+def create(source, destination, version, platform, mobile_archives=None):
     """Return a deterministic tarball path; never overwrite an existing artifact."""
     if not VERSION.fullmatch(version) or platform not in RUNTIMES:
         raise ValueError('Invalid UPM version/platform')
@@ -89,17 +91,31 @@ def create(source, destination, version, platform):
     with zipfile.ZipFile(source) as archive:
         entries = package_entries(archive)
         validate(archive, entries, version, platform)
+        additions = {}
+        if mobile_archives is not None:
+            if set(mobile_archives) != {'android', 'ios'}:
+                raise ValueError('Both Android and iOS runtime archives are required')
+            manifest = json.loads(archive.read(entries['Tools~/manifest.json']))
+            manifest['player_runtimes'] = []
+            for system, mobile_archive in mobile_archives.items():
+                contents, runtime = unity_mobile.load(mobile_archive, system, version,
+                    manifest['source_commit'], manifest['source_repository'], manifest['source_fingerprint'])
+                if set(contents) & (set(entries) | set(additions)):
+                    raise ValueError('Mobile payload collides with an existing package file')
+                additions.update(contents)
+                manifest['player_runtimes'].append(runtime)
+            additions['Tools~/manifest.json'] = (json.dumps(manifest, indent=2)+'\n').encode()
         destination.mkdir(parents=True, exist_ok=True)
         with target.open('xb') as output:
             try:
                 # Fixed timestamp and empty gzip filename make recovery reproducible.
                 with gzip.GzipFile(fileobj=output, mode='wb', filename='', mtime=0) as compressed:
                     with tarfile.open(fileobj=compressed, mode='w') as tar:
-                        for name, entry in sorted(entries.items()):
+                        for name in sorted(set(entries) | set(additions)):
                             info = tarfile.TarInfo('package/' + name)
-                            info.size = entry.file_size
+                            info.size = len(additions[name]) if name in additions else entries[name].file_size
                             info.mode = 0o755 if name.endswith(('/devcel', '/devcel.exe', '.sh', '.command')) else 0o644
-                            with archive.open(entry) as data:
+                            with (io.BytesIO(additions[name]) if name in additions else archive.open(entries[name])) as data:
                                 tar.addfile(info, data)
             except BaseException:
                 output.close()
@@ -115,5 +131,10 @@ if __name__ == '__main__':
     parser.add_argument('--out', required=True, type=Path)
     parser.add_argument('--version', required=True)
     parser.add_argument('--platform', required=True, choices=RUNTIMES)
+    parser.add_argument('--mobile-android', type=Path)
+    parser.add_argument('--mobile-ios', type=Path)
     args = parser.parse_args()
-    print(create(args.zip, args.out, args.version, args.platform))
+    mobile = {'android': args.mobile_android, 'ios': args.mobile_ios} if args.mobile_android and args.mobile_ios else None
+    if bool(args.mobile_android) != bool(args.mobile_ios):
+        parser.error('Supply both mobile runtime archives')
+    print(create(args.zip, args.out, args.version, args.platform, mobile))
