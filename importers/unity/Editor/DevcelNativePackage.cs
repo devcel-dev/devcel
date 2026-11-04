@@ -65,9 +65,11 @@ namespace Devcel.Unity.Editor
         {
             SafePath(root, Path.Combine(root, "Tools~/manifest.json"));
             var manifest = JsonUtility.FromJson<Manifest>(File.ReadAllText(Path.Combine(root, "Tools~/manifest.json")));
+            if (manifest == null || manifest.schema_version != 1)
+                throw new IOException("The native runtime manifest is invalid.");
             NativeBinary entry = null;
             foreach (var item in manifest.player_runtimes ?? Array.Empty<NativeBinary>())
-                if (item.path == relative)
+                if (item != null && item.path == relative)
                 {
                     if (entry != null) throw new IOException("Duplicate mobile runtime manifest entry.");
                     entry = item;

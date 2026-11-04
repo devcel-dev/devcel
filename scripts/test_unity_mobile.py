@@ -56,6 +56,12 @@ def write_zip(path, values):
 
 
 class MobileTests(unittest.TestCase):
+    def test_ios_link_flags_allow_only_system_libraries_and_framework_names(self):
+        self.assertTrue(mobile.valid_ios_flags(['-lSystem', '-liconv', '-framework', 'Security']))
+        for flags in (None, [], ['-framework'], ['-framework', '../Bad'], ['-Wl,@file'], ['-lfoo;run'], [None]):
+            with self.subTest(flags=flags):
+                self.assertFalse(mobile.valid_ios_flags(flags))
+
     def test_cpu_platform_alignment_and_truncation(self):
         mobile.check_binary(android_binary(), 'android')
         mobile.check_binary(ios_binary(), 'ios')

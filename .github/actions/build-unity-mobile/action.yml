@@ -16,7 +16,7 @@ runs:
     - name: Install Android NDK
       if: inputs.system == 'android'
       shell: bash
-      run: sdkmanager 'ndk;28.2.13676358'
+      run: '"${ANDROID_HOME:?}/cmdline-tools/latest/bin/sdkmanager" "ndk;28.2.13676358"'
     - name: Install mobile Rust target
       shell: bash
       env:

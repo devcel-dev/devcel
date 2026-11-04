@@ -789,6 +789,15 @@ class ReleaseTests(unittest.TestCase):
             self.assertEqual(len((root/'out/SHA256SUMS.txt').read_text().splitlines()), 45)
             self.assertEqual(len(list((root/'out').glob('org.devcel.unity-*.tgz'))), 4)
 
+    def test_publication_requires_both_mobile_artifacts(self):
+        for system in ('android', 'ios'):
+            with self.subTest(system=system), tempfile.TemporaryDirectory() as temp:
+                root = Path(temp)
+                self.fixture(root)
+                (root/f'release-mobile-{system}'/f'unity-mobile-{system}.zip').unlink()
+                with self.assertRaisesRegex(ValueError, 'mobile runtime artifact sets'):
+                    ci.collect_assets(root, root/'out', 'v0.1.0')
+
     def test_studio_asset_names_match_release_version_and_platform(self):
         for version in ('0.0.2', '0.0.3', '1.2.3-rc.1'):
             for system, suffix in (('linux', 'linux-x64.deb'), ('windows', 'windows-x64.zip'),
