@@ -37,9 +37,11 @@ namespace Devcel.Unity.Editor
                         }
                     }
                     else if (target == BuildTarget.StandaloneOSX) valid = IsUniversalDylib(reader);
+                    else if (target == BuildTarget.Android) valid = IsAndroidArm64(reader);
+                    else if (target == BuildTarget.iOS) valid = IsIosDeviceArchive(reader);
                     if (valid) return true;
                 }
-                error = "The native runtime format/CPU does not match its location (macOS requires an x86_64+arm64 universal dylib): " + path;
+                error = "The native runtime format/CPU does not match its target (macOS universal, Android ARM64 with 16 KB alignment, or iOS ARM64 device archive required): " + path;
             }
             catch (Exception ex) { error = "Cannot validate the native runtime: " + path + " (" + ex.Message + ")"; }
             return false;
@@ -49,6 +51,80 @@ namespace Devcel.Unity.Editor
         {
             uint value = reader.ReadUInt32();
             return ((value & 0xff) << 24) | ((value & 0xff00) << 8) | ((value >> 8) & 0xff00) | (value >> 24);
+        }
+        private static bool IsAndroidArm64(BinaryReader reader)
+        {
+            var stream = reader.BaseStream;
+            if (stream.Length < 64 || reader.ReadUInt32() != 0x464c457f || reader.ReadByte() != 2 || reader.ReadByte() != 1) return false;
+            stream.Position = 16;
+            if (reader.ReadUInt16() != 3 || reader.ReadUInt16() != 183) return false;
+            stream.Position = 32;
+            ulong offset = reader.ReadUInt64();
+            stream.Position = 54;
+            ushort size = reader.ReadUInt16(), count = reader.ReadUInt16();
+            if (size < 56 || count == 0 || offset > (ulong)stream.Length || (ulong)size * count > (ulong)stream.Length - offset) return false;
+            bool load = false;
+            for (int i = 0; i < count; i++)
+            {
+                stream.Position = (long)offset + i * size;
+                if (reader.ReadUInt32() != 1) continue; // PT_LOAD
+                load = true;
+                stream.Position += 4;
+                ulong fileOffset = reader.ReadUInt64(), address = reader.ReadUInt64();
+                stream.Position = (long)offset + i * size + 48;
+                ulong alignment = reader.ReadUInt64();
+                if (alignment < 16384 || (alignment & (alignment - 1)) != 0 || fileOffset % 16384 != address % 16384) return false;
+            }
+            return load;
+        }
+
+        private static bool IsIosDeviceArchive(BinaryReader reader)
+        {
+            var stream = reader.BaseStream;
+            if (stream.Length < 8 || System.Text.Encoding.ASCII.GetString(reader.ReadBytes(8)) != "!<arch>\n") return false;
+            bool deviceObject = false;
+            while (stream.Position < stream.Length)
+            {
+                if (stream.Length - stream.Position < 60) return false;
+                string name = System.Text.Encoding.ASCII.GetString(reader.ReadBytes(16)).Trim();
+                stream.Position += 32;
+                string length = System.Text.Encoding.ASCII.GetString(reader.ReadBytes(10)).Trim();
+                if (reader.ReadByte() != 0x60 || reader.ReadByte() != 0x0a || !long.TryParse(length, out long size) || size < 0 || size > stream.Length - stream.Position) return false;
+                long start = stream.Position, end = start + size;
+                if (name.StartsWith("#1/", StringComparison.Ordinal))
+                {
+                    if (!int.TryParse(name.Substring(3), out int nameSize) || nameSize < 0 || nameSize > size) return false;
+                    stream.Position += nameSize;
+                }
+                if (end - stream.Position >= 32 && reader.ReadUInt32() == 0xfeedfacf)
+                {
+                    if (reader.ReadUInt32() != 0x0100000c) return false;
+                    reader.ReadUInt32();
+                    if (reader.ReadUInt32() != 1) return false; // MH_OBJECT
+                    uint count = reader.ReadUInt32(), bytes = reader.ReadUInt32();
+                    stream.Position += 8;
+                    if (bytes > end - stream.Position || count > bytes / 8) return false;
+                    long commandsEnd = stream.Position + bytes;
+                    for (uint i = 0; i < count; i++)
+                    {
+                        long command = stream.Position;
+                        if (commandsEnd - command < 8) return false;
+                        uint type = reader.ReadUInt32(), commandSize = reader.ReadUInt32();
+                        if (commandSize < 8 || commandSize > commandsEnd - command) return false;
+                        if (type == 0x32) // LC_BUILD_VERSION: iOS device, not Simulator/macOS
+                        {
+                            if (commandSize < 24 || reader.ReadUInt32() != 2) return false;
+                            deviceObject = true;
+                        }
+                        else if (type == 0x25) deviceObject = true; // LC_VERSION_MIN_IPHONEOS
+                        else if (type == 0x24 || type == 0x2f || type == 0x30) return false;
+                        stream.Position = command + commandSize;
+                    }
+                }
+                stream.Position = end + (size & 1);
+                if (stream.Position > stream.Length) return false;
+            }
+            return deviceObject;
         }
         private static ulong BigEndian64(BinaryReader reader) => ((ulong)BigEndian32(reader) << 32) | BigEndian32(reader);
         private static bool IsUniversalDylib(BinaryReader reader)

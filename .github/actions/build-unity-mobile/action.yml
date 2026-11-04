@@ -1,0 +1,41 @@
+name: Build Unity mobile runtime
+description: Build the matching ARM64 Player runtime without Unity or signing
+inputs:
+  system:
+    required: true
+    description: android or ios
+  source-commit:
+    required: true
+    description: Immutable source SHA
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@v7
+      with:
+        python-version: '3.12'
+    - name: Install Android NDK
+      if: inputs.system == 'android'
+      shell: bash
+      run: '"${ANDROID_HOME:?}/cmdline-tools/latest/bin/sdkmanager" "ndk;28.2.13676358"'
+    - name: Install mobile Rust target
+      shell: bash
+      env:
+        MOBILE_SYSTEM: ${{ inputs.system }}
+      run: |
+        if [ "$MOBILE_SYSTEM" = android ]; then
+          rustup target add aarch64-linux-android
+        else
+          rustup target add aarch64-apple-ios
+        fi
+    - name: Build native Player library
+      shell: bash
+      env:
+        MOBILE_SYSTEM: ${{ inputs.system }}
+        SOURCE_COMMIT: ${{ inputs.source-commit }}
+        SOURCE_REPOSITORY: ${{ github.repository }}
+        PYTHONDONTWRITEBYTECODE: '1'
+      run: |
+        if [ "$MOBILE_SYSTEM" = android ]; then
+          export ANDROID_NDK_HOME="$ANDROID_HOME/ndk/28.2.13676358"
+        fi
+        python scripts/unity_mobile.py --system "$MOBILE_SYSTEM" --out mobile-artifacts --source-repository "$SOURCE_REPOSITORY" --source-commit "$SOURCE_COMMIT"

@@ -21,8 +21,10 @@ Paths are relative to the package root.
 | `Plugins/Windows/x86_64/devcel_runtime.dll` | Windows / x86_64 | Windows 64-bit |
 | `Plugins/Linux/x86_64/libdevcel_runtime.so` | Linux / x86_64 | Linux 64-bit |
 | `Plugins/macOS/libdevcel_runtime.dylib` | OSX / AnyCPU | macOS x86_64 + arm64 universal |
+| `Plugins/Android/arm64-v8a/libdevcel_runtime.so` | Disabled | Android ARM64, API 23+ |
+| `Plugins/iOS/libdevcel_runtime.a` | Disabled | iOS ARM64 device, iOS 13+ |
 
-Matching `.meta` files are bundled. `DevcelNativePluginPostprocessor` applies settings when known paths import; `DevcelNativePlugins` applies them after Editor startup and through **Devcel → Repair Native Plugin Settings**. Any Platform is false, Editor is enabled only for its OS/CPU, and only the matching Player is enabled. Preload/define constraints are cleared. Identical settings cause no writes or reimports. Only these three known package paths are modified.
+Matching `.meta` files are bundled. `DevcelNativePluginPostprocessor` applies settings when known paths import; `DevcelNativePlugins` applies them after Editor startup and through **Devcel → Repair Native Plugin Settings**. Any Platform is false, Editor is enabled only for desktop libraries on their OS/CPU, and only the matching Player is enabled. Mobile plugins never load in the Editor. Preload/define constraints are cleared. Identical settings cause no writes or reimports. Only these known package paths are modified.
 
 macOS AnyCPU still requires both CPU slices. The Player gate checks PE x64 DLL, ELF64 x86_64 shared-object, or Mach-O universal-dylib headers. Header checks do not establish ABI, dependency, code-signing, or execution correctness. Restart Unity after replacing a native library because it cannot be unloaded within the current session.
 
@@ -34,11 +36,11 @@ The importer selects `Tools~/<rid>/devcel[.exe]` through the manifest. On the ta
 python scripts/package-importers.py --out dist/importers --source-repository <owner/repo> --source-commit <git-commit>
 ```
 
-The packager performs release CLI/runtime builds, version and pull checks, real-CLI import, source/notice collection, binary hashing, and import from a ZIP extracted to another directory. Missing binaries, wrong OS/CPU, version mismatch, or missing pull support fail packaging. Windows helper scripts use this same path. macOS requires Xcode and both Rust targets to create a universal runtime dylib.
+The packager performs release CLI/runtime builds, metadata checks, source/notice collection, and binary hashing. Release publication also creates a complete UPM `.tgz` from each generated Unity ZIP; install it through Package Manager's tarball option. Packaging does not perform a real Unity import or Player execution test. Windows helper scripts use this same build path. macOS requires Xcode and both Rust targets to create a universal runtime dylib.
 
 Editor CLI OS and Player runtime OS are separate requirements. A single-RID ZIP may lack the runtime for another Player target; the missing-runtime gate remains active. See [bundled CLI packaging](../../../docs/development/importer-packaging.md) for manifests and coverage.
 
-Automatic import requires `watch --ensure-server --parent-stdin`. Packaging and pre-save validation check both options in `watch --help`.
+Automatic import requires `watch --ensure-server --parent-stdin`. Verify these options with the real CLI as part of manual acceptance.
 
 ## Settings contract
 
@@ -58,4 +60,4 @@ Only `-1` means all content; `0..4294967295` are filter values. Input uses `Long
 
 With no registered sources, native libraries are optional and installing the package alone need not block Android or other builds. Known authoring-data leaks and invalid native settings are still rejected. The gate cannot track arbitrary encrypted archives or user-defined copies of authoring data; inspect the final Player and BuildReport too.
 
-Android/iOS/WebGL builds with registered sources stop because native runtime linking/packaging is unsupported. `DevcelBundle.LoadText` only retrieves text, and `FromJson` still requires the native runtime.
+Android ARM64 and iOS ARM64 device builds require the complete release UPM tarball and matching hashes in `player_runtimes`. The build gate checks Android architecture/API and 16 KB-compatible ELF segments, or iOS Device SDK/minimum OS and ARM64 device Mach-O objects in the static archive. Unsupported ABIs, Simulator and WebGL fail explicitly. `DevcelBundle.LoadText` retrieves the bundle; `FromJson` uses the native runtime. See [mobile Players](MOBILE.md) for prerequisites and acceptance.

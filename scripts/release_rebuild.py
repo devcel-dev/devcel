@@ -60,6 +60,8 @@ def require_build_recipe(source, trusted=ROOT):
     """Never execute an older tag's unreviewed build helpers to rebuild it."""
     recipes = (
         'scripts/ci-release.py', 'scripts/studio_cli.py', 'scripts/package-importers.py',
+        'scripts/unity_upm.py', 'scripts/unity_mobile.py', 'scripts/unity_toolchain.py',
+        '.github/actions/build-unity-mobile/action.yml',
         'scripts/package-windows-studio.py', 'scripts/tauri-release.conf.json',
         'scripts/debian_version.py', 'scripts/legal_distribution.py',
         'scripts/generate-third-party-notices.py', 'scripts/release_privacy.py',
