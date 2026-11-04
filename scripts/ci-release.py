@@ -25,6 +25,7 @@ import release_privacy
 import studio_cli
 import importer_versions
 import unity_upm
+import unity_git_package
 from product_version import read_version
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -92,6 +93,8 @@ def prepare_release():
     tag, commit = release_request(os.environ['GITHUB_EVENT_NAME'], os.environ['GITHUB_REF'],
                                   os.environ.get('RELEASE_VERSION', ''),
                                   os.environ.get('SOURCE_COMMIT') or os.environ['GITHUB_SHA'])
+    if os.environ['GITHUB_EVENT_NAME'] == 'push' and run('git', 'ls-tree', commit, '--', unity_git_package.PACKAGE_PATH, capture=True).strip():
+        commit = unity_git_package.source_identity(ROOT, commit)
     emit_release(tag, commit)
 
 
@@ -170,21 +173,19 @@ def prepare_manual_release():
 
 
 def create_tag():
-    """Create only: an existing tag or a concurrent creator fails without mutation."""
+    """Preflight the new tag; creation is deferred until package assembly."""
     if os.environ['GITHUB_EVENT_NAME'] != 'workflow_dispatch' or os.environ['GITHUB_REF'] != 'refs/heads/main':
         raise ValueError('Only a manual main release may create a version tag.')
     tag = os.environ['RELEASE_TAG']
     validate(tag)
     commit = checked_commit(os.environ['SOURCE_COMMIT'])
-    # POST creates a new ref atomically. Never PATCH, force-push, or delete a tag.
-    # The built-in GITHUB_TOKEN does not start another push workflow; this run
-    # continues directly into the same build and publication jobs as a tag push.
-    result = json.loads(run('gh', 'api', '--method', 'POST', 'repos/{owner}/{repo}/git/refs',
-                            '--raw-field', 'ref=refs/tags/'+tag, '--raw-field', 'sha='+commit,
-                            capture=True))
-    if result.get('ref') != 'refs/tags/'+tag or result.get('object', {}).get('sha') != commit:
-        raise ValueError('Tag creation response did not confirm the requested commit.')
-    print(f'Created {tag} at {commit}')
+    # Reserve nothing: final tag creation occurs only after all six builds and
+    # the combined UPM package are complete. Existing tags are never moved.
+    repository = os.environ['GH_REPO']
+    if run('git', 'ls-remote', '--refs', 'https://github.com/'+repository+'.git',
+           'refs/tags/'+tag, capture=True).strip():
+        raise ValueError('Release tag already exists; never replace it.')
+    print(f'Validated new release {tag} from {commit}; tag creation deferred until packaging')
 
 
 def toolchains():
@@ -888,6 +889,10 @@ def collect_assets(downloads, destination, tag, expected_commit=None, expected_r
         if source.name.startswith(prefix) and source.suffix == '.zip':
             platform = source.name[len(prefix):-4]
             files.append(unity_upm.create(source, destination, tag[1:], platform, mobile))
+    files += unity_git_package.create(
+        {rid: destination/f'devcel-unity-{tag[1:]}-{rid}.zip' for rid in unity_git_package.RIDS},
+        mobile, destination, tag[1:], expected_commit, expected_repository,
+        'github-actions[bot]', '41898282+github-actions[bot]@users.noreply.github.com')
     sums = destination/'SHA256SUMS.txt'
     sums.write_text(''.join(hashlib.sha256(path.read_bytes()).hexdigest()+'  '+path.name+'\n'
                             for path in sorted(files)), encoding='utf-8', newline='\n')
@@ -914,10 +919,20 @@ def publish(source_root=None, before_create=None, before_publish=None):
     tag = os.environ['RELEASE_TAG']
     validate(tag, root=source_root)
     commit = checked_commit(os.environ['SOURCE_COMMIT'], root=source_root)
-    # Resolve annotated and lightweight tags alike; fail if a tag moved during the build.
-    tagged = run('gh', 'api', 'repos/{owner}/{repo}/commits/refs/tags/'+tag, '--jq', '.sha', capture=True).strip()
-    if tagged != commit:
-        raise ValueError('Release tag no longer points to the built commit.')
+    new_release = (os.environ.get('GITHUB_EVENT_NAME') == 'workflow_dispatch' and
+                   not os.environ.get('RECOVERY_RUN_ID') and os.environ.get('REBUILD_EXISTING_TAG') != 'true')
+    git_package_available = new_release
+    existing_prepared_tag = ''
+    if new_release:
+        existing_prepared_tag = run('git', 'ls-remote', '--refs', 'https://github.com/'+os.environ['GH_REPO']+'.git',
+                                    'refs/tags/'+tag, capture=True).strip()
+    else:
+        tagged = run('gh', 'api', 'repos/{owner}/{repo}/commits/refs/tags/'+tag, '--jq', '.sha', capture=True).strip()
+        if tagged != commit:
+            run('git', 'fetch', '--no-tags', 'https://github.com/'+os.environ['GH_REPO']+'.git', tagged, cwd=source_root)
+            if unity_git_package.source_identity(source_root, tagged) != commit:
+                raise ValueError('Release tag no longer points to the built source.')
+            git_package_available = True
     # Include draft releases and every page. API errors must not mean "absent".
     releases = json.loads(run('gh', 'api', '--paginate', '--slurp',
                              'repos/{owner}/{repo}/releases?per_page=100', capture=True))
@@ -940,6 +955,25 @@ def publish(source_root=None, before_create=None, before_publish=None):
                               os.environ.get('PRODUCT_RELEASE_NOTES_VERSION', ''))
     if before_create is not None:
         before_create()
+    if new_release:
+        release_commit = unity_git_package.stage_release(
+            ROOT/'release-publish'/f'org.devcel.unity-{tag[1:]}-git.zip',
+            ROOT/'release-publish'/f'org.devcel.unity-{tag[1:]}-git.json', source_root,
+            'github-actions[bot]', '41898282+github-actions[bot]@users.noreply.github.com')
+        remote = 'https://github.com/'+repository+'.git'
+        if existing_prepared_tag:
+            if existing_prepared_tag != release_commit+'\trefs/tags/'+tag:
+                raise ValueError('Existing tag differs from the exact prepared release; no tag was changed.')
+        else:
+            if run('git', 'ls-remote', '--refs', remote, 'refs/tags/'+tag, capture=True).strip():
+                raise ValueError('Release tag was created concurrently; no tag was changed.')
+            # Explicit source SHA -> new normal release tag only; never main or force.
+            run('git', '-c', 'credential.helper=', '-c', 'credential.helper=!gh auth git-credential',
+                'push', remote, release_commit+':refs/tags/'+tag, cwd=source_root)
+        if run('gh', 'api', 'repos/{owner}/{repo}/commits/refs/tags/'+tag, '--jq', '.sha', capture=True).strip() != release_commit:
+            raise ValueError('Tag publication outcome uncertain; inspect remotely before retrying.')
+    if git_package_available:
+        notes += '\n\nUnity Git URL: `https://github.com/'+repository+'.git?path=/upm#'+tag+'`\n'
     # Create a draft first so failed uploads cannot expose an incomplete release.
     # Existing tags are mandatory; an existing release causes failure, never overwrite.
     with tempfile.TemporaryDirectory(prefix='devcel-release-notes-', dir=os.environ.get('RUNNER_TEMP')) as directory:

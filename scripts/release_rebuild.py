@@ -40,7 +40,7 @@ def inspect(environment=None):
         raise ValueError('Existing tag differs from the expected source commit')
     recovery.no_release(repository, tag)
     return {'repository': repository, 'publisher': publisher, 'tag': tag,
-            'commit': expected, 'tag_identity': identity}
+            'commit': identity.get('source_commit', expected), 'tag_identity': identity}
 
 
 def plan_path():
@@ -61,6 +61,7 @@ def require_build_recipe(source, trusted=ROOT):
     recipes = (
         'scripts/ci-release.py', 'scripts/studio_cli.py', 'scripts/package-importers.py',
         'scripts/unity_upm.py', 'scripts/unity_mobile.py', 'scripts/unity_toolchain.py',
+        'scripts/unity_git_package.py',
         '.github/actions/build-unity-mobile/action.yml',
         'scripts/package-windows-studio.py', 'scripts/tauri-release.conf.json',
         'scripts/debian_version.py', 'scripts/legal_distribution.py',

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Release recovery provenance, immutable source, and fail-closed publication tests."""
 import copy
+import base64
 from datetime import datetime, timezone
 import importlib.util
 import json
@@ -69,6 +70,22 @@ class RecoveryTests(unittest.TestCase):
     def test_lightweight_tags_are_supported(self):
         self.tag = {'object': {'type': 'commit', 'sha': A}}
         self.assertEqual(self.inspect()['tag_identity']['object'], A)
+
+    def test_normal_release_tag_resolves_exact_source_parent_and_rejects_source_changes(self):
+        entry = {'path':'source', 'mode':'100644', 'type':'blob', 'sha':'c'*40}
+        data = {
+            'git/ref/tags/v0.1.0': {'object':{'type':'commit','sha':T}},
+            'commits/refs/tags/v0.1.0': {'sha':T,'parents':[{'sha':A}], 'commit':{'tree':{'sha':'d'*40}}},
+            'git/trees/'+'d'*40: {'tree':[entry, {'path':'upm','mode':'040000','type':'tree','sha':'f'*40}]},
+            'git/commits/'+A: {'tree':{'sha':'1'*40}},
+            'git/trees/'+'1'*40: {'tree':[entry]},
+            'contents/upm/Tools~/manifest.json?ref='+T: {'content':base64.b64encode(json.dumps({
+                'source_commit':A,'source_repository':'owner/repo','version':'0.1.0'}).encode()).decode()}}
+        with patch.object(r, 'api', side_effect=lambda repo, suffix: data[suffix]):
+            self.assertEqual(r.tag_identity('owner/repo','v0.1.0')['source_commit'], A)
+            data['git/trees/'+'1'*40]['tree'] = [dict(entry, sha='2'*40)]
+            with self.assertRaisesRegex(ValueError, 'outside'):
+                r.tag_identity('owner/repo','v0.1.0')
 
     def test_manual_preparation_does_not_assume_run_head_is_built_commit(self):
         for item in (self.run, self.latest):
