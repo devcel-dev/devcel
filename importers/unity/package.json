@@ -1,7 +1,7 @@
 {
   "name": "org.devcel.unity",
   "displayName": "Devcel Unity Importer",
-  "description": "Unity importer, typed references and code generation with matching bundled native tools. Install the release UPM tarball for your Editor OS and CPU.",
+  "description": "Unity importer, typed references and code generation with bundled desktop and mobile runtimes. Install the complete Git package from a normal release tag.",
   "unity": "2021.3",
   "keywords": [
     "devcel",

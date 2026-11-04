@@ -1,8 +1,10 @@
 """Local assembly/Git round-trips; no remote refs or native execution."""
 import json
+import importlib.util
 import os
 from pathlib import Path
 import subprocess
+import shutil
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -29,6 +31,36 @@ def fixture(root, commit="a"*40):
 
 
 class GitPackageTests(unittest.TestCase):
+    def test_real_documentation_graph_and_windows_crlf_inputs(self):
+        repo = Path(__file__).resolve().parents[1]
+        spec = importlib.util.spec_from_file_location('packaging_fixture', repo/'scripts/package-importers.py')
+        packaging = importlib.util.module_from_spec(spec); spec.loader.exec_module(packaging)
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            desktop, mobile = fixture(root)
+            for rid in package.RIDS:
+                stage = root/('stage-'+rid); dest = stage/'devcel-unity'
+                shutil.copytree(repo/'importers/unity', dest, ignore=shutil.ignore_patterns('__pycache__'))
+                for name, raw in fixture_entries(rid).items():
+                    path = stage/name; path.parent.mkdir(parents=True, exist_ok=True); path.write_bytes(raw)
+                packaging.bundle_documentation(repo, stage, dest, 'unity', dest/'Tools~', 'a'*40, 'owner/repo')
+                values = {p.relative_to(stage).as_posix(): p.read_bytes() for p in dest.rglob('*') if p.is_file()}
+                self.assertTrue(all(b'\r\n' not in raw for name, raw in values.items() if name.endswith('.md')))
+                if rid == 'win-x64':
+                    values = {name: raw.replace(b'\n',b'\r\n') if name.endswith('.md') or name.endswith('/NativeRequirements.json') else raw
+                              for name,raw in values.items()}
+                write_zip(desktop[rid], values)
+            package.assemble(desktop, mobile, root/'package', '0.1.0', 'a'*40, 'owner/repo')
+            files = {p.relative_to(root/'package').as_posix():p.read_bytes() for p in (root/'package').rglob('*') if p.is_file()}
+            self.assertIn('Tools~/README.md', files)
+            self.assertIn('Tools~/LICENSE-CLI-MIT.txt', files)
+            self.assertNotIn('Tools~/Sources/win-x64/README.md', files)
+            self.assertNotIn(b'\r\n', files['Editor/NativeRequirements.json'])
+            package.validate_documentation(files)
+            files.pop('Tools~/README.md')
+            with self.assertRaisesRegex(ValueError, 'documentation link'):
+                package.validate_documentation(files)
+
     def test_one_tag_has_all_platforms_sources_and_notices_and_clones_locally(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
@@ -48,6 +80,7 @@ class GitPackageTests(unittest.TestCase):
             release = package.stage_release(*outputs, repo, 'eight-ways', '145819685+eight-ways@users.noreply.github.com')
             self.assertEqual(package.stage_release(*outputs, repo, 'eight-ways', '145819685+eight-ways@users.noreply.github.com'), release)
             self.assertEqual(package.source_identity(repo, release), source)
+            package.verify_release_tree(repo, release, release)
             self.assertEqual(git('rev-parse', 'HEAD'), source)
             self.assertEqual(git('status', '--porcelain'), '')
             git('tag', 'v0.1.0', release)
@@ -67,6 +100,11 @@ class GitPackageTests(unittest.TestCase):
                 self.assertEqual((clone/'Tools~/Sources'/rid/'cli-source.tar.gz').read_bytes(), b'source')
                 self.assertTrue((clone/'ThirdPartyNotices'/rid/'THIRD-PARTY-NOTICES.txt').is_file())
             self.assertEqual(json.loads((clone/'package.json').read_text())['version'], '0.1.0')
+            (clone/'extra.txt').write_text('rebuild payload drift')
+            changed = package.release_commit(clone, repo, source, '0.1.0', author_name='eight-ways',
+                                             author_email='145819685+eight-ways@users.noreply.github.com')
+            with self.assertRaisesRegex(ValueError, 'immutable release tag'):
+                package.verify_release_tree(repo, release, changed)
             # A change outside the generated subtree is not a valid envelope.
             git('checkout', '--detach', release)
             (repo/'source.txt').write_text('modified')

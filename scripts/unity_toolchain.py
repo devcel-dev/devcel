@@ -44,7 +44,7 @@ def verify(root):
 def materialize(root, destination):
     target = Path(destination)/'Editor/NativeRequirements.json'
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(json.dumps({'schema_version': 1, 'source_fingerprint': fingerprint(root)}, indent=2)+'\n', encoding='utf-8')
+    target.write_text(json.dumps({'schema_version': 1, 'source_fingerprint': fingerprint(root)}, indent=2)+'\n', encoding='utf-8', newline='\n')
 
 
 def verify_source(root, source):

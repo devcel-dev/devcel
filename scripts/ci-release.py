@@ -93,7 +93,9 @@ def prepare_release():
     tag, commit = release_request(os.environ['GITHUB_EVENT_NAME'], os.environ['GITHUB_REF'],
                                   os.environ.get('RELEASE_VERSION', ''),
                                   os.environ.get('SOURCE_COMMIT') or os.environ['GITHUB_SHA'])
-    if os.environ['GITHUB_EVENT_NAME'] == 'push' and run('git', 'ls-tree', commit, '--', unity_git_package.PACKAGE_PATH, capture=True).strip():
+    if os.environ['GITHUB_EVENT_NAME'] == 'push':
+        if not run('git', 'ls-tree', commit, '--', unity_git_package.PACKAGE_PATH, capture=True).strip():
+            raise ValueError('A new release tag must already contain generated /upm. Use manual release preparation or stage the complete package before tagging; never move an existing tag.')
         commit = unity_git_package.source_identity(ROOT, commit)
     emit_release(tag, commit)
 
@@ -923,6 +925,7 @@ def publish(source_root=None, before_create=None, before_publish=None):
                    not os.environ.get('RECOVERY_RUN_ID') and os.environ.get('REBUILD_EXISTING_TAG') != 'true')
     git_package_available = new_release
     existing_prepared_tag = ''
+    existing_git_release = None
     if new_release:
         existing_prepared_tag = run('git', 'ls-remote', '--refs', 'https://github.com/'+os.environ['GH_REPO']+'.git',
                                     'refs/tags/'+tag, capture=True).strip()
@@ -933,6 +936,7 @@ def publish(source_root=None, before_create=None, before_publish=None):
             if unity_git_package.source_identity(source_root, tagged) != commit:
                 raise ValueError('Release tag no longer points to the built source.')
             git_package_available = True
+            existing_git_release = tagged
     # Include draft releases and every page. API errors must not mean "absent".
     releases = json.loads(run('gh', 'api', '--paginate', '--slurp',
                              'repos/{owner}/{repo}/releases?per_page=100', capture=True))
@@ -941,6 +945,12 @@ def publish(source_root=None, before_create=None, before_publish=None):
     repository = os.environ['GH_REPO']
     run(sys.executable, ROOT/'scripts/generate-third-party-notices.py', '--ensure', '--repo', source_root)
     files = collect_assets(ROOT/'release-downloads', ROOT/'release-publish', tag, commit, repository)
+    if existing_git_release:
+        prepared = unity_git_package.stage_release(
+            ROOT/'release-publish'/f'org.devcel.unity-{tag[1:]}-git.zip',
+            ROOT/'release-publish'/f'org.devcel.unity-{tag[1:]}-git.json', source_root,
+            'github-actions[bot]', '41898282+github-actions[bot]@users.noreply.github.com')
+        unity_git_package.verify_release_tree(source_root, existing_git_release, prepared)
     release_privacy.check_bytes((ROOT/'release-publish'/release_source.ASSET).read_bytes(), release_source.ASSET)
     release_privacy.check_bytes((ROOT/'release-publish'/'SHA256SUMS.txt').read_bytes(), 'SHA256SUMS.txt')
     release_source.validate_index(ROOT/'release-publish'/release_source.ASSET, repository, commit, tag, source_root)
