@@ -95,4 +95,23 @@ class NativeNoticeTests(unittest.TestCase):
     def test_payload_escape_is_blocked(self):
         (self.root/'escaped.so').symlink_to('/etc/passwd')
         with self.assertRaisesRegex(RuntimeError,'escapes'):n.inventory(self.root)
+
+class MacNoticeTests(unittest.TestCase):
+    def test_macos_resources_require_exact_generated_notice_bytes(self):
+        from unittest.mock import patch
+        spec = importlib.util.spec_from_file_location('artifacts', pathlib.Path(__file__).with_name('check-native-release-artifacts.py'))
+        artifacts = importlib.util.module_from_spec(spec); spec.loader.exec_module(artifacts)
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory)
+            app = root/'devcel-studio.app'
+            legal = app/'Contents/Resources/legal'; legal.mkdir(parents=True)
+            source = root/'notice.txt'; source.write_bytes(b'Original copyright and license')
+            payload = legal/'THIRD-PARTY-NOTICES.txt'; payload.write_bytes(source.read_bytes())
+            with patch.object(artifacts, 'distribution_files', return_value={'THIRD-PARTY-NOTICES.txt': source}):
+                self.assertEqual(artifacts.verify_macos_notices(app, root)['verified_files'], 1)
+                payload.write_bytes(b'changed')
+                with self.assertRaisesRegex(RuntimeError, 'changed'): artifacts.verify_macos_notices(app, root)
+                payload.unlink()
+                with self.assertRaisesRegex(RuntimeError, 'differs'): artifacts.verify_macos_notices(app, root)
+
 if __name__=='__main__':unittest.main()

@@ -1,4 +1,4 @@
-"""CLI payload shared by Studio portable ZIP and Debian builds."""
+"""CLI payload shared by Studio portable ZIP, Debian and macOS builds."""
 import hashlib
 import json
 import shutil
@@ -28,6 +28,11 @@ def build_flags(platform):
                 os.environ.pop(key, None)
             else:
                 os.environ[key] = value
+
+
+def configure_macos(repo):
+    config = json.loads((Path(repo)/'devcel-studio/src-tauri/tauri.conf.json').read_text(encoding='utf-8'))
+    os.environ['MACOSX_DEPLOYMENT_TARGET'] = config['bundle']['macOS']['minimumSystemVersion']
 
 
 def digest(path):
@@ -84,6 +89,9 @@ def stage(repo, target, platform, profile='release', source_commit=None):
         path.unlink()
     shutil.copyfile(target/profile/executable, destination/executable)
     (destination/executable).chmod(0o755)
+    if platform.startswith('osx-'):
+        # Sign before hashing; the resource manifest must describe shipped bytes.
+        subprocess.run(['codesign', '--force', '--sign', '-', str(destination/executable)], check=True)
     shutil.copyfile(repo/'devcel-cli/LICENSE', destination/'LICENSE-CLI.txt')
     manifest = {'schema_version': 1, 'version': version, 'platform': platform,
                 'executable': executable, 'sha256': digest(destination/executable), 'source_commit': commit}
@@ -91,6 +99,8 @@ def stage(repo, target, platform, profile='release', source_commit=None):
     config = json.loads((repo/'scripts/tauri-release.conf.json').read_text())
     resources = json.loads((repo/'devcel-studio/src-tauri/tauri.conf.json').read_text())['bundle']['resources']
     config['bundle'] = {'resources': {**resources, 'bundled-cli/': 'bin/'}}
+    if platform.startswith('osx-'):
+        config['bundle']['macOS'] = {'signingIdentity': '-'}
     path = repo/'devcel-studio/src-tauri/.bundled-cli.conf.json'
     path.write_text(json.dumps(config, indent=2)+'\n', encoding='utf-8')
     return path
@@ -101,7 +111,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--repo', type=Path, required=True)
     parser.add_argument('--target-dir', type=Path, required=True)
-    parser.add_argument('--platform', choices=['win-x64', 'linux-x64'], required=True)
+    parser.add_argument('--platform', choices=['win-x64', 'linux-x64', 'osx-x64', 'osx-arm64'], required=True)
     parser.add_argument('--profile', choices=['release', 'debug'], default='release')
     parser.add_argument('--target')
     parser.add_argument('--source-commit')
@@ -113,6 +123,8 @@ if __name__ == '__main__':
         command += ['--target', args.target]
     import release_privacy
     release_privacy.configure(args.repo)
+    if args.platform.startswith('osx-'):
+        configure_macos(args.repo)
     with build_flags(args.platform):
         subprocess.run(command, cwd=args.repo, check=True)
     print(stage(args.repo, args.target_dir, args.platform, args.profile, args.source_commit))

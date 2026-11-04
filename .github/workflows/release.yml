@@ -140,7 +140,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-24.04, windows-2022]
+        os: [ubuntu-24.04, windows-2022, macos-15-intel, macos-15]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 240
     env:
@@ -220,7 +220,7 @@ jobs:
         run: python scripts/ci-release.py package
       - uses: actions/upload-artifact@v7
         with:
-          name: release-${{ runner.os }}
+          name: release-${{ runner.os }}${{ runner.os == 'macOS' && format('-{0}', runner.arch) || '' }}
           path: release-assets/*
           if-no-files-found: error
           retention-days: 7

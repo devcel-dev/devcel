@@ -258,6 +258,9 @@ def main():
     notices_module.verify_upstream(repo)
     out = args.out.resolve(); out.mkdir(parents=True, exist_ok=True)
     target, runtime_name, runtime_dir = PLATFORMS[args.platform]
+    if args.platform.startswith('osx-'):
+        from studio_cli import configure_macos
+        configure_macos(repo)
     with package_scratch() as scratch:
         scratch = Path(scratch); build = scratch / 'source'; build.mkdir()
         copy_sources(source, build)
@@ -290,6 +293,10 @@ def main():
             universal = scratch / runtime_name
             run('lipo','-create',runtime,Path(metadata['target_directory'])/other/'release'/runtime_name,'-output',universal)
             runtime = universal
+            # lipo changes signed bytes; sign the final universal library and CLI
+            # before generating their hashes. This is ad-hoc, not notarization.
+            for binary in (cli, runtime):
+                run('codesign', '--force', '--sign', '-', binary)
         vendor_config = run('cargo','vendor','--locked','vendor',cwd=build)
         (build/'.cargo').mkdir(exist_ok=True)
         (build/'.cargo/config.toml').write_text(vendor_config+'\n',encoding='utf-8')
@@ -303,6 +310,16 @@ def main():
         rust_version = run('rustc', '--version', cwd=build)
         rust_flags = release_privacy.provenance_flags()
         (build/'BUILD-SOURCE.txt').write_text(f'Compiler: {rust_version}\nSource repository: https://github.com/{args.source_repository}\nBase commit: {args.source_commit}\nPackage version: {version}\nTarget: {target}\nRUSTFLAGS: {rust_flags}\nBuild: cargo build --offline --locked --release --target {target} -p devcel-cli -p devcel-runtime\nAll registry dependency sources and original notices are in vendor/.\n',encoding='utf-8')
+        if args.platform.startswith('osx-'):
+            with (build/'BUILD-SOURCE.txt').open('a', encoding='utf-8') as instructions:
+                instructions.write(
+                    f"macOS: export MACOSX_DEPLOYMENT_TARGET={os.environ['MACOSX_DEPLOYMENT_TARGET']} before building.\n"
+                    'Install both Darwin targets with rustup target add x86_64-apple-darwin aarch64-apple-darwin.\n'
+                    f'Also build: cargo build --offline --locked --release --target {other} -p devcel-runtime\n'
+                    'Combine the two target/<triple>/release/libdevcel_runtime.dylib files with lipo -create -output libdevcel_runtime.dylib.\n'
+                    'If CARGO_TARGET_DIR is set, use that directory instead of target/.\n'
+                    'Ad-hoc sign the final CLI and Universal dylib: codesign --force --sign - <binary>.\n'
+                    'Regenerate manifest hashes after signing modified binaries. No Apple notarization is included.\n')
         source_archive = scratch/'cli-source.tar.gz'
         def source_timestamp(info):
             return release_privacy.archive_info(info, build_epoch)

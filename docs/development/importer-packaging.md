@@ -52,7 +52,7 @@ Paths are relative to the manifest directory. Package names and manifests use th
 
 ## Build and verification
 
-Use Python 3.11+, the Rust toolchain pinned by `rust-toolchain.toml`, the native linker/toolchain, and required Rust targets. macOS requires Xcode and both `x86_64-apple-darwin` and `aarch64-apple-darwin` runtime targets.
+Use Python 3.11+, the Rust toolchain pinned by `rust-toolchain.toml`, the native linker/toolchain, and required Rust targets. macOS requires Xcode Command Line Tools and both `x86_64-apple-darwin` and `aarch64-apple-darwin` runtime targets (`python3 scripts/ci-release.py toolchains` installs them). The deployment minimum follows Studio's macOS 13.3 setting. The native CLI and final Universal dylib are ad-hoc signed before manifest hashes are computed; this is not Developer ID signing or notarization.
 
 ```sh
 python scripts/package-importers.py --out dist/importers --source-repository <owner/repo> --source-commit <git-commit>
