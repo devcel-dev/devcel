@@ -6,13 +6,16 @@ No network, remote push, or source branch modification occurs here.
 """
 import argparse
 import hashlib
+import importlib.util
 import json
 import os
 from pathlib import Path
+import posixpath
 import shutil
 import subprocess
 import tempfile
 import zipfile
+from urllib.parse import unquote, urlsplit
 
 import unity_mobile
 import unity_upm
@@ -20,6 +23,31 @@ import unity_upm
 RIDS = ('win-x64', 'linux-x64', 'osx-x64', 'osx-arm64')
 MAX_BLOB = 100 * 1024 * 1024
 MAX_PACKAGE = 1024 * 1024 * 1024
+
+
+def canonical_shared(name, raw):
+    # Older Windows generators translated these text outputs to CRLF. Normalize
+    # only generated docs/JSON, never binaries, source archives or original licenses.
+    if name.endswith('.md') or name in ('package.json', 'Editor/NativeRequirements.json'):
+        return raw.replace(b'\r\n', b'\n')
+    return raw
+
+
+def validate_documentation(files):
+    spec = importlib.util.spec_from_file_location('devcel_packaged_docs', Path(__file__).with_name('package-importers.py'))
+    packaging = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(packaging)
+    for name, raw in files.items():
+        if not name.endswith('.md'):
+            continue
+        for _, _, href in packaging.markdown_links(raw.decode('utf-8')):
+            url = urlsplit(href.strip('<>'))
+            if url.scheme or url.netloc or not url.path:
+                continue
+            target = posixpath.normpath(posixpath.join(posixpath.dirname(name), unquote(url.path)))
+            if target.startswith('../') or target == '..' or target.startswith('/') or not (
+                    target in files or any(path.startswith(target.rstrip('/')+'/') for path in files)):
+                raise ValueError(f'Generated package documentation link is missing: {name}: {href}')
 
 
 def add_missing_metadata(files):
@@ -66,8 +94,11 @@ def assemble(desktop, mobile, destination, version, commit, repository):
             if (manifest.get('source_commit') != commit or manifest.get('source_repository') != repository or
                     manifest.get('source_fingerprint') != required_fingerprint):
                 raise ValueError('Desktop source identity mismatch')
-            shared = {name: archive.read(entry) for name, entry in entries.items()
-                      if not name.startswith(('Tools~/', 'Plugins/', 'ThirdPartyNotices/'))}
+            shared = {name: canonical_shared(name, archive.read(entry)) for name, entry in entries.items()
+                      if not name.startswith(('Plugins/', 'ThirdPartyNotices/')) and
+                      (not name.startswith('Tools~/') or
+                       (name not in ('Tools~/manifest.json', 'Tools~/cli-source.tar.gz') and
+                        not name.startswith('Tools~/'+rid+'/')))}
             if common is None:
                 common = shared
                 files.update(shared)
@@ -77,7 +108,7 @@ def assemble(desktop, mobile, destination, version, commit, repository):
                 if name.startswith('ThirdPartyNotices/'):
                     files['ThirdPartyNotices/' + rid + '/' + name.split('/', 1)[1]] = archive.read(entry)
                 elif name.startswith('Tools~/'):
-                    if name == 'Tools~/manifest.json':
+                    if name == 'Tools~/manifest.json' or name in shared:
                         continue
                     if name == 'Tools~/cli-source.tar.gz':
                         output = 'Tools~/Sources/' + rid + '/cli-source.tar.gz'
@@ -86,10 +117,6 @@ def assemble(desktop, mobile, destination, version, commit, repository):
                                         'sha256': manifest['source_sha256']})
                     elif name.startswith('Tools~/' + rid + '/'):
                         files[name] = archive.read(entry)
-                    else:
-                        # Keep platform-specific tool documentation/licenses adjacent
-                        # to that platform's corresponding source; no overwrite.
-                        files['Tools~/Sources/' + rid + '/' + name.removeprefix('Tools~/')] = archive.read(entry)
                 elif name.startswith('Plugins/'):
                     # Both macOS inputs contain a universal dylib. Select the
                     # Apple Silicon build for both CPUs; retain both distinct CLIs.
@@ -118,6 +145,7 @@ def assemble(desktop, mobile, destination, version, commit, repository):
     files['Tools~/manifest.json'] = (json.dumps(manifest, indent=2)+'\n').encode()
     # Retain payload bytes and execute permissions without Git LFS or filters.
     files['.gitattributes'] = b'* -text -filter\n'
+    validate_documentation(files)
     add_missing_metadata(files)
     total = sum(len(raw) for raw in files.values())
     largest = max(files, key=lambda name: len(files[name]))
@@ -193,6 +221,15 @@ def source_identity(root, release_commit):
     if manifest.get('source_commit') != source or manifest.get('version') != package.get('version'):
         raise ValueError('Release package source/version mismatch')
     return source
+
+
+def verify_release_tree(root, existing, prepared):
+    """A rebuild may not publish assets differing from the immutable Git package."""
+    def tree(commit):
+        return subprocess.run(['git', 'rev-parse', commit+':'+PACKAGE_PATH], cwd=root,
+                              check=True, text=True, capture_output=True).stdout.strip()
+    if source_identity(root, existing) != source_identity(root, prepared) or tree(existing) != tree(prepared):
+        raise ValueError('Rebuilt package differs from the immutable release tag /upm tree; use the original artifacts or a new version, never move the tag.')
 
 
 def create(desktop, mobile, output, version, commit, repository, author_name=None, author_email=None):
