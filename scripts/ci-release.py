@@ -665,7 +665,8 @@ def platform_config():
     if sys.platform == 'darwin':
         arch = {'x86_64': 'x64', 'arm64': 'arm64', 'aarch64': 'arm64'}.get(platform.machine())
         if arch:
-            return 'macos-'+arch, 'osx-'+arch, 'dmg', 'devcel-studio'
+            # Request app explicitly: dmg-only bundling deletes its intermediate app.
+            return 'macos-'+arch, 'osx-'+arch, 'app,dmg', 'devcel-studio'
     raise ValueError('Unsupported native release OS/CPU.')
 
 

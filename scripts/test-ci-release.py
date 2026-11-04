@@ -851,7 +851,7 @@ class ReleaseTests(unittest.TestCase):
     def test_macos_native_platform_and_toolchains(self):
         for machine, rid in (('x86_64', 'x64'), ('arm64', 'arm64')):
             with patch.object(ci.sys, 'platform', 'darwin'), patch.object(ci.platform, 'machine', return_value=machine):
-                self.assertEqual(ci.platform_config(), ('macos-'+rid, 'osx-'+rid, 'dmg', 'devcel-studio'))
+                self.assertEqual(ci.platform_config(), ('macos-'+rid, 'osx-'+rid, 'app,dmg', 'devcel-studio'))
                 with patch.object(ci, 'run') as run:
                     ci.toolchains()
                 self.assertIn(('rustup', 'target', 'add', '--toolchain', '1.99.0',
@@ -862,14 +862,14 @@ class ReleaseTests(unittest.TestCase):
     def test_macos_build_checks_sealed_payload_and_propagates_signing_failure(self):
         for rid in ('x64', 'arm64'):
             with tempfile.TemporaryDirectory() as temp, patch.dict(ci.os.environ, {'CARGO_TARGET_DIR': temp}), \
-                    patch.object(ci, 'platform_config', return_value=('macos-'+rid, 'osx-'+rid, 'dmg', 'devcel-studio')), \
+                    patch.object(ci, 'platform_config', return_value=('macos-'+rid, 'osx-'+rid, 'app,dmg', 'devcel-studio')), \
                     patch.object(ci.studio_cli, 'configure_macos'), \
                     patch.object(ci.studio_cli, 'stage', return_value=Path('cli.conf.json')), \
                     patch.object(ci.studio_cli, 'validate', return_value={'sha256': 'signed'}) as validate, \
                     patch.object(ci, 'run') as run:
                 ci.build_native()
                 calls = [c.args for c in run.call_args_list]
-                self.assertEqual(calls[2][:7], ('npm', 'run', 'tauri', '--', 'build', '--bundles', 'dmg'))
+                self.assertEqual(calls[2][:7], ('npm', 'run', 'tauri', '--', 'build', '--bundles', 'app,dmg'))
                 self.assertEqual(calls[-1], ('codesign', '--verify', '--deep', '--strict',
                                             Path(temp)/'release/bundle/macos/devcel-studio.app'))
                 self.assertEqual(validate.call_args.args, (Path(temp)/'release/bundle/macos/devcel-studio.app/Contents/Resources/bin', 'osx-'+rid))
