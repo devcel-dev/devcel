@@ -6,7 +6,7 @@ Import saved Devcel tables into Unity and check Studio edits in a running game. 
 
 ## 1. Prepare the projects
 
-You need a saved manifest and its Tables folder, plus the CLI-bundled UPM tarball for your Editor OS/CPU. A source-code archive does not include the required executable.
+You need a saved manifest and its Tables folder, plus the complete Git UPM package. A source-code archive does not include the required executable.
 
 The Devcel Unity package declares Unity **2021.3** as its minimum. Packaging generates its `package.json` version and native manifest from the canonical Studio product version in `tauri.conf.json`. Its native source fingerprint and payload hashes bind the SDK to the bundled tools; the runtime's **API_VERSION is 1**.
 
@@ -27,14 +27,18 @@ Put generated JSON/code outside the source project and reserve its output paths 
 
 ### Install the package
 
-1. Download `org.devcel.unity-<version>-<rid>.tgz` from [Releases](https://github.com/eight-ways/devcel/releases). Choose `win-x64`, `linux-x64`, `osx-x64`, or `osx-arm64` for your Editor process OS/CPU.
-2. Keep it at a stable location outside Assets/Packages (for example `LocalPackages/`). Open **Window > Package Manager > + > Add package from tarball** and select it without extracting it. Newer Unity versions call this **Install package from tarball**.
-3. UPM installs the complete SDK, CLI and runtime together. No native companion or PATH CLI is required. Do not install a second copy under Assets or as an embedded package.
-4. Open **Devcel → Importer**.
+1. Open **Window > Package Manager > + > Add package from git URL** (or **Install package from Git URL**).
+2. Enter `https://github.com/devcel-dev/devcel.git?path=/upm#v<version>`, replacing `<version>` with a published release tag listed by [Releases](https://github.com/devcel-dev/devcel/releases). Git must be installed on your computer.
+3. The same URL includes all four desktop Editor CLIs, desktop runtimes and Android/iOS ARM64 device runtimes. No native companion or PATH CLI is required.
+4. Open **Devcel > Importer**.
+
+As of 2026-11-04, the published v0.0.1 release contains Windows/Linux importer ZIPs only. The Git-installable package, macOS and mobile distributions described here require a newer release published by this pipeline; they are not downloads available in v0.0.1.
+
+Use the `/upm` path at a new release tag. The source `main` branch and `?path=/importers/unity` contain ungenerated templates. Preserve the Git dependency in `Packages/manifest.json` and its resolved commit in `Packages/packages-lock.json`.
 
 ![Importer after a successful reimport, with FileWatch enabled](images/unity-importer-overview.png)
 
-For updates, select the new matching tarball in Package Manager and restart Unity before importing, then regenerate your game sources. Keep the tarball, manifest and lock file together in version control; updates are explicit. Remove old embedded/Assets copies and an existing `org.devcel.native` companion when migrating. The [SDK installation guide](../../importers/unity/README.md) covers migration, rollback and teams using different Editor platforms. Existing ZIP distributions remain usable through **Add package from disk**, selecting the extracted `devcel-unity/package.json`.
+For upgrades or rollback, select a different published `v<version>` in the Git URL, resolve packages, commit the manifest and lock file, restart Unity, and regenerate game sources. Remove older embedded/Assets SDK copies and an `org.devcel.native` companion when migrating. The [SDK installation guide](../../importers/unity/README.md) includes migration and offline ZIP/tarball alternatives.
 
 The screenshots below show Devcel 0.0.2 in Unity 6.3 LTS on Windows. They use the same sample with content version 2 after the version-filter exercise; use version 1 for the initial steps below.
 
@@ -243,14 +247,14 @@ For manual-only operation, set the common automatic mode to Off. Save in Studio,
 
 - Editor import platforms and Player targets are separate. A single-RID ZIP may not include the native runtime for another target OS.
 - Native layouts currently cover Windows x64, Linux x64, and macOS universal. macOS needs both x86_64 and arm64 slices.
-- Release UPM tarballs include Android ARM64 (API 23+) and iOS ARM64 device (iOS 13+) runtimes. Install the Unity target module and follow the [mobile Player guide](../../importers/unity/Documentation~/MOBILE.md). Other Android ABIs, iOS Simulator and WebGL remain unsupported. FromJson still requires the native runtime; CLI execution remains Editor-only.
+- Generated complete Git UPM packages include Android ARM64 (API 23+) and iOS ARM64 device (iOS 13+) runtimes. Install the Unity target module and follow the [mobile Player guide](../../importers/unity/Documentation~/MOBILE.md). Other Android ABIs, iOS Simulator and WebGL remain unsupported. FromJson still requires the native runtime; CLI execution remains Editor-only.
 - **Import before build** defaults to Off. When enabled, failed imports or changed generated C# stop the build; compile changed code before rebuilding.
 - Configuration and runtime-layout validation still runs when pre-build import is off. Already imported JSON, generated code, and required runtime can build without source projects or the CLI.
 - Player contents use runtime JSON, generated code, and runtime libraries. Keep editor CLI, source TOML, and authoring settings out of Resources and StreamingAssets.
 
 ### Platforms and verification
 
-Official Release importer ZIPs are provided for linux-x64 and win-x64. The packaging tools also support local osx-x64 and osx-arm64 builds; those targets are not included in the current official Release assets. Windows/Linux arm64 packages are not provided. The documented Linux build baseline requires glibc 2.39; verify the actual artifact on the target environment.
+As of 2026-11-04, the published v0.0.1 release contains Windows/Linux importer ZIPs only. The Git-installable package, macOS and mobile distributions described here require a newer release published by this pipeline; they are not downloads available in v0.0.1. The build pipeline supports win-x64, linux-x64, osx-x64 and osx-arm64. Windows/Linux arm64 Editors are not supported. Linux requires the documented glibc 2.39 baseline; validate the actual artifact on the target system. Build success is not Editor or Player execution acceptance.
 
 See [Unity package layout](../../importers/unity/Documentation~/DISTRIBUTION.md), [Bundled CLI](../development/importer-packaging.md).
 

@@ -9,21 +9,27 @@ The source [`package.json`](package.json) is a template; packaging generates its
 
 ## Package installation
 
-Download `org.devcel.unity-<version>-<rid>.tgz` from [Releases](https://github.com/eight-ways/devcel/releases). In **Window > Package Manager**, select **+ > Add package from tarball** (or **Install package from tarball** in newer Unity versions) and choose the downloaded file. Do not extract it. The UPM identity is `org.devcel.unity`; when editing `Packages/manifest.json` directly, its dependency key is `"org.devcel.unity":`.
+Use **Window > Package Manager > + > Add package from git URL** (called **Install package from Git URL** in newer Unity versions). Use the exact `v<version>` tag announced by the release:
 
-Choose `win-x64` for Windows x64, `linux-x64` for Linux x64, `osx-x64` for an Intel macOS Editor, or `osx-arm64` for an Apple Silicon Editor. Choose by the Editor process architecture, including when running under Rosetta. Each tarball includes its CLI, matching native runtime, generated version and fingerprint, plugin metadata, licenses and corresponding source. macOS runtimes contain both desktop CPU slices. No separate `org.devcel.native` package is needed.
+```text
+https://github.com/devcel-dev/devcel.git?path=/upm#v<version>
+```
 
-Keep the tarball at a stable project-relative location outside `Assets` and `Packages`, for example `LocalPackages/`, and commit it together with `Packages/manifest.json` and `Packages/packages-lock.json` when sharing that dependency. UPM records a local file dependency; it does not download future releases automatically. Teams using different Editor platforms must select their matching tarball; the packages are not interchangeable across OS/CPU. See the [Unity manual](../../docs/manual/unity.md) for the import and runtime workflow.
+Replace `<version>` with an actually published UPM version. Install Git on the Editor machine. The normal release tag contains the complete package under `/upm`. Use `?path=/upm`; do not use `main` or `?path=/importers/unity`. Those contain templates without the generated version or native payloads.
 
-Every release UPM tarball additionally includes Android ARM64 and iOS ARM64 device Player runtimes. These do not replace the Editor runtime or CLI. Follow the [mobile Player guide](Documentation~/MOBILE.md) for target settings, IL2CPP/Xcode integration, runtime bundle loading and device acceptance.
+One Git URL supplies Windows x64, Linux x64, Intel macOS and Apple Silicon Editor CLIs; Windows/Linux x64 and macOS universal runtimes; and Android ARM64/iOS ARM64 device runtimes. The Editor selects its CLI automatically, including an Intel process under Rosetta. Platform-specific plugin metadata selects Player libraries. No separate `org.devcel.native`, PATH CLI, registry or Git LFS is required. See the [mobile Player guide](Documentation~/MOBILE.md) for target modules and device requirements.
+
+Commit `Packages/manifest.json` and `Packages/packages-lock.json` with the game. A dependency looks like `"org.devcel.unity": "https://github.com/devcel-dev/devcel.git?path=/upm#v<version>"`. Every team member uses the same URL. The immutable tag and lock file pin the package; releases never move an existing tag.
+
+As of 2026-11-04, the published v0.0.1 release contains Windows/Linux importer ZIPs only. The Git-installable package, macOS and mobile distributions described here require a newer release published by this pipeline; they are not downloads available in v0.0.1.
 
 ### Updates and migration
 
-Stop Play mode, remove any older Assets-based copy or embedded `Packages/org.devcel.unity` copy, and remove a previously installed `org.devcel.native` companion through Package Manager before switching to the complete tarball. Preserve your settings under `Assets/DevcelUnity/Editor` and generated game data. Install only one SDK and one matching runtime.
+Stop Play mode, remove an older Assets-based or embedded SDK copy and any `org.devcel.native` companion through Package Manager, preserving settings under `Assets/DevcelUnity/Editor` and generated game data. Add the complete Git package once.
 
-To upgrade or roll back, select the desired version/platform tarball through Package Manager, update the manifest and lock file in version control, then restart Unity to unload the old native runtime. Reimport your sources with that package's CLI to regenerate matching C#. Never mix SDK files, CLI files or native libraries from different distributions, or edit `Library/PackageCache`.
+To upgrade or roll back, change the Git URL to the desired published release tag, resolve the package in Package Manager, commit both package manifest and lock file, and restart Unity to unload the previous native library. Reimport sources to regenerate matching C#. Never combine SDK/CLI/runtime files from different distributions or edit `Library/PackageCache`.
 
-The raw repository Git URL is not an installable package: `package.json` is a template and native binaries are generated at release time. A scoped registry is not required for tarball installation.
+OS-specific `.tgz` files remain an offline alternative: use **Add package from tarball**, keep the file at a stable project-relative location outside Assets/Packages and share it with the game. Choose the Editor RID (`win-x64`, `linux-x64`, `osx-x64`, `osx-arm64`); these tarballs are not interchangeable across desktop OSes. Older ZIPs use **Add package from disk** on the extracted `devcel-unity/package.json` and may lack mobile runtimes.
 
 ## Import workflow
 
@@ -122,7 +128,7 @@ yield return DevcelBundle.LoadText("Devcel/MyGame/master.json", json => {
 });
 ```
 
-Release UPM tarballs also contain Android ARM64 and iOS ARM64 device runtimes. Use `LoadText` and `FromJson` on Android, where StreamingAssets may live inside the APK. See [mobile Players](Documentation~/MOBILE.md) for settings, native linking, build prerequisites and device acceptance. WebGL and iOS Simulator are not supported.
+Generated complete Git packages and release UPM tarballs contain Android ARM64 and iOS ARM64 device runtimes. Use `LoadText` and `FromJson` on Android, where StreamingAssets may live inside the APK. See [mobile Players](Documentation~/MOBILE.md) for settings, native linking, build prerequisites and device acceptance. WebGL and iOS Simulator are not supported.
 
 ## Color32 / ColorFloat
 
@@ -193,7 +199,7 @@ Build artifacts such as `devcel.exe` and native libraries are ignored by Git and
 
 See [DISTRIBUTION.md](Documentation~/DISTRIBUTION.md). Managed code is constrained by asmdefs, native code by PluginImporter. The read-only runtime supports desktop Players and the [bundled mobile targets](Documentation~/MOBILE.md); the CLI stays in `Tools~`, settings in `Assets/DevcelUnity/Editor`.
 
-Settings use schema `1` and long `contentVersion`; missing/mismatched schemas are rejected without modifying the asset. Bundled `.meta` files and idempotent repair cover Windows x64, Linux x64, and macOS universal. Missing libraries, wrong CPUs, and invalid settings stop builds. Numeric versions are `0..4294967295`; only `-1` means all content. Release builds keep the selected environment.
+Settings use schema `1` and long `contentVersion`; missing/mismatched schemas are rejected without modifying the asset. Bundled `.meta` files and idempotent repair cover Windows x64, Linux x64, macOS universal, Android ARM64 and iOS ARM64 device runtimes. Missing libraries, wrong CPUs, and invalid settings stop builds. Numeric versions are `0..4294967295`; only `-1` means all content. Release builds keep the selected environment.
 
 ## Tests
 

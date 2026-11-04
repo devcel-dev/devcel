@@ -281,7 +281,7 @@ For manual-only operation, edit Automatic import to Off and save. That settings 
 
 ### Platforms and verification
 
-Official Release importer ZIPs are provided for linux-x64 and win-x64. The packaging tools also support local osx-x64 and osx-arm64 builds; those targets are not included in the current official Release assets. Windows/Linux arm64 packages are not provided. The documented Linux build baseline requires glibc 2.39; verify the actual artifact against its target environment.
+The published v0.0.1 release includes linux-x64 and win-x64 importer ZIPs. The build/release pipeline also supports osx-x64 and osx-arm64; use them only when the selected release actually lists those assets, or build locally. Windows/Linux arm64 packages are not provided. The documented Linux build baseline requires glibc 2.39; verify the actual artifact against its target environment.
 
 See [Bundled CLI packages](../development/importer-packaging.md) for packaging and platform checks.
 
