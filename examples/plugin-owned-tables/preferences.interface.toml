@@ -1,0 +1,54 @@
+uuid = "30e8288d-4fce-8417-9b9a-51112186dbc2"
+name = "Plugin_7265706f72742d746f6f6c73_preferences_Contract"
+current_version_id = "88a13708-a895-8c4d-b28b-7d168951e33d"
+description = "Report tools preferences contract"
+extends = []
+
+[[columns]]
+min_version = 0
+read_only = false
+uuid = "10ea158a-dbe9-5f7c-a60f-8e1f7468486f"
+display_name = "prefix"
+data_name = "prefix"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+
+[columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 220
+
+[history.88a13708-a895-8c4d-b28b-7d168951e33d]
+version_id = "88a13708-a895-8c4d-b28b-7d168951e33d"
+timestamp = "2026-10-25T00:00:00Z"
+author = "System"
+comment = "Initial creation"
+
+[[history.88a13708-a895-8c4d-b28b-7d168951e33d.changes]]
+
+[history.88a13708-a895-8c4d-b28b-7d168951e33d.changes.ChangeDescription]
+new_description = "Report tools preferences contract"
+
+[[history.88a13708-a895-8c4d-b28b-7d168951e33d.changes]]
+
+[history.88a13708-a895-8c4d-b28b-7d168951e33d.changes.AddColumn.column]
+min_version = 0
+read_only = false
+uuid = "10ea158a-dbe9-5f7c-a60f-8e1f7468486f"
+display_name = "prefix"
+data_name = "prefix"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+
+[history.88a13708-a895-8c4d-b28b-7d168951e33d.changes.AddColumn.column.style]
+color = "#FFFFFF"
+font_size = 12
+width = 220

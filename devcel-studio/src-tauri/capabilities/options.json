@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "options",
+  "description": "Allow the options window close-request listener to finish closing after a settings write",
+  "windows": ["options"],
+  "permissions": ["core:window:allow-destroy"]
+}

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "devcel-studio",
+  "version": "0.0.0",
+  "identifier": "org.devcel",
+  "build": {
+    "beforeDevCommand": "npm run dev:with-fmt",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build:ci",
+    "frontendDist": "../dist",
+    "windows": {
+      "staticVCRuntime": true
+    }
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Devcel Studio",
+        "url": "/",
+        "label": "main",
+        "width": 800,
+        "height": 600,
+        "decorations": false,
+        "dragDropEnabled": false
+      }
+    ],
+    "withGlobalTauri": false,
+    "security": {
+      "capabilities": [
+        "default",
+        "app-updater",
+        "table-rules",
+        "bulk-rows",
+        "localization",
+        "options"
+      ],
+      "csp": null
+    }
+  },
+  "plugins": {
+    "updater": {
+      "active": false,
+      "pubkey": "",
+      "endpoints": []
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "createUpdaterArtifacts": false,
+    "windows": {
+      "nsis": null,
+      "minimumWebview2Version": "111.0.0.0"
+    },
+    "resources": {
+      "../../third-party/generated/THIRD-PARTY-NOTICES.txt": "legal/THIRD-PARTY-NOTICES.txt"
+    },
+    "macOS": {
+      "minimumSystemVersion": "13.3"
+    },
+    "linux": {
+      "deb": {
+        "depends": [
+          "libwebkit2gtk-4.1-0 (>= 2.40)"
+        ]
+      },
+      "rpm": {
+        "depends": [
+          "webkit2gtk4.1 >= 2.40"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,96 @@
+.color-wheel-handle {
+  width: 14px;
+  height: 14px;
+  transform: translate(-50%, -50%);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .75), 0 1px 4px rgba(0, 0, 0, .4);
+}
+.color-value-slider {
+  direction: ltr;
+  appearance: none;
+  -webkit-appearance: none;
+  height: 14px;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid rgba(0, 0, 0, .25);
+  border-radius: 999px;
+  background-color: transparent;
+  cursor: pointer;
+  touch-action: pan-y;
+}
+.color-value-slider::-webkit-slider-runnable-track { height: 12px; background: transparent; border-radius: 999px; }
+.color-value-slider::-moz-range-track { height: 12px; background: transparent; border-radius: 999px; }
+.color-value-slider::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  width: 16px;
+  height: 20px;
+  margin-top: -4px;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  background: transparent;
+  box-shadow: 0 0 0 1px #242a30, 0 1px 3px #0006;
+}
+.color-value-slider::-moz-range-thumb { box-sizing: border-box; width: 16px; height: 20px; border: 2px solid #fff; border-radius: 6px; background: transparent; box-shadow: 0 0 0 1px #242a30, 0 1px 3px #0006; }
+.color-value-slider:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 4px; }
+.color-value-slider:disabled { cursor: default; opacity: .6; }
+
+.color-picker-overlay { position: fixed; inset: 0; z-index: 80; background: rgb(0 0 0 / .38); }
+.color-picker-dialog {
+  position: fixed;
+  left: 50%; top: 50%; z-index: 81;
+  transform: translate(-50%, -50%);
+  width: min(480px, calc(100vw - 24px));
+  height: min(510px, calc(100dvh - 24px));
+  overflow: hidden;
+  border: 1px solid hsl(0 0% 32%);
+  border-radius: 10px;
+  box-shadow: 0 18px 64px rgb(0 0 0 / .4);
+  outline: none;
+}
+/* Surrounding UI must not tint the color being judged. These neutral tokens are
+   scoped to the picker; actual wheel, track and preview colors remain untouched. */
+.color-picker-panel {
+  --background: 0 0% 50.196078%; --foreground: 0 0% 0%;
+  --muted: 0 0% 54%; --muted-foreground: 0 0% 4%;
+  --border: 0 0% 20%; --input: 0 0% 20%;
+  --primary: 0 0% 20%; --primary-foreground: 0 0% 95%;
+  --ring: 0 0% 10%; --accent: 0 0% 58%; --accent-foreground: 0 0% 0%;
+  color-scheme: light;
+}
+.color-picker-panel ::selection { background: hsl(0 0% 20%); color: hsl(0 0% 95%); }
+/* Inputs are a slightly lighter neutral surface; range tracks retain their colors. */
+.color-picker-panel input:not([type="range"]),
+.color-picker-panel select { background-color: hsl(0 0% 58%); color: hsl(var(--foreground)); }
+.color-picker-panel [role="alert"] { color: hsl(var(--foreground)); }
+.color-picker-tooltip { background: hsl(0 0% 58%); color: #000; border-color: #333; }
+.color-picker-panel [role="tab"] { padding: 3px 9px; font-size: 12px; line-height: 18px; }
+.color-picker-panel [data-color-preview] > div,
+.color-picker-panel [data-color-preview] > div > span { height: 40px; }
+.color-picker-top { grid-template-columns: 166px minmax(0, 1fr); }
+.color-picker-panel [data-swatch-management] { min-height: 64px; }
+@media (max-width: 430px) {
+  .color-picker-top { grid-template-columns: 128px minmax(0, 1fr); gap: 10px; }
+  .color-picker-panel [data-color-inspector] input[type="text"] { padding-left: 4px; padding-right: 4px; }
+  .color-picker-panel [data-color-inspector] .grid { grid-template-columns: .75rem minmax(0, 1fr) 4.5rem; gap: 6px; }
+}
+@media (max-width: 350px) {
+  .color-picker-top { grid-template-columns: 1fr; }
+  .color-picker-top > div:first-child { display: grid; grid-template-columns: 128px minmax(0, 1fr); align-items: end; gap: 12px; }
+}
+
+/* An achromatic middle-grey surround is a consistent viewing aid, not a
+   claim of perceptual neutrality for every display or viewing condition.
+   Text uses dark neutral ink; numeric editors use a slightly lighter neutral surface. */
+.color-picker-panel [data-color-preview],
+.color-picker-panel [data-swatch-scroll] { background-color: #808080; }
+.color-picker-panel [data-color-preview] { padding: 6px; border-radius: 4px; }
+
+/* Keep translated actions reachable without tinting the neutral judging surface. */
+.color-picker-panel > footer { flex-wrap: wrap; }
+.color-picker-panel > footer button { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+.color-picker-header > div { min-width: 0; }
+.color-picker-header h1, .color-picker-header h2 { min-width: 0; overflow-wrap: anywhere; }
+.color-picker-header > div > span { flex-shrink: 0; }

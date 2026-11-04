@@ -1,0 +1,5 @@
+project_name = "GrowthRPG"
+project_description = "Playable RPG: real database growth, formula chains, references and reload verification"
+uuid = "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+color = "#2d7962"
+tag_presets = ["rpg/achievements", "rpg/balance", "rpg/difficulty", "rpg/economy", "rpg/encounters", "rpg/enemies", "rpg/equipment", "rpg/jobs", "rpg/loot", "rpg/materials", "rpg/progression", "rpg/quests", "rpg/recipes", "rpg/regions", "rpg/rewards", "rpg/shops"]

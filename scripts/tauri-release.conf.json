@@ -1,0 +1,5 @@
+{
+  "build": {
+    "beforeBuildCommand": "python ../scripts/ci-release.py frontend_release"
+  }
+}

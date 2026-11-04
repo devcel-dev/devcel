@@ -1,0 +1,38 @@
+{
+  "formatVersion": 1,
+  "metadata": {
+    "id": "report-tools",
+    "name": "Report tools fixture",
+    "version": "1.0.0",
+    "description": "SDK example for independently owned settings and translation tables. Not bundled.",
+    "author": "Devcel SDK",
+    "devcelVersion": ">=0.0.2 <1.0.0",
+    "apiVersion": "2.0.0"
+  },
+  "main": "main.js",
+  "permissions": [
+    "full-app-access"
+  ],
+  "capabilities": [
+    "settings-tables",
+    "translation-tables"
+  ],
+  "resources": {
+    "settingsTables": [
+      {
+        "id": "preferences",
+        "path": "preferences.table.toml",
+        "cardinality": "singleton",
+        "contract": "preferences.interface.toml"
+      }
+    ],
+    "translationTables": [
+      {
+        "id": "translations",
+        "path": "translations.table.toml",
+        "cardinality": "rows",
+        "contract": "translations.interface.toml"
+      }
+    ]
+  }
+}

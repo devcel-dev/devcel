@@ -1,0 +1,1141 @@
+uuid = "10000000-0000-4000-8000-000000000004"
+display_name = "jobs"
+description = ""
+
+[metadata]
+interface_order = ["bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb2"]
+data_name = "jobs"
+initial_transposed = false
+
+[metadata.edit_permissions]
+add_columns = true
+delete_columns = true
+add_rows = true
+delete_rows = true
+edit_cells = true
+
+[interface_implementations.bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb2]
+interface_uuid = "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb2"
+synced_version_id = "763d27b3-29d7-4a92-9919-b6cb37cc05c8"
+last_sync_date = "2026-10-04T08:38:59.454854378Z"
+effective_fingerprint = "88a5937251c87688d7256621f6e6d7973d86c9aadea6d65d7b57b03f2eed3025"
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-9000-000000000001"
+display_name = "name"
+data_name = "name"
+data_type = "String"
+default_value = "Unknown"
+interface_origin = "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb2"
+interface_origin_name_fallback = "Combatant"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-9000-000000000002"
+display_name = "hp"
+data_name = "hp"
+data_type = "I64"
+default_value = "1"
+interface_origin = "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb2"
+interface_origin_name_fallback = "Combatant"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-9000-000000000003"
+display_name = "attack"
+data_name = "attack"
+data_type = "I64"
+default_value = "0"
+interface_origin = "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb2"
+interface_origin_name_fallback = "Combatant"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-8004-000000000004"
+display_name = "key"
+data_name = "key"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-8004-000000000005"
+display_name = "weapon"
+data_name = "weapon"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-000000000003"
+
+[[schema.columns]]
+read_only = false
+uuid = "53a6f3cf-2301-50af-8b16-f1bbfed8d53e"
+display_name = "strength"
+data_name = "strength"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "0c6043d1-47bb-5231-9b83-184a3f7c1182"
+display_name = "dexterity"
+data_name = "dexterity"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "c2de4412-d462-5503-a172-29fcf8c651eb"
+display_name = "intelligence"
+data_name = "intelligence"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "577639cb-26d2-5e36-b7f7-a74d5e35ca0b"
+display_name = "tier"
+data_name = "tier"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "59ec4bc5-9f6f-586b-a173-e499f9cc7b9b"
+display_name = "mastery_required"
+data_name = "mastery_required"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "11743d03-fdee-547c-b71b-5e7ef5da834e"
+display_name = "mastery_enemy_tier_min"
+data_name = "mastery_enemy_tier_min"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "4c778619-51cd-5df3-882b-80ba31780084"
+display_name = "root_key"
+data_name = "root_key"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "7f79f848-09e1-506a-8946-a638833de4c7"
+display_name = "required_region"
+data_name = "required_region"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "5af08b02-2a23-584b-800c-93df210f117d"
+display_name = "parent_job"
+data_name = "parent_job"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-000000000004"
+
+[[schema.columns]]
+read_only = false
+uuid = "4291beae-5e62-5a0e-b5b5-f52ac4a3f23a"
+display_name = "trial_enemy"
+data_name = "trial_enemy"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-000000000005"
+
+[[schema.columns]]
+read_only = false
+uuid = "d0a22532-d535-5301-8c26-df66726ede9d"
+display_name = "mastery_stage_min"
+data_name = "mastery_stage_min"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "41f63225-6e26-5b51-845a-a48591c4dac9"
+display_name = "required_quest"
+data_name = "required_quest"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-00000000000d"
+
+[[schema.columns]]
+read_only = false
+uuid = "2c12c185-99c0-558f-86af-55228dce04be"
+display_name = "access_profile"
+data_name = "access_profile"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "c84ee35f-2ae5-5136-9baf-b57e4b8bb968"
+
+[[schema.columns]]
+read_only = false
+uuid = "a1416a6e-8a56-5bf6-ab5c-c90a5249d325"
+display_name = "promotion_cost"
+data_name = "promotion_cost"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 160
+
+[[schema.columns]]
+read_only = false
+uuid = "ea6e33c4-c8e8-58be-82a7-166a849ecfe2"
+display_name = "equipment_mastery_discount"
+data_name = "equipment_mastery_discount"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 160
+
+[[schema.columns]]
+read_only = false
+uuid = "3778013b-92b5-59e0-a41e-3411635cb1a8"
+display_name = "gather_quality_min"
+data_name = "gather_quality_min"
+data_type = "I64"
+default_value = "3"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 160
+
+[[schema.columns]]
+read_only = false
+uuid = "75c2ede5-b60a-5f99-a7dc-a01ea9ed729d"
+display_name = "gather_quality_weight_permille"
+data_name = "gather_quality_weight_permille"
+data_type = "I64"
+default_value = "1000"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 160
+
+[[schema.columns]]
+read_only = false
+uuid = "99dcb056-8ded-57b5-a949-52ccc836fe98"
+display_name = "damage_multiplier_permille"
+data_name = "damage_multiplier_permille"
+data_type = "I64"
+default_value = "1000"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 160
+
+[[records]]
+uuid = "20000000-0000-4000-8004-000000000001"
+label = "fighter"
+tags = ["rpg/jobs", "catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "900"
+dexterity = "12"
+equipment_mastery_discount = "0"
+gather_quality_min = "3"
+gather_quality_weight_permille = "1000"
+intelligence = "8"
+key = "fighter"
+mastery_enemy_tier_min = "1"
+mastery_required = "0"
+mastery_stage_min = "0"
+promotion_cost = "0"
+root_key = "fighter"
+strength = "24"
+tier = "1"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Fighter"
+30000000-0000-4000-9000-000000000002 = "180"
+30000000-0000-4000-9000-000000000003 = "18"
+
+[[records]]
+uuid = "20000000-0000-4000-8004-000000000002"
+label = "mage"
+tags = ["rpg/jobs", "catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "1300"
+dexterity = "12"
+equipment_mastery_discount = "0"
+gather_quality_min = "3"
+gather_quality_weight_permille = "1000"
+intelligence = "24"
+key = "mage"
+mastery_enemy_tier_min = "1"
+mastery_required = "0"
+mastery_stage_min = "0"
+promotion_cost = "0"
+root_key = "mage"
+strength = "8"
+tier = "1"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Mage"
+30000000-0000-4000-9000-000000000002 = "100"
+30000000-0000-4000-9000-000000000003 = "18"
+
+[[records]]
+uuid = "20000000-0000-4000-8004-000000000003"
+label = "ranger"
+tags = ["rpg/jobs", "catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "1050"
+dexterity = "24"
+equipment_mastery_discount = "20"
+gather_quality_min = "3"
+gather_quality_weight_permille = "1000"
+intelligence = "8"
+key = "ranger"
+mastery_enemy_tier_min = "1"
+mastery_required = "0"
+mastery_stage_min = "0"
+promotion_cost = "0"
+root_key = "ranger"
+strength = "12"
+tier = "1"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Ranger"
+30000000-0000-4000-9000-000000000002 = "110"
+30000000-0000-4000-9000-000000000003 = "18"
+
+[[records]]
+uuid = "20000000-0000-4000-8004-000000000004"
+label = "smith"
+tags = ["rpg/jobs", "catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "1000"
+dexterity = "14"
+equipment_mastery_discount = "0"
+gather_quality_min = "3"
+gather_quality_weight_permille = "1500"
+intelligence = "14"
+key = "smith"
+mastery_enemy_tier_min = "1"
+mastery_required = "0"
+mastery_stage_min = "0"
+promotion_cost = "0"
+root_key = "smith"
+strength = "20"
+tier = "1"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Smith"
+30000000-0000-4000-9000-000000000002 = "130"
+30000000-0000-4000-9000-000000000003 = "18"
+
+[[records]]
+uuid = "817c6d9c-aced-520b-aece-7c470b664431"
+label = "guardian"
+tags = ["catalog/generated", "catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "850"
+dexterity = "24"
+equipment_mastery_discount = "0"
+gather_quality_min = "3"
+gather_quality_weight_permille = "1000"
+intelligence = "16"
+key = "guardian"
+mastery_enemy_tier_min = "4"
+mastery_required = "160"
+mastery_stage_min = "2"
+parent_job = "20000000-0000-4000-8004-000000000001"
+promotion_cost = "2000"
+root_key = "fighter"
+strength = "48"
+tier = "2"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Guardian"
+30000000-0000-4000-9000-000000000002 = "420"
+30000000-0000-4000-9000-000000000003 = "26"
+
+[[records]]
+uuid = "5a051b83-fba5-43a9-a343-2fad2992ccd5"
+label = "iron_sentinel"
+tags = ["catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "850"
+dexterity = "36"
+equipment_mastery_discount = "0"
+gather_quality_min = "3"
+gather_quality_weight_permille = "1000"
+intelligence = "24"
+key = "iron_sentinel"
+mastery_enemy_tier_min = "7"
+mastery_required = "270"
+mastery_stage_min = "4"
+parent_job = "817c6d9c-aced-520b-aece-7c470b664431"
+promotion_cost = "5000"
+root_key = "fighter"
+strength = "72"
+tier = "3"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Iron Sentinel"
+30000000-0000-4000-9000-000000000002 = "840"
+30000000-0000-4000-9000-000000000003 = "55"
+
+[[records]]
+uuid = "722a24dd-09dc-5c81-822e-92ca50176c3c"
+label = "striker"
+tags = ["catalog/generated", "catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "950"
+dexterity = "24"
+equipment_mastery_discount = "0"
+gather_quality_min = "3"
+gather_quality_weight_permille = "1000"
+intelligence = "16"
+key = "striker"
+mastery_enemy_tier_min = "4"
+mastery_required = "160"
+mastery_stage_min = "2"
+parent_job = "20000000-0000-4000-8004-000000000001"
+promotion_cost = "2000"
+root_key = "fighter"
+strength = "48"
+tier = "2"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Striker"
+30000000-0000-4000-9000-000000000002 = "360"
+30000000-0000-4000-9000-000000000003 = "34"
+
+[[records]]
+uuid = "1ae5b7fe-42fe-508e-a798-5f1e68bc1187"
+label = "vanguard"
+tags = ["catalog/generated", "catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "950"
+dexterity = "36"
+equipment_mastery_discount = "0"
+gather_quality_min = "3"
+gather_quality_weight_permille = "1000"
+intelligence = "24"
+key = "vanguard"
+mastery_enemy_tier_min = "7"
+mastery_required = "270"
+mastery_stage_min = "4"
+parent_job = "722a24dd-09dc-5c81-822e-92ca50176c3c"
+promotion_cost = "5000"
+root_key = "fighter"
+strength = "72"
+tier = "3"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Vanguard"
+30000000-0000-4000-9000-000000000002 = "720"
+30000000-0000-4000-9000-000000000003 = "85"
+
+[[records]]
+uuid = "0932c539-2be3-5d06-89ed-bf0ce6c20dc8"
+label = "lunar_adept"
+tags = ["catalog/generated", "catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "1250"
+dexterity = "24"
+equipment_mastery_discount = "0"
+gather_quality_min = "3"
+gather_quality_weight_permille = "1000"
+intelligence = "48"
+key = "lunar_adept"
+mastery_enemy_tier_min = "4"
+mastery_required = "160"
+mastery_stage_min = "2"
+parent_job = "20000000-0000-4000-8004-000000000002"
+promotion_cost = "2000"
+root_key = "mage"
+strength = "16"
+tier = "2"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Lunar Adept"
+30000000-0000-4000-9000-000000000002 = "260"
+30000000-0000-4000-9000-000000000003 = "26"
+
+[[records]]
+uuid = "050dbb1d-7b0f-47ea-88be-42b1186696da"
+label = "lunar_warden"
+tags = ["catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "1250"
+dexterity = "36"
+equipment_mastery_discount = "0"
+gather_quality_min = "3"
+gather_quality_weight_permille = "1000"
+intelligence = "72"
+key = "lunar_warden"
+mastery_enemy_tier_min = "7"
+mastery_required = "270"
+mastery_stage_min = "4"
+parent_job = "0932c539-2be3-5d06-89ed-bf0ce6c20dc8"
+promotion_cost = "5000"
+root_key = "mage"
+strength = "24"
+tier = "3"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Lunar Warden"
+30000000-0000-4000-9000-000000000002 = "500"
+30000000-0000-4000-9000-000000000003 = "55"
+
+[[records]]
+uuid = "32d91adc-3522-5d14-8e80-0df2559bf977"
+label = "arcanist"
+tags = ["catalog/generated", "catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "1400"
+dexterity = "24"
+equipment_mastery_discount = "0"
+gather_quality_min = "3"
+gather_quality_weight_permille = "1000"
+intelligence = "48"
+key = "arcanist"
+mastery_enemy_tier_min = "4"
+mastery_required = "160"
+mastery_stage_min = "2"
+parent_job = "20000000-0000-4000-8004-000000000002"
+promotion_cost = "2000"
+root_key = "mage"
+strength = "16"
+tier = "2"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Arcanist"
+30000000-0000-4000-9000-000000000002 = "240"
+30000000-0000-4000-9000-000000000003 = "34"
+
+[[records]]
+uuid = "19cf3c11-8397-5a46-b0ad-db9c19ee9dc3"
+label = "archmage"
+tags = ["catalog/generated", "catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "1400"
+dexterity = "36"
+equipment_mastery_discount = "0"
+gather_quality_min = "3"
+gather_quality_weight_permille = "1000"
+intelligence = "72"
+key = "archmage"
+mastery_enemy_tier_min = "7"
+mastery_required = "270"
+mastery_stage_min = "4"
+parent_job = "32d91adc-3522-5d14-8e80-0df2559bf977"
+promotion_cost = "5000"
+root_key = "mage"
+strength = "24"
+tier = "3"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Archmage"
+30000000-0000-4000-9000-000000000002 = "460"
+30000000-0000-4000-9000-000000000003 = "85"
+
+[[records]]
+uuid = "e58a7298-7ee7-5574-a9ae-184c102e1032"
+label = "scout"
+tags = ["catalog/generated", "catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "1000"
+dexterity = "48"
+equipment_mastery_discount = "20"
+gather_quality_min = "3"
+gather_quality_weight_permille = "1000"
+intelligence = "16"
+key = "scout"
+mastery_enemy_tier_min = "4"
+mastery_required = "160"
+mastery_stage_min = "2"
+parent_job = "20000000-0000-4000-8004-000000000003"
+promotion_cost = "2000"
+root_key = "ranger"
+strength = "24"
+tier = "2"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Scout"
+30000000-0000-4000-9000-000000000002 = "300"
+30000000-0000-4000-9000-000000000003 = "26"
+
+[[records]]
+uuid = "4296ba21-9b61-50f7-b0c2-31b3fc03e599"
+label = "pathfinder"
+tags = ["catalog/generated", "catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "1000"
+dexterity = "72"
+equipment_mastery_discount = "20"
+gather_quality_min = "3"
+gather_quality_weight_permille = "1000"
+intelligence = "24"
+key = "pathfinder"
+mastery_enemy_tier_min = "7"
+mastery_required = "270"
+mastery_stage_min = "4"
+parent_job = "e58a7298-7ee7-5574-a9ae-184c102e1032"
+promotion_cost = "5000"
+root_key = "ranger"
+strength = "36"
+tier = "3"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Pathfinder"
+30000000-0000-4000-9000-000000000002 = "560"
+30000000-0000-4000-9000-000000000003 = "55"
+
+[[records]]
+uuid = "2c71695d-9e12-5c17-ae7a-6342880a3210"
+label = "hunter"
+tags = ["catalog/generated", "catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "1100"
+dexterity = "48"
+equipment_mastery_discount = "20"
+gather_quality_min = "3"
+gather_quality_weight_permille = "1000"
+intelligence = "16"
+key = "hunter"
+mastery_enemy_tier_min = "4"
+mastery_required = "160"
+mastery_stage_min = "2"
+parent_job = "20000000-0000-4000-8004-000000000003"
+promotion_cost = "2000"
+root_key = "ranger"
+strength = "24"
+tier = "2"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Hunter"
+30000000-0000-4000-9000-000000000002 = "280"
+30000000-0000-4000-9000-000000000003 = "34"
+
+[[records]]
+uuid = "e2a652a3-fb20-5218-9b59-25914eac1b0b"
+label = "marksman"
+tags = ["catalog/generated", "catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "1100"
+dexterity = "72"
+equipment_mastery_discount = "20"
+gather_quality_min = "3"
+gather_quality_weight_permille = "1000"
+intelligence = "24"
+key = "marksman"
+mastery_enemy_tier_min = "7"
+mastery_required = "270"
+mastery_stage_min = "4"
+parent_job = "2c71695d-9e12-5c17-ae7a-6342880a3210"
+promotion_cost = "5000"
+root_key = "ranger"
+strength = "36"
+tier = "3"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Marksman"
+30000000-0000-4000-9000-000000000002 = "520"
+30000000-0000-4000-9000-000000000003 = "85"
+
+[[records]]
+uuid = "703c7324-e143-5ed6-a230-90ef39609374"
+label = "armorer"
+tags = ["catalog/generated", "catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "1000"
+dexterity = "28"
+equipment_mastery_discount = "0"
+gather_quality_min = "3"
+gather_quality_weight_permille = "1750"
+intelligence = "28"
+key = "armorer"
+mastery_enemy_tier_min = "4"
+mastery_required = "160"
+mastery_stage_min = "2"
+parent_job = "20000000-0000-4000-8004-000000000004"
+promotion_cost = "1500"
+root_key = "smith"
+strength = "40"
+tier = "2"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Armorer"
+30000000-0000-4000-9000-000000000002 = "340"
+30000000-0000-4000-9000-000000000003 = "26"
+
+[[records]]
+uuid = "6f458be2-8b08-5248-937a-6651dbaf9d0d"
+label = "master_armorer"
+tags = ["catalog/generated", "catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "1000"
+dexterity = "42"
+equipment_mastery_discount = "0"
+gather_quality_min = "3"
+gather_quality_weight_permille = "2000"
+intelligence = "42"
+key = "master_armorer"
+mastery_enemy_tier_min = "7"
+mastery_required = "270"
+mastery_stage_min = "4"
+parent_job = "703c7324-e143-5ed6-a230-90ef39609374"
+promotion_cost = "4000"
+root_key = "smith"
+strength = "60"
+tier = "3"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Master Armorer"
+30000000-0000-4000-9000-000000000002 = "420"
+30000000-0000-4000-9000-000000000003 = "55"
+
+[[records]]
+uuid = "2af78c77-6d44-59a9-bb21-cc8f8fe7865e"
+label = "weaponsmith"
+tags = ["catalog/generated", "catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "1050"
+dexterity = "28"
+equipment_mastery_discount = "0"
+gather_quality_min = "3"
+gather_quality_weight_permille = "1750"
+intelligence = "28"
+key = "weaponsmith"
+mastery_enemy_tier_min = "4"
+mastery_required = "160"
+mastery_stage_min = "2"
+parent_job = "20000000-0000-4000-8004-000000000004"
+promotion_cost = "1500"
+root_key = "smith"
+strength = "40"
+tier = "2"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Weaponsmith"
+30000000-0000-4000-9000-000000000002 = "320"
+30000000-0000-4000-9000-000000000003 = "34"
+
+[[records]]
+uuid = "473ffea5-40e7-516d-9e6e-6e508c608b54"
+label = "master_smith"
+tags = ["catalog/generated", "catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "1050"
+dexterity = "42"
+equipment_mastery_discount = "0"
+gather_quality_min = "3"
+gather_quality_weight_permille = "2000"
+intelligence = "42"
+key = "master_smith"
+mastery_enemy_tier_min = "7"
+mastery_required = "270"
+mastery_stage_min = "4"
+parent_job = "2af78c77-6d44-59a9-bb21-cc8f8fe7865e"
+promotion_cost = "4000"
+root_key = "smith"
+strength = "60"
+tier = "3"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Master Smith"
+30000000-0000-4000-9000-000000000002 = "400"
+30000000-0000-4000-9000-000000000003 = "85"
+
+[[records]]
+uuid = "6a76a351-b324-5db3-badb-0ba5a3e666d3"
+label = "adamant_sentinel"
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "850"
+dexterity = "36"
+equipment_mastery_discount = "0"
+gather_quality_min = "3"
+gather_quality_weight_permille = "1000"
+intelligence = "24"
+key = "adamant_sentinel"
+mastery_enemy_tier_min = "7"
+mastery_required = "400"
+mastery_stage_min = "4"
+parent_job = "5a051b83-fba5-43a9-a343-2fad2992ccd5"
+promotion_cost = "15000"
+root_key = "fighter"
+strength = "72"
+tier = "4"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Adamant Sentinel"
+30000000-0000-4000-9000-000000000002 = "924"
+30000000-0000-4000-9000-000000000003 = "61"
+
+[[records]]
+uuid = "605a8dcb-f297-58cc-a315-89b4acb250cd"
+label = "war_marshal"
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "950"
+dexterity = "36"
+equipment_mastery_discount = "0"
+gather_quality_min = "3"
+gather_quality_weight_permille = "1000"
+intelligence = "24"
+key = "war_marshal"
+mastery_enemy_tier_min = "7"
+mastery_required = "400"
+mastery_stage_min = "4"
+parent_job = "1ae5b7fe-42fe-508e-a798-5f1e68bc1187"
+promotion_cost = "15000"
+root_key = "fighter"
+strength = "72"
+tier = "4"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "War Marshal"
+30000000-0000-4000-9000-000000000002 = "792"
+30000000-0000-4000-9000-000000000003 = "94"
+
+[[records]]
+uuid = "e8d45f36-37c9-559c-b926-cade508694bd"
+label = "eclipse_warden"
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "1250"
+dexterity = "36"
+equipment_mastery_discount = "0"
+gather_quality_min = "3"
+gather_quality_weight_permille = "1000"
+intelligence = "72"
+key = "eclipse_warden"
+mastery_enemy_tier_min = "7"
+mastery_required = "400"
+mastery_stage_min = "4"
+parent_job = "050dbb1d-7b0f-47ea-88be-42b1186696da"
+promotion_cost = "15000"
+root_key = "mage"
+strength = "24"
+tier = "4"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Eclipse Warden"
+30000000-0000-4000-9000-000000000002 = "550"
+30000000-0000-4000-9000-000000000003 = "61"
+
+[[records]]
+uuid = "312a26e0-d0c1-5b4a-a559-803ec5e5ec03"
+label = "astral_magus"
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "1400"
+dexterity = "36"
+equipment_mastery_discount = "0"
+gather_quality_min = "3"
+gather_quality_weight_permille = "1000"
+intelligence = "72"
+key = "astral_magus"
+mastery_enemy_tier_min = "7"
+mastery_required = "400"
+mastery_stage_min = "4"
+parent_job = "19cf3c11-8397-5a46-b0ad-db9c19ee9dc3"
+promotion_cost = "15000"
+root_key = "mage"
+strength = "24"
+tier = "4"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Astral Magus"
+30000000-0000-4000-9000-000000000002 = "506"
+30000000-0000-4000-9000-000000000003 = "94"
+
+[[records]]
+uuid = "72683522-1f00-5059-b48a-d7656f7d9719"
+label = "horizon_seeker"
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "1000"
+dexterity = "72"
+equipment_mastery_discount = "20"
+gather_quality_min = "3"
+gather_quality_weight_permille = "1000"
+intelligence = "24"
+key = "horizon_seeker"
+mastery_enemy_tier_min = "7"
+mastery_required = "400"
+mastery_stage_min = "4"
+parent_job = "4296ba21-9b61-50f7-b0c2-31b3fc03e599"
+promotion_cost = "15000"
+root_key = "ranger"
+strength = "36"
+tier = "4"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Horizon Seeker"
+30000000-0000-4000-9000-000000000002 = "616"
+30000000-0000-4000-9000-000000000003 = "61"
+
+[[records]]
+uuid = "bfd37f76-5094-5271-aec5-f947f7f8a661"
+label = "deadeye"
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "1100"
+dexterity = "72"
+equipment_mastery_discount = "20"
+gather_quality_min = "3"
+gather_quality_weight_permille = "1000"
+intelligence = "24"
+key = "deadeye"
+mastery_enemy_tier_min = "7"
+mastery_required = "400"
+mastery_stage_min = "4"
+parent_job = "e2a652a3-fb20-5218-9b59-25914eac1b0b"
+promotion_cost = "15000"
+root_key = "ranger"
+strength = "36"
+tier = "4"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Deadeye"
+30000000-0000-4000-9000-000000000002 = "572"
+30000000-0000-4000-9000-000000000003 = "94"
+
+[[records]]
+uuid = "adc078db-1845-5cbc-aca2-7f99fb378ffa"
+label = "grand_armorer"
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "1000"
+dexterity = "42"
+equipment_mastery_discount = "0"
+gather_quality_min = "3"
+gather_quality_weight_permille = "2000"
+intelligence = "42"
+key = "grand_armorer"
+mastery_enemy_tier_min = "7"
+mastery_required = "400"
+mastery_stage_min = "4"
+parent_job = "6f458be2-8b08-5248-937a-6651dbaf9d0d"
+promotion_cost = "15000"
+root_key = "smith"
+strength = "60"
+tier = "4"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Grand Armorer"
+30000000-0000-4000-9000-000000000002 = "748"
+30000000-0000-4000-9000-000000000003 = "61"
+
+[[records]]
+uuid = "a2dbb365-125c-5161-90fc-5399493e8d2c"
+label = "grand_smith"
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+damage_multiplier_permille = "1050"
+dexterity = "42"
+equipment_mastery_discount = "0"
+gather_quality_min = "3"
+gather_quality_weight_permille = "2000"
+intelligence = "42"
+key = "grand_smith"
+mastery_enemy_tier_min = "7"
+mastery_required = "400"
+mastery_stage_min = "4"
+parent_job = "473ffea5-40e7-516d-9e6e-6e508c608b54"
+promotion_cost = "15000"
+root_key = "smith"
+strength = "60"
+tier = "4"
+weapon = "20000000-0000-4000-8003-000000000001"
+
+[records.interface_values]
+30000000-0000-4000-9000-000000000001 = "Grand Smith"
+30000000-0000-4000-9000-000000000002 = "660"
+30000000-0000-4000-9000-000000000003 = "94"

@@ -1,0 +1,482 @@
+@import "tailwindcss" source(none);
+@import "./app/settings/generated/themes.css";
+@import "./styles/markdown-typography.css";
+@import "./styles/formula-highlight.css";
+@config "../tailwind.config.js";
+@source "./";
+ 
+:root { --radius: 0.5rem; }
+
+/* The native window is a fixed viewport; individual panes own scrolling. */
+html, body, #root { width: 100%; height: 100%; min-width: 0; min-height: 0; margin: 0; overflow: hidden; overscroll-behavior: none; }
+#root { height: 100dvh; isolation: isolate; }
+
+@layer base {
+  /* Interactive controls and placeholders use the Devcel base styles. */
+  button, [role="button"] { cursor: pointer; }
+  :disabled { cursor: default; }
+  input::placeholder, textarea::placeholder { color: #9ca3af; opacity: 1; }
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+  
+[data-tauri-drag-region] {
+  cursor: move;
+  -webkit-app-region: drag;
+}
+
+[data-tauri-drag-region="false"] {
+  -webkit-app-region: no-drag;
+}
+
+/* Additional styles for drag and drop */
+.draggable {
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: move;
+}
+
+/* Custom scrollbar styles */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.5);
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+.custom-scrollbar::-webkit-scrollbar-corner {
+  background: hsl(var(--muted));
+}
+
+/* Smooth table scrolling */
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+
+/* Flashing button animation for beginners */
+@keyframes pulse-beginner-hint {
+  0%, 100% {
+    background-color: hsl(var(--primary) / 0.3);
+    border-color: hsl(var(--primary-ink));
+    box-shadow: 0 0 0 2px hsl(var(--primary) / 0.2);
+    transform: scale(1);
+  }
+  50% {
+    background-color: hsl(var(--primary) / 0.5);
+    border-color: hsl(var(--primary-ink));
+    box-shadow: 0 0 0 4px hsl(var(--primary) / 0.3);
+    transform: scale(1.01);
+  }
+}
+
+.beginner-hint-pulse {
+  animation: pulse-beginner-hint 2s ease-in-out infinite;
+}
+
+/* Markdown Editor Styles */
+.ProseMirror {
+  @apply p-2 sm:p-3 focus:outline-hidden;
+  min-height: 500px;
+  caret-color: hsl(var(--foreground));
+}
+
+/* Placeholder styling - only show on first empty paragraph */
+.ProseMirror p.is-editor-empty:first-child::before {
+  @apply text-muted-foreground;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+  font-style: italic;
+}
+
+/* Ensure only one placeholder shows */
+.ProseMirror .is-editor-empty:not(:first-child)::before {
+  display: none !important;
+}
+
+/* Hide placeholder when editor has content */
+.ProseMirror:not(.ProseMirror-focused) .is-editor-empty::before {
+  display: none;
+}
+
+/* Markdown Editor Headings */
+.ProseMirror h1,
+.ProseMirror h2,
+.ProseMirror h3,
+.ProseMirror h4,
+.ProseMirror h5,
+.ProseMirror h6 {
+  @apply font-bold mt-2 mb-1;
+}
+
+.ProseMirror h1 {
+  @apply text-3xl;
+}
+
+.ProseMirror h2 {
+  @apply text-2xl;
+}
+
+.ProseMirror h3 {
+  @apply text-xl;
+}
+
+/* Markdown Editor Lists */
+.ProseMirror ul,
+.ProseMirror ol {
+  @apply pl-6 my-0;
+}
+
+.ProseMirror li {
+  @apply my-0 leading-tight;
+}
+
+.ProseMirror ul li {
+  @apply list-disc;
+}
+
+.ProseMirror ol li {
+  @apply list-decimal;
+}
+
+/* Markdown Editor Blockquotes */
+.ProseMirror blockquote {
+  @apply border-l-4 border-border pl-4 my-1 italic;
+}
+
+/* Markdown Editor Code */
+.ProseMirror code {
+  @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+.ProseMirror pre {
+  @apply bg-muted p-4 rounded-lg my-4 overflow-x-auto;
+}
+
+.ProseMirror pre code {
+  @apply bg-transparent p-0 text-sm;
+}
+
+/* Markdown Editor Links */
+.ProseMirror a {
+  @apply text-primary underline hover:text-primary;
+}
+
+/* Markdown Editor Selection */
+.ProseMirror-selectednode {
+  @apply outline-2 outline-ring outline-dashed;
+}
+
+/* Markdown Editor Tables */
+.ProseMirror table {
+  @apply border-collapse border border-border my-4;
+}
+
+.ProseMirror td,
+.ProseMirror th {
+  @apply border border-border px-3 py-2;
+}
+
+.ProseMirror th {
+  @apply bg-muted font-semibold;
+}
+
+/* Markdown Editor Images */
+.ProseMirror img {
+  @apply max-w-full h-auto rounded-lg my-4;
+}
+
+/* Markdown Editor Hr */
+.ProseMirror hr {
+  @apply border-0 border-t border-border my-2;
+}
+
+/* Markdown Command Menu Styles */
+.markdown-command {
+  @apply z-50 h-auto max-h-[400px] overflow-y-auto rounded-lg border border-border bg-popover px-1 py-2 shadow-2xl transition-all backdrop-blur-sm;
+  width: 320px;
+}
+
+.markdown-command-empty {
+  @apply px-3 py-2 text-muted-foreground text-center text-sm;
+}
+
+.markdown-command-item {
+  @apply flex w-full items-center space-x-3 rounded-md px-3 py-2 text-left text-sm hover:bg-accent hover:text-accent-foreground cursor-pointer transition-colors duration-200;
+}
+
+.markdown-command-item:hover {
+  @apply bg-linear-to-r/srgb from-accent to-secondary dark:from-accent dark:to-secondary;
+}
+
+/* Markdown Bubble Menu Styles */
+.markdown-bubble {
+  @apply flex w-fit max-w-[90vw] overflow-hidden rounded-lg border border-border bg-popover shadow-2xl backdrop-blur-sm;
+}
+
+.markdown-bubble-item {
+  @apply p-3 text-muted-foreground hover:bg-accent hover:text-accent-foreground cursor-pointer transition-all duration-200;
+}
+
+.markdown-bubble-item:hover {
+  @apply bg-accent text-primary dark:bg-accent dark:text-primary scale-105;
+}
+
+/* Markdown Bubble Menu Separator */
+.markdown-bubble .h-6 {
+  @apply opacity-30;
+}
+
+
+/* Enhanced ProseMirror Styles */
+.ProseMirror {
+  --tw-prose-bold: hsl(var(--foreground));
+  @apply p-3 sm:p-4 focus:outline-hidden;
+  min-height: 600px;
+  caret-color: hsl(var(--foreground));
+  line-height: 1.4;
+}
+
+.ProseMirror h1 {
+  @apply text-4xl font-bold mt-3 mb-1 text-gray-900 dark:text-gray-100;
+  border-bottom: 2px solid rgba(229, 231, 235, 0.8);
+  padding-bottom: 0.25rem;
+}
+
+.ProseMirror h2 {
+  @apply text-3xl font-semibold mt-2 mb-1 text-gray-800 dark:text-gray-200;
+}
+
+.ProseMirror h3 {
+  @apply text-2xl font-medium mt-2 mb-1 text-gray-700 dark:text-gray-300;
+}
+
+.ProseMirror p {
+  @apply text-base leading-normal text-gray-700 dark:text-gray-300;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Enhanced blockquote styling */
+.ProseMirror blockquote {
+  @apply border-l-4 border-primary pl-6 my-1 italic bg-accent dark:bg-accent py-2 rounded-r-md;
+}
+
+.ProseMirror blockquote p {
+  @apply text-primary dark:text-primary mb-0;
+}
+
+/* Enhanced code styling */
+.ProseMirror code {
+  @apply bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-sm font-mono text-pink-700 dark:text-pink-400;
+}
+
+.ProseMirror pre {
+  @apply bg-gray-900 p-3 rounded-lg my-1 overflow-x-auto;
+  /* Code blocks keep their dark background in both themes. */
+  caret-color: #f3f4f6;
+}
+
+.ProseMirror pre code {
+  @apply bg-transparent p-0 text-sm text-green-400;
+}
+
+/* Enhanced list styling */
+.ProseMirror ul,
+.ProseMirror ol {
+  @apply pl-6 my-0;
+}
+
+.ProseMirror li {
+  @apply text-gray-700 dark:text-gray-300 leading-tight;
+}
+
+.ProseMirror ul li::marker {
+  @apply text-primary;
+}
+
+.ProseMirror ol li::marker {
+  @apply text-primary font-semibold;
+}
+
+/* Remove extra spacing in list items */
+.ProseMirror li p {
+  @apply mb-0 leading-tight;
+}
+
+/* Enhanced horizontal rule */
+.ProseMirror hr {
+  @apply border-0 my-2;
+  background: linear-gradient(to right, rgb(96 165 250), rgb(168 85 247));
+  height: 2px;
+  border: none;
+  border-radius: 1px;
+}
+
+/* Text alignment classes */
+.ProseMirror .has-text-align-left {
+  text-align: left;
+}
+
+.ProseMirror .has-text-align-center {
+  text-align: center;
+}
+
+.ProseMirror .has-text-align-right {
+  text-align: right;
+}
+
+/* Link styling */
+.ProseMirror a {
+  @apply text-primary dark:text-primary underline hover:text-primary dark:hover:text-primary transition-colors duration-200;
+}
+
+/* Selection styling */
+.ProseMirror-selectednode {
+  @apply outline-2 outline-ring outline-dashed outline-offset-2;
+}
+
+/* Task List Styling - Fix for actual HTML structure */
+.ProseMirror ul[data-type="taskList"] {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 0 !important;
+}
+
+.ProseMirror li[data-type="taskItem"] {
+  display: grid !important;
+  grid-template-columns: auto 1fr !important;
+  gap: 0.5rem !important;
+  align-items: start !important;
+  margin: 0 !important;
+  position: relative !important;
+}
+
+/* Hide the problematic span inside label */
+.ProseMirror li[data-type="taskItem"] > label > span {
+  display: none !important;
+}
+
+/* Style the label to contain only the checkbox */
+.ProseMirror li[data-type="taskItem"] > label {
+  grid-column: 1 !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+}
+
+/* Style the checkbox */
+.ProseMirror li[data-type="taskItem"] > label input[type="checkbox"] {
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #d1d5db;
+  border-radius: 0.25rem;
+  background: white;
+  margin: 0.125rem 0 0 0 !important;
+  flex-shrink: 0 !important;
+  cursor: pointer;
+  position: relative;
+}
+
+.ProseMirror li[data-type="taskItem"] > label input[type="checkbox"]:checked {
+  background: hsl(var(--primary));
+  border-color: hsl(var(--ring));
+}
+
+.ProseMirror li[data-type="taskItem"] > label input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: -1px;
+  left: 1px;
+  color: hsl(var(--primary-foreground));
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+/* Grid column for the text content */
+.ProseMirror li[data-type="taskItem"] > div {
+  grid-column: 2 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.ProseMirror li[data-type="taskItem"][data-checked="true"] > div {
+  text-decoration: line-through;
+  color: #6b7280;
+}
+
+/* Remove ALL paragraph margins in task items */
+.ProseMirror li[data-type="taskItem"] p {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: inline !important;
+}
+
+/* Hide any unwanted breaks */
+.ProseMirror li[data-type="taskItem"] br {
+  display: none !important;
+}
+
+/* Additional hover and focus states */
+.ProseMirror li[data-type="taskItem"] > label input[type="checkbox"]:hover {
+  border-color: #60a5fa;
+}
+
+.ProseMirror li[data-type="taskItem"] > label input[type="checkbox"]:focus {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* Menu labels are controls, not draggable document text. Keep editable content
+   explicitly selectable in WebKit, without overriding Tailwind's select-none. */
+button, button *, [role="menu"], [role="menu"] *, [role="menubar"], [role="menubar"] *,
+[role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"] {
+  -webkit-user-select: none;
+  user-select: none;
+}
+input, textarea, [contenteditable="true"], [contenteditable="true"] * {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* Completely disable right-click behavior */
+body {
+  -webkit-touch-callout: none;
+}
+
+/* Disable context menu events */
+html {
+  -webkit-touch-callout: none;
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+/* Syntax and numeric editors keep their intrinsic reading order in RTL UI. */
+:where(code, pre, .font-mono, input[type="number"], input[inputmode="numeric"], input[inputmode="decimal"]) {
+  direction: ltr;
+  unicode-bidi: isolate;
+}

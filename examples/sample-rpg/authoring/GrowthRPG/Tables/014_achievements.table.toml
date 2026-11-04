@@ -1,0 +1,77 @@
+uuid = "10000000-0000-4000-8000-00000000000e"
+display_name = "achievements"
+description = ""
+
+[metadata]
+interface_order = []
+data_name = "achievements"
+initial_transposed = false
+
+[metadata.edit_permissions]
+add_columns = true
+delete_columns = true
+add_rows = true
+delete_rows = true
+edit_cells = true
+
+[interface_implementations]
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-800e-000000000001"
+display_name = "key"
+data_name = "key"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-800e-000000000002"
+display_name = "name"
+data_name = "name"
+data_type = "String"
+default_value = "Collector"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-800e-000000000003"
+display_name = "available"
+data_name = "available"
+data_type = "I64"
+default_value = "=COUNTIF(\"materials\",\"grade\",\"common\")"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-800e-000000000004"
+display_name = "value"
+data_name = "value"
+data_type = "I64"
+default_value = "=SUMIF(\"loot\",\"rarity\",\"common\",\"value\")"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[records]]
+uuid = "20000000-0000-4000-800e-000000000001"
+label = "collector"
+tags = ["rpg/achievements", "catalog/seed-v1"]
+
+[records.values]
+key = "collector"

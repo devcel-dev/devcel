@@ -1,0 +1,216 @@
+uuid = "ef597158-6977-5fa7-951c-55693789149f"
+display_name = "game_settings"
+description = "Forge & Field authored game_settings"
+
+[metadata]
+interface_order = []
+data_name = "game_settings"
+initial_transposed = false
+
+[metadata.edit_permissions]
+add_columns = true
+delete_columns = true
+add_rows = true
+delete_rows = true
+edit_cells = true
+
+[interface_implementations]
+
+[[schema.columns]]
+read_only = false
+uuid = "9bc6153d-ad48-5eb2-a4a2-0818c56beee0"
+display_name = "key"
+data_name = "key"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "d070b201-84cf-5b2a-aa7a-2bceff334546"
+display_name = "name"
+data_name = "name"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "a220b396-7720-5ea2-8791-5dd601d5cd5e"
+display_name = "balance"
+data_name = "balance"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-000000000001"
+
+[[schema.columns]]
+read_only = false
+uuid = "3e3d984a-e786-565f-a16e-359f7e04f9c5"
+display_name = "default_material"
+data_name = "default_material"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-000000000002"
+
+[[schema.columns]]
+read_only = false
+uuid = "1c14af0e-e870-5345-85de-0cbda0d9e1a4"
+display_name = "default_equipment"
+data_name = "default_equipment"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-000000000003"
+
+[[schema.columns]]
+read_only = false
+uuid = "18defdee-4ca8-5d3b-9ecb-fc6bb228a3d3"
+display_name = "default_job"
+data_name = "default_job"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-000000000004"
+
+[[schema.columns]]
+read_only = false
+uuid = "81df3e2b-62f6-5023-8b27-b06a674a60ba"
+display_name = "default_enemy"
+data_name = "default_enemy"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-000000000005"
+
+[[schema.columns]]
+read_only = false
+uuid = "5294d83b-70e8-54f1-917a-e1d48e61e148"
+display_name = "default_recipe"
+data_name = "default_recipe"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-000000000006"
+
+[[schema.columns]]
+read_only = false
+uuid = "37019714-fe0d-522f-b6e8-a37393d6880b"
+display_name = "default_shop"
+data_name = "default_shop"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-000000000007"
+
+[[schema.columns]]
+read_only = false
+uuid = "68847eec-d4bf-59c0-b927-8b922d9612fc"
+display_name = "default_reward"
+data_name = "default_reward"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-000000000009"
+
+[[schema.columns]]
+read_only = false
+uuid = "9ce33c26-afb2-5146-a54c-d1e0b9a7b0d1"
+display_name = "starting_gold"
+data_name = "starting_gold"
+data_type = "I64"
+default_value = "20"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "791b80b1-9f67-5437-8d23-fc8eb19d39b5"
+display_name = "discovery_min_battles"
+data_name = "discovery_min_battles"
+data_type = "I64"
+default_value = "3"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[records]]
+uuid = "6dd6fda6-5f78-5484-be04-65d91b4c94de"
+label = "campaign"
+tags = ["catalog/generated", "catalog/seed-v1"]
+
+[records.values]
+balance = "20000000-0000-4000-8001-000000000001"
+default_enemy = "20000000-0000-4000-8005-000000000001"
+default_equipment = "20000000-0000-4000-8003-000000000001"
+default_job = "20000000-0000-4000-8004-000000000001"
+default_material = "20000000-0000-4000-8002-000000000001"
+default_recipe = "20000000-0000-4000-8006-000000000001"
+default_reward = "20000000-0000-4000-8009-000000000001"
+default_shop = "20000000-0000-4000-8007-000000000001"
+discovery_min_battles = "3"
+key = "campaign"
+name = "Campaign defaults"
+starting_gold = "20"

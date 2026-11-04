@@ -1,0 +1,444 @@
+uuid = "7fa7c67c-a425-4c26-9878-ab60644953c9"
+display_name = "Locales"
+description = "All shipped translation locales are enabled and required. Fallback locales use record references. en-XA is added only during generation."
+[metadata]
+interface_order = []
+
+parent_uuid = ""
+
+data_name = "Locales"
+
+initial_transposed = false
+
+[metadata.edit_permissions]
+add_columns = true
+delete_columns = true
+add_rows = true
+delete_rows = true
+edit_cells = true
+
+[interface_implementations]
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "ab227695-55ab-4f73-9515-9c2c4561bf37"
+display_name = "code"
+data_name = "code"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "ab04d5e0-f11e-48db-9c15-9266a7dc0628"
+display_name = "display_name"
+data_name = "display_name"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "73ff8361-622f-4ae7-bd74-4555c054015c"
+display_name = "fallback_locale"
+data_name = "fallback_locale"
+tooltip = ""
+data_type = "Reference"
+tags = []
+default_value = ""
+memo_text = ""
+required = false
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[schema.columns.reference_config]
+target_table_uuid = "7fa7c67c-a425-4c26-9878-ab60644953c9"
+display_column_uuid = "ab227695-55ab-4f73-9515-9c2c4561bf37"
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "b68f62d1-0f67-4e98-9532-3e500e60f28f"
+display_name = "direction"
+data_name = "direction"
+tooltip = ""
+data_type = "Select"
+tags = []
+default_value = "ltr"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns.select_config.options]]
+value = "ltr"
+label = "ltr"
+
+[[schema.columns.select_config.options]]
+value = "rtl"
+label = "rtl"
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "6ad659a7-1860-4cd5-8c0c-7629771d3f78"
+display_name = "enabled"
+data_name = "enabled"
+tooltip = ""
+data_type = "Boolean"
+tags = []
+default_value = "true"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "68fa16c8-8b05-4d6f-9475-54fc0568574f"
+display_name = "required"
+data_name = "required"
+tooltip = ""
+data_type = "Boolean"
+tags = []
+default_value = "false"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[records]]
+uuid = "53443caa-f352-491f-acf5-77e6308d4bf0"
+parent_uuid = ""
+label = "record_53443caaf352491facf577e6308d4bf0"
+min_version = 0
+tags = []
+
+[records.values]
+code = "ja"
+direction = "ltr"
+display_name = "日本語"
+enabled = "true"
+fallback_locale = ""
+required = "true"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "a612b81c-02b4-400e-a28a-48238cb55e05"
+parent_uuid = ""
+label = "English"
+min_version = 0
+tags = []
+
+[records.values]
+code = "en"
+direction = "ltr"
+display_name = "English"
+enabled = "true"
+fallback_locale = "53443caa-f352-491f-acf5-77e6308d4bf0"
+required = "true"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "b42128cf-c528-5a33-ba26-b144de4c6f20"
+parent_uuid = ""
+label = "record_b42128cfc5285a33ba26b144de4c6f20"
+min_version = 0
+tags = []
+
+[records.values]
+code = "fr"
+direction = "ltr"
+display_name = "Français"
+enabled = "true"
+fallback_locale = "a612b81c-02b4-400e-a28a-48238cb55e05"
+required = "true"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "3b9511f4-bae8-5e7d-a521-2d5633d5f3c2"
+parent_uuid = ""
+label = "record_3b9511f4bae85e7da5212d5633d5f3c2"
+min_version = 0
+tags = []
+
+[records.values]
+code = "es"
+direction = "ltr"
+display_name = "Español"
+enabled = "true"
+fallback_locale = "a612b81c-02b4-400e-a28a-48238cb55e05"
+required = "true"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "6571b42e-49e5-5806-b0bb-6264367adcfe"
+parent_uuid = ""
+label = "Deutsch"
+min_version = 0
+tags = []
+
+[records.values]
+code = "de"
+direction = "ltr"
+display_name = "Deutsch"
+enabled = "true"
+fallback_locale = "a612b81c-02b4-400e-a28a-48238cb55e05"
+required = "true"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "a539b8c2-d771-5b4e-bef8-ba7767812b72"
+parent_uuid = ""
+label = "Italiano"
+min_version = 0
+tags = []
+
+[records.values]
+code = "it"
+direction = "ltr"
+display_name = "Italiano"
+enabled = "true"
+fallback_locale = "a612b81c-02b4-400e-a28a-48238cb55e05"
+required = "true"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "bd410527-d1a0-59cd-9972-a055d2338063"
+parent_uuid = ""
+label = "record_bd410527d1a059cd9972a055d2338063"
+min_version = 0
+tags = []
+
+[records.values]
+code = "zh-Hans"
+direction = "ltr"
+display_name = "简体中文"
+enabled = "true"
+fallback_locale = "a612b81c-02b4-400e-a28a-48238cb55e05"
+required = "true"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "2e56c33d-5b3d-51b3-a05a-9700e5ca2401"
+parent_uuid = ""
+label = "record_2e56c33d5b3d51b3a05a9700e5ca2401"
+min_version = 0
+tags = []
+
+[records.values]
+code = "zh-Hant"
+direction = "ltr"
+display_name = "繁體中文"
+enabled = "true"
+fallback_locale = "a612b81c-02b4-400e-a28a-48238cb55e05"
+required = "true"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "fb94026c-d2df-583f-8dda-93a7b3492949"
+parent_uuid = ""
+label = "Svenska"
+min_version = 0
+tags = []
+
+[records.values]
+code = "sv"
+direction = "ltr"
+display_name = "Svenska"
+enabled = "true"
+fallback_locale = "a612b81c-02b4-400e-a28a-48238cb55e05"
+required = "true"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "bc2ab48c-47ba-5f0d-9c5a-487151074e14"
+parent_uuid = ""
+label = "Suomi"
+min_version = 0
+tags = []
+
+[records.values]
+code = "fi"
+direction = "ltr"
+display_name = "Suomi"
+enabled = "true"
+fallback_locale = "a612b81c-02b4-400e-a28a-48238cb55e05"
+required = "true"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "5b8834dc-b8d4-51df-a8bb-933d8573c2cb"
+parent_uuid = ""
+label = "record_5b8834dcb8d451dfa8bb933d8573c2cb"
+min_version = 0
+tags = []
+
+[records.values]
+code = "nb"
+direction = "ltr"
+display_name = "Norsk bokmål"
+enabled = "true"
+fallback_locale = "a612b81c-02b4-400e-a28a-48238cb55e05"
+required = "true"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "7304c655-3bd1-5be1-82f6-50c140c3ced7"
+parent_uuid = ""
+label = "record_7304c6553bd15be182f650c140c3ced7"
+min_version = 0
+tags = []
+
+[records.values]
+code = "ar"
+direction = "rtl"
+display_name = "العربية"
+enabled = "true"
+fallback_locale = "a612b81c-02b4-400e-a28a-48238cb55e05"
+required = "true"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "0f6b59c7-a7d5-5417-9ade-9eca750f029c"
+parent_uuid = ""
+label = "record_0f6b59c7a7d554179ade9eca750f029c"
+min_version = 0
+tags = []
+
+[records.values]
+code = "bn"
+direction = "ltr"
+display_name = "বাংলা"
+enabled = "true"
+fallback_locale = "a612b81c-02b4-400e-a28a-48238cb55e05"
+required = "true"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "acbd8612-2fc4-516a-8b84-4f0a3cd80831"
+parent_uuid = ""
+label = "record_acbd86122fc4516a8b844f0a3cd80831"
+min_version = 0
+tags = []
+
+[records.values]
+code = "hi"
+direction = "ltr"
+display_name = "हिन्दी"
+enabled = "true"
+fallback_locale = "a612b81c-02b4-400e-a28a-48238cb55e05"
+required = "true"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "4f626627-2fda-5739-8f33-46d5eb8bae0e"
+parent_uuid = ""
+label = "Euskara"
+min_version = 0
+tags = []
+
+[records.values]
+code = "eu"
+direction = "ltr"
+display_name = "Euskara"
+enabled = "true"
+fallback_locale = "a612b81c-02b4-400e-a28a-48238cb55e05"
+required = "true"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "086c8431-4df5-5570-b34b-d59375292efd"
+parent_uuid = ""
+label = "record_086c84314df55570b34bd59375292efd"
+min_version = 0
+tags = []
+
+[records.values]
+code = "ca"
+direction = "ltr"
+display_name = "Català"
+enabled = "true"
+fallback_locale = "a612b81c-02b4-400e-a28a-48238cb55e05"
+required = "true"
+
+[records.interface_values]
+
+[records.memo_texts]

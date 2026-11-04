@@ -1,0 +1,69 @@
+[package]
+name = "devcel-core"
+edition.workspace = true
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+name = "devcel_core"  # Explicit library name with underscore
+
+[dependencies]
+# Guard formula recursion on small host/FFI thread stacks.
+stacker = "=0.1.25"
+devcel-runtime = { path = "../devcel-runtime" }
+serde.workspace = true
+serde_json.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+toml.workspace = true
+thiserror.workspace = true
+anyhow.workspace = true
+tracing.workspace = true
+
+# Official FormatJS ICU MessageFormat AST parser (Rust 1.90 compatible)
+formatjs_icu_messageformat_parser = { version = "=0.3.1", optional = true }
+url = { version = "2", optional = true }
+
+# For data validation
+regex = "1.10"
+
+# For file operations
+tempfile = "3"
+
+# P2P dependencies
+tokio = { version = "1", features = ["full"] }
+async-trait = "0.1"
+
+# MessagePack serialization
+rmp-serde = "1.1"
+
+# For conflict resolution hashing
+sha2 = "0.10"
+# Existing locked crypto implementation for mutual local-session authentication.
+ring = { version = "=0.17.14", optional = true }
+
+# For socket options
+socket2 = "0.5"
+
+[target.'cfg(windows)'.dependencies]
+windows = { workspace = true, features = ["Win32_Storage_FileSystem", "Win32_Security", "Win32_Security_Authorization", "Win32_System_Threading"] }
+
+[features]
+default = ["p2p"]
+# Editing C ABI exports.
+ffi = []
+# Enable P2P functionality
+p2p = ["dep:ring"]
+# Build-time Studio catalog validation/generation; not required by embedded-catalog apps.
+localization = ["dep:formatjs_icu_messageformat_parser", "dep:url"]
+
+[target.'cfg(any(target_os = "linux", target_os = "macos"))'.dependencies]
+rustix = { version = "1", features = ["fs"] }
+
+[[example]]
+name = "p2p_smoke"
+required-features = ["p2p"]
+
+[dev-dependencies]
+# Studio persistence tests import the native lock handover implementation.
+same-file = "=1.0.6"

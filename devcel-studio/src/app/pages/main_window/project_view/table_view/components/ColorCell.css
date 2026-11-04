@@ -1,0 +1,13 @@
+.color-cell-container {
+  container: devcel-color-cell / inline-size;
+}
+
+/* Reclaim gaps before truncating HEX, keeping the swatch and formula affordance visible. */
+@container devcel-color-cell (max-width: 120px) {
+  .color-cell-container .color-cell-content { gap: 4px; }
+}
+
+@container devcel-color-cell (max-width: 80px) {
+  .color-cell-container .color-cell-content { gap: 2px; padding-inline: 4px; }
+  .color-cell-content .color-cell-preview { width: 16px; }
+}

@@ -1,0 +1,5 @@
+project_name = "Colors"
+project_description = "Explore RGBA precision, HDR, and color-space conversion"
+uuid = "e5d3d1e8-6f79-4b3a-88b8-0018773f8971"
+color = "#58C9AB"
+tag_presets = []

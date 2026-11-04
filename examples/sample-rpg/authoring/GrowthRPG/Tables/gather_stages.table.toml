@@ -1,0 +1,4485 @@
+uuid = "5aff7e2d-9b37-485a-9647-3567d98001ff"
+display_name = "gather_stages"
+description = ""
+
+[metadata]
+interface_order = []
+data_name = "gather_stages"
+initial_transposed = false
+
+[metadata.edit_permissions]
+add_columns = true
+delete_columns = true
+add_rows = true
+delete_rows = true
+edit_cells = true
+
+[interface_implementations]
+
+[[schema.columns]]
+read_only = false
+uuid = "fedf3ec6-ab33-54f2-b84c-624a643e691f"
+display_name = "key"
+data_name = "key"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "b685938c-32d0-57b9-93a0-cb69dce757ef"
+display_name = "name"
+data_name = "name"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "6221ad27-1936-57ba-add2-3af582afcca6"
+display_name = "region"
+data_name = "region"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-00000000000b"
+
+[[schema.columns]]
+read_only = false
+uuid = "f5bad5d2-bdd2-514a-b850-07cbae1e215e"
+display_name = "min_depth"
+data_name = "min_depth"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "6b3219ad-12c6-5f50-a0a6-605105a16969"
+display_name = "draw_count"
+data_name = "draw_count"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[records]]
+uuid = "92e45c96-82f8-522d-b1fc-d7464c005e40"
+label = "gather_stages_0"
+
+[records.values]
+draw_count = "1"
+key = "stage_0"
+min_depth = "0"
+name = "Entrance"
+region = "20000000-0000-4000-800b-000000000001"
+
+[[records]]
+uuid = "1c9bc15c-435a-54a7-9f46-55eba39d8618"
+label = "gather_stages_1"
+
+[records.values]
+draw_count = "1"
+key = "stage_1"
+min_depth = "3"
+name = "Interior"
+region = "20000000-0000-4000-800b-000000000001"
+
+[[records]]
+uuid = "fbc49c15-a97d-54ab-beaa-ebcff71ae814"
+label = "gather_stages_2"
+
+[records.values]
+draw_count = "1"
+key = "stage_2"
+min_depth = "6"
+name = "Deep Reach"
+region = "20000000-0000-4000-800b-000000000001"
+
+[[records]]
+uuid = "576beb47-90f8-5f5b-87bb-4b35b81a5f9e"
+label = "gather_stages_3"
+
+[records.values]
+draw_count = "1"
+key = "stage_3"
+min_depth = "9"
+name = "Farthest Reach"
+region = "20000000-0000-4000-800b-000000000001"
+
+[[records]]
+uuid = "1091ed32-31f7-5b32-9d84-a0ddbffb53f6"
+label = "gather_stages_4"
+
+[records.values]
+draw_count = "1"
+key = "stage_4"
+min_depth = "0"
+name = "Entrance"
+region = "20000000-0000-4000-800b-000000000002"
+
+[[records]]
+uuid = "232aca29-32be-5fcd-ad4f-6f2be2c534ec"
+label = "gather_stages_5"
+
+[records.values]
+draw_count = "1"
+key = "stage_5"
+min_depth = "3"
+name = "Interior"
+region = "20000000-0000-4000-800b-000000000002"
+
+[[records]]
+uuid = "91d93c25-3512-5225-b61e-7bae73d21bad"
+label = "gather_stages_6"
+
+[records.values]
+draw_count = "1"
+key = "stage_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "20000000-0000-4000-800b-000000000002"
+
+[[records]]
+uuid = "0a349a45-29e5-5a38-a719-34cb857033a6"
+label = "gather_stages_7"
+
+[records.values]
+draw_count = "1"
+key = "stage_7"
+min_depth = "9"
+name = "Farthest Reach"
+region = "20000000-0000-4000-800b-000000000002"
+
+[[records]]
+uuid = "51268f33-7a31-5b9a-8cd5-e5a2e876cea3"
+label = "gather_stages_8"
+
+[records.values]
+draw_count = "1"
+key = "stage_8"
+min_depth = "0"
+name = "Entrance"
+region = "44beca51-c271-4f7b-9ba2-a0438f077836"
+
+[[records]]
+uuid = "bbab9182-3fe9-5c23-9031-9b2b1d2f00cb"
+label = "gather_stages_9"
+
+[records.values]
+draw_count = "1"
+key = "stage_9"
+min_depth = "3"
+name = "Interior"
+region = "44beca51-c271-4f7b-9ba2-a0438f077836"
+
+[[records]]
+uuid = "276173b3-3a7d-5dd6-8a11-9b1c2cd0c3a4"
+label = "gather_stages_10"
+
+[records.values]
+draw_count = "1"
+key = "stage_10"
+min_depth = "6"
+name = "Deep Reach"
+region = "44beca51-c271-4f7b-9ba2-a0438f077836"
+
+[[records]]
+uuid = "afc45e16-c682-5487-8977-86cdf383edb3"
+label = "gather_stages_11"
+
+[records.values]
+draw_count = "1"
+key = "stage_11"
+min_depth = "9"
+name = "Farthest Reach"
+region = "44beca51-c271-4f7b-9ba2-a0438f077836"
+
+[[records]]
+uuid = "782a63c8-8a80-53d5-b313-62122a43181c"
+label = "gather_stages_12"
+
+[records.values]
+draw_count = "1"
+key = "stage_12"
+min_depth = "0"
+name = "Entrance"
+region = "c8ed3014-ced8-4150-bb2f-485cc98a3ba8"
+
+[[records]]
+uuid = "647a2164-5136-597b-9c7b-8a211986cbe0"
+label = "gather_stages_13"
+
+[records.values]
+draw_count = "1"
+key = "stage_13"
+min_depth = "3"
+name = "Interior"
+region = "c8ed3014-ced8-4150-bb2f-485cc98a3ba8"
+
+[[records]]
+uuid = "32b2007c-732f-52ed-aec2-97509c7e55c7"
+label = "gather_stages_14"
+
+[records.values]
+draw_count = "1"
+key = "stage_14"
+min_depth = "6"
+name = "Deep Reach"
+region = "c8ed3014-ced8-4150-bb2f-485cc98a3ba8"
+
+[[records]]
+uuid = "1adf759d-183d-5b00-9c9e-802a25fbb509"
+label = "gather_stages_15"
+
+[records.values]
+draw_count = "1"
+key = "stage_15"
+min_depth = "9"
+name = "Farthest Reach"
+region = "c8ed3014-ced8-4150-bb2f-485cc98a3ba8"
+
+[[records]]
+uuid = "65bab811-e89e-53e3-b1bc-7e8da9329551"
+label = "gather_stages_16"
+
+[records.values]
+draw_count = "1"
+key = "stage_16"
+min_depth = "0"
+name = "Entrance"
+region = "83e27ea2-5fe3-4049-858b-66322f3d0fa0"
+
+[[records]]
+uuid = "e538930f-93b6-501b-b030-7da8aea40564"
+label = "gather_stages_17"
+
+[records.values]
+draw_count = "1"
+key = "stage_17"
+min_depth = "3"
+name = "Interior"
+region = "83e27ea2-5fe3-4049-858b-66322f3d0fa0"
+
+[[records]]
+uuid = "faac0e48-dc2f-5fe3-b29b-227747c64dfa"
+label = "gather_stages_18"
+
+[records.values]
+draw_count = "1"
+key = "stage_18"
+min_depth = "6"
+name = "Deep Reach"
+region = "83e27ea2-5fe3-4049-858b-66322f3d0fa0"
+
+[[records]]
+uuid = "635e43c1-8b00-5ef2-a039-2a4dbd6cee74"
+label = "gather_stages_19"
+
+[records.values]
+draw_count = "1"
+key = "stage_19"
+min_depth = "9"
+name = "Farthest Reach"
+region = "83e27ea2-5fe3-4049-858b-66322f3d0fa0"
+
+[[records]]
+uuid = "c1898e2d-d81d-5062-9b9b-34398229ba59"
+label = "gather_stages_20"
+
+[records.values]
+draw_count = "1"
+key = "stage_20"
+min_depth = "0"
+name = "Entrance"
+region = "9b6e3ca3-2472-4bbe-8e9e-0f75da126644"
+
+[[records]]
+uuid = "55f3922a-7766-5555-ab17-a253377f6098"
+label = "gather_stages_21"
+
+[records.values]
+draw_count = "1"
+key = "stage_21"
+min_depth = "3"
+name = "Interior"
+region = "9b6e3ca3-2472-4bbe-8e9e-0f75da126644"
+
+[[records]]
+uuid = "c65a2d69-f649-5d89-ad12-0089aeef741a"
+label = "gather_stages_22"
+
+[records.values]
+draw_count = "1"
+key = "stage_22"
+min_depth = "6"
+name = "Deep Reach"
+region = "9b6e3ca3-2472-4bbe-8e9e-0f75da126644"
+
+[[records]]
+uuid = "456eaa63-c28c-5f56-a8a8-021322a9eb71"
+label = "gather_stages_23"
+
+[records.values]
+draw_count = "1"
+key = "stage_23"
+min_depth = "9"
+name = "Farthest Reach"
+region = "9b6e3ca3-2472-4bbe-8e9e-0f75da126644"
+
+[[records]]
+uuid = "ad790bb1-f71f-5ef0-b954-fe372b70c568"
+label = "gather_stages_24"
+
+[records.values]
+draw_count = "1"
+key = "stage_24"
+min_depth = "0"
+name = "Entrance"
+region = "8e18ff2d-7404-4081-9096-2fa9ed3a9f09"
+
+[[records]]
+uuid = "dd4ab2e8-1e5c-533a-844a-32a97d8dc513"
+label = "gather_stages_25"
+
+[records.values]
+draw_count = "1"
+key = "stage_25"
+min_depth = "3"
+name = "Interior"
+region = "8e18ff2d-7404-4081-9096-2fa9ed3a9f09"
+
+[[records]]
+uuid = "7dec677a-2ba9-5c2e-b598-1edc8340f428"
+label = "gather_stages_26"
+
+[records.values]
+draw_count = "1"
+key = "stage_26"
+min_depth = "6"
+name = "Deep Reach"
+region = "8e18ff2d-7404-4081-9096-2fa9ed3a9f09"
+
+[[records]]
+uuid = "c6b2214d-29d1-5888-baf4-116e1a6c44ea"
+label = "gather_stages_27"
+
+[records.values]
+draw_count = "1"
+key = "stage_27"
+min_depth = "9"
+name = "Farthest Reach"
+region = "8e18ff2d-7404-4081-9096-2fa9ed3a9f09"
+
+[[records]]
+uuid = "243df82e-b2cb-5d26-94ff-00bda0e5a29e"
+label = "gather_stages_28"
+
+[records.values]
+draw_count = "1"
+key = "stage_28"
+min_depth = "0"
+name = "Entrance"
+region = "9b38535c-6bf3-47c8-a2ab-bfa4b3edec89"
+
+[[records]]
+uuid = "9c025831-6911-54b3-94fa-d284199f263c"
+label = "gather_stages_29"
+
+[records.values]
+draw_count = "1"
+key = "stage_29"
+min_depth = "3"
+name = "Interior"
+region = "9b38535c-6bf3-47c8-a2ab-bfa4b3edec89"
+
+[[records]]
+uuid = "3be2dae7-3ffa-555d-9509-27091d1bc3ef"
+label = "gather_stages_30"
+
+[records.values]
+draw_count = "1"
+key = "stage_30"
+min_depth = "6"
+name = "Deep Reach"
+region = "9b38535c-6bf3-47c8-a2ab-bfa4b3edec89"
+
+[[records]]
+uuid = "8d88eb7b-4cc4-56be-9ec8-3679f00a1e83"
+label = "gather_stages_31"
+
+[records.values]
+draw_count = "1"
+key = "stage_31"
+min_depth = "9"
+name = "Farthest Reach"
+region = "9b38535c-6bf3-47c8-a2ab-bfa4b3edec89"
+
+[[records]]
+uuid = "097ad090-fd57-5e6b-827a-b815136e2d13"
+label = "gather_stages_32"
+
+[records.values]
+draw_count = "1"
+key = "stage_32"
+min_depth = "0"
+name = "Entrance"
+region = "98031082-242e-48e4-acf0-69fffeef22b0"
+
+[[records]]
+uuid = "0140d0a4-650e-5693-ab2f-945f057b588a"
+label = "gather_stages_33"
+
+[records.values]
+draw_count = "1"
+key = "stage_33"
+min_depth = "3"
+name = "Interior"
+region = "98031082-242e-48e4-acf0-69fffeef22b0"
+
+[[records]]
+uuid = "9b616303-875a-59db-90d9-9c281c8c8f83"
+label = "gather_stages_34"
+
+[records.values]
+draw_count = "1"
+key = "stage_34"
+min_depth = "6"
+name = "Deep Reach"
+region = "98031082-242e-48e4-acf0-69fffeef22b0"
+
+[[records]]
+uuid = "2406ce02-1099-596c-b9bd-84694ad9c4b6"
+label = "gather_stages_35"
+
+[records.values]
+draw_count = "1"
+key = "stage_35"
+min_depth = "9"
+name = "Farthest Reach"
+region = "98031082-242e-48e4-acf0-69fffeef22b0"
+
+[[records]]
+uuid = "5a419fb8-0a67-540e-bd54-deee90139f55"
+label = "gather_stages_36"
+
+[records.values]
+draw_count = "1"
+key = "stage_36"
+min_depth = "0"
+name = "Entrance"
+region = "16089e8c-d7fa-4cf0-8339-c3ef99aaadf3"
+
+[[records]]
+uuid = "b665a2f7-c2b1-5f08-a01f-4d30eca3a7eb"
+label = "gather_stages_37"
+
+[records.values]
+draw_count = "1"
+key = "stage_37"
+min_depth = "3"
+name = "Interior"
+region = "16089e8c-d7fa-4cf0-8339-c3ef99aaadf3"
+
+[[records]]
+uuid = "3aeaa16a-6d0c-5f10-bfd4-7e0999b841b5"
+label = "gather_stages_38"
+
+[records.values]
+draw_count = "1"
+key = "stage_38"
+min_depth = "6"
+name = "Deep Reach"
+region = "16089e8c-d7fa-4cf0-8339-c3ef99aaadf3"
+
+[[records]]
+uuid = "34a5cc70-5779-5193-876c-b70eae8bfd29"
+label = "gather_stages_39"
+
+[records.values]
+draw_count = "1"
+key = "stage_39"
+min_depth = "9"
+name = "Farthest Reach"
+region = "16089e8c-d7fa-4cf0-8339-c3ef99aaadf3"
+
+[[records]]
+uuid = "99e1b5ab-23b9-5d83-93a0-b08bacfac33b"
+label = "gather_stages_40"
+
+[records.values]
+draw_count = "1"
+key = "stage_40"
+min_depth = "0"
+name = "Entrance"
+region = "acfccb01-869c-545c-a2b6-4d5a8e7a5cd7"
+
+[[records]]
+uuid = "ad1b9eb7-d207-51b8-8a46-8545cccba844"
+label = "gather_stages_41"
+
+[records.values]
+draw_count = "1"
+key = "stage_41"
+min_depth = "3"
+name = "Interior"
+region = "acfccb01-869c-545c-a2b6-4d5a8e7a5cd7"
+
+[[records]]
+uuid = "f34ee021-3764-5691-949e-48282c63b932"
+label = "gather_stages_42"
+
+[records.values]
+draw_count = "1"
+key = "stage_42"
+min_depth = "6"
+name = "Deep Reach"
+region = "acfccb01-869c-545c-a2b6-4d5a8e7a5cd7"
+
+[[records]]
+uuid = "c7b3d280-9e7a-53f1-82f3-d58693061817"
+label = "gather_stages_43"
+
+[records.values]
+draw_count = "1"
+key = "stage_43"
+min_depth = "9"
+name = "Farthest Reach"
+region = "acfccb01-869c-545c-a2b6-4d5a8e7a5cd7"
+
+[[records]]
+uuid = "267f3ec0-f35a-5345-87c3-a32cb69895e6"
+label = "gather_stages_44"
+
+[records.values]
+draw_count = "1"
+key = "stage_44"
+min_depth = "0"
+name = "Entrance"
+region = "35613b21-21c4-5393-8f0c-eafbff2c270c"
+
+[[records]]
+uuid = "1ae72947-a97e-57b1-aac6-6b19bc8feb92"
+label = "gather_stages_45"
+
+[records.values]
+draw_count = "1"
+key = "stage_45"
+min_depth = "3"
+name = "Interior"
+region = "35613b21-21c4-5393-8f0c-eafbff2c270c"
+
+[[records]]
+uuid = "61786f36-9353-54c0-87c7-b74994b9a24d"
+label = "gather_stages_46"
+
+[records.values]
+draw_count = "1"
+key = "stage_46"
+min_depth = "6"
+name = "Deep Reach"
+region = "35613b21-21c4-5393-8f0c-eafbff2c270c"
+
+[[records]]
+uuid = "45e5b9f9-db55-5585-8642-9278535200d0"
+label = "gather_stages_47"
+
+[records.values]
+draw_count = "1"
+key = "stage_47"
+min_depth = "9"
+name = "Farthest Reach"
+region = "35613b21-21c4-5393-8f0c-eafbff2c270c"
+
+[[records]]
+uuid = "51c0bceb-0dee-5714-bf89-c5c990d24bad"
+label = "gather_stages_48"
+
+[records.values]
+draw_count = "1"
+key = "stage_48"
+min_depth = "0"
+name = "Entrance"
+region = "aa5a8f59-7c21-5bdc-8900-4b192b8ddab0"
+
+[[records]]
+uuid = "2f3c02d0-63df-5df8-b0f0-ca3eaf7fd459"
+label = "gather_stages_49"
+
+[records.values]
+draw_count = "1"
+key = "stage_49"
+min_depth = "3"
+name = "Interior"
+region = "aa5a8f59-7c21-5bdc-8900-4b192b8ddab0"
+
+[[records]]
+uuid = "4d586717-eccf-55ed-ac72-f14f0f1a4c12"
+label = "gather_stages_50"
+
+[records.values]
+draw_count = "1"
+key = "stage_50"
+min_depth = "6"
+name = "Deep Reach"
+region = "aa5a8f59-7c21-5bdc-8900-4b192b8ddab0"
+
+[[records]]
+uuid = "6484575d-1034-5512-a21e-a593609f7ea1"
+label = "gather_stages_51"
+
+[records.values]
+draw_count = "1"
+key = "stage_51"
+min_depth = "9"
+name = "Farthest Reach"
+region = "aa5a8f59-7c21-5bdc-8900-4b192b8ddab0"
+
+[[records]]
+uuid = "9babc6f0-9076-5635-b93f-c6ddff8d8542"
+label = "gather_stages_52"
+
+[records.values]
+draw_count = "1"
+key = "stage_52"
+min_depth = "0"
+name = "Entrance"
+region = "1bdf6766-97e2-5bd7-9c6d-5adab1aba7a6"
+
+[[records]]
+uuid = "33404807-939c-584d-bd83-0b9474742157"
+label = "gather_stages_53"
+
+[records.values]
+draw_count = "1"
+key = "stage_53"
+min_depth = "3"
+name = "Interior"
+region = "1bdf6766-97e2-5bd7-9c6d-5adab1aba7a6"
+
+[[records]]
+uuid = "413d5b85-f868-562c-a71d-0b9e3c642dea"
+label = "gather_stages_54"
+
+[records.values]
+draw_count = "1"
+key = "stage_54"
+min_depth = "6"
+name = "Deep Reach"
+region = "1bdf6766-97e2-5bd7-9c6d-5adab1aba7a6"
+
+[[records]]
+uuid = "cf3ca5e3-b060-5109-877e-0fa73d9eb524"
+label = "gather_stages_55"
+
+[records.values]
+draw_count = "1"
+key = "stage_55"
+min_depth = "9"
+name = "Farthest Reach"
+region = "1bdf6766-97e2-5bd7-9c6d-5adab1aba7a6"
+
+[[records]]
+uuid = "9e4ef441-f747-54c0-8661-2623408bc143"
+label = "gather_stages_56"
+
+[records.values]
+draw_count = "1"
+key = "stage_56"
+min_depth = "0"
+name = "Entrance"
+region = "712b7f9a-9973-5097-ae2e-44785c6b1fd6"
+
+[[records]]
+uuid = "a3f815ca-8756-5129-92d0-5f717efa58ca"
+label = "gather_stages_57"
+
+[records.values]
+draw_count = "1"
+key = "stage_57"
+min_depth = "3"
+name = "Interior"
+region = "712b7f9a-9973-5097-ae2e-44785c6b1fd6"
+
+[[records]]
+uuid = "818161dc-ad30-58ba-8306-f33a83cf64e4"
+label = "gather_stages_58"
+
+[records.values]
+draw_count = "1"
+key = "stage_58"
+min_depth = "6"
+name = "Deep Reach"
+region = "712b7f9a-9973-5097-ae2e-44785c6b1fd6"
+
+[[records]]
+uuid = "c9118448-9983-571b-9971-185b22d19a36"
+label = "gather_stages_59"
+
+[records.values]
+draw_count = "1"
+key = "stage_59"
+min_depth = "9"
+name = "Farthest Reach"
+region = "712b7f9a-9973-5097-ae2e-44785c6b1fd6"
+
+[[records]]
+uuid = "aef5e4e6-085a-54c1-ad9c-c310011aaadf"
+label = "gather_stages_60"
+
+[records.values]
+draw_count = "1"
+key = "stage_60"
+min_depth = "0"
+name = "Entrance"
+region = "ee00670b-3936-59ec-9fb7-80be95aff430"
+
+[[records]]
+uuid = "b8a82e53-4abe-50f5-a6ce-95df13c4e242"
+label = "gather_stages_61"
+
+[records.values]
+draw_count = "1"
+key = "stage_61"
+min_depth = "3"
+name = "Interior"
+region = "ee00670b-3936-59ec-9fb7-80be95aff430"
+
+[[records]]
+uuid = "7bc203f4-ac78-5585-b476-8e8c6c42dc06"
+label = "gather_stages_62"
+
+[records.values]
+draw_count = "1"
+key = "stage_62"
+min_depth = "6"
+name = "Deep Reach"
+region = "ee00670b-3936-59ec-9fb7-80be95aff430"
+
+[[records]]
+uuid = "2a1140e8-c28b-5da2-8a4c-90cc7c6a8dc9"
+label = "gather_stages_63"
+
+[records.values]
+draw_count = "1"
+key = "stage_63"
+min_depth = "9"
+name = "Farthest Reach"
+region = "ee00670b-3936-59ec-9fb7-80be95aff430"
+
+[[records]]
+uuid = "a74103d5-2f35-5e72-973f-2220d637a35e"
+label = "gather_stages_64"
+
+[records.values]
+draw_count = "1"
+key = "stage_64"
+min_depth = "0"
+name = "Entrance"
+region = "6864acd2-7486-5e49-bc5d-c14f7bfb2d71"
+
+[[records]]
+uuid = "cd1af423-b7e5-593b-8910-ea0651e5e09d"
+label = "gather_stages_65"
+
+[records.values]
+draw_count = "1"
+key = "stage_65"
+min_depth = "3"
+name = "Interior"
+region = "6864acd2-7486-5e49-bc5d-c14f7bfb2d71"
+
+[[records]]
+uuid = "30c3cf39-92f8-5b04-8fe5-87fff7b4a533"
+label = "gather_stages_66"
+
+[records.values]
+draw_count = "1"
+key = "stage_66"
+min_depth = "6"
+name = "Deep Reach"
+region = "6864acd2-7486-5e49-bc5d-c14f7bfb2d71"
+
+[[records]]
+uuid = "47fd19bf-45b0-5977-950e-ee259fb16309"
+label = "gather_stages_67"
+
+[records.values]
+draw_count = "1"
+key = "stage_67"
+min_depth = "9"
+name = "Farthest Reach"
+region = "6864acd2-7486-5e49-bc5d-c14f7bfb2d71"
+
+[[records]]
+uuid = "f8b2a902-cd3d-5e75-8e2a-87b4f6b408b1"
+label = "gather_stages_68"
+
+[records.values]
+draw_count = "1"
+key = "stage_68"
+min_depth = "0"
+name = "Entrance"
+region = "3c134b71-889d-5593-b97b-b3368296dbcc"
+
+[[records]]
+uuid = "6ad0d2fc-628e-5fac-a467-dd27e3c03f77"
+label = "gather_stages_69"
+
+[records.values]
+draw_count = "1"
+key = "stage_69"
+min_depth = "3"
+name = "Interior"
+region = "3c134b71-889d-5593-b97b-b3368296dbcc"
+
+[[records]]
+uuid = "e85a5b71-9e36-5cd1-b51d-62cc3857f628"
+label = "gather_stages_70"
+
+[records.values]
+draw_count = "1"
+key = "stage_70"
+min_depth = "6"
+name = "Deep Reach"
+region = "3c134b71-889d-5593-b97b-b3368296dbcc"
+
+[[records]]
+uuid = "f0733d2b-aab0-5e4e-97ab-5e8dbb673d13"
+label = "gather_stages_71"
+
+[records.values]
+draw_count = "1"
+key = "stage_71"
+min_depth = "9"
+name = "Farthest Reach"
+region = "3c134b71-889d-5593-b97b-b3368296dbcc"
+
+[[records]]
+uuid = "5e35ad2a-83e3-5e83-8e9c-13911c43fa99"
+label = "gather_stages_72"
+
+[records.values]
+draw_count = "1"
+key = "stage_72"
+min_depth = "0"
+name = "Entrance"
+region = "5fd6161e-b998-58b9-9928-86676cec6641"
+
+[[records]]
+uuid = "676b2628-b4d9-513b-baa1-af8711c4c08b"
+label = "gather_stages_73"
+
+[records.values]
+draw_count = "1"
+key = "stage_73"
+min_depth = "3"
+name = "Interior"
+region = "5fd6161e-b998-58b9-9928-86676cec6641"
+
+[[records]]
+uuid = "57ced262-649c-5622-ad9a-14833a207bd8"
+label = "gather_stages_74"
+
+[records.values]
+draw_count = "1"
+key = "stage_74"
+min_depth = "6"
+name = "Deep Reach"
+region = "5fd6161e-b998-58b9-9928-86676cec6641"
+
+[[records]]
+uuid = "ce9b1046-89f7-587f-bbf6-5155ef500f33"
+label = "gather_stages_75"
+
+[records.values]
+draw_count = "1"
+key = "stage_75"
+min_depth = "9"
+name = "Farthest Reach"
+region = "5fd6161e-b998-58b9-9928-86676cec6641"
+
+[[records]]
+uuid = "df2d44db-a5a3-5ea3-b498-912402aaae39"
+label = "gather_stages_76"
+
+[records.values]
+draw_count = "1"
+key = "stage_76"
+min_depth = "0"
+name = "Entrance"
+region = "154a6748-3133-5e63-bb6a-b82bb085e41d"
+
+[[records]]
+uuid = "0cf3c169-c681-53a5-946f-2b14983263ac"
+label = "gather_stages_77"
+
+[records.values]
+draw_count = "1"
+key = "stage_77"
+min_depth = "3"
+name = "Interior"
+region = "154a6748-3133-5e63-bb6a-b82bb085e41d"
+
+[[records]]
+uuid = "cbd8fe40-8fae-5389-a728-5d4d3039fe4f"
+label = "gather_stages_78"
+
+[records.values]
+draw_count = "1"
+key = "stage_78"
+min_depth = "6"
+name = "Deep Reach"
+region = "154a6748-3133-5e63-bb6a-b82bb085e41d"
+
+[[records]]
+uuid = "a03e2534-a334-532a-a3ad-6c7d13376e30"
+label = "gather_stages_79"
+
+[records.values]
+draw_count = "1"
+key = "stage_79"
+min_depth = "9"
+name = "Farthest Reach"
+region = "154a6748-3133-5e63-bb6a-b82bb085e41d"
+
+[[records]]
+uuid = "12aaf893-a2af-5d67-a307-530baf2c836f"
+label = "gather_stages_80"
+
+[records.values]
+draw_count = "1"
+key = "stage_80"
+min_depth = "0"
+name = "Entrance"
+region = "dc86c626-89aa-54f0-940f-baa05a3618ff"
+
+[[records]]
+uuid = "a8d45c45-b6d7-5f9b-aa99-295e2f33dcf3"
+label = "gather_stages_81"
+
+[records.values]
+draw_count = "1"
+key = "stage_81"
+min_depth = "3"
+name = "Interior"
+region = "dc86c626-89aa-54f0-940f-baa05a3618ff"
+
+[[records]]
+uuid = "34d12c26-f82f-5a82-a9a6-d40713c0c4fa"
+label = "gather_stages_82"
+
+[records.values]
+draw_count = "1"
+key = "stage_82"
+min_depth = "6"
+name = "Deep Reach"
+region = "dc86c626-89aa-54f0-940f-baa05a3618ff"
+
+[[records]]
+uuid = "cc7d737e-dba6-5c4c-8413-7bc109c516c1"
+label = "gather_stages_83"
+
+[records.values]
+draw_count = "1"
+key = "stage_83"
+min_depth = "9"
+name = "Farthest Reach"
+region = "dc86c626-89aa-54f0-940f-baa05a3618ff"
+
+[[records]]
+uuid = "32b1a610-ca90-56d8-a4ec-4f00a025b186"
+label = "gather_stages_84"
+
+[records.values]
+draw_count = "1"
+key = "stage_84"
+min_depth = "0"
+name = "Entrance"
+region = "66885a47-0dcc-5a05-ac8b-3372718538eb"
+
+[[records]]
+uuid = "a4f35f19-e363-56c3-a9dc-be3430e9049e"
+label = "gather_stages_85"
+
+[records.values]
+draw_count = "1"
+key = "stage_85"
+min_depth = "3"
+name = "Interior"
+region = "66885a47-0dcc-5a05-ac8b-3372718538eb"
+
+[[records]]
+uuid = "1c8c4b4f-7eca-53d6-8db9-3c36af1e31a2"
+label = "gather_stages_86"
+
+[records.values]
+draw_count = "1"
+key = "stage_86"
+min_depth = "6"
+name = "Deep Reach"
+region = "66885a47-0dcc-5a05-ac8b-3372718538eb"
+
+[[records]]
+uuid = "78c6da1b-af88-57cd-8ca9-bf351b7d41a4"
+label = "gather_stages_87"
+
+[records.values]
+draw_count = "1"
+key = "stage_87"
+min_depth = "9"
+name = "Farthest Reach"
+region = "66885a47-0dcc-5a05-ac8b-3372718538eb"
+
+[[records]]
+uuid = "7b868fa6-57ac-5bcc-b1bd-0e36c839b8aa"
+label = "gather_stages_88"
+
+[records.values]
+draw_count = "1"
+key = "stage_88"
+min_depth = "0"
+name = "Entrance"
+region = "c53364f8-4657-56f1-b2d0-eb16132633b3"
+
+[[records]]
+uuid = "b95cf078-cb38-532c-acca-497aa8b91042"
+label = "gather_stages_89"
+
+[records.values]
+draw_count = "1"
+key = "stage_89"
+min_depth = "3"
+name = "Interior"
+region = "c53364f8-4657-56f1-b2d0-eb16132633b3"
+
+[[records]]
+uuid = "ec9f0c32-bb4d-51c7-876b-1e79fffd4f4e"
+label = "gather_stages_90"
+
+[records.values]
+draw_count = "1"
+key = "stage_90"
+min_depth = "6"
+name = "Deep Reach"
+region = "c53364f8-4657-56f1-b2d0-eb16132633b3"
+
+[[records]]
+uuid = "651f7723-4fe9-5b8c-bad1-e53c6d94362f"
+label = "gather_stages_91"
+
+[records.values]
+draw_count = "1"
+key = "stage_91"
+min_depth = "9"
+name = "Farthest Reach"
+region = "c53364f8-4657-56f1-b2d0-eb16132633b3"
+
+[[records]]
+uuid = "87d9e200-4cf0-5be6-aa15-e8d34cb2092f"
+label = "gather_stages_92"
+
+[records.values]
+draw_count = "1"
+key = "stage_92"
+min_depth = "0"
+name = "Entrance"
+region = "b5c8341a-e5f5-5756-9482-583a7277da5f"
+
+[[records]]
+uuid = "c14fccf4-d917-5c8d-93e0-436af276cde2"
+label = "gather_stages_93"
+
+[records.values]
+draw_count = "1"
+key = "stage_93"
+min_depth = "3"
+name = "Interior"
+region = "b5c8341a-e5f5-5756-9482-583a7277da5f"
+
+[[records]]
+uuid = "a8c6341c-47e8-51e3-87d1-0ce57d8bc8e7"
+label = "gather_stages_94"
+
+[records.values]
+draw_count = "1"
+key = "stage_94"
+min_depth = "6"
+name = "Deep Reach"
+region = "b5c8341a-e5f5-5756-9482-583a7277da5f"
+
+[[records]]
+uuid = "875e199d-1684-569c-9647-46bb51f1006a"
+label = "gather_stages_95"
+
+[records.values]
+draw_count = "1"
+key = "stage_95"
+min_depth = "9"
+name = "Farthest Reach"
+region = "b5c8341a-e5f5-5756-9482-583a7277da5f"
+
+[[records]]
+uuid = "568478fb-cd63-57cb-94d9-93b6b1e23590"
+label = "gather_stages_96"
+
+[records.values]
+draw_count = "1"
+key = "stage_96"
+min_depth = "0"
+name = "Entrance"
+region = "93189b1e-ca94-57ce-a9a1-9293c2eb6744"
+
+[[records]]
+uuid = "47f3ad2e-bc81-5f80-84c5-8e0c257acfb7"
+label = "gather_stages_97"
+
+[records.values]
+draw_count = "1"
+key = "stage_97"
+min_depth = "3"
+name = "Interior"
+region = "93189b1e-ca94-57ce-a9a1-9293c2eb6744"
+
+[[records]]
+uuid = "384685a0-fb08-5410-b770-8905f36a1dfe"
+label = "gather_stages_98"
+
+[records.values]
+draw_count = "1"
+key = "stage_98"
+min_depth = "6"
+name = "Deep Reach"
+region = "93189b1e-ca94-57ce-a9a1-9293c2eb6744"
+
+[[records]]
+uuid = "99824282-6698-5e91-894f-5d45d94a85e7"
+label = "gather_stages_99"
+
+[records.values]
+draw_count = "1"
+key = "stage_99"
+min_depth = "9"
+name = "Farthest Reach"
+region = "93189b1e-ca94-57ce-a9a1-9293c2eb6744"
+
+[[records]]
+uuid = "b22798a9-b1f9-52ee-8952-cb85fdfd02ea"
+label = "gather_stages_100"
+
+[records.values]
+draw_count = "1"
+key = "stage_100"
+min_depth = "0"
+name = "Entrance"
+region = "7d7bb240-3917-592f-a620-7891a5bd64e2"
+
+[[records]]
+uuid = "a386bfea-c3b8-58b9-ab3f-acd0acbd355d"
+label = "gather_stages_101"
+
+[records.values]
+draw_count = "1"
+key = "stage_101"
+min_depth = "3"
+name = "Interior"
+region = "7d7bb240-3917-592f-a620-7891a5bd64e2"
+
+[[records]]
+uuid = "d0baa8af-df8b-57a9-9131-87405902b49e"
+label = "gather_stages_102"
+
+[records.values]
+draw_count = "1"
+key = "stage_102"
+min_depth = "6"
+name = "Deep Reach"
+region = "7d7bb240-3917-592f-a620-7891a5bd64e2"
+
+[[records]]
+uuid = "e8b96ad3-21c8-59e0-a9a5-fd558f4725d5"
+label = "gather_stages_103"
+
+[records.values]
+draw_count = "1"
+key = "stage_103"
+min_depth = "9"
+name = "Farthest Reach"
+region = "7d7bb240-3917-592f-a620-7891a5bd64e2"
+
+[[records]]
+uuid = "8b7e440d-0946-5db2-8c51-10e2c2787d36"
+label = "gather_stages_104"
+
+[records.values]
+draw_count = "1"
+key = "stage_104"
+min_depth = "0"
+name = "Entrance"
+region = "7a1803d8-3df3-51b7-8549-eb3b0eef8efb"
+
+[[records]]
+uuid = "c107fc11-fc79-595e-ac41-b061c914485d"
+label = "gather_stages_105"
+
+[records.values]
+draw_count = "1"
+key = "stage_105"
+min_depth = "3"
+name = "Interior"
+region = "7a1803d8-3df3-51b7-8549-eb3b0eef8efb"
+
+[[records]]
+uuid = "8d007288-45ae-5b75-9382-96bc13ab28ca"
+label = "gather_stages_106"
+
+[records.values]
+draw_count = "1"
+key = "stage_106"
+min_depth = "6"
+name = "Deep Reach"
+region = "7a1803d8-3df3-51b7-8549-eb3b0eef8efb"
+
+[[records]]
+uuid = "3693fe89-e822-50b5-b51a-08610d33415f"
+label = "gather_stages_107"
+
+[records.values]
+draw_count = "1"
+key = "stage_107"
+min_depth = "9"
+name = "Farthest Reach"
+region = "7a1803d8-3df3-51b7-8549-eb3b0eef8efb"
+
+[[records]]
+uuid = "bc76f565-b6cd-5cec-97d3-6e446a1c9518"
+label = "gather_stages_108"
+
+[records.values]
+draw_count = "1"
+key = "stage_108"
+min_depth = "0"
+name = "Entrance"
+region = "0a09e552-89ac-50d3-9a3b-e40724344187"
+
+[[records]]
+uuid = "807559ae-20f9-584a-8a24-290bb55c0fd8"
+label = "gather_stages_109"
+
+[records.values]
+draw_count = "1"
+key = "stage_109"
+min_depth = "3"
+name = "Interior"
+region = "0a09e552-89ac-50d3-9a3b-e40724344187"
+
+[[records]]
+uuid = "5101d701-a49b-52b8-8c8e-c777a1472b90"
+label = "gather_stages_110"
+
+[records.values]
+draw_count = "1"
+key = "stage_110"
+min_depth = "6"
+name = "Deep Reach"
+region = "0a09e552-89ac-50d3-9a3b-e40724344187"
+
+[[records]]
+uuid = "de1e4612-332d-59c7-b3e1-90e5f869cafb"
+label = "gather_stages_111"
+
+[records.values]
+draw_count = "1"
+key = "stage_111"
+min_depth = "9"
+name = "Farthest Reach"
+region = "0a09e552-89ac-50d3-9a3b-e40724344187"
+
+[[records]]
+uuid = "3fd858b0-6e29-5eb9-9ced-ff30d16c4451"
+label = "gather_stages_112"
+
+[records.values]
+draw_count = "1"
+key = "stage_112"
+min_depth = "0"
+name = "Entrance"
+region = "67ae4423-5649-5239-ae43-019c7295995d"
+
+[[records]]
+uuid = "97003f22-722c-58b7-aa4f-ce067b18b569"
+label = "gather_stages_113"
+
+[records.values]
+draw_count = "1"
+key = "stage_113"
+min_depth = "3"
+name = "Interior"
+region = "67ae4423-5649-5239-ae43-019c7295995d"
+
+[[records]]
+uuid = "9def43e5-534c-50d6-83fc-e984f331e2c3"
+label = "gather_stages_114"
+
+[records.values]
+draw_count = "1"
+key = "stage_114"
+min_depth = "6"
+name = "Deep Reach"
+region = "67ae4423-5649-5239-ae43-019c7295995d"
+
+[[records]]
+uuid = "2635b87e-ca8b-5b63-ac42-4b1cc8533a3f"
+label = "gather_stages_115"
+
+[records.values]
+draw_count = "1"
+key = "stage_115"
+min_depth = "9"
+name = "Farthest Reach"
+region = "67ae4423-5649-5239-ae43-019c7295995d"
+
+[[records]]
+uuid = "3ad0fcad-08da-53bd-a3d9-8594a86c1f69"
+label = "gather_stages_116"
+
+[records.values]
+draw_count = "1"
+key = "stage_116"
+min_depth = "0"
+name = "Entrance"
+region = "29e3734d-c67e-54c4-889d-4573cdaf43aa"
+
+[[records]]
+uuid = "5c3507b6-bd82-52e4-a5c7-39d6c69abbfd"
+label = "gather_stages_117"
+
+[records.values]
+draw_count = "1"
+key = "stage_117"
+min_depth = "3"
+name = "Interior"
+region = "29e3734d-c67e-54c4-889d-4573cdaf43aa"
+
+[[records]]
+uuid = "c2575265-31e5-51a2-85a5-bd34fb933954"
+label = "gather_stages_118"
+
+[records.values]
+draw_count = "1"
+key = "stage_118"
+min_depth = "6"
+name = "Deep Reach"
+region = "29e3734d-c67e-54c4-889d-4573cdaf43aa"
+
+[[records]]
+uuid = "6dd79594-7a11-5615-b563-77a8fb27188a"
+label = "gather_stages_119"
+
+[records.values]
+draw_count = "1"
+key = "stage_119"
+min_depth = "9"
+name = "Farthest Reach"
+region = "29e3734d-c67e-54c4-889d-4573cdaf43aa"
+
+[[records]]
+uuid = "1ca07c7e-51d2-525d-8bb2-d31db0c83d95"
+label = "gather_stages_120"
+
+[records.values]
+draw_count = "1"
+key = "stage_120"
+min_depth = "0"
+name = "Entrance"
+region = "51380d65-c7da-5703-a91b-1924e65e6c7d"
+
+[[records]]
+uuid = "5af16c99-9e41-59f1-9305-cc99377dc984"
+label = "gather_stages_121"
+
+[records.values]
+draw_count = "1"
+key = "stage_121"
+min_depth = "3"
+name = "Interior"
+region = "51380d65-c7da-5703-a91b-1924e65e6c7d"
+
+[[records]]
+uuid = "60b96e18-1e97-5f7a-a390-9166b5af749d"
+label = "gather_stages_122"
+
+[records.values]
+draw_count = "1"
+key = "stage_122"
+min_depth = "6"
+name = "Deep Reach"
+region = "51380d65-c7da-5703-a91b-1924e65e6c7d"
+
+[[records]]
+uuid = "8d9480b3-0a3f-515b-a4db-4bdf94c52020"
+label = "gather_stages_123"
+
+[records.values]
+draw_count = "1"
+key = "stage_123"
+min_depth = "9"
+name = "Farthest Reach"
+region = "51380d65-c7da-5703-a91b-1924e65e6c7d"
+
+[[records]]
+uuid = "ce423b7d-4fcb-5f3c-a6d1-bdf166f9cf77"
+label = "gather_stages_124"
+
+[records.values]
+draw_count = "1"
+key = "stage_124"
+min_depth = "0"
+name = "Entrance"
+region = "d71ebf1c-3a11-563c-a089-fd4432baabe8"
+
+[[records]]
+uuid = "04159f0c-61c0-5e48-ba23-9c8431ac7001"
+label = "gather_stages_125"
+
+[records.values]
+draw_count = "1"
+key = "stage_125"
+min_depth = "3"
+name = "Interior"
+region = "d71ebf1c-3a11-563c-a089-fd4432baabe8"
+
+[[records]]
+uuid = "fc7c773e-231e-5799-905f-708677ed1245"
+label = "gather_stages_126"
+
+[records.values]
+draw_count = "1"
+key = "stage_126"
+min_depth = "6"
+name = "Deep Reach"
+region = "d71ebf1c-3a11-563c-a089-fd4432baabe8"
+
+[[records]]
+uuid = "0f744f08-0909-570b-8cf2-2f19a15a2fca"
+label = "gather_stages_127"
+
+[records.values]
+draw_count = "1"
+key = "stage_127"
+min_depth = "9"
+name = "Farthest Reach"
+region = "d71ebf1c-3a11-563c-a089-fd4432baabe8"
+
+[[records]]
+uuid = "36655acb-2faa-574d-ae2b-acd50eafd66f"
+label = "gather_stages_128"
+
+[records.values]
+draw_count = "1"
+key = "stage_128"
+min_depth = "0"
+name = "Entrance"
+region = "d7bbc253-d8d8-549b-a115-f40433c84b1f"
+
+[[records]]
+uuid = "f6bfe6c4-c9c0-5d38-8792-f914b3df4f7e"
+label = "gather_stages_129"
+
+[records.values]
+draw_count = "1"
+key = "stage_129"
+min_depth = "3"
+name = "Interior"
+region = "d7bbc253-d8d8-549b-a115-f40433c84b1f"
+
+[[records]]
+uuid = "4d1f363a-a479-5a90-87fc-9e6d4eb62af8"
+label = "gather_stages_130"
+
+[records.values]
+draw_count = "1"
+key = "stage_130"
+min_depth = "6"
+name = "Deep Reach"
+region = "d7bbc253-d8d8-549b-a115-f40433c84b1f"
+
+[[records]]
+uuid = "94a358d6-bc19-5304-9428-fc112657e3c0"
+label = "gather_stages_131"
+
+[records.values]
+draw_count = "1"
+key = "stage_131"
+min_depth = "9"
+name = "Farthest Reach"
+region = "d7bbc253-d8d8-549b-a115-f40433c84b1f"
+
+[[records]]
+uuid = "4cf87c66-93a1-5087-b4df-91d6888080d3"
+label = "gather_stages_132"
+
+[records.values]
+draw_count = "1"
+key = "stage_132"
+min_depth = "0"
+name = "Entrance"
+region = "40c0927f-2a75-57bf-87ea-dc7242264044"
+
+[[records]]
+uuid = "c25e35a9-4088-5cc3-affb-072500e11b7d"
+label = "gather_stages_133"
+
+[records.values]
+draw_count = "1"
+key = "stage_133"
+min_depth = "3"
+name = "Interior"
+region = "40c0927f-2a75-57bf-87ea-dc7242264044"
+
+[[records]]
+uuid = "1fa38554-a55e-50a3-b54f-94a357bd21c9"
+label = "gather_stages_134"
+
+[records.values]
+draw_count = "1"
+key = "stage_134"
+min_depth = "6"
+name = "Deep Reach"
+region = "40c0927f-2a75-57bf-87ea-dc7242264044"
+
+[[records]]
+uuid = "0a3bde3c-11a6-5ac9-a54a-8ac444a5d595"
+label = "gather_stages_135"
+
+[records.values]
+draw_count = "1"
+key = "stage_135"
+min_depth = "9"
+name = "Farthest Reach"
+region = "40c0927f-2a75-57bf-87ea-dc7242264044"
+
+[[records]]
+uuid = "b6ff0bf1-29ff-5a85-8517-5f48a32a935d"
+label = "gather_stages_136"
+
+[records.values]
+draw_count = "1"
+key = "stage_136"
+min_depth = "0"
+name = "Entrance"
+region = "4a94701e-84fa-5b02-aac0-07f4c4f62a4c"
+
+[[records]]
+uuid = "341cb5d5-a1f9-5587-bfa4-18a523330cef"
+label = "gather_stages_137"
+
+[records.values]
+draw_count = "1"
+key = "stage_137"
+min_depth = "3"
+name = "Interior"
+region = "4a94701e-84fa-5b02-aac0-07f4c4f62a4c"
+
+[[records]]
+uuid = "cf567412-a18c-5409-b47b-a83e26752c54"
+label = "gather_stages_138"
+
+[records.values]
+draw_count = "1"
+key = "stage_138"
+min_depth = "6"
+name = "Deep Reach"
+region = "4a94701e-84fa-5b02-aac0-07f4c4f62a4c"
+
+[[records]]
+uuid = "97dcc46d-9725-5c52-abaa-4a11c08d2bd3"
+label = "gather_stages_139"
+
+[records.values]
+draw_count = "1"
+key = "stage_139"
+min_depth = "9"
+name = "Farthest Reach"
+region = "4a94701e-84fa-5b02-aac0-07f4c4f62a4c"
+
+[[records]]
+uuid = "f75f94d2-dd69-5b27-ae24-e8788f79aa6c"
+label = "gather_stages_140"
+
+[records.values]
+draw_count = "1"
+key = "stage_140"
+min_depth = "0"
+name = "Entrance"
+region = "d49f87e6-9cd4-521a-8ab1-2a36a4192285"
+
+[[records]]
+uuid = "8417c31c-120c-5f19-906b-f28179028f57"
+label = "gather_stages_141"
+
+[records.values]
+draw_count = "1"
+key = "stage_141"
+min_depth = "3"
+name = "Interior"
+region = "d49f87e6-9cd4-521a-8ab1-2a36a4192285"
+
+[[records]]
+uuid = "bdad774f-fa0e-5c6f-a0e9-7f089f1a7b94"
+label = "gather_stages_142"
+
+[records.values]
+draw_count = "1"
+key = "stage_142"
+min_depth = "6"
+name = "Deep Reach"
+region = "d49f87e6-9cd4-521a-8ab1-2a36a4192285"
+
+[[records]]
+uuid = "ca099a5f-7447-556e-bc60-5b04bc5d857c"
+label = "gather_stages_143"
+
+[records.values]
+draw_count = "1"
+key = "stage_143"
+min_depth = "9"
+name = "Farthest Reach"
+region = "d49f87e6-9cd4-521a-8ab1-2a36a4192285"
+
+[[records]]
+uuid = "596d9e91-045c-5df5-a816-c8feed7deb18"
+label = "gather_stages_144"
+
+[records.values]
+draw_count = "1"
+key = "stage_144"
+min_depth = "0"
+name = "Entrance"
+region = "1c35f184-8452-59b4-83ed-c138f7afd91e"
+
+[[records]]
+uuid = "9ce47a0a-0905-5ba4-a998-c78491e8228e"
+label = "gather_stages_145"
+
+[records.values]
+draw_count = "1"
+key = "stage_145"
+min_depth = "3"
+name = "Interior"
+region = "1c35f184-8452-59b4-83ed-c138f7afd91e"
+
+[[records]]
+uuid = "768759dc-689f-585d-b049-b0c283d2ba64"
+label = "gather_stages_146"
+
+[records.values]
+draw_count = "1"
+key = "stage_146"
+min_depth = "6"
+name = "Deep Reach"
+region = "1c35f184-8452-59b4-83ed-c138f7afd91e"
+
+[[records]]
+uuid = "2bde2f08-e50b-5efa-a167-d4b974d85089"
+label = "gather_stages_147"
+
+[records.values]
+draw_count = "1"
+key = "stage_147"
+min_depth = "9"
+name = "Farthest Reach"
+region = "1c35f184-8452-59b4-83ed-c138f7afd91e"
+
+[[records]]
+uuid = "c2b79e8e-95d6-5ccc-a343-24ddb7d3109f"
+label = "gather_stages_148"
+
+[records.values]
+draw_count = "1"
+key = "stage_148"
+min_depth = "0"
+name = "Entrance"
+region = "0db4391c-8fae-5cec-a65e-fb2c27d97ce2"
+
+[[records]]
+uuid = "9256b5dd-97e8-5abe-b256-9a81cdefb9a0"
+label = "gather_stages_149"
+
+[records.values]
+draw_count = "1"
+key = "stage_149"
+min_depth = "3"
+name = "Interior"
+region = "0db4391c-8fae-5cec-a65e-fb2c27d97ce2"
+
+[[records]]
+uuid = "4439fe59-1260-56d1-8abf-ac8b402a55ec"
+label = "gather_stages_150"
+
+[records.values]
+draw_count = "1"
+key = "stage_150"
+min_depth = "6"
+name = "Deep Reach"
+region = "0db4391c-8fae-5cec-a65e-fb2c27d97ce2"
+
+[[records]]
+uuid = "bcdb4a0a-14d4-5be1-a4e6-64968b0013f4"
+label = "gather_stages_151"
+
+[records.values]
+draw_count = "1"
+key = "stage_151"
+min_depth = "9"
+name = "Farthest Reach"
+region = "0db4391c-8fae-5cec-a65e-fb2c27d97ce2"
+
+[[records]]
+uuid = "96ef579d-d20a-5e9a-b185-63346832ae91"
+label = "gather_stages_152"
+
+[records.values]
+draw_count = "1"
+key = "stage_152"
+min_depth = "0"
+name = "Entrance"
+region = "fa6bb6f7-a7fb-5ec3-b7f4-5e1ee3ac7cc7"
+
+[[records]]
+uuid = "2c6eb660-8488-5316-84db-19179c8da434"
+label = "gather_stages_153"
+
+[records.values]
+draw_count = "1"
+key = "stage_153"
+min_depth = "3"
+name = "Interior"
+region = "fa6bb6f7-a7fb-5ec3-b7f4-5e1ee3ac7cc7"
+
+[[records]]
+uuid = "7b68c2f5-a9ea-5c38-b2f9-f950caf22c77"
+label = "gather_stages_154"
+
+[records.values]
+draw_count = "1"
+key = "stage_154"
+min_depth = "6"
+name = "Deep Reach"
+region = "fa6bb6f7-a7fb-5ec3-b7f4-5e1ee3ac7cc7"
+
+[[records]]
+uuid = "e1b5bbc7-0072-5601-a65d-30db6510675a"
+label = "gather_stages_155"
+
+[records.values]
+draw_count = "1"
+key = "stage_155"
+min_depth = "9"
+name = "Farthest Reach"
+region = "fa6bb6f7-a7fb-5ec3-b7f4-5e1ee3ac7cc7"
+
+[[records]]
+uuid = "e5777c48-6541-58d1-a2b3-95da62b9b826"
+label = "gather_stages_156"
+
+[records.values]
+draw_count = "1"
+key = "stage_156"
+min_depth = "0"
+name = "Entrance"
+region = "a863b6f5-2d22-58ac-ba4d-cc2daadc0130"
+
+[[records]]
+uuid = "80c35a94-e5ee-58a3-b55a-6e3cf17e213f"
+label = "gather_stages_157"
+
+[records.values]
+draw_count = "1"
+key = "stage_157"
+min_depth = "3"
+name = "Interior"
+region = "a863b6f5-2d22-58ac-ba4d-cc2daadc0130"
+
+[[records]]
+uuid = "2ce3d798-8d8e-5bcc-8730-f8b91645d461"
+label = "gather_stages_158"
+
+[records.values]
+draw_count = "1"
+key = "stage_158"
+min_depth = "6"
+name = "Deep Reach"
+region = "a863b6f5-2d22-58ac-ba4d-cc2daadc0130"
+
+[[records]]
+uuid = "fcfcd535-657e-5e61-8b36-e82becd12ccb"
+label = "gather_stages_159"
+
+[records.values]
+draw_count = "1"
+key = "stage_159"
+min_depth = "9"
+name = "Farthest Reach"
+region = "a863b6f5-2d22-58ac-ba4d-cc2daadc0130"
+
+[[records]]
+uuid = "db919a1a-c061-5ecc-b93b-3e50c582fcfd"
+label = "gather_stages_160"
+
+[records.values]
+draw_count = "1"
+key = "stage_160"
+min_depth = "0"
+name = "Entrance"
+region = "1834eb44-7f01-5ac5-9684-ec8a4f31cf05"
+
+[[records]]
+uuid = "99147a4b-cae6-5c72-be7d-9c8bd53f84bd"
+label = "gather_stages_161"
+
+[records.values]
+draw_count = "1"
+key = "stage_161"
+min_depth = "3"
+name = "Interior"
+region = "1834eb44-7f01-5ac5-9684-ec8a4f31cf05"
+
+[[records]]
+uuid = "c6679c84-30fd-5875-a15e-7e4d386c2cc2"
+label = "gather_stages_162"
+
+[records.values]
+draw_count = "1"
+key = "stage_162"
+min_depth = "6"
+name = "Deep Reach"
+region = "1834eb44-7f01-5ac5-9684-ec8a4f31cf05"
+
+[[records]]
+uuid = "e03db51c-0136-52db-bdb3-e91d5b165cbe"
+label = "gather_stages_163"
+
+[records.values]
+draw_count = "1"
+key = "stage_163"
+min_depth = "9"
+name = "Farthest Reach"
+region = "1834eb44-7f01-5ac5-9684-ec8a4f31cf05"
+
+[[records]]
+uuid = "31a20cb7-f422-5ae7-a865-06e032bb1e6f"
+label = "gather_stages_164"
+
+[records.values]
+draw_count = "1"
+key = "stage_164"
+min_depth = "0"
+name = "Entrance"
+region = "c7fb0f9d-1b8b-5975-8db0-f8df5f28e213"
+
+[[records]]
+uuid = "841da012-0980-51bc-a943-189390b82493"
+label = "gather_stages_165"
+
+[records.values]
+draw_count = "1"
+key = "stage_165"
+min_depth = "3"
+name = "Interior"
+region = "c7fb0f9d-1b8b-5975-8db0-f8df5f28e213"
+
+[[records]]
+uuid = "f553fec7-84ff-5dcd-9cd8-eeb9c1dbc05b"
+label = "gather_stages_166"
+
+[records.values]
+draw_count = "1"
+key = "stage_166"
+min_depth = "6"
+name = "Deep Reach"
+region = "c7fb0f9d-1b8b-5975-8db0-f8df5f28e213"
+
+[[records]]
+uuid = "2d520af5-ef7a-5ec9-9ff0-cdfeaede13bb"
+label = "gather_stages_167"
+
+[records.values]
+draw_count = "1"
+key = "stage_167"
+min_depth = "9"
+name = "Farthest Reach"
+region = "c7fb0f9d-1b8b-5975-8db0-f8df5f28e213"
+
+[[records]]
+uuid = "83976de2-528d-5351-98d9-fd27b5f29cd2"
+label = "gather_stages_168"
+
+[records.values]
+draw_count = "1"
+key = "stage_168"
+min_depth = "0"
+name = "Entrance"
+region = "d1b9d287-723e-5a6f-bb33-44f55d2ba5f2"
+
+[[records]]
+uuid = "d7cb950c-41ee-5141-9ae1-ee6fe6c71c41"
+label = "gather_stages_169"
+
+[records.values]
+draw_count = "1"
+key = "stage_169"
+min_depth = "3"
+name = "Interior"
+region = "d1b9d287-723e-5a6f-bb33-44f55d2ba5f2"
+
+[[records]]
+uuid = "ec76ad70-8b8d-54ca-a078-7094539e58f9"
+label = "gather_stages_170"
+
+[records.values]
+draw_count = "1"
+key = "stage_170"
+min_depth = "6"
+name = "Deep Reach"
+region = "d1b9d287-723e-5a6f-bb33-44f55d2ba5f2"
+
+[[records]]
+uuid = "a561d663-978b-509b-ad08-6fd92cd2f889"
+label = "gather_stages_171"
+
+[records.values]
+draw_count = "1"
+key = "stage_171"
+min_depth = "9"
+name = "Farthest Reach"
+region = "d1b9d287-723e-5a6f-bb33-44f55d2ba5f2"
+
+[[records]]
+uuid = "dbbeee40-8d7c-5312-ae00-b03457d90b0c"
+label = "gather_stages_172"
+
+[records.values]
+draw_count = "1"
+key = "stage_172"
+min_depth = "0"
+name = "Entrance"
+region = "07072777-b717-5c52-888c-4867d4d66a6e"
+
+[[records]]
+uuid = "ad934964-5a8d-52b2-8081-b76cce9bd31f"
+label = "gather_stages_173"
+
+[records.values]
+draw_count = "1"
+key = "stage_173"
+min_depth = "3"
+name = "Interior"
+region = "07072777-b717-5c52-888c-4867d4d66a6e"
+
+[[records]]
+uuid = "bf035380-220c-5888-ae29-05b60082d743"
+label = "gather_stages_174"
+
+[records.values]
+draw_count = "1"
+key = "stage_174"
+min_depth = "6"
+name = "Deep Reach"
+region = "07072777-b717-5c52-888c-4867d4d66a6e"
+
+[[records]]
+uuid = "9384b16a-c0d2-5efa-aaed-db7d48869a23"
+label = "gather_stages_175"
+
+[records.values]
+draw_count = "1"
+key = "stage_175"
+min_depth = "9"
+name = "Farthest Reach"
+region = "07072777-b717-5c52-888c-4867d4d66a6e"
+
+[[records]]
+uuid = "9206859b-cf9f-5273-bd18-f4688cdb6f3b"
+label = "gather_stages_176"
+
+[records.values]
+draw_count = "1"
+key = "stage_176"
+min_depth = "0"
+name = "Entrance"
+region = "4aa778ed-a008-5ff5-9dba-d7898ca44e0b"
+
+[[records]]
+uuid = "3ff9c74b-ed37-5e4e-8a08-506d0aee230b"
+label = "gather_stages_177"
+
+[records.values]
+draw_count = "1"
+key = "stage_177"
+min_depth = "3"
+name = "Interior"
+region = "4aa778ed-a008-5ff5-9dba-d7898ca44e0b"
+
+[[records]]
+uuid = "1ee0da16-b96e-5ac6-b24a-42c1f1ac08a6"
+label = "gather_stages_178"
+
+[records.values]
+draw_count = "1"
+key = "stage_178"
+min_depth = "6"
+name = "Deep Reach"
+region = "4aa778ed-a008-5ff5-9dba-d7898ca44e0b"
+
+[[records]]
+uuid = "2078cf5c-ed8f-5a72-9dfb-17fb4cffcc4b"
+label = "gather_stages_179"
+
+[records.values]
+draw_count = "1"
+key = "stage_179"
+min_depth = "9"
+name = "Farthest Reach"
+region = "4aa778ed-a008-5ff5-9dba-d7898ca44e0b"
+
+[[records]]
+uuid = "5e776bc1-4704-53d5-aa43-81abe490467b"
+label = "gather_stages_180"
+
+[records.values]
+draw_count = "1"
+key = "stage_180"
+min_depth = "0"
+name = "Entrance"
+region = "5a45b267-bbc6-51ac-82fb-03483ca47b15"
+
+[[records]]
+uuid = "2b8a2130-1fd8-51c3-bbc4-66bedc3bb1ee"
+label = "gather_stages_181"
+
+[records.values]
+draw_count = "1"
+key = "stage_181"
+min_depth = "3"
+name = "Interior"
+region = "5a45b267-bbc6-51ac-82fb-03483ca47b15"
+
+[[records]]
+uuid = "b9332a4c-5d67-5c71-9903-f236a97d4b30"
+label = "gather_stages_182"
+
+[records.values]
+draw_count = "1"
+key = "stage_182"
+min_depth = "6"
+name = "Deep Reach"
+region = "5a45b267-bbc6-51ac-82fb-03483ca47b15"
+
+[[records]]
+uuid = "7056ff9e-8f86-500f-92e9-6e6dabf1ae07"
+label = "gather_stages_183"
+
+[records.values]
+draw_count = "1"
+key = "stage_183"
+min_depth = "9"
+name = "Farthest Reach"
+region = "5a45b267-bbc6-51ac-82fb-03483ca47b15"
+
+[[records]]
+uuid = "fa06954d-c7a8-5633-b905-ae4a0fe73825"
+label = "gather_stages_184"
+
+[records.values]
+draw_count = "1"
+key = "stage_184"
+min_depth = "0"
+name = "Entrance"
+region = "ff1f8405-63e6-50da-bb94-1b0b99ddae4d"
+
+[[records]]
+uuid = "34a61bb5-cf22-52a1-b84b-4da6b67cfdcf"
+label = "gather_stages_185"
+
+[records.values]
+draw_count = "1"
+key = "stage_185"
+min_depth = "3"
+name = "Interior"
+region = "ff1f8405-63e6-50da-bb94-1b0b99ddae4d"
+
+[[records]]
+uuid = "252fcf37-dda5-522d-8c6b-b41e04d17cf4"
+label = "gather_stages_186"
+
+[records.values]
+draw_count = "1"
+key = "stage_186"
+min_depth = "6"
+name = "Deep Reach"
+region = "ff1f8405-63e6-50da-bb94-1b0b99ddae4d"
+
+[[records]]
+uuid = "d3cee993-91fb-5956-ab48-dcfb4661b7a2"
+label = "gather_stages_187"
+
+[records.values]
+draw_count = "1"
+key = "stage_187"
+min_depth = "9"
+name = "Farthest Reach"
+region = "ff1f8405-63e6-50da-bb94-1b0b99ddae4d"
+
+[[records]]
+uuid = "7a0734d9-36f1-513e-b636-6ddd0439d0ae"
+label = "gather_stages_188"
+
+[records.values]
+draw_count = "1"
+key = "stage_188"
+min_depth = "0"
+name = "Entrance"
+region = "dcce7b0e-595c-596c-bf58-a0f2afa0ffc0"
+
+[[records]]
+uuid = "a8581a70-5760-5bc6-84aa-eb7dcf72fb4b"
+label = "gather_stages_189"
+
+[records.values]
+draw_count = "1"
+key = "stage_189"
+min_depth = "3"
+name = "Interior"
+region = "dcce7b0e-595c-596c-bf58-a0f2afa0ffc0"
+
+[[records]]
+uuid = "baeef1a9-f3fd-5c92-90cf-d1b1c472e183"
+label = "gather_stages_190"
+
+[records.values]
+draw_count = "1"
+key = "stage_190"
+min_depth = "6"
+name = "Deep Reach"
+region = "dcce7b0e-595c-596c-bf58-a0f2afa0ffc0"
+
+[[records]]
+uuid = "438921e4-ef8f-56b1-ace9-a696bc3c2c8d"
+label = "gather_stages_191"
+
+[records.values]
+draw_count = "1"
+key = "stage_191"
+min_depth = "9"
+name = "Farthest Reach"
+region = "dcce7b0e-595c-596c-bf58-a0f2afa0ffc0"
+
+[[records]]
+uuid = "15e2d424-f9b6-5014-b8ad-004ee78c28a5"
+label = "gather_stages_192"
+
+[records.values]
+draw_count = "1"
+key = "stage_192"
+min_depth = "0"
+name = "Entrance"
+region = "6ba8a95e-6045-5ad3-a172-04ed4bc0b1d3"
+
+[[records]]
+uuid = "b29d14b6-b5a7-5b61-a6ab-8bc471d46b55"
+label = "gather_stages_193"
+
+[records.values]
+draw_count = "1"
+key = "stage_193"
+min_depth = "3"
+name = "Interior"
+region = "6ba8a95e-6045-5ad3-a172-04ed4bc0b1d3"
+
+[[records]]
+uuid = "80ab4ff7-5fc2-5944-a7e9-dcdd34f24c5c"
+label = "gather_stages_194"
+
+[records.values]
+draw_count = "1"
+key = "stage_194"
+min_depth = "6"
+name = "Deep Reach"
+region = "6ba8a95e-6045-5ad3-a172-04ed4bc0b1d3"
+
+[[records]]
+uuid = "5899243a-2e8a-5926-8522-3c6de3767724"
+label = "gather_stages_195"
+
+[records.values]
+draw_count = "1"
+key = "stage_195"
+min_depth = "9"
+name = "Farthest Reach"
+region = "6ba8a95e-6045-5ad3-a172-04ed4bc0b1d3"
+
+[[records]]
+uuid = "138d1b59-12ba-5d4c-9074-f6b213798ed3"
+label = "gather_stages_196"
+
+[records.values]
+draw_count = "1"
+key = "stage_196"
+min_depth = "0"
+name = "Entrance"
+region = "a01bdb09-c8fc-53b3-9e41-ee4c7af92483"
+
+[[records]]
+uuid = "52e97a4d-872e-535c-94a2-3cee9259256c"
+label = "gather_stages_197"
+
+[records.values]
+draw_count = "1"
+key = "stage_197"
+min_depth = "3"
+name = "Interior"
+region = "a01bdb09-c8fc-53b3-9e41-ee4c7af92483"
+
+[[records]]
+uuid = "80ef2d26-2362-5939-a256-7f3cadc0b4bb"
+label = "gather_stages_198"
+
+[records.values]
+draw_count = "1"
+key = "stage_198"
+min_depth = "6"
+name = "Deep Reach"
+region = "a01bdb09-c8fc-53b3-9e41-ee4c7af92483"
+
+[[records]]
+uuid = "0ab341a1-5253-5829-9559-c96d6e0ff820"
+label = "gather_stages_199"
+
+[records.values]
+draw_count = "1"
+key = "stage_199"
+min_depth = "9"
+name = "Farthest Reach"
+region = "a01bdb09-c8fc-53b3-9e41-ee4c7af92483"
+
+[[records]]
+uuid = "e4a63b1d-361c-55a0-8f75-bef0029da99b"
+label = "gather_stages_200"
+
+[records.values]
+draw_count = "1"
+key = "stage_200"
+min_depth = "0"
+name = "Entrance"
+region = "81750351-c861-5d45-a3e3-8f31a379e8c8"
+
+[[records]]
+uuid = "6f911a04-00e2-535c-937c-b36fd344a4d9"
+label = "gather_stages_201"
+
+[records.values]
+draw_count = "1"
+key = "stage_201"
+min_depth = "3"
+name = "Interior"
+region = "81750351-c861-5d45-a3e3-8f31a379e8c8"
+
+[[records]]
+uuid = "e05bcdab-0067-51f7-9ffe-4e12b08c6998"
+label = "gather_stages_202"
+
+[records.values]
+draw_count = "1"
+key = "stage_202"
+min_depth = "6"
+name = "Deep Reach"
+region = "81750351-c861-5d45-a3e3-8f31a379e8c8"
+
+[[records]]
+uuid = "1814b190-a9a7-519e-b7b2-0b140e6b7fc5"
+label = "gather_stages_203"
+
+[records.values]
+draw_count = "1"
+key = "stage_203"
+min_depth = "9"
+name = "Farthest Reach"
+region = "81750351-c861-5d45-a3e3-8f31a379e8c8"
+
+[[records]]
+uuid = "2ee5730f-25d2-5286-aa3d-7878c63a594b"
+label = "gather_stages_204"
+
+[records.values]
+draw_count = "1"
+key = "stage_204"
+min_depth = "0"
+name = "Entrance"
+region = "1a5639b4-32f4-5ad5-bd8b-2e6d6e163f11"
+
+[[records]]
+uuid = "779c49a0-d270-5fbf-baff-3842c9f27064"
+label = "gather_stages_205"
+
+[records.values]
+draw_count = "1"
+key = "stage_205"
+min_depth = "3"
+name = "Interior"
+region = "1a5639b4-32f4-5ad5-bd8b-2e6d6e163f11"
+
+[[records]]
+uuid = "b10a5636-59f0-5e68-9376-28c3fd8a37a5"
+label = "gather_stages_206"
+
+[records.values]
+draw_count = "1"
+key = "stage_206"
+min_depth = "6"
+name = "Deep Reach"
+region = "1a5639b4-32f4-5ad5-bd8b-2e6d6e163f11"
+
+[[records]]
+uuid = "96bbb155-7e8f-56bb-aad4-b3a00d51790b"
+label = "gather_stages_207"
+
+[records.values]
+draw_count = "1"
+key = "stage_207"
+min_depth = "9"
+name = "Farthest Reach"
+region = "1a5639b4-32f4-5ad5-bd8b-2e6d6e163f11"
+
+[[records]]
+uuid = "292289dd-d1dc-58f9-b038-e4929e38bb3f"
+label = "gather_stages_208"
+
+[records.values]
+draw_count = "1"
+key = "stage_208"
+min_depth = "0"
+name = "Entrance"
+region = "3de179c0-0029-543a-9c29-65bfbd6d7886"
+
+[[records]]
+uuid = "004efcb0-4a8f-559e-8ccd-6c0eb0737199"
+label = "gather_stages_209"
+
+[records.values]
+draw_count = "1"
+key = "stage_209"
+min_depth = "3"
+name = "Interior"
+region = "3de179c0-0029-543a-9c29-65bfbd6d7886"
+
+[[records]]
+uuid = "614edd22-c15a-5653-9092-4383c78293a9"
+label = "gather_stages_210"
+
+[records.values]
+draw_count = "1"
+key = "stage_210"
+min_depth = "6"
+name = "Deep Reach"
+region = "3de179c0-0029-543a-9c29-65bfbd6d7886"
+
+[[records]]
+uuid = "662ae0c5-5283-5e1e-a970-8849c954c877"
+label = "gather_stages_211"
+
+[records.values]
+draw_count = "1"
+key = "stage_211"
+min_depth = "9"
+name = "Farthest Reach"
+region = "3de179c0-0029-543a-9c29-65bfbd6d7886"
+
+[[records]]
+uuid = "cdc76db3-61a2-5bb9-8a96-22f832f7fd08"
+label = "gather_stages_212"
+
+[records.values]
+draw_count = "1"
+key = "stage_212"
+min_depth = "0"
+name = "Entrance"
+region = "50c7964a-fa49-53c5-abb3-0aed20fcb4fb"
+
+[[records]]
+uuid = "41b25296-6133-55f1-b9b9-70a7abe3cb86"
+label = "gather_stages_213"
+
+[records.values]
+draw_count = "1"
+key = "stage_213"
+min_depth = "3"
+name = "Interior"
+region = "50c7964a-fa49-53c5-abb3-0aed20fcb4fb"
+
+[[records]]
+uuid = "e1a86992-e7cd-50fb-aad2-7815386d7ba8"
+label = "gather_stages_214"
+
+[records.values]
+draw_count = "1"
+key = "stage_214"
+min_depth = "6"
+name = "Deep Reach"
+region = "50c7964a-fa49-53c5-abb3-0aed20fcb4fb"
+
+[[records]]
+uuid = "59ac2c92-a6fb-5df4-8f72-b01247926400"
+label = "gather_stages_215"
+
+[records.values]
+draw_count = "1"
+key = "stage_215"
+min_depth = "9"
+name = "Farthest Reach"
+region = "50c7964a-fa49-53c5-abb3-0aed20fcb4fb"
+
+[[records]]
+uuid = "ec637dba-f358-53fc-94ad-742be4bfebde"
+label = "gather_stages_216"
+
+[records.values]
+draw_count = "1"
+key = "stage_216"
+min_depth = "0"
+name = "Entrance"
+region = "45a63e98-f65d-58c5-ae5d-5ba19bf050b6"
+
+[[records]]
+uuid = "7620e186-b6e3-59c5-8318-7d27d6cd77ad"
+label = "gather_stages_217"
+
+[records.values]
+draw_count = "1"
+key = "stage_217"
+min_depth = "3"
+name = "Interior"
+region = "45a63e98-f65d-58c5-ae5d-5ba19bf050b6"
+
+[[records]]
+uuid = "45416c95-b437-569e-808b-16565a9613c6"
+label = "gather_stages_218"
+
+[records.values]
+draw_count = "1"
+key = "stage_218"
+min_depth = "6"
+name = "Deep Reach"
+region = "45a63e98-f65d-58c5-ae5d-5ba19bf050b6"
+
+[[records]]
+uuid = "6282609a-b2c6-5666-b9d9-7c7b64b6f9a5"
+label = "gather_stages_219"
+
+[records.values]
+draw_count = "1"
+key = "stage_219"
+min_depth = "9"
+name = "Farthest Reach"
+region = "45a63e98-f65d-58c5-ae5d-5ba19bf050b6"
+
+[[records]]
+uuid = "7025b50f-bee2-50f9-af0b-f8d3a8be5c69"
+label = "gather_stages_220"
+
+[records.values]
+draw_count = "1"
+key = "stage_220"
+min_depth = "0"
+name = "Entrance"
+region = "72bdf44d-537e-5c9a-be81-ad32e67997cf"
+
+[[records]]
+uuid = "fd0f3f3e-5bb0-5d56-a1ec-3abb788baa32"
+label = "gather_stages_221"
+
+[records.values]
+draw_count = "1"
+key = "stage_221"
+min_depth = "3"
+name = "Interior"
+region = "72bdf44d-537e-5c9a-be81-ad32e67997cf"
+
+[[records]]
+uuid = "ba2f913e-8f6c-5eab-a2b3-8f1741f08a57"
+label = "gather_stages_222"
+
+[records.values]
+draw_count = "1"
+key = "stage_222"
+min_depth = "6"
+name = "Deep Reach"
+region = "72bdf44d-537e-5c9a-be81-ad32e67997cf"
+
+[[records]]
+uuid = "5a09033f-3e08-53f6-baff-673688e73806"
+label = "gather_stages_223"
+
+[records.values]
+draw_count = "1"
+key = "stage_223"
+min_depth = "9"
+name = "Farthest Reach"
+region = "72bdf44d-537e-5c9a-be81-ad32e67997cf"
+
+[[records]]
+uuid = "18dfbc31-fd3a-5613-aa05-da34c2941f8c"
+label = "gather_stages_224"
+
+[records.values]
+draw_count = "1"
+key = "stage_224"
+min_depth = "0"
+name = "Entrance"
+region = "06c8d288-026b-59f6-81b0-5f802b83dddb"
+
+[[records]]
+uuid = "ce604090-dc62-5453-960f-700dc3da8298"
+label = "gather_stages_225"
+
+[records.values]
+draw_count = "1"
+key = "stage_225"
+min_depth = "3"
+name = "Interior"
+region = "06c8d288-026b-59f6-81b0-5f802b83dddb"
+
+[[records]]
+uuid = "a54af643-a9ad-5576-bbf5-aa587cca07a3"
+label = "gather_stages_226"
+
+[records.values]
+draw_count = "1"
+key = "stage_226"
+min_depth = "6"
+name = "Deep Reach"
+region = "06c8d288-026b-59f6-81b0-5f802b83dddb"
+
+[[records]]
+uuid = "ca835817-368e-558d-af65-c0b53bf40809"
+label = "gather_stages_227"
+
+[records.values]
+draw_count = "1"
+key = "stage_227"
+min_depth = "9"
+name = "Farthest Reach"
+region = "06c8d288-026b-59f6-81b0-5f802b83dddb"
+
+[[records]]
+uuid = "b700aebf-43dc-5475-8a70-74285440541b"
+label = "gather_stages_228"
+
+[records.values]
+draw_count = "1"
+key = "stage_228"
+min_depth = "0"
+name = "Entrance"
+region = "627a933b-fa90-57ad-a829-46787f0f5cff"
+
+[[records]]
+uuid = "fae96163-b420-5a97-95e7-5609f74cd182"
+label = "gather_stages_229"
+
+[records.values]
+draw_count = "1"
+key = "stage_229"
+min_depth = "3"
+name = "Interior"
+region = "627a933b-fa90-57ad-a829-46787f0f5cff"
+
+[[records]]
+uuid = "146a909f-81c2-5bdf-a25a-cb53dbeb91f2"
+label = "gather_stages_230"
+
+[records.values]
+draw_count = "1"
+key = "stage_230"
+min_depth = "6"
+name = "Deep Reach"
+region = "627a933b-fa90-57ad-a829-46787f0f5cff"
+
+[[records]]
+uuid = "376cd735-a253-5b2c-8f43-fed5cc3ab4c5"
+label = "gather_stages_231"
+
+[records.values]
+draw_count = "1"
+key = "stage_231"
+min_depth = "9"
+name = "Farthest Reach"
+region = "627a933b-fa90-57ad-a829-46787f0f5cff"
+
+[[records]]
+uuid = "f74ba66e-fa92-5010-ad27-59613fa9ef2c"
+label = "gather_stages_232"
+
+[records.values]
+draw_count = "1"
+key = "stage_232"
+min_depth = "0"
+name = "Entrance"
+region = "2ccc532e-dcb6-5665-a53b-a054aaad59c5"
+
+[[records]]
+uuid = "ac33a181-563c-5f6f-8a53-ab7c1d423de2"
+label = "gather_stages_233"
+
+[records.values]
+draw_count = "1"
+key = "stage_233"
+min_depth = "3"
+name = "Interior"
+region = "2ccc532e-dcb6-5665-a53b-a054aaad59c5"
+
+[[records]]
+uuid = "cd5556e7-3202-537e-ad2d-8c719bc40e75"
+label = "gather_stages_234"
+
+[records.values]
+draw_count = "1"
+key = "stage_234"
+min_depth = "6"
+name = "Deep Reach"
+region = "2ccc532e-dcb6-5665-a53b-a054aaad59c5"
+
+[[records]]
+uuid = "cd567ce4-ff8c-5e00-8a31-6f2df2428637"
+label = "gather_stages_235"
+
+[records.values]
+draw_count = "1"
+key = "stage_235"
+min_depth = "9"
+name = "Farthest Reach"
+region = "2ccc532e-dcb6-5665-a53b-a054aaad59c5"
+
+[[records]]
+uuid = "811d95b9-dca6-5820-b080-4992644088e5"
+label = "gather_stages_236"
+
+[records.values]
+draw_count = "1"
+key = "stage_236"
+min_depth = "0"
+name = "Entrance"
+region = "13b88c8a-4e94-53dd-8ec1-498773176ebc"
+
+[[records]]
+uuid = "901b9de1-1d86-5aac-8f99-f606ca86be37"
+label = "gather_stages_237"
+
+[records.values]
+draw_count = "1"
+key = "stage_237"
+min_depth = "3"
+name = "Interior"
+region = "13b88c8a-4e94-53dd-8ec1-498773176ebc"
+
+[[records]]
+uuid = "684057fd-b2d9-5b78-8337-8a9e6b1d2b15"
+label = "gather_stages_238"
+
+[records.values]
+draw_count = "1"
+key = "stage_238"
+min_depth = "6"
+name = "Deep Reach"
+region = "13b88c8a-4e94-53dd-8ec1-498773176ebc"
+
+[[records]]
+uuid = "1f922b80-29ce-5030-b8f6-95ea6684239c"
+label = "gather_stages_239"
+
+[records.values]
+draw_count = "1"
+key = "stage_239"
+min_depth = "9"
+name = "Farthest Reach"
+region = "13b88c8a-4e94-53dd-8ec1-498773176ebc"
+
+[[records]]
+uuid = "9700ca19-4206-55a3-ab75-51e496cca9fd"
+label = "row_9700ca19420655a3ab7551e496cca9fd"
+
+[records.values]
+draw_count = "1"
+key = "stage_05b31c7d-8560-5de9-97ab-af15ac955f6a_0"
+min_depth = "0"
+name = "Entrance"
+region = "05b31c7d-8560-5de9-97ab-af15ac955f6a"
+
+[[records]]
+uuid = "de14b222-ba82-565b-8952-a7e6355f0a8f"
+label = "row_de14b222ba82565b8952a7e6355f0a8f"
+
+[records.values]
+draw_count = "1"
+key = "stage_05b31c7d-8560-5de9-97ab-af15ac955f6a_3"
+min_depth = "3"
+name = "Interior"
+region = "05b31c7d-8560-5de9-97ab-af15ac955f6a"
+
+[[records]]
+uuid = "6f0c93f6-a80e-565e-9246-e9595b0ebe78"
+label = "row_6f0c93f6a80e565e9246e9595b0ebe78"
+
+[records.values]
+draw_count = "1"
+key = "stage_05b31c7d-8560-5de9-97ab-af15ac955f6a_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "05b31c7d-8560-5de9-97ab-af15ac955f6a"
+
+[[records]]
+uuid = "437d0db9-ed4e-5be9-8199-5ff7aafdfd81"
+label = "row_437d0db9ed4e5be981995ff7aafdfd81"
+
+[records.values]
+draw_count = "1"
+key = "stage_05b31c7d-8560-5de9-97ab-af15ac955f6a_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "05b31c7d-8560-5de9-97ab-af15ac955f6a"
+
+[[records]]
+uuid = "8c7fdb77-ab34-555d-8da1-4a92baf3fde9"
+label = "row_8c7fdb77ab34555d8da14a92baf3fde9"
+
+[records.values]
+draw_count = "1"
+key = "stage_0acea1b9-e1eb-5288-963a-a0e778c51327_0"
+min_depth = "0"
+name = "Entrance"
+region = "0acea1b9-e1eb-5288-963a-a0e778c51327"
+
+[[records]]
+uuid = "8420a06a-23b2-5a7c-8f89-58be8795a8eb"
+label = "row_8420a06a23b25a7c8f8958be8795a8eb"
+
+[records.values]
+draw_count = "1"
+key = "stage_0acea1b9-e1eb-5288-963a-a0e778c51327_3"
+min_depth = "3"
+name = "Interior"
+region = "0acea1b9-e1eb-5288-963a-a0e778c51327"
+
+[[records]]
+uuid = "71b159ca-9bff-54cf-9bd8-71b875a1caec"
+label = "row_71b159ca9bff54cf9bd871b875a1caec"
+
+[records.values]
+draw_count = "1"
+key = "stage_0acea1b9-e1eb-5288-963a-a0e778c51327_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "0acea1b9-e1eb-5288-963a-a0e778c51327"
+
+[[records]]
+uuid = "d3bc8366-5fc9-5115-8321-5d5f9db7ef42"
+label = "row_d3bc83665fc9511583215d5f9db7ef42"
+
+[records.values]
+draw_count = "1"
+key = "stage_0acea1b9-e1eb-5288-963a-a0e778c51327_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "0acea1b9-e1eb-5288-963a-a0e778c51327"
+
+[[records]]
+uuid = "5a9786bc-57fe-5761-8c83-40de9c3619ca"
+label = "row_5a9786bc57fe57618c8340de9c3619ca"
+
+[records.values]
+draw_count = "1"
+key = "stage_0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_0"
+min_depth = "0"
+name = "Entrance"
+region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+
+[[records]]
+uuid = "7fe7dc55-caac-5a92-9c0d-31294028ce82"
+label = "row_7fe7dc55caac5a929c0d31294028ce82"
+
+[records.values]
+draw_count = "1"
+key = "stage_0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_3"
+min_depth = "3"
+name = "Interior"
+region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+
+[[records]]
+uuid = "c086e81a-fb10-5c64-9cba-e3cc0a11b644"
+label = "row_c086e81afb105c649cbae3cc0a11b644"
+
+[records.values]
+draw_count = "1"
+key = "stage_0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+
+[[records]]
+uuid = "e6828223-2fa5-5ba0-964d-b71dd1447f70"
+label = "row_e68282232fa55ba0964db71dd1447f70"
+
+[records.values]
+draw_count = "1"
+key = "stage_0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+
+[[records]]
+uuid = "3172ae47-62f3-555d-882d-0650a9c970d8"
+label = "row_3172ae4762f3555d882d0650a9c970d8"
+
+[records.values]
+draw_count = "1"
+key = "stage_11c973c4-d43a-5d99-b03e-cfd759a62f95_0"
+min_depth = "0"
+name = "Entrance"
+region = "11c973c4-d43a-5d99-b03e-cfd759a62f95"
+
+[[records]]
+uuid = "00099ea5-1991-5b77-888b-b2c5257b407d"
+label = "row_00099ea519915b77888bb2c5257b407d"
+
+[records.values]
+draw_count = "1"
+key = "stage_11c973c4-d43a-5d99-b03e-cfd759a62f95_3"
+min_depth = "3"
+name = "Interior"
+region = "11c973c4-d43a-5d99-b03e-cfd759a62f95"
+
+[[records]]
+uuid = "4e4b6711-ae06-5a46-a3bc-05fd80c19da4"
+label = "row_4e4b6711ae065a46a3bc05fd80c19da4"
+
+[records.values]
+draw_count = "1"
+key = "stage_11c973c4-d43a-5d99-b03e-cfd759a62f95_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "11c973c4-d43a-5d99-b03e-cfd759a62f95"
+
+[[records]]
+uuid = "5bc94a39-20da-514a-8549-1b2300f1b6bf"
+label = "row_5bc94a3920da514a85491b2300f1b6bf"
+
+[records.values]
+draw_count = "1"
+key = "stage_11c973c4-d43a-5d99-b03e-cfd759a62f95_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "11c973c4-d43a-5d99-b03e-cfd759a62f95"
+
+[[records]]
+uuid = "ec131259-0399-5e98-bc17-2734edf61448"
+label = "row_ec13125903995e98bc172734edf61448"
+
+[records.values]
+draw_count = "1"
+key = "stage_162d47f0-bb7d-5a4e-ac48-5a73bd7e894f_0"
+min_depth = "0"
+name = "Entrance"
+region = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+
+[[records]]
+uuid = "1e51dbac-11c9-59ad-8b6c-c619be38660d"
+label = "row_1e51dbac11c959ad8b6cc619be38660d"
+
+[records.values]
+draw_count = "1"
+key = "stage_162d47f0-bb7d-5a4e-ac48-5a73bd7e894f_3"
+min_depth = "3"
+name = "Interior"
+region = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+
+[[records]]
+uuid = "5293601b-15c4-5e7e-8960-a473174eb110"
+label = "row_5293601b15c45e7e8960a473174eb110"
+
+[records.values]
+draw_count = "1"
+key = "stage_162d47f0-bb7d-5a4e-ac48-5a73bd7e894f_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+
+[[records]]
+uuid = "e177539a-2621-5f12-9ea2-a22e61721c94"
+label = "row_e177539a26215f129ea2a22e61721c94"
+
+[records.values]
+draw_count = "1"
+key = "stage_162d47f0-bb7d-5a4e-ac48-5a73bd7e894f_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+
+[[records]]
+uuid = "fa0aafbf-34f9-5c60-832a-f228c7b25856"
+label = "row_fa0aafbf34f95c60832af228c7b25856"
+
+[records.values]
+draw_count = "1"
+key = "stage_18a66bc2-b0bf-52fb-8321-745ee92bd1fb_0"
+min_depth = "0"
+name = "Entrance"
+region = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb"
+
+[[records]]
+uuid = "ec528081-54d4-5bad-844b-ea2dcdd8ae86"
+label = "row_ec52808154d45bad844bea2dcdd8ae86"
+
+[records.values]
+draw_count = "1"
+key = "stage_18a66bc2-b0bf-52fb-8321-745ee92bd1fb_3"
+min_depth = "3"
+name = "Interior"
+region = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb"
+
+[[records]]
+uuid = "4a75c2ea-c94e-563b-becd-bc0a29b9a3af"
+label = "row_4a75c2eac94e563bbecdbc0a29b9a3af"
+
+[records.values]
+draw_count = "1"
+key = "stage_18a66bc2-b0bf-52fb-8321-745ee92bd1fb_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb"
+
+[[records]]
+uuid = "25fc5172-0d7e-543e-a00f-464a4567e4b6"
+label = "row_25fc51720d7e543ea00f464a4567e4b6"
+
+[records.values]
+draw_count = "1"
+key = "stage_18a66bc2-b0bf-52fb-8321-745ee92bd1fb_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb"
+
+[[records]]
+uuid = "fa60998a-862c-55f8-95df-5b1f76e36163"
+label = "row_fa60998a862c55f895df5b1f76e36163"
+
+[records.values]
+draw_count = "1"
+key = "stage_1de78829-608e-59aa-b8b1-a00729c41f61_0"
+min_depth = "0"
+name = "Entrance"
+region = "1de78829-608e-59aa-b8b1-a00729c41f61"
+
+[[records]]
+uuid = "ac5e82df-7043-5959-93d8-db09678bb3ad"
+label = "row_ac5e82df7043595993d8db09678bb3ad"
+
+[records.values]
+draw_count = "1"
+key = "stage_1de78829-608e-59aa-b8b1-a00729c41f61_3"
+min_depth = "3"
+name = "Interior"
+region = "1de78829-608e-59aa-b8b1-a00729c41f61"
+
+[[records]]
+uuid = "084f0dbc-91ba-5592-9a51-f482ed2b9e66"
+label = "row_084f0dbc91ba55929a51f482ed2b9e66"
+
+[records.values]
+draw_count = "1"
+key = "stage_1de78829-608e-59aa-b8b1-a00729c41f61_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "1de78829-608e-59aa-b8b1-a00729c41f61"
+
+[[records]]
+uuid = "f00e3d89-16b6-5dba-a82c-3d0abcbcd5c3"
+label = "row_f00e3d8916b65dbaa82c3d0abcbcd5c3"
+
+[records.values]
+draw_count = "1"
+key = "stage_1de78829-608e-59aa-b8b1-a00729c41f61_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "1de78829-608e-59aa-b8b1-a00729c41f61"
+
+[[records]]
+uuid = "050ccffc-9e8b-57bc-aecd-3e34be36a216"
+label = "row_050ccffc9e8b57bcaecd3e34be36a216"
+
+[records.values]
+draw_count = "1"
+key = "stage_1e17a67e-3cef-5ae5-8007-ab3a6841b05c_0"
+min_depth = "0"
+name = "Entrance"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "b12375f9-4acd-55be-8f56-8b9ab7be7341"
+label = "row_b12375f94acd55be8f568b9ab7be7341"
+
+[records.values]
+draw_count = "1"
+key = "stage_1e17a67e-3cef-5ae5-8007-ab3a6841b05c_3"
+min_depth = "3"
+name = "Interior"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "e1f099f1-f439-5897-99d9-95ee44a71abc"
+label = "row_e1f099f1f439589799d995ee44a71abc"
+
+[records.values]
+draw_count = "1"
+key = "stage_1e17a67e-3cef-5ae5-8007-ab3a6841b05c_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "c88716e1-4552-5c23-9122-b2cd9a9ce69b"
+label = "row_c88716e145525c239122b2cd9a9ce69b"
+
+[records.values]
+draw_count = "1"
+key = "stage_1e17a67e-3cef-5ae5-8007-ab3a6841b05c_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "9b8361c8-8263-5d9f-9997-888826f3b913"
+label = "row_9b8361c882635d9f9997888826f3b913"
+
+[records.values]
+draw_count = "1"
+key = "stage_2dcde8dc-4a07-5e11-9677-362141e61ae3_0"
+min_depth = "0"
+name = "Entrance"
+region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+
+[[records]]
+uuid = "662519a1-9833-538f-9fa3-8afe8c04aea7"
+label = "row_662519a19833538f9fa38afe8c04aea7"
+
+[records.values]
+draw_count = "1"
+key = "stage_2dcde8dc-4a07-5e11-9677-362141e61ae3_3"
+min_depth = "3"
+name = "Interior"
+region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+
+[[records]]
+uuid = "48830641-891f-5340-a184-ceb0713d66c7"
+label = "row_48830641891f5340a184ceb0713d66c7"
+
+[records.values]
+draw_count = "1"
+key = "stage_2dcde8dc-4a07-5e11-9677-362141e61ae3_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+
+[[records]]
+uuid = "5ab877a0-ffd2-5e11-80b8-ac28ae08d432"
+label = "row_5ab877a0ffd25e1180b8ac28ae08d432"
+
+[records.values]
+draw_count = "1"
+key = "stage_2dcde8dc-4a07-5e11-9677-362141e61ae3_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+
+[[records]]
+uuid = "c49eaab3-639c-5004-9d7b-ceef051a94b6"
+label = "row_c49eaab3639c50049d7bceef051a94b6"
+
+[records.values]
+draw_count = "1"
+key = "stage_307900a0-64ef-590d-a61a-857dc7d674c6_0"
+min_depth = "0"
+name = "Entrance"
+region = "307900a0-64ef-590d-a61a-857dc7d674c6"
+
+[[records]]
+uuid = "3169906e-82b0-52e8-a630-15e0051c1a0a"
+label = "row_3169906e82b052e8a63015e0051c1a0a"
+
+[records.values]
+draw_count = "1"
+key = "stage_307900a0-64ef-590d-a61a-857dc7d674c6_3"
+min_depth = "3"
+name = "Interior"
+region = "307900a0-64ef-590d-a61a-857dc7d674c6"
+
+[[records]]
+uuid = "0c35750d-a14d-5381-9b8e-b2627fcbce16"
+label = "row_0c35750da14d53819b8eb2627fcbce16"
+
+[records.values]
+draw_count = "1"
+key = "stage_307900a0-64ef-590d-a61a-857dc7d674c6_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "307900a0-64ef-590d-a61a-857dc7d674c6"
+
+[[records]]
+uuid = "65127c3d-2954-5f5d-95a0-be5f7362498a"
+label = "row_65127c3d29545f5d95a0be5f7362498a"
+
+[records.values]
+draw_count = "1"
+key = "stage_307900a0-64ef-590d-a61a-857dc7d674c6_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "307900a0-64ef-590d-a61a-857dc7d674c6"
+
+[[records]]
+uuid = "fe9b4ac7-91ce-5971-b7ab-0255f1a0a683"
+label = "row_fe9b4ac791ce5971b7ab0255f1a0a683"
+
+[records.values]
+draw_count = "1"
+key = "stage_3ec4e464-b53b-52cb-aa51-637849f7e676_0"
+min_depth = "0"
+name = "Entrance"
+region = "3ec4e464-b53b-52cb-aa51-637849f7e676"
+
+[[records]]
+uuid = "84c6a0ed-48ed-5f36-8648-bbab6d64dc76"
+label = "row_84c6a0ed48ed5f368648bbab6d64dc76"
+
+[records.values]
+draw_count = "1"
+key = "stage_3ec4e464-b53b-52cb-aa51-637849f7e676_3"
+min_depth = "3"
+name = "Interior"
+region = "3ec4e464-b53b-52cb-aa51-637849f7e676"
+
+[[records]]
+uuid = "442ba653-d616-5953-bb3d-11b86bcfca21"
+label = "row_442ba653d6165953bb3d11b86bcfca21"
+
+[records.values]
+draw_count = "1"
+key = "stage_3ec4e464-b53b-52cb-aa51-637849f7e676_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "3ec4e464-b53b-52cb-aa51-637849f7e676"
+
+[[records]]
+uuid = "d6f7a631-bfa8-5e8b-94f2-02c53494a26b"
+label = "row_d6f7a631bfa85e8b94f202c53494a26b"
+
+[records.values]
+draw_count = "1"
+key = "stage_3ec4e464-b53b-52cb-aa51-637849f7e676_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "3ec4e464-b53b-52cb-aa51-637849f7e676"
+
+[[records]]
+uuid = "c36b057d-4543-561b-978b-2893e716d7a1"
+label = "row_c36b057d4543561b978b2893e716d7a1"
+
+[records.values]
+draw_count = "1"
+key = "stage_43d9a8d0-dec2-5b39-8033-2b2a6d10753c_0"
+min_depth = "0"
+name = "Entrance"
+region = "43d9a8d0-dec2-5b39-8033-2b2a6d10753c"
+
+[[records]]
+uuid = "ab95875b-2ef9-51d9-889c-40e3c0225a51"
+label = "row_ab95875b2ef951d9889c40e3c0225a51"
+
+[records.values]
+draw_count = "1"
+key = "stage_43d9a8d0-dec2-5b39-8033-2b2a6d10753c_3"
+min_depth = "3"
+name = "Interior"
+region = "43d9a8d0-dec2-5b39-8033-2b2a6d10753c"
+
+[[records]]
+uuid = "14d583c0-18a5-50c6-91c0-60df86e69389"
+label = "row_14d583c018a550c691c060df86e69389"
+
+[records.values]
+draw_count = "1"
+key = "stage_43d9a8d0-dec2-5b39-8033-2b2a6d10753c_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "43d9a8d0-dec2-5b39-8033-2b2a6d10753c"
+
+[[records]]
+uuid = "75ded2c3-2b5e-5df9-913d-29e815f40893"
+label = "row_75ded2c32b5e5df9913d29e815f40893"
+
+[records.values]
+draw_count = "1"
+key = "stage_43d9a8d0-dec2-5b39-8033-2b2a6d10753c_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "43d9a8d0-dec2-5b39-8033-2b2a6d10753c"
+
+[[records]]
+uuid = "3d56d056-8e33-57ac-8b28-8b692f04dc41"
+label = "row_3d56d0568e3357ac8b288b692f04dc41"
+
+[records.values]
+draw_count = "1"
+key = "stage_442243c2-99e6-5e60-ba87-fecb633053a3_0"
+min_depth = "0"
+name = "Entrance"
+region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "c78e3657-efa1-56af-ab33-33a655a7b615"
+label = "row_c78e3657efa156afab3333a655a7b615"
+
+[records.values]
+draw_count = "1"
+key = "stage_442243c2-99e6-5e60-ba87-fecb633053a3_3"
+min_depth = "3"
+name = "Interior"
+region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "0947180a-917c-54e5-b390-2430e8ec84cd"
+label = "row_0947180a917c54e5b3902430e8ec84cd"
+
+[records.values]
+draw_count = "1"
+key = "stage_442243c2-99e6-5e60-ba87-fecb633053a3_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "88d080a4-8d40-5aef-9c50-57631343f180"
+label = "row_88d080a48d405aef9c5057631343f180"
+
+[records.values]
+draw_count = "1"
+key = "stage_442243c2-99e6-5e60-ba87-fecb633053a3_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "9ac4f26a-2f38-5b78-b477-07ca99dcf7f3"
+label = "row_9ac4f26a2f385b78b47707ca99dcf7f3"
+
+[records.values]
+draw_count = "1"
+key = "stage_54100e4e-e05a-5c5b-81d7-e2abf68e0340_0"
+min_depth = "0"
+name = "Entrance"
+region = "54100e4e-e05a-5c5b-81d7-e2abf68e0340"
+
+[[records]]
+uuid = "90179295-685f-50a4-bf15-9a88eecb61ac"
+label = "row_90179295685f50a4bf159a88eecb61ac"
+
+[records.values]
+draw_count = "1"
+key = "stage_54100e4e-e05a-5c5b-81d7-e2abf68e0340_3"
+min_depth = "3"
+name = "Interior"
+region = "54100e4e-e05a-5c5b-81d7-e2abf68e0340"
+
+[[records]]
+uuid = "85c5f48e-68a5-52b5-aa53-92dcfe41aa50"
+label = "row_85c5f48e68a552b5aa5392dcfe41aa50"
+
+[records.values]
+draw_count = "1"
+key = "stage_54100e4e-e05a-5c5b-81d7-e2abf68e0340_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "54100e4e-e05a-5c5b-81d7-e2abf68e0340"
+
+[[records]]
+uuid = "2de79dfe-f2f6-5109-b4a8-879e471d0ffb"
+label = "row_2de79dfef2f65109b4a8879e471d0ffb"
+
+[records.values]
+draw_count = "1"
+key = "stage_54100e4e-e05a-5c5b-81d7-e2abf68e0340_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "54100e4e-e05a-5c5b-81d7-e2abf68e0340"
+
+[[records]]
+uuid = "d4f0519d-0659-5f1b-9b47-0d8a4cf74cb8"
+label = "row_d4f0519d06595f1b9b470d8a4cf74cb8"
+
+[records.values]
+draw_count = "1"
+key = "stage_602f3c7d-56cc-52f4-ac42-175a8646168d_0"
+min_depth = "0"
+name = "Entrance"
+region = "602f3c7d-56cc-52f4-ac42-175a8646168d"
+
+[[records]]
+uuid = "e3e850db-49aa-5956-a6b1-910cf5dbccd9"
+label = "row_e3e850db49aa5956a6b1910cf5dbccd9"
+
+[records.values]
+draw_count = "1"
+key = "stage_602f3c7d-56cc-52f4-ac42-175a8646168d_3"
+min_depth = "3"
+name = "Interior"
+region = "602f3c7d-56cc-52f4-ac42-175a8646168d"
+
+[[records]]
+uuid = "63e0ed7a-277e-5b79-80fc-047860d760f6"
+label = "row_63e0ed7a277e5b7980fc047860d760f6"
+
+[records.values]
+draw_count = "1"
+key = "stage_602f3c7d-56cc-52f4-ac42-175a8646168d_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "602f3c7d-56cc-52f4-ac42-175a8646168d"
+
+[[records]]
+uuid = "43618591-9d55-50db-982c-1299eb176d4e"
+label = "row_436185919d5550db982c1299eb176d4e"
+
+[records.values]
+draw_count = "1"
+key = "stage_602f3c7d-56cc-52f4-ac42-175a8646168d_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "602f3c7d-56cc-52f4-ac42-175a8646168d"
+
+[[records]]
+uuid = "71aeba51-6b82-554e-9bb7-29acf0a1143b"
+label = "row_71aeba516b82554e9bb729acf0a1143b"
+
+[records.values]
+draw_count = "1"
+key = "stage_70742414-3a03-5930-bb22-8431bdc62458_0"
+min_depth = "0"
+name = "Entrance"
+region = "70742414-3a03-5930-bb22-8431bdc62458"
+
+[[records]]
+uuid = "a44c052d-c58c-5db4-a232-59be8734ba59"
+label = "row_a44c052dc58c5db4a23259be8734ba59"
+
+[records.values]
+draw_count = "1"
+key = "stage_70742414-3a03-5930-bb22-8431bdc62458_3"
+min_depth = "3"
+name = "Interior"
+region = "70742414-3a03-5930-bb22-8431bdc62458"
+
+[[records]]
+uuid = "070a48b0-415a-520e-aea1-83f85ef2a9db"
+label = "row_070a48b0415a520eaea183f85ef2a9db"
+
+[records.values]
+draw_count = "1"
+key = "stage_70742414-3a03-5930-bb22-8431bdc62458_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "70742414-3a03-5930-bb22-8431bdc62458"
+
+[[records]]
+uuid = "bd1054b1-fc63-5bd7-874c-6fcb416858c2"
+label = "row_bd1054b1fc635bd7874c6fcb416858c2"
+
+[records.values]
+draw_count = "1"
+key = "stage_70742414-3a03-5930-bb22-8431bdc62458_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "70742414-3a03-5930-bb22-8431bdc62458"
+
+[[records]]
+uuid = "39d903b5-4691-5ee4-a937-d66a5d66445c"
+label = "row_39d903b546915ee4a937d66a5d66445c"
+
+[records.values]
+draw_count = "1"
+key = "stage_76491b81-a10a-57a4-8643-e8f1cacffda7_0"
+min_depth = "0"
+name = "Entrance"
+region = "76491b81-a10a-57a4-8643-e8f1cacffda7"
+
+[[records]]
+uuid = "ccfc6f5a-60ed-517c-a543-f1eba22106e2"
+label = "row_ccfc6f5a60ed517ca543f1eba22106e2"
+
+[records.values]
+draw_count = "1"
+key = "stage_76491b81-a10a-57a4-8643-e8f1cacffda7_3"
+min_depth = "3"
+name = "Interior"
+region = "76491b81-a10a-57a4-8643-e8f1cacffda7"
+
+[[records]]
+uuid = "0d43366a-36fe-5439-ad4a-8d6cd13b1725"
+label = "row_0d43366a36fe5439ad4a8d6cd13b1725"
+
+[records.values]
+draw_count = "1"
+key = "stage_76491b81-a10a-57a4-8643-e8f1cacffda7_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "76491b81-a10a-57a4-8643-e8f1cacffda7"
+
+[[records]]
+uuid = "f31f3438-71c2-5720-bc1e-11e353f71dc6"
+label = "row_f31f343871c25720bc1e11e353f71dc6"
+
+[records.values]
+draw_count = "1"
+key = "stage_76491b81-a10a-57a4-8643-e8f1cacffda7_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "76491b81-a10a-57a4-8643-e8f1cacffda7"
+
+[[records]]
+uuid = "5f9248b7-f1fe-5fab-89cd-019d8b9c8fae"
+label = "row_5f9248b7f1fe5fab89cd019d8b9c8fae"
+
+[records.values]
+draw_count = "1"
+key = "stage_7d332bbd-a4a3-5938-9b59-3a1f987d6014_0"
+min_depth = "0"
+name = "Entrance"
+region = "7d332bbd-a4a3-5938-9b59-3a1f987d6014"
+
+[[records]]
+uuid = "6122fa9c-08fe-573d-9df5-349e827f6bc0"
+label = "row_6122fa9c08fe573d9df5349e827f6bc0"
+
+[records.values]
+draw_count = "1"
+key = "stage_7d332bbd-a4a3-5938-9b59-3a1f987d6014_3"
+min_depth = "3"
+name = "Interior"
+region = "7d332bbd-a4a3-5938-9b59-3a1f987d6014"
+
+[[records]]
+uuid = "42cdeffc-8dee-5f3a-be55-6cbec976f3ed"
+label = "row_42cdeffc8dee5f3abe556cbec976f3ed"
+
+[records.values]
+draw_count = "1"
+key = "stage_7d332bbd-a4a3-5938-9b59-3a1f987d6014_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "7d332bbd-a4a3-5938-9b59-3a1f987d6014"
+
+[[records]]
+uuid = "9db1585d-6614-55e8-8f82-ac37b1379991"
+label = "row_9db1585d661455e88f82ac37b1379991"
+
+[records.values]
+draw_count = "1"
+key = "stage_7d332bbd-a4a3-5938-9b59-3a1f987d6014_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "7d332bbd-a4a3-5938-9b59-3a1f987d6014"
+
+[[records]]
+uuid = "6beef883-253f-50ae-b316-a21897f86c91"
+label = "row_6beef883253f50aeb316a21897f86c91"
+
+[records.values]
+draw_count = "1"
+key = "stage_8062140b-5914-5129-ae4a-964bd8e0c7a7_0"
+min_depth = "0"
+name = "Entrance"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "7e0eff24-7416-5a25-8cb0-0f126b12313d"
+label = "row_7e0eff2474165a258cb00f126b12313d"
+
+[records.values]
+draw_count = "1"
+key = "stage_8062140b-5914-5129-ae4a-964bd8e0c7a7_3"
+min_depth = "3"
+name = "Interior"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "1ce8e80e-e000-5545-adfc-a8288bac543f"
+label = "row_1ce8e80ee0005545adfca8288bac543f"
+
+[records.values]
+draw_count = "1"
+key = "stage_8062140b-5914-5129-ae4a-964bd8e0c7a7_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "b7112622-e5b7-54f6-9095-ac32f5490e81"
+label = "row_b7112622e5b754f69095ac32f5490e81"
+
+[records.values]
+draw_count = "1"
+key = "stage_8062140b-5914-5129-ae4a-964bd8e0c7a7_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "7063c0f0-baac-53c2-8dd8-055e47a2e7fc"
+label = "row_7063c0f0baac53c28dd8055e47a2e7fc"
+
+[records.values]
+draw_count = "1"
+key = "stage_835b6aaa-417f-5ee9-8a8a-00c2cfa66426_0"
+min_depth = "0"
+name = "Entrance"
+region = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+
+[[records]]
+uuid = "12953dec-7430-5224-9eba-5dd12dd13005"
+label = "row_12953dec743052249eba5dd12dd13005"
+
+[records.values]
+draw_count = "1"
+key = "stage_835b6aaa-417f-5ee9-8a8a-00c2cfa66426_3"
+min_depth = "3"
+name = "Interior"
+region = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+
+[[records]]
+uuid = "95fd5723-5397-5569-87d7-8fac84121b8d"
+label = "row_95fd57235397556987d78fac84121b8d"
+
+[records.values]
+draw_count = "1"
+key = "stage_835b6aaa-417f-5ee9-8a8a-00c2cfa66426_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+
+[[records]]
+uuid = "205fdad1-d314-57bd-a5c7-f1877aa401ae"
+label = "row_205fdad1d31457bda5c7f1877aa401ae"
+
+[records.values]
+draw_count = "1"
+key = "stage_835b6aaa-417f-5ee9-8a8a-00c2cfa66426_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+
+[[records]]
+uuid = "41a4c89f-f7ac-5c5b-8462-6848f0a973bf"
+label = "row_41a4c89ff7ac5c5b84626848f0a973bf"
+
+[records.values]
+draw_count = "1"
+key = "stage_83f4d132-8c54-5114-ae26-675379857f45_0"
+min_depth = "0"
+name = "Entrance"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "8168b0ab-1672-560a-a12c-860a092d66b5"
+label = "row_8168b0ab1672560aa12c860a092d66b5"
+
+[records.values]
+draw_count = "1"
+key = "stage_83f4d132-8c54-5114-ae26-675379857f45_3"
+min_depth = "3"
+name = "Interior"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "7bcb05c4-de0f-5fc3-953e-8951d4c6f7ea"
+label = "row_7bcb05c4de0f5fc3953e8951d4c6f7ea"
+
+[records.values]
+draw_count = "1"
+key = "stage_83f4d132-8c54-5114-ae26-675379857f45_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "922cc8a1-cde1-5f2b-bd51-9a0ace2cea08"
+label = "row_922cc8a1cde15f2bbd519a0ace2cea08"
+
+[records.values]
+draw_count = "1"
+key = "stage_83f4d132-8c54-5114-ae26-675379857f45_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "cfb28fc8-a7b8-5962-a389-2663c6ee3c75"
+label = "row_cfb28fc8a7b85962a3892663c6ee3c75"
+
+[records.values]
+draw_count = "1"
+key = "stage_85c33f41-5fd5-5707-8133-798f786d84d4_0"
+min_depth = "0"
+name = "Entrance"
+region = "85c33f41-5fd5-5707-8133-798f786d84d4"
+
+[[records]]
+uuid = "0c79885a-ffab-5320-ac11-a6406b4e0e3a"
+label = "row_0c79885affab5320ac11a6406b4e0e3a"
+
+[records.values]
+draw_count = "1"
+key = "stage_85c33f41-5fd5-5707-8133-798f786d84d4_3"
+min_depth = "3"
+name = "Interior"
+region = "85c33f41-5fd5-5707-8133-798f786d84d4"
+
+[[records]]
+uuid = "c8db5519-7fc3-5911-b4bd-f39cc2393f25"
+label = "row_c8db55197fc35911b4bdf39cc2393f25"
+
+[records.values]
+draw_count = "1"
+key = "stage_85c33f41-5fd5-5707-8133-798f786d84d4_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "85c33f41-5fd5-5707-8133-798f786d84d4"
+
+[[records]]
+uuid = "31734e80-e789-5f19-afc1-709597259c37"
+label = "row_31734e80e7895f19afc1709597259c37"
+
+[records.values]
+draw_count = "1"
+key = "stage_85c33f41-5fd5-5707-8133-798f786d84d4_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "85c33f41-5fd5-5707-8133-798f786d84d4"
+
+[[records]]
+uuid = "10f8e4ae-580e-52fe-9747-c8969d905c2c"
+label = "row_10f8e4ae580e52fe9747c8969d905c2c"
+
+[records.values]
+draw_count = "1"
+key = "stage_867ee5c5-fd9b-567c-a100-fba37a6ad752_0"
+min_depth = "0"
+name = "Entrance"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "f011f830-1f4b-564c-97c3-1170403d9cab"
+label = "row_f011f8301f4b564c97c31170403d9cab"
+
+[records.values]
+draw_count = "1"
+key = "stage_867ee5c5-fd9b-567c-a100-fba37a6ad752_3"
+min_depth = "3"
+name = "Interior"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "e6740175-992f-5425-a042-91c82d0cc459"
+label = "row_e6740175992f5425a04291c82d0cc459"
+
+[records.values]
+draw_count = "1"
+key = "stage_867ee5c5-fd9b-567c-a100-fba37a6ad752_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "510290f5-f48b-586c-9d03-38e7d025ee89"
+label = "row_510290f5f48b586c9d0338e7d025ee89"
+
+[records.values]
+draw_count = "1"
+key = "stage_867ee5c5-fd9b-567c-a100-fba37a6ad752_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "88617108-c113-5f07-9786-55443587de66"
+label = "row_88617108c1135f07978655443587de66"
+
+[records.values]
+draw_count = "1"
+key = "stage_8c4db2e2-5395-5dbf-bd38-91d6cc669cfb_0"
+min_depth = "0"
+name = "Entrance"
+region = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb"
+
+[[records]]
+uuid = "d54f052f-d639-5715-9fc9-72ee9283a9ee"
+label = "row_d54f052fd63957159fc972ee9283a9ee"
+
+[records.values]
+draw_count = "1"
+key = "stage_8c4db2e2-5395-5dbf-bd38-91d6cc669cfb_3"
+min_depth = "3"
+name = "Interior"
+region = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb"
+
+[[records]]
+uuid = "8099f3dc-5dcc-5a19-a31c-0003640c10df"
+label = "row_8099f3dc5dcc5a19a31c0003640c10df"
+
+[records.values]
+draw_count = "1"
+key = "stage_8c4db2e2-5395-5dbf-bd38-91d6cc669cfb_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb"
+
+[[records]]
+uuid = "91615422-ec84-5078-8235-483800749b60"
+label = "row_91615422ec8450788235483800749b60"
+
+[records.values]
+draw_count = "1"
+key = "stage_8c4db2e2-5395-5dbf-bd38-91d6cc669cfb_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb"
+
+[[records]]
+uuid = "bd3401f1-b32e-5da4-9aa8-dec4c3a93ff1"
+label = "row_bd3401f1b32e5da49aa8dec4c3a93ff1"
+
+[records.values]
+draw_count = "1"
+key = "stage_8d36f10a-26d4-5a38-a306-02624f790a47_0"
+min_depth = "0"
+name = "Entrance"
+region = "8d36f10a-26d4-5a38-a306-02624f790a47"
+
+[[records]]
+uuid = "d43bf600-a68a-579f-a2ac-e784809039b5"
+label = "row_d43bf600a68a579fa2ace784809039b5"
+
+[records.values]
+draw_count = "1"
+key = "stage_8d36f10a-26d4-5a38-a306-02624f790a47_3"
+min_depth = "3"
+name = "Interior"
+region = "8d36f10a-26d4-5a38-a306-02624f790a47"
+
+[[records]]
+uuid = "f72b6958-cc8f-51bc-bead-19a84e222ef3"
+label = "row_f72b6958cc8f51bcbead19a84e222ef3"
+
+[records.values]
+draw_count = "1"
+key = "stage_8d36f10a-26d4-5a38-a306-02624f790a47_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "8d36f10a-26d4-5a38-a306-02624f790a47"
+
+[[records]]
+uuid = "5b86bc41-baca-5432-841a-58a6e8ce734c"
+label = "row_5b86bc41baca5432841a58a6e8ce734c"
+
+[records.values]
+draw_count = "1"
+key = "stage_8d36f10a-26d4-5a38-a306-02624f790a47_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "8d36f10a-26d4-5a38-a306-02624f790a47"
+
+[[records]]
+uuid = "f00357c4-d0d5-5263-888b-06b705d12008"
+label = "row_f00357c4d0d55263888b06b705d12008"
+
+[records.values]
+draw_count = "1"
+key = "stage_a83b48a5-20de-523a-a061-1464ed6b1764_0"
+min_depth = "0"
+name = "Entrance"
+region = "a83b48a5-20de-523a-a061-1464ed6b1764"
+
+[[records]]
+uuid = "82a70902-dd74-53d8-a12c-31d6cef225a9"
+label = "row_82a70902dd7453d8a12c31d6cef225a9"
+
+[records.values]
+draw_count = "1"
+key = "stage_a83b48a5-20de-523a-a061-1464ed6b1764_3"
+min_depth = "3"
+name = "Interior"
+region = "a83b48a5-20de-523a-a061-1464ed6b1764"
+
+[[records]]
+uuid = "f84a0c1b-f2ba-5acd-bf09-a982f52e080f"
+label = "row_f84a0c1bf2ba5acdbf09a982f52e080f"
+
+[records.values]
+draw_count = "1"
+key = "stage_a83b48a5-20de-523a-a061-1464ed6b1764_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "a83b48a5-20de-523a-a061-1464ed6b1764"
+
+[[records]]
+uuid = "2f70c447-06ed-51fe-905d-e03d8d1da6dc"
+label = "row_2f70c44706ed51fe905de03d8d1da6dc"
+
+[records.values]
+draw_count = "1"
+key = "stage_a83b48a5-20de-523a-a061-1464ed6b1764_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "a83b48a5-20de-523a-a061-1464ed6b1764"
+
+[[records]]
+uuid = "fe0ce771-5807-5ff7-af78-78b699ba16ab"
+label = "row_fe0ce77158075ff7af7878b699ba16ab"
+
+[records.values]
+draw_count = "1"
+key = "stage_ae786757-21ef-5fc5-ad85-7c306674da9c_0"
+min_depth = "0"
+name = "Entrance"
+region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "eed0ec6e-aa49-5a89-a889-e9972851057f"
+label = "row_eed0ec6eaa495a89a889e9972851057f"
+
+[records.values]
+draw_count = "1"
+key = "stage_ae786757-21ef-5fc5-ad85-7c306674da9c_3"
+min_depth = "3"
+name = "Interior"
+region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "41687953-d912-5526-a38f-91906d3ac946"
+label = "row_41687953d9125526a38f91906d3ac946"
+
+[records.values]
+draw_count = "1"
+key = "stage_ae786757-21ef-5fc5-ad85-7c306674da9c_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "00efae74-4652-584a-a2a8-58d2b5c128cb"
+label = "row_00efae744652584aa2a858d2b5c128cb"
+
+[records.values]
+draw_count = "1"
+key = "stage_ae786757-21ef-5fc5-ad85-7c306674da9c_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "bd238066-4adf-5b74-ae6e-f49b4ef2dad9"
+label = "row_bd2380664adf5b74ae6ef49b4ef2dad9"
+
+[records.values]
+draw_count = "1"
+key = "stage_b8255005-8c23-545d-b943-a6ab373b4c56_0"
+min_depth = "0"
+name = "Entrance"
+region = "b8255005-8c23-545d-b943-a6ab373b4c56"
+
+[[records]]
+uuid = "f841f0e2-1953-5f5d-b74c-3ced06add368"
+label = "row_f841f0e219535f5db74c3ced06add368"
+
+[records.values]
+draw_count = "1"
+key = "stage_b8255005-8c23-545d-b943-a6ab373b4c56_3"
+min_depth = "3"
+name = "Interior"
+region = "b8255005-8c23-545d-b943-a6ab373b4c56"
+
+[[records]]
+uuid = "6d686fa8-b348-527c-9c47-43a254be4331"
+label = "row_6d686fa8b348527c9c4743a254be4331"
+
+[records.values]
+draw_count = "1"
+key = "stage_b8255005-8c23-545d-b943-a6ab373b4c56_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "b8255005-8c23-545d-b943-a6ab373b4c56"
+
+[[records]]
+uuid = "a8f1b254-515a-5826-9126-e36c0e7ffe19"
+label = "row_a8f1b254515a58269126e36c0e7ffe19"
+
+[records.values]
+draw_count = "1"
+key = "stage_b8255005-8c23-545d-b943-a6ab373b4c56_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "b8255005-8c23-545d-b943-a6ab373b4c56"
+
+[[records]]
+uuid = "00020d91-5898-51fb-a6ec-92c5f9204c31"
+label = "row_00020d91589851fba6ec92c5f9204c31"
+
+[records.values]
+draw_count = "1"
+key = "stage_b99f3597-7f1c-53a5-9129-7d876ac5c764_0"
+min_depth = "0"
+name = "Entrance"
+region = "b99f3597-7f1c-53a5-9129-7d876ac5c764"
+
+[[records]]
+uuid = "632d8602-101b-5bad-8c43-20fedb0f2fc5"
+label = "row_632d8602101b5bad8c4320fedb0f2fc5"
+
+[records.values]
+draw_count = "1"
+key = "stage_b99f3597-7f1c-53a5-9129-7d876ac5c764_3"
+min_depth = "3"
+name = "Interior"
+region = "b99f3597-7f1c-53a5-9129-7d876ac5c764"
+
+[[records]]
+uuid = "e3a57102-2542-5204-8b82-3f73d771d0d9"
+label = "row_e3a57102254252048b823f73d771d0d9"
+
+[records.values]
+draw_count = "1"
+key = "stage_b99f3597-7f1c-53a5-9129-7d876ac5c764_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "b99f3597-7f1c-53a5-9129-7d876ac5c764"
+
+[[records]]
+uuid = "688ebe74-7d09-52de-bef3-0a43ba4fe8a7"
+label = "row_688ebe747d0952debef30a43ba4fe8a7"
+
+[records.values]
+draw_count = "1"
+key = "stage_b99f3597-7f1c-53a5-9129-7d876ac5c764_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "b99f3597-7f1c-53a5-9129-7d876ac5c764"
+
+[[records]]
+uuid = "1c859f92-823a-5314-8672-a15527c5b3b3"
+label = "row_1c859f92823a53148672a15527c5b3b3"
+
+[records.values]
+draw_count = "1"
+key = "stage_bdceea5a-6b34-52ca-a782-0e21012921ac_0"
+min_depth = "0"
+name = "Entrance"
+region = "bdceea5a-6b34-52ca-a782-0e21012921ac"
+
+[[records]]
+uuid = "d86d161c-7a48-59ba-9f01-a48bbebe2d8b"
+label = "row_d86d161c7a4859ba9f01a48bbebe2d8b"
+
+[records.values]
+draw_count = "1"
+key = "stage_bdceea5a-6b34-52ca-a782-0e21012921ac_3"
+min_depth = "3"
+name = "Interior"
+region = "bdceea5a-6b34-52ca-a782-0e21012921ac"
+
+[[records]]
+uuid = "aa1f585e-1a55-54b1-8d05-b54928fccfb5"
+label = "row_aa1f585e1a5554b18d05b54928fccfb5"
+
+[records.values]
+draw_count = "1"
+key = "stage_bdceea5a-6b34-52ca-a782-0e21012921ac_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "bdceea5a-6b34-52ca-a782-0e21012921ac"
+
+[[records]]
+uuid = "7b208f6f-0bd6-55d7-93a2-9e4092050df2"
+label = "row_7b208f6f0bd655d793a29e4092050df2"
+
+[records.values]
+draw_count = "1"
+key = "stage_bdceea5a-6b34-52ca-a782-0e21012921ac_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "bdceea5a-6b34-52ca-a782-0e21012921ac"
+
+[[records]]
+uuid = "6e94f872-f2df-522c-97ca-c3e595828c91"
+label = "row_6e94f872f2df522c97cac3e595828c91"
+
+[records.values]
+draw_count = "1"
+key = "stage_c9618e8f-f34e-53e9-ad26-56df80e1bbf2_0"
+min_depth = "0"
+name = "Entrance"
+region = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2"
+
+[[records]]
+uuid = "b0b7688e-5067-553a-abfb-3e02831b5a43"
+label = "row_b0b7688e5067553aabfb3e02831b5a43"
+
+[records.values]
+draw_count = "1"
+key = "stage_c9618e8f-f34e-53e9-ad26-56df80e1bbf2_3"
+min_depth = "3"
+name = "Interior"
+region = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2"
+
+[[records]]
+uuid = "b72aa9c7-8a54-5d47-a69d-4dc3c02355e0"
+label = "row_b72aa9c78a545d47a69d4dc3c02355e0"
+
+[records.values]
+draw_count = "1"
+key = "stage_c9618e8f-f34e-53e9-ad26-56df80e1bbf2_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2"
+
+[[records]]
+uuid = "3971355c-cbf8-52b5-bd1f-0a9ba20bfda9"
+label = "row_3971355ccbf852b5bd1f0a9ba20bfda9"
+
+[records.values]
+draw_count = "1"
+key = "stage_c9618e8f-f34e-53e9-ad26-56df80e1bbf2_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2"
+
+[[records]]
+uuid = "1faf18f7-c6f0-531d-8cd2-95776886e5e1"
+label = "row_1faf18f7c6f0531d8cd295776886e5e1"
+
+[records.values]
+draw_count = "1"
+key = "stage_cedc4ce7-be4f-5b1e-8216-057f01c3c4d2_0"
+min_depth = "0"
+name = "Entrance"
+region = "cedc4ce7-be4f-5b1e-8216-057f01c3c4d2"
+
+[[records]]
+uuid = "63ad47af-987c-5806-859a-d0a7ad4bc00c"
+label = "row_63ad47af987c5806859ad0a7ad4bc00c"
+
+[records.values]
+draw_count = "1"
+key = "stage_cedc4ce7-be4f-5b1e-8216-057f01c3c4d2_3"
+min_depth = "3"
+name = "Interior"
+region = "cedc4ce7-be4f-5b1e-8216-057f01c3c4d2"
+
+[[records]]
+uuid = "1ebfd8d9-e40a-5ef7-a0ce-e810c516c7b3"
+label = "row_1ebfd8d9e40a5ef7a0cee810c516c7b3"
+
+[records.values]
+draw_count = "1"
+key = "stage_cedc4ce7-be4f-5b1e-8216-057f01c3c4d2_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "cedc4ce7-be4f-5b1e-8216-057f01c3c4d2"
+
+[[records]]
+uuid = "f6e34ca4-6df6-5bf2-830f-7866630d0a5b"
+label = "row_f6e34ca46df65bf2830f7866630d0a5b"
+
+[records.values]
+draw_count = "1"
+key = "stage_cedc4ce7-be4f-5b1e-8216-057f01c3c4d2_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "cedc4ce7-be4f-5b1e-8216-057f01c3c4d2"
+
+[[records]]
+uuid = "b249dab5-2233-5e8b-be76-c89972166759"
+label = "row_b249dab522335e8bbe76c89972166759"
+
+[records.values]
+draw_count = "1"
+key = "stage_d1c89cb7-c9e5-50d2-8158-345b954015ce_0"
+min_depth = "0"
+name = "Entrance"
+region = "d1c89cb7-c9e5-50d2-8158-345b954015ce"
+
+[[records]]
+uuid = "6cc26544-1da6-54bb-bdae-2485bbd44d41"
+label = "row_6cc265441da654bbbdae2485bbd44d41"
+
+[records.values]
+draw_count = "1"
+key = "stage_d1c89cb7-c9e5-50d2-8158-345b954015ce_3"
+min_depth = "3"
+name = "Interior"
+region = "d1c89cb7-c9e5-50d2-8158-345b954015ce"
+
+[[records]]
+uuid = "05205ac3-7310-5775-b9bc-521282585c96"
+label = "row_05205ac373105775b9bc521282585c96"
+
+[records.values]
+draw_count = "1"
+key = "stage_d1c89cb7-c9e5-50d2-8158-345b954015ce_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "d1c89cb7-c9e5-50d2-8158-345b954015ce"
+
+[[records]]
+uuid = "2ea53104-5c23-5951-bdef-ac1d575ea84b"
+label = "row_2ea531045c235951bdefac1d575ea84b"
+
+[records.values]
+draw_count = "1"
+key = "stage_d1c89cb7-c9e5-50d2-8158-345b954015ce_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "d1c89cb7-c9e5-50d2-8158-345b954015ce"
+
+[[records]]
+uuid = "f65e0eca-4292-5c56-9ed1-a9b7e02de35b"
+label = "row_f65e0eca42925c569ed1a9b7e02de35b"
+
+[records.values]
+draw_count = "1"
+key = "stage_dea3a1d9-fa1f-52c7-ade2-02d934c5d00c_0"
+min_depth = "0"
+name = "Entrance"
+region = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c"
+
+[[records]]
+uuid = "ee3ff638-d27e-5edb-9d88-1558cf854577"
+label = "row_ee3ff638d27e5edb9d881558cf854577"
+
+[records.values]
+draw_count = "1"
+key = "stage_dea3a1d9-fa1f-52c7-ade2-02d934c5d00c_3"
+min_depth = "3"
+name = "Interior"
+region = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c"
+
+[[records]]
+uuid = "6a6532d6-ac9e-5275-9e39-e47f2661b1cd"
+label = "row_6a6532d6ac9e52759e39e47f2661b1cd"
+
+[records.values]
+draw_count = "1"
+key = "stage_dea3a1d9-fa1f-52c7-ade2-02d934c5d00c_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c"
+
+[[records]]
+uuid = "89760968-cdcb-5ee3-b5ad-1cd033895eae"
+label = "row_89760968cdcb5ee3b5ad1cd033895eae"
+
+[records.values]
+draw_count = "1"
+key = "stage_dea3a1d9-fa1f-52c7-ade2-02d934c5d00c_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c"
+
+[[records]]
+uuid = "caf5b2c0-80bb-5194-bb55-607b20489267"
+label = "row_caf5b2c080bb5194bb55607b20489267"
+
+[records.values]
+draw_count = "1"
+key = "stage_e1af2a4e-953f-5f4d-ae3a-16b0003c5756_0"
+min_depth = "0"
+name = "Entrance"
+region = "e1af2a4e-953f-5f4d-ae3a-16b0003c5756"
+
+[[records]]
+uuid = "688d61ba-be2e-5629-aa14-d00cf3adb945"
+label = "row_688d61babe2e5629aa14d00cf3adb945"
+
+[records.values]
+draw_count = "1"
+key = "stage_e1af2a4e-953f-5f4d-ae3a-16b0003c5756_3"
+min_depth = "3"
+name = "Interior"
+region = "e1af2a4e-953f-5f4d-ae3a-16b0003c5756"
+
+[[records]]
+uuid = "d28591b1-b6bf-51c7-bc7f-d3f7f4cdc9ce"
+label = "row_d28591b1b6bf51c7bc7fd3f7f4cdc9ce"
+
+[records.values]
+draw_count = "1"
+key = "stage_e1af2a4e-953f-5f4d-ae3a-16b0003c5756_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "e1af2a4e-953f-5f4d-ae3a-16b0003c5756"
+
+[[records]]
+uuid = "2d9b6ff4-639f-5ab5-827f-27be9bea788d"
+label = "row_2d9b6ff4639f5ab5827f27be9bea788d"
+
+[records.values]
+draw_count = "1"
+key = "stage_e1af2a4e-953f-5f4d-ae3a-16b0003c5756_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "e1af2a4e-953f-5f4d-ae3a-16b0003c5756"
+
+[[records]]
+uuid = "037c22e3-b114-5194-9642-abb71935817d"
+label = "row_037c22e3b11451949642abb71935817d"
+
+[records.values]
+draw_count = "1"
+key = "stage_e32eab72-c615-5297-8a1c-555abc967724_0"
+min_depth = "0"
+name = "Entrance"
+region = "e32eab72-c615-5297-8a1c-555abc967724"
+
+[[records]]
+uuid = "8815644b-e083-5475-a805-1e6ea101c4c7"
+label = "row_8815644be0835475a8051e6ea101c4c7"
+
+[records.values]
+draw_count = "1"
+key = "stage_e32eab72-c615-5297-8a1c-555abc967724_3"
+min_depth = "3"
+name = "Interior"
+region = "e32eab72-c615-5297-8a1c-555abc967724"
+
+[[records]]
+uuid = "3d1797ec-e972-5530-8831-864352be4159"
+label = "row_3d1797ece97255308831864352be4159"
+
+[records.values]
+draw_count = "1"
+key = "stage_e32eab72-c615-5297-8a1c-555abc967724_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "e32eab72-c615-5297-8a1c-555abc967724"
+
+[[records]]
+uuid = "15f236fb-53ad-518e-87c3-09c469950548"
+label = "row_15f236fb53ad518e87c309c469950548"
+
+[records.values]
+draw_count = "1"
+key = "stage_e32eab72-c615-5297-8a1c-555abc967724_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "e32eab72-c615-5297-8a1c-555abc967724"
+
+[[records]]
+uuid = "47c88ec5-265d-5330-972e-77f5b7e680bb"
+label = "row_47c88ec5265d5330972e77f5b7e680bb"
+
+[records.values]
+draw_count = "1"
+key = "stage_f3e88e11-16fd-5455-a868-c559bc092586_0"
+min_depth = "0"
+name = "Entrance"
+region = "f3e88e11-16fd-5455-a868-c559bc092586"
+
+[[records]]
+uuid = "a7a27a3c-90e6-5e23-b6bd-6385e4a72985"
+label = "row_a7a27a3c90e65e23b6bd6385e4a72985"
+
+[records.values]
+draw_count = "1"
+key = "stage_f3e88e11-16fd-5455-a868-c559bc092586_3"
+min_depth = "3"
+name = "Interior"
+region = "f3e88e11-16fd-5455-a868-c559bc092586"
+
+[[records]]
+uuid = "13c2355a-a546-59f2-b47a-6b2bd2d06909"
+label = "row_13c2355aa54659f2b47a6b2bd2d06909"
+
+[records.values]
+draw_count = "1"
+key = "stage_f3e88e11-16fd-5455-a868-c559bc092586_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "f3e88e11-16fd-5455-a868-c559bc092586"
+
+[[records]]
+uuid = "2257952c-5171-54b1-8fe4-7215c5ac0bef"
+label = "row_2257952c517154b18fe47215c5ac0bef"
+
+[records.values]
+draw_count = "1"
+key = "stage_f3e88e11-16fd-5455-a868-c559bc092586_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "f3e88e11-16fd-5455-a868-c559bc092586"
+
+[[records]]
+uuid = "9fdc533d-c248-5501-b980-5876915d560f"
+label = "row_9fdc533dc2485501b9805876915d560f"
+
+[records.values]
+draw_count = "1"
+key = "stage_f570c798-19aa-5b49-9ba0-297923dec683_0"
+min_depth = "0"
+name = "Entrance"
+region = "f570c798-19aa-5b49-9ba0-297923dec683"
+
+[[records]]
+uuid = "3e9e0bb5-f8d9-55d3-b41c-690250e44196"
+label = "row_3e9e0bb5f8d955d3b41c690250e44196"
+
+[records.values]
+draw_count = "1"
+key = "stage_f570c798-19aa-5b49-9ba0-297923dec683_3"
+min_depth = "3"
+name = "Interior"
+region = "f570c798-19aa-5b49-9ba0-297923dec683"
+
+[[records]]
+uuid = "44137ee6-a86b-5a6f-8d21-c252a6427526"
+label = "row_44137ee6a86b5a6f8d21c252a6427526"
+
+[records.values]
+draw_count = "1"
+key = "stage_f570c798-19aa-5b49-9ba0-297923dec683_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "f570c798-19aa-5b49-9ba0-297923dec683"
+
+[[records]]
+uuid = "d9e8619f-314c-528d-8bf2-d2b9d4cbfe00"
+label = "row_d9e8619f314c528d8bf2d2b9d4cbfe00"
+
+[records.values]
+draw_count = "1"
+key = "stage_f570c798-19aa-5b49-9ba0-297923dec683_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "f570c798-19aa-5b49-9ba0-297923dec683"
+
+[[records]]
+uuid = "25d26963-6b23-5545-92e8-7be67af7b6f2"
+label = "row_25d269636b23554592e87be67af7b6f2"
+
+[records.values]
+draw_count = "1"
+key = "stage_fa8932af-5af1-5407-9311-1ba594abbf57_0"
+min_depth = "0"
+name = "Entrance"
+region = "fa8932af-5af1-5407-9311-1ba594abbf57"
+
+[[records]]
+uuid = "2246a478-a25b-5c0f-b7fd-5d73d4dc958d"
+label = "row_2246a478a25b5c0fb7fd5d73d4dc958d"
+
+[records.values]
+draw_count = "1"
+key = "stage_fa8932af-5af1-5407-9311-1ba594abbf57_3"
+min_depth = "3"
+name = "Interior"
+region = "fa8932af-5af1-5407-9311-1ba594abbf57"
+
+[[records]]
+uuid = "2e388382-69a2-5d28-84a6-6dcdd1789940"
+label = "row_2e38838269a25d2884a66dcdd1789940"
+
+[records.values]
+draw_count = "1"
+key = "stage_fa8932af-5af1-5407-9311-1ba594abbf57_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "fa8932af-5af1-5407-9311-1ba594abbf57"
+
+[[records]]
+uuid = "a03575f1-50ac-5b5a-98de-b170d39fc0a6"
+label = "row_a03575f150ac5b5a98deb170d39fc0a6"
+
+[records.values]
+draw_count = "1"
+key = "stage_fa8932af-5af1-5407-9311-1ba594abbf57_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "fa8932af-5af1-5407-9311-1ba594abbf57"
+
+[[records]]
+uuid = "d1fc80da-adca-516a-829b-3694b9460263"
+label = "row_d1fc80daadca516a829b3694b9460263"
+
+[records.values]
+draw_count = "1"
+key = "stage_fd3a773f-1ffa-5a3c-b732-9c75b29836c1_0"
+min_depth = "0"
+name = "Entrance"
+region = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1"
+
+[[records]]
+uuid = "a2820aa2-7c62-58df-a6ec-9520ae78d86f"
+label = "row_a2820aa27c6258dfa6ec9520ae78d86f"
+
+[records.values]
+draw_count = "1"
+key = "stage_fd3a773f-1ffa-5a3c-b732-9c75b29836c1_3"
+min_depth = "3"
+name = "Interior"
+region = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1"
+
+[[records]]
+uuid = "cbb933a5-3e0c-58c5-84b1-5ed62629d314"
+label = "row_cbb933a53e0c58c584b15ed62629d314"
+
+[records.values]
+draw_count = "1"
+key = "stage_fd3a773f-1ffa-5a3c-b732-9c75b29836c1_6"
+min_depth = "6"
+name = "Deep Reach"
+region = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1"
+
+[[records]]
+uuid = "506d65b9-5e7d-5a78-8d86-9475d6c2b1cb"
+label = "row_506d65b95e7d5a788d869475d6c2b1cb"
+
+[records.values]
+draw_count = "1"
+key = "stage_fd3a773f-1ffa-5a3c-b732-9c75b29836c1_9"
+min_depth = "9"
+name = "Farthest Reach"
+region = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1"

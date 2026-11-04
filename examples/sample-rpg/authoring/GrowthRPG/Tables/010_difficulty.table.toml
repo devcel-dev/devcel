@@ -1,0 +1,91 @@
+uuid = "10000000-0000-4000-8000-00000000000a"
+display_name = "difficulty"
+description = ""
+
+[metadata]
+interface_order = []
+data_name = "difficulty"
+initial_transposed = false
+
+[metadata.edit_permissions]
+add_columns = true
+delete_columns = true
+add_rows = true
+delete_rows = true
+edit_cells = true
+
+[interface_implementations]
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-800a-000000000001"
+display_name = "key"
+data_name = "key"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-800a-000000000002"
+display_name = "name"
+data_name = "name"
+data_type = "String"
+default_value = "Standard"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-800a-000000000003"
+display_name = "rank"
+data_name = "rank"
+data_type = "I64"
+default_value = "1"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-800a-000000000004"
+display_name = "recommended_attack"
+data_name = "recommended_attack"
+data_type = "I64"
+default_value = "=LOOKUP(\"jobs\",\"key\",\"fighter\",\"attack\")+LOOKUP(\"balance\",\"key\",\"balance\",\"attack\")"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-800a-000000000005"
+display_name = "hp_bonus"
+data_name = "hp_bonus"
+data_type = "I64"
+default_value = "=rank*5"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[records]]
+uuid = "20000000-0000-4000-800a-000000000001"
+label = "normal"
+tags = ["rpg/difficulty", "catalog/seed-v1"]
+
+[records.values]
+key = "normal"
+rank = "1"

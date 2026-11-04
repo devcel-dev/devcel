@@ -1,0 +1,526 @@
+uuid = "2fdd9cf8-ce1e-5de8-92c5-a98c68c30420"
+display_name = "Themes"
+description = "Devcel Studio app catalog source"
+[metadata]
+interface_order = []
+initial_transposed = false
+edit_permissions = { add_columns = false, delete_columns = false, add_rows = true, delete_rows = true, edit_cells = true }
+
+parent_uuid = ""
+
+data_name = "Themes"
+
+
+[interface_implementations]
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "3a919b5a-e168-5328-a883-f8b2fb7ca8f4"
+display_name = "key"
+data_name = "key"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "5e01fa80-7c7c-52a2-b293-b59e381fec91"
+display_name = "label_ref"
+data_name = "label_ref"
+tooltip = ""
+data_type = "Reference"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[schema.columns.reference_config]
+target_table_uuid = "7a0a8715-2a14-4373-8cc4-7eacd018e989"
+display_column_uuid = "00ab4850-9407-4058-943d-b4f00e039b68"
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "9fda9ce7-6dda-56be-a159-20e2aa204561"
+display_name = "order"
+data_name = "order"
+tooltip = ""
+data_type = "I32"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "1b1f1af7-c6ae-5bc2-9e1d-2855cdc97a1b"
+display_name = "background"
+data_name = "background"
+tooltip = ""
+data_type = "Color32"
+tags = []
+default_value = "[255,255,255,255]"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "a8bd63c3-3888-5833-9a57-1434c1096806"
+display_name = "foreground"
+data_name = "foreground"
+tooltip = ""
+data_type = "Color32"
+tags = []
+default_value = "[255,255,255,255]"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "9ff539eb-9e0d-53cb-993b-30d2727b4559"
+display_name = "muted"
+data_name = "muted"
+tooltip = ""
+data_type = "Color32"
+tags = []
+default_value = "[255,255,255,255]"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "009f6ee6-dc83-5af9-b4e2-89114d6fc666"
+display_name = "muted foreground"
+data_name = "muted_foreground"
+tooltip = ""
+data_type = "Color32"
+tags = []
+default_value = "[255,255,255,255]"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "35f03ac7-3ea6-5d47-b5f7-7f0ecf86eefd"
+display_name = "popover"
+data_name = "popover"
+tooltip = ""
+data_type = "Color32"
+tags = []
+default_value = "[255,255,255,255]"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "be7fda2a-161f-59e7-98c0-23b4b67458b2"
+display_name = "popover foreground"
+data_name = "popover_foreground"
+tooltip = ""
+data_type = "Color32"
+tags = []
+default_value = "[255,255,255,255]"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "ecd0ef4a-fc07-5997-9346-2cf62cf5a348"
+display_name = "border"
+data_name = "border"
+tooltip = ""
+data_type = "Color32"
+tags = []
+default_value = "[255,255,255,255]"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "b5d41c6f-ecb9-50a8-92bf-a4d3f4d3cb4c"
+display_name = "input"
+data_name = "input"
+tooltip = ""
+data_type = "Color32"
+tags = []
+default_value = "[255,255,255,255]"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "a1b7723a-e2d2-5233-8305-e6dc044e0608"
+display_name = "card"
+data_name = "card"
+tooltip = ""
+data_type = "Color32"
+tags = []
+default_value = "[255,255,255,255]"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "061f87f8-8ba3-5701-9d7e-2fa3b191baa4"
+display_name = "card foreground"
+data_name = "card_foreground"
+tooltip = ""
+data_type = "Color32"
+tags = []
+default_value = "[255,255,255,255]"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "0edca35d-2f0b-5d2a-9b45-419b7afdc5fb"
+display_name = "primary"
+data_name = "primary"
+tooltip = ""
+data_type = "Color32"
+tags = []
+default_value = "[255,255,255,255]"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "08e88c1b-661e-54eb-86c2-7f565b54f503"
+display_name = "primary ink"
+data_name = "primary_ink"
+tooltip = ""
+data_type = "Color32"
+tags = []
+default_value = "[255,255,255,255]"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "57e5bc76-27eb-5481-b405-99ad70156f11"
+display_name = "primary foreground"
+data_name = "primary_foreground"
+tooltip = ""
+data_type = "Color32"
+tags = []
+default_value = "[255,255,255,255]"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "1987a91a-246b-5323-ace3-21af0b77600e"
+display_name = "secondary"
+data_name = "secondary"
+tooltip = ""
+data_type = "Color32"
+tags = []
+default_value = "[255,255,255,255]"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "3e043369-94e3-5512-b13a-f5ac17c0d622"
+display_name = "secondary foreground"
+data_name = "secondary_foreground"
+tooltip = ""
+data_type = "Color32"
+tags = []
+default_value = "[255,255,255,255]"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "bf7bcdc0-93b3-5f7d-a433-2f91e7ebd4e6"
+display_name = "accent"
+data_name = "accent"
+tooltip = ""
+data_type = "Color32"
+tags = []
+default_value = "[255,255,255,255]"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "58716bb8-11fb-5d01-9450-e475b20745dc"
+display_name = "accent foreground"
+data_name = "accent_foreground"
+tooltip = ""
+data_type = "Color32"
+tags = []
+default_value = "[255,255,255,255]"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "5149fe49-026f-5901-8ed0-d8356776b5df"
+display_name = "destructive"
+data_name = "destructive"
+tooltip = ""
+data_type = "Color32"
+tags = []
+default_value = "[255,255,255,255]"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "92156483-9599-5371-b87d-d3abd5ecb2c6"
+display_name = "destructive foreground"
+data_name = "destructive_foreground"
+tooltip = ""
+data_type = "Color32"
+tags = []
+default_value = "[255,255,255,255]"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "ef0d4990-bc23-5b50-be26-c48e34a73462"
+display_name = "ring"
+data_name = "ring"
+tooltip = ""
+data_type = "Color32"
+tags = []
+default_value = "[255,255,255,255]"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "dc35e803-3a3a-5c76-b8d1-d147de5b568a"
+display_name = "Dark appearance"
+data_name = "is_dark"
+tooltip = ""
+data_type = "Boolean"
+tags = []
+default_value = "false"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+[[records]]
+uuid = "ea15bf5c-df93-5294-9bcd-db174f7cce11"
+parent_uuid = ""
+label = "light"
+min_version = 0
+tags = []
+
+[records.values]
+background = "[255,255,255,255]"
+foreground = "[36,42,48,255]"
+muted = "[242,244,245,255]"
+muted_foreground = "[95,104,114,255]"
+popover = "[255,255,255,255]"
+popover_foreground = "[36,42,48,255]"
+border = "[220,225,229,255]"
+input = "[220,225,229,255]"
+card = "[255,255,255,255]"
+card_foreground = "[36,42,48,255]"
+primary = "[88,201,171,255]"
+primary_ink = "[23,107,88,255]"
+primary_foreground = "[36,42,48,255]"
+secondary = "[242,244,245,255]"
+secondary_foreground = "[36,42,48,255]"
+accent = "[234,248,243,255]"
+accent_foreground = "[23,107,88,255]"
+destructive = "[255,0,0,255]"
+destructive_foreground = "[248,250,252,255]"
+ring = "[35,127,102,255]"
+is_dark = "false"
+
+key = "light"
+label_ref = "dcf12686-64ae-59a8-a167-5cdd7b70fb2c"
+order = "0"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "ca2455f8-ee4a-55e2-b6ff-b1ab32bb0446"
+parent_uuid = ""
+label = "dark"
+min_version = 0
+tags = []
+
+[records.values]
+background = "[23,27,32,255]"
+foreground = "[238,240,242,255]"
+muted = "[37,44,51,255]"
+muted_foreground = "[173,182,191,255]"
+popover = "[30,36,42,255]"
+popover_foreground = "[238,240,242,255]"
+border = "[65,74,84,255]"
+input = "[65,74,84,255]"
+card = "[30,36,42,255]"
+card_foreground = "[238,240,242,255]"
+primary = "[88,201,171,255]"
+primary_ink = "[119,218,189,255]"
+primary_foreground = "[36,42,48,255]"
+secondary = "[43,51,59,255]"
+secondary_foreground = "[238,240,242,255]"
+accent = "[38,61,53,255]"
+accent_foreground = "[216,245,235,255]"
+destructive = "[129,29,29,255]"
+destructive_foreground = "[248,250,252,255]"
+ring = "[88,201,171,255]"
+is_dark = "true"
+
+key = "dark"
+label_ref = "855a9275-b206-5930-ba74-4743aae2bbeb"
+order = "1"
+
+[records.interface_values]
+
+[records.memo_texts]

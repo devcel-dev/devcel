@@ -1,0 +1,148 @@
+uuid = "f97aeebc-47ed-513e-959a-9d3a1899ef4e"
+display_name = "Report translations"
+description = "Report translations"
+[metadata]
+interface_order = ["407c7e65-e39d-88de-93a6-c0eef26da34b"]
+
+parent_uuid = ""
+
+data_name = "Plugin_7265706f72742d746f6f6c73_translations"
+
+initial_transposed = false
+
+[metadata.edit_permissions]
+add_columns = true
+delete_columns = true
+add_rows = true
+delete_rows = true
+edit_cells = true
+
+[interface_implementations.407c7e65-e39d-88de-93a6-c0eef26da34b]
+interface_uuid = "407c7e65-e39d-88de-93a6-c0eef26da34b"
+synced_version_id = "6114c23a-8711-8e60-875d-87eb73d57e4e"
+last_sync_date = "2026-10-25T00:00:00Z"
+effective_fingerprint = "9801cd14cb67c9056dea20e8bd8a068c5b241ce0086dd8c67f1e46945e0a68f7"
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "e3f28f98-44c1-5787-b0d3-8c21f1db06bb"
+display_name = "key"
+data_name = "key"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+interface_origin = "407c7e65-e39d-88de-93a6-c0eef26da34b"
+interface_origin_name_fallback = "Plugin_7265706f72742d746f6f6c73_translations_Contract"
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 220
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "f4b2f00c-3298-5ecd-a6c4-c379f5d8f80e"
+display_name = "locale"
+data_name = "locale"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+interface_origin = "407c7e65-e39d-88de-93a6-c0eef26da34b"
+interface_origin_name_fallback = "Plugin_7265706f72742d746f6f6c73_translations_Contract"
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 220
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "398e242c-a0ab-5f30-b4c1-999005209f83"
+display_name = "text"
+data_name = "text"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+interface_origin = "407c7e65-e39d-88de-93a6-c0eef26da34b"
+interface_origin_name_fallback = "Plugin_7265706f72742d746f6f6c73_translations_Contract"
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 220
+
+[[records]]
+uuid = "3022aa4d-7afd-5f0c-b462-f45327da1ba9"
+parent_uuid = ""
+label = ""
+min_version = 0
+tags = []
+
+[records.values]
+
+[records.interface_values]
+398e242c-a0ab-5f30-b4c1-999005209f83 = "Report tools"
+e3f28f98-44c1-5787-b0d3-8c21f1db06bb = "title"
+f4b2f00c-3298-5ecd-a6c4-c379f5d8f80e = "en"
+
+[records.memo_texts]
+
+[[records]]
+uuid = "a82ff71f-08bd-5a2c-8dde-01ea2a1d4c25"
+parent_uuid = ""
+label = ""
+min_version = 0
+tags = []
+
+[records.values]
+
+[records.interface_values]
+398e242c-a0ab-5f30-b4c1-999005209f83 = "レポートツール"
+e3f28f98-44c1-5787-b0d3-8c21f1db06bb = "title"
+f4b2f00c-3298-5ecd-a6c4-c379f5d8f80e = "ja"
+
+[records.memo_texts]
+
+[[records]]
+uuid = "16689cb3-7e25-57df-80f4-835ebeeb5b39"
+parent_uuid = ""
+label = ""
+min_version = 0
+tags = []
+
+[records.values]
+
+[records.interface_values]
+398e242c-a0ab-5f30-b4c1-999005209f83 = "Report preferences"
+e3f28f98-44c1-5787-b0d3-8c21f1db06bb = "preferences.title"
+f4b2f00c-3298-5ecd-a6c4-c379f5d8f80e = "en"
+
+[records.memo_texts]
+
+[[records]]
+uuid = "112d29ac-b606-5b1d-b448-9e759212d290"
+parent_uuid = ""
+label = ""
+min_version = 0
+tags = []
+
+[records.values]
+
+[records.interface_values]
+398e242c-a0ab-5f30-b4c1-999005209f83 = "レポート設定"
+e3f28f98-44c1-5787-b0d3-8c21f1db06bb = "preferences.title"
+f4b2f00c-3298-5ecd-a6c4-c379f5d8f80e = "ja"
+
+[records.memo_texts]

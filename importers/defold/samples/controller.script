@@ -1,0 +1,19 @@
+local devcel=require 'devcel.runtime.database'
+function init(self)
+    self.master=devcel.new('base')
+    assert(self.master:load_resource('/devcel_generated/base.json'))
+    local hero=self.master:by_id('Heroes','hero-1')
+    print(hero:get('hp'),hero:get('wide'),hero:get('color_float').g)
+    -- Optional native Debug build: reads source output directly, without restarting the game.
+    -- self.master:watch_file('/ABSOLUTE/TITLE/devcel_generated/base.json',1,function(db,ok,changed)
+    --     if not ok then print(db.last_error) elseif changed then print('Devcel changed') end
+    -- end)
+end
+function update(self,dt) self.master:update(dt) end
+function final(self) self.master:stop_watch() end
+function on_reload(self)
+    -- For resource reloads explicitly triggered from the editor. Custom-resource files alone
+    -- do not automatically notify a running script: use watch_file above for live desktop data.
+    local ok,changed=self.master:reload_if_changed()
+    if not ok then print(self.master.last_error) end
+end

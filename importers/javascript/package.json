@@ -1,0 +1,25 @@
+{
+  "name": "@devcel/javascript",
+  "private": true,
+  "type": "module",
+  "main": "runtime/devcel-runtime.js",
+  "types": "runtime/devcel-runtime.d.ts",
+  "exports": {
+    ".": {
+      "types": "./runtime/devcel-runtime.d.ts",
+      "default": "./runtime/devcel-runtime.js"
+    },
+    "./node": {
+      "types": "./runtime/node.d.ts",
+      "default": "./runtime/node.js"
+    }
+  },
+  "scripts": {
+    "import": "node editor/server.cjs",
+    "verify": "node tests/workflow.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

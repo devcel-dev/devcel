@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "platform": "linux",
+  "format": "deb",
+  "review_status": "verified",
+  "extraction_evidence": {
+    "reviewed_artifact": "devcel-studio_0.0.1_amd64.deb",
+    "artifact_sha256": "75ed7d036ea84dcd0c347b59b8c738237c3c81bae15c94fcea3fa6fdb4c526fb",
+    "provenance": {
+      "GITHUB_SHA": "23fdf9e1bc129e4ef3b22b8254cac58aecd9eebe",
+      "GITHUB_RUN_ID": "39357693988",
+      "GITHUB_RUN_ATTEMPT": "1",
+      "GITHUB_REPOSITORY": "eight-ways/devcel"
+    },
+    "extraction": "dpkg-deb --extract; complete extracted file inventory checked by magic bytes",
+    "native_files": 1,
+    "first_party_identity": {
+      "source_file": "devcel-studio",
+      "source_sha256": "b1a2645d348ca4d13bccc0a15a5a233681614ea7fc1c3d220e2b8b91a3f699fd",
+      "sha256": "823c9651d81e1d5979bc9070615b8ed7e8ec54c20ef9f9d8193d8198062fdae8",
+      "transformation": "tauri-bundle-type",
+      "bundle_type": "DEB",
+      "patch_offset": 25214853
+    },
+    "legal_files_verified": 633,
+    "legal_verification": "Every packaged legal file SHA-256 exactly matches third-party/generated in the reviewed source tree."
+  },
+  "bootstrapper_and_system_runtime_review": {
+    "format": "Debian ar archive consumed by the separately installed system package manager; no executable bootstrapper is shipped.",
+    "payload_review": "The only ELF/PE/Mach-O payload is the exact Tauri bundle-type-patched Studio executable. All other payload files are third-party legal texts/inventory, a desktop entry, and application icons.",
+    "system_dependencies": "GTK/WebKit and other Linux runtime dependencies are supplied by system packages; none are redistributed in this deb payload.",
+    "scope": "This approval applies only to deb packaging. AppImage/RPM require separate review."
+  },
+  "native_components": [],
+  "reviewed_artifact_formats": [
+    ".deb"
+  ],
+  "bundled_cli_contract": {
+    "payload": "usr/lib/devcel-studio/bin/devcel",
+    "identity": "bin/manifest.json records canonical workspace version, platform RID, exact CLI SHA256 and source commit. Final extracted package verification compares the staged manifest and original first-party bytes, checks the separate CLI MIT license, and executes only the verified CLI --version with a 15-second timeout.",
+    "license": "bin/LICENSE-CLI.txt plus the complete shared legal aggregate",
+    "scope": "The Devcel CLI only; no AI harness, shell wrapper, PATH lookup or arbitrary executable is bundled. Actual artifact identities are emitted by each build; historical extraction evidence below is retained as historical evidence."
+  }
+}

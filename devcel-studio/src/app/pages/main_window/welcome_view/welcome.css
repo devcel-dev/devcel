@@ -1,0 +1,25 @@
+/* The bright workspace is the primary visual language; dark adapts via tokens. */
+.welcome-background { background: radial-gradient(ellipse at 25% 20%, hsl(var(--primary) / .18), transparent 65%), linear-gradient(135deg, hsl(var(--accent)), hsl(var(--background))); }
+.welcome-background .welcome-scene { opacity: .3; filter: grayscale(1) invert(1) sepia(.5) hue-rotate(75deg) saturate(.65); mix-blend-mode: multiply; }
+.welcome-atmosphere { background: none; }
+.dark .welcome-background { background: radial-gradient(ellipse at 25% 20%, hsl(var(--primary) / .15), transparent 55%), linear-gradient(135deg, hsl(var(--accent)), hsl(var(--background))); }
+.dark .welcome-background .welcome-scene { opacity: .8; filter: none; mix-blend-mode: normal; }
+.dark .welcome-atmosphere { background: radial-gradient(ellipse at center, transparent 42%, rgb(9 15 22 / .42)); }
+.welcome-card { background: hsl(var(--background) / .96); color: hsl(var(--foreground)); border: 1px solid hsl(var(--border)); box-shadow: 0 16px 48px rgb(20 32 24 / .12); }
+.welcome-logo-dark { display: none; }
+.dark .welcome-logo-light { display: none; }
+.dark .welcome-logo-dark { display: block; }
+.welcome-card .welcome-action { background: hsl(var(--accent)); color: hsl(var(--foreground)); border: 1px solid hsl(var(--border)); border-radius: 12px; transition: background-color 120ms, border-color 120ms, box-shadow 120ms; }
+.welcome-action svg { color: hsl(var(--primary-ink)); }
+.welcome-card .welcome-action:hover { background: hsl(var(--primary) / .2); color: hsl(var(--foreground)); border-color: hsl(var(--primary) / .5); box-shadow: 0 3px 10px rgb(20 32 24 / .06); }
+.welcome-card .welcome-action:focus-visible { background: hsl(var(--accent)); color: hsl(var(--foreground)); outline: 2px solid hsl(var(--ring)); outline-offset: 3px; }
+.welcome-card .welcome-action:active { background: hsl(var(--accent)); color: hsl(var(--foreground)); box-shadow: inset 0 1px 3px rgb(20 32 24 / .1); }
+.welcome-card .welcome-action:disabled { opacity: .55; box-shadow: none; }
+
+.dark .welcome-card .welcome-action { background: hsl(var(--background)); color: hsl(var(--foreground)); border-color: hsl(var(--border)); }
+.dark .welcome-card .welcome-action:is(:hover,:focus-visible) { background: hsl(var(--muted)); color: hsl(var(--foreground)); border-color: hsl(var(--primary) / .55); }
+
+.welcome-card .welcome-action.welcome-action-primary { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); border-color: hsl(var(--primary-ink) / .25); }
+.welcome-card .welcome-action.welcome-action-primary svg { color: inherit; }
+.welcome-card .welcome-action.welcome-action-primary:is(:hover,:focus-visible) { background: hsl(var(--primary) / .85); color: hsl(var(--primary-foreground)); }
+.welcome-card .welcome-action.welcome-action-primary:active { background: hsl(var(--primary) / .8); }

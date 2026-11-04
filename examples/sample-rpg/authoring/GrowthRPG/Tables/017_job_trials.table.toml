@@ -1,0 +1,76 @@
+uuid = "2fb1f357-3b45-581f-b689-7e0f8fa3d3b3"
+display_name = "job_trials"
+description = "Forge & Field authored job_trials"
+records = []
+
+[metadata]
+interface_order = []
+data_name = "job_trials"
+initial_transposed = false
+
+[metadata.edit_permissions]
+add_columns = true
+delete_columns = true
+add_rows = true
+delete_rows = true
+edit_cells = true
+
+[interface_implementations]
+
+[[schema.columns]]
+read_only = false
+uuid = "45bb2e7d-77bc-5cf6-98a1-cf5301efed1e"
+display_name = "key"
+data_name = "key"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "8fbe00bf-ea37-5e0c-bf3a-b4e8c484e975"
+display_name = "name"
+data_name = "name"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "ff7acf29-0dec-5c92-9c21-3c8aa28a3a3c"
+display_name = "job"
+data_name = "job"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-000000000004"
+
+[[schema.columns]]
+read_only = false
+uuid = "94a71f3e-4a72-5e5f-9d84-24b9a7c5110b"
+display_name = "enemy"
+data_name = "enemy"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-000000000005"

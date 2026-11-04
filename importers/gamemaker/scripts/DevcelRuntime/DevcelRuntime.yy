@@ -1,0 +1,10 @@
+{
+  "$GMScript":"v1",
+  "%Name":"DevcelRuntime",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"DevcelRuntime",
+  "parent":{"name":"Scripts","path":"folders/Scripts.yy"},
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0"
+}

@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "platform": "macos",
+  "format": "app/dmg",
+  "review_status": "pending",
+  "extraction_evidence": null,
+  "bootstrapper_and_system_runtime_review": null,
+  "native_components": []
+}

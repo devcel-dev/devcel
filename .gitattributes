@@ -1,0 +1,9 @@
+# Keep build sources stable across checkout platforms.
+* text=auto eol=lf
+
+# Legal evidence is byte-authenticated, including original line endings.
+third-party/upstream/** -text
+third-party/generated/** -text
+devcel-studio/public/legal/** -text
+**/LICENSE* -text
+LICENSE-NOTICE -text

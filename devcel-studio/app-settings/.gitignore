@@ -1,0 +1,4 @@
+# Runtime write-lock sidecars and Python integration-check cache
+.*.devcel-write.lock
+**/.*.devcel-write.lock
+__pycache__/

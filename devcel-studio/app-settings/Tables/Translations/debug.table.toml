@@ -1,0 +1,453 @@
+uuid = "80022ddb-9415-5394-9088-933ef141d0cb"
+display_name = "Translations: debug"
+description = "Reference cells use standard Devcel UUIDs. After reviewing a translation, set status=reviewed and its source revision."
+[metadata]
+interface_order = []
+
+parent_uuid = ""
+
+data_name = "Translations_debug"
+
+initial_transposed = false
+
+[metadata.edit_permissions]
+add_columns = true
+delete_columns = true
+add_rows = true
+delete_rows = true
+edit_cells = true
+
+[interface_implementations]
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "0d6df8fb-6d16-4f35-80f2-5580a206cb5b"
+display_name = "message_ref"
+data_name = "message_ref"
+tooltip = ""
+data_type = "Reference"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[schema.columns.reference_config]
+target_table_uuid = "7a0a8715-2a14-4373-8cc4-7eacd018e989"
+display_column_uuid = "00ab4850-9407-4058-943d-b4f00e039b68"
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "660b075b-a7e9-41db-95bd-8b78b4b26a3a"
+display_name = "locale_ref"
+data_name = "locale_ref"
+tooltip = ""
+data_type = "Reference"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[schema.columns.reference_config]
+target_table_uuid = "7fa7c67c-a425-4c26-9878-ab60644953c9"
+display_column_uuid = "ab227695-55ab-4f73-9515-9c2c4561bf37"
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "45b55f7a-b06f-46d9-99ab-2c5ee14fe32a"
+display_name = "message"
+data_name = "message"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 420
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "2ba4cc8a-a9d9-4a8b-b944-d1751d067d09"
+display_name = "status"
+data_name = "status"
+tooltip = ""
+data_type = "Select"
+tags = []
+default_value = "draft"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns.select_config.options]]
+value = "reviewed"
+label = "reviewed"
+
+[[schema.columns.select_config.options]]
+value = "draft"
+label = "draft"
+
+[[schema.columns.select_config.options]]
+value = "needs_review"
+label = "needs_review"
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "cfcd3651-05e3-47c4-ae46-6e648239f213"
+display_name = "reviewed_source_revision"
+data_name = "reviewed_source_revision"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+required = false
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "8c29df9e-9a9a-4953-811b-b9bfd4e5658e"
+display_name = "note"
+data_name = "note"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+required = false
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[records]]
+uuid = "b427ea85-5a95-4234-a2cb-7e368ca0626c"
+parent_uuid = ""
+label = "record_b427ea855a954234a2cb7e368ca0626c"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "53443caa-f352-491f-acf5-77e6308d4bf0"
+message = "開発者ツールは利用できません。デバッグ版のビルドをご利用ください。"
+message_ref = "88095894-75b9-4bf9-8245-dc41ed15da8b"
+note = ""
+reviewed_source_revision = "5b87fa5ed3f103858072718aebe800d395a598a0596bc845df0bb5570de070c4"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "a6ba5ab9-d758-4280-b467-ba18034b46d7"
+parent_uuid = ""
+label = "record_a6ba5ab9d7584280b467ba18034b46d7"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a612b81c-02b4-400e-a28a-48238cb55e05"
+message = "Developer tools are unavailable. Please use a debug build."
+message_ref = "88095894-75b9-4bf9-8245-dc41ed15da8b"
+note = ""
+reviewed_source_revision = "5b87fa5ed3f103858072718aebe800d395a598a0596bc845df0bb5570de070c4"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "b90b5c5b-348c-5190-a6d1-73133c3703ae"
+parent_uuid = ""
+label = "record_b90b5c5b348c5190a6d173133c3703ae"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "b42128cf-c528-5a33-ba26-b144de4c6f20"
+message = "Les outils de développement sont indisponibles. Utilisez une version de débogage."
+message_ref = "88095894-75b9-4bf9-8245-dc41ed15da8b"
+note = ""
+reviewed_source_revision = "5b87fa5ed3f103858072718aebe800d395a598a0596bc845df0bb5570de070c4"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "8f950899-bc98-5166-bfdc-716a302f54e5"
+parent_uuid = ""
+label = "record_8f950899bc985166bfdc716a302f54e5"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "3b9511f4-bae8-5e7d-a521-2d5633d5f3c2"
+message = "Las herramientas de desarrollo no están disponibles. Usa una compilación de depuración."
+message_ref = "88095894-75b9-4bf9-8245-dc41ed15da8b"
+note = ""
+reviewed_source_revision = "5b87fa5ed3f103858072718aebe800d395a598a0596bc845df0bb5570de070c4"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "a9ce8b00-f443-5423-9813-ff4ab462fefb"
+parent_uuid = ""
+label = "record_a9ce8b00f44354239813ff4ab462fefb"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "6571b42e-49e5-5806-b0bb-6264367adcfe"
+message = "Entwicklertools sind nicht verfügbar. Bitte verwende einen Debug-Build."
+message_ref = "88095894-75b9-4bf9-8245-dc41ed15da8b"
+note = ""
+reviewed_source_revision = "5b87fa5ed3f103858072718aebe800d395a598a0596bc845df0bb5570de070c4"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "ac11c958-85f9-59e8-8d6b-896a570b071d"
+parent_uuid = ""
+label = "record_ac11c95885f959e88d6b896a570b071d"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a539b8c2-d771-5b4e-bef8-ba7767812b72"
+message = "Strumenti per sviluppatori non disponibili. Usa una build di debug."
+message_ref = "88095894-75b9-4bf9-8245-dc41ed15da8b"
+note = ""
+reviewed_source_revision = "5b87fa5ed3f103858072718aebe800d395a598a0596bc845df0bb5570de070c4"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "c6c467e2-4346-5fb2-abe6-007e5174e65e"
+parent_uuid = ""
+label = "record_c6c467e243465fb2abe6007e5174e65e"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bd410527-d1a0-59cd-9972-a055d2338063"
+message = "开发者工具不可用。请使用调试构建。"
+message_ref = "88095894-75b9-4bf9-8245-dc41ed15da8b"
+note = ""
+reviewed_source_revision = "5b87fa5ed3f103858072718aebe800d395a598a0596bc845df0bb5570de070c4"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "b8c7c6f8-09be-55e9-b387-b21b2f866302"
+parent_uuid = ""
+label = "record_b8c7c6f809be55e9b387b21b2f866302"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "2e56c33d-5b3d-51b3-a05a-9700e5ca2401"
+message = "開發人員工具不可用。請使用除錯建置。"
+message_ref = "88095894-75b9-4bf9-8245-dc41ed15da8b"
+note = ""
+reviewed_source_revision = "5b87fa5ed3f103858072718aebe800d395a598a0596bc845df0bb5570de070c4"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "017123d2-9b71-5604-a669-3290e9d0436e"
+parent_uuid = ""
+label = "record_017123d29b715604a6693290e9d0436e"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "fb94026c-d2df-583f-8dda-93a7b3492949"
+message = "Utvecklarverktyg är inte tillgängliga. Använd en felsökningsversion."
+message_ref = "88095894-75b9-4bf9-8245-dc41ed15da8b"
+note = ""
+reviewed_source_revision = "5b87fa5ed3f103858072718aebe800d395a598a0596bc845df0bb5570de070c4"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "7b37d683-5c5e-53b0-a5f1-eaaa73bd6aad"
+parent_uuid = ""
+label = "record_7b37d6835c5e53b0a5f1eaaa73bd6aad"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bc2ab48c-47ba-5f0d-9c5a-487151074e14"
+message = "Kehittäjätyökalut eivät ole käytettävissä. Käytä virheenkorjauskoontia."
+message_ref = "88095894-75b9-4bf9-8245-dc41ed15da8b"
+note = ""
+reviewed_source_revision = "5b87fa5ed3f103858072718aebe800d395a598a0596bc845df0bb5570de070c4"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "defffdf0-8e22-5e0f-bb7d-ccf7433183b7"
+parent_uuid = ""
+label = "record_defffdf08e225e0fbb7dccf7433183b7"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "5b8834dc-b8d4-51df-a8bb-933d8573c2cb"
+message = "Utviklerverktøy er ikke tilgjengelige. Bruk et feilsøkingsbygg."
+message_ref = "88095894-75b9-4bf9-8245-dc41ed15da8b"
+note = ""
+reviewed_source_revision = "5b87fa5ed3f103858072718aebe800d395a598a0596bc845df0bb5570de070c4"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "78c2e90f-b64b-5cef-9f41-dc6da77535de"
+parent_uuid = ""
+label = "record_78c2e90fb64b5cef9f41dc6da77535de"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "7304c655-3bd1-5be1-82f6-50c140c3ced7"
+message = "أدوات المطوّر غير متاحة. يرجى استخدام بناء تصحيح الأخطاء."
+message_ref = "88095894-75b9-4bf9-8245-dc41ed15da8b"
+note = ""
+reviewed_source_revision = "5b87fa5ed3f103858072718aebe800d395a598a0596bc845df0bb5570de070c4"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "8d434f1d-8f1c-5497-a041-20c366c65e76"
+parent_uuid = ""
+label = "record_8d434f1d8f1c5497a04120c366c65e76"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "0f6b59c7-a7d5-5417-9ade-9eca750f029c"
+message = "ডেভেলপার টুল উপলব্ধ নয়। ডিবাগ বিল্ড ব্যবহার করুন।"
+message_ref = "88095894-75b9-4bf9-8245-dc41ed15da8b"
+note = ""
+reviewed_source_revision = "5b87fa5ed3f103858072718aebe800d395a598a0596bc845df0bb5570de070c4"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "5c68b5f2-3394-54a2-ba96-227c382085a6"
+parent_uuid = ""
+label = "record_5c68b5f2339454a2ba96227c382085a6"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "acbd8612-2fc4-516a-8b84-4f0a3cd80831"
+message = "डेवलपर टूल उपलब्ध नहीं हैं। कृपया डीबग बिल्ड इस्तेमाल करें।"
+message_ref = "88095894-75b9-4bf9-8245-dc41ed15da8b"
+note = ""
+reviewed_source_revision = "5b87fa5ed3f103858072718aebe800d395a598a0596bc845df0bb5570de070c4"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+
+[[records]]
+uuid = "481c00c8-6122-5e9e-9f9a-cc5b0bd81ec1"
+parent_uuid = ""
+label = "record_481c00c861225e9e9f9acc5b0bd81ec1"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "4f626627-2fda-5739-8f33-46d5eb8bae0e"
+message = "Garatzaile-tresnak ez daude erabilgarri. Erabili arazketarako konpilazio bat."
+message_ref = "88095894-75b9-4bf9-8245-dc41ed15da8b"
+note = ""
+reviewed_source_revision = "5b87fa5ed3f103858072718aebe800d395a598a0596bc845df0bb5570de070c4"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "cb7fc8b5-248d-514d-918c-f84f6002b3e8"
+parent_uuid = ""
+label = "record_cb7fc8b5248d514d918cf84f6002b3e8"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "086c8431-4df5-5570-b34b-d59375292efd"
+message = "Les eines de desenvolupament no estan disponibles. Utilitzeu una compilació de depuració."
+message_ref = "88095894-75b9-4bf9-8245-dc41ed15da8b"
+note = ""
+reviewed_source_revision = "5b87fa5ed3f103858072718aebe800d395a598a0596bc845df0bb5570de070c4"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]

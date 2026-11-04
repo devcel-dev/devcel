@@ -1,0 +1,1414 @@
+uuid = "10000000-0000-4000-8000-000000000008"
+display_name = "encounters"
+description = ""
+
+[metadata]
+interface_order = []
+data_name = "encounters"
+initial_transposed = false
+
+[metadata.edit_permissions]
+add_columns = true
+delete_columns = true
+add_rows = true
+delete_rows = true
+edit_cells = true
+
+[interface_implementations]
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-8008-000000000001"
+display_name = "key"
+data_name = "key"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-8008-000000000002"
+display_name = "name"
+data_name = "name"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-8008-000000000003"
+display_name = "enemy"
+data_name = "enemy"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-000000000005"
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-8008-000000000004"
+display_name = "enemy_table"
+data_name = "enemy_table"
+data_type = "TableRef"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[schema.columns.table_ref_config]
+interface_uuid = "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb2"
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-8008-000000000005"
+display_name = "weight"
+data_name = "weight"
+data_type = "I64"
+default_value = "1"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-8008-000000000006"
+display_name = "zone"
+data_name = "zone"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-8008-000000000007"
+display_name = "weighted_reward"
+data_name = "weighted_reward"
+data_type = "I64"
+default_value = "=weight*2"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000001"
+label = "encounter_00000"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000001"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00000"
+name = "Encounter: Bankside Speckled Brook Slime"
+weight = "1"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000002"
+label = "encounter_00001"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000002"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00001"
+name = "Encounter: Burrow Speckled Brook Slime"
+weight = "2"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000003"
+label = "encounter_00002"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000003"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00002"
+name = "Encounter: Bankside Marbled Brook Slime"
+weight = "3"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000004"
+label = "encounter_00003"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000004"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00003"
+name = "Encounter: Burrow Marbled Brook Slime"
+weight = "4"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000005"
+label = "encounter_00004"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000005"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00004"
+name = "Encounter: Bankside Striped Brook Slime"
+weight = "5"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000006"
+label = "encounter_00005"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000006"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00005"
+name = "Encounter: Burrow Striped Brook Slime"
+weight = "1"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000007"
+label = "encounter_00006"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000007"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00006"
+name = "Encounter: Bankside Amber Brook Slime"
+weight = "2"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000008"
+label = "encounter_00007"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000008"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00007"
+name = "Encounter: Burrow Amber Brook Slime"
+weight = "3"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000009"
+label = "encounter_00008"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000009"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00008"
+name = "Encounter: Bankside Clouded Brook Slime"
+weight = "4"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000000a"
+label = "encounter_00009"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000000a"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00009"
+name = "Encounter: Burrow Clouded Brook Slime"
+weight = "5"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000000b"
+label = "encounter_00010"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000000b"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00010"
+name = "Encounter: Bankside Copperfleck Brook Slime"
+weight = "1"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000000c"
+label = "encounter_00011"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000000c"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00011"
+name = "Encounter: Burrow Copperfleck Brook Slime"
+weight = "2"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000000d"
+label = "encounter_00012"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000000d"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00012"
+name = "Encounter: Bankside Darkling Brook Slime"
+weight = "3"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000000e"
+label = "encounter_00013"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000000e"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00013"
+name = "Encounter: Burrow Darkling Brook Slime"
+weight = "4"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000000f"
+label = "encounter_00014"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000000f"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00014"
+name = "Encounter: Bankside Pearlescent Brook Slime"
+weight = "5"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000010"
+label = "encounter_00015"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000010"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00015"
+name = "Encounter: Burrow Pearlescent Brook Slime"
+weight = "1"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000011"
+label = "encounter_00016"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000011"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00016"
+name = "Encounter: Bankside Silverfleck Brook Slime"
+weight = "2"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000012"
+label = "encounter_00017"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000012"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00017"
+name = "Encounter: Burrow Silverfleck Brook Slime"
+weight = "3"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000013"
+label = "encounter_00018"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000013"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00018"
+name = "Encounter: Bankside Crowned Brook Slime"
+weight = "4"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000014"
+label = "encounter_00019"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000014"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00019"
+name = "Encounter: Burrow Crowned Brook Slime"
+weight = "5"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000015"
+label = "encounter_00020"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000015"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00020"
+name = "Encounter: Bankside Speckled Moss Slime"
+weight = "1"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000016"
+label = "encounter_00021"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000016"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00021"
+name = "Encounter: Burrow Speckled Moss Slime"
+weight = "2"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000017"
+label = "encounter_00022"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000017"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00022"
+name = "Encounter: Bankside Marbled Moss Slime"
+weight = "3"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000018"
+label = "encounter_00023"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000018"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00023"
+name = "Encounter: Burrow Marbled Moss Slime"
+weight = "4"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000019"
+label = "encounter_00024"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000019"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00024"
+name = "Encounter: Bankside Striped Moss Slime"
+weight = "5"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000001a"
+label = "encounter_00025"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000001a"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00025"
+name = "Encounter: Burrow Striped Moss Slime"
+weight = "1"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000001b"
+label = "encounter_00026"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000001b"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00026"
+name = "Encounter: Bankside Amber Moss Slime"
+weight = "2"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000001c"
+label = "encounter_00027"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000001c"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00027"
+name = "Encounter: Burrow Amber Moss Slime"
+weight = "3"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000001d"
+label = "encounter_00028"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000001d"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00028"
+name = "Encounter: Bankside Clouded Moss Slime"
+weight = "4"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000001e"
+label = "encounter_00029"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000001e"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00029"
+name = "Encounter: Burrow Clouded Moss Slime"
+weight = "5"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000001f"
+label = "encounter_00030"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000001f"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00030"
+name = "Encounter: Bankside Copperfleck Moss Slime"
+weight = "1"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000020"
+label = "encounter_00031"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000020"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00031"
+name = "Encounter: Burrow Copperfleck Moss Slime"
+weight = "2"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000021"
+label = "encounter_00032"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000021"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00032"
+name = "Encounter: Bankside Darkling Moss Slime"
+weight = "3"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000022"
+label = "encounter_00033"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000022"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00033"
+name = "Encounter: Burrow Darkling Moss Slime"
+weight = "4"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000023"
+label = "encounter_00034"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000023"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00034"
+name = "Encounter: Bankside Pearlescent Moss Slime"
+weight = "5"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000024"
+label = "encounter_00035"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000024"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00035"
+name = "Encounter: Burrow Pearlescent Moss Slime"
+weight = "1"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000025"
+label = "encounter_00036"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000025"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00036"
+name = "Encounter: Bankside Silverfleck Moss Slime"
+weight = "2"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000026"
+label = "encounter_00037"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000026"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00037"
+name = "Encounter: Burrow Silverfleck Moss Slime"
+weight = "3"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000027"
+label = "encounter_00038"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000027"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00038"
+name = "Encounter: Bankside Crowned Moss Slime"
+weight = "4"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000028"
+label = "encounter_00039"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000028"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00039"
+name = "Encounter: Burrow Crowned Moss Slime"
+weight = "5"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000029"
+label = "encounter_00040"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000029"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00040"
+name = "Encounter: Bankside Speckled Reed Slime"
+weight = "1"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000002a"
+label = "encounter_00041"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000002a"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00041"
+name = "Encounter: Burrow Speckled Reed Slime"
+weight = "2"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000002b"
+label = "encounter_00042"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000002b"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00042"
+name = "Encounter: Bankside Marbled Reed Slime"
+weight = "3"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000002c"
+label = "encounter_00043"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000002c"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00043"
+name = "Encounter: Burrow Marbled Reed Slime"
+weight = "4"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000002d"
+label = "encounter_00044"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000002d"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00044"
+name = "Encounter: Bankside Striped Reed Slime"
+weight = "5"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000002e"
+label = "encounter_00045"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000002e"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00045"
+name = "Encounter: Burrow Striped Reed Slime"
+weight = "1"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000002f"
+label = "encounter_00046"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000002f"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00046"
+name = "Encounter: Bankside Amber Reed Slime"
+weight = "2"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000030"
+label = "encounter_00047"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000030"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00047"
+name = "Encounter: Burrow Amber Reed Slime"
+weight = "3"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000031"
+label = "encounter_00048"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000031"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00048"
+name = "Encounter: Bankside Clouded Reed Slime"
+weight = "4"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000032"
+label = "encounter_00049"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000032"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00049"
+name = "Encounter: Burrow Clouded Reed Slime"
+weight = "5"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000033"
+label = "encounter_00050"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000033"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00050"
+name = "Encounter: Bankside Copperfleck Reed Slime"
+weight = "1"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000034"
+label = "encounter_00051"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000034"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00051"
+name = "Encounter: Burrow Copperfleck Reed Slime"
+weight = "2"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000035"
+label = "encounter_00052"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000035"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00052"
+name = "Encounter: Bankside Darkling Reed Slime"
+weight = "3"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000036"
+label = "encounter_00053"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000036"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00053"
+name = "Encounter: Burrow Darkling Reed Slime"
+weight = "4"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000037"
+label = "encounter_00054"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000037"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00054"
+name = "Encounter: Bankside Pearlescent Reed Slime"
+weight = "5"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000038"
+label = "encounter_00055"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000038"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00055"
+name = "Encounter: Burrow Pearlescent Reed Slime"
+weight = "1"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000039"
+label = "encounter_00056"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000039"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00056"
+name = "Encounter: Bankside Silverfleck Reed Slime"
+weight = "2"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000003a"
+label = "encounter_00057"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000003a"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00057"
+name = "Encounter: Burrow Silverfleck Reed Slime"
+weight = "3"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000003b"
+label = "encounter_00058"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000003b"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00058"
+name = "Encounter: Bankside Crowned Reed Slime"
+weight = "4"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000003c"
+label = "encounter_00059"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000003c"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00059"
+name = "Encounter: Burrow Crowned Reed Slime"
+weight = "5"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000003d"
+label = "encounter_00060"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000003d"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00060"
+name = "Encounter: Bankside Speckled Crystal Slime"
+weight = "1"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000003e"
+label = "encounter_00061"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000003e"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00061"
+name = "Encounter: Burrow Speckled Crystal Slime"
+weight = "2"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000003f"
+label = "encounter_00062"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000003f"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00062"
+name = "Encounter: Bankside Marbled Crystal Slime"
+weight = "3"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000040"
+label = "encounter_00063"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000040"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00063"
+name = "Encounter: Burrow Marbled Crystal Slime"
+weight = "4"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000041"
+label = "encounter_00064"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000041"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00064"
+name = "Encounter: Bankside Striped Crystal Slime"
+weight = "5"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000042"
+label = "encounter_00065"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000042"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00065"
+name = "Encounter: Burrow Striped Crystal Slime"
+weight = "1"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000043"
+label = "encounter_00066"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000043"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00066"
+name = "Encounter: Bankside Amber Crystal Slime"
+weight = "2"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000044"
+label = "encounter_00067"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000044"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00067"
+name = "Encounter: Burrow Amber Crystal Slime"
+weight = "3"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000045"
+label = "encounter_00068"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000045"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00068"
+name = "Encounter: Bankside Clouded Crystal Slime"
+weight = "4"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000046"
+label = "encounter_00069"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000046"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00069"
+name = "Encounter: Burrow Clouded Crystal Slime"
+weight = "5"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000047"
+label = "encounter_00070"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000047"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00070"
+name = "Encounter: Bankside Copperfleck Crystal Slime"
+weight = "1"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000048"
+label = "encounter_00071"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000048"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00071"
+name = "Encounter: Burrow Copperfleck Crystal Slime"
+weight = "2"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000049"
+label = "encounter_00072"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000049"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00072"
+name = "Encounter: Bankside Darkling Crystal Slime"
+weight = "3"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000004a"
+label = "encounter_00073"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000004a"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00073"
+name = "Encounter: Burrow Darkling Crystal Slime"
+weight = "4"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000004b"
+label = "encounter_00074"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000004b"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00074"
+name = "Encounter: Bankside Pearlescent Crystal Slime"
+weight = "5"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000004c"
+label = "encounter_00075"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000004c"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00075"
+name = "Encounter: Burrow Pearlescent Crystal Slime"
+weight = "1"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000004d"
+label = "encounter_00076"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000004d"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00076"
+name = "Encounter: Bankside Silverfleck Crystal Slime"
+weight = "2"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000004e"
+label = "encounter_00077"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000004e"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00077"
+name = "Encounter: Burrow Silverfleck Crystal Slime"
+weight = "3"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000004f"
+label = "encounter_00078"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000004f"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00078"
+name = "Encounter: Bankside Crowned Crystal Slime"
+weight = "4"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000050"
+label = "encounter_00079"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000050"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00079"
+name = "Encounter: Burrow Crowned Crystal Slime"
+weight = "5"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000051"
+label = "encounter_00080"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000051"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00080"
+name = "Encounter: Bankside Speckled Silt Slime"
+weight = "1"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000052"
+label = "encounter_00081"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000052"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00081"
+name = "Encounter: Burrow Speckled Silt Slime"
+weight = "2"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000053"
+label = "encounter_00082"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000053"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00082"
+name = "Encounter: Bankside Marbled Silt Slime"
+weight = "3"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000054"
+label = "encounter_00083"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000054"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00083"
+name = "Encounter: Burrow Marbled Silt Slime"
+weight = "4"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000055"
+label = "encounter_00084"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000055"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00084"
+name = "Encounter: Bankside Striped Silt Slime"
+weight = "5"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000056"
+label = "encounter_00085"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000056"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00085"
+name = "Encounter: Burrow Striped Silt Slime"
+weight = "1"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000057"
+label = "encounter_00086"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000057"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00086"
+name = "Encounter: Bankside Amber Silt Slime"
+weight = "2"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000058"
+label = "encounter_00087"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000058"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00087"
+name = "Encounter: Burrow Amber Silt Slime"
+weight = "3"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000059"
+label = "encounter_00088"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000059"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00088"
+name = "Encounter: Bankside Clouded Silt Slime"
+weight = "4"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000005a"
+label = "encounter_00089"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000005a"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00089"
+name = "Encounter: Burrow Clouded Silt Slime"
+weight = "5"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000005b"
+label = "encounter_00090"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000005b"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00090"
+name = "Encounter: Bankside Copperfleck Silt Slime"
+weight = "1"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000005c"
+label = "encounter_00091"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000005c"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00091"
+name = "Encounter: Burrow Copperfleck Silt Slime"
+weight = "2"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000005d"
+label = "encounter_00092"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000005d"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00092"
+name = "Encounter: Bankside Darkling Silt Slime"
+weight = "3"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000005e"
+label = "encounter_00093"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000005e"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00093"
+name = "Encounter: Burrow Darkling Silt Slime"
+weight = "4"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-00000000005f"
+label = "encounter_00094"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-00000000005f"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00094"
+name = "Encounter: Bankside Pearlescent Silt Slime"
+weight = "5"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000060"
+label = "encounter_00095"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000060"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00095"
+name = "Encounter: Burrow Pearlescent Silt Slime"
+weight = "1"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000061"
+label = "encounter_00096"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000061"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00096"
+name = "Encounter: Bankside Silverfleck Silt Slime"
+weight = "2"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000062"
+label = "encounter_00097"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000062"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00097"
+name = "Encounter: Burrow Silverfleck Silt Slime"
+weight = "3"
+zone = "cave"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000063"
+label = "encounter_00098"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000063"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00098"
+name = "Encounter: Bankside Crowned Silt Slime"
+weight = "4"
+zone = "forest"
+
+[[records]]
+uuid = "20000000-0000-4000-8008-000000000064"
+label = "encounter_00099"
+tags = ["rpg/encounters", "catalog/seed-v1"]
+
+[records.values]
+enemy = "20000000-0000-4000-8005-000000000064"
+enemy_table = "10000000-0000-4000-8000-000000000005"
+key = "encounter_00099"
+name = "Encounter: Burrow Crowned Silt Slime"
+weight = "5"
+zone = "cave"

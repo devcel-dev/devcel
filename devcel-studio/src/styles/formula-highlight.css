@@ -1,0 +1,20 @@
+/* Only the focused native editor is masked. Selection/IME/large drafts use its
+   original paint; the aria-hidden mirror never owns editing or hit testing. */
+input[data-formula-highlighted="true"], textarea[data-formula-highlighted="true"] {
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  caret-color: hsl(var(--foreground)) !important;
+}
+.formula-highlight { user-select: none; color: hsl(var(--foreground)); }
+.formula-highlight .formula-token-function { color: #176b58; }
+.formula-highlight .formula-token-name { color: #62429b; }
+.formula-highlight .formula-token-reference { color: #984316; }
+.formula-highlight .formula-token-string { color: #235fa3; }
+.formula-highlight .formula-token-number, .formula-highlight .formula-token-literal { color: #873b72; }
+.formula-highlight .formula-token-operator { color: #49596a; }
+.dark .formula-highlight .formula-token-function { color: #8de5c7; }
+.dark .formula-highlight .formula-token-name { color: #c9b6ff; }
+.dark .formula-highlight .formula-token-reference { color: #f1bd8b; }
+.dark .formula-highlight .formula-token-string { color: #9ac9f5; }
+.dark .formula-highlight .formula-token-number, .dark .formula-highlight .formula-token-literal { color: #f1a7d0; }
+.dark .formula-highlight .formula-token-operator { color: #b9c8d7; }

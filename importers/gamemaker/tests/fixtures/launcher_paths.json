@@ -1,0 +1,40 @@
+{
+  "scope": "Windows path/argument contract fixtures; native cmd.exe and PowerShell execution is not implied",
+  "cases": [
+    {
+      "name": "absolute-japanese-spaces",
+      "sdk": "C:\\開発 ツール\\Devcel SDK",
+      "cwd": "C:\\別の 作業場所",
+      "root": "C:\\ゲーム 制作\\日本語 タイトル",
+      "expected_root": "C:\\ゲーム 制作\\日本語 タイトル"
+    },
+    {
+      "name": "relative-japanese-spaces",
+      "sdk": "C:\\開発 ツール\\Devcel SDK",
+      "cwd": "C:\\ゲーム 制作",
+      "root": ".\\日本語 タイトル",
+      "expected_root": "C:\\ゲーム 制作\\日本語 タイトル"
+    },
+    {
+      "name": "parent-relative-spaces",
+      "sdk": "C:\\開発 ツール\\Devcel SDK",
+      "cwd": "C:\\ゲーム 制作\\作業 用",
+      "root": "..\\日本語 タイトル",
+      "expected_root": "C:\\ゲーム 制作\\日本語 タイトル"
+    },
+    {
+      "name": "literal-wildcard-looking-and-shell-characters",
+      "sdk": "C:\\開発 [検証] & SDK",
+      "cwd": "C:\\別の 作業場所",
+      "root": "C:\\ゲーム [01] & 検証",
+      "expected_root": "C:\\ゲーム [01] & 検証"
+    },
+    {
+      "name": "trailing-separator",
+      "sdk": "C:\\開発 ツール\\Devcel SDK",
+      "cwd": "C:\\別の 作業場所",
+      "root": "C:\\ゲーム 制作\\日本語 タイトル\\",
+      "expected_root": "C:\\ゲーム 制作\\日本語 タイトル"
+    }
+  ]
+}

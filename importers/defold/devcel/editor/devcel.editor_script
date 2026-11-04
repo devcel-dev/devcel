@@ -1,0 +1,81 @@
+local importer=require 'devcel.editor.importer'
+local filters=require 'devcel.editor.tag_filters'
+local M={}
+local function field(label,value,setter,hint)
+    return editor.ui.horizontal({spacing=editor.ui.SPACING.SMALL,children={
+        editor.ui.label({text=label}),editor.ui.string_field({value=value,on_value_changed=setter,tooltip=hint,grow=true})}})
+end
+local function initial_tags(source,key) return source[key] or {} end
+local source_dialog=editor.ui.component(function(props)
+    local source=props.source
+    local id,set_id=editor.ui.use_state(source.id or '')
+    local project,set_project=editor.ui.use_state(source.project or '../authoring/Game.devcelproj.toml')
+    local namespace,set_namespace=editor.ui.use_state(source.namespace or 'Game.Master')
+    local classname,set_classname=editor.ui.use_state(source.class_name or '')
+    local version,set_version=editor.ui.use_state(source.version~=nil and tostring(source.version) or '')
+    local mode,set_mode=editor.ui.use_state(source.mode or 'full')
+    local output,set_output=editor.ui.use_state(source.runtime_out or '')
+    local presets,set_presets=editor.ui.use_state(nil)
+    local loaded_project,set_loaded_project=editor.ui.use_state('')
+    local registry_message,set_registry_message=editor.ui.use_state('Load presets for this source before selecting tags. Existing values are retained.')
+    local values,setters={},{}
+    for _,key in ipairs(filters.keys) do values[key],setters[key]=editor.ui.use_state(initial_tags,source,key) end
+    local current_presets=loaded_project==project and presets or nil
+    local filter_children={editor.ui.label({text='Empty include means all; include tags use OR; exclude wins.'}),
+        editor.ui.label({text='Invalid references fail import and preserve the last successful files.'}),
+        editor.ui.button({text='Load / refresh project tag presets',on_pressed=function()
+            local ok,result=pcall(importer.tag_presets,project)
+            if ok then set_presets(result);set_loaded_project(project);set_registry_message('Loaded presets for '..project)
+            else set_presets(nil);set_loaded_project('');set_registry_message('Could not load presets: '..tostring(result)) end
+        end}),editor.ui.label({text=loaded_project~='' and loaded_project~=project and 'Load presets for the current project. Existing values are retained.' or registry_message})}
+    for index,key in ipairs(filters.keys) do filter_children[#filter_children+1]=filters.controls({index=index,values=values[key],set=setters[key],presets=current_presets}) end
+    local result={}
+    for key,value in pairs(source) do result[key]=value end
+    result.id=id;result.project=project;result.namespace=namespace;result.class_name=classname~='' and classname or nil
+    result.mode=mode;result.runtime_out=output~='' and output or ('devcel_generated/'..id..'.json')
+    for _,key in ipairs(filters.keys) do result[key]=values[key] end
+    local valid=id:match('^[A-Za-z0-9_-]+$') and project:match('%.devcelproj%.toml$') and namespace~=''
+    local number=version~='' and tonumber(version) or nil
+    result.version=number
+    valid=valid and (version=='' or (number and number==math.floor(number) and number>=0 and number<=4294967295))
+    return editor.ui.dialog({title='Devcel: Import settings',content=editor.ui.vertical({padding=editor.ui.PADDING.LARGE,spacing=editor.ui.SPACING.SMALL,children={
+        editor.ui.label({text='Paths are relative to the configuration file. Press Enter to confirm each field.'}),
+        field('Configuration ID',id,set_id,'Letters, digits, underscores, and hyphens'),field('Project',project,set_project,'Path to a .devcelproj.toml file'),field('Namespace',namespace,set_namespace,'Example: Game.Master'),
+        field('Class name',classname,set_classname,'Leave blank to use the default name'),field('Content Version',version,set_version,'Leave blank for all versions. Valid range: 0–4294967295'),
+        field('JSON output',output,set_output,'Leave blank for devcel_generated/<Configuration ID>.json'),
+        editor.ui.select_box({value=mode,options={'full','minimal'},on_value_changed=set_mode}),
+        editor.ui.vertical({spacing=editor.ui.SPACING.SMALL,children=filter_children})
+    }}),buttons={editor.ui.dialog_button({text='Cancel',cancel=true}),editor.ui.dialog_button({text='Save',default=true,enabled=not not valid,
+        result=result})}})
+end)
+local select_dialog=editor.ui.component(function(props)
+    local selected,set_selected=editor.ui.use_state(props.ids[1])
+    return editor.ui.dialog({title=props.title,content=editor.ui.vertical({padding=editor.ui.PADDING.LARGE,children={
+        editor.ui.select_box({value=selected,options=props.ids,on_value_changed=set_selected})}}),buttons={
+        editor.ui.dialog_button({text='Cancel',cancel=true}),editor.ui.dialog_button({text='Select',default=true,result=selected})}})
+end)
+local function select_source(title)
+    local cfg=importer.read_config(); local ids={}; for _,s in ipairs(cfg.sources) do ids[#ids+1]=s.id end
+    assert(#ids>0,'Add a source via Project > Devcel: Add source')
+    local id=editor.ui.show_dialog(select_dialog({title=title,ids=ids}))
+    if id then for _,s in ipairs(cfg.sources) do if s.id==id then return s end end end
+end
+function M.get_commands()
+    return {
+        {label='Devcel: Add source',locations={'Project'},run=function()
+            local source=editor.ui.show_dialog(source_dialog({source={}})); if source then importer.save_source(source) end
+        end},
+        {label='Devcel: Edit settings',locations={'Project'},run=function()
+            local old=select_source('Edit settings'); if not old then return end
+            local source=editor.ui.show_dialog(source_dialog({source=old})); if source then
+                assert(source.id==old.id,'The configuration ID cannot be changed. Add a separate source instead.'); importer.save_source(source)
+            end
+        end},
+        {label='Devcel: Reimport',locations={'Project'},run=function()
+            local source=select_source('Select a source'); if source then importer.pull(source.id) end
+        end},
+        {label='Devcel: Reimport all',locations={'Project'},run=function() importer.pull() end},
+        {label='Devcel: Import status',locations={'Project'},run=function() importer.status() end}
+    }
+end
+return M

@@ -1,0 +1,768 @@
+/* DataGrid Custom Styles for Devcel Theme */
+
+/* Import range selection styles */
+@import '@/lib/react-data-grid/style/range.css';
+
+/* Override react-data-grid default styles */
+.rdg {
+  border: none;
+  font-size: 13px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  position: relative;
+}
+
+/* Keep transient save/preparation feedback out of the grid's layout and hit testing. */
+.rdg-transient-status-overlay {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+  max-width: min(32rem, calc(100% - 1.5rem));
+}
+
+.rdg-transient-status-overlay,
+.rdg-transient-status-overlay * {
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Header styles with sticky positioning */
+.rdg-header-row {
+  background-color: hsl(var(--muted));
+  border-bottom: 1px solid hsl(var(--border));
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10;
+  /* Ensure header stays on top during scroll */
+  will-change: transform;
+}
+
+/* Make sure header cells also stick */
+.rdg-header-row .rdg-cell {
+  position: sticky !important;
+  top: 0 !important;
+  background-color: hsl(var(--muted));
+}
+
+/* Selected header cell */
+.rdg-header-row .rdg-cell-selected-header {
+  background-color: var(--rdg-row-selected-background-color) !important;
+}
+
+.rdg-cell {
+  border-right: 1px solid hsl(var(--border));
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+/* Row hover effect */
+/* NOTE: Hover effect is now handled by getCellBackgroundColor callback
+.rdg-row:hover {
+  background-color: hsl(var(--muted));
+}
+*/
+
+/* Selected cell */
+.rdg-cell.rdg-cell-selected {
+  outline: 1px solid var(--rdg-selection-color, hsl(var(--ring)));
+  outline-offset: -1px;
+}
+
+/* Hide the selection outline on the top-left cell, preserving its always-visible gray background */
+.rdg-header-row .rdg-cell-frozen.rdg-row-index.rdg-cell-selected {
+  outline: none !important;
+}
+
+/* Editing cell */
+.rdg-cell.rdg-cell-editing {
+  padding: 0;
+}
+
+.rdg-cell.rdg-cell-editing input {
+  width: 100%;
+  height: 100%;
+  padding: 0 8px;
+  border: none;
+  outline: none;
+  color: hsl(var(--foreground));
+  background-color: hsl(var(--background));
+  font-size: inherit;
+  font-family: inherit;
+}
+
+/* Frozen column styles - First column (row indicator) */
+.rdg-cell-frozen {
+  background-color: hsl(var(--muted));
+  font-weight: 500;
+  position: sticky !important;
+  left: 0 !important;
+  z-index: 5;
+  border-right: 2px solid hsl(var(--border)) !important;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Frozen first cell in header - highest z-index */
+.rdg-header-row .rdg-cell-frozen {
+  z-index: 11 !important;
+  position: sticky !important;
+  left: 0 !important;
+  top: 0 !important;
+}
+
+/* Place the top-left row indicator header cell above all others */
+.rdg-row-indicator-header {
+  /* Set the highest display priority */
+  z-index: 100 !important;
+  position: relative !important;
+  
+  /* Visual styles */
+  background-color: hsl(var(--muted)) !important;
+  border-right: 2px solid hsl(var(--border)) !important;
+  border-bottom: 1px solid hsl(var(--border)) !important;
+  
+  /* Hide the selection outline */
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Keep the top-left cell above others as a frozen cell too */
+.rdg-header-row .rdg-cell-frozen.rdg-row-indicator-header {
+  z-index: 150 !important;
+  position: sticky !important;
+  left: 0 !important;
+  top: 0 !important;
+}
+
+/* Keep it above others on hover */
+.rdg-row-indicator-header:hover {
+  z-index: 100 !important;
+  background-color: hsl(var(--muted)) !important;
+}
+
+/* Do not display a selection outline when selected */
+.rdg-row-indicator-header.rdg-cell-selected {
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: hsl(var(--muted)) !important;
+}
+
+/* Ensure child elements are visible too */
+.rdg-row-indicator-header > * {
+  z-index: 101 !important;
+  position: relative !important;
+}
+
+/* Ensure frozen cells stay visible during horizontal scroll */
+.rdg-row .rdg-cell-frozen {
+  position: sticky !important;
+  left: 0 !important;
+}
+
+/* Readonly cells */
+.rdg-cell[aria-readonly="true"] {
+  background-color: hsl(var(--muted));
+  color: hsl(var(--muted-foreground));
+}
+
+/* Resize handles remain centered on the header boundary. */
+.rdg-cell-resizer {
+  cursor: col-resize;
+  position: absolute;
+  top: 0;
+  width: 20px;
+  height: 100%;
+  z-index: 4;
+}
+
+.rdg-cell-has-inline-buttons > .rdg-cell-resizer { clip-path: none; width: 6px; }
+.rdg-cell-has-inline-buttons > .rdg-cell-resizer-left { inset-inline-start: -3px; }
+.rdg-cell-has-inline-buttons > .rdg-cell-resizer-right { inset-inline-end: -3px; }
+
+/* Resize uses its cursor, not a bright hover stripe over header controls. */
+.rdg-cell-resizer:hover { background: transparent; }
+
+.rdg-column-insert-control {
+  position: absolute;
+  bottom: 0;
+  z-index: 400;
+  opacity: 0;
+  pointer-events: auto;
+}
+.rdg-column-insert-start { inset-inline-start: 4px; }
+.rdg-column-insert-end { inset-inline-end: 4px; }
+.rdg-advanced-column:hover > .rdg-column-insert-control,
+.rdg-column-insert-control:focus-within { opacity: 1; }
+.rdg-column-insert-control, .rdg-column-insert-control * {
+  user-select: none;
+  -webkit-user-select: none;
+}
+/* Row resize handle styles */
+.rdg-row-resize-handle {
+  cursor: row-resize;
+  /* 12px high, extending 6px above and below the row boundary */
+}
+
+/* Show the indicator when hovering over the bottom handle */
+.rdg-row-resize-handle-bottom:hover ~ .rdg-row-resize-handle-indicator-bottom {
+  background-color: var(--rdg-selection-color, hsl(var(--ring)));
+}
+
+/* Show the indicator when hovering over the top handle */
+.rdg-row-resize-handle-top:hover ~ .rdg-row-resize-handle-indicator-top {
+  background-color: var(--rdg-selection-color, hsl(var(--ring)));
+}
+
+/* Overflow settings for row indicator cells containing resize handles */
+.rdg-row-index.rdg-cell-has-inline-buttons {
+  overflow: visible !important;
+}
+
+/* Row highlight animation */
+@keyframes rowHighlight {
+  0% {
+    background-color: #fef3c7;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.rdg-row-highlight {
+  animation: rowHighlight 2s ease-out;
+}
+
+/* Row number column */
+.rdg-row-index {
+  color: hsl(var(--muted-foreground));
+  font-weight: 500;
+  text-align: center;
+  background-color: hsl(var(--muted)) !important;
+  position: sticky !important;
+  left: 0 !important;
+}
+
+/* Selected row indicator */
+.rdg-row-index-selected {
+  background-color: var(--rdg-row-selected-background-color) !important;
+  color: var(--rdg-color);
+  font-weight: 600;
+}
+
+/* Custom cell type colors */
+/* NOTE: These are now handled by getCellBackgroundColor callback
+.rdg-cell-type-number {
+  background-color: #e3f2fd;
+}
+
+.rdg-cell-type-string {
+  background-color: #ffffff;
+}
+
+.rdg-cell-type-boolean {
+  background-color: #fffde7;
+}
+
+.rdg-cell-type-reference {
+  background-color: #e8f5e8;
+}
+
+.rdg-cell-type-curve {
+  background-color: #f5f5f5;
+}
+*/
+
+/* Error cells */
+.rdg-cell-error {
+  background-color: #ffcdd2;
+  color: #7f1d1d;
+}
+
+/* Search highlight */
+.rdg-cell .highlight {
+  background-color: #fef3c7;
+  color: #78350f;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+
+/* Custom text editor */
+.rdg-text-editor {
+  width: 100%;
+  height: 100%;
+  padding: 0 8px;
+  border: none;
+  outline: none;
+  color: hsl(var(--foreground));
+  background-color: hsl(var(--background));
+  font-size: inherit;
+  font-family: inherit;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  box-shadow: inset 0 0 0 2px var(--rdg-selection-color, hsl(var(--ring)));
+}
+
+/* Checkbox styling for boolean columns */
+.rdg-checkbox {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--rdg-selection-color, hsl(var(--ring)));
+}
+
+.rdg-checkbox:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Center checkbox in cell */
+.rdg-cell input[type="checkbox"] {
+  display: block;
+  margin: 0 auto;
+}
+
+/* Empty table state */
+.rdg-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: hsl(var(--muted-foreground));
+  font-size: 14px;
+}
+
+/* Enhanced scroll styling with better visibility */
+.rdg::-webkit-scrollbar,
+.h-full.overflow-auto::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+.rdg::-webkit-scrollbar-track,
+.h-full.overflow-auto::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border: 1px solid hsl(var(--border));
+}
+
+.rdg::-webkit-scrollbar-thumb,
+.h-full.overflow-auto::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground));
+  border-radius: 7px;
+  border: 2px solid hsl(var(--muted));
+}
+
+.rdg::-webkit-scrollbar-thumb:hover,
+.h-full.overflow-auto::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+.rdg::-webkit-scrollbar-corner,
+.h-full.overflow-auto::-webkit-scrollbar-corner {
+  background: hsl(var(--muted));
+}
+
+/* Selection improvements */
+.rdg-cell.rdg-cell-selected::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px var(--rdg-selection-color, hsl(var(--ring)));
+}
+
+/* Zoom container styles */
+.datagrid-zoom-container {
+  height: 100%;
+  overflow: auto;
+  position: relative;
+}
+
+/* Virtual scrolling optimization */
+.rdg-viewport-scrollable {
+  overflow: auto !important;
+}
+
+/* Ensure proper grid sizing */
+.rdg {
+  min-width: 100%;
+  min-height: 100%;
+  overflow: auto !important;
+}
+
+/* Disable DataGrid's own scrolling when zoomed */
+.datagrid-zoom-content .rdg {
+  overflow: visible !important;
+}
+
+/* Special handling for cells containing inline buttons */
+.rdg-cell-has-inline-buttons {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+/* Inline button support in header cells */
+.rdg-header-row .rdg-cell-has-inline-buttons {
+  overflow: visible !important;
+  z-index: 15 !important; /* Set above the header's z-index: 10 */
+}
+
+/* Inline button support in row indicator cells */
+.rdg-row-index.rdg-cell-has-inline-buttons {
+  overflow: visible !important;
+  z-index: 6 !important; /* Set above frozen columns' z-index: 5 */
+}
+
+/* A row boundary has one hit target, owned by its lower visible row. Keep
+   indicator stacking constant so pointer approach cannot swap boundary owners. */
+.rdg-row .rdg-cell-frozen.rdg-row-index {
+  position: relative !important;
+  z-index: 6 !important;
+}
+
+.rdg-row-insert-control {
+  opacity: 0;
+  pointer-events: auto;
+}
+
+/* Override the global text selection rule only inside row insertion controls,
+   including disabled buttons and their SVG children. */
+.rdg-row-insert-control,
+.rdg-row-insert-control * {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.rdg-advanced-row:hover > .rdg-row-insert-control,
+.rdg-row-insert-control:focus-within,
+.rdg-row:has(.rdg-advanced-row:hover) + .rdg-row .rdg-row-insert-top {
+  opacity: 1;
+}
+
+/* Ensure inline buttons remain visible during transitions */
+.rdg-cell-has-inline-buttons > div[style*="z-index"] {
+  /* Keep z-index active even at opacity: 0 */
+  z-index: 200 !important;
+  /* Have the browser prepare a compositing layer in advance */
+  will-change: opacity, transform;
+}
+
+/* Also raise header cell z-index on hover */
+.rdg-header-row .rdg-cell-has-inline-buttons:hover {
+  z-index: 25 !important; /* Place above all others on hover */
+}
+
+/* Removed: This setting was replaced by the new .rdg-row-indicator-header class */
+
+/* Fix header alignment during zoom */
+.rdg-header-row > .rdg-cell {
+  position: relative;
+}
+
+/* Sticky header container */
+.rdg-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10 !important;
+  background-color: hsl(var(--muted));
+}
+
+/* Ensure the data grid scrollable area works with sticky headers */
+.rdg-viewport {
+  overflow: auto !important;
+}
+
+/* Fix for zoom - ensure headers stay sticky even when scaled */
+.rdg[style*="transform"] .rdg-header-row {
+  position: sticky !important;
+  top: 0 !important;
+}
+
+/* Performance optimization for large datasets */
+.rdg-row {
+  will-change: transform;
+}
+
+/* Smooth scrolling */
+.datagrid-zoom-container,
+.rdg-viewport-scrollable {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbars during zoom transitions */
+.datagrid-zoom-container {
+  scrollbar-gutter: stable;
+}
+
+/* Zoom wrapper styles */
+.datagrid-zoom-wrapper {
+  /* Ensure the wrapper provides scrolling context */
+  isolation: isolate;
+}
+
+/* Enhanced scrollbar styling for zoom wrapper */
+.datagrid-zoom-wrapper::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+.datagrid-zoom-wrapper::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border: 1px solid hsl(var(--border));
+}
+
+.datagrid-zoom-wrapper::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground));
+  border-radius: 7px;
+  border: 2px solid hsl(var(--muted));
+}
+
+.datagrid-zoom-wrapper::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+/* Interface origin column header styles */
+.rdg-header-interface-origin {
+  background-color: rgba(99, 102, 241, 0.08) !important; /* Indigo with 8% opacity */
+}
+
+.rdg-header-interface-origin.rdg-header-custom-color {
+  /* When both interface origin and custom color, blend the colors */
+  background: linear-gradient(to bottom, 
+    rgba(99, 102, 241, 0.08) 0%, 
+    rgba(99, 102, 241, 0.08) 100%) !important;
+}
+
+/* Ensure the header text is visible */
+.rdg-header-interface-origin span {
+  color: hsl(var(--primary-ink)); /* Darker indigo for better contrast */
+  font-weight: 500;
+}
+
+/* Version eligibility changes presentation only; editors stay available. */
+.rdg .rdg-cell.rdg-version-excluded {
+  background-color: hsl(var(--border)) !important;
+  color: hsl(var(--muted-foreground)) !important;
+}
+.rdg .rdg-cell.rdg-version-excluded input,
+.rdg .rdg-cell.rdg-version-excluded textarea {
+  color: hsl(var(--foreground));
+  background-color: hsl(var(--background));
+}
+.rdg-advanced-column { padding-bottom: 0; }
+.rdg-header-with-version { padding-bottom: 25px; }
+.rdg-column-version-badge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* String previews never alter row geometry. The large editor exists only while open. */
+.rdg-string-selected-text { min-width: 0; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rdg-string-expand { flex: none; margin-left: 4px; padding: 2px; border: 0; background: transparent; color: inherit; opacity: .65; cursor: pointer; }
+.rdg-string-expand:hover, .rdg-string-expand:focus-visible { opacity: 1; }
+
+/* Transposition changes only the display axes. Field/record IDs stay canonical. */
+.rdg-transpose-record-header,
+.rdg-transpose-field-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 100%;
+  min-width: 0;
+  position: relative;
+  user-select: none;
+}
+.rdg-transpose-record-header {
+  flex-direction: column;
+  gap: 2px;
+  padding: 2px 8px;
+}
+.rdg-transpose-field-header {
+  justify-content: flex-start;
+  padding: 0 10px;
+}
+.rdg-transpose-field-label {
+  line-height: 1.15;
+  min-width: 0;
+  flex: 1;
+  text-align: start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rdg-transpose-field-label:hover { text-decoration: underline; }
+.rdg .rdg-cell.rdg-transpose-record-highlight { box-shadow: inset 0 0 0 1px hsl(var(--primary)); }
+
+/* Column controls are independent of insertion and resize hit targets. */
+.rdg-column-filter-slot { position: absolute; inset-inline-end: 28px; top: 0; height: 35px; display: flex; align-items: center; z-index: 300; }
+.rdg-transpose-field-header > .grid-fs-trigger { flex-shrink: 0; }
+
+.grid-filter-sort-status { flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 27px; padding: 3px 16px; border-bottom: 1px solid hsl(var(--border)); background: hsl(var(--accent) / .45); font-size: 12px; color: hsl(var(--muted-foreground)); }
+.grid-filter-sort-status button { color: hsl(var(--primary-ink)); text-decoration: underline; white-space: nowrap; }
+.grid-filter-sort-status button:disabled { opacity: .5; }
+
+/* Plain values use the semantic host instead of one wrapper per visible cell.
+   Editors keep their original full-cell geometry and padding. */
+.rdg-cell-plain-display:not(.rdg-editor-container) {
+  display: flex;
+  align-items: center;
+  padding-inline: 8px;
+}
+
+/* Virtualized grid geometry uses LTR scroll coordinates even when app chrome is RTL.
+ * Plaintext bidi keeps natural-language cell text readable without reversing code. */
+.rdg-scroll-owner .rdg-cell {
+  unicode-bidi: plaintext;
+}
+
+/* Metadata marks occupy existing cell chrome, never extra row height. */
+/* Independent of conditional-format backgrounds and selection overlays. */
+.rdg-cell-has-memo::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 7px;
+  height: 7px;
+  background: linear-gradient(315deg, hsl(var(--primary-ink)) 0 5px, transparent 5px);
+  pointer-events: none;
+}
+.rdg-cell-inherited { text-decoration: underline dotted color-mix(in srgb, currentColor 35%, transparent); text-underline-offset: 3px; }
+
+/* Origin is a quiet overlay. Interface field names receive a small optical
+   downward offset without increasing header/row height or moving controls. */
+.rdg-header-labels { position: relative; align-self: stretch; display: flex; flex-direction: column; justify-content: center; min-width: 0; width: 100%; padding-inline: 8px; line-height: 1.15; }
+.rdg-field-display-label { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rdg-header-interface-origin .rdg-interface-origin-label,
+.rdg-interface-origin-label { position: absolute; top: 0; inset-inline-start: 8px; inset-inline-end: 40px; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: start; color: hsl(var(--muted-foreground)); font-size: 8px; line-height: 8px; font-weight: 400; }
+.rdg-transpose-field-label { position: relative; align-self: stretch; display: flex; flex-direction: column; justify-content: center; }
+.rdg-transpose-field-label .rdg-interface-origin-label { inset-inline-start: 0; inset-inline-end: 0; }
+
+/* Shared by ordinary and transposed headers; origin stays at the upper edge. */
+.rdg-interface-origin-label + .rdg-field-display-label { position: relative; top: 2px; }
+
+/* The same schema insertion boundaries become horizontal in transposed view. */
+.rdg-transpose-column-insert {
+  position: absolute;
+  inset-inline-start: 4px;
+  width: 18px;
+  height: 18px;
+  line-height: 16px;
+  border: 1px solid hsl(var(--border));
+  border-radius: 50%;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  z-index: 400;
+  opacity: 0;
+}
+.rdg-transpose-column-insert-left { top: 0; }
+.rdg-transpose-column-insert-right { bottom: 0; inset-inline-start: auto; inset-inline-end: 4px; }
+.rdg-transpose-field-header:hover > .rdg-transpose-column-insert,
+.rdg-row:has(.rdg-transpose-field-header:hover) + .rdg-row .rdg-transpose-column-insert-left,
+.rdg-transpose-column-insert:focus-visible { opacity: 1; }
+
+/* Header labels retain all idle width; only visible menu controls take space.
+   WebView input capability queries can report hover:none on mouse-equipped
+   Windows hosts. Reveal controls from the actual hover/focus/open state instead
+   of making every action permanently visible based on a capability query. */
+.rdg-header-labels { border: 0; background: transparent; color: inherit; font: inherit; text-align: inherit; }
+.rdg-advanced-column > .rdg-column-filter-slot,
+.rdg-transpose-field-header > .grid-fs-trigger { display: none; }
+.rdg-advanced-column:hover > .rdg-column-filter-slot,
+.rdg-advanced-column:focus-within > .rdg-column-filter-slot,
+.rdg-column-filter-slot:has(.is-sorted, .is-filtered, [data-state="open"]),
+.rdg-transpose-field-header:hover > .grid-fs-trigger,
+.rdg-transpose-field-header:focus-within > .grid-fs-trigger,
+.rdg-transpose-field-header > .grid-fs-trigger:is(.is-sorted, .is-filtered, [data-state="open"]) { display: flex; }
+.rdg-advanced-column:is(:hover, :focus-within):has(.rdg-column-filter-slot) > .rdg-header-labels,
+.rdg-advanced-column:has(.grid-fs-trigger:is(.is-sorted, .is-filtered, [data-state="open"])) > .rdg-header-labels { padding-inline-end: 54px; }
+
+/* Red-dot reference: horizontal insertion at header edges, vertical insertion
+   centered on the row-label boundary. All dimensions are unzoomed CSS pixels. */
+.rdg-column-insert-control { top: 17.5px; bottom: auto; transform: translateY(-50%); }
+.rdg-column-insert-start { inset-inline-start: 4px; }
+.rdg-column-insert-end { inset-inline-end: 4px; }
+.rdg-header-labels { padding-inline: 26px; }
+.rdg-transpose-record-header { padding-inline: 26px; }
+.rdg-row-insert-control { position: absolute; width: 20px; height: 20px; inset-inline-start: 50%; }
+.rdg-row-insert-top { top: 0; transform: translate(-50%, -50%); }
+.rdg-row-insert-bottom { bottom: 0; transform: translate(-50%, 50%); }
+.rdg-transpose-column-insert { inset-inline-start: 50%; inset-inline-end: auto; width: 20px; height: 20px; }
+.rdg-transpose-column-insert-left { top: 0; transform: translate(-50%, -50%); }
+.rdg-transpose-column-insert-right { bottom: 0; transform: translate(-50%, 50%); }
+.rdg-transpose-field-header { padding-inline: 10px; }
+.rdg-row-insert-control button,
+.rdg-boundary-button, .rdg-transpose-column-insert, .rdg-corner-inserts button {
+  box-sizing: border-box; width: 20px; height: 20px; padding: 0;
+  border: 0; border-radius: 0;
+  background: transparent; color: hsl(var(--primary-ink));
+  display: flex; align-items: center; justify-content: center; line-height: 1;
+  font-size: 14px; font-weight: 600; box-shadow: none;
+}
+.rdg-row-insert-control button { border: 0; background: transparent; }
+.rdg-column-insert-control, .rdg-row-insert-control, .rdg-transpose-column-insert { opacity: 0; pointer-events: none; }
+.rdg-advanced-column:is(:hover,:focus-within) > .rdg-column-insert-control,
+.rdg-advanced-row:is(:hover,:focus-within) > .rdg-row-insert-control,
+.rdg-transpose-field-header:is(:hover,:focus-within) > .rdg-transpose-column-insert,
+.rdg-row:has(.rdg-advanced-row:hover) + .rdg-row .rdg-row-insert-top,
+.rdg-row:has(.rdg-transpose-field-header:hover) + .rdg-row .rdg-transpose-column-insert-left {
+  opacity: 1; pointer-events: auto;
+}
+.rdg-corner-inserts { position: relative; width: 100%; height: 100%; overflow: visible; }
+.rdg-corner-inserts button { position: absolute; opacity: 0; pointer-events: none; }
+.rdg-first-row-insert { bottom: 0; left: 50%; transform: translate(-50%,50%); }
+.rdg-corner-inserts:is(:hover,:focus-within) button,
+.rdg:has(.rdg-row[data-row-index="0"]:is(:hover,:focus-within)) .rdg-first-row-insert { opacity: 1; pointer-events: auto; }
+.rdg-header-row .rdg-row-indicator-header { overflow: visible !important; }
+.rdg-header-row .rdg-cell-has-inline-buttons:is(:hover,:focus-within) { z-index: 16 !important; }
+.rdg-boundary-button:focus-visible, .rdg-transpose-column-insert:focus-visible,
+.rdg-corner-inserts button:focus-visible, .rdg-row-insert-control button:focus-visible { outline: none; }
+
+
+.rdg-insert-icon { display: block; flex: none; width: 16px; height: 16px; pointer-events: none; }
+.rdg-insert-icon circle { fill: hsl(var(--background)); }
+button:hover > .rdg-insert-icon circle { fill: hsl(var(--muted)); }
+
+/* Keep the original quiet ring; keyboard focus changes its fill, not its silhouette. */
+.rdg-insert-icon circle { stroke-width: 1.5; stroke: hsl(var(--border)); }
+:is(.rdg-boundary-button, .rdg-transpose-column-insert, .rdg-corner-inserts button, .rdg-row-insert-control button):focus-visible > .rdg-insert-icon circle { fill: hsl(var(--primary-ink)); stroke: hsl(var(--primary-ink)); }
+:is(.rdg-boundary-button, .rdg-transpose-column-insert, .rdg-corner-inserts button, .rdg-row-insert-control button):focus-visible > .rdg-insert-icon path { stroke: hsl(var(--background)); }
+.rdg .rdg-cell[aria-selected='true'] { outline: 1px solid var(--rdg-selection-color); outline-offset: -1px; }
+/* Border-box CSS width is measured before visual grid zoom. display:none also removes tab stops. */
+[data-narrow-insertion] > .rdg-column-insert-end { display: none; }
+[data-narrow-insertion] > .rdg-column-filter-slot { inset-inline-end: 4px; }
+[data-narrow-insertion] > .rdg-column-filter-slot .grid-fs-trigger { box-sizing: border-box; width: 18px; min-width: 18px; }
+[data-narrow-insertion] > .rdg-column-filter-slot .grid-fs-sort-marker { display: none; }
+[data-narrow-insertion] > .rdg-header-labels { padding-inline-end: 26px !important; }
+
+/* Sort priority text may shrink, never its arrow or the adjacent insertion target. */
+.rdg-column-filter-slot { max-width: calc(100% - 52px); }
+.rdg-column-filter-slot .grid-fs-trigger { max-width: 100%; box-sizing: border-box; }
+.rdg-column-filter-slot .grid-fs-trigger svg { flex-shrink: 0; }
+.rdg-column-filter-slot .grid-fs-sort-marker { min-width: 0; overflow: hidden; white-space: nowrap; }
+[data-narrow-insertion] > .rdg-column-filter-slot { max-width: 18px; }
+
+/* Permission hides both insertion controls, so the menu needs no insertion lane.
+   Keep this independent of transient disabled/updating and narrow-column sizing. */
+.rdg-advanced-column[data-insert-allowed="false"] > .rdg-column-filter-slot {
+  inset-inline-end: 4px;
+  max-width: calc(100% - 12px);
+}
+.rdg-advanced-column[data-insert-allowed="false"] > .rdg-header-labels { padding-inline: 8px; }
+.rdg-advanced-column[data-insert-allowed="false"] > .rdg-header-labels > .rdg-interface-origin-label { inset-inline-end: 8px; }
+.rdg-advanced-column[data-insert-allowed="false"]:is(:hover, :focus-within):has(.rdg-column-filter-slot) > .rdg-header-labels,
+.rdg-advanced-column[data-insert-allowed="false"]:has(.grid-fs-trigger:is(.is-sorted, .is-filtered, [data-state="open"])) > .rdg-header-labels { padding-inline-end: 26px; }
+.rdg-advanced-column[data-insert-allowed="false"][data-narrow-insertion] > .rdg-column-filter-slot { max-width: 18px; }

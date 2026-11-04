@@ -1,0 +1,50 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import { createRequire } from 'node:module';
+const require = createRequire(new URL('../devcel-studio/package.json', import.meta.url));
+const esbuild = require('esbuild');
+const source = fs.readFileSync(new URL('../devcel-studio/src/app/settings/storageKey.ts', import.meta.url), 'utf8');
+const output = esbuild.transformSync(source, { loader: 'ts', format: 'cjs' }).code;
+const module = {exports:{}}; new Function('module', 'exports', output)(module, module.exports); const exports = module.exports;
+const key = exports.versionedStorageKey;
+const storage = new Map();
+for (const base of ['devcel.plugins.installed', 'devcel-plugin-catalog-cache-v1', 'devcel-datagrid-column-widths', 'dataGridRowHeight_']) {
+  storage.set(key(base, '0.1.0'), 'old'); storage.set(key(base, '0.2.0'), 'new');
+  storage.delete(key(base, '0.2.0'));
+  assert.equal(storage.get(key(base, '0.1.0')), 'old');
+  assert.notEqual(key(base, '0.2.0-beta.1'), key(base, '0.2.0'));
+  assert.notEqual(key(base, '0.2.0+one'), key(base, '0.2.0+two'));
+}
+assert.throws(() => key('x', ''));
+for (const file of ['services/PluginManager.ts', 'pages/plugin_manager/components/PluginCatalogView.tsx']) {
+  const text = fs.readFileSync(new URL(`../devcel-studio/src/app/${file}`, import.meta.url), 'utf8');
+  assert.match(text, /versionedStorageKey/);
+  assert.doesNotMatch(text, /(?:getItem|setItem|removeItem)\((?:INSTALLED_PLUGINS_STORAGE_KEY|CACHE_KEY)/);
+}
+console.log('PASS: two-version plugin storage isolation');
+const values = new Map();
+const store = { getItem: k => values.get(k) ?? null, setItem: (k,v) => values.set(k,v), get length() { return values.size; }, key: i => [...values.keys()][i] ?? null };
+values.set(key('devcel-datagrid-column-widths','0.1.0'), JSON.stringify({table:{good:120,bad:-2}}));
+values.set(key('dataGridRowHeight_','0.1.0')+':table_row', '44');
+exports.inheritVersionedLayout(store,'0.1.0','0.2.0');
+assert.deepEqual(JSON.parse(values.get(key('devcel-datagrid-column-widths','0.2.0'))),{table:{good:120}});
+assert.equal(values.get(key('dataGridRowHeight_','0.2.0')+':table_row'),'44');
+values.set(key('devcel-datagrid-column-widths','0.2.0'), 'user-current');
+exports.inheritVersionedLayout(store,'0.1.0','0.2.0');
+assert.equal(values.get(key('devcel-datagrid-column-widths','0.2.0')),'user-current');
+assert.equal(values.get(key('dataGridRowHeight_','0.1.0')+':table_row'),'44');
+values.set(key('devcel.plugins.installed','0.1.0'), '["verified"]');
+exports.inheritPluginInstallation(store,'verified','0.1.0','0.2.0');
+assert.equal(values.get(key('devcel.plugins.installed','0.2.0')),'["verified"]');
+values.set(key('devcel.plugins.installed','0.2.0'),'[]');
+exports.inheritPluginInstallation(store,'verified','0.1.0','0.2.0');
+assert.equal(values.get(key('devcel.plugins.installed','0.2.0')),'[]');
+assert.equal(values.get(key('devcel.plugins.installed','0.1.0')),'["verified"]');
+console.log('PASS: one-time valid layout and verified installation inheritance preserve old/current values');
+let failWidths = true;
+const flaky = { ...store, get length() { return store.length; }, setItem(k,v) { if (failWidths && k === key('devcel-datagrid-column-widths','0.5.0')) throw Error('quota'); store.setItem(k,v); } };
+assert.throws(() => exports.inheritVersionedLayout(flaky,'0.1.0','0.5.0'), /quota/);
+assert.equal(values.has(key('devcel.layout-inherited','0.5.0')), false);
+failWidths = false; exports.inheritVersionedLayout(flaky,'0.1.0','0.5.0');
+assert.equal(JSON.parse(values.get(key('devcel-datagrid-column-widths','0.5.0'))).table.good,120);
+console.log('PASS: failed preference write leaves migration retryable');

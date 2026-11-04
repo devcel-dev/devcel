@@ -1,0 +1,26 @@
+{
+  "FileVersion": 3,
+  "FriendlyName": "Devcel Importer",
+  "Description": "Saved-project imports and a canonical, lossless local runtime database.",
+  "Category": "Data",
+  "CreatedBy": "Devcel Studio Contributors",
+  "CanContainContent": true,
+  "IsBetaVersion": true,
+  "SupportedTargetPlatforms": [
+    "Win64",
+    "Mac",
+    "Linux"
+  ],
+  "Modules": [
+    {
+      "Name": "DevcelRuntime",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
+    },
+    {
+      "Name": "DevcelEditor",
+      "Type": "Editor",
+      "LoadingPhase": "PostEngineInit"
+    }
+  ]
+}

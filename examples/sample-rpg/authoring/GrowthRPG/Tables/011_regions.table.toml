@@ -1,0 +1,2795 @@
+uuid = "10000000-0000-4000-8000-00000000000b"
+display_name = "regions"
+description = ""
+
+[metadata]
+interface_order = []
+data_name = "regions"
+initial_transposed = false
+
+[metadata.edit_permissions]
+add_columns = true
+delete_columns = true
+add_rows = true
+delete_rows = true
+edit_cells = true
+
+[interface_implementations]
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-800b-000000000001"
+display_name = "key"
+data_name = "key"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-800b-000000000002"
+display_name = "name"
+data_name = "name"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-800b-000000000003"
+display_name = "population"
+data_name = "population"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-800b-000000000004"
+display_name = "bounty"
+data_name = "bounty"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "5b28574a-dab2-5b51-b2d9-47b58255c31a"
+display_name = "progression_band"
+data_name = "progression_band"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "fd85a7bc-33d9-5625-b874-94fa119a3ad9"
+display_name = "map_x"
+data_name = "map_x"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "8bb48db7-c758-5f40-b183-66729ce8fe0f"
+display_name = "map_y"
+data_name = "map_y"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "b351d6c6-95a6-575c-a33b-0478f7614110"
+display_name = "is_start"
+data_name = "is_start"
+data_type = "Boolean"
+default_value = "false"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "be747333-829c-597e-8667-51181391d9ae"
+display_name = "access_profile"
+data_name = "access_profile"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "c84ee35f-2ae5-5136-9baf-b57e4b8bb968"
+
+[[schema.columns]]
+read_only = false
+uuid = "a26a6fc0-3d7f-5298-933b-9d3f19c8e3ed"
+display_name = "region_kind"
+data_name = "region_kind"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "a2f9d0c5-586e-52c0-a7ec-11a48bbb5852"
+display_name = "purpose"
+data_name = "purpose"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "d217d1d1-ded4-55aa-8bdf-6c56567fb9c9"
+display_name = "livelihood"
+data_name = "livelihood"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "fcaef2b6-11f8-5bd9-9c8c-8e805fd45221"
+display_name = "environment"
+data_name = "environment"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "8f9365e6-5b85-5c4a-a7e0-8e6f03ddca09"
+display_name = "local_concern"
+data_name = "local_concern"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "6c10bacc-f231-561b-8bfa-e6aaaeaeb614"
+display_name = "story_hook"
+data_name = "story_hook"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "589127ba-0f56-5cb1-a8bb-c3085d1e4838"
+display_name = "outcome_theme"
+data_name = "outcome_theme"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "b23c34ed-1b04-5e22-9091-4b6664ec3b31"
+display_name = "neighbor_relation"
+data_name = "neighbor_relation"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "2cb51f8b-2f4e-573d-b38b-51a5cef3f99b"
+display_name = "quest_neighbor"
+data_name = "quest_neighbor"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-00000000000b"
+
+[[schema.columns]]
+read_only = false
+uuid = "4b2366f7-0575-5294-85d7-605924ee6d58"
+display_name = "Discovery Chance Percent"
+data_name = "discovery_chance_percent"
+data_type = "I64"
+default_value = "30"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "665249e5-8758-5c9e-b2a3-3717d6d4c757"
+display_name = "Town Entry Fee"
+data_name = "town_entry_fee"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[records]]
+uuid = "20000000-0000-4000-800b-000000000001"
+label = "forest"
+tags = ["rpg/regions", "catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+bounty = "=SUMIF(\"enemies\",\"region\",\"forest\",\"reward\")"
+discovery_chance_percent = "40"
+environment = "The shallows shift after rain."
+is_start = "true"
+key = "forest"
+livelihood = "Families working the crossing meet households gathering small amounts of herbs and ore here. Even beginners can become familiar faces through modest deliveries."
+local_concern = "Slimes and large mantises disrupt work on the bank. An apprentice hides inadequate preparations to avoid being a burden."
+map_x = "-400"
+map_y = "-100"
+name = "Copperleaf Crossing"
+neighbor_relation = "Reed gatherers at Reed Riverbank share the crossing's river traffic. Comparing small deliveries helps the apprentice learn to keep promises before taking on longer journeys."
+outcome_theme = "An apprentice who thought they could do nothing gains another trusted task and someone to ask for help."
+population = "=COUNTIF(\"enemies\",\"region\",\"forest\")"
+progression_band = "0"
+purpose = "Gather herbs and ore; explore"
+quest_neighbor = "acfccb01-869c-545c-a2b6-4d5a8e7a5cd7"
+region_kind = "resource"
+story_hook = "Begin with gathering and delivering a few herbs, then move toward defeating specified foes and crafting a first piece of equipment. The requester asks the apprentice to describe their successes in their own words."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "20000000-0000-4000-800b-000000000002"
+label = "cave"
+tags = ["rpg/regions", "catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+bounty = "=SUMIF(\"enemies\",\"region\",\"cave\",\"reward\")"
+discovery_chance_percent = "30"
+environment = "Bright crystals hide cracks in the stone behind them."
+is_start = "false"
+key = "cave"
+livelihood = "Ore miners, crystal sorters, and porters carrying stone to the entrance divide the work in these tunnels. Finding a shining crystal is no excuse to skip checking the footing."
+local_concern = "Moles and bats are delaying shipments, exposing the unfair practice of setting porters' wages solely by the value of the ore."
+map_x = "-270"
+map_y = "-1020"
+name = "Glimmering Mine"
+neighbor_relation = "Porters use the ravine road to Fern Ravine. Checking loads together keeps the cost of hauling ore visible in the miners' ledger."
+outcome_theme = "Payment reaches not only the person who found a striking vein, but also those who hauled the heavy load to the entrance."
+population = "=COUNTIF(\"enemies\",\"region\",\"cave\")"
+progression_band = "1"
+purpose = "Gather stone, crystals, and ore; explore"
+quest_neighbor = "154a6748-3133-5e63-bb6a-b82bb085e41d"
+region_kind = "resource"
+story_hook = "Treat gathering and delivering ore and stone as separate requests, and report the defeat of the specified moles. The requester creates a ledger that distinguishes digging from hauling."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "44beca51-c271-4f7b-9ba2-a0438f077836"
+tags = ["catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+bounty = "=SUMIF(\"enemies\",\"region\",key,\"reward\")"
+discovery_chance_percent = "30"
+environment = "The footing sinks beneath the water, leaving few dry places."
+is_start = "false"
+key = "marsh"
+livelihood = "People who gather by the light of fireflies make their living bundling reed fiber and dividing herbs and pearls into small lots."
+local_concern = "Large enemies have settled along the marsh's waters, and orders bound for the lakeshore take especially long to bring back."
+map_x = "-536"
+map_y = "861"
+name = "Firefly Marsh"
+neighbor_relation = "The marsh gatherers work with the lakeshore crew at Silvermirror Mere. They compare wetland loads and prepare the short journey before accepting a shared order."
+outcome_theme = "Two places sharing a road stop using their different climates as an excuse."
+population = "=COUNTIF(\"enemies\",\"region\",key)"
+progression_band = "2"
+purpose = "Gather pearls, fiber, and herbs; explore"
+quest_neighbor = "67ae4423-5649-5239-ae43-019c7295995d"
+region_kind = "resource"
+story_hook = "You are asked to go beyond gathering in the marsh and complete a delivery for the neighboring lakeshore."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "c8ed3014-ced8-4150-bb2f-485cc98a3ba8"
+tags = ["catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+bounty = "=SUMIF(\"enemies\",\"region\",key,\"reward\")"
+discovery_chance_percent = "30"
+environment = "Wind quickly erases digging marks and footprints."
+is_start = "false"
+key = "desert"
+livelihood = "Parties carrying stone and ore divide their cargo into leather bundles for the sandy roads. Guides who know the route also advise on weight and journey length."
+local_concern = "Dune colossi and fire spirits force more detours. Both the shipper who underestimated the load and the guide who accepted too much remain silent."
+map_x = "887"
+map_y = "324"
+name = "Windripple Dunes"
+neighbor_relation = "Dune guides exchange transport reports with Sunken Orchard. They distinguish a heavy desert load from the orchard's smaller orders before accepting work."
+outcome_theme = "Refusing an unmanageable load in advance becomes a decision that protects the party, rather than a weakness that costs work."
+population = "=COUNTIF(\"enemies\",\"region\",key)"
+progression_band = "3"
+purpose = "Gather stone, ore, and leather; explore"
+quest_neighbor = "66885a47-0dcc-5a05-ac8b-3372718538eb"
+region_kind = "resource"
+story_hook = "Separate leather and ore gathering and delivery requests, and report the defeat of the specified colossi. The guide explains exactly how much cargo can be handled this time."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "83e27ea2-5fe3-4049-858b-66322f3d0fa0"
+tags = ["catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+bounty = "=SUMIF(\"enemies\",\"region\",key,\"reward\")"
+discovery_chance_percent = "10"
+environment = "Frozen ground and chilled hands make tools harder to handle."
+is_start = "false"
+key = "tundra"
+livelihood = "People gathering herbs and fiber beneath the frost value loads of leather as preparations for the journey home."
+local_concern = "Visitors from the marsh assume gathering takes the same effort here and try to bargain down small cold-country orders."
+map_x = "1589"
+map_y = "-538"
+name = "Hoarfrost Grassland"
+neighbor_relation = "The grassland crew exchanges route reports with Icicle Steps. They check the icy approach together instead of sending an unprepared worker onward."
+outcome_theme = "Understand another worker's conditions rather than boasting about how much cold one has endured."
+population = "=COUNTIF(\"enemies\",\"region\",key)"
+progression_band = "2"
+purpose = "Gather fiber, herbs, and leather; explore"
+quest_neighbor = "bdceea5a-6b34-52ca-a782-0e21012921ac"
+region_kind = "resource"
+story_hook = "Gather specified materials from the grassland and marsh to show how work with the same name can demand different effort."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "9b6e3ca3-2472-4bbe-8e9e-0f75da126644"
+tags = ["catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+bounty = "=SUMIF(\"enemies\",\"region\",key,\"reward\")"
+discovery_chance_percent = "30"
+environment = "Heat lingers beneath a cooled surface."
+is_start = "false"
+key = "volcano"
+livelihood = "Gatherers separate stone, crystals, and ore and explain their uses to customers from the dunes."
+local_concern = "Many visitors assume preparations that worked in the dunes will suffice here and blame the mountain pass for missing materials."
+map_x = "695"
+map_y = "1162"
+name = "Obsidian Mountain Pass"
+neighbor_relation = "Volcanic gatherers exchange mineral reports with Obsidian Torrent. They keep obsidian supplies distinct from everything collected on the hotter slopes."
+outcome_theme = "Take pride in experience gained elsewhere while learning new methods."
+population = "=COUNTIF(\"enemies\",\"region\",key)"
+progression_band = "3"
+purpose = "Gather stone, crystals, and ore; explore"
+quest_neighbor = "4aa778ed-a008-5ff5-9dba-d7898ca44e0b"
+region_kind = "resource"
+story_hook = "Use materials gathered on the mountain pass for crafting and complete specified hunts to show how preparations must suit the land."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "8e18ff2d-7404-4081-9096-2fa9ed3a9f09"
+tags = ["catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+bounty = "=SUMIF(\"enemies\",\"region\",key,\"reward\")"
+discovery_chance_percent = "10"
+environment = "Parts of the stopped machinery move without warning."
+is_start = "false"
+key = "ruins"
+livelihood = "Stone sorters and crystal gatherers use the stopped old clock as their meeting landmark."
+local_concern = "People mean different things by old expressions of time, leading to constant arguments about late deliveries."
+map_x = "944"
+map_y = "-841"
+name = "Old Clock Square"
+neighbor_relation = "The ruin workers compare their finds with the brook crew at Slate Brook. They separate usable materials from objects that need further study."
+outcome_theme = "Make promises between people dependable without pretending the clock has been repaired."
+population = "=COUNTIF(\"enemies\",\"region\",key)"
+progression_band = "2"
+purpose = "Gather stone, crystals, and ore; explore"
+quest_neighbor = "c53364f8-4657-56f1-b2d0-eb16132633b3"
+region_kind = "resource"
+story_hook = "Take orders from both sides with clearly stated materials and quantities, untangling misunderstandings caused by spoken promises."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "9b38535c-6bf3-47c8-a2ab-bfa4b3edec89"
+tags = ["catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+bounty = "=SUMIF(\"enemies\",\"region\",key,\"reward\")"
+discovery_chance_percent = "30"
+environment = "The tide changes which footholds are usable."
+is_start = "false"
+key = "coast"
+livelihood = "People mend fiber nets and sort pearls and scales on this shore. Retired net menders' knowledge exists alongside young people's hopes of selling far from home."
+local_concern = "Reef serpents and coral beasts approach the work areas, while young workers want to skip net inspections to ship valuable goods first."
+map_x = "-680"
+map_y = "1474"
+name = "Tidemirror Shore"
+neighbor_relation = "Coastal travelers compare sightings with Wraith Anchorage. The anchorage approach remains a separate hazard that needs its own equipment check."
+outcome_theme = "Younger workers stop seeing experienced inspections as obstacles to travel and begin asking about damaged nets themselves."
+population = "=COUNTIF(\"enemies\",\"region\",key)"
+progression_band = "4"
+purpose = "Gather pearls, fiber, and scales; explore"
+quest_neighbor = "1de78829-608e-59aa-b8b1-a00729c41f61"
+region_kind = "resource"
+story_hook = "Deliver fiber and defeat the specified reef serpents to give net menders room to teach their trade. Equipment crafting requests provide preparation before a hasty departure."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "98031082-242e-48e4-acf0-69fffeef22b0"
+tags = ["catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+bounty = "=SUMIF(\"enemies\",\"region\",key,\"reward\")"
+discovery_chance_percent = "30"
+environment = "Gusts wear cargo straps unevenly."
+is_start = "false"
+key = "highlands"
+livelihood = "People working these cliffs support loads with timber and fiber and protect rubbing points with leather. Those proud of their familiarity with the wind often forget how frightening it is for newcomers."
+local_concern = "An apprentice frightened by goats and storm hawks believes admitting fear would mean never inheriting the family trade."
+map_x = "990"
+map_y = "-1484"
+name = "Windcut Cliffs"
+neighbor_relation = "Highland workers compare mineral loads with Goldwash Diggings. A clear account of the work makes their different terrain easier to plan around."
+outcome_theme = "Trust goes to workers who can ask for checks, rather than treating concealment of fear as the mark of competence."
+population = "=COUNTIF(\"enemies\",\"region\",key)"
+progression_band = "4"
+purpose = "Gather timber, fiber, and leather; explore"
+quest_neighbor = "ff1f8405-63e6-50da-bb94-1b0b99ddae4d"
+region_kind = "resource"
+story_hook = "Deliver fiber and leather to prepare the loads and defeat the specified goats and storm hawks. The requester asks the apprentice to report completed preparations instead of competing to take risks."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "16089e8c-d7fa-4cf0-8339-c3ef99aaadf3"
+tags = ["catalog/seed-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+bounty = "=SUMIF(\"enemies\",\"region\",key,\"reward\")"
+discovery_chance_percent = "10"
+environment = "Distant patches of the landscape give off similar light."
+is_start = "false"
+key = "moonlands"
+livelihood = "Gatherers in the hollow separate crystals from resin and carry herbs apart to keep them from being damaged."
+local_concern = "A veteran who identifies goods by moonlight disagrees with a newcomer's classifications."
+map_x = "-1271"
+map_y = "1160"
+name = "Moonlit Hollow"
+neighbor_relation = "Moonland workers compare transport conditions with Dry Canal. The dry canal offers a different route, not an excuse to ignore the weight of a load."
+outcome_theme = "Preserve old wisdom by putting it in a form anyone can inherit."
+population = "=COUNTIF(\"enemies\",\"region\",key)"
+progression_band = "4"
+purpose = "Gather resin, crystals, and herbs; explore"
+quest_neighbor = "6ba8a95e-6045-5ad3-a172-04ed4bc0b1d3"
+region_kind = "resource"
+story_hook = "Gather and deliver the specified materials from each place separately, checking orders that once relied on memory alone."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "76491b81-a10a-57a4-8643-e8f1cacffda7"
+label = "ash_market"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "50"
+environment = "Forge ash works its way into cargo labels and stored goods."
+is_start = "false"
+key = "ash_market"
+livelihood = "Smiths, leatherworkers, and makers of resin sealing wax bring small shipments to this market. Trade with familiar gatherers sustains the town more than large caravans do."
+local_concern = "Deliveries do not match the quantities in the ledger, and a newcomer unfamiliar with the scales is the only person suspected of theft."
+map_x = "-900"
+map_y = "150"
+name = "Ashforge Market"
+neighbor_relation = "Resin and timber from Amber Woods are important supplies. If the suspicion goes unresolved, the woodland gatherers may stop bringing their goods."
+outcome_theme = "The newcomer is cleared of suspicion, and quantities once agreed verbally are now recorded in the supplier's presence."
+progression_band = "0"
+purpose = "Resupply, trade, and rest"
+quest_neighbor = "35613b21-21c4-5393-8f0c-eafbff2c270c"
+region_kind = "settlement"
+story_hook = "Deliver the required quantity of the specified material and complete a craftsperson's crafting request. The requester reweighs comparable materials and finds the mistake in the purchasing records."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2"
+label = "willow_inn"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "40"
+environment = "Space for drying rain gear overlaps with cargo storage."
+is_start = "false"
+key = "willow_inn"
+livelihood = "Innkeepers take small orders from beginners leaving the crossing and relay them to the people awaiting their return."
+local_concern = "Amid grand expedition stories, promises to bring back a single material are easily forgotten."
+map_x = "-600"
+map_y = "-500"
+name = "Willow Waystation"
+neighbor_relation = "Travelers bring quarry samples from Mossy Quarry. The waystation checks their loads and helps them prepare for the mine road beyond the quarry."
+outcome_theme = "Build trust through small promises instead of judging a journey only by major foes defeated."
+progression_band = "0"
+purpose = "Resupply, trade, and rest"
+quest_neighbor = "aa5a8f59-7c21-5bdc-8900-4b192b8ddab0"
+region_kind = "settlement"
+story_hook = "A delivery of nearby materials asks travelers to honor on their return the promises made before departure."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "acfccb01-869c-545c-a2b6-4d5a8e7a5cd7"
+label = "reed_bank"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Currents hidden by reeds tug at gathering baskets."
+is_start = "false"
+key = "reed_bank"
+livelihood = "Riverbank gatherers bundle reed fiber and sell herbs and small pearls to customers at the crossing."
+local_concern = "First-time expedition travelers buy attractive goods while neglecting necessary preparations."
+map_x = "-700"
+map_y = "-100"
+name = "Reed Riverbank"
+neighbor_relation = "Copperleaf Crossing is the departure point next door, and small riverbank orders help its travelers set out."
+outcome_theme = "Build a relationship in which beginners can ask for advice without being ashamed of what they do not know."
+progression_band = "0"
+purpose = "Gather pearls, fiber, and herbs; explore"
+quest_neighbor = "20000000-0000-4000-800b-000000000001"
+region_kind = "resource"
+story_hook = "Gather nearby materials and craft a first piece of equipment, fulfilling travel preparations one request at a time."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "35613b21-21c4-5393-8f0c-eafbff2c270c"
+label = "amber_woods"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Fallen trees often block the old work trails."
+is_start = "false"
+key = "amber_woods"
+livelihood = "Sap gatherers and woodcutters take turns using the trees in this woodland. Resin for sealant and leather for cargo straps provide most of their income."
+local_concern = "A young gatherer with an urgent order keeps returning to the same trees, facing the bees drawn to the sap and the thorn spirits alone."
+map_x = "-540"
+map_y = "140"
+name = "Amber Woods"
+neighbor_relation = "The sealing-wax makers of Ashforge Market buy the resin. Someone needs to mediate between merchants pressing for delivery and gatherers who want to let the woodland recover."
+outcome_theme = "The gatherers share a deadline that one person had been straining to meet, making it easier to ask for time off."
+progression_band = "0"
+purpose = "Gather timber, resin, and leather; explore"
+quest_neighbor = "76491b81-a10a-57a4-8643-e8f1cacffda7"
+region_kind = "resource"
+story_hook = "Deliver resin from another gathering site and defeat the specified number of bees around the workplace. With the shortfall covered, the requester proposes a rotation that lets the trees rest."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "aa5a8f59-7c21-5bdc-8900-4b192b8ddab0"
+label = "moss_quarry"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Moss hides chips and damp patches in the rock."
+is_start = "false"
+key = "moss_quarry"
+livelihood = "Stone stackers and crystal collectors share the work of maintaining the quarried faces."
+local_concern = "Rushing to move only the large stones has left the finer work undone, burdening the younger gatherers."
+map_x = "-340"
+map_y = "-640"
+name = "Mossy Quarry"
+neighbor_relation = "Stone workers exchange clay samples with Clay Brook. Comparing weight and working conditions gives both crews a fair basis for their orders."
+outcome_theme = "Treat conspicuous achievements and quiet support as parts of the same job."
+progression_band = "0"
+purpose = "Gather stone, crystals, and ore; explore"
+quest_neighbor = "6864acd2-7486-5e49-bc5d-c14f7bfb2d71"
+region_kind = "resource"
+story_hook = "Along with gathering quarry materials, craft equipment using meadow materials and report that it is ready for use."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "1bdf6766-97e2-5bd7-9c6d-5adab1aba7a6"
+label = "thorn_meadow"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "10"
+environment = "Thorns repeatedly damage clothes and gathering bags."
+is_start = "false"
+key = "thorn_meadow"
+livelihood = "Gatherers sort fiber from herbs and bring back loads suitable for leatherwork."
+local_concern = "Rumors of thorn spirits and moss giants have frightened newcomers who want to help but cannot bring themselves to ask."
+map_x = "100"
+map_y = "0"
+name = "Thorn Meadow"
+neighbor_relation = "Meadow gatherers compare their materials with Clay Brook. The brook keeps its specialist supplies, while the meadow provides its own part of a shared order."
+outcome_theme = "People can join the work without having to put on a show of bravery."
+progression_band = "0"
+purpose = "Gather fiber, herbs, and leather; explore"
+quest_neighbor = "6864acd2-7486-5e49-bc5d-c14f7bfb2d71"
+region_kind = "resource"
+story_hook = "Begin with small quantities of materials, then take on the specified hunts once preparations are complete."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "712b7f9a-9973-5097-ae2e-44785c6b1fd6"
+label = "fox_hollow"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "10"
+environment = "Reflections in the hollow make the way home easy to mistake."
+is_start = "false"
+key = "fox_hollow"
+livelihood = "Gatherers accustomed to the glow of resin and crystals also work leather here. They distinguish what they know from what they do not when speaking to travelers frightened by the lights at night."
+local_concern = "Folktales of foxfire mingle with rumors of thorn spirits and copper colossi. Even local children have begun to think the gatherers are dangerous sorcerers."
+map_x = "-1340"
+map_y = "413"
+name = "Foxfire Hollow"
+neighbor_relation = "Travelers bring rumors along the path from Birch Road. Explaining the actual work to its cargo handlers is the quickest way to dispel misunderstandings."
+outcome_theme = "Without pretending to explain every strange light, residents regain enough understanding that their daily work is no longer feared."
+progression_band = "0"
+purpose = "Gather resin, crystals, and leather; explore"
+quest_neighbor = "ee00670b-3936-59ec-9fb7-80be95aff430"
+region_kind = "resource"
+story_hook = "Deliver resin and crystals and defeat the specified thorn spirits. The requester explains material handling and enemy dangers to the road community as separate matters."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "ee00670b-3936-59ec-9fb7-80be95aff430"
+label = "birch_road"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "40"
+environment = "Wheels and footprints intrude on the gathering sites."
+is_start = "false"
+key = "birch_road"
+livelihood = "Birch timber and fiber from beside the road supply cargo frames and ties. Families take small orders left by passing travelers."
+local_concern = "Moss giants and treants have appeared near the road. Calls for timber to repair broken cargo frames clash with warnings not to enter the woods again."
+map_x = "-1248"
+map_y = "161"
+name = "Birch Road"
+neighbor_relation = "The road connects directly to Ashforge Market, where small roadside repair jobs can be taken to craftspeople. Leaving everything to the market can hide the work done along the road."
+outcome_theme = "Work once dictated entirely by passing travelers begins to allow residents their own rest and fair share."
+progression_band = "0"
+purpose = "Gather timber, fiber, and scales; explore"
+quest_neighbor = "76491b81-a10a-57a4-8643-e8f1cacffda7"
+region_kind = "resource"
+story_hook = "Deliver the required timber and fiber and defeat the specified treants. The requester revises the order of work for travelers rushing repairs and the local workers serving them."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "6864acd2-7486-5e49-bc5d-c14f7bfb2d71"
+label = "clay_stream"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Cloudy water hides the uneven streambed."
+is_start = "false"
+key = "clay_stream"
+livelihood = "People along the brook use stone as kiln weights and sell small quantities of ore and pearls to pay for everyday tools. Roadside merchants tend to look down on work involving mud."
+local_concern = "Boars are wrecking the workplace, and disputes arise when buyers reduce the accepted quantity merely because gathered stone is muddy."
+map_x = "-150"
+map_y = "-300"
+name = "Clay Brook"
+neighbor_relation = "Clay workers compare their samples with Mossy Quarry. The brook keeps its own clay and crafting supplies while learning how the quarry measures its stone."
+outcome_theme = "The practice of using dirt to impose lower prices changes, and residents can confirm the terms before sending their goods."
+progression_band = "0"
+purpose = "Gather pearls, stone, and ore; explore"
+quest_neighbor = "aa5a8f59-7c21-5bdc-8900-4b192b8ddab0"
+region_kind = "resource"
+story_hook = "Deliver the specified quantity of stone and defeat the boars disrupting work. The requester presents materials gathered under comparable conditions to establish acceptance standards."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "442243c2-99e6-5e60-ba87-fecb633053a3"
+label = "boar_den"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Narrow entrances make it difficult for several people to move together."
+is_start = "false"
+key = "boar_den"
+livelihood = "Hunters learn the beasts' ranges and accommodate nearby gathering work at this trial ground. No one wants the animals hunted out entirely."
+local_concern = "Rumors of more boars and bears have young hunters competing for kills without even checking which animals they face."
+map_x = "-400"
+map_y = "-300"
+name = "Tuskbeast Den"
+neighbor_relation = "Gatherers at Clay Brook report damage. The hunters need to ask which beasts disrupted the work rather than act on reputation."
+outcome_theme = "Hunting shifts from comparing feats of bravery to judging how much action the affected workers actually need."
+progression_band = "0"
+purpose = "Class trials and elite battles"
+quest_neighbor = "6864acd2-7486-5e49-bc5d-c14f7bfb2d71"
+region_kind = "challenge"
+story_hook = "Defeat the specified boars disrupting work by the brook and report them separately from other elite foes. Equipment crafting requests form a stage in rebuilding the hunters' preparations."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+label = "broken_watch"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "The remaining walls block sound and lines of sight."
+is_start = "false"
+key = "broken_watch"
+livelihood = "Below the ruined tower, a lookout records travelers' passing times and beast sightings. The duty is to deliver dependable news, rather than rebuild a magnificent tower."
+local_concern = "Rumors of wolves and treants fill the notebook. Firsthand sightings and hearsay reach the inn without being distinguished."
+map_x = "-170"
+map_y = "0"
+name = "Broken Watchtower"
+neighbor_relation = "Watch crews compare their reports with Thorn Meadow. The meadow's workers help distinguish a useful warning from a frightening rumor."
+outcome_theme = "The lookout becomes able to write down what is unknown, and the inn's guidance becomes more specific."
+progression_band = "0"
+purpose = "Class trials and elite battles"
+quest_neighbor = "1bdf6766-97e2-5bd7-9c6d-5adab1aba7a6"
+region_kind = "challenge"
+story_hook = "Report the defeat of specified wolves and treants separately so the lookout can verify the records. Record the needed equipment crafting as preparation as well."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+label = "lantern_town"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "50"
+environment = "People who depend on the lights gather at the same hour."
+is_start = "false"
+key = "lantern_town"
+livelihood = "Merchants holding travelers' tools and innkeepers waiting for their owners keep the lanterns burning."
+local_concern = "Goods due to return at different times have become mixed, while small orders are pushed aside by impatient customers."
+map_x = "330"
+map_y = "50"
+name = "Lantern Town"
+neighbor_relation = "The town receives gatherers from Ashwood Copse. Its stock supports the copse and arena approaches without replacing the neighboring worksite."
+outcome_theme = "A town that keeps its promises to quiet regulars as well as its loudest customers."
+progression_band = "1"
+purpose = "Resupply, trade, and rest"
+quest_neighbor = "7d7bb240-3917-592f-a620-7891a5bd64e2"
+region_kind = "settlement"
+story_hook = "An innkeeper asks you to sort out the backlog, starting with a forgotten request for a small quantity of materials."
+town_entry_fee = "25"
+
+[[records]]
+uuid = "e1af2a4e-953f-5f4d-ae3a-16b0003c5756"
+label = "salt_crossing"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "40"
+environment = "Dry cargo crosses paths with damp loads."
+is_start = "false"
+key = "salt_crossing"
+livelihood = "Merchants at the crossroads hold not only goods in transit but also orders whose owners have yet to return."
+local_concern = "Some say goods belonging to customers who left for the arena may be sold without permission, leaving their keeper uncertain."
+map_x = "1149"
+map_y = "918"
+name = "Salt Crossroads"
+neighbor_relation = "The crossroads receives orchard travelers from Sunken Orchard. Rest, local requests and the onward pool route remain useful even with a small merchant stock."
+outcome_theme = "Keep small promises in trade even when the other person is absent."
+progression_band = "1"
+purpose = "Resupply, trade, and rest"
+quest_neighbor = "66885a47-0dcc-5a05-ac8b-3372718538eb"
+region_kind = "settlement"
+story_hook = "Complete specified hunts and outstanding material orders to show why the stored goods should not be disposed of in haste."
+town_entry_fee = "25"
+
+[[records]]
+uuid = "b8255005-8c23-545d-b943-a6ab373b4c56"
+label = "smith_haven"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "10"
+environment = "Repair work piles up during short rests."
+is_start = "false"
+key = "smith_haven"
+livelihood = "Smiths at the rest stop take in not only finished goods but orders brought in without all their materials."
+local_concern = "An apprentice urging a customer to discard familiar old equipment has clashed with the customer's attachment to its memories."
+map_x = "410"
+map_y = "-1250"
+name = "Smith's Rest"
+neighbor_relation = "The smiths receive supplies along the road to Bat Grotto. Equipment checks at the market help tunnel workers prepare before returning underground."
+outcome_theme = "Give owners a real choice instead of hurrying them into replacements."
+progression_band = "1"
+purpose = "Resupply, trade, and rest"
+quest_neighbor = "dc86c626-89aa-54f0-940f-baa05a3618ff"
+region_kind = "settlement"
+story_hook = "Gather specified mine materials and craft new equipment, preparing for what comes next without dismissing the old piece."
+town_entry_fee = "25"
+
+[[records]]
+uuid = "3c134b71-889d-5593-b97b-b3368296dbcc"
+label = "glass_quarry"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "10"
+environment = "Streaks of light resemble real cracks."
+is_start = "false"
+key = "glass_quarry"
+livelihood = "Workers hold crystals and stone up to the light to sort them here. A craftsperson's eye for damage and suitable uses sustains trade more than size does."
+local_concern = "Moles and bats prevent careful sorting. An apprentice has quietly mixed flawed crystals into a larger shipment."
+map_x = "-53"
+map_y = "-990"
+name = "Glass Quarry"
+neighbor_relation = "Quarry workers compare loads with Fern Ravine. Their measurements distinguish the weight of stone from the difficulty of carrying it out."
+outcome_theme = "The apprentice learns that concealment increases the loss, studying both how to judge materials and how to report mistakes."
+progression_band = "1"
+purpose = "Gather stone and crystals; explore"
+quest_neighbor = "154a6748-3133-5e63-bb6a-b82bb085e41d"
+region_kind = "resource"
+story_hook = "Deliver the required crystals and stone and defeat the specified moles. Once replacements are ready, the apprentice tells their master about the mixed shipment."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "5fd6161e-b998-58b9-9928-86676cec6641"
+label = "copper_cut"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Small stones fall from the walls of the cutting."
+is_start = "false"
+key = "copper_cut"
+livelihood = "Gatherers divide stone and ore from the cutting into thin loads for transport. On the narrow road, even small crews must respect the order of passage."
+local_concern = "Moles and blind lizards block the road, and large mining crews keep pushing smaller shipments to the back of the queue."
+map_x = "291"
+map_y = "-1112"
+name = "Copper Cutting"
+neighbor_relation = "The cutting crew exchanges material reports with Blue Scree. Recording the transport conditions keeps a small ore order from becoming an unsafe load."
+outcome_theme = "Gatherers who once had to obey the larger crews gain an agreement for shipping their own loads."
+progression_band = "1"
+purpose = "Gather stone and ore; explore"
+quest_neighbor = "51380d65-c7da-5703-a91b-1924e65e6c7d"
+region_kind = "resource"
+story_hook = "Supply the required stone and ore and defeat the specified moles. Small gatherers complete a combined delivery and propose an order for handing over cargo."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "154a6748-3133-5e63-bb6a-b82bb085e41d"
+label = "fern_ravine"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "40"
+environment = "Steps hidden under leaves tip the loads."
+is_start = "false"
+key = "fern_ravine"
+livelihood = "Families gathering herbs support those who bundle fiber and wrap it with resin in this ravine. Those handling fresh materials care about them until the journey is finished."
+local_concern = "Mushroom walkers and crystal colossi obstruct gathering paths. People wanting to keep herbs for their families struggle to refuse orders."
+map_x = "-104"
+map_y = "-1242"
+name = "Fern Ravine"
+neighbor_relation = "The fern-road workers compare their loads with the quarry crew at Glass Quarry, where the stone is different but the need for reliable measurements is shared."
+outcome_theme = "People can discuss a sustainable supply without feeling ashamed of being unable to fill every request."
+progression_band = "1"
+purpose = "Gather resin, fiber, and herbs; explore"
+quest_neighbor = "3c134b71-889d-5593-b97b-b3368296dbcc"
+region_kind = "resource"
+story_hook = "Gather and deliver herbs and fiber and defeat the specified mushroom walkers. The requester revisits how much to supply to the shops and how much to keep at home."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "dc86c626-89aa-54f0-940f-baa05a3618ff"
+label = "bat_grotto"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Wingbeats and echoes make companions difficult to locate."
+is_start = "false"
+key = "bat_grotto"
+livelihood = "Crystal sorters and workers drying damp leather share the grotto entrance. They have long kept working hours that avoid startling the bat colonies."
+local_concern = "A craftsperson with an urgent shipment has extended work into the night. Bats and cave giants now keep even the old hands away from the entrance."
+map_x = "579"
+map_y = "-1041"
+name = "Bat Grotto"
+neighbor_relation = "Tunnel workers compare echoes and safe footing with the crew at Echo Tunnel. A completed inspection matters more than a confident guess."
+outcome_theme = "Old rules are passed on to younger workers as practical knowledge that keeps work possible, rather than dismissed as superstition."
+progression_band = "1"
+purpose = "Gather crystals and leather; explore"
+quest_neighbor = "0a09e552-89ac-50d3-9a3b-e40724344187"
+region_kind = "resource"
+story_hook = "Gather the crystals needed in the grotto, defeat the specified bats, and deliver materials. The craftsperson moves work forced into the night back into daylight hours."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "66885a47-0dcc-5a05-ac8b-3372718538eb"
+label = "sunken_orchard"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Water left on the ground corrodes tools."
+is_start = "false"
+key = "sunken_orchard"
+livelihood = "On the water's edge where orchards once stood, people gather timber and herbs and have learned to collect pearls."
+local_concern = "Those who speak of the old fields and those supporting today's gathering disagree over how to accept the life they lost."
+map_x = "1100"
+map_y = "606"
+name = "Sunken Orchard"
+neighbor_relation = "Orchard workers compare route records with Windripple Dunes. The desert approach makes careful load planning necessary even for a modest delivery."
+outcome_theme = "Recognize those making a living in a changed land without pretending the lost place has been restored."
+progression_band = "1"
+purpose = "Gather timber, pearls, and herbs; explore"
+quest_neighbor = "c8ed3014-ced8-4150-bb2f-485cc98a3ba8"
+region_kind = "resource"
+story_hook = "Deliver materials gathered today and complete nearby specified hunts, fulfilling present orders without forgetting the past."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "c53364f8-4657-56f1-b2d0-eb16132633b3"
+label = "slate_brook"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "10"
+environment = "Gathered goods catch between slippery rocks."
+is_start = "false"
+key = "slate_brook"
+livelihood = "Collectors gather pearls and scales and share places to spread out wet loads."
+local_concern = "Crawling creatures have damaged the work areas, and people speak as though only those venturing into deep water do real work."
+map_x = "689"
+map_y = "-799"
+name = "Slate Brook"
+neighbor_relation = "Brook gatherers exchange material samples with Bat Grotto. They keep the wet banks and the cave approach distinct in their work records."
+outcome_theme = "Recognize both dangerous work and the work that supports a safe return as indispensable."
+progression_band = "1"
+purpose = "Gather pearls and scales; explore"
+quest_neighbor = "dc86c626-89aa-54f0-940f-baa05a3618ff"
+region_kind = "resource"
+story_hook = "Combine defeating enemies in the brook with gathering materials from another waterside to convey the extent of the less visible work."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "b5c8341a-e5f5-5756-9482-583a7277da5f"
+label = "silk_basin"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Trapped humidity makes goods difficult to dry."
+is_start = "false"
+key = "silk_basin"
+livelihood = "Workers in the basin divide into fiber and leather teams, helping when either group is short-handed."
+local_concern = "A stream of orders for fine thread has made practical leatherwork seem worthless."
+map_x = "-1031"
+map_y = "690"
+name = "Silkcocoon Basin"
+neighbor_relation = "The basin's workers exchange samples with Twilight Spring. They distinguish fibers from the spring's supplies before agreeing on a combined order."
+outcome_theme = "Recognize craftspeople's roles apart from their speed or the glamour of their goods."
+progression_band = "1"
+purpose = "Gather fiber and leather; explore"
+quest_neighbor = "93189b1e-ca94-57ce-a9a1-9293c2eb6744"
+region_kind = "resource"
+story_hook = "Craft equipment and make deliveries using both material families to finish an order that no single specialty can complete."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "93189b1e-ca94-57ce-a9a1-9293c2eb6744"
+label = "pale_spring"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Even clear-looking water hides an unstable bottom."
+is_start = "false"
+key = "pale_spring"
+livelihood = "Appraisers beside the spring compare pearls and crystals while gatherers move herbs into dry wrappings."
+local_concern = "Customers increasingly demand beautiful specimens, and everyday herb orders are being neglected."
+map_x = "-894"
+map_y = "469"
+name = "Twilight Spring"
+neighbor_relation = "Craftspeople in Silkcocoon Basin are regular customers who value dependable uses over appearance."
+outcome_theme = "Restore everyday trade whose worth cannot be measured by a single expensive specimen."
+progression_band = "1"
+purpose = "Gather pearls, crystals, and herbs; explore"
+quest_neighbor = "b5c8341a-e5f5-5756-9482-583a7277da5f"
+region_kind = "resource"
+story_hook = "Fulfill an unassuming order first through a delivery that includes herbs and crafting with materials from the neighboring region."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "7d7bb240-3917-592f-a620-7891a5bd64e2"
+label = "ash_copse"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "40"
+environment = "Fine ash coats the surface of materials."
+is_start = "false"
+key = "ash_copse"
+livelihood = "This small forestry site grows slender ash trees and uses shoots from cut stumps for firewood and tool handles. Resin seals the joints of lamps."
+local_concern = "Crystal colossi and rock crabs have appeared beside the young trees. Those protecting the old stumps clash with workers who want to cut now despite the danger."
+map_x = "180"
+map_y = "-250"
+name = "Ashwood Copse"
+neighbor_relation = "A shortcut carries timber and resin to the lamp repairers of Lantern Town. Demand from town is also putting pressure on workers to cut the young trees."
+outcome_theme = "The repairers learn why their orders were reaching even the saplings and begin distinguishing usable timber from trees that need more time."
+progression_band = "1"
+purpose = "Gather timber and resin; explore"
+quest_neighbor = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+region_kind = "resource"
+story_hook = "Report timber gathered safely and the defeat of the specified rock crabs. Deliver the needed resin as well, providing enough material for this order without cutting the young trees."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "7a1803d8-3df3-51b7-8549-eb3b0eef8efb"
+label = "iron_ford"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "The footholds used to cross change with the weight of the load."
+is_start = "false"
+key = "iron_ford"
+livelihood = "Gatherers sorting ore in the shallows share a loading area with leatherworkers who handle scales."
+local_concern = "Crawling tunnel creatures have damaged the footing, but the miners blame the traffic of scale collectors."
+map_x = "-1102"
+map_y = "312"
+name = "Blackiron Ford"
+neighbor_relation = "Ford workers exchange material records with Twilight Spring. A measured load and a clear report matter more than guessing how easy the crossing will be."
+outcome_theme = "Stop treating another trade as a nuisance and understand how its work differs."
+progression_band = "1"
+purpose = "Gather ore and scales; explore"
+quest_neighbor = "93189b1e-ca94-57ce-a9a1-9293c2eb6744"
+region_kind = "resource"
+story_hook = "Collect materials at both workplaces and bring both groups the results of defeating the specified enemies."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "0a09e552-89ac-50d3-9a3b-e40724344187"
+label = "echo_tunnel"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "40"
+environment = "Overlapping echoes make work signals arrive late."
+is_start = "false"
+key = "echo_tunnel"
+livelihood = "Porters carrying stone and crystals learn the returning sounds of this tunnel through experience. Even a familiar sound is not enough to declare the workplace safe."
+local_concern = "Sounds of cave giants and bats blend with the work. An experienced worker with keen hearing cannot bring themselves to admit a mistaken judgment."
+map_x = "789"
+map_y = "-1193"
+name = "Echo Tunnel"
+neighbor_relation = "The tunnel crew checks its reports against Bat Grotto. Shared observations help workers distinguish real hazards from rumors passed along the caves."
+outcome_theme = "An experienced worker can admit failure without losing their role and accepts responsibility for explaining that experience to others."
+progression_band = "1"
+purpose = "Gather stone, crystals, and leather; explore"
+quest_neighbor = "dc86c626-89aa-54f0-940f-baa05a3618ff"
+region_kind = "resource"
+story_hook = "Compile records of gathering stone and crystals and report the defeat of the specified giants. The requester revises the warnings around confirmed enemies rather than traditions about sounds."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "11c973c4-d43a-5d99-b03e-cfd759a62f95"
+label = "cracked_forge"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "10"
+environment = "Cracks hide on the backs of seemingly usable parts."
+is_start = "false"
+key = "cracked_forge"
+livelihood = "Apprentices trained at the old forge now work in separate workshops. The ruin serves as a trial ground for remembering failure, not a promise to restart the forge."
+local_concern = "Stories of the old accident mingle with rumors of echo wraiths and crystal colossi. Apprentices hesitate even to ask about their master's judgment."
+map_x = "933"
+map_y = "-680"
+name = "Cracked Forge"
+neighbor_relation = "The forge's workers ask gatherers at Slate Brook to compare their supplies before blaming a damaged tool for every failed attempt."
+outcome_theme = "A master's responsibility to apprentices becomes the ability to explain failure, rather than preserve a reputation for infallibility."
+progression_band = "1"
+purpose = "Class trials and elite battles"
+quest_neighbor = "c53364f8-4657-56f1-b2d0-eb16132633b3"
+region_kind = "challenge"
+story_hook = "Report the crafting of existing equipment and the defeat of specified elite foes at the ruin. The master retells the old failure in terms of the preparations needed now."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c"
+label = "stone_spiral"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "The way ahead is hidden beyond each bend."
+is_start = "false"
+key = "stone_spiral"
+livelihood = "Trial keepers on the ascent compare equipment brought to the start with the results of the challenge."
+local_concern = "The assumption that what passed the last trial will pass the next has led challengers to skip preparations."
+map_x = "1028"
+map_y = "-1086"
+name = "Stone Ring Ascent"
+neighbor_relation = "Trial participants prepare with the tunnel workers at Echo Tunnel. Reporting an actual encounter gives the next party something more useful than a boast."
+outcome_theme = "Become a challenger who can adapt for the next test without discarding earlier successes."
+progression_band = "1"
+purpose = "Class trials and elite battles"
+quest_neighbor = "0a09e552-89ac-50d3-9a3b-e40724344187"
+region_kind = "challenge"
+story_hook = "Prepare crafted equipment and report the specified hunts in both places in turn."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb"
+label = "buried_arena"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Sand-buried sections make the footing change from place to place."
+is_start = "false"
+key = "buried_arena"
+livelihood = "Families who remember past battles and guides to the trials live around the old arena. Many would rather preserve records of those lost than stage spectacles for visitors."
+local_concern = "Exaggerated tales of crystal colossi and echo wraiths are attracting reckless challengers."
+map_x = "536"
+map_y = "312"
+name = "Buried Arena"
+neighbor_relation = "Parties leaving the arena compare preparations with Windripple Dunes. The dune road's harder conditions deserve a separate check before departure."
+outcome_theme = "The dead cease to be decorations in heroic tales; their stories become concrete records that protect the next challengers."
+progression_band = "1"
+purpose = "Confront the region's strongest foes"
+quest_neighbor = "c8ed3014-ced8-4150-bb2f-485cc98a3ba8"
+region_kind = "boss"
+story_hook = "Require staged equipment crafting and the defeat of specified powerful foes, then report the preparation needed as well as the victory. Bereaved families use that record to guide others."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+label = "reed_port"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "50"
+environment = "Moisture collects where cargo is transferred."
+is_start = "false"
+key = "reed_port"
+livelihood = "Harbor receivers sort orders from people returning from cold lands and gatherers heading into the wetlands."
+local_concern = "Different materials arrive under the same label of fiber, leaving senders and recipients blaming each other."
+map_x = "-1069"
+map_y = "837"
+name = "Reedboat Harbor"
+neighbor_relation = "The harbor receives gatherers from Resin Glen. Its trading house checks the incoming loads before sending travelers toward the lakeshore."
+outcome_theme = "Before blaming the carrier, the person placing an order must explain what they need."
+progression_band = "2"
+purpose = "Resupply, trade, and rest"
+quest_neighbor = "29e3734d-c67e-54c4-889d-4573cdaf43aa"
+region_kind = "settlement"
+story_hook = "Deliver the materials specified for each destination and correct trades that had relied on vague cargo labels."
+town_entry_fee = "50"
+
+[[records]]
+uuid = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+label = "frost_lodge"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "40"
+environment = "Frozen goods change condition when brought indoors."
+is_start = "false"
+key = "frost_lodge"
+livelihood = "The lodge receives visitors from the wetlands and those crossing cold roads, arranging turns to dry their cargo. It is a modest place to recover before moving on, rather than a luxurious inn."
+local_concern = "Priority for distant merchants has left local porters without space for wet cargo. They are taking their frustration out on the innkeeping family."
+map_x = "1377"
+map_y = "-947"
+name = "Frostward Lodge"
+neighbor_relation = "Travelers arriving from Frost Cleft need a place to rest and check supplies. The lodge's small stock supports the next journey without replacing the local gatherers."
+outcome_theme = "The lodge revises its preference for the best-paying guests and restores a place for the porters who support it every day."
+progression_band = "2"
+purpose = "Resupply, trade, and rest"
+quest_neighbor = "1c35f184-8452-59b4-83ed-c138f7afd91e"
+region_kind = "settlement"
+story_hook = "Deliver specified materials to cover shortages and report crafting requests separately. The requester records preparations for local and distant guests in the same ledger."
+town_entry_fee = "50"
+
+[[records]]
+uuid = "0acea1b9-e1eb-5288-963a-a0e778c51327"
+label = "clock_market"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Similar-looking parts can have different histories and uses."
+is_start = "false"
+key = "clock_market"
+livelihood = "This market coordinates porters' arrivals to trade small shipments together. Promises between those waiting and those running late sustain business more than clocks themselves."
+local_concern = "A shipper unwilling to admit delays keeps displaying an old schedule, leaving the people waiting at the lodge to shoulder the blame for discrepancies."
+map_x = "-275"
+map_y = "1246"
+name = "Clock Market"
+neighbor_relation = "Travelers bring garden records from Sigil Garden. The market helps them sort supplies before they enter the court or follow the reed route."
+outcome_theme = "Notifying others of delays to protect their work becomes more important than pretending to keep perfect time."
+progression_band = "2"
+purpose = "Resupply, trade, and rest"
+quest_neighbor = "0db4391c-8fae-5cec-a65e-fb2c27d97ce2"
+region_kind = "settlement"
+story_hook = "Deliver specified materials to finish delayed orders one by one, and report crafting requests separately. The requester corrects the trade ledger to reflect what was actually completed."
+town_entry_fee = "50"
+
+[[records]]
+uuid = "67ae4423-5649-5239-ae43-019c7295995d"
+label = "silver_mere"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Reflections on the water make colors hard to distinguish."
+is_start = "false"
+key = "silver_mere"
+livelihood = "Gatherers use the shallows for pearls and the banks for ore, also bringing back loads of scales."
+local_concern = "Avoiding river snakes and crocodiles has concentrated gathering in a few places, leaving a surplus of the same goods."
+map_x = "-804"
+map_y = "893"
+name = "Silvermirror Mere"
+neighbor_relation = "The lakeshore crew exchanges wetland supplies with Firefly Marsh. They compare gathering conditions without treating every waterside material as interchangeable."
+outcome_theme = "Deliver what others use instead of merely selling what is easy to gather."
+progression_band = "2"
+purpose = "Gather pearls, ore, and scales; explore"
+quest_neighbor = "44beca51-c271-4f7b-9ba2-a0438f077836"
+region_kind = "resource"
+story_hook = "Deliver specified quantities of different materials from the mere rather than concentrating on one expensive good."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "29e3734d-c67e-54c4-889d-4573cdaf43aa"
+label = "resin_glen"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Sticky materials cling to other gathered goods."
+is_start = "false"
+key = "resin_glen"
+livelihood = "Gatherers in the glen trim timber and alternate between collecting resin and picking herbs."
+local_concern = "Too many workers have turned to resin orders, and some blame other gatherers for the resulting timber shortage."
+map_x = "-1289"
+map_y = "676"
+name = "Resin Glen"
+neighbor_relation = "Resin workers exchange material reports with Silkcocoon Basin. Keeping their different fibers and resins distinct prevents a substitute from being passed off as the requested supply."
+outcome_theme = "Choose a sustainable division of labor over whichever order currently pays most."
+progression_band = "2"
+purpose = "Gather timber, resin, and herbs; explore"
+quest_neighbor = "b5c8341a-e5f5-5756-9482-583a7277da5f"
+region_kind = "resource"
+story_hook = "Collect the goods the glen lacks and finish a delivery combined with a request from beneath the cliffs."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "51380d65-c7da-5703-a91b-1924e65e6c7d"
+label = "blue_scree"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "40"
+environment = "Small falling stones force workers to move their storage spots."
+is_start = "false"
+key = "blue_scree"
+livelihood = "Workers sort stone and ore that have fallen below the cliff. Knowing when not to approach the cliff matters more than digging strength."
+local_concern = "Rotwood monsters and frost giants keep shifting the working boundary, but an apprentice assumes yesterday's markers guarantee safety."
+map_x = "178"
+map_y = "-877"
+name = "Blue Scree"
+neighbor_relation = "Travelers bring quarry records from Glass Quarry. The scree crew checks how the ground changes the work rather than assuming all stone roads are alike."
+outcome_theme = "Workers stop praising output alone and also recognize the judgment to turn back from danger."
+progression_band = "2"
+purpose = "Gather stone and ore; explore"
+quest_neighbor = "3c134b71-889d-5593-b97b-b3368296dbcc"
+region_kind = "resource"
+story_hook = "Gather and deliver stone already within reach, and report the defeat of the specified enemies. The requester teaches the apprentice not to rely on old work markers."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "d71ebf1c-3a11-563c-a089-fd4432baabe8"
+label = "winter_thicket"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Accumulations on branch tips fall without warning."
+is_start = "false"
+key = "winter_thicket"
+livelihood = "People gathering timber and resin beneath winter buds combine them with leather to fill expedition orders."
+local_concern = "As veterans familiar with cold-season care become fewer, workers are trying to treat everything they gather as a single load."
+map_x = "152"
+map_y = "-1330"
+name = "Winterbud Thicket"
+neighbor_relation = "The winter gatherers trade route reports with Copper Cutting. They must explain the added work of cold-weather transport before accepting a delivery."
+outcome_theme = "Shape old knowledge for the next generation rather than simply repeating the past."
+progression_band = "2"
+purpose = "Gather timber, resin, and leather; explore"
+quest_neighbor = "5fd6161e-b998-58b9-9928-86676cec6641"
+region_kind = "resource"
+story_hook = "Assemble specified materials and crafted goods, preserving through work the methods that written accounts alone cannot convey."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "d7bbc253-d8d8-549b-a115-f40433c84b1f"
+label = "drowned_library"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Waterlogged pages and dry ones require different handling."
+is_start = "false"
+key = "drowned_library"
+livelihood = "Outside the library, people prepare fiber wrappings and crystal weights to protect surviving records. Reading the documents and handling them without damage are separate jobs."
+local_concern = "Hydras and crocodiles restrict access. Calls grow louder to preserve only legible copies and abandon the originals."
+map_x = "-808"
+map_y = "1152"
+name = "Drowned Library"
+neighbor_relation = "Library workers compare their finds with the lakeshore crew at Silvermirror Mere. They separate a useful sample from a story that has grown in the telling."
+outcome_theme = "Residents come to share the value of preserving who left a record, as well as the words that can still be read."
+progression_band = "2"
+purpose = "Gather pearls, crystals, and fiber; explore"
+quest_neighbor = "67ae4423-5649-5239-ae43-019c7295995d"
+region_kind = "resource"
+story_hook = "Deliver fiber and crystals and report the defeat of specified crocodiles and hydras. The record keeper sets preservation priorities based on available materials and what can be handled safely."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "40c0927f-2a75-57bf-87ea-dc7242264044"
+label = "pearl_shoal"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "The tides narrow the places where materials can be gathered."
+is_start = "false"
+key = "pearl_shoal"
+livelihood = "Collectors gather pearls and scales in the shallows and pass them to someone recording the old names of goods."
+local_concern = "Bone beasts and ice spiders have appeared, but customers still picture the quiet shoal of the past."
+map_x = "-501"
+map_y = "1114"
+name = "Pearl Shoal"
+neighbor_relation = "Shoal gatherers compare their catches and wetland supplies with Firefly Marsh. A fair delivery records what was actually obtained at each place."
+outcome_theme = "Respect old maps while also preserving the accounts of people who walk there now."
+progression_band = "2"
+purpose = "Gather pearls and scales; explore"
+quest_neighbor = "44beca51-c271-4f7b-9ba2-a0438f077836"
+region_kind = "resource"
+story_hook = "Assemble present-day materials and the results of specified hunts to reassess the outdated guidance."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "4a94701e-84fa-5b02-aac0-07f4c4f62a4c"
+label = "reed_maze"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "10"
+environment = "Reeds conceal forks in the path that look much alike."
+is_start = "false"
+key = "reed_maze"
+livelihood = "People teasing apart fiber and sorting leather wait at the maze's edge for fellow gatherers to return."
+local_concern = "Rumors of witches and moving armor have become tangled, halting orders before anyone can say who saw what."
+map_x = "-36"
+map_y = "1350"
+name = "Reed Maze"
+neighbor_relation = "Reed-route workers exchange approach reports with Sunken Throne. They check equipment before taking on the throne's encounters."
+outcome_theme = "Trust small verified facts more than sweeping rumors."
+progression_band = "2"
+purpose = "Gather fiber, herbs, and leather; explore"
+quest_neighbor = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+region_kind = "resource"
+story_hook = "Focus on specified enemies and materials, using results you can reliably bring back to get orders moving again."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "d49f87e6-9cd4-521a-8ab1-2a36a4192285"
+label = "fossil_bank"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Changes in the riverbed shift the exposed gathering spots."
+is_start = "false"
+key = "fossil_bank"
+livelihood = "Gatherers use resin to take impressions of shapes in stone and remember changes along the river. Records of ordinary stones matter here alongside valuable specimens."
+local_concern = "Reed snakes and ancient mechanical guards appear, reducing gathering time and strengthening calls to discard records that will not sell."
+map_x = "-244"
+map_y = "1666"
+name = "Fossil Riverbed"
+neighbor_relation = "Bank workers compare their preparations with Rotwood Court. They distinguish the court's trial reports from material gathered safely along the bank."
+outcome_theme = "Rather than keep only what brings immediate money, gatherers can pass on records that others can check later."
+progression_band = "2"
+purpose = "Gather resin, stone, and scales; explore"
+quest_neighbor = "a83b48a5-20de-523a-a061-1464ed6b1764"
+region_kind = "resource"
+story_hook = "Deliver stone and resin and defeat the specified reed snakes. The requester gains room to separate sale cargo from materials kept for the record."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "1c35f184-8452-59b4-83ed-c138f7afd91e"
+label = "frost_cleft"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Cold tools and hard footing change how the work feels."
+is_start = "false"
+key = "frost_cleft"
+livelihood = "Gatherers take crystals and ore from the cleft and protect rubbing cargo with leather. To avoid rushing on cold footing, they make a habit of checking that companions have returned."
+local_concern = "After polar bears or snow leopards appear, those returning first mock slower companions as cowards. Checking on everyone's return has become a hollow ritual."
+map_x = "1188"
+map_y = "-758"
+name = "Frost Cleft"
+neighbor_relation = "Crews at Cracked Forge inspect equipment coming off the cold road. Records of what failed in the cleft help them choose a practical repair."
+outcome_theme = "Returning late ceases to be shameful, and the habit of welcoming people back before judging their work is restored."
+progression_band = "2"
+purpose = "Gather crystals, ore, and leather; explore"
+quest_neighbor = "11c973c4-d43a-5d99-b03e-cfd759a62f95"
+region_kind = "resource"
+story_hook = "Report ore and leather deliveries separately from the defeat of specified snow leopards. The requester asks not only how much was gathered, but who checked that everyone had returned."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "0db4391c-8fae-5cec-a65e-fb2c27d97ce2"
+label = "rune_garden"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Plants conceal the marks on the stones."
+is_start = "false"
+key = "rune_garden"
+livelihood = "The garden's recorder sketches differences between stone and crystals while leaving room for herb gatherers."
+local_concern = "People who value the carved patterns have clashed with those who want usable materials."
+map_x = "-287"
+map_y = "977"
+name = "Sigil Garden"
+neighbor_relation = "Garden workers compare their material records with Firefly Marsh. They need a reliable account of the wetland approach before promising a delivery."
+outcome_theme = "Leave room for both ways of seeing and for everyone who uses the garden."
+progression_band = "2"
+purpose = "Gather stone, crystals, and herbs; explore"
+quest_neighbor = "44beca51-c271-4f7b-9ba2-a0438f077836"
+region_kind = "resource"
+story_hook = "A request pairs material gathering with specified crafting to demonstrate both the value of preservation and the value of use."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "fa6bb6f7-a7fb-5ec3-b7f4-5e1ee3ac7cc7"
+label = "black_pool"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "50"
+environment = "Wet goods all look alike on the surface."
+is_start = "false"
+key = "black_pool"
+livelihood = "People here seal boat joints with black resin and sell small quantities of pearls and scales. They take pride in the unglamorous work of stopping leaks rather than in showy goods."
+local_concern = "As workers avoid banks frequented by crocodiles and reed snakes, pearl merchants monopolize the safe footing and leave those gathering repair materials waiting."
+map_x = "964"
+map_y = "1121"
+name = "Blackwater Pool"
+neighbor_relation = "Pool workers compare encounter reports with Scorpion Hollow. They identify the requested foes before agreeing to help a neighboring worksite."
+outcome_theme = "Merchants come to value the work that keeps boats afloat, alongside the more conspicuous profits."
+progression_band = "2"
+purpose = "Gather resin, pearls, and scales; explore"
+quest_neighbor = "cedc4ce7-be4f-5b1e-8216-057f01c3c4d2"
+region_kind = "resource"
+story_hook = "Prioritize gathering and delivering resin, and defeat the specified crocodiles to establish where work is possible. The requester explains to the harbor why repair materials are being supplied before ornaments."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "602f3c7d-56cc-52f4-ac42-175a8646168d"
+label = "hydra_nest"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Several visible escape routes may not all be usable."
+is_start = "false"
+key = "hydra_nest"
+livelihood = "In this dangerous place with its old name, guides now collect sightings of crocodiles, reed snakes, and other foes. A name alone must not become a promise to hunt an enemy that is not there."
+local_concern = "Repeated hearsay about a hydra has combined separate damage from crocodiles and reed snakes into the story of one monster."
+map_x = "-622"
+map_y = "1335"
+name = "Hydra Nest"
+neighbor_relation = "Hunters use reports from Drowned Library to prepare for the nest. The records identify the requested encounter instead of encouraging indiscriminate hunting."
+outcome_theme = "Instead of filling unknowns with a giant monster, guides reorganize the information so gatherers can judge their next day's work."
+progression_band = "2"
+purpose = "Class trials and elite battles"
+quest_neighbor = "d7bbc253-d8d8-549b-a115-f40433c84b1f"
+region_kind = "challenge"
+story_hook = "Defeat the specified crocodiles and reed snakes actually listed and provide separate reports. The requester retains unverified accounts while recording confirmed damage separately."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "bdceea5a-6b34-52ca-a782-0e21012921ac"
+label = "ice_steps"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "The footing collapses depending on the order of your steps."
+is_start = "false"
+key = "ice_steps"
+livelihood = "Trial witnesses inspect equipment beneath the icicles and preserve the records of challengers who return."
+local_concern = "Young challengers have begun dismissing earlier records, treating ice spirits and huge beasts as the same test of strength."
+map_x = "1591"
+map_y = "-799"
+name = "Icicle Steps"
+neighbor_relation = "Travelers compare their footing and equipment with the crew at Hoarfrost Grassland. The grassland supplies are a practical preparation for the steps."
+outcome_theme = "Teacher and pupil reconcile by recognizing the weight of preparation, not just the number of victories."
+progression_band = "2"
+purpose = "Class trials and elite battles"
+quest_neighbor = "83e27ea2-5fe3-4049-858b-66322f3d0fa0"
+region_kind = "challenge"
+story_hook = "Rather than scold a pupil, a veteran asks for battles against specified elite foes and equipment crafted in preparation."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "05b31c7d-8560-5de9-97ab-af15ac955f6a"
+label = "clock_vault"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Stopped machinery and moving parts stand side by side."
+is_start = "false"
+key = "clock_vault"
+livelihood = "Record keepers near the mechanical ruins research the owners of items left behind. Remembering whom an item should be returned to matters more than skill at opening vaults."
+local_concern = "Animated armor and rune colossi make more places inaccessible. Some people want to fill the gaps in the investigation with convenient inheritance stories."
+map_x = "1465"
+map_y = "-1203"
+name = "Clockwork Vault-Tomb"
+neighbor_relation = "Surveyors compare the vault's mechanisms with weather reports from Storm Shelf. They prepare for the exposed route before committing a party to it."
+outcome_theme = "A procedure develops for explaining matters to families without records, rather than letting only the loudest families take the belongings."
+progression_band = "2"
+purpose = "Class trials and elite battles"
+quest_neighbor = "45a63e98-f65d-58c5-ae5d-5ba19bf050b6"
+region_kind = "challenge"
+story_hook = "Report the defeat of specified elite foes and equipment crafting to prepare for widening the area the requester can verify. Residents themselves decide ownership from the records."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "a83b48a5-20de-523a-a061-1464ed6b1764"
+label = "rot_court"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "10"
+environment = "Supports are weaker than they appear."
+is_start = "false"
+key = "rot_court"
+livelihood = "Trial keepers tending tools outside the decaying court witness battles against the wetland's elite foes."
+local_concern = "Equipment preparations cannot keep pace with the rot-prone environment, and more challengers blame defeat solely on bad luck."
+map_x = "-416"
+map_y = "1472"
+name = "Rotwood Court"
+neighbor_relation = "The court's workers check their preparations with the crew at Fossil Riverbed. Evidence from the bank supports the trial without turning it into a contest of rumors."
+outcome_theme = "Find what can be improved instead of blaming others for failure."
+progression_band = "2"
+purpose = "Class trials and elite battles"
+quest_neighbor = "d49f87e6-9cd4-521a-8ab1-2a36a4192285"
+region_kind = "challenge"
+story_hook = "Craft the specified equipment again and defeat each elite foe before returning to the discussion of maintenance."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "85c33f41-5fd5-5707-8133-798f786d84d4"
+label = "hunter_ridge"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Sounds do not carry easily across the ridge."
+is_start = "false"
+key = "hunter_ridge"
+livelihood = "Guides who recognize enemies by sight oversee young hunters' trials here. Careful observation that avoids mistaking one foe for another matters more than hunting merely to prove strength."
+local_concern = "Reports increasingly lump wolves and bone hounds together. Some hunters compete for credit with victories unrelated to the danger the requester asked them to address."
+map_x = "1251"
+map_y = "-1260"
+name = "Hunter's Ridge"
+neighbor_relation = "Hunters compare sightings with Wyvern Cleft. They distinguish the neighboring trial from the more exposed storm route before making promises to a party."
+outcome_theme = "Trust goes to those who understand and report on the request, rather than whoever has the most kills."
+progression_band = "2"
+purpose = "Class trials and elite battles"
+quest_neighbor = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+region_kind = "challenge"
+story_hook = "Set separate conditions for defeating the specified enemies and report them alongside equipment crafting. The guides value verification relevant to the request rather than a total kill count."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+label = "sunken_throne"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Submerged structures narrow the way forward."
+is_start = "false"
+key = "sunken_throne"
+livelihood = "People waiting outside the throne record reports from wetland and cold-country challengers in the same ledger."
+local_concern = "Regional pride has become a contest, with some dismissing enemies from other lands as weak."
+map_x = "9"
+map_y = "1606"
+name = "Sunken Throne"
+neighbor_relation = "The throne's approach comes through Reed Maze. Reports from the reeds help a party prepare without revealing the farther coast by rumor alone."
+outcome_theme = "Preserve evidence of different hardships undertaken rather than ranking winners and losers."
+progression_band = "2"
+purpose = "Confront the region's strongest foes"
+quest_neighbor = "4a94701e-84fa-5b02-aac0-07f4c4f62a4c"
+region_kind = "boss"
+story_hook = "A request requiring specified foes and preparation materials from several lands asks each side to understand challenges beyond its specialty."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "fa8932af-5af1-5407-9311-1ba594abbf57"
+label = "hollow_belfry"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Sounds traveling through hollow spaces distort the sense of distance."
+is_start = "false"
+key = "hollow_belfry"
+livelihood = "People living outside the belfry pass down memories associated with its bells at this place of decisive battles. The tower carries news; unraveling its strange sounds is not part of the task."
+local_concern = "Hydras and rune colossi are described as proof of old warnings. Young people who want to investigate the danger are accused of defying their elders."
+map_x = "1329"
+map_y = "-538"
+name = "Hollow Belfry"
+neighbor_relation = "The belfry's approach runs through Frost Cleft. Reports from the cold road help parties prepare before they enter the trial ground."
+outcome_theme = "Preserving memories and checking present facts can coexist without conflict."
+progression_band = "2"
+purpose = "Confront the region's strongest foes"
+quest_neighbor = "1c35f184-8452-59b4-83ed-c138f7afd91e"
+region_kind = "boss"
+story_hook = "Defeat the specified highest-ranked foes and report upon returning. Without dismissing the ancestors' words, the requester sends the lodge a separate record of present dangers."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "83f4d132-8c54-5114-ae26-675379857f45"
+label = "dune_caravan"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "50"
+environment = "Departure times often change while caravans wait for the wind."
+is_start = "false"
+key = "dune_caravan"
+livelihood = "This caravanserai transfers goods arriving from the wetlands and cargo bound for sandy country. Its ledger records not just guest numbers, but who entrusted whose cargo to whom."
+local_concern = "The more merchants hurry onward, the more the innkeeping families are left responsible for losses and shortages in stored cargo."
+map_x = "386"
+map_y = "1571"
+name = "Dune Caravanserai"
+neighbor_relation = "The caravanserai receives travelers from Drake Slope. Its stock helps them prepare for the gate and sun-glass routes while preserving specialist imports."
+outcome_theme = "A relationship that treated the inn as convenient storage becomes a trade in which effort and responsibility are agreed on equal terms."
+progression_band = "3"
+purpose = "Resupply, trade, and rest"
+quest_neighbor = "81750351-c861-5d45-a3e3-8f31a379e8c8"
+region_kind = "settlement"
+story_hook = "Deliver specified materials to complete short orders, and report equipment crafting requests separately. The requester keeps distinct records of receiving and dispatching each shipment."
+town_entry_fee = "100"
+
+[[records]]
+uuid = "70742414-3a03-5930-bb22-8431bdc62458"
+label = "ember_station"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Goods that need cooling arrive alongside goods needed immediately."
+is_start = "false"
+key = "ember_station"
+livelihood = "Cargo is unloaded after the long sandy roads and repacked with only what the next leg requires. Recognizing an unreasonable load matters more than sending parties off quickly."
+local_concern = "Parties trying to recover lost time shorten their rest and pressure cargo handlers to skip checks."
+map_x = "1219"
+map_y = "1901"
+name = "Ember Anchorage"
+neighbor_relation = "The anchorage trades with travelers from Basalt Delta. It checks incoming delta loads before sending supplies toward the red mesa and canyon."
+outcome_theme = "Cargo handlers once blamed for delays can explain why waiting is necessary to send a party onward safely."
+progression_band = "3"
+purpose = "Resupply, trade, and rest"
+quest_neighbor = "1834eb44-7f01-5ac5-9684-ec8a4f31cf05"
+region_kind = "settlement"
+story_hook = "Deliver specified materials to complete missing preparations and report the crafting of necessary equipment. The requester organizes the work so nobody needs to conceal shortages and depart."
+town_entry_fee = "100"
+
+[[records]]
+uuid = "a863b6f5-2d22-58ac-ba4d-cc2daadc0130"
+label = "sun_glass"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Harsh light makes flaws appear and disappear."
+is_start = "false"
+key = "sun_glass"
+livelihood = "People selecting stone and crystals on the glasslike ground keep similar-looking goods on separate shelves."
+local_concern = "Loads thought to have been distinguished in the sunlight became mixed, and an experienced worker blamed a newcomer."
+map_x = "506"
+map_y = "1821"
+name = "Sunglass Flats"
+neighbor_relation = "Glass workers compare equipment reports with Smelter Bridge. The bridge trial is a concrete preparation task rather than a reason to make vague promises."
+outcome_theme = "Choose the trust earned by admitting and correcting mistakes over an appraiser's reputation."
+progression_band = "3"
+purpose = "Gather stone and crystals; explore"
+quest_neighbor = "307900a0-64ef-590d-a61a-857dc7d674c6"
+region_kind = "resource"
+story_hook = "Assemble the specified materials from both places for crafting, finding a way to complete the order rather than conceal the error."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "1834eb44-7f01-5ac5-9684-ec8a4f31cf05"
+label = "basalt_delta"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "10"
+environment = "Branching currents require a different way of placing cargo on each foothold."
+is_start = "false"
+key = "basalt_delta"
+livelihood = "Workers at the water's edge cut black stone into small loads and ship it with pearls and scales. Customers want large stones, while porters know what they can carry."
+local_concern = "Giants and fire drakes are cutting working hours short. A young mason is tempted to mix cracked stones into a shipment to meet the quantity ordered."
+map_x = "980"
+map_y = "2020"
+name = "Basalt Delta"
+neighbor_relation = "Delta workers compare preparations with Setting Sun Sanctuary. Reports from the sunken trial help them judge which equipment is ready for another expedition."
+outcome_theme = "Masons can report mistakes instead of hiding them, and porters can refuse unreasonable loads."
+progression_band = "3"
+purpose = "Gather pearls, stone, and scales; explore"
+quest_neighbor = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1"
+region_kind = "resource"
+story_hook = "Gather and deliver stone to cover the shortfall, then defeat the specified enemies threatening the workplace. This gives the requester room to remove damaged stone from the shipment."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "c7fb0f9d-1b8b-5975-8db0-f8df5f28e213"
+label = "red_mesa"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Fine sand works its way into cords and gaps in tools."
+is_start = "false"
+key = "red_mesa"
+livelihood = "Gatherers bundling fiber on the red earth take turns sharing storage space with ore collectors."
+local_concern = "Leaving fiber to deteriorate in the dry soil means less can be delivered than is gathered."
+map_x = "1483"
+map_y = "1913"
+name = "Red Mesa"
+neighbor_relation = "Mesa workers compare route reports with Mirage Tower. They prepare for the tower's trial before treating it as a routine delivery stop."
+outcome_theme = "Do not mistake the different care each material requires for laziness."
+progression_band = "3"
+purpose = "Gather fiber and ore; explore"
+quest_neighbor = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb"
+region_kind = "resource"
+story_hook = "Deliver the specified materials from both places to complete orders for two people who had been competing only over gathering speed."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "d1b9d287-723e-5a6f-bb33-44f55d2ba5f2"
+label = "sulfur_fen"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Lingering damp and odors make it difficult to reuse wrappings for different goods."
+is_start = "false"
+key = "sulfur_fen"
+livelihood = "Gatherers divide resin handling from herb sorting to prevent loads from becoming mixed."
+local_concern = "The strong smell has led customers to dismiss even the herbs as poor quality; only those familiar with their uses buy them."
+map_x = "792"
+map_y = "1529"
+name = "Sulfur Fen"
+neighbor_relation = "Fen workers exchange equipment reports with Basalt Gate. A clear gate inspection helps them plan which supplies to carry through the sulfur route."
+outcome_theme = "Judge goods by their fitness for the requested use, not by impressions of their homeland."
+progression_band = "3"
+purpose = "Gather resin and herbs; explore"
+quest_neighbor = "f3e88e11-16fd-5455-a868-c559bc092586"
+region_kind = "resource"
+story_hook = "Prepare the specified herbs and resin as separate deliveries and make sure they reach those who need them."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "07072777-b717-5c52-888c-4867d4d66a6e"
+label = "dune_well"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "40"
+environment = "People and gathering tools converge on a single spot."
+is_start = "false"
+key = "dune_well"
+livelihood = "People gather herbs around the well and sell pearls to pay for shared tools. Water is part of daily life here, while requests concern materials that can actually be gathered."
+local_concern = "Cobras and lava crabs have left gathering to the same households that cannot refuse dangerous shifts."
+map_x = "723"
+map_y = "722"
+name = "Dune Well"
+neighbor_relation = "Well workers compare their materials with Obsidian Torrent. They record the difference between water-route supplies and the obsidian road's minerals."
+outcome_theme = "Possessions cease to be the sole measure of influence, as work supporting the shared site gains a place in discussions."
+progression_band = "3"
+purpose = "Gather pearls and herbs; explore"
+quest_neighbor = "4aa778ed-a008-5ff5-9dba-d7898ca44e0b"
+region_kind = "resource"
+story_hook = "Deliver herbs and defeat the specified cobras to cover the immediate shortfall. The requester counts materials contributed separately from dangerous shifts worked."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "4aa778ed-a008-5ff5-9dba-d7898ca44e0b"
+label = "obsidian_run"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Sharp fragments damage the tools used to carry supplies."
+is_start = "false"
+key = "obsidian_run"
+livelihood = "Gatherers walking the obsidian rim make repeated trips with light loads of ore and crystals."
+local_concern = "Newcomers hoping to bring everything back in one trip clash with veterans wary of creatures in the ash."
+map_x = "578"
+map_y = "937"
+name = "Obsidian Torrent"
+neighbor_relation = "The obsidian crew exchanges records with Obsidian Mountain Pass. Comparing the two volcanic worksites helps workers explain why a requested material cannot simply be substituted."
+outcome_theme = "Understand that a slower method can also be a way to avoid keeping companions waiting."
+progression_band = "3"
+purpose = "Gather crystals and ore; explore"
+quest_neighbor = "9b6e3ca3-2472-4bbe-8e9e-0f75da126644"
+region_kind = "resource"
+story_hook = "Combine gathering in manageable quantities with specified hunts to revise an order built around one unreasonable round trip."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "5a45b267-bbc6-51ac-82fb-03483ca47b15"
+label = "ember_grove"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Visible damage does not always reflect the condition within."
+is_start = "false"
+key = "ember_grove"
+livelihood = "Gatherers take timber and resin from this still-warm woodland and sort scales for sale. They know not to discard the useful portions of scorched wood."
+local_concern = "Sandworms and obsidian spiders hamper work, while new buyers demand only unblemished timber and press for faster felling."
+map_x = "582"
+map_y = "2219"
+name = "Ember Grove"
+neighbor_relation = "Grove workers exchange preparation reports with Magma Cradle. They distinguish the cradle's encounters from ordinary gathering work before accepting a shared request."
+outcome_theme = "Trade moves beyond treating only flawless materials as good, explaining their uses to reduce waste."
+progression_band = "3"
+purpose = "Gather timber, resin, and scales; explore"
+quest_neighbor = "3ec4e464-b53b-52cb-aa51-637849f7e676"
+region_kind = "resource"
+story_hook = "Deliver timber and resin and defeat the specified spiders. The requester demonstrates materials suited to their purpose and tries taking orders without cutting more woodland than necessary."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "ff1f8405-63e6-50da-bb94-1b0b99ddae4d"
+label = "gold_scrape"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Workers must handle similar grains and heavy loads at the same time."
+is_start = "false"
+key = "gold_scrape"
+livelihood = "Small gathering crews sort ore and stone from the diggings. Fairly weighing each day's modest yield sustains them more than rumors of striking it rich."
+local_concern = "Scorpions and salamanders delay work. A household that lent tools wants to increase its share of the gathered materials without agreement."
+map_x = "1195"
+map_y = "-1643"
+name = "Goldwash Diggings"
+neighbor_relation = "The prospectors compare stone and ore with Windcut Cliffs. Clear records help separate a valuable find from an expensive trip that produced little."
+outcome_theme = "Workers can verify what has been repaid and continue as equals, rather than labor indefinitely under the weight of a loan."
+progression_band = "3"
+purpose = "Gather stone and ore; explore"
+quest_neighbor = "98031082-242e-48e4-acf0-69fffeef22b0"
+region_kind = "resource"
+story_hook = "Deliver ore, defeat the specified scorpions, and report equipment crafting. The requester separates thanks for borrowed tools from negotiations over shares in joint work."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "dcce7b0e-595c-596c-bf58-a0f2afa0ffc0"
+label = "cinder_gallery"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "10"
+environment = "Drifting dust fades the landmarks."
+is_start = "false"
+key = "cinder_gallery"
+livelihood = "Along the soot-stained gallery, workers sort crystals and pack fiber and leather into dry loads. Care that does not overlook grime matters more than making goods look new."
+local_concern = "Ash bats and soot hounds are approaching, while buyers who dismiss darkened materials as defective put the craftspeople under pressure."
+map_x = "1098"
+map_y = "-1779"
+name = "Cinder Gallery"
+neighbor_relation = "The gallery workers exchange route notes with Skyroot Shore. They check supplies before leaving the cinder road for the high paths."
+outcome_theme = "A trade that judged price only by clean appearances gains a language for explaining which materials remain usable."
+progression_band = "3"
+purpose = "Gather crystals, fiber, and leather; explore"
+quest_neighbor = "2ccc532e-dcb6-5665-a53b-a054aaad59c5"
+region_kind = "resource"
+story_hook = "Supply fiber and leather, then defeat the specified soot hounds. The craftspeople include samples with the shipment that distinguish surface grime from damage."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "6ba8a95e-6045-5ad3-a172-04ed4bc0b1d3"
+label = "dry_canal"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Dry and damp stretches wear tools differently."
+is_start = "false"
+key = "dry_canal"
+livelihood = "People walk the old canal bed, sorting the timber, fiber, and pearls that remain. Families who lost their boating work are learning to make a living as porters on land."
+local_concern = "Whenever sandworms and jackals delay cargo, older workers say everything would be solved if the water returned, dismissing the young people learning today's work."
+map_x = "-1345"
+map_y = "1409"
+name = "Dry Canal"
+neighbor_relation = "Canal workers exchange reports with Moonlit Hollow. They check the longer moonland approach before committing scarce supplies to a delivery."
+outcome_theme = "People accept a livelihood that remembers the lost canal without depending entirely on its return."
+progression_band = "3"
+purpose = "Gather timber, pearls, and fiber; explore"
+quest_neighbor = "16089e8c-d7fa-4cf0-8339-c3ef99aaadf3"
+region_kind = "resource"
+story_hook = "Deliver timber and fiber and defeat the specified sandworms. The requester finishes a shipment that can be carried now, showing their family a result rather than an old title."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "a01bdb09-c8fc-53b3-9e41-ee4c7af92483"
+label = "scarlet_canyon"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Voices carry across gaps that require long journeys with cargo."
+is_start = "false"
+key = "scarlet_canyon"
+livelihood = "Leather sorters in the canyon wait for herb pickers and resin collectors to return before combining their loads."
+local_concern = "More detours around enemies along the canyon mean that different people need different preparations for the same request."
+map_x = "1250"
+map_y = "1646"
+name = "Scarlet Canyon"
+neighbor_relation = "Canyon workers exchange route records with Astral Stairway. They check the step trial before agreeing that a load can be carried onward."
+outcome_theme = "Do not judge the work of a journey solely by whether people arrive at the same time."
+progression_band = "3"
+purpose = "Gather resin, herbs, and leather; explore"
+quest_neighbor = "e32eab72-c615-5297-8a1c-555abc967724"
+region_kind = "resource"
+story_hook = "Assemble materials from both places and deliver them with the results of defeating the specified enemies."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "81750351-c861-5d45-a3e3-8f31a379e8c8"
+label = "drake_slope"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "40"
+environment = "Dropped objects are difficult to return for on the slope."
+is_start = "false"
+key = "drake_slope"
+livelihood = "People divide timber, leather, and scales into small loads here. Despite the name, residents know the danger of burrowing sandworms and drakes that crawl along the ground."
+local_concern = "Visitors watch only the sky and wander into workplaces where sandworms have torn up the ground."
+map_x = "450"
+map_y = "1308"
+name = "Drake Slope"
+neighbor_relation = "Slope workers compare preparations with Obsidian Mountain Pass. A party records the heat and weight of its supplies before attempting the drake road."
+outcome_theme = "The specific precautions of residents gain respect over heroic rumors invented from a place name."
+progression_band = "3"
+purpose = "Gather timber, leather, and scales; explore"
+quest_neighbor = "9b6e3ca3-2472-4bbe-8e9e-0f75da126644"
+region_kind = "resource"
+story_hook = "Defeat the specified sandworms and deliver timber. The requester records the enemies actually encountered and revises the warning sent to the shore."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "cedc4ce7-be4f-5b1e-8216-057f01c3c4d2"
+label = "scorpion_pit"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "40"
+environment = "Seeing the rim does not mean it can be climbed."
+is_start = "false"
+key = "scorpion_pit"
+livelihood = "Trial keepers in the hollow record the elite foes actually present so challengers do not judge enemies by names alone."
+local_concern = "Challengers who trusted the scorpion name arrived unprepared for fiery beasts and basalt giants and now blame the advice they heard."
+map_x = "935"
+map_y = "867"
+name = "Scorpion Hollow"
+neighbor_relation = "Hunters exchange supply reports with Dune Well. The well provides a practical place to check preparations for the pit."
+outcome_theme = "Choose useful guidance over rumors that are easy to spread."
+progression_band = "3"
+purpose = "Class trials and elite battles"
+quest_neighbor = "07072777-b717-5c52-888c-4867d4d66a6e"
+region_kind = "challenge"
+story_hook = "The request calls for crafting equipment and defeating specified opponents according to the foes themselves, not the name of the landmark."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "f3e88e11-16fd-5455-a868-c559bc092586"
+label = "basalt_gate"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "The width of the passage changes which way a fighter can take their stance."
+is_start = "false"
+key = "basalt_gate"
+livelihood = "Gatekeepers receive trial reports and warn travelers heading toward the bridge ahead. What matters here is responsibility for who verified what, rather than collecting tolls."
+local_concern = "Each approach by sandworms or fire spirits adds another warning over the old notices. Current dangers can no longer be distinguished from past accidents."
+map_x = "609"
+map_y = "1685"
+name = "Basalt Gate"
+neighbor_relation = "The gate crew compares route records with Sulfur Fen. They check the fen's conditions before deciding that an equipped party is ready to proceed."
+outcome_theme = "Keepers learn to pass on only what they have verified, without grand claims that all danger has vanished."
+progression_band = "3"
+purpose = "Class trials and elite battles"
+quest_neighbor = "d1b9d287-723e-5a6f-bb33-44f55d2ba5f2"
+region_kind = "challenge"
+story_hook = "Report equipment crafting and the defeat of the specified elite foes currently appearing here. The keeper separates old warnings from the latest observations."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "307900a0-64ef-590d-a61a-857dc7d674c6"
+label = "furnace_bridge"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Footing and cargo retain heat differently."
+is_start = "false"
+key = "furnace_bridge"
+livelihood = "Guides overseeing the crossing stop challengers who try to proceed with damaged equipment. This is not a place to mine materials, but one where people are responsible for checking preparations."
+local_concern = "Scorpions and lava crabs increase the danger, yet challengers impatient with delays call the guides cowards."
+map_x = "295"
+map_y = "1966"
+name = "Smelter Bridge"
+neighbor_relation = "Bridge parties exchange encounter reports with Magma Cradle. They identify the actual trial before promising a safe passage for someone else."
+outcome_theme = "The responsibility to point out inadequate preparation gains recognition alongside the courage to let people proceed."
+progression_band = "3"
+purpose = "Class trials and elite battles"
+quest_neighbor = "3ec4e464-b53b-52cb-aa51-637849f7e676"
+region_kind = "challenge"
+story_hook = "Require equipment crafting and the defeat of specified elite foes, reporting preparation and results separately. The guides can then judge by verified facts rather than personal instinct."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb"
+label = "mirage_tower"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Apparent distances change with the time of day."
+is_start = "false"
+key = "mirage_tower"
+livelihood = "A trial guide at the foot of the tower learns challengers' habits by watching them choose equipment before setting out."
+local_concern = "Some challengers take preparations that worked against foes in the sand straight into battles with lava creatures and struggle repeatedly."
+map_x = "1284"
+map_y = "2087"
+name = "Mirage Tower"
+neighbor_relation = "Tower parties compare their equipment with the crew at Red Mesa. Mesa reports give their preparations a practical test before the climb."
+outcome_theme = "Give more credit to adapting one's preparations to an opponent than to a spectacular victory."
+progression_band = "3"
+purpose = "Class trials and elite battles"
+quest_neighbor = "c7fb0f9d-1b8b-5975-8db0-f8df5f28e213"
+region_kind = "challenge"
+story_hook = "The guide entrusts you with a test combining crafting and specified hunts, rather than relying on a single favorite piece of equipment."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "d1c89cb7-c9e5-50d2-8158-345b954015ce"
+label = "flame_cistern"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "10"
+environment = "Accumulated deposits conceal damage underneath."
+is_start = "false"
+key = "flame_cistern"
+livelihood = "Beside the old waterworks, a keeper checks travelers' preparations. Their duty is to warn anyone who assumes the name alone promises a safe watering place."
+local_concern = "Though aware of dune colossi and salamanders, the keeper continues handing out old plans as reliable guidance."
+map_x = "1459"
+map_y = "2276"
+name = "Crater Cistern"
+neighbor_relation = "A path connects the watch at Mirage Tower. They can share experience in distinguishing what can be seen from what has been verified."
+outcome_theme = "Pride in the historic works becomes compatible with honest warnings about present dangers."
+progression_band = "3"
+purpose = "Class trials and elite battles"
+quest_neighbor = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb"
+region_kind = "challenge"
+story_hook = "Compile equipment crafting and the defeat of specified elite foes, reporting only the area verified. The keeper removes assumptions inherited from the old plans from the warnings."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1"
+label = "sunken_sun"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Exposed ground offers little room to retreat."
+is_start = "false"
+key = "sunken_sun"
+livelihood = "Witnesses at the sanctuary ask those challenging powerful sand and fire foes what preparations they need."
+local_concern = "Claims that the old rituals guarantee victory have made it difficult to admit shortages of equipment and materials."
+map_x = "823"
+map_y = "1814"
+name = "Setting Sun Sanctuary"
+neighbor_relation = "The sunken trial receives parties from Basalt Delta. Delta records help them prepare without assuming that a distant route is next door."
+outcome_theme = "Reconcile cherished customs with the needs of today's challengers."
+progression_band = "3"
+purpose = "Confront the region's strongest foes"
+quest_neighbor = "1834eb44-7f01-5ac5-9684-ec8a4f31cf05"
+region_kind = "boss"
+story_hook = "A request to craft specified equipment and complete several hunts gives concrete form to preparations that ritual alone cannot supply."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "3ec4e464-b53b-52cb-aa51-637849f7e676"
+label = "magma_cradle"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Tools are in a different condition by the time their owners return."
+is_start = "false"
+key = "magma_cradle"
+livelihood = "Witnesses beside the lava take charge of equipment from those challenging powerful foes and return it to the survivors."
+local_concern = "Stories of slaying flame drakes have eclipsed the preparations and decisions of those who never returned."
+map_x = "322"
+map_y = "2223"
+name = "Magma Cradle"
+neighbor_relation = "The cradle's parties compare supplies with Ember Grove. The grove gives them a concrete material check before entering the hotter trial ground."
+outcome_theme = "Remember each challenger's work rather than only rumors of valor."
+progression_band = "3"
+purpose = "Confront the region's strongest foes"
+quest_neighbor = "5a45b267-bbc6-51ac-82fb-03483ca47b15"
+region_kind = "boss"
+story_hook = "Craft equipment matching an order left behind, defeat the specified regional foe, and report back."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "8d36f10a-26d4-5a38-a306-02624f790a47"
+label = "thunder_well"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Delayed signals leave people above and below making different decisions."
+is_start = "false"
+key = "thunder_well"
+livelihood = "Witnesses wait at the shaft's rim for travelers to return, arranging equipment so its owners cannot be confused."
+local_concern = "Rumors judge battles by echoing sounds alone, spreading before the returning challengers can give their own reports."
+map_x = "697"
+map_y = "1311"
+name = "Thunder Shaft"
+neighbor_relation = "Parties compare their trial preparations with Drake Slope. The slope's workers need a useful result rather than another account of reckless bravery."
+outcome_theme = "Wait for returning voices instead of letting rumors decide the ending."
+progression_band = "3"
+purpose = "Confront the region's strongest foes"
+quest_neighbor = "81750351-c861-5d45-a3e3-8f31a379e8c8"
+region_kind = "boss"
+story_hook = "Defeat the specified regional foe, return with the required materials, and report on the request."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+label = "tide_harbor"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "50"
+environment = "Cargo waiting for the tide accumulates, mixing storage requirements."
+is_start = "false"
+key = "tide_harbor"
+livelihood = "Harbor receivers welcome expedition travelers from the dunes and coastal gatherers, passing on their different orders."
+local_concern = "Promises of the same arrival date have provoked resentment between people who do not understand each other's long journeys."
+map_x = "-1172"
+map_y = "1602"
+name = "High Tide Harbor"
+neighbor_relation = "The harbor exchanges supplies with Moonwhite Reedbed. Merchants can support the reedbed route while retaining their imported specialty stock for longer journeys."
+outcome_theme = "Replace excuses about distance with promises that account for different journeys."
+progression_band = "4"
+purpose = "Resupply, trade, and rest"
+quest_neighbor = "50c7964a-fa49-53c5-abb3-0aed20fcb4fb"
+region_kind = "settlement"
+story_hook = "Rather than favoring one request, a delivery calls for specified materials from both places."
+town_entry_fee = "150"
+
+[[records]]
+uuid = "7d332bbd-a4a3-5938-9b59-3a1f987d6014"
+label = "star_rest"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "40"
+environment = "The more tired a party is, the more it tries to rush inspections."
+is_start = "false"
+key = "star_rest"
+livelihood = "Innkeepers welcome people back from late-stage expeditions and pass on small resupply orders."
+local_concern = "Everyone wants news of great victories, while requests from returning travelers for ordinary materials go unheard."
+map_x = "871"
+map_y = "-1906"
+name = "Starwatch Rest"
+neighbor_relation = "The rest stop receives quarry travelers from Starfall Quarry. Its merchants help them compare supplies before continuing toward the high cloud route."
+outcome_theme = "Show through the inn's work that everyday life continues beyond a story's ending."
+progression_band = "4"
+purpose = "Resupply, trade, and rest"
+quest_neighbor = "06c8d288-026b-59f6-81b0-5f802b83dddb"
+region_kind = "settlement"
+story_hook = "Go beyond reporting a hunt and accept deliveries of the materials people need after coming home."
+town_entry_fee = "150"
+
+[[records]]
+uuid = "1a5639b4-32f4-5ad5-bd8b-2e6d6e163f11"
+label = "coral_stairs"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "10"
+environment = "Rising water conceals different footholds on each step."
+is_start = "false"
+key = "coral_stairs"
+livelihood = "People gathering stone, pearls, and scales on these stepped rocks set careful limits on carrying weight. A precious load does not deserve careless handling."
+local_concern = "Shell warriors and coral beasts are approaching. Merchants rushing shipments ignore the exhaustion of porters waiting below the steps."
+map_x = "-1562"
+map_y = "1367"
+name = "Coral Stairway"
+neighbor_relation = "The stair crew receives gathering reports from Moonwhite Reedbed. Careful tide timing makes the final reef approach possible without confusing it with the distant mountain route."
+outcome_theme = "Cargo transfers begin to account for the porters' effort and safety rather than the price of the goods."
+progression_band = "4"
+purpose = "Gather pearls, stone, and scales; explore"
+quest_neighbor = "50c7964a-fa49-53c5-abb3-0aed20fcb4fb"
+region_kind = "resource"
+story_hook = "Deliver stone and scales and defeat the specified shell warriors. The requester arranges to separate the heavy and light goods previously packed together."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "3de179c0-0029-543a-9c29-65bfbd6d7886"
+label = "cloud_terrace"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Moisture levels change abruptly when clouds roll over the terrace."
+is_start = "false"
+key = "cloud_terrace"
+livelihood = "Workers spread herbs and fiber on timber racks and use the wind to dry their loads. They rely on experience working in small batches, not control over the weather."
+local_concern = "Goats and storm hawks block access to the drying racks. One gatherer is considering selling even the herbs set aside for their family."
+map_x = "1000"
+map_y = "-2138"
+name = "Cloud Terrace"
+neighbor_relation = "The terrace shares route reports with Skyroot Shore. Checking the exposed paths gives climbers evidence they can use before the final ascent."
+outcome_theme = "Workers gain their companions' understanding when they reduce shipments rather than sacrifice their families' reserves for sales."
+progression_band = "4"
+purpose = "Gather timber, fiber, and herbs; explore"
+quest_neighbor = "2ccc532e-dcb6-5665-a53b-a054aaad59c5"
+region_kind = "resource"
+story_hook = "Gather and deliver herbs and fiber, and defeat the specified goats and storm hawks. The requester separates materials for sale from those needed at home."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "50c7964a-fa49-53c5-abb3-0aed20fcb4fb"
+label = "lunar_reedbed"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Pale light makes bundles easy to mistake for one another."
+is_start = "false"
+key = "lunar_reedbed"
+livelihood = "Fiber gatherers bundle reeds and pack herbs and pearls in separate bags for expedition parties."
+local_concern = "Strong winds have shortened the working week, while orders pile up demanding that herbs take priority."
+map_x = "-1432"
+map_y = "1597"
+name = "Moonwhite Reedbed"
+neighbor_relation = "Reedbed workers compare tide reports with Coral Stairway. They prepare the coastal approach before sending a load onward toward the reef."
+outcome_theme = "Restore mutual support between expeditions and gatherers without dismissing either side's hardships."
+progression_band = "4"
+purpose = "Gather pearls, fiber, and herbs; explore"
+quest_neighbor = "1a5639b4-32f4-5ad5-bd8b-2e6d6e163f11"
+region_kind = "resource"
+story_hook = "Instead of giving one side priority, a gatherer requests a delivery containing the materials both sides need."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "45a63e98-f65d-58c5-ae5d-5ba19bf050b6"
+label = "storm_shelf"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "40"
+environment = "Gusts that blow back on themselves turn loads around."
+is_start = "false"
+key = "storm_shelf"
+livelihood = "Gatherers select stone and ore and carry leather in small bundles to keep it from blowing away."
+local_concern = "Customers frightened of stone giants and tidal colossi demand that expeditions carry more goods than they need."
+map_x = "1399"
+map_y = "-1469"
+name = "Storm Shelf"
+neighbor_relation = "The shelf workers exchange mineral samples with Goldwash Diggings. Each crew records the risks of obtaining them rather than comparing only their sale price."
+outcome_theme = "Reach an agreement so orders meant to offer reassurance do not overburden workers."
+progression_band = "4"
+purpose = "Gather stone, ore, and leather; explore"
+quest_neighbor = "ff1f8405-63e6-50da-bb94-1b0b99ddae4d"
+region_kind = "resource"
+story_hook = "Limit harbor deliveries to the materials actually needed while still preparing for the specified hunts."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "72bdf44d-537e-5c9a-be81-ad32e67997cf"
+label = "dream_fen"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Repeating scenery makes the gathering order easy to forget."
+is_start = "false"
+key = "dream_fen"
+livelihood = "Herb gatherers and workers sealing bundles with resin keep damp materials separate in this fen. The more similar the names, the more carefully they remember where each material came from."
+local_concern = "Salt lizards and deep wraiths have made gathering hurried. Suspicion falls on herb sacks relabeled with old tags."
+map_x = "713"
+map_y = "1993"
+name = "Dreaming Fen"
+neighbor_relation = "Fen workers exchange material reports with Ember Grove. They separate dreamland hazards from the ordinary work of carrying supplies through the grove."
+outcome_theme = "Trade is rebuilt by explaining origins anew, instead of trying to protect trust by concealing mistakes."
+progression_band = "4"
+purpose = "Gather resin, herbs, and scales; explore"
+quest_neighbor = "5a45b267-bbc6-51ac-82fb-03483ca47b15"
+region_kind = "resource"
+story_hook = "Deliver the required herbs and resin and defeat the specified salt lizards. The requester prepares a new shipment with gathering records attached."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "06c8d288-026b-59f6-81b0-5f802b83dddb"
+label = "starfall_quarry"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Tiny glints make damage hard to identify."
+is_start = "false"
+key = "starfall_quarry"
+livelihood = "Quarry workers separate crystal-bearing stone from ore and discuss which loads to process first."
+local_concern = "Orders have concentrated on rare crystals, leaving companions hauling ordinary stone unable to take pride in their work."
+map_x = "925"
+map_y = "-1643"
+name = "Starfall Quarry"
+neighbor_relation = "Ore travelers arrive from Goldwash Diggings before turning toward the star road. The quarry crew explains which preparations still hold and which need replacing."
+outcome_theme = "Bring attention to the ordinary loads that support a single exceptional piece."
+progression_band = "4"
+purpose = "Gather stone, crystals, and ore; explore"
+quest_neighbor = "ff1f8405-63e6-50da-bb94-1b0b99ddae4d"
+region_kind = "resource"
+story_hook = "Rework an order focused on just one specimen through deliveries of varied materials and crafting the specified equipment."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "627a933b-fa90-57ad-a829-46787f0f5cff"
+label = "silver_tide"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "10"
+environment = "Light and water level change how gathering spots appear."
+is_start = "false"
+key = "silver_tide"
+livelihood = "Appraisers in the inlet weigh pearls and ore separately and receive loads returning from work on the shore."
+local_concern = "Expectations of fine finds after storms are driving demands to gather even on days when powerful enemies are present."
+map_x = "-1783"
+map_y = "1505"
+name = "Silvertide Inlet"
+neighbor_relation = "The inlet crew exchanges tide reports with Coral Stairway. They allow time for the coastal approach before accepting urgent shore deliveries."
+outcome_theme = "Choose trade that lets people return again over a single plentiful haul."
+progression_band = "4"
+purpose = "Gather pearls and ore; explore"
+quest_neighbor = "1a5639b4-32f4-5ad5-bd8b-2e6d6e163f11"
+region_kind = "resource"
+story_hook = "Separate gathering in the inlet from deliveries of neighboring stair-route materials, allowing time to prepare even for urgent orders."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "2ccc532e-dcb6-5665-a53b-a054aaad59c5"
+label = "sky_root"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "10"
+environment = "Paths along the roots sway differently with the weight of a load."
+is_start = "false"
+key = "sky_root"
+livelihood = "Shore craftspeople select tangled timber and take orders for tools made with resin and leather."
+local_concern = "Fear of tidal colossi and waterside shadows has led people to regard even necessary materials as sinister."
+map_x = "1225"
+map_y = "-2006"
+name = "Skyroot Shore"
+neighbor_relation = "The root-path crew compares travel conditions with Cloud Terrace. A short shared road still needs a clear report before a party crosses it."
+outcome_theme = "Respect unfamiliar lands and build trust through verified uses."
+progression_band = "4"
+purpose = "Gather timber, resin, and leather; explore"
+quest_neighbor = "3de179c0-0029-543a-9c29-65bfbd6d7886"
+region_kind = "resource"
+story_hook = "Assemble the specified materials and actually craft equipment, demonstrating value that frightening stories cannot determine."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "13b88c8a-4e94-53dd-8ec1-498773176ebc"
+label = "void_spring"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "The quieter a place is, the easier small disturbances are to miss."
+is_start = "false"
+key = "void_spring"
+livelihood = "Gatherers collect resin and crystals and compare scale samples with expedition orders."
+local_concern = "Fear of shadows by the water has made some customers refuse loads, leaving even necessary materials unclaimed."
+map_x = "-1654"
+map_y = "1732"
+name = "Hollow Spring"
+neighbor_relation = "Spring workers compare their samples with Silvertide Inlet. Clear labels distinguish the inlet's materials from those drawn at the spring."
+outcome_theme = "Build one reliable trade after another instead of trying to force rumors to disappear."
+progression_band = "4"
+purpose = "Gather resin, crystals, and scales; explore"
+quest_neighbor = "627a933b-fa90-57ad-a829-46787f0f5cff"
+region_kind = "resource"
+story_hook = "Deliver goods with established uses and report the preparations needed against the specified enemies."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "1de78829-608e-59aa-b8b1-a00729c41f61"
+label = "wraith_anchorage"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Sounds and shadows become confused with signals."
+is_start = "false"
+key = "wraith_anchorage"
+livelihood = "Trial keepers compare reports from challengers facing coastal and highland elite foes."
+local_concern = "The wraith name divides people into those who are frightened and those who scoff, while the actual opponents vanish from the discussion."
+map_x = "-942"
+map_y = "1479"
+name = "Wraith Anchorage"
+neighbor_relation = "The anchorage receives route reports from Tidemirror Shore. A clear coastal account helps distinguish ordinary travel risks from the trial awaiting a party."
+outcome_theme = "Acknowledge fear while learning to think about how to respond to it."
+progression_band = "4"
+purpose = "Class trials and elite battles"
+quest_neighbor = "9b38535c-6bf3-47c8-a2ab-bfa4b3edec89"
+region_kind = "challenge"
+story_hook = "Specified hunts in both places and the crafting of required equipment turn rumors into concrete preparations."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+label = "wyvern_cleft"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "40"
+environment = "It is hard to check for danger above and below at once."
+is_start = "false"
+key = "wyvern_cleft"
+livelihood = "Witnesses remind challengers to prepare for coastal elite foes as well as winged enemies."
+local_concern = "Customers proud only of their anti-wyvern preparations struggle against other opponents and blame harbor merchants for their tools."
+map_x = "1003"
+map_y = "-1222"
+name = "Wyvern Cleft"
+neighbor_relation = "The cleft's hunters receive material and route reports from Windcut Cliffs. Preparation there remains separate from proving oneself in a wyvern encounter."
+outcome_theme = "Look at one's own preparation choices instead of ending the discussion by blaming tools."
+progression_band = "4"
+purpose = "Class trials and elite battles"
+quest_neighbor = "98031082-242e-48e4-acf0-69fffeef22b0"
+region_kind = "challenge"
+story_hook = "Combine hunts against specified opponents with equipment crafting, beginning the challenge again from the details of the order."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "e32eab72-c615-5297-8a1c-555abc967724"
+label = "astral_steps"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "The people at the front and rear of a group see different landmarks."
+is_start = "false"
+key = "astral_steps"
+livelihood = "Observers and travelers undertaking trials record the positions of waymarkers along these stepped heights. Reliable accounts of dangerous passages are valuable here, rather than mining."
+local_concern = "Afraid of star colossi and storm birds, a record keeper marked even the steps they could not reach as checked."
+map_x = "1009"
+map_y = "1632"
+name = "Astral Stairway"
+neighbor_relation = "Step travelers compare their preparations with Scarlet Canyon. The canyon approach requires its own account of footing and supplies."
+outcome_theme = "People agree that honestly marking a place unverified protects those who follow better than false records that save face."
+progression_band = "4"
+purpose = "Class trials and elite battles"
+quest_neighbor = "a01bdb09-c8fc-53b3-9e41-ee4c7af92483"
+region_kind = "challenge"
+story_hook = "Report equipment crafted for the trials and the defeat of specified elite foes on the stairs, stage by stage. The record keeper revises the account to include only what was actually verified."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+label = "eclipse_reef"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "The sound of the tide drowns out signals."
+is_start = "false"
+key = "eclipse_reef"
+livelihood = "Guides check the preparations of challengers arriving at the reef. With tide colossi and wind guardians appearing here, this trial ground discourages relying on a single favored technique."
+local_concern = "Challengers proud of earlier victories assume the same preparations will work against different foes."
+map_x = "-1022"
+map_y = "1233"
+name = "Eclipse Reef"
+neighbor_relation = "The reef crew exchanges route records with Moonlit Hollow. They verify which supplies came from the moonland road before accepting a shared delivery."
+outcome_theme = "People learn to reassess their preparations in unfamiliar country instead of treating one success as proof of universal ability."
+progression_band = "4"
+purpose = "Class trials and elite battles"
+quest_neighbor = "16089e8c-d7fa-4cf0-8339-c3ef99aaadf3"
+region_kind = "challenge"
+story_hook = "Require equipment crafting at several stages and the defeat of specified elite foes of different kinds. The requester asks how preparations changed rather than simply counting victories."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "b99f3597-7f1c-53a5-9129-7d876ac5c764"
+label = "drowned_reef"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "10"
+environment = "Tides can make the approach and escape routes overlap."
+is_start = "false"
+key = "drowned_reef"
+livelihood = "Boat crews waiting outside the dangerous reef collect sightings of powerful foes. Their concern is reliable information for returning alive, not increased pearl production."
+local_concern = "Accounts of sea drakes and tide colossi have become competing tales of bravery. Inexperienced listeners can no longer distinguish the dangers."
+map_x = "-1566"
+map_y = "1102"
+name = "Sunken Moon Reef"
+neighbor_relation = "The reef's only approach is through Coral Stairway. Parties check their equipment there before facing the Tidebreaker."
+outcome_theme = "Victory is no longer a reason to send everyone onward; people gain grounds for deciding not to proceed as well."
+progression_band = "4"
+purpose = "Confront the region's strongest foes"
+quest_neighbor = "1a5639b4-32f4-5ad5-bd8b-2e6d6e163f11"
+region_kind = "boss"
+story_hook = "Defeat the specified highest-ranked sea foes and report upon returning, including the equipment crafted in preparation. The crews distinguish enemies confirmed this time from dangers still unverified."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "f570c798-19aa-5b49-9ba0-297923dec683"
+label = "riven_peak"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "10"
+environment = "With little shelter, changing winds alter decisions."
+is_start = "false"
+key = "riven_peak"
+livelihood = "Witnesses on the summit record the names of those who challenge elite foes in the exposed heights."
+local_concern = "Accounts of defeating stone giants and storm birds have become a competition, and showing one's preparations is considered weakness."
+map_x = "1258"
+map_y = "-2212"
+name = "Galesplit Peak"
+neighbor_relation = "The last approach comes from Cloud Terrace. Preparations there support the wyvern hunt; no other grand objective is treated as the next-door stop."
+outcome_theme = "Do not claim strength alone; preserve the names of those who helped with preparations too."
+progression_band = "4"
+purpose = "Confront the region's strongest foes"
+quest_neighbor = "3de179c0-0029-543a-9c29-65bfbd6d7886"
+region_kind = "boss"
+story_hook = "Complete specified hunts in different lands and craft the required equipment, then report achievements grounded in more than pride."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "54100e4e-e05a-5c5b-81d7-e2abf68e0340"
+label = "dream_abyss"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "Broken sightlines make rendezvous points difficult to agree on."
+is_start = "false"
+key = "dream_abyss"
+livelihood = "Record keepers see challengers off into the abyss while families await their return at this place of decisive battles. Talk of dreams expresses fear; it promises no way to enter dreams."
+local_concern = "Dream serpents and void hounds keep claiming victims. Families of those who never returned are close to laying their grief on the next challengers."
+map_x = "1674"
+map_y = "2378"
+name = "Dreameater Abyss"
+neighbor_relation = "The abyss is reached through Starless Crown. Parties must prepare for that approach before confronting the dream-eating serpent."
+outcome_theme = "Victory does not erase past loss, but those who survive can be welcomed without blame."
+progression_band = "4"
+purpose = "Confront the region's strongest foes"
+quest_neighbor = "43d9a8d0-dec2-5b39-8033-2b2a6d10753c"
+region_kind = "boss"
+story_hook = "Compile the equipment crafting that prepared the journey, defeat the specified highest-ranked foes, and report upon returning. The requester treats the record of those lost and this safe return as separate matters."
+town_entry_fee = "0"
+
+[[records]]
+uuid = "43d9a8d0-dec2-5b39-8033-2b2a6d10753c"
+label = "starless_crown"
+tags = ["catalog/world-v1"]
+
+[records.values]
+access_profile = "a40ac5bf-673a-53ff-887a-b04eec520fa3"
+discovery_chance_percent = "30"
+environment = "There are few reliable landmarks, making differences in preparation matter greatly."
+is_start = "false"
+key = "starless_crown"
+livelihood = "Witnesses overlooking the crown keep the names and return reports of those attempting the hardest challenges."
+local_concern = "Battles with lunar beasts and star spiders have become distant legends that omit the work of those who prepared the challengers."
+map_x = "1660"
+map_y = "2111"
+name = "Starless Crown"
+neighbor_relation = "Crown travelers compare preparations with Crater Cistern. Reports from the cistern support the final abyss approach without implying a road to the distant star rest."
+outcome_theme = "Bring the ending back to the communities that sent challengers out, rather than crediting a lone hero."
+progression_band = "4"
+purpose = "Confront the region's strongest foes"
+quest_neighbor = "d1c89cb7-c9e5-50d2-8158-345b954015ce"
+region_kind = "boss"
+story_hook = "Prepare the required equipment, overcome the specified powerful foes, and return to report on the request."
+town_entry_fee = "0"

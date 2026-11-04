@@ -1,0 +1,4635 @@
+uuid = "86bfabc8-73bf-4e09-86d8-c48be540c7a5"
+display_name = "Gathering Sources"
+description = ""
+
+[metadata]
+interface_order = []
+data_name = "gathering_sources"
+initial_transposed = false
+
+[metadata.edit_permissions]
+add_columns = true
+delete_columns = true
+add_rows = true
+delete_rows = true
+edit_cells = true
+
+[interface_implementations]
+
+[[schema.columns]]
+read_only = false
+uuid = "62a3dac9-6121-5418-89ea-271c3bbb1804"
+display_name = "Key"
+data_name = "key"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "13225082-69e1-5774-abac-b90ef679e013"
+display_name = "Name"
+data_name = "name"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "8574d784-f8f2-5c52-ad44-d8e50e0d48c0"
+display_name = "Region"
+data_name = "region"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-00000000000b"
+
+[[schema.columns]]
+read_only = false
+uuid = "7871d506-8b67-5230-bd25-d2f106f1f12f"
+display_name = "Material"
+data_name = "material"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-000000000002"
+
+[[records]]
+uuid = "e791b76a-ca97-5743-a931-618e481e7fee"
+label = "row_e791b76aca975743a931618e481e7fee"
+
+[records.values]
+key = "05b31c7d-8560-5de9-97ab-af15ac955f6a_08850d43-193a-4746-8d77-9f94d145d9df"
+material = "08850d43-193a-4746-8d77-9f94d145d9df"
+name = "Clockwork Vault-Tomb — Frostland Blazescale"
+region = "05b31c7d-8560-5de9-97ab-af15ac955f6a"
+
+[[records]]
+uuid = "2553d462-e8ae-56a4-90f0-f954698f2cf3"
+label = "row_2553d462e8ae56a490f0f954698f2cf3"
+
+[records.values]
+key = "05b31c7d-8560-5de9-97ab-af15ac955f6a_2417bb01-96cb-4fa7-941f-e737a5b7df25"
+material = "2417bb01-96cb-4fa7-941f-e737a5b7df25"
+name = "Clockwork Vault-Tomb — Relic Nightbloom"
+region = "05b31c7d-8560-5de9-97ab-af15ac955f6a"
+
+[[records]]
+uuid = "1a58bc5c-52bd-5c0a-82a9-b03c4b08349c"
+label = "row_1a58bc5c52bd5c0a82a9b03c4b08349c"
+
+[records.values]
+key = "05b31c7d-8560-5de9-97ab-af15ac955f6a_4846195a-17d3-48df-ae05-c2790da1496c"
+material = "4846195a-17d3-48df-ae05-c2790da1496c"
+name = "Clockwork Vault-Tomb — Frostland Sunstone"
+region = "05b31c7d-8560-5de9-97ab-af15ac955f6a"
+
+[[records]]
+uuid = "458d3142-7063-5366-bd84-30b4d40305f1"
+label = "row_458d314270635366bd8430b4d40305f1"
+
+[records.values]
+key = "05b31c7d-8560-5de9-97ab-af15ac955f6a_54f50b5d-8963-4963-aa6c-3ac27416daf0"
+material = "54f50b5d-8963-4963-aa6c-3ac27416daf0"
+name = "Clockwork Vault-Tomb — Fen Slatehide"
+region = "05b31c7d-8560-5de9-97ab-af15ac955f6a"
+
+[[records]]
+uuid = "465a7b0f-7519-5e12-bb14-7fb3b05e92a8"
+label = "row_465a7b0f75195e12bb147fb3b05e92a8"
+
+[records.values]
+key = "05b31c7d-8560-5de9-97ab-af15ac955f6a_80da7179-19da-4dbb-aaec-4e0366baa963"
+material = "80da7179-19da-4dbb-aaec-4e0366baa963"
+name = "Clockwork Vault-Tomb — Frostland Thickscale Hide"
+region = "05b31c7d-8560-5de9-97ab-af15ac955f6a"
+
+[[records]]
+uuid = "185d31c0-3d86-5a81-b5d9-9093d2c1c477"
+label = "row_185d31c03d865a81b5d99093d2c1c477"
+
+[records.values]
+key = "05b31c7d-8560-5de9-97ab-af15ac955f6a_8e5dca89-9fa3-407a-9bc8-807709379f8b"
+material = "8e5dca89-9fa3-407a-9bc8-807709379f8b"
+name = "Clockwork Vault-Tomb — Fen Amber Resin"
+region = "05b31c7d-8560-5de9-97ab-af15ac955f6a"
+
+[[records]]
+uuid = "2328f6ac-1ef7-5516-b37b-3fc7542ddab3"
+label = "row_2328f6ac1ef75516b37b3fc7542ddab3"
+
+[records.values]
+key = "05b31c7d-8560-5de9-97ab-af15ac955f6a_b48c479b-7e56-4d46-8b2c-34417c05ca77"
+material = "b48c479b-7e56-4d46-8b2c-34417c05ca77"
+name = "Clockwork Vault-Tomb — Fen Golden Pyrite"
+region = "05b31c7d-8560-5de9-97ab-af15ac955f6a"
+
+[[records]]
+uuid = "9e1446fb-dc3c-5341-97d4-cd3a79fb20da"
+label = "row_9e1446fbdc3c534197d4cd3a79fb20da"
+
+[records.values]
+key = "05b31c7d-8560-5de9-97ab-af15ac955f6a_ec5f1d8e-e608-418b-895d-c27ca0387b85"
+material = "ec5f1d8e-e608-418b-895d-c27ca0387b85"
+name = "Clockwork Vault-Tomb — Relic Sunstone"
+region = "05b31c7d-8560-5de9-97ab-af15ac955f6a"
+
+[[records]]
+uuid = "7f723f74-443d-5156-b801-a6ba81d1c498"
+label = "row_7f723f74443d5156b801a6ba81d1c498"
+
+[records.values]
+key = "05b31c7d-8560-5de9-97ab-af15ac955f6a_f4ccfa6e-175c-47e2-bb22-6ff834bfef07"
+material = "f4ccfa6e-175c-47e2-bb22-6ff834bfef07"
+name = "Clockwork Vault-Tomb — Relic Blazescale"
+region = "05b31c7d-8560-5de9-97ab-af15ac955f6a"
+
+[[records]]
+uuid = "c0a0579e-2a27-5c63-b014-4346f8da99a1"
+label = "row_c0a0579e2a275c63b0144346f8da99a1"
+
+[records.values]
+key = "0acea1b9-e1eb-5288-963a-a0e778c51327_30defcbe-01c7-4797-b2fc-414f98c9ddf9"
+material = "30defcbe-01c7-4797-b2fc-414f98c9ddf9"
+name = "Clock Market — Relic Flax Fiber"
+region = "0acea1b9-e1eb-5288-963a-a0e778c51327"
+
+[[records]]
+uuid = "f04c9297-dc18-5375-a244-66f386190cb5"
+label = "row_f04c9297dc185375a24466f386190cb5"
+
+[records.values]
+key = "0acea1b9-e1eb-5288-963a-a0e778c51327_36288240-5b72-4de4-961b-36be975a9990"
+material = "36288240-5b72-4de4-961b-36be975a9990"
+name = "Clock Market — Fen Riverwort"
+region = "0acea1b9-e1eb-5288-963a-a0e778c51327"
+
+[[records]]
+uuid = "bfb224d5-ecba-5a9a-b583-969a64f7f9bd"
+label = "row_bfb224d5ecba5a9ab583969a64f7f9bd"
+
+[records.values]
+key = "0acea1b9-e1eb-5288-963a-a0e778c51327_444451f4-e465-4821-ab83-b384ce439d2b"
+material = "444451f4-e465-4821-ab83-b384ce439d2b"
+name = "Clock Market — Relic Hemp Fiber"
+region = "0acea1b9-e1eb-5288-963a-a0e778c51327"
+
+[[records]]
+uuid = "e64a7444-8b30-5357-8f4b-e826f3aeb329"
+label = "row_e64a74448b3053578f4be826f3aeb329"
+
+[records.values]
+key = "0acea1b9-e1eb-5288-963a-a0e778c51327_6e24d978-005a-46c2-8f5b-2e1751c0209d"
+material = "6e24d978-005a-46c2-8f5b-2e1751c0209d"
+name = "Clock Market — Relic Rose Pearl"
+region = "0acea1b9-e1eb-5288-963a-a0e778c51327"
+
+[[records]]
+uuid = "5446cd39-09ea-526d-84c0-3b4ba0e1f69c"
+label = "row_5446cd3909ea526d84c03b4ba0e1f69c"
+
+[records.values]
+key = "0acea1b9-e1eb-5288-963a-a0e778c51327_c35d1ecb-8ba1-484d-9e85-c7a402de2750"
+material = "c35d1ecb-8ba1-484d-9e85-c7a402de2750"
+name = "Clock Market — Frostland Riverwort"
+region = "0acea1b9-e1eb-5288-963a-a0e778c51327"
+
+[[records]]
+uuid = "09247cb8-60aa-51d8-9f64-83148547e8f0"
+label = "row_09247cb860aa51d89f6483148547e8f0"
+
+[records.values]
+key = "0acea1b9-e1eb-5288-963a-a0e778c51327_c37c6d43-d8e8-4bd9-9e18-46b54c3a1e5c"
+material = "c37c6d43-d8e8-4bd9-9e18-46b54c3a1e5c"
+name = "Clock Market — Wild Herb"
+region = "0acea1b9-e1eb-5288-963a-a0e778c51327"
+
+[[records]]
+uuid = "6940b247-2741-5725-bd06-ec165d2a332e"
+label = "row_6940b24727415725bd06ec165d2a332e"
+
+[records.values]
+key = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_1a11ffc3-3a8a-48d1-b4f0-49227343beab"
+material = "1a11ffc3-3a8a-48d1-b4f0-49227343beab"
+name = "Sunken Throne — Frostland Dreamlotus"
+region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+
+[[records]]
+uuid = "8b64ddbb-9aa7-5587-9e66-1273685e9cf7"
+label = "row_8b64ddbb9aa755879e661273685e9cf7"
+
+[records.values]
+key = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_263d3e50-4503-4510-b260-234960a92d8b"
+material = "263d3e50-4503-4510-b260-234960a92d8b"
+name = "Sunken Throne — Fen Eclipsium Ore"
+region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+
+[[records]]
+uuid = "9f6c092a-daf7-5b98-a5dd-7b6a5c070ac8"
+label = "row_9f6c092adaf75b98a5dd7b6a5c070ac8"
+
+[records.values]
+key = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_29bdcbe7-cca4-41ac-9be1-7244a52d84f4"
+material = "29bdcbe7-cca4-41ac-9be1-7244a52d84f4"
+name = "Sunken Throne — Frostland Ancient Beast Hide"
+region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+
+[[records]]
+uuid = "5f0bc2f9-306d-5f61-81df-8c3245fcccc0"
+label = "row_5f0bc2f9306d5f6181df8c3245fcccc0"
+
+[records.values]
+key = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_348cf069-616d-4752-8694-d2f51ef4ceb4"
+material = "348cf069-616d-4752-8694-d2f51ef4ceb4"
+name = "Sunken Throne — Relic Ebonheart Wood"
+region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+
+[[records]]
+uuid = "bf4f6594-05de-5a66-bfed-38c595edd5fe"
+label = "row_bf4f659405de5a66bfed38c595edd5fe"
+
+[records.values]
+key = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_3745f72f-d573-436e-83da-51e43d9752d6"
+material = "3745f72f-d573-436e-83da-51e43d9752d6"
+name = "Sunken Throne — Relic Elderscale"
+region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+
+[[records]]
+uuid = "352653e6-d267-50dd-b5be-672b7104eafb"
+label = "row_352653e6d26750ddb5be672b7104eafb"
+
+[records.values]
+key = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_5dc5ed86-4708-49b8-bc37-a7fe0dafbe07"
+material = "5dc5ed86-4708-49b8-bc37-a7fe0dafbe07"
+name = "Sunken Throne — Frostland Astral Crystal"
+region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+
+[[records]]
+uuid = "af1fbe8a-f9d1-5091-a2d8-4eac2b7644da"
+label = "row_af1fbe8af9d15091a2d84eac2b7644da"
+
+[records.values]
+key = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_7836523d-e381-4423-a1eb-37e674de0acb"
+material = "7836523d-e381-4423-a1eb-37e674de0acb"
+name = "Sunken Throne — Relic Dreamweave Fiber"
+region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+
+[[records]]
+uuid = "1d0bea20-f996-5fd8-a0b9-75447408a4a9"
+label = "row_1d0bea20f9965fd8a0b975447408a4a9"
+
+[records.values]
+key = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_84aa9698-1b28-4ebe-8818-853c8e7f77db"
+material = "84aa9698-1b28-4ebe-8818-853c8e7f77db"
+name = "Sunken Throne — Frostland Elderscale"
+region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+
+[[records]]
+uuid = "73bd95af-075e-587c-90ae-d74d046f13be"
+label = "row_73bd95af075e587c90aed74d046f13be"
+
+[records.values]
+key = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_88405042-186e-4bc8-a205-629627c64342"
+material = "88405042-186e-4bc8-a205-629627c64342"
+name = "Sunken Throne — Fen Ancient Beast Hide"
+region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+
+[[records]]
+uuid = "0b9344fe-9814-575f-bc4e-33b720314c62"
+label = "row_0b9344fe9814575fbc4e33b720314c62"
+
+[records.values]
+key = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_8e74169d-02da-426e-ac4b-8e2c7761771b"
+material = "8e74169d-02da-426e-ac4b-8e2c7761771b"
+name = "Sunken Throne — Frostland Dawn Pearl"
+region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+
+[[records]]
+uuid = "617be644-8848-53a4-98a8-2c696338af9c"
+label = "row_617be644884853a498a82c696338af9c"
+
+[records.values]
+key = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_93ce63ec-ce71-4b24-8f5e-7261a8846d47"
+material = "93ce63ec-ce71-4b24-8f5e-7261a8846d47"
+name = "Sunken Throne — Fen Ebonheart Wood"
+region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+
+[[records]]
+uuid = "18991a44-3eec-52eb-8a25-297feeb18483"
+label = "row_18991a443eec52eb8a25297feeb18483"
+
+[records.values]
+key = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_94548108-23c4-4055-b309-0887eebaf1ca"
+material = "94548108-23c4-4055-b309-0887eebaf1ca"
+name = "Sunken Throne — Relic Ancient Beast Hide"
+region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+
+[[records]]
+uuid = "f6d97c97-42ea-52cd-8398-daa98e8c369b"
+label = "row_f6d97c9742ea52cd8398daa98e8c369b"
+
+[records.values]
+key = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_a1ff9ed2-37af-47db-9044-7f15f8445258"
+material = "a1ff9ed2-37af-47db-9044-7f15f8445258"
+name = "Sunken Throne — Fen Elderheart Resin"
+region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+
+[[records]]
+uuid = "2c6a2804-604e-5787-936b-c552a3c065b0"
+label = "row_2c6a2804604e5787936bc552a3c065b0"
+
+[records.values]
+key = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_a5aa556c-240f-423e-a052-6977d337738d"
+material = "a5aa556c-240f-423e-a052-6977d337738d"
+name = "Sunken Throne — Fen Dawn Pearl"
+region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+
+[[records]]
+uuid = "ea467469-09f4-5834-be8f-bd5bfa6eac6a"
+label = "row_ea46746909f45834be8fbd5bfa6eac6a"
+
+[records.values]
+key = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_b7a7d4a4-2057-425e-9c74-ca0d7b2fa291"
+material = "b7a7d4a4-2057-425e-9c74-ca0d7b2fa291"
+name = "Sunken Throne — Relic Voidstone"
+region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+
+[[records]]
+uuid = "379f2ceb-0c52-59de-aac3-42b823ffe5d5"
+label = "row_379f2ceb0c5259deaac342b823ffe5d5"
+
+[records.values]
+key = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_ba4b9db6-f3df-4fe0-906c-d37c32e49276"
+material = "ba4b9db6-f3df-4fe0-906c-d37c32e49276"
+name = "Sunken Throne — Fen Astral Crystal"
+region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+
+[[records]]
+uuid = "ee18faab-86ea-586b-aa41-ed72c9902e04"
+label = "row_ee18faab86ea586baa41ed72c9902e04"
+
+[records.values]
+key = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_c8829317-4015-42bb-bc63-08f0bb14debd"
+material = "c8829317-4015-42bb-bc63-08f0bb14debd"
+name = "Sunken Throne — Frostland Ebonheart Wood"
+region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+
+[[records]]
+uuid = "44ce8331-7685-5728-af22-9de9bf382185"
+label = "row_44ce833176855728af229de9bf382185"
+
+[records.values]
+key = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_cec32086-0b81-433b-83c0-a53fa6a79a9b"
+material = "cec32086-0b81-433b-83c0-a53fa6a79a9b"
+name = "Sunken Throne — Relic Eclipsium Ore"
+region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+
+[[records]]
+uuid = "6adbec09-6b46-5a0f-8342-c6d45809f807"
+label = "row_6adbec096b465a0f8342c6d45809f807"
+
+[records.values]
+key = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_dcd07e5f-a98a-4290-8c9f-1b05885fc6ee"
+material = "dcd07e5f-a98a-4290-8c9f-1b05885fc6ee"
+name = "Sunken Throne — Fen Dreamlotus"
+region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+
+[[records]]
+uuid = "6363707a-0a04-55ad-a060-f508d1f433bf"
+label = "row_6363707a0a0455ada060f508d1f433bf"
+
+[records.values]
+key = "11c973c4-d43a-5d99-b03e-cfd759a62f95_02d08a32-2915-49c0-9dfe-d84f69986f13"
+material = "02d08a32-2915-49c0-9dfe-d84f69986f13"
+name = "Cracked Forge — Cavern Reed Fiber"
+region = "11c973c4-d43a-5d99-b03e-cfd759a62f95"
+
+[[records]]
+uuid = "3fd073e5-c99d-5bf5-afdc-035ed5db6e99"
+label = "row_3fd073e5c99d5bf5afdc035ed5db6e99"
+
+[records.values]
+key = "11c973c4-d43a-5d99-b03e-cfd759a62f95_0ab9f855-2d71-4ce2-8dbc-dc1c761e957c"
+material = "0ab9f855-2d71-4ce2-8dbc-dc1c761e957c"
+name = "Cracked Forge — Cavern Thickscale Hide"
+region = "11c973c4-d43a-5d99-b03e-cfd759a62f95"
+
+[[records]]
+uuid = "b099e49f-ed29-5528-8dcf-f9a88db3c8e8"
+label = "row_b099e49fed2955288dcff9a88db3c8e8"
+
+[records.values]
+key = "11c973c4-d43a-5d99-b03e-cfd759a62f95_2ca949ed-8200-4026-9d2a-e7038f88f63f"
+material = "2ca949ed-8200-4026-9d2a-e7038f88f63f"
+name = "Cracked Forge — Cavern Amber Resin"
+region = "11c973c4-d43a-5d99-b03e-cfd759a62f95"
+
+[[records]]
+uuid = "691143f1-5544-5fad-adc4-f67f1cb10da7"
+label = "row_691143f155445fadadc4f67f1cb10da7"
+
+[records.values]
+key = "11c973c4-d43a-5d99-b03e-cfd759a62f95_37cbcb51-82a5-42d8-a4a5-25e2166ec226"
+material = "37cbcb51-82a5-42d8-a4a5-25e2166ec226"
+name = "Cracked Forge — Cavern Slatehide"
+region = "11c973c4-d43a-5d99-b03e-cfd759a62f95"
+
+[[records]]
+uuid = "3602e387-27df-5626-b558-5c131d3381c7"
+label = "row_3602e38727df5626b5585c131d3381c7"
+
+[records.values]
+key = "11c973c4-d43a-5d99-b03e-cfd759a62f95_3bd0a721-04f0-4b3b-a95a-71d6bd2d1ece"
+material = "3bd0a721-04f0-4b3b-a95a-71d6bd2d1ece"
+name = "Cracked Forge — Cavern Silver Filament"
+region = "11c973c4-d43a-5d99-b03e-cfd759a62f95"
+
+[[records]]
+uuid = "7fde5a4a-6917-5081-b613-1d168cef3e31"
+label = "row_7fde5a4a69175081b6131d168cef3e31"
+
+[records.values]
+key = "11c973c4-d43a-5d99-b03e-cfd759a62f95_5cc94067-292c-4764-a1a3-36e7371a21ba"
+material = "5cc94067-292c-4764-a1a3-36e7371a21ba"
+name = "Cracked Forge — Cavern Ember Resin"
+region = "11c973c4-d43a-5d99-b03e-cfd759a62f95"
+
+[[records]]
+uuid = "b6254dab-f0e8-5af6-8d3e-dc1a6600b27b"
+label = "row_b6254dabf0e85af68d3edc1a6600b27b"
+
+[records.values]
+key = "11c973c4-d43a-5d99-b03e-cfd759a62f95_7ff903b4-10be-4f16-bd4d-43e913e83c03"
+material = "7ff903b4-10be-4f16-bd4d-43e913e83c03"
+name = "Cracked Forge — Cavern Yew Heartwood"
+region = "11c973c4-d43a-5d99-b03e-cfd759a62f95"
+
+[[records]]
+uuid = "f9f8177b-99f2-5fac-89c3-d9571cb3d201"
+label = "row_f9f8177b99f25fac89c3d9571cb3d201"
+
+[records.values]
+key = "11c973c4-d43a-5d99-b03e-cfd759a62f95_b182319a-d012-4ecb-a702-a79d1a9399eb"
+material = "b182319a-d012-4ecb-a702-a79d1a9399eb"
+name = "Cracked Forge — Cavern Red Hematite"
+region = "11c973c4-d43a-5d99-b03e-cfd759a62f95"
+
+[[records]]
+uuid = "ae348902-ee5f-5b0a-ac3c-10485bad2f3f"
+label = "row_ae348902ee5f5b0aac3c10485bad2f3f"
+
+[records.values]
+key = "11c973c4-d43a-5d99-b03e-cfd759a62f95_b2c937f0-4fa9-4fb4-a519-33c6acbdcce0"
+material = "b2c937f0-4fa9-4fb4-a519-33c6acbdcce0"
+name = "Cracked Forge — Cavern Black Pearl"
+region = "11c973c4-d43a-5d99-b03e-cfd759a62f95"
+
+[[records]]
+uuid = "13ebf77a-fcb7-566c-b029-190ee2b79f2c"
+label = "row_13ebf77afcb7566cb029190ee2b79f2c"
+
+[records.values]
+key = "11c973c4-d43a-5d99-b03e-cfd759a62f95_bca6f5a5-898d-47ea-b5a1-024807405d8b"
+material = "bca6f5a5-898d-47ea-b5a1-024807405d8b"
+name = "Cracked Forge — Cavern Foxglove Leaf"
+region = "11c973c4-d43a-5d99-b03e-cfd759a62f95"
+
+[[records]]
+uuid = "545ccb07-f019-5cec-99ec-8e50a890c41f"
+label = "row_545ccb07f0195cec99ec8e50a890c41f"
+
+[records.values]
+key = "11c973c4-d43a-5d99-b03e-cfd759a62f95_bedd25ec-f371-4302-9ade-8d4706b41ef2"
+material = "bedd25ec-f371-4302-9ade-8d4706b41ef2"
+name = "Cracked Forge — Cavern Amberscale"
+region = "11c973c4-d43a-5d99-b03e-cfd759a62f95"
+
+[[records]]
+uuid = "4c512f13-86b9-506d-a8a0-3ebf27bfb4aa"
+label = "row_4c512f1386b9506da8a03ebf27bfb4aa"
+
+[records.values]
+key = "11c973c4-d43a-5d99-b03e-cfd759a62f95_cce69383-c6ab-4cc8-95a7-f8011b9d77bf"
+material = "cce69383-c6ab-4cc8-95a7-f8011b9d77bf"
+name = "Cracked Forge — Cavern Obsidian"
+region = "11c973c4-d43a-5d99-b03e-cfd759a62f95"
+
+[[records]]
+uuid = "a9e27384-e44a-59d4-9c3f-7c06dc79e4d6"
+label = "row_a9e27384e44a59d49c3f7c06dc79e4d6"
+
+[records.values]
+key = "11c973c4-d43a-5d99-b03e-cfd759a62f95_d8d9c4d2-30d1-42e6-8af1-4367382ba890"
+material = "d8d9c4d2-30d1-42e6-8af1-4367382ba890"
+name = "Cracked Forge — Cavern Ash Heartwood"
+region = "11c973c4-d43a-5d99-b03e-cfd759a62f95"
+
+[[records]]
+uuid = "8610c8e1-077e-511c-8efc-126c4ea179af"
+label = "row_8610c8e1077e511c8efc126c4ea179af"
+
+[records.values]
+key = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f_0129e5cd-2554-4504-abbb-8606ccd0bff6"
+material = "0129e5cd-2554-4504-abbb-8606ccd0bff6"
+name = "Wyvern Cleft — Lunar Thickscale Hide"
+region = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+
+[[records]]
+uuid = "5d11e40a-a4e1-5dee-a406-03cf6720435f"
+label = "row_5d11e40aa4e15deea40603cf6720435f"
+
+[records.values]
+key = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f_02af8887-83b2-43f3-b3d2-ada2e05c60f3"
+material = "02af8887-83b2-43f3-b3d2-ada2e05c60f3"
+name = "Wyvern Cleft — Tidal Reed Fiber"
+region = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+
+[[records]]
+uuid = "7869daf6-9760-58b5-b224-e256c6110657"
+label = "row_7869daf6976058b5b224e256c6110657"
+
+[records.values]
+key = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f_044b3223-e2ae-47c8-a868-56d319499d0a"
+material = "044b3223-e2ae-47c8-a868-56d319499d0a"
+name = "Wyvern Cleft — Tidal Ember Resin"
+region = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+
+[[records]]
+uuid = "4c52d23b-7ec2-5be6-b9c8-a52706315003"
+label = "row_4c52d23b7ec25be6b9c8a52706315003"
+
+[records.values]
+key = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f_2ba1c67d-f825-4a93-9413-f051b6da585d"
+material = "2ba1c67d-f825-4a93-9413-f051b6da585d"
+name = "Wyvern Cleft — Lunar Slatehide"
+region = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+
+[[records]]
+uuid = "e007d386-4c13-5078-b3ac-12dce88cc55b"
+label = "row_e007d3864c135078b3ac12dce88cc55b"
+
+[records.values]
+key = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f_3086a069-2fbf-4b20-8f03-69dffb0c4764"
+material = "3086a069-2fbf-4b20-8f03-69dffb0c4764"
+name = "Wyvern Cleft — Tidal Silver Filament"
+region = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+
+[[records]]
+uuid = "823cd33a-ac66-5926-bdbe-8d3b541f8ea6"
+label = "row_823cd33aac665926bdbe8d3b541f8ea6"
+
+[records.values]
+key = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f_32955088-9c1b-4991-8329-1baf034dc8e5"
+material = "32955088-9c1b-4991-8329-1baf034dc8e5"
+name = "Wyvern Cleft — Highland Thickscale Hide"
+region = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+
+[[records]]
+uuid = "8756fddb-c630-575c-ae58-7412e5220470"
+label = "row_8756fddbc630575cae587412e5220470"
+
+[records.values]
+key = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f_3a00ce4b-dbe6-491b-b58b-25a703163100"
+material = "3a00ce4b-dbe6-491b-b58b-25a703163100"
+name = "Wyvern Cleft — Lunar Golden Pyrite"
+region = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+
+[[records]]
+uuid = "11afc384-fd6a-51ab-a130-0eb8435e8faf"
+label = "row_11afc384fd6a51aba1300eb8435e8faf"
+
+[records.values]
+key = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f_3fe050dc-2621-4766-b34c-8d34c85b8f31"
+material = "3fe050dc-2621-4766-b34c-8d34c85b8f31"
+name = "Wyvern Cleft — Tidal Granite"
+region = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+
+[[records]]
+uuid = "402c23a5-4c98-576b-9ca4-2dc35aeff879"
+label = "row_402c23a54c98576b9ca42dc35aeff879"
+
+[records.values]
+key = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f_417ee802-0934-40de-a265-fd007efb301d"
+material = "417ee802-0934-40de-a265-fd007efb301d"
+name = "Wyvern Cleft — Tidal Ash Heartwood"
+region = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+
+[[records]]
+uuid = "78bccd64-ff8d-54d3-91e8-c10721197df6"
+label = "row_78bccd64ff8d54d391e8c10721197df6"
+
+[records.values]
+key = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f_42796ca1-ddee-4fdc-ab58-14f1a7a42bab"
+material = "42796ca1-ddee-4fdc-ab58-14f1a7a42bab"
+name = "Wyvern Cleft — Tidal Red Hematite"
+region = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+
+[[records]]
+uuid = "b96dc4ea-b95a-5ddf-a038-0c6eaf6e6858"
+label = "row_b96dc4eab95a5ddfa0380c6eaf6e6858"
+
+[records.values]
+key = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f_4ffd549d-098e-444e-937f-258e77c4e787"
+material = "4ffd549d-098e-444e-937f-258e77c4e787"
+name = "Wyvern Cleft — Lunar Sunstone"
+region = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+
+[[records]]
+uuid = "005af190-0c25-5285-bc75-478d6f1e81e2"
+label = "row_005af1900c255285bc75478d6f1e81e2"
+
+[records.values]
+key = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f_804798fb-b0f5-4a86-b3df-1228fe83ab0a"
+material = "804798fb-b0f5-4a86-b3df-1228fe83ab0a"
+name = "Wyvern Cleft — Tidal Amber Pearl"
+region = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+
+[[records]]
+uuid = "ad97d281-fbc6-5a3e-9aaf-0a0d5397a289"
+label = "row_ad97d281fbc65a3e9aaf0a0d5397a289"
+
+[records.values]
+key = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f_9702518a-88f7-49b6-bf91-7502eef2eff9"
+material = "9702518a-88f7-49b6-bf91-7502eef2eff9"
+name = "Wyvern Cleft — Highland Golden Pyrite"
+region = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+
+[[records]]
+uuid = "346251f6-dc92-54aa-9679-318b2a4dab2b"
+label = "row_346251f6dc9254aa9679318b2a4dab2b"
+
+[records.values]
+key = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f_9b424140-1649-4b69-a03d-476c944fa14c"
+material = "9b424140-1649-4b69-a03d-476c944fa14c"
+name = "Wyvern Cleft — Lunar Yew Heartwood"
+region = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+
+[[records]]
+uuid = "f664d114-1630-5b79-9c5d-049f54093c4c"
+label = "row_f664d11416305b799c5d049f54093c4c"
+
+[records.values]
+key = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f_b4544d53-3809-4b63-9db8-c051e9b98a89"
+material = "b4544d53-3809-4b63-9db8-c051e9b98a89"
+name = "Wyvern Cleft — Highland Obsidian"
+region = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+
+[[records]]
+uuid = "02c39932-5856-5837-b387-1e764b3e52cc"
+label = "row_02c3993258565837b3871e764b3e52cc"
+
+[records.values]
+key = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f_b9e6e9f2-a655-4c58-9fa9-fe45062f21e6"
+material = "b9e6e9f2-a655-4c58-9fa9-fe45062f21e6"
+name = "Wyvern Cleft — Highland Amber Resin"
+region = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+
+[[records]]
+uuid = "018141a5-f265-5ba1-ad1f-f5466f82101c"
+label = "row_018141a5f2655ba1ad1ff5466f82101c"
+
+[records.values]
+key = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f_c964caef-20dc-41d7-a273-9fdbf0e592bc"
+material = "c964caef-20dc-41d7-a273-9fdbf0e592bc"
+name = "Wyvern Cleft — Lunar Granite"
+region = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+
+[[records]]
+uuid = "822e52e9-51f9-570c-9bd2-27ace5bfff1a"
+label = "row_822e52e951f9570c9bd227ace5bfff1a"
+
+[records.values]
+key = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb_057def69-0822-40e8-b47a-456421851843"
+material = "057def69-0822-40e8-b47a-456421851843"
+name = "Buried Arena — Cavern Ancient Beast Hide"
+region = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb"
+
+[[records]]
+uuid = "76531089-3b84-5420-ba62-e8fa03e16af5"
+label = "row_765310893b845420ba62e8fa03e16af5"
+
+[records.values]
+key = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb_30507902-38f2-43e2-bf98-4fe5a4fddf84"
+material = "30507902-38f2-43e2-bf98-4fe5a4fddf84"
+name = "Buried Arena — Cavern Elderheart Resin"
+region = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb"
+
+[[records]]
+uuid = "85bd8f6a-0a4c-532a-9747-40cf484cf99c"
+label = "row_85bd8f6a0a4c532a974740cf484cf99c"
+
+[records.values]
+key = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb_3e58926f-0a18-4f58-8997-066b74ab48e1"
+material = "3e58926f-0a18-4f58-8997-066b74ab48e1"
+name = "Buried Arena — Cavern Dreamweave Fiber"
+region = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb"
+
+[[records]]
+uuid = "8ce223cb-ce03-597e-bf45-93cd73962218"
+label = "row_8ce223cbce03597ebf4593cd73962218"
+
+[records.values]
+key = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb_59c8b668-eb47-438b-abb0-0292858a8b03"
+material = "59c8b668-eb47-438b-abb0-0292858a8b03"
+name = "Buried Arena — Cavern Eclipsium Ore"
+region = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb"
+
+[[records]]
+uuid = "ba6f3b72-6d22-54cd-b2dc-72ce90edd36d"
+label = "row_ba6f3b726d2254cdb2dc72ce90edd36d"
+
+[records.values]
+key = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb_63cd04f3-828a-4e0d-98c7-ce44a962dd06"
+material = "63cd04f3-828a-4e0d-98c7-ce44a962dd06"
+name = "Buried Arena — Cavern Dreamlotus"
+region = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb"
+
+[[records]]
+uuid = "0358b840-978b-5952-9e1a-9c4c8e35a868"
+label = "row_0358b840978b59529e1a9c4c8e35a868"
+
+[records.values]
+key = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb_824318c5-a288-4991-b1f0-1de8370700fe"
+material = "824318c5-a288-4991-b1f0-1de8370700fe"
+name = "Buried Arena — Cavern Astral Crystal"
+region = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb"
+
+[[records]]
+uuid = "cbde3e9d-41ec-573f-96f0-2cb4938021a2"
+label = "row_cbde3e9d41ec573f96f02cb4938021a2"
+
+[records.values]
+key = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb_86f8f376-e450-4c5f-aec3-8f16406eb57b"
+material = "86f8f376-e450-4c5f-aec3-8f16406eb57b"
+name = "Buried Arena — Cavern Voidstone"
+region = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb"
+
+[[records]]
+uuid = "06f85757-ca32-5ef2-8f43-8455a77a9a44"
+label = "row_06f85757ca325ef28f438455a77a9a44"
+
+[records.values]
+key = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb_ee2d3917-0151-4ae0-8c61-9320e4b19c53"
+material = "ee2d3917-0151-4ae0-8c61-9320e4b19c53"
+name = "Buried Arena — Cavern Ebonheart Wood"
+region = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb"
+
+[[records]]
+uuid = "d2afc986-c6d0-5cdd-b0d6-c224d1514f07"
+label = "row_d2afc986c6d05cddb0d6c224d1514f07"
+
+[records.values]
+key = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb_f2611ad1-d32e-4242-836a-bff8b8cde758"
+material = "f2611ad1-d32e-4242-836a-bff8b8cde758"
+name = "Buried Arena — Cavern Dawn Pearl"
+region = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb"
+
+[[records]]
+uuid = "785303b3-5df1-508f-bb29-4ed073829e5f"
+label = "row_785303b35df1508fbb294ed073829e5f"
+
+[records.values]
+key = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb_faf2aad0-e758-4efc-9bb4-a7fc255d8ab5"
+material = "faf2aad0-e758-4efc-9bb4-a7fc255d8ab5"
+name = "Buried Arena — Cavern Elderscale"
+region = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb"
+
+[[records]]
+uuid = "c17b18d7-f875-5dd5-b0ab-0121ea11eafb"
+label = "row_c17b18d7f8755dd5b0ab0121ea11eafb"
+
+[records.values]
+key = "1de78829-608e-59aa-b8b1-a00729c41f61_050409b0-3213-4dc0-b9f7-2c73e6842e82"
+material = "050409b0-3213-4dc0-b9f7-2c73e6842e82"
+name = "Wraith Anchorage — Tidal Blazescale"
+region = "1de78829-608e-59aa-b8b1-a00729c41f61"
+
+[[records]]
+uuid = "150720a3-27a6-5c51-b150-a47cd4857265"
+label = "row_150720a327a65c51b150a47cd4857265"
+
+[records.values]
+key = "1de78829-608e-59aa-b8b1-a00729c41f61_410aeb39-b1a3-4228-ac0b-0bc278769e54"
+material = "410aeb39-b1a3-4228-ac0b-0bc278769e54"
+name = "Wraith Anchorage — Highland Silver Filament"
+region = "1de78829-608e-59aa-b8b1-a00729c41f61"
+
+[[records]]
+uuid = "c4d21480-939b-54b1-972b-7e27a94800e6"
+label = "row_c4d21480939b54b1972b7e27a94800e6"
+
+[records.values]
+key = "1de78829-608e-59aa-b8b1-a00729c41f61_89f7f821-8437-41fd-b9b8-3367b9891460"
+material = "89f7f821-8437-41fd-b9b8-3367b9891460"
+name = "Wraith Anchorage — Lunar Ember Resin"
+region = "1de78829-608e-59aa-b8b1-a00729c41f61"
+
+[[records]]
+uuid = "1203a778-4136-540d-811b-09dc5e795ff9"
+label = "row_1203a7784136540d811b09dc5e795ff9"
+
+[records.values]
+key = "1de78829-608e-59aa-b8b1-a00729c41f61_991d1f25-8f3f-498d-8a96-531ba251786b"
+material = "991d1f25-8f3f-498d-8a96-531ba251786b"
+name = "Wraith Anchorage — Lunar Nightbloom"
+region = "1de78829-608e-59aa-b8b1-a00729c41f61"
+
+[[records]]
+uuid = "fabd50d6-64c6-531f-a827-bcefc1f5df02"
+label = "row_fabd50d664c6531fa827bcefc1f5df02"
+
+[records.values]
+key = "1de78829-608e-59aa-b8b1-a00729c41f61_994d2a32-5a7f-4220-9237-7c5b84333a42"
+material = "994d2a32-5a7f-4220-9237-7c5b84333a42"
+name = "Wraith Anchorage — Lunar Silver Filament"
+region = "1de78829-608e-59aa-b8b1-a00729c41f61"
+
+[[records]]
+uuid = "58aba49a-51b8-529b-a76e-0be629c70cf3"
+label = "row_58aba49a51b8529ba76e0be629c70cf3"
+
+[records.values]
+key = "1de78829-608e-59aa-b8b1-a00729c41f61_bc73059a-af24-412a-b1b6-34a26fd727f5"
+material = "bc73059a-af24-412a-b1b6-34a26fd727f5"
+name = "Wraith Anchorage — Highland Reed Fiber"
+region = "1de78829-608e-59aa-b8b1-a00729c41f61"
+
+[[records]]
+uuid = "7b561fc1-5494-59b9-9edd-de9ff9378718"
+label = "row_7b561fc1549459b99eddde9ff9378718"
+
+[records.values]
+key = "1de78829-608e-59aa-b8b1-a00729c41f61_d2564015-d17a-473d-935c-b5ff7b8198d9"
+material = "d2564015-d17a-473d-935c-b5ff7b8198d9"
+name = "Wraith Anchorage — Lunar Ash Heartwood"
+region = "1de78829-608e-59aa-b8b1-a00729c41f61"
+
+[[records]]
+uuid = "b2d06d52-ccd5-5f87-b232-5b3f5d94cf92"
+label = "row_b2d06d52ccd55f87b2325b3f5d94cf92"
+
+[records.values]
+key = "1de78829-608e-59aa-b8b1-a00729c41f61_da0300ea-91dd-407b-90be-351cf58d9f0a"
+material = "da0300ea-91dd-407b-90be-351cf58d9f0a"
+name = "Wraith Anchorage — Lunar Blazescale"
+region = "1de78829-608e-59aa-b8b1-a00729c41f61"
+
+[[records]]
+uuid = "1329cb7f-b0a7-58c2-bba5-78960449909b"
+label = "row_1329cb7fb0a758c2bba578960449909b"
+
+[records.values]
+key = "1de78829-608e-59aa-b8b1-a00729c41f61_e5bb9fa8-4e38-444d-b881-a4578dc05dde"
+material = "e5bb9fa8-4e38-444d-b881-a4578dc05dde"
+name = "Wraith Anchorage — Tidal Obsidian"
+region = "1de78829-608e-59aa-b8b1-a00729c41f61"
+
+[[records]]
+uuid = "4476c51f-7cab-511b-baed-c73fa06b2017"
+label = "row_4476c51f7cab511bbaedc73fa06b2017"
+
+[records.values]
+key = "1de78829-608e-59aa-b8b1-a00729c41f61_e69d51a3-0db7-4a78-a6be-0c74883c8cff"
+material = "e69d51a3-0db7-4a78-a6be-0c74883c8cff"
+name = "Wraith Anchorage — Highland Nightbloom"
+region = "1de78829-608e-59aa-b8b1-a00729c41f61"
+
+[[records]]
+uuid = "21da1fe6-60b2-5232-b3b3-06f159cc7744"
+label = "row_21da1fe660b25232b3b306f159cc7744"
+
+[records.values]
+key = "1de78829-608e-59aa-b8b1-a00729c41f61_e8dbdd60-8533-4124-b678-02435bc15d2b"
+material = "e8dbdd60-8533-4124-b678-02435bc15d2b"
+name = "Wraith Anchorage — Highland Yew Heartwood"
+region = "1de78829-608e-59aa-b8b1-a00729c41f61"
+
+[[records]]
+uuid = "01bbb479-7873-5750-9949-9ad8a18f2249"
+label = "row_01bbb4797873575099499ad8a18f2249"
+
+[records.values]
+key = "1de78829-608e-59aa-b8b1-a00729c41f61_ffcf0c69-19b4-4b3d-9ee7-57f53a044ca5"
+material = "ffcf0c69-19b4-4b3d-9ee7-57f53a044ca5"
+name = "Wraith Anchorage — Tidal Amber Resin"
+region = "1de78829-608e-59aa-b8b1-a00729c41f61"
+
+[[records]]
+uuid = "3bd58bb9-6599-5738-8063-3de1bb528d90"
+label = "row_3bd58bb96599573880633de1bb528d90"
+
+[records.values]
+key = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c_06873088-ba10-492d-9ab9-0843958bb486"
+material = "06873088-ba10-492d-9ab9-0843958bb486"
+name = "High Tide Harbor — Lunar Bronzevein Ore"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "85faccb5-5a03-5941-89f5-fc4900f722d3"
+label = "row_85faccb55a03594189f5fc4900f722d3"
+
+[records.values]
+key = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c_0cd0b4c0-10d2-4c53-9c3e-86aa17239520"
+material = "0cd0b4c0-10d2-4c53-9c3e-86aa17239520"
+name = "High Tide Harbor — Ember River Pearl"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "62137845-ef93-5109-96e3-bf2399b28e8c"
+label = "row_62137845ef93510996e3bf2399b28e8c"
+
+[records.values]
+key = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c_20000000-0000-4000-8002-000000000047"
+material = "20000000-0000-4000-8002-000000000047"
+name = "High Tide Harbor — Unsorted Tidal Bog Iron"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "583764a9-fccc-555a-9ac8-fbed20ef5398"
+label = "row_583764a9fccc555a9ac8fbed20ef5398"
+
+[records.values]
+key = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c_20000000-0000-4000-8002-000000000051"
+material = "20000000-0000-4000-8002-000000000051"
+name = "High Tide Harbor — Unsorted Highland Bog Iron"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "c94df436-6d3e-5ff2-84e1-a44c5ef96e77"
+label = "row_c94df4366d3e5ff284e1a44c5ef96e77"
+
+[records.values]
+key = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c_20000000-0000-4000-8002-000000000053"
+material = "20000000-0000-4000-8002-000000000053"
+name = "High Tide Harbor — Unsorted Highland Bronzevein Ore"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "86a2cdb0-eaaa-501d-81e3-cc0b9721cadb"
+label = "row_86a2cdb0eaaa501d81e3cc0b9721cadb"
+
+[records.values]
+key = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c_37cb8073-c6c6-4777-8e4a-98a6fe0a2729"
+material = "37cb8073-c6c6-4777-8e4a-98a6fe0a2729"
+name = "High Tide Harbor — Highland Mottled Hide"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "de13a643-04b4-577a-8047-ee309fef07d7"
+label = "row_de13a64304b4577a8047ee309fef07d7"
+
+[records.values]
+key = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c_473ba6ea-a730-4449-9db5-e098b450801b"
+material = "473ba6ea-a730-4449-9db5-e098b450801b"
+name = "High Tide Harbor — Tidal Nettle Fiber"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "0f51077e-11f2-5bb4-a45d-aa04e85de52a"
+label = "row_0f51077e11f25bb4a45daa04e85de52a"
+
+[records.values]
+key = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c_4b06057a-c9a3-44c6-8abe-a7e9ae6f4924"
+material = "4b06057a-c9a3-44c6-8abe-a7e9ae6f4924"
+name = "High Tide Harbor — Tidal Bog Iron"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "506193a2-fbdc-56a6-80fd-29448e89b2fd"
+label = "row_506193a2fbdc56a680fd29448e89b2fd"
+
+[records.values]
+key = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c_5ab932b4-e3ff-4d94-808d-85a96e813075"
+material = "5ab932b4-e3ff-4d94-808d-85a96e813075"
+name = "High Tide Harbor — Tidal Flax Fiber"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "472336d7-0478-528c-90dc-d023e5897ef1"
+label = "row_472336d70478528c90dcd023e5897ef1"
+
+[records.values]
+key = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c_6a525907-9d64-4787-9b15-98783e2d40d1"
+material = "6a525907-9d64-4787-9b15-98783e2d40d1"
+name = "High Tide Harbor — Lunar River Pearl"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "fe7f3a19-f5da-5590-bb24-4ac422d1ec22"
+label = "row_fe7f3a19f5da5590bb244ac422d1ec22"
+
+[records.values]
+key = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c_6b097cc1-97a7-47af-8bc1-7b772af10349"
+material = "6b097cc1-97a7-47af-8bc1-7b772af10349"
+name = "High Tide Harbor — Dune Rose Pearl"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "33a036b8-c6d9-5fdf-b057-bea49367cdf2"
+label = "row_33a036b8c6d95fdfb057bea49367cdf2"
+
+[records.values]
+key = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c_729a0ab0-3650-44d8-bf4c-143f71d7a7c6"
+material = "729a0ab0-3650-44d8-bf4c-143f71d7a7c6"
+name = "High Tide Harbor — Lunar Bristlehide"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "4de8121b-ba07-5f99-91b1-fcf760db104b"
+label = "row_4de8121bba075f9991b1fcf760db104b"
+
+[records.values]
+key = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c_8c50e6c3-1757-4f2f-a116-f8906749edd9"
+material = "8c50e6c3-1757-4f2f-a116-f8906749edd9"
+name = "High Tide Harbor — Lunar Bog Iron"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "a1f2d4ed-afa5-5040-a280-dc883b6e23e5"
+label = "row_a1f2d4edafa55040a280dc883b6e23e5"
+
+[records.values]
+key = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c_8cbad786-9295-4b01-9e4f-7741a4ced5ae"
+material = "8cbad786-9295-4b01-9e4f-7741a4ced5ae"
+name = "High Tide Harbor — Ember Bitterleaf"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "68123c81-3a4e-5599-9cf8-523e554aedd4"
+label = "row_68123c813a4e55999cf8523e554aedd4"
+
+[records.values]
+key = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c_9dd050ee-ed40-4aad-ab46-28c4d00ebd95"
+material = "9dd050ee-ed40-4aad-ab46-28c4d00ebd95"
+name = "High Tide Harbor — Dune River Pearl"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "0f0a133b-647d-5723-beeb-be39c8e70413"
+label = "row_0f0a133b647d5723beebbe39c8e70413"
+
+[records.values]
+key = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c_a1cca215-a12f-4d73-b88f-376f2b58a63d"
+material = "a1cca215-a12f-4d73-b88f-376f2b58a63d"
+name = "High Tide Harbor — Dune Riverwort"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "4e9cf094-3b70-5549-833f-5b187f4e8920"
+label = "row_4e9cf0943b705549833f5b187f4e8920"
+
+[records.values]
+key = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c_a3ed168c-db0f-44ca-840f-4d0db0e8addd"
+material = "a3ed168c-db0f-44ca-840f-4d0db0e8addd"
+name = "High Tide Harbor — Lunar Nettle Fiber"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "5ca90f32-701c-51de-a297-ab03747539a7"
+label = "row_5ca90f32701c51dea297ab03747539a7"
+
+[records.values]
+key = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c_bf17ee6a-7951-4d14-a4c5-d6f1ec221f99"
+material = "bf17ee6a-7951-4d14-a4c5-d6f1ec221f99"
+name = "High Tide Harbor — Ember Riverwort"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "2dda40a0-69dc-5a4f-8faf-a3bde1c9f751"
+label = "row_2dda40a069dc5a4f8fafa3bde1c9f751"
+
+[records.values]
+key = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c_c9464333-d479-4eed-ab6c-740524cd6915"
+material = "c9464333-d479-4eed-ab6c-740524cd6915"
+name = "High Tide Harbor — Highland Hemp Fiber"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "ce36d719-0d33-51ff-b02f-52ef6b15144f"
+label = "row_ce36d7190d3351ffb02f52ef6b15144f"
+
+[records.values]
+key = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c_d70fcf08-f30c-4e3a-92de-2f452b8107df"
+material = "d70fcf08-f30c-4e3a-92de-2f452b8107df"
+name = "High Tide Harbor — Highland Chalkstone"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "1c6f8a89-6ed0-5836-afa5-02f8fb4a9881"
+label = "row_1c6f8a896ed05836afa502f8fb4a9881"
+
+[records.values]
+key = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c_df7b6a8c-6dfe-4e4d-b2fb-dce7db6f1cf5"
+material = "df7b6a8c-6dfe-4e4d-b2fb-dce7db6f1cf5"
+name = "High Tide Harbor — Lunar Copper Glance"
+region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "931fa9ba-65d4-55ca-8bc2-a4c0cd960698"
+label = "row_931fa9ba65d455ca8bc2a4c0cd960698"
+
+[records.values]
+key = "2dcde8dc-4a07-5e11-9677-362141e61ae3_052791f3-d721-41ce-84b1-4f66d23f11f5"
+material = "052791f3-d721-41ce-84b1-4f66d23f11f5"
+name = "Eclipse Reef — Tidal Thickscale Hide"
+region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+
+[[records]]
+uuid = "4efe7245-fc12-5a46-8d9d-4f6edeb41975"
+label = "row_4efe7245fc125a468d9d4f6edeb41975"
+
+[records.values]
+key = "2dcde8dc-4a07-5e11-9677-362141e61ae3_1649b523-2000-4486-955f-94cd312f52fa"
+material = "1649b523-2000-4486-955f-94cd312f52fa"
+name = "Eclipse Reef — Highland Granite"
+region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+
+[[records]]
+uuid = "af600667-9a22-50fc-9f6d-51cfef24ef79"
+label = "row_af6006679a2250fc9f6d51cfef24ef79"
+
+[records.values]
+key = "2dcde8dc-4a07-5e11-9677-362141e61ae3_1afedb57-a0fb-458d-b0ef-c61397979a26"
+material = "1afedb57-a0fb-458d-b0ef-c61397979a26"
+name = "Eclipse Reef — Highland Sunstone"
+region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+
+[[records]]
+uuid = "83f2f751-ed91-53b4-91c0-eeeeea27f76a"
+label = "row_83f2f751ed9153b491c0eeeeea27f76a"
+
+[records.values]
+key = "2dcde8dc-4a07-5e11-9677-362141e61ae3_2f11a6d3-ed7f-463a-a357-adbc7df5cedc"
+material = "2f11a6d3-ed7f-463a-a357-adbc7df5cedc"
+name = "Eclipse Reef — Highland Ash Heartwood"
+region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+
+[[records]]
+uuid = "91cb9e1c-c028-599b-88bf-148694014a09"
+label = "row_91cb9e1cc028599b88bf148694014a09"
+
+[records.values]
+key = "2dcde8dc-4a07-5e11-9677-362141e61ae3_5e78cec7-1d5b-47c2-9678-69011471fcb0"
+material = "5e78cec7-1d5b-47c2-9678-69011471fcb0"
+name = "Eclipse Reef — Highland Blazescale"
+region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+
+[[records]]
+uuid = "f775db32-3285-5c92-a9fe-e88e1ac42f3f"
+label = "row_f775db3232855c92a9fee88e1ac42f3f"
+
+[records.values]
+key = "2dcde8dc-4a07-5e11-9677-362141e61ae3_75f2c4fb-6037-40c7-8663-faa36b6835ae"
+material = "75f2c4fb-6037-40c7-8663-faa36b6835ae"
+name = "Eclipse Reef — Highland Ember Resin"
+region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+
+[[records]]
+uuid = "394cbb05-3e6f-5426-bd4b-1474b27d9de1"
+label = "row_394cbb053e6f5426bd4b1474b27d9de1"
+
+[records.values]
+key = "2dcde8dc-4a07-5e11-9677-362141e61ae3_763e635a-544c-4b10-a611-8da64b2d1844"
+material = "763e635a-544c-4b10-a611-8da64b2d1844"
+name = "Eclipse Reef — Tidal Foxglove Leaf"
+region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+
+[[records]]
+uuid = "5fe62e64-29d9-5eb2-9e94-dfaf8909f15f"
+label = "row_5fe62e6429d95eb29e94dfaf8909f15f"
+
+[records.values]
+key = "2dcde8dc-4a07-5e11-9677-362141e61ae3_856c04f8-b208-40d5-b250-d86027fb2f1e"
+material = "856c04f8-b208-40d5-b250-d86027fb2f1e"
+name = "Eclipse Reef — Highland Black Pearl"
+region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+
+[[records]]
+uuid = "8ac753c1-1909-5c19-aa61-3a9cae98ff97"
+label = "row_8ac753c119095c19aa613a9cae98ff97"
+
+[records.values]
+key = "2dcde8dc-4a07-5e11-9677-362141e61ae3_8657a4ee-eafa-4254-afcb-0e1b6ab1492b"
+material = "8657a4ee-eafa-4254-afcb-0e1b6ab1492b"
+name = "Eclipse Reef — Tidal Slatehide"
+region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+
+[[records]]
+uuid = "ed6f27b8-0647-5e94-936e-2be92c674dcf"
+label = "row_ed6f27b806475e94936e2be92c674dcf"
+
+[records.values]
+key = "2dcde8dc-4a07-5e11-9677-362141e61ae3_98735aa0-f347-436f-812c-bf8e7e2460f7"
+material = "98735aa0-f347-436f-812c-bf8e7e2460f7"
+name = "Eclipse Reef — Lunar Amber Crystal"
+region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+
+[[records]]
+uuid = "00fe765d-d42a-5fbb-9ef6-867fb0baa4d3"
+label = "row_00fe765dd42a5fbb9ef6867fb0baa4d3"
+
+[records.values]
+key = "2dcde8dc-4a07-5e11-9677-362141e61ae3_9dbdf299-0d79-46b2-a152-322ab9c7749e"
+material = "9dbdf299-0d79-46b2-a152-322ab9c7749e"
+name = "Eclipse Reef — Tidal Golden Pyrite"
+region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+
+[[records]]
+uuid = "89863ee6-813a-5965-9b6e-2f5c0b09b0cb"
+label = "row_89863ee6813a59659b6e2f5c0b09b0cb"
+
+[records.values]
+key = "2dcde8dc-4a07-5e11-9677-362141e61ae3_a70cd948-9a6e-4129-9991-8b98faf76261"
+material = "a70cd948-9a6e-4129-9991-8b98faf76261"
+name = "Eclipse Reef — Lunar Obsidian"
+region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+
+[[records]]
+uuid = "f31b121e-c007-59cd-a265-81b25e5ff746"
+label = "row_f31b121ec00759cda26581b25e5ff746"
+
+[records.values]
+key = "2dcde8dc-4a07-5e11-9677-362141e61ae3_c580afb2-5356-4651-92c3-61ea7e4b1c76"
+material = "c580afb2-5356-4651-92c3-61ea7e4b1c76"
+name = "Eclipse Reef — Lunar Black Pearl"
+region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+
+[[records]]
+uuid = "3806c46c-59df-518b-85fe-5b7d17b3b183"
+label = "row_3806c46c59df518b85fe5b7d17b3b183"
+
+[records.values]
+key = "2dcde8dc-4a07-5e11-9677-362141e61ae3_c98e1dd2-5bc8-43cb-8a7a-09e0c68bbab5"
+material = "c98e1dd2-5bc8-43cb-8a7a-09e0c68bbab5"
+name = "Eclipse Reef — Tidal Black Pearl"
+region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+
+[[records]]
+uuid = "69b2534e-bc30-5408-abaf-78c096790e0d"
+label = "row_69b2534ebc305408abaf78c096790e0d"
+
+[records.values]
+key = "2dcde8dc-4a07-5e11-9677-362141e61ae3_d8b0e771-b784-4882-af18-61f3adba781c"
+material = "d8b0e771-b784-4882-af18-61f3adba781c"
+name = "Eclipse Reef — Lunar Amber Resin"
+region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+
+[[records]]
+uuid = "5c292c70-5ae9-531e-8a2c-5f17cf93a95d"
+label = "row_5c292c705ae9531e8a2c5f17cf93a95d"
+
+[records.values]
+key = "2dcde8dc-4a07-5e11-9677-362141e61ae3_de1ddf85-7b8b-4516-8dde-70a667f41e54"
+material = "de1ddf85-7b8b-4516-8dde-70a667f41e54"
+name = "Eclipse Reef — Highland Amber Crystal"
+region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+
+[[records]]
+uuid = "77a4d724-7696-5cc5-9a13-f30057f5c6c1"
+label = "row_77a4d72476965cc59a13f30057f5c6c1"
+
+[records.values]
+key = "2dcde8dc-4a07-5e11-9677-362141e61ae3_e320d108-a340-4132-9677-0fabbe754a05"
+material = "e320d108-a340-4132-9677-0fabbe754a05"
+name = "Eclipse Reef — Highland Amberscale"
+region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+
+[[records]]
+uuid = "db7d9adf-f332-50c4-a735-9ae95058e30a"
+label = "row_db7d9adff33250c4a7359ae95058e30a"
+
+[records.values]
+key = "2dcde8dc-4a07-5e11-9677-362141e61ae3_f24bda3c-82f7-40f2-a200-73d9e3fbbed3"
+material = "f24bda3c-82f7-40f2-a200-73d9e3fbbed3"
+name = "Eclipse Reef — Highland Slatehide"
+region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+
+[[records]]
+uuid = "7081739f-55a7-5e7d-a565-88a9313e70c9"
+label = "row_7081739f55a75e7da56588a9313e70c9"
+
+[records.values]
+key = "2dcde8dc-4a07-5e11-9677-362141e61ae3_f714e673-869e-4e1a-8b48-37df23726cc9"
+material = "f714e673-869e-4e1a-8b48-37df23726cc9"
+name = "Eclipse Reef — Highland Red Hematite"
+region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+
+[[records]]
+uuid = "d202f413-fd9f-5d63-a2bb-87cfd42c2a07"
+label = "row_d202f413fd9f5d63a2bb87cfd42c2a07"
+
+[records.values]
+key = "307900a0-64ef-590d-a61a-857dc7d674c6_0394797d-acc4-470e-8760-4d46ffe2ad84"
+material = "0394797d-acc4-470e-8760-4d46ffe2ad84"
+name = "Smelter Bridge — Ember Silver Filament"
+region = "307900a0-64ef-590d-a61a-857dc7d674c6"
+
+[[records]]
+uuid = "17153c08-f59f-5bda-9412-51ccdf81ec08"
+label = "row_17153c08f59f5bda941251ccdf81ec08"
+
+[records.values]
+key = "307900a0-64ef-590d-a61a-857dc7d674c6_1e4c4034-418f-4cee-8eca-3d4cb40307da"
+material = "1e4c4034-418f-4cee-8eca-3d4cb40307da"
+name = "Smelter Bridge — Dune Foxglove Leaf"
+region = "307900a0-64ef-590d-a61a-857dc7d674c6"
+
+[[records]]
+uuid = "e9ce5f2c-52e2-506f-824e-ece8389e43bb"
+label = "row_e9ce5f2c52e2506f824eece8389e43bb"
+
+[records.values]
+key = "307900a0-64ef-590d-a61a-857dc7d674c6_2685d7d8-a1f3-4db8-9cbe-350cc0de76ba"
+material = "2685d7d8-a1f3-4db8-9cbe-350cc0de76ba"
+name = "Smelter Bridge — Dune Golden Pyrite"
+region = "307900a0-64ef-590d-a61a-857dc7d674c6"
+
+[[records]]
+uuid = "2404bd05-4889-5f69-9de0-e9d991853993"
+label = "row_2404bd0548895f699de0e9d991853993"
+
+[records.values]
+key = "307900a0-64ef-590d-a61a-857dc7d674c6_5db5bdf0-40b6-4e53-a9e2-5064e4106325"
+material = "5db5bdf0-40b6-4e53-a9e2-5064e4106325"
+name = "Smelter Bridge — Ember Granite"
+region = "307900a0-64ef-590d-a61a-857dc7d674c6"
+
+[[records]]
+uuid = "583d1ae6-f202-59cc-a155-7eddca441b6f"
+label = "row_583d1ae6f20259cca1557eddca441b6f"
+
+[records.values]
+key = "307900a0-64ef-590d-a61a-857dc7d674c6_5fb0ab3f-7431-461b-93bf-1b98e3390f3d"
+material = "5fb0ab3f-7431-461b-93bf-1b98e3390f3d"
+name = "Smelter Bridge — Ember Reed Fiber"
+region = "307900a0-64ef-590d-a61a-857dc7d674c6"
+
+[[records]]
+uuid = "cf5f15a6-e1c7-5e37-91f0-a6093d66fc22"
+label = "row_cf5f15a6e1c75e3791f0a6093d66fc22"
+
+[records.values]
+key = "307900a0-64ef-590d-a61a-857dc7d674c6_7022cef5-074e-4089-81a0-178c7c361d34"
+material = "7022cef5-074e-4089-81a0-178c7c361d34"
+name = "Smelter Bridge — Dune Silver Filament"
+region = "307900a0-64ef-590d-a61a-857dc7d674c6"
+
+[[records]]
+uuid = "37254395-57dd-5cec-a955-867c3d9d3da9"
+label = "row_3725439557dd5ceca955867c3d9d3da9"
+
+[records.values]
+key = "307900a0-64ef-590d-a61a-857dc7d674c6_74ca17fd-724b-4e71-8cf6-efc2332cdd71"
+material = "74ca17fd-724b-4e71-8cf6-efc2332cdd71"
+name = "Smelter Bridge — Ember Thickscale Hide"
+region = "307900a0-64ef-590d-a61a-857dc7d674c6"
+
+[[records]]
+uuid = "ee12cbae-3105-556c-860c-9bfe22ff9928"
+label = "row_ee12cbae3105556c860c9bfe22ff9928"
+
+[records.values]
+key = "307900a0-64ef-590d-a61a-857dc7d674c6_7a41625c-68d4-43d4-b429-89f6c0ffe06a"
+material = "7a41625c-68d4-43d4-b429-89f6c0ffe06a"
+name = "Smelter Bridge — Ember Amber Pearl"
+region = "307900a0-64ef-590d-a61a-857dc7d674c6"
+
+[[records]]
+uuid = "c4d32372-b1be-5ce0-bd28-cebf40646403"
+label = "row_c4d32372b1be5ce0bd28cebf40646403"
+
+[records.values]
+key = "307900a0-64ef-590d-a61a-857dc7d674c6_84feae53-de15-4c97-8db3-bce5dc6f9102"
+material = "84feae53-de15-4c97-8db3-bce5dc6f9102"
+name = "Smelter Bridge — Ember Amberscale"
+region = "307900a0-64ef-590d-a61a-857dc7d674c6"
+
+[[records]]
+uuid = "de0859aa-df36-5cc9-aec1-aeb09b70e233"
+label = "row_de0859aadf365cc9aec1aeb09b70e233"
+
+[records.values]
+key = "307900a0-64ef-590d-a61a-857dc7d674c6_982b0d73-3625-4f3b-98d6-a1a1e012f458"
+material = "982b0d73-3625-4f3b-98d6-a1a1e012f458"
+name = "Smelter Bridge — Dune Reed Fiber"
+region = "307900a0-64ef-590d-a61a-857dc7d674c6"
+
+[[records]]
+uuid = "6de65122-a8b9-5fab-bf12-63e9ccbf9c31"
+label = "row_6de65122a8b95fabbf1263e9ccbf9c31"
+
+[records.values]
+key = "307900a0-64ef-590d-a61a-857dc7d674c6_a1eed3cf-d64d-4e72-a85b-074a8839461c"
+material = "a1eed3cf-d64d-4e72-a85b-074a8839461c"
+name = "Smelter Bridge — Dune Ash Heartwood"
+region = "307900a0-64ef-590d-a61a-857dc7d674c6"
+
+[[records]]
+uuid = "62b7b414-64e1-5835-a552-c1b42d8b31fc"
+label = "row_62b7b41464e15835a552c1b42d8b31fc"
+
+[records.values]
+key = "307900a0-64ef-590d-a61a-857dc7d674c6_ad48f4c5-145b-49d9-85e6-24f1a2e71b66"
+material = "ad48f4c5-145b-49d9-85e6-24f1a2e71b66"
+name = "Smelter Bridge — Ember Ember Resin"
+region = "307900a0-64ef-590d-a61a-857dc7d674c6"
+
+[[records]]
+uuid = "0e279b96-6b4b-56e6-ba89-369662bc1898"
+label = "row_0e279b966b4b56e6ba89369662bc1898"
+
+[records.values]
+key = "307900a0-64ef-590d-a61a-857dc7d674c6_e453f088-1dc2-4b7f-bc0c-e0644f75ed53"
+material = "e453f088-1dc2-4b7f-bc0c-e0644f75ed53"
+name = "Smelter Bridge — Ember Nightbloom"
+region = "307900a0-64ef-590d-a61a-857dc7d674c6"
+
+[[records]]
+uuid = "be56f380-7274-574c-bc7a-ae503bc04fe1"
+label = "row_be56f3807274574cbc7aae503bc04fe1"
+
+[records.values]
+key = "307900a0-64ef-590d-a61a-857dc7d674c6_f27a1e71-eaec-4cf6-aa9c-7ccb21185cbe"
+material = "f27a1e71-eaec-4cf6-aa9c-7ccb21185cbe"
+name = "Smelter Bridge — Dune Amber Resin"
+region = "307900a0-64ef-590d-a61a-857dc7d674c6"
+
+[[records]]
+uuid = "972dc49e-5e88-56d5-b99a-86a990310ec5"
+label = "row_972dc49e5e8856d5b99a86a990310ec5"
+
+[records.values]
+key = "3ec4e464-b53b-52cb-aa51-637849f7e676_3db2699f-b684-4ab7-9397-096025989eee"
+material = "3db2699f-b684-4ab7-9397-096025989eee"
+name = "Magma Cradle — Ember Voidstone"
+region = "3ec4e464-b53b-52cb-aa51-637849f7e676"
+
+[[records]]
+uuid = "6054b59d-cb57-508e-9113-0051ed8a1b5e"
+label = "row_6054b59dcb57508e91130051ed8a1b5e"
+
+[records.values]
+key = "3ec4e464-b53b-52cb-aa51-637849f7e676_571d905e-dae8-4788-bf6c-3672e944709b"
+material = "571d905e-dae8-4788-bf6c-3672e944709b"
+name = "Magma Cradle — Ember Elderscale"
+region = "3ec4e464-b53b-52cb-aa51-637849f7e676"
+
+[[records]]
+uuid = "900468f3-bdc6-5707-ad47-f498bcc64935"
+label = "row_900468f3bdc65707ad47f498bcc64935"
+
+[records.values]
+key = "3ec4e464-b53b-52cb-aa51-637849f7e676_d1338c5e-8f86-4bfc-bbe7-3f8705b6078d"
+material = "d1338c5e-8f86-4bfc-bbe7-3f8705b6078d"
+name = "Magma Cradle — Ember Elderheart Resin"
+region = "3ec4e464-b53b-52cb-aa51-637849f7e676"
+
+[[records]]
+uuid = "42a0c9b9-79da-58b2-b9a7-fa3d6df48d7b"
+label = "row_42a0c9b979da58b2b9a7fa3d6df48d7b"
+
+[records.values]
+key = "3ec4e464-b53b-52cb-aa51-637849f7e676_ede69c13-f8cd-4c53-a657-94b59f9a7ab2"
+material = "ede69c13-f8cd-4c53-a657-94b59f9a7ab2"
+name = "Magma Cradle — Dune Elderscale"
+region = "3ec4e464-b53b-52cb-aa51-637849f7e676"
+
+[[records]]
+uuid = "d01b7d11-c30c-596e-b39f-d073f23123b5"
+label = "row_d01b7d11c30c596eb39fd073f23123b5"
+
+[records.values]
+key = "43d9a8d0-dec2-5b39-8033-2b2a6d10753c_55da2d24-0877-4830-a7c3-b7c3856e9489"
+material = "55da2d24-0877-4830-a7c3-b7c3856e9489"
+name = "Starless Crown — Lunar Elderscale"
+region = "43d9a8d0-dec2-5b39-8033-2b2a6d10753c"
+
+[[records]]
+uuid = "9eb9a6e6-2564-599f-b42c-3a7e52872145"
+label = "row_9eb9a6e62564599fb42c3a7e52872145"
+
+[records.values]
+key = "43d9a8d0-dec2-5b39-8033-2b2a6d10753c_583fa951-5754-4099-abe1-9ad3f548e424"
+material = "583fa951-5754-4099-abe1-9ad3f548e424"
+name = "Starless Crown — Lunar Dreamweave Fiber"
+region = "43d9a8d0-dec2-5b39-8033-2b2a6d10753c"
+
+[[records]]
+uuid = "a1bd60a1-ba4d-5310-a1dc-07e237b81a8c"
+label = "row_a1bd60a1ba4d5310a1dc07e237b81a8c"
+
+[records.values]
+key = "43d9a8d0-dec2-5b39-8033-2b2a6d10753c_72f31650-93b5-423d-8a4f-dc446be13368"
+material = "72f31650-93b5-423d-8a4f-dc446be13368"
+name = "Starless Crown — Lunar Dawn Pearl"
+region = "43d9a8d0-dec2-5b39-8033-2b2a6d10753c"
+
+[[records]]
+uuid = "db78a3e7-36e2-5c52-a395-86cca89a618d"
+label = "row_db78a3e736e25c52a39586cca89a618d"
+
+[records.values]
+key = "43d9a8d0-dec2-5b39-8033-2b2a6d10753c_82b012a1-eae3-438d-865f-bc59be19026b"
+material = "82b012a1-eae3-438d-865f-bc59be19026b"
+name = "Starless Crown — Lunar Ancient Beast Hide"
+region = "43d9a8d0-dec2-5b39-8033-2b2a6d10753c"
+
+[[records]]
+uuid = "edf3a651-d0fe-51a0-a0a0-23fc6d7dc2a2"
+label = "row_edf3a651d0fe51a0a0a023fc6d7dc2a2"
+
+[records.values]
+key = "43d9a8d0-dec2-5b39-8033-2b2a6d10753c_abcff247-1f7e-4a84-a2b4-67512bbd3cd4"
+material = "abcff247-1f7e-4a84-a2b4-67512bbd3cd4"
+name = "Starless Crown — Lunar Eclipsium Ore"
+region = "43d9a8d0-dec2-5b39-8033-2b2a6d10753c"
+
+[[records]]
+uuid = "17a68fcd-4851-5141-95c7-6abc6cea42b9"
+label = "row_17a68fcd4851514195c76abc6cea42b9"
+
+[records.values]
+key = "43d9a8d0-dec2-5b39-8033-2b2a6d10753c_d2e9caaa-89a8-45b6-a45a-30fe641afe4a"
+material = "d2e9caaa-89a8-45b6-a45a-30fe641afe4a"
+name = "Starless Crown — Lunar Ebonheart Wood"
+region = "43d9a8d0-dec2-5b39-8033-2b2a6d10753c"
+
+[[records]]
+uuid = "ef04ebde-9659-5c92-9da5-cfd072953bdd"
+label = "row_ef04ebde96595c929da5cfd072953bdd"
+
+[records.values]
+key = "442243c2-99e6-5e60-ba87-fecb633053a3_05f3222a-4e77-4f3b-b6eb-648e9e3a8fe7"
+material = "05f3222a-4e77-4f3b-b6eb-648e9e3a8fe7"
+name = "Tuskbeast Den — Woodland Black Pearl"
+region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "dec09ea4-1cac-5408-ad65-939ef7c84d71"
+label = "row_dec09ea41cac5408ad65939ef7c84d71"
+
+[records.values]
+key = "442243c2-99e6-5e60-ba87-fecb633053a3_08a0132c-b4f7-44e7-8399-520bf2d1e8a0"
+material = "08a0132c-b4f7-44e7-8399-520bf2d1e8a0"
+name = "Tuskbeast Den — Woodland Golden Pyrite"
+region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "d173bade-811d-5851-a8fb-e1b22f326a6f"
+label = "row_d173bade811d5851a8fbe1b22f326a6f"
+
+[records.values]
+key = "442243c2-99e6-5e60-ba87-fecb633053a3_0f0049f4-a154-4470-a9f2-28edff43d201"
+material = "0f0049f4-a154-4470-a9f2-28edff43d201"
+name = "Tuskbeast Den — Woodland Dreamlotus"
+region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "6bc85692-62b6-5cbf-a16a-b8bd9f8dfe9e"
+label = "row_6bc8569262b65cbfa16ab8bd9f8dfe9e"
+
+[records.values]
+key = "442243c2-99e6-5e60-ba87-fecb633053a3_1276cc2e-9d9d-40d9-86ac-05c5391a5cfe"
+material = "1276cc2e-9d9d-40d9-86ac-05c5391a5cfe"
+name = "Tuskbeast Den — Woodland Blazescale"
+region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "35cac10a-9f39-5c20-a409-824c8e032a84"
+label = "row_35cac10a9f395c20a409824c8e032a84"
+
+[records.values]
+key = "442243c2-99e6-5e60-ba87-fecb633053a3_19561076-306c-4bf0-ac85-f6f0dcc71738"
+material = "19561076-306c-4bf0-ac85-f6f0dcc71738"
+name = "Tuskbeast Den — Woodland Yew Heartwood"
+region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "9c1acae9-feab-5998-b5dc-7e471f09f7a6"
+label = "row_9c1acae9feab5998b5dc7e471f09f7a6"
+
+[records.values]
+key = "442243c2-99e6-5e60-ba87-fecb633053a3_3624d713-ca67-4554-acd1-ec17b8a6bd39"
+material = "3624d713-ca67-4554-acd1-ec17b8a6bd39"
+name = "Tuskbeast Den — Woodland Amber Pearl"
+region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "33d227ed-e75f-5d7a-8c52-a2acdce39b75"
+label = "row_33d227ede75f5d7a8c52a2acdce39b75"
+
+[records.values]
+key = "442243c2-99e6-5e60-ba87-fecb633053a3_4d16ec0f-877c-4f80-8948-7617f5ce1b6c"
+material = "4d16ec0f-877c-4f80-8948-7617f5ce1b6c"
+name = "Tuskbeast Den — Woodland Dreamweave Fiber"
+region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "327d8271-0564-58d7-9bbb-9a52808c6fe7"
+label = "row_327d8271056458d79bbb9a52808c6fe7"
+
+[records.values]
+key = "442243c2-99e6-5e60-ba87-fecb633053a3_5e56b6c5-31ba-470d-bf02-afb62fc33f0e"
+material = "5e56b6c5-31ba-470d-bf02-afb62fc33f0e"
+name = "Tuskbeast Den — Woodland Dawn Pearl"
+region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "08baf7d9-e689-5286-955f-28fa4a0d9d58"
+label = "row_08baf7d9e6895286955f28fa4a0d9d58"
+
+[records.values]
+key = "442243c2-99e6-5e60-ba87-fecb633053a3_6298b54b-e1b1-467a-91b7-9f3a8bc26753"
+material = "6298b54b-e1b1-467a-91b7-9f3a8bc26753"
+name = "Tuskbeast Den — Woodland Reed Fiber"
+region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "1e48b6eb-d77e-5dd0-b6bb-e3c0b6c75f4c"
+label = "row_1e48b6ebd77e5dd0b6bbe3c0b6c75f4c"
+
+[records.values]
+key = "442243c2-99e6-5e60-ba87-fecb633053a3_7d1f3237-c6cd-49bc-bb07-ae487a555f05"
+material = "7d1f3237-c6cd-49bc-bb07-ae487a555f05"
+name = "Tuskbeast Den — Woodland Obsidian"
+region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "237ed401-09cc-5b89-9fb7-4399b461b824"
+label = "row_237ed40109cc5b899fb74399b461b824"
+
+[records.values]
+key = "442243c2-99e6-5e60-ba87-fecb633053a3_8a171b0e-c91a-465a-b07a-9a9ef29adff2"
+material = "8a171b0e-c91a-465a-b07a-9a9ef29adff2"
+name = "Tuskbeast Den — Woodland Ancient Beast Hide"
+region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "07759712-a662-526a-87c8-6d89c694838d"
+label = "row_07759712a662526a87c86d89c694838d"
+
+[records.values]
+key = "442243c2-99e6-5e60-ba87-fecb633053a3_90b49505-6507-4ad3-93c8-3e8bb22f3047"
+material = "90b49505-6507-4ad3-93c8-3e8bb22f3047"
+name = "Tuskbeast Den — Woodland Ebonheart Wood"
+region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "93c3df92-aac4-5485-a261-81ba0a06bb6e"
+label = "row_93c3df92aac45485a26181ba0a06bb6e"
+
+[records.values]
+key = "442243c2-99e6-5e60-ba87-fecb633053a3_9ccdd721-9272-4109-a8dd-19d4aa8c592d"
+material = "9ccdd721-9272-4109-a8dd-19d4aa8c592d"
+name = "Tuskbeast Den — Woodland Foxglove Leaf"
+region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "66dc9505-bb37-5b55-8774-2733b97269d2"
+label = "row_66dc9505bb375b5587742733b97269d2"
+
+[records.values]
+key = "442243c2-99e6-5e60-ba87-fecb633053a3_a535fdf5-083b-4ebf-b5c2-5f7ae934f412"
+material = "a535fdf5-083b-4ebf-b5c2-5f7ae934f412"
+name = "Tuskbeast Den — Woodland Amber Resin"
+region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "2e046d1a-a32c-5261-8825-71c4f13e2a24"
+label = "row_2e046d1aa32c5261882571c4f13e2a24"
+
+[records.values]
+key = "442243c2-99e6-5e60-ba87-fecb633053a3_a5c82ff5-3c9a-4de2-ab9a-daacce137c26"
+material = "a5c82ff5-3c9a-4de2-ab9a-daacce137c26"
+name = "Tuskbeast Den — Woodland Voidstone"
+region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "a3b86b93-12fa-5467-b4dd-b9e8f5842897"
+label = "row_a3b86b9312fa5467b4ddb9e8f5842897"
+
+[records.values]
+key = "442243c2-99e6-5e60-ba87-fecb633053a3_ae64a2f8-d8d1-4149-9dcd-992e99b657b8"
+material = "ae64a2f8-d8d1-4149-9dcd-992e99b657b8"
+name = "Tuskbeast Den — Woodland Ember Resin"
+region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "1eb918ba-43ba-5b6d-8774-2acd2bb98a54"
+label = "row_1eb918ba43ba5b6d87742acd2bb98a54"
+
+[records.values]
+key = "442243c2-99e6-5e60-ba87-fecb633053a3_aff261cb-0283-4d3f-93e1-a241b7c585c6"
+material = "aff261cb-0283-4d3f-93e1-a241b7c585c6"
+name = "Tuskbeast Den — Woodland Silver Filament"
+region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "02102943-2b2c-5658-b1ba-971d0040afc5"
+label = "row_021029432b2c5658b1ba971d0040afc5"
+
+[records.values]
+key = "442243c2-99e6-5e60-ba87-fecb633053a3_e337ce0f-1d10-4a0e-bbdc-dc790b4b9cec"
+material = "e337ce0f-1d10-4a0e-bbdc-dc790b4b9cec"
+name = "Tuskbeast Den — Woodland Red Hematite"
+region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "78d165ec-b28c-5284-b6f1-4e196ef400a0"
+label = "row_78d165ecb28c5284b6f14e196ef400a0"
+
+[records.values]
+key = "442243c2-99e6-5e60-ba87-fecb633053a3_fbaf1e3e-b649-4eef-bec3-ac39027e7d33"
+material = "fbaf1e3e-b649-4eef-bec3-ac39027e7d33"
+name = "Tuskbeast Den — Woodland Eclipsium Ore"
+region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "5d52c45f-f0e9-5c3c-a207-34691f89ecf2"
+label = "row_5d52c45ff0e95c3ca20734691f89ecf2"
+
+[records.values]
+key = "54100e4e-e05a-5c5b-81d7-e2abf68e0340_50cbcb92-9034-42db-9637-482a7dda02e7"
+material = "50cbcb92-9034-42db-9637-482a7dda02e7"
+name = "Dreameater Abyss — Lunar Dreamlotus"
+region = "54100e4e-e05a-5c5b-81d7-e2abf68e0340"
+
+[[records]]
+uuid = "034a4e2e-3956-51ba-86df-edecf52f125e"
+label = "row_034a4e2e395651ba86dfedecf52f125e"
+
+[records.values]
+key = "54100e4e-e05a-5c5b-81d7-e2abf68e0340_57df6e92-0a9f-489b-83ae-3cc392a7d16d"
+material = "57df6e92-0a9f-489b-83ae-3cc392a7d16d"
+name = "Dreameater Abyss — Lunar Astral Crystal"
+region = "54100e4e-e05a-5c5b-81d7-e2abf68e0340"
+
+[[records]]
+uuid = "6835f457-bc4d-5d4a-928d-4f3fa48cbb37"
+label = "row_6835f457bc4d5d4a928d4f3fa48cbb37"
+
+[records.values]
+key = "54100e4e-e05a-5c5b-81d7-e2abf68e0340_b204e412-5183-42a8-97e8-4647f4ea3fee"
+material = "b204e412-5183-42a8-97e8-4647f4ea3fee"
+name = "Dreameater Abyss — Lunar Elderheart Resin"
+region = "54100e4e-e05a-5c5b-81d7-e2abf68e0340"
+
+[[records]]
+uuid = "8c45e04f-97cd-55ab-a47d-a2afbcab6f54"
+label = "row_8c45e04f97cd55aba47da2afbcab6f54"
+
+[records.values]
+key = "602f3c7d-56cc-52f4-ac42-175a8646168d_070d4ae1-2025-48f9-820f-134908671581"
+material = "070d4ae1-2025-48f9-820f-134908671581"
+name = "Hydra Nest — Fen Amber Crystal"
+region = "602f3c7d-56cc-52f4-ac42-175a8646168d"
+
+[[records]]
+uuid = "3da7a6fc-6ab7-5dc3-97a4-9800dff9711d"
+label = "row_3da7a6fc6ab75dc397a49800dff9711d"
+
+[records.values]
+key = "602f3c7d-56cc-52f4-ac42-175a8646168d_095169a7-efe9-4831-8760-4fcdea8fdd59"
+material = "095169a7-efe9-4831-8760-4fcdea8fdd59"
+name = "Hydra Nest — Relic Granite"
+region = "602f3c7d-56cc-52f4-ac42-175a8646168d"
+
+[[records]]
+uuid = "8c945f09-44b1-5ba3-aa65-e3f3bbfcfbdd"
+label = "row_8c945f0944b15ba3aa65e3f3bbfcfbdd"
+
+[records.values]
+key = "602f3c7d-56cc-52f4-ac42-175a8646168d_40063217-562a-4d6f-a57f-c85f06984327"
+material = "40063217-562a-4d6f-a57f-c85f06984327"
+name = "Hydra Nest — Fen Amberscale"
+region = "602f3c7d-56cc-52f4-ac42-175a8646168d"
+
+[[records]]
+uuid = "d8dd04b8-2819-5a10-bd1c-a854904e5075"
+label = "row_d8dd04b828195a10bd1ca854904e5075"
+
+[records.values]
+key = "602f3c7d-56cc-52f4-ac42-175a8646168d_4f203ce1-7bb9-4694-aa14-7f8a7cd44d7b"
+material = "4f203ce1-7bb9-4694-aa14-7f8a7cd44d7b"
+name = "Hydra Nest — Relic Thickscale Hide"
+region = "602f3c7d-56cc-52f4-ac42-175a8646168d"
+
+[[records]]
+uuid = "0d7eebfd-fa63-5278-bd86-4b80627726f6"
+label = "row_0d7eebfdfa635278bd864b80627726f6"
+
+[records.values]
+key = "602f3c7d-56cc-52f4-ac42-175a8646168d_80140f5f-9486-4703-9c53-cde3d4628f92"
+material = "80140f5f-9486-4703-9c53-cde3d4628f92"
+name = "Hydra Nest — Frostland Ash Heartwood"
+region = "602f3c7d-56cc-52f4-ac42-175a8646168d"
+
+[[records]]
+uuid = "529de5bd-6fda-5c57-a91d-10be155f7cf2"
+label = "row_529de5bd6fda5c57a91d10be155f7cf2"
+
+[records.values]
+key = "602f3c7d-56cc-52f4-ac42-175a8646168d_80e160d9-b35b-4490-8e14-f2568dd4f4f0"
+material = "80e160d9-b35b-4490-8e14-f2568dd4f4f0"
+name = "Hydra Nest — Relic Amberscale"
+region = "602f3c7d-56cc-52f4-ac42-175a8646168d"
+
+[[records]]
+uuid = "d403eb48-ad6d-5eba-8398-31c505ef3ddb"
+label = "row_d403eb48ad6d5eba839831c505ef3ddb"
+
+[records.values]
+key = "602f3c7d-56cc-52f4-ac42-175a8646168d_864466f9-858e-4531-9787-dca7db63f95a"
+material = "864466f9-858e-4531-9787-dca7db63f95a"
+name = "Hydra Nest — Fen Ember Resin"
+region = "602f3c7d-56cc-52f4-ac42-175a8646168d"
+
+[[records]]
+uuid = "73d6a919-385e-504e-94e2-df413c372bdd"
+label = "row_73d6a919385e504e94e2df413c372bdd"
+
+[records.values]
+key = "602f3c7d-56cc-52f4-ac42-175a8646168d_8ab1a892-17f3-4f97-af2c-ddf2cae52269"
+material = "8ab1a892-17f3-4f97-af2c-ddf2cae52269"
+name = "Hydra Nest — Relic Red Hematite"
+region = "602f3c7d-56cc-52f4-ac42-175a8646168d"
+
+[[records]]
+uuid = "79eb3e52-800d-5e1b-9576-da25c974a4d7"
+label = "row_79eb3e52800d5e1b9576da25c974a4d7"
+
+[records.values]
+key = "602f3c7d-56cc-52f4-ac42-175a8646168d_92efa527-2046-431b-9339-e78ac2ee1d8a"
+material = "92efa527-2046-431b-9339-e78ac2ee1d8a"
+name = "Hydra Nest — Fen Granite"
+region = "602f3c7d-56cc-52f4-ac42-175a8646168d"
+
+[[records]]
+uuid = "54fb7389-ad96-588d-8d9c-5b4f04731384"
+label = "row_54fb7389ad96588d8d9c5b4f04731384"
+
+[records.values]
+key = "602f3c7d-56cc-52f4-ac42-175a8646168d_b9531198-26a8-40f4-b45f-9266b47b8e25"
+material = "b9531198-26a8-40f4-b45f-9266b47b8e25"
+name = "Hydra Nest — Relic Obsidian"
+region = "602f3c7d-56cc-52f4-ac42-175a8646168d"
+
+[[records]]
+uuid = "841da121-0878-5e34-9b1a-0a01e3d7ade8"
+label = "row_841da12108785e349b1a0a01e3d7ade8"
+
+[records.values]
+key = "602f3c7d-56cc-52f4-ac42-175a8646168d_cf7a6e7f-afe6-4462-b14f-f76ae9d98bde"
+material = "cf7a6e7f-afe6-4462-b14f-f76ae9d98bde"
+name = "Hydra Nest — Relic Golden Pyrite"
+region = "602f3c7d-56cc-52f4-ac42-175a8646168d"
+
+[[records]]
+uuid = "068285a9-8097-5f1e-a68e-f408338d2c9a"
+label = "row_068285a980975f1ea68ef408338d2c9a"
+
+[records.values]
+key = "602f3c7d-56cc-52f4-ac42-175a8646168d_d0752661-4f86-4908-8153-58bfcf42cc59"
+material = "d0752661-4f86-4908-8153-58bfcf42cc59"
+name = "Hydra Nest — Fen Amber Pearl"
+region = "602f3c7d-56cc-52f4-ac42-175a8646168d"
+
+[[records]]
+uuid = "71502b9c-7578-5e71-97c8-4d2ca81b5c95"
+label = "row_71502b9c75785e7197c84d2ca81b5c95"
+
+[records.values]
+key = "602f3c7d-56cc-52f4-ac42-175a8646168d_e45b026d-5002-45ec-b8cc-46b6054c7e17"
+material = "e45b026d-5002-45ec-b8cc-46b6054c7e17"
+name = "Hydra Nest — Frostland Reed Fiber"
+region = "602f3c7d-56cc-52f4-ac42-175a8646168d"
+
+[[records]]
+uuid = "ae94ef20-bce2-5314-a1f0-6198aeb0cac8"
+label = "row_ae94ef20bce25314a1f06198aeb0cac8"
+
+[records.values]
+key = "602f3c7d-56cc-52f4-ac42-175a8646168d_ef455714-ceae-425f-920d-3a249236a2d2"
+material = "ef455714-ceae-425f-920d-3a249236a2d2"
+name = "Hydra Nest — Relic Amber Crystal"
+region = "602f3c7d-56cc-52f4-ac42-175a8646168d"
+
+[[records]]
+uuid = "557ed07a-4e4f-563f-a31c-006c504527af"
+label = "row_557ed07a4e4f563fa31c006c504527af"
+
+[records.values]
+key = "602f3c7d-56cc-52f4-ac42-175a8646168d_f99b8a70-7373-4cd7-919d-e56162e1272c"
+material = "f99b8a70-7373-4cd7-919d-e56162e1272c"
+name = "Hydra Nest — Frostland Black Pearl"
+region = "602f3c7d-56cc-52f4-ac42-175a8646168d"
+
+[[records]]
+uuid = "97d9e8a8-c56d-594a-8e35-ab930da9cc56"
+label = "row_97d9e8a8c56d594a8e35ab930da9cc56"
+
+[records.values]
+key = "70742414-3a03-5930-bb22-8431bdc62458_20000000-0000-4000-8002-000000000033"
+material = "20000000-0000-4000-8002-000000000033"
+name = "Ember Anchorage — Unsorted Ember Bog Iron"
+region = "70742414-3a03-5930-bb22-8431bdc62458"
+
+[[records]]
+uuid = "f389daba-22bb-5de6-abf5-d5b328e21d2c"
+label = "row_f389daba22bb5de6abf5d5b328e21d2c"
+
+[records.values]
+key = "70742414-3a03-5930-bb22-8431bdc62458_42e26c3e-47a6-4d71-a525-1d2435c14443"
+material = "42e26c3e-47a6-4d71-a525-1d2435c14443"
+name = "Ember Anchorage — Ember Mottled Hide"
+region = "70742414-3a03-5930-bb22-8431bdc62458"
+
+[[records]]
+uuid = "de875e1b-8488-57da-817e-65281702a43d"
+label = "row_de875e1b848857da817e65281702a43d"
+
+[records.values]
+key = "70742414-3a03-5930-bb22-8431bdc62458_447b4065-f002-427c-b165-0c465e982250"
+material = "447b4065-f002-427c-b165-0c465e982250"
+name = "Ember Anchorage — Ember Copper Glance"
+region = "70742414-3a03-5930-bb22-8431bdc62458"
+
+[[records]]
+uuid = "5f7b3259-44d8-5f3a-a902-53b5600dfa92"
+label = "row_5f7b325944d85f3aa90253b5600dfa92"
+
+[records.values]
+key = "70742414-3a03-5930-bb22-8431bdc62458_5515c27f-a682-4a20-9ea0-285101817f74"
+material = "5515c27f-a682-4a20-9ea0-285101817f74"
+name = "Ember Anchorage — Dune Slate"
+region = "70742414-3a03-5930-bb22-8431bdc62458"
+
+[[records]]
+uuid = "87f6d04c-cf55-5294-8ead-de54b76bab9d"
+label = "row_87f6d04ccf5552948eadde54b76bab9d"
+
+[records.values]
+key = "70742414-3a03-5930-bb22-8431bdc62458_b0225cb0-07f3-48ec-a8d8-010967f6a501"
+material = "b0225cb0-07f3-48ec-a8d8-010967f6a501"
+name = "Ember Anchorage — Ember Riverstone"
+region = "70742414-3a03-5930-bb22-8431bdc62458"
+
+[[records]]
+uuid = "890dd414-e490-5c00-9a13-b7c9c5aac57c"
+label = "row_890dd414e4905c009a13b7c9c5aac57c"
+
+[records.values]
+key = "70742414-3a03-5930-bb22-8431bdc62458_bed227ca-ee63-4017-a036-b3c621065c40"
+material = "bed227ca-ee63-4017-a036-b3c621065c40"
+name = "Ember Anchorage — Ember Bristlehide"
+region = "70742414-3a03-5930-bb22-8431bdc62458"
+
+[[records]]
+uuid = "d5426296-fb02-5018-af85-0ce9ba7b084a"
+label = "row_d5426296fb025018af850ce9ba7b084a"
+
+[records.values]
+key = "76491b81-a10a-57a4-8643-e8f1cacffda7_108d2d75-51a2-4f62-b21c-b4e4a838ff37"
+material = "108d2d75-51a2-4f62-b21c-b4e4a838ff37"
+name = "Ashforge Market — Woodland Pine Resin"
+region = "76491b81-a10a-57a4-8643-e8f1cacffda7"
+
+[[records]]
+uuid = "94ad6def-bf8a-50f0-b077-fed82838430b"
+label = "row_94ad6defbf8a50f0b077fed82838430b"
+
+[records.values]
+key = "76491b81-a10a-57a4-8643-e8f1cacffda7_7643ca7d-608e-4535-96a9-7be4ca9bd454"
+material = "7643ca7d-608e-4535-96a9-7be4ca9bd454"
+name = "Ashforge Market — Woodland Birch Heartwood"
+region = "76491b81-a10a-57a4-8643-e8f1cacffda7"
+
+[[records]]
+uuid = "39dc9d83-b584-5d44-bfe1-d9b5d60ada9b"
+label = "row_39dc9d83b5845d44bfe1d9b5d60ada9b"
+
+[records.values]
+key = "76491b81-a10a-57a4-8643-e8f1cacffda7_8f4d3802-f385-42ec-9a13-9512f5fbb088"
+material = "8f4d3802-f385-42ec-9a13-9512f5fbb088"
+name = "Ashforge Market — Woodland Bronzescale"
+region = "76491b81-a10a-57a4-8643-e8f1cacffda7"
+
+[[records]]
+uuid = "03de961d-f38a-5cb1-bb88-6564fa33f75c"
+label = "row_03de961df38a5cb1bb886564fa33f75c"
+
+[records.values]
+key = "76491b81-a10a-57a4-8643-e8f1cacffda7_96a95a2f-69d8-4cb7-a084-9acee6fd3b3b"
+material = "96a95a2f-69d8-4cb7-a084-9acee6fd3b3b"
+name = "Ashforge Market — Woodland Alder Heartwood"
+region = "76491b81-a10a-57a4-8643-e8f1cacffda7"
+
+[[records]]
+uuid = "622388f8-1e08-5f6f-afd0-56cf71679750"
+label = "row_622388f81e085f6fafd056cf71679750"
+
+[records.values]
+key = "76491b81-a10a-57a4-8643-e8f1cacffda7_b12aae25-1aff-4d72-a101-f34318344e37"
+material = "b12aae25-1aff-4d72-a101-f34318344e37"
+name = "Ashforge Market — Hardwood"
+region = "76491b81-a10a-57a4-8643-e8f1cacffda7"
+
+[[records]]
+uuid = "d9d4b041-45e1-5064-8873-b438a08b017e"
+label = "row_d9d4b04145e150648873b438a08b017e"
+
+[records.values]
+key = "76491b81-a10a-57a4-8643-e8f1cacffda7_bcf89570-e0ef-4db6-87c5-e1f62848d588"
+material = "bcf89570-e0ef-4db6-87c5-e1f62848d588"
+name = "Ashforge Market — Woodland Reedscale"
+region = "76491b81-a10a-57a4-8643-e8f1cacffda7"
+
+[[records]]
+uuid = "c124d420-1171-51be-a4e3-8676a1af6833"
+label = "row_c124d420117151bea4e38676a1af6833"
+
+[records.values]
+key = "76491b81-a10a-57a4-8643-e8f1cacffda7_c6692e3e-92fc-4a3e-b437-06db71a41721"
+material = "c6692e3e-92fc-4a3e-b437-06db71a41721"
+name = "Ashforge Market — Woodland Mottled Hide"
+region = "76491b81-a10a-57a4-8643-e8f1cacffda7"
+
+[[records]]
+uuid = "2273e295-b340-54a2-8937-9ddb9787550d"
+label = "row_2273e295b34054a289379ddb9787550d"
+
+[records.values]
+key = "76491b81-a10a-57a4-8643-e8f1cacffda7_f00ff365-0d36-43d5-83e9-f229cbb0a2df"
+material = "f00ff365-0d36-43d5-83e9-f229cbb0a2df"
+name = "Ashforge Market — Woodland Willow Heartwood"
+region = "76491b81-a10a-57a4-8643-e8f1cacffda7"
+
+[[records]]
+uuid = "9ff7b9cb-d46e-5c0c-bb71-2471ae6647d0"
+label = "row_9ff7b9cbd46e5c0cbb712471ae6647d0"
+
+[records.values]
+key = "76491b81-a10a-57a4-8643-e8f1cacffda7_f917f0b6-8426-4abd-a2b2-942e1fe88d93"
+material = "f917f0b6-8426-4abd-a2b2-942e1fe88d93"
+name = "Ashforge Market — Woodland Ridgescale"
+region = "76491b81-a10a-57a4-8643-e8f1cacffda7"
+
+[[records]]
+uuid = "a5212eee-0d19-579b-b222-79feee721478"
+label = "row_a5212eee0d19579bb22279feee721478"
+
+[records.values]
+key = "76491b81-a10a-57a4-8643-e8f1cacffda7_ff62e1a8-47ea-42c9-a228-cb87a8c89d97"
+material = "ff62e1a8-47ea-42c9-a228-cb87a8c89d97"
+name = "Ashforge Market — Woodland Cedar Resin"
+region = "76491b81-a10a-57a4-8643-e8f1cacffda7"
+
+[[records]]
+uuid = "e854bdf0-661b-599e-b18c-51ce9138d60f"
+label = "row_e854bdf0661b599eb18c51ce9138d60f"
+
+[records.values]
+key = "7d332bbd-a4a3-5938-9b59-3a1f987d6014_473ba6ea-a730-4449-9db5-e098b450801b"
+material = "473ba6ea-a730-4449-9db5-e098b450801b"
+name = "Starwatch Rest — Tidal Nettle Fiber"
+region = "7d332bbd-a4a3-5938-9b59-3a1f987d6014"
+
+[[records]]
+uuid = "7ee2e2c3-425f-545b-a155-4bf642215b45"
+label = "row_7ee2e2c3425f545ba1554bf642215b45"
+
+[records.values]
+key = "7d332bbd-a4a3-5938-9b59-3a1f987d6014_5ab932b4-e3ff-4d94-808d-85a96e813075"
+material = "5ab932b4-e3ff-4d94-808d-85a96e813075"
+name = "Starwatch Rest — Tidal Flax Fiber"
+region = "7d332bbd-a4a3-5938-9b59-3a1f987d6014"
+
+[[records]]
+uuid = "308e104e-acc7-57bf-9e90-95156b573c18"
+label = "row_308e104eacc757bf9e9095156b573c18"
+
+[records.values]
+key = "7d332bbd-a4a3-5938-9b59-3a1f987d6014_6a525907-9d64-4787-9b15-98783e2d40d1"
+material = "6a525907-9d64-4787-9b15-98783e2d40d1"
+name = "Starwatch Rest — Lunar River Pearl"
+region = "7d332bbd-a4a3-5938-9b59-3a1f987d6014"
+
+[[records]]
+uuid = "275c1d6f-0b84-5a2c-9694-831661a580b0"
+label = "row_275c1d6f0b845a2c9694831661a580b0"
+
+[records.values]
+key = "7d332bbd-a4a3-5938-9b59-3a1f987d6014_a3ed168c-db0f-44ca-840f-4d0db0e8addd"
+material = "a3ed168c-db0f-44ca-840f-4d0db0e8addd"
+name = "Starwatch Rest — Lunar Nettle Fiber"
+region = "7d332bbd-a4a3-5938-9b59-3a1f987d6014"
+
+[[records]]
+uuid = "c4d3d16e-1622-5396-b5c2-012dffbf97d9"
+label = "row_c4d3d16e16225396b5c2012dffbf97d9"
+
+[records.values]
+key = "7d332bbd-a4a3-5938-9b59-3a1f987d6014_c9464333-d479-4eed-ab6c-740524cd6915"
+material = "c9464333-d479-4eed-ab6c-740524cd6915"
+name = "Starwatch Rest — Highland Hemp Fiber"
+region = "7d332bbd-a4a3-5938-9b59-3a1f987d6014"
+
+[[records]]
+uuid = "17cb1d2e-2d6d-5f72-8313-0e93a249c19d"
+label = "row_17cb1d2e2d6d5f7283130e93a249c19d"
+
+[records.values]
+key = "8062140b-5914-5129-ae4a-964bd8e0c7a7_20000000-0000-4000-8002-000000000017"
+material = "20000000-0000-4000-8002-000000000017"
+name = "Lantern Town — Unsorted Fen Bronzevein Ore"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "0ad65e9e-9166-5eb7-b027-8afcc3d4c256"
+label = "row_0ad65e9e91665eb7b0278afcc3d4c256"
+
+[records.values]
+key = "8062140b-5914-5129-ae4a-964bd8e0c7a7_20000000-0000-4000-8002-00000000002a"
+material = "20000000-0000-4000-8002-00000000002a"
+name = "Lantern Town — Unsorted Frostland Copper Glance"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "8cb6105b-dfe3-5d0b-a7ef-d34b2b810951"
+label = "row_8cb6105bdfe35d0ba7efd34b2b810951"
+
+[records.values]
+key = "8062140b-5914-5129-ae4a-964bd8e0c7a7_20000000-0000-4000-8002-00000000003d"
+material = "20000000-0000-4000-8002-00000000003d"
+name = "Lantern Town — Unsorted Relic Bog Iron"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "6b2faf7c-4eb0-5072-b5c8-35adf53ec9e9"
+label = "row_6b2faf7c4eb05072b5c835adf53ec9e9"
+
+[records.values]
+key = "8062140b-5914-5129-ae4a-964bd8e0c7a7_29176ed1-d600-4942-a97f-54cd424609bd"
+material = "29176ed1-d600-4942-a97f-54cd424609bd"
+name = "Lantern Town — Cavern Birch Resin"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "34251329-8331-52ac-9ed0-fad787daa146"
+label = "row_34251329833152ac9ed0fad787daa146"
+
+[records.values]
+key = "8062140b-5914-5129-ae4a-964bd8e0c7a7_3254f2fd-7379-44aa-95e7-0ce4c8690c5c"
+material = "3254f2fd-7379-44aa-95e7-0ce4c8690c5c"
+name = "Lantern Town — Frostland Chalkstone"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "7f5d5770-68ea-5fec-ae64-aac9d576981e"
+label = "row_7f5d577068ea5fecae64aac9d576981e"
+
+[records.values]
+key = "8062140b-5914-5129-ae4a-964bd8e0c7a7_4b100671-030f-42d1-a1a3-ba95cd801f76"
+material = "4b100671-030f-42d1-a1a3-ba95cd801f76"
+name = "Lantern Town — Cavern Pine Resin"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "54cc894a-7271-52f4-b897-96c6d35dde4a"
+label = "row_54cc894a727152f4b89796c6d35dde4a"
+
+[records.values]
+key = "8062140b-5914-5129-ae4a-964bd8e0c7a7_605249d4-f765-4b09-a95c-6128b524f9c9"
+material = "605249d4-f765-4b09-a95c-6128b524f9c9"
+name = "Lantern Town — Cavern Flax Fiber"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "07ce8106-34b0-513f-bdb0-0a7d13655a7a"
+label = "row_07ce810634b0513fbdb00a7d13655a7a"
+
+[records.values]
+key = "8062140b-5914-5129-ae4a-964bd8e0c7a7_678b297b-e01f-4a52-bb19-42e3caf85e89"
+material = "678b297b-e01f-4a52-bb19-42e3caf85e89"
+name = "Lantern Town — Frostland Bog Iron"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "887b8b93-d562-5d7e-a58a-c808dc5b3ec5"
+label = "row_887b8b93d5625d7ea58ac808dc5b3ec5"
+
+[records.values]
+key = "8062140b-5914-5129-ae4a-964bd8e0c7a7_696f09a0-2a56-4752-bef0-adaefc8b3c7c"
+material = "696f09a0-2a56-4752-bef0-adaefc8b3c7c"
+name = "Lantern Town — Relic Bronzevein Ore"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "c3a2b8ff-87ef-5df2-923b-795ca4d992cc"
+label = "row_c3a2b8ff87ef5df2923b795ca4d992cc"
+
+[records.values]
+key = "8062140b-5914-5129-ae4a-964bd8e0c7a7_6d7871ec-0f06-4457-899c-54bc82f20600"
+material = "6d7871ec-0f06-4457-899c-54bc82f20600"
+name = "Lantern Town — Fen Slate"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "4d2d403a-1993-53c8-b833-250b699558b0"
+label = "row_4d2d403a199353c8b833250b699558b0"
+
+[records.values]
+key = "8062140b-5914-5129-ae4a-964bd8e0c7a7_7325d27c-ad97-4009-9f89-e4ac630661e6"
+material = "7325d27c-ad97-4009-9f89-e4ac630661e6"
+name = "Lantern Town — Cavern Alder Heartwood"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "97ff4a0a-0278-5275-a1bf-0491dd231d59"
+label = "row_97ff4a0a02785275a1bf0491dd231d59"
+
+[records.values]
+key = "8062140b-5914-5129-ae4a-964bd8e0c7a7_8f4d3802-f385-42ec-9a13-9512f5fbb088"
+material = "8f4d3802-f385-42ec-9a13-9512f5fbb088"
+name = "Lantern Town — Woodland Bronzescale"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "3009059f-22ed-5f3f-af26-c2b3e9194df5"
+label = "row_3009059f22ed5f3faf26c2b3e9194df5"
+
+[records.values]
+key = "8062140b-5914-5129-ae4a-964bd8e0c7a7_96a95a2f-69d8-4cb7-a084-9acee6fd3b3b"
+material = "96a95a2f-69d8-4cb7-a084-9acee6fd3b3b"
+name = "Lantern Town — Woodland Alder Heartwood"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "fb190c60-892f-5216-8896-a3f655a7c98d"
+label = "row_fb190c60892f52168896a3f655a7c98d"
+
+[records.values]
+key = "8062140b-5914-5129-ae4a-964bd8e0c7a7_a34c004d-0374-4279-a596-70990187653f"
+material = "a34c004d-0374-4279-a596-70990187653f"
+name = "Lantern Town — Frostland Riverstone"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "a4442c5c-2c46-5af7-a926-c67320be9e42"
+label = "row_a4442c5c2c465af7a926c67320be9e42"
+
+[records.values]
+key = "8062140b-5914-5129-ae4a-964bd8e0c7a7_bcf89570-e0ef-4db6-87c5-e1f62848d588"
+material = "bcf89570-e0ef-4db6-87c5-e1f62848d588"
+name = "Lantern Town — Woodland Reedscale"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "289424f9-aec5-594b-9688-58371f7053eb"
+label = "row_289424f9aec5594b968858371f7053eb"
+
+[records.values]
+key = "8062140b-5914-5129-ae4a-964bd8e0c7a7_c1f95b27-27c9-4f2d-a5d6-9be2ab8d5fbe"
+material = "c1f95b27-27c9-4f2d-a5d6-9be2ab8d5fbe"
+name = "Lantern Town — Frostland Copper Glance"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "27c0f32d-35df-5a94-88b8-fd6747c119e3"
+label = "row_27c0f32d35df5a9488b8fd6747c119e3"
+
+[records.values]
+key = "8062140b-5914-5129-ae4a-964bd8e0c7a7_c2c5d9bf-cee0-49fe-a21c-5120a535ba8a"
+material = "c2c5d9bf-cee0-49fe-a21c-5120a535ba8a"
+name = "Lantern Town — Frostland Slate"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "3258cc6e-145e-585c-a71f-2432e3e5ca3a"
+label = "row_3258cc6e145e585ca71f2432e3e5ca3a"
+
+[records.values]
+key = "8062140b-5914-5129-ae4a-964bd8e0c7a7_dcd189c5-1bb3-4c19-b179-9cbea87b3ecf"
+material = "dcd189c5-1bb3-4c19-b179-9cbea87b3ecf"
+name = "Lantern Town — Cavern Cedar Resin"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "087052c7-542b-55c5-959d-e865e2b93466"
+label = "row_087052c7542b55c5959de865e2b93466"
+
+[records.values]
+key = "8062140b-5914-5129-ae4a-964bd8e0c7a7_e24421b9-8f97-4e23-89ee-c75a5f13f2bf"
+material = "e24421b9-8f97-4e23-89ee-c75a5f13f2bf"
+name = "Lantern Town — Relic Copper Glance"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "d2e30862-652b-5697-895f-3ca1b61c4afa"
+label = "row_d2e30862652b5697895f3ca1b61c4afa"
+
+[records.values]
+key = "8062140b-5914-5129-ae4a-964bd8e0c7a7_f917f0b6-8426-4abd-a2b2-942e1fe88d93"
+material = "f917f0b6-8426-4abd-a2b2-942e1fe88d93"
+name = "Lantern Town — Woodland Ridgescale"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "92c66203-cbf2-5813-ab5a-f75b5a3e1956"
+label = "row_92c66203cbf25813ab5af75b5a3e1956"
+
+[records.values]
+key = "8062140b-5914-5129-ae4a-964bd8e0c7a7_fe761fd4-3ced-430a-abfa-e7381edeef26"
+material = "fe761fd4-3ced-430a-abfa-e7381edeef26"
+name = "Lantern Town — Relic Chalkstone"
+region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "ffc51e67-d699-50c2-82bc-40da830ceea0"
+label = "row_ffc51e67d69950c282bc40da830ceea0"
+
+[records.values]
+key = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426_068b77eb-c94e-4f78-ba7a-df5db2799960"
+material = "068b77eb-c94e-4f78-ba7a-df5db2799960"
+name = "Frostward Lodge — Fen River Pearl"
+region = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+
+[[records]]
+uuid = "db203584-ba0d-52cd-84e5-d7321e5447fe"
+label = "row_db203584ba0d52cd84e5d7321e5447fe"
+
+[records.values]
+key = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426_15bf7bcc-b61c-4267-b194-1222114b20d8"
+material = "15bf7bcc-b61c-4267-b194-1222114b20d8"
+name = "Frostward Lodge — Frostland Rose Pearl"
+region = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+
+[[records]]
+uuid = "e682903e-93ad-5ded-90ca-48e1971041b0"
+label = "row_e682903e93ad5ded90ca48e1971041b0"
+
+[records.values]
+key = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426_30defcbe-01c7-4797-b2fc-414f98c9ddf9"
+material = "30defcbe-01c7-4797-b2fc-414f98c9ddf9"
+name = "Frostward Lodge — Relic Flax Fiber"
+region = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+
+[[records]]
+uuid = "8ad8c99f-206c-5252-814c-77bb646dca80"
+label = "row_8ad8c99f206c5252814c77bb646dca80"
+
+[records.values]
+key = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426_36288240-5b72-4de4-961b-36be975a9990"
+material = "36288240-5b72-4de4-961b-36be975a9990"
+name = "Frostward Lodge — Fen Riverwort"
+region = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+
+[[records]]
+uuid = "9dd580f4-f184-5211-b8c7-ddff8e05021a"
+label = "row_9dd580f4f1845211b8c7ddff8e05021a"
+
+[records.values]
+key = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426_444451f4-e465-4821-ab83-b384ce439d2b"
+material = "444451f4-e465-4821-ab83-b384ce439d2b"
+name = "Frostward Lodge — Relic Hemp Fiber"
+region = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+
+[[records]]
+uuid = "40f7209e-6764-5467-8222-c394fc7d8bac"
+label = "row_40f7209e676454678222c394fc7d8bac"
+
+[records.values]
+key = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426_46dd618a-bead-443f-b660-ef958a1a6af6"
+material = "46dd618a-bead-443f-b660-ef958a1a6af6"
+name = "Frostward Lodge — Fen Rose Pearl"
+region = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+
+[[records]]
+uuid = "e796921e-71e3-5a18-872a-84ddaec14001"
+label = "row_e796921e71e35a18872a84ddaec14001"
+
+[records.values]
+key = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426_4e487973-ca45-449a-a091-79633e2044e8"
+material = "4e487973-ca45-449a-a091-79633e2044e8"
+name = "Frostward Lodge — Fen Cedar Resin"
+region = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+
+[[records]]
+uuid = "90d57db6-bf41-5298-964f-4724d52057d3"
+label = "row_90d57db6bf415298964f4724d52057d3"
+
+[records.values]
+key = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426_6e24d978-005a-46c2-8f5b-2e1751c0209d"
+material = "6e24d978-005a-46c2-8f5b-2e1751c0209d"
+name = "Frostward Lodge — Relic Rose Pearl"
+region = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+
+[[records]]
+uuid = "77b86781-81d1-597c-9c1d-a713f97686f5"
+label = "row_77b8678181d1597c9c1da713f97686f5"
+
+[records.values]
+key = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426_8a3f48dc-9d8b-416a-a2c0-ee024d32a5b1"
+material = "8a3f48dc-9d8b-416a-a2c0-ee024d32a5b1"
+name = "Frostward Lodge — Fen Bronzescale"
+region = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+
+[[records]]
+uuid = "f38a9bea-8787-5b27-8183-27a9a8d0ac7d"
+label = "row_f38a9bea87875b27818327a9a8d0ac7d"
+
+[records.values]
+key = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426_98ede02c-e8f3-4fc4-86b4-f85371134e4b"
+material = "98ede02c-e8f3-4fc4-86b4-f85371134e4b"
+name = "Frostward Lodge — Relic Birch Resin"
+region = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+
+[[records]]
+uuid = "5df66c42-abaa-5acf-84d8-5a3b512d217e"
+label = "row_5df66c42abaa5acf84d85a3b512d217e"
+
+[records.values]
+key = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426_b456dd1e-70e3-4a0c-a6d1-bb61bbfebea8"
+material = "b456dd1e-70e3-4a0c-a6d1-bb61bbfebea8"
+name = "Frostward Lodge — Fen Birch Resin"
+region = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+
+[[records]]
+uuid = "74fcb023-8499-5ade-9c17-d8c2ef413426"
+label = "row_74fcb02384995ade9c17d8c2ef413426"
+
+[records.values]
+key = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426_b50ea79b-341d-4946-8cb2-5dc9fafa35a7"
+material = "b50ea79b-341d-4946-8cb2-5dc9fafa35a7"
+name = "Frostward Lodge — Frostland Bronzescale"
+region = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+
+[[records]]
+uuid = "21f433a2-cfc5-5fe6-ba88-8fedb64a53fb"
+label = "row_21f433a2cfc55fe6ba888fedb64a53fb"
+
+[records.values]
+key = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426_b71555b3-c5cf-4186-aa77-6ba95342fb33"
+material = "b71555b3-c5cf-4186-aa77-6ba95342fb33"
+name = "Frostward Lodge — Frostland Seed Pearl"
+region = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+
+[[records]]
+uuid = "61a02ad1-a378-5b30-bbb2-b354c492fa6a"
+label = "row_61a02ad1a3785b30bbb2b354c492fa6a"
+
+[records.values]
+key = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426_c35d1ecb-8ba1-484d-9e85-c7a402de2750"
+material = "c35d1ecb-8ba1-484d-9e85-c7a402de2750"
+name = "Frostward Lodge — Frostland Riverwort"
+region = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+
+[[records]]
+uuid = "0a968839-38cf-58d0-978c-1a04e2fae216"
+label = "row_0a96883938cf58d0978c1a04e2fae216"
+
+[records.values]
+key = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426_c37c6d43-d8e8-4bd9-9e18-46b54c3a1e5c"
+material = "c37c6d43-d8e8-4bd9-9e18-46b54c3a1e5c"
+name = "Frostward Lodge — Wild Herb"
+region = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+
+[[records]]
+uuid = "119c4419-1955-5422-81e8-468a085eda9f"
+label = "row_119c44191955542281e8468a085eda9f"
+
+[records.values]
+key = "83f4d132-8c54-5114-ae26-675379857f45_068b77eb-c94e-4f78-ba7a-df5db2799960"
+material = "068b77eb-c94e-4f78-ba7a-df5db2799960"
+name = "Dune Caravanserai — Fen River Pearl"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "f93c1441-d9ee-54cb-b4a9-033931b60a8e"
+label = "row_f93c1441d9ee54cbb4a9033931b60a8e"
+
+[records.values]
+key = "83f4d132-8c54-5114-ae26-675379857f45_0cd0b4c0-10d2-4c53-9c3e-86aa17239520"
+material = "0cd0b4c0-10d2-4c53-9c3e-86aa17239520"
+name = "Dune Caravanserai — Ember River Pearl"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "54cba216-4ddd-50fa-85a0-e727812431f8"
+label = "row_54cba2164ddd50fa85a0e727812431f8"
+
+[records.values]
+key = "83f4d132-8c54-5114-ae26-675379857f45_15bf7bcc-b61c-4267-b194-1222114b20d8"
+material = "15bf7bcc-b61c-4267-b194-1222114b20d8"
+name = "Dune Caravanserai — Frostland Rose Pearl"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "8530b284-04b2-5215-b773-0b94022565d2"
+label = "row_8530b28404b25215b7730b94022565d2"
+
+[records.values]
+key = "83f4d132-8c54-5114-ae26-675379857f45_20000000-0000-4000-8002-000000000033"
+material = "20000000-0000-4000-8002-000000000033"
+name = "Dune Caravanserai — Unsorted Ember Bog Iron"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "fe7d2f77-2728-5a8f-a2f2-4deba7d526c6"
+label = "row_fe7d2f7727285a8fa2f24deba7d526c6"
+
+[records.values]
+key = "83f4d132-8c54-5114-ae26-675379857f45_42e26c3e-47a6-4d71-a525-1d2435c14443"
+material = "42e26c3e-47a6-4d71-a525-1d2435c14443"
+name = "Dune Caravanserai — Ember Mottled Hide"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "8e789d7d-98e7-5ff5-8c91-262396f858a6"
+label = "row_8e789d7d98e75ff58c91262396f858a6"
+
+[records.values]
+key = "83f4d132-8c54-5114-ae26-675379857f45_447b4065-f002-427c-b165-0c465e982250"
+material = "447b4065-f002-427c-b165-0c465e982250"
+name = "Dune Caravanserai — Ember Copper Glance"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "7421789a-9167-5a8e-9536-ad8f23ea5290"
+label = "row_7421789a91675a8e9536ad8f23ea5290"
+
+[records.values]
+key = "83f4d132-8c54-5114-ae26-675379857f45_46dd618a-bead-443f-b660-ef958a1a6af6"
+material = "46dd618a-bead-443f-b660-ef958a1a6af6"
+name = "Dune Caravanserai — Fen Rose Pearl"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "ce516e29-75c8-565b-a5e4-b0a1189cdd38"
+label = "row_ce516e2975c8565ba5e4b0a1189cdd38"
+
+[records.values]
+key = "83f4d132-8c54-5114-ae26-675379857f45_4e487973-ca45-449a-a091-79633e2044e8"
+material = "4e487973-ca45-449a-a091-79633e2044e8"
+name = "Dune Caravanserai — Fen Cedar Resin"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "a810b5a1-09e5-5cc9-bfd4-bec0c0c1aada"
+label = "row_a810b5a109e55cc9bfd4bec0c0c1aada"
+
+[records.values]
+key = "83f4d132-8c54-5114-ae26-675379857f45_5515c27f-a682-4a20-9ea0-285101817f74"
+material = "5515c27f-a682-4a20-9ea0-285101817f74"
+name = "Dune Caravanserai — Dune Slate"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "ee753923-da28-5bd7-97fb-3fe9c1266412"
+label = "row_ee753923da285bd797fb3fe9c1266412"
+
+[records.values]
+key = "83f4d132-8c54-5114-ae26-675379857f45_6b097cc1-97a7-47af-8bc1-7b772af10349"
+material = "6b097cc1-97a7-47af-8bc1-7b772af10349"
+name = "Dune Caravanserai — Dune Rose Pearl"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "356a91ae-8fd9-5772-b912-dd9968a619fd"
+label = "row_356a91ae8fd95772b912dd9968a619fd"
+
+[records.values]
+key = "83f4d132-8c54-5114-ae26-675379857f45_8a3f48dc-9d8b-416a-a2c0-ee024d32a5b1"
+material = "8a3f48dc-9d8b-416a-a2c0-ee024d32a5b1"
+name = "Dune Caravanserai — Fen Bronzescale"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "e8db265b-cbbc-57bd-b4dd-6b4bdcdb059f"
+label = "row_e8db265bcbbc57bdb4dd6b4bdcdb059f"
+
+[records.values]
+key = "83f4d132-8c54-5114-ae26-675379857f45_8cbad786-9295-4b01-9e4f-7741a4ced5ae"
+material = "8cbad786-9295-4b01-9e4f-7741a4ced5ae"
+name = "Dune Caravanserai — Ember Bitterleaf"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "f39168e8-0b9d-54f1-aaea-cdabcffe3b01"
+label = "row_f39168e80b9d54f1aaeacdabcffe3b01"
+
+[records.values]
+key = "83f4d132-8c54-5114-ae26-675379857f45_98ede02c-e8f3-4fc4-86b4-f85371134e4b"
+material = "98ede02c-e8f3-4fc4-86b4-f85371134e4b"
+name = "Dune Caravanserai — Relic Birch Resin"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "86ef01e6-e416-5ee4-9e2f-014c2a1ec455"
+label = "row_86ef01e6e4165ee49e2f014c2a1ec455"
+
+[records.values]
+key = "83f4d132-8c54-5114-ae26-675379857f45_9dd050ee-ed40-4aad-ab46-28c4d00ebd95"
+material = "9dd050ee-ed40-4aad-ab46-28c4d00ebd95"
+name = "Dune Caravanserai — Dune River Pearl"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "5e143621-ddf4-5ea0-9d16-62fe8b019131"
+label = "row_5e143621ddf45ea09d1662fe8b019131"
+
+[records.values]
+key = "83f4d132-8c54-5114-ae26-675379857f45_a1cca215-a12f-4d73-b88f-376f2b58a63d"
+material = "a1cca215-a12f-4d73-b88f-376f2b58a63d"
+name = "Dune Caravanserai — Dune Riverwort"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "edda9ed9-ee78-5222-9c57-e375a4e70447"
+label = "row_edda9ed9ee7852229c57e375a4e70447"
+
+[records.values]
+key = "83f4d132-8c54-5114-ae26-675379857f45_b0225cb0-07f3-48ec-a8d8-010967f6a501"
+material = "b0225cb0-07f3-48ec-a8d8-010967f6a501"
+name = "Dune Caravanserai — Ember Riverstone"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "fa31eb05-6306-548d-a333-da8fe59d1d86"
+label = "row_fa31eb056306548da333da8fe59d1d86"
+
+[records.values]
+key = "83f4d132-8c54-5114-ae26-675379857f45_b456dd1e-70e3-4a0c-a6d1-bb61bbfebea8"
+material = "b456dd1e-70e3-4a0c-a6d1-bb61bbfebea8"
+name = "Dune Caravanserai — Fen Birch Resin"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "41af0c5e-c4b6-5a69-9b43-afe5d3295c22"
+label = "row_41af0c5ec4b65a699b43afe5d3295c22"
+
+[records.values]
+key = "83f4d132-8c54-5114-ae26-675379857f45_b50ea79b-341d-4946-8cb2-5dc9fafa35a7"
+material = "b50ea79b-341d-4946-8cb2-5dc9fafa35a7"
+name = "Dune Caravanserai — Frostland Bronzescale"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "10d0843c-52e4-507e-9483-ef63007fa37e"
+label = "row_10d0843c52e4507e9483ef63007fa37e"
+
+[records.values]
+key = "83f4d132-8c54-5114-ae26-675379857f45_b71555b3-c5cf-4186-aa77-6ba95342fb33"
+material = "b71555b3-c5cf-4186-aa77-6ba95342fb33"
+name = "Dune Caravanserai — Frostland Seed Pearl"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "279b7c79-319b-5778-bd1a-066516a005c4"
+label = "row_279b7c79319b5778bd1a066516a005c4"
+
+[records.values]
+key = "83f4d132-8c54-5114-ae26-675379857f45_bed227ca-ee63-4017-a036-b3c621065c40"
+material = "bed227ca-ee63-4017-a036-b3c621065c40"
+name = "Dune Caravanserai — Ember Bristlehide"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "ea0f88b0-aa07-5e9e-857f-692844799f44"
+label = "row_ea0f88b0aa075e9e857f692844799f44"
+
+[records.values]
+key = "83f4d132-8c54-5114-ae26-675379857f45_bf17ee6a-7951-4d14-a4c5-d6f1ec221f99"
+material = "bf17ee6a-7951-4d14-a4c5-d6f1ec221f99"
+name = "Dune Caravanserai — Ember Riverwort"
+region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "2b5f0050-19f2-5ca3-8c4f-02cfd5d97423"
+label = "row_2b5f005019f25ca38c4f02cfd5d97423"
+
+[records.values]
+key = "85c33f41-5fd5-5707-8133-798f786d84d4_1247bc4c-2e50-446e-83d4-dd226b127db6"
+material = "1247bc4c-2e50-446e-83d4-dd226b127db6"
+name = "Hunter's Ridge — Relic Silver Filament"
+region = "85c33f41-5fd5-5707-8133-798f786d84d4"
+
+[[records]]
+uuid = "9587fbe9-377b-5bf4-9ba3-f0d922cd799e"
+label = "row_9587fbe9377b5bf49ba3f0d922cd799e"
+
+[records.values]
+key = "85c33f41-5fd5-5707-8133-798f786d84d4_35dfa3cc-eeb1-42b0-8bba-d36734b1b71b"
+material = "35dfa3cc-eeb1-42b0-8bba-d36734b1b71b"
+name = "Hunter's Ridge — Frostland Granite"
+region = "85c33f41-5fd5-5707-8133-798f786d84d4"
+
+[[records]]
+uuid = "b55dc1dc-02e2-529d-b1a6-3af0d76e81d5"
+label = "row_b55dc1dc02e2529db1a63af0d76e81d5"
+
+[records.values]
+key = "85c33f41-5fd5-5707-8133-798f786d84d4_3b0f5852-7be8-4839-a6b1-06519fdeeaf6"
+material = "3b0f5852-7be8-4839-a6b1-06519fdeeaf6"
+name = "Hunter's Ridge — Fen Ash Heartwood"
+region = "85c33f41-5fd5-5707-8133-798f786d84d4"
+
+[[records]]
+uuid = "e7f9eb5b-e652-59e4-a10e-4d83f99e57d8"
+label = "row_e7f9eb5be65259e4a10e4d83f99e57d8"
+
+[records.values]
+key = "85c33f41-5fd5-5707-8133-798f786d84d4_56615921-484b-4107-af02-7cc399705f7e"
+material = "56615921-484b-4107-af02-7cc399705f7e"
+name = "Hunter's Ridge — Fen Blazescale"
+region = "85c33f41-5fd5-5707-8133-798f786d84d4"
+
+[[records]]
+uuid = "96359d4d-e677-5cbc-806d-4efc1cfb2fa6"
+label = "row_96359d4de6775cbc806d4efc1cfb2fa6"
+
+[records.values]
+key = "85c33f41-5fd5-5707-8133-798f786d84d4_6e8a5a47-6167-40f2-9d2c-93ef7e33fa74"
+material = "6e8a5a47-6167-40f2-9d2c-93ef7e33fa74"
+name = "Hunter's Ridge — Relic Slatehide"
+region = "85c33f41-5fd5-5707-8133-798f786d84d4"
+
+[[records]]
+uuid = "14db83fd-b1cf-5ee2-ac1f-329877558b5b"
+label = "row_14db83fdb1cf5ee2ac1f329877558b5b"
+
+[records.values]
+key = "85c33f41-5fd5-5707-8133-798f786d84d4_89a5e08d-e476-47c5-b34a-435ab7353470"
+material = "89a5e08d-e476-47c5-b34a-435ab7353470"
+name = "Hunter's Ridge — Fen Red Hematite"
+region = "85c33f41-5fd5-5707-8133-798f786d84d4"
+
+[[records]]
+uuid = "ffd815af-3d68-5ab1-9017-8778f51ec21f"
+label = "row_ffd815af3d685ab190178778f51ec21f"
+
+[records.values]
+key = "85c33f41-5fd5-5707-8133-798f786d84d4_8a657596-6779-45ac-bf31-9754edbda367"
+material = "8a657596-6779-45ac-bf31-9754edbda367"
+name = "Hunter's Ridge — Relic Reed Fiber"
+region = "85c33f41-5fd5-5707-8133-798f786d84d4"
+
+[[records]]
+uuid = "15ada818-e63e-5131-b0eb-2ae559126989"
+label = "row_15ada818e63e5131b0eb2ae559126989"
+
+[records.values]
+key = "85c33f41-5fd5-5707-8133-798f786d84d4_8ad6731b-c7b0-447e-a3c8-f58039f12a2d"
+material = "8ad6731b-c7b0-447e-a3c8-f58039f12a2d"
+name = "Hunter's Ridge — Frostland Amber Resin"
+region = "85c33f41-5fd5-5707-8133-798f786d84d4"
+
+[[records]]
+uuid = "3c3b865e-da97-530b-a920-51c00dc4df1c"
+label = "row_3c3b865eda97530ba92051c00dc4df1c"
+
+[records.values]
+key = "85c33f41-5fd5-5707-8133-798f786d84d4_966d896a-46c0-4db5-8beb-92d6d25b221c"
+material = "966d896a-46c0-4db5-8beb-92d6d25b221c"
+name = "Hunter's Ridge — Frostland Red Hematite"
+region = "85c33f41-5fd5-5707-8133-798f786d84d4"
+
+[[records]]
+uuid = "ce774185-0757-51eb-88bb-296a3362ec49"
+label = "row_ce774185075751eb88bb296a3362ec49"
+
+[records.values]
+key = "85c33f41-5fd5-5707-8133-798f786d84d4_c70c6fc4-9c51-4d3f-be1c-5e87082255d1"
+material = "c70c6fc4-9c51-4d3f-be1c-5e87082255d1"
+name = "Hunter's Ridge — Relic Amber Pearl"
+region = "85c33f41-5fd5-5707-8133-798f786d84d4"
+
+[[records]]
+uuid = "fa6ae9bb-5d42-5ef0-8158-01c67e7aa9aa"
+label = "row_fa6ae9bb5d425ef0815801c67e7aa9aa"
+
+[records.values]
+key = "85c33f41-5fd5-5707-8133-798f786d84d4_e2376148-4033-4acd-ba2a-84da7dad55ad"
+material = "e2376148-4033-4acd-ba2a-84da7dad55ad"
+name = "Hunter's Ridge — Frostland Slatehide"
+region = "85c33f41-5fd5-5707-8133-798f786d84d4"
+
+[[records]]
+uuid = "7ecd8d58-9612-50f4-9f62-73a27c9dc4e3"
+label = "row_7ecd8d58961250f49f6273a27c9dc4e3"
+
+[records.values]
+key = "867ee5c5-fd9b-567c-a100-fba37a6ad752_068b77eb-c94e-4f78-ba7a-df5db2799960"
+material = "068b77eb-c94e-4f78-ba7a-df5db2799960"
+name = "Reedboat Harbor — Fen River Pearl"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "53c4e2ef-4c4e-5640-b622-61eaed75b16b"
+label = "row_53c4e2ef4c4e5640b62261eaed75b16b"
+
+[records.values]
+key = "867ee5c5-fd9b-567c-a100-fba37a6ad752_15bf7bcc-b61c-4267-b194-1222114b20d8"
+material = "15bf7bcc-b61c-4267-b194-1222114b20d8"
+name = "Reedboat Harbor — Frostland Rose Pearl"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "793bdc5a-3db6-5923-9b4e-d7fcaafb51ce"
+label = "row_793bdc5a3db659239b4ed7fcaafb51ce"
+
+[records.values]
+key = "867ee5c5-fd9b-567c-a100-fba37a6ad752_20000000-0000-4000-8002-000000000017"
+material = "20000000-0000-4000-8002-000000000017"
+name = "Reedboat Harbor — Unsorted Fen Bronzevein Ore"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "8ac2b902-bcb8-53a7-96ba-bc9983fe4cdb"
+label = "row_8ac2b902bcb853a796babc9983fe4cdb"
+
+[records.values]
+key = "867ee5c5-fd9b-567c-a100-fba37a6ad752_20000000-0000-4000-8002-00000000002a"
+material = "20000000-0000-4000-8002-00000000002a"
+name = "Reedboat Harbor — Unsorted Frostland Copper Glance"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "42651da8-9e48-55ca-83a4-b75f15c3eacc"
+label = "row_42651da89e4855ca83a4b75f15c3eacc"
+
+[records.values]
+key = "867ee5c5-fd9b-567c-a100-fba37a6ad752_20000000-0000-4000-8002-00000000003d"
+material = "20000000-0000-4000-8002-00000000003d"
+name = "Reedboat Harbor — Unsorted Relic Bog Iron"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "d6de93b9-ae83-5d2b-95b3-79d861ebbe0c"
+label = "row_d6de93b9ae835d2b95b379d861ebbe0c"
+
+[records.values]
+key = "867ee5c5-fd9b-567c-a100-fba37a6ad752_3254f2fd-7379-44aa-95e7-0ce4c8690c5c"
+material = "3254f2fd-7379-44aa-95e7-0ce4c8690c5c"
+name = "Reedboat Harbor — Frostland Chalkstone"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "fb332421-8e8d-585d-8ba0-9ab5fb28dbe5"
+label = "row_fb3324218e8d585d8ba09ab5fb28dbe5"
+
+[records.values]
+key = "867ee5c5-fd9b-567c-a100-fba37a6ad752_46dd618a-bead-443f-b660-ef958a1a6af6"
+material = "46dd618a-bead-443f-b660-ef958a1a6af6"
+name = "Reedboat Harbor — Fen Rose Pearl"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "67529e60-6aac-5cb4-b2d8-5cd1b1cf573e"
+label = "row_67529e606aac5cb4b2d85cd1b1cf573e"
+
+[records.values]
+key = "867ee5c5-fd9b-567c-a100-fba37a6ad752_4e487973-ca45-449a-a091-79633e2044e8"
+material = "4e487973-ca45-449a-a091-79633e2044e8"
+name = "Reedboat Harbor — Fen Cedar Resin"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "c21a88ec-415f-5c82-842a-a8e05e91de73"
+label = "row_c21a88ec415f5c82842aa8e05e91de73"
+
+[records.values]
+key = "867ee5c5-fd9b-567c-a100-fba37a6ad752_678b297b-e01f-4a52-bb19-42e3caf85e89"
+material = "678b297b-e01f-4a52-bb19-42e3caf85e89"
+name = "Reedboat Harbor — Frostland Bog Iron"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "e7dc9013-c515-56ee-b787-e7c19b54926d"
+label = "row_e7dc9013c51556eeb787e7c19b54926d"
+
+[records.values]
+key = "867ee5c5-fd9b-567c-a100-fba37a6ad752_696f09a0-2a56-4752-bef0-adaefc8b3c7c"
+material = "696f09a0-2a56-4752-bef0-adaefc8b3c7c"
+name = "Reedboat Harbor — Relic Bronzevein Ore"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "b0abe370-2dad-5029-81bb-f6c029c09bb6"
+label = "row_b0abe3702dad502981bbf6c029c09bb6"
+
+[records.values]
+key = "867ee5c5-fd9b-567c-a100-fba37a6ad752_6d7871ec-0f06-4457-899c-54bc82f20600"
+material = "6d7871ec-0f06-4457-899c-54bc82f20600"
+name = "Reedboat Harbor — Fen Slate"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "91af73b3-227f-5b01-9a5c-b84b2d3a73a2"
+label = "row_91af73b3227f5b019a5cb84b2d3a73a2"
+
+[records.values]
+key = "867ee5c5-fd9b-567c-a100-fba37a6ad752_8a3f48dc-9d8b-416a-a2c0-ee024d32a5b1"
+material = "8a3f48dc-9d8b-416a-a2c0-ee024d32a5b1"
+name = "Reedboat Harbor — Fen Bronzescale"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "717e560f-ea4b-5006-98ce-ab60b0ccc2ea"
+label = "row_717e560fea4b500698ceab60b0ccc2ea"
+
+[records.values]
+key = "867ee5c5-fd9b-567c-a100-fba37a6ad752_98ede02c-e8f3-4fc4-86b4-f85371134e4b"
+material = "98ede02c-e8f3-4fc4-86b4-f85371134e4b"
+name = "Reedboat Harbor — Relic Birch Resin"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "e3c6b9ae-9ded-5361-944a-7e21bce51a81"
+label = "row_e3c6b9ae9ded5361944a7e21bce51a81"
+
+[records.values]
+key = "867ee5c5-fd9b-567c-a100-fba37a6ad752_a34c004d-0374-4279-a596-70990187653f"
+material = "a34c004d-0374-4279-a596-70990187653f"
+name = "Reedboat Harbor — Frostland Riverstone"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "b863b2de-5fc1-5196-b89d-26007c48c0ca"
+label = "row_b863b2de5fc15196b89d26007c48c0ca"
+
+[records.values]
+key = "867ee5c5-fd9b-567c-a100-fba37a6ad752_b456dd1e-70e3-4a0c-a6d1-bb61bbfebea8"
+material = "b456dd1e-70e3-4a0c-a6d1-bb61bbfebea8"
+name = "Reedboat Harbor — Fen Birch Resin"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "116cb226-e317-5290-a107-a1e71daaade0"
+label = "row_116cb226e3175290a107a1e71daaade0"
+
+[records.values]
+key = "867ee5c5-fd9b-567c-a100-fba37a6ad752_b50ea79b-341d-4946-8cb2-5dc9fafa35a7"
+material = "b50ea79b-341d-4946-8cb2-5dc9fafa35a7"
+name = "Reedboat Harbor — Frostland Bronzescale"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "27b5ab69-4134-5963-a237-5111d1bba200"
+label = "row_27b5ab6941345963a2375111d1bba200"
+
+[records.values]
+key = "867ee5c5-fd9b-567c-a100-fba37a6ad752_b71555b3-c5cf-4186-aa77-6ba95342fb33"
+material = "b71555b3-c5cf-4186-aa77-6ba95342fb33"
+name = "Reedboat Harbor — Frostland Seed Pearl"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "51ec6aa0-b2f1-57a1-8721-bca0e733f6a5"
+label = "row_51ec6aa0b2f157a18721bca0e733f6a5"
+
+[records.values]
+key = "867ee5c5-fd9b-567c-a100-fba37a6ad752_c1f95b27-27c9-4f2d-a5d6-9be2ab8d5fbe"
+material = "c1f95b27-27c9-4f2d-a5d6-9be2ab8d5fbe"
+name = "Reedboat Harbor — Frostland Copper Glance"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "ace4ccbb-b6dc-5d86-bb54-5ddc14f4530a"
+label = "row_ace4ccbbb6dc5d86bb545ddc14f4530a"
+
+[records.values]
+key = "867ee5c5-fd9b-567c-a100-fba37a6ad752_c2c5d9bf-cee0-49fe-a21c-5120a535ba8a"
+material = "c2c5d9bf-cee0-49fe-a21c-5120a535ba8a"
+name = "Reedboat Harbor — Frostland Slate"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "1922652d-ec86-5d72-9dcb-954e1b5c3883"
+label = "row_1922652dec865d729dcb954e1b5c3883"
+
+[records.values]
+key = "867ee5c5-fd9b-567c-a100-fba37a6ad752_e24421b9-8f97-4e23-89ee-c75a5f13f2bf"
+material = "e24421b9-8f97-4e23-89ee-c75a5f13f2bf"
+name = "Reedboat Harbor — Relic Copper Glance"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "e487c1d5-1849-5aff-9e69-fcff359e4a4e"
+label = "row_e487c1d518495aff9e69fcff359e4a4e"
+
+[records.values]
+key = "867ee5c5-fd9b-567c-a100-fba37a6ad752_fe761fd4-3ced-430a-abfa-e7381edeef26"
+material = "fe761fd4-3ced-430a-abfa-e7381edeef26"
+name = "Reedboat Harbor — Relic Chalkstone"
+region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "96202332-e883-5341-aa4c-ac4d2969a943"
+label = "row_96202332e8835341aa4cac4d2969a943"
+
+[records.values]
+key = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb_4549081b-95a8-4491-aa96-9f3ee010898e"
+material = "4549081b-95a8-4491-aa96-9f3ee010898e"
+name = "Mirage Tower — Ember Amber Resin"
+region = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb"
+
+[[records]]
+uuid = "28eb82cc-7b6b-5b16-839d-ce134359efe9"
+label = "row_28eb82cc7b6b5b16839dce134359efe9"
+
+[records.values]
+key = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb_47e422e5-3827-4b6d-96a6-6bbd4119bbce"
+material = "47e422e5-3827-4b6d-96a6-6bbd4119bbce"
+name = "Mirage Tower — Ember Foxglove Leaf"
+region = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb"
+
+[[records]]
+uuid = "1ee98751-19a3-55b2-9f29-565eed75f1e1"
+label = "row_1ee9875119a355b29f29565eed75f1e1"
+
+[records.values]
+key = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb_6f62f5a8-d677-4b17-b101-1d9671984d86"
+material = "6f62f5a8-d677-4b17-b101-1d9671984d86"
+name = "Mirage Tower — Ember Yew Heartwood"
+region = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb"
+
+[[records]]
+uuid = "fd54381b-4424-536b-84f6-5cfbdba973fb"
+label = "row_fd54381b4424536b84f65cfbdba973fb"
+
+[records.values]
+key = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb_8ae6e798-e08a-433d-9a59-6ea6813a7c5e"
+material = "8ae6e798-e08a-433d-9a59-6ea6813a7c5e"
+name = "Mirage Tower — Ember Obsidian"
+region = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb"
+
+[[records]]
+uuid = "182905e8-0937-51ec-aa09-248ba07c2a73"
+label = "row_182905e8093751ecaa09248ba07c2a73"
+
+[records.values]
+key = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb_9aaa4af3-9bf5-410a-b74c-25aadef8c57a"
+material = "9aaa4af3-9bf5-410a-b74c-25aadef8c57a"
+name = "Mirage Tower — Dune Amber Crystal"
+region = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb"
+
+[[records]]
+uuid = "3cfd9658-ab1e-5a38-8cab-3da94e15e1a6"
+label = "row_3cfd9658ab1e5a388cab3da94e15e1a6"
+
+[records.values]
+key = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb_9b538ff1-b5f4-4515-bde3-e39ed5412240"
+material = "9b538ff1-b5f4-4515-bde3-e39ed5412240"
+name = "Mirage Tower — Dune Slatehide"
+region = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb"
+
+[[records]]
+uuid = "7447adf8-22ba-51b3-ad67-88aade782b15"
+label = "row_7447adf822ba51b3ad6788aade782b15"
+
+[records.values]
+key = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb_9d0ca248-b878-4b59-9a3d-c349daa5be74"
+material = "9d0ca248-b878-4b59-9a3d-c349daa5be74"
+name = "Mirage Tower — Dune Amber Pearl"
+region = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb"
+
+[[records]]
+uuid = "96325d61-67e6-5408-9626-83ee2a667bb7"
+label = "row_96325d6167e65408962683ee2a667bb7"
+
+[records.values]
+key = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb_d1dacb8b-0e05-439a-9936-e76370c8db38"
+material = "d1dacb8b-0e05-439a-9936-e76370c8db38"
+name = "Mirage Tower — Dune Blazescale"
+region = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb"
+
+[[records]]
+uuid = "955bd566-6ba2-559a-83e7-1e9566549d5a"
+label = "row_955bd5666ba2559a83e71e9566549d5a"
+
+[records.values]
+key = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb_db70140c-14aa-49aa-800d-81d52bb0fada"
+material = "db70140c-14aa-49aa-800d-81d52bb0fada"
+name = "Mirage Tower — Dune Granite"
+region = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb"
+
+[[records]]
+uuid = "c6cacf67-e66a-5e9d-b0be-9698a736a2ff"
+label = "row_c6cacf67e66a5e9db0be9698a736a2ff"
+
+[records.values]
+key = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb_e45dd4f7-ff06-4380-b9a7-5b69d98c0786"
+material = "e45dd4f7-ff06-4380-b9a7-5b69d98c0786"
+name = "Mirage Tower — Dune Red Hematite"
+region = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb"
+
+[[records]]
+uuid = "a4d768c5-9c27-5401-9f56-58cef44f6ad8"
+label = "row_a4d768c59c2754019f5658cef44f6ad8"
+
+[records.values]
+key = "8d36f10a-26d4-5a38-a306-02624f790a47_1f9c7e55-c58e-47a6-be4f-f448618f10b9"
+material = "1f9c7e55-c58e-47a6-be4f-f448618f10b9"
+name = "Thunder Shaft — Ember Dreamweave Fiber"
+region = "8d36f10a-26d4-5a38-a306-02624f790a47"
+
+[[records]]
+uuid = "c20708d1-dfed-5430-a8b7-b059513187c3"
+label = "row_c20708d1dfed5430a8b7b059513187c3"
+
+[records.values]
+key = "8d36f10a-26d4-5a38-a306-02624f790a47_91ade928-f08a-42c8-bc9f-f4004eb2e35a"
+material = "91ade928-f08a-42c8-bc9f-f4004eb2e35a"
+name = "Thunder Shaft — Ember Ebonheart Wood"
+region = "8d36f10a-26d4-5a38-a306-02624f790a47"
+
+[[records]]
+uuid = "9d36e666-35ad-5ff2-925b-7cf311bdb742"
+label = "row_9d36e66635ad5ff2925b7cf311bdb742"
+
+[records.values]
+key = "8d36f10a-26d4-5a38-a306-02624f790a47_a03f614f-f065-4282-878c-8d5e082cbc1b"
+material = "a03f614f-f065-4282-878c-8d5e082cbc1b"
+name = "Thunder Shaft — Dune Astral Crystal"
+region = "8d36f10a-26d4-5a38-a306-02624f790a47"
+
+[[records]]
+uuid = "1c3b983e-5641-5650-9e0d-37459660ac89"
+label = "row_1c3b983e564156509e0d37459660ac89"
+
+[records.values]
+key = "8d36f10a-26d4-5a38-a306-02624f790a47_b1809905-583c-4180-920e-19ab534ba6b2"
+material = "b1809905-583c-4180-920e-19ab534ba6b2"
+name = "Thunder Shaft — Dune Dreamlotus"
+region = "8d36f10a-26d4-5a38-a306-02624f790a47"
+
+[[records]]
+uuid = "5df23524-1ba2-5833-b1f2-fcada66501ef"
+label = "row_5df235241ba25833b1f2fcada66501ef"
+
+[records.values]
+key = "8d36f10a-26d4-5a38-a306-02624f790a47_f107ff66-1635-450d-8223-cec6d2b0228a"
+material = "f107ff66-1635-450d-8223-cec6d2b0228a"
+name = "Thunder Shaft — Ember Astral Crystal"
+region = "8d36f10a-26d4-5a38-a306-02624f790a47"
+
+[[records]]
+uuid = "f66c3fc8-c1ac-5219-8b2d-73705ba5d086"
+label = "row_f66c3fc8c1ac52198b2d73705ba5d086"
+
+[records.values]
+key = "a83b48a5-20de-523a-a061-1464ed6b1764_33ea645c-7a31-4489-aa20-79d031c2f353"
+material = "33ea645c-7a31-4489-aa20-79d031c2f353"
+name = "Rotwood Court — Fen Silver Filament"
+region = "a83b48a5-20de-523a-a061-1464ed6b1764"
+
+[[records]]
+uuid = "f4d6df77-a003-5a15-b4e1-8ad7a2c57b67"
+label = "row_f4d6df77a0035a15b4e18ad7a2c57b67"
+
+[records.values]
+key = "a83b48a5-20de-523a-a061-1464ed6b1764_5c2692a6-0930-44c6-961a-6b75d9fcb084"
+material = "5c2692a6-0930-44c6-961a-6b75d9fcb084"
+name = "Rotwood Court — Fen Reed Fiber"
+region = "a83b48a5-20de-523a-a061-1464ed6b1764"
+
+[[records]]
+uuid = "2e12d8c2-1eaf-5117-adfc-6908352a77c8"
+label = "row_2e12d8c21eaf5117adfc6908352a77c8"
+
+[records.values]
+key = "a83b48a5-20de-523a-a061-1464ed6b1764_6bd7901d-9d74-42b3-9a18-6f181395ffee"
+material = "6bd7901d-9d74-42b3-9a18-6f181395ffee"
+name = "Rotwood Court — Frostland Ember Resin"
+region = "a83b48a5-20de-523a-a061-1464ed6b1764"
+
+[[records]]
+uuid = "0bfe275e-56ae-5817-920b-e28125c50715"
+label = "row_0bfe275e56ae5817920be28125c50715"
+
+[records.values]
+key = "a83b48a5-20de-523a-a061-1464ed6b1764_890302c6-2adb-447a-8792-1d0b44c0c0cb"
+material = "890302c6-2adb-447a-8792-1d0b44c0c0cb"
+name = "Rotwood Court — Fen Yew Heartwood"
+region = "a83b48a5-20de-523a-a061-1464ed6b1764"
+
+[[records]]
+uuid = "f0bfeda4-43d7-5e78-99dc-01a93eae9551"
+label = "row_f0bfeda443d75e7899dc01a93eae9551"
+
+[records.values]
+key = "a83b48a5-20de-523a-a061-1464ed6b1764_8ff03b64-6fd0-4c22-871e-2b4b8b171e37"
+material = "8ff03b64-6fd0-4c22-871e-2b4b8b171e37"
+name = "Rotwood Court — Frostland Golden Pyrite"
+region = "a83b48a5-20de-523a-a061-1464ed6b1764"
+
+[[records]]
+uuid = "3796926e-45f2-5fc5-8a64-768e4f63d003"
+label = "row_3796926e45f25fc58a64768e4f63d003"
+
+[records.values]
+key = "a83b48a5-20de-523a-a061-1464ed6b1764_9d5873e8-84c2-4927-afb4-62bed85d8242"
+material = "9d5873e8-84c2-4927-afb4-62bed85d8242"
+name = "Rotwood Court — Frostland Silver Filament"
+region = "a83b48a5-20de-523a-a061-1464ed6b1764"
+
+[[records]]
+uuid = "a7f00234-dd46-5370-b281-76fd1a2abf5a"
+label = "row_a7f00234dd465370b28176fd1a2abf5a"
+
+[records.values]
+key = "a83b48a5-20de-523a-a061-1464ed6b1764_ab1a75f9-e5db-4623-9d24-7bf5f1f9fa99"
+material = "ab1a75f9-e5db-4623-9d24-7bf5f1f9fa99"
+name = "Rotwood Court — Fen Black Pearl"
+region = "a83b48a5-20de-523a-a061-1464ed6b1764"
+
+[[records]]
+uuid = "ba1a63c8-b147-567b-a356-7e0fa11a9bc2"
+label = "row_ba1a63c8b147567ba3567e0fa11a9bc2"
+
+[records.values]
+key = "a83b48a5-20de-523a-a061-1464ed6b1764_bedefa1d-08fb-4861-9c8c-d1238dff51c4"
+material = "bedefa1d-08fb-4861-9c8c-d1238dff51c4"
+name = "Rotwood Court — Fen Sunstone"
+region = "a83b48a5-20de-523a-a061-1464ed6b1764"
+
+[[records]]
+uuid = "a3969e0d-1630-562d-a83d-7d143e0c052d"
+label = "row_a3969e0d1630562da83d7d143e0c052d"
+
+[records.values]
+key = "a83b48a5-20de-523a-a061-1464ed6b1764_c9e2f89c-c975-4718-a31e-bb42f4f9968f"
+material = "c9e2f89c-c975-4718-a31e-bb42f4f9968f"
+name = "Rotwood Court — Frostland Nightbloom"
+region = "a83b48a5-20de-523a-a061-1464ed6b1764"
+
+[[records]]
+uuid = "7a857f98-28bd-54bc-aa0d-55757394a350"
+label = "row_7a857f9828bd54bcaa0d55757394a350"
+
+[records.values]
+key = "a83b48a5-20de-523a-a061-1464ed6b1764_e416672f-86b3-4d38-a25e-3b25b63e3660"
+material = "e416672f-86b3-4d38-a25e-3b25b63e3660"
+name = "Rotwood Court — Relic Amber Resin"
+region = "a83b48a5-20de-523a-a061-1464ed6b1764"
+
+[[records]]
+uuid = "ff4dac48-128a-5c72-86fc-60270831e98a"
+label = "row_ff4dac48128a5c7286fc60270831e98a"
+
+[records.values]
+key = "ae786757-21ef-5fc5-ad85-7c306674da9c_01fb83d6-bbd1-44c4-9ff0-50dc38b64722"
+material = "01fb83d6-bbd1-44c4-9ff0-50dc38b64722"
+name = "Broken Watchtower — Woodland Nightbloom"
+region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "fff4c517-8050-56e4-a06d-6d5e082b90ae"
+label = "row_fff4c517805056e4a06d6d5e082b90ae"
+
+[records.values]
+key = "ae786757-21ef-5fc5-ad85-7c306674da9c_03f1d36b-0202-4f05-bb27-944966d388e6"
+material = "03f1d36b-0202-4f05-bb27-944966d388e6"
+name = "Broken Watchtower — Woodland Elderscale"
+region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "7dd7b6a8-a52f-5d62-958b-a7fd08ac189d"
+label = "row_7dd7b6a8a52f5d62958ba7fd08ac189d"
+
+[records.values]
+key = "ae786757-21ef-5fc5-ad85-7c306674da9c_0f0049f4-a154-4470-a9f2-28edff43d201"
+material = "0f0049f4-a154-4470-a9f2-28edff43d201"
+name = "Broken Watchtower — Woodland Dreamlotus"
+region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "a1d12f2c-1a2a-5819-b4dc-20217c06700e"
+label = "row_a1d12f2c1a2a5819b4dc20217c06700e"
+
+[records.values]
+key = "ae786757-21ef-5fc5-ad85-7c306674da9c_1318ae9a-e675-4774-aab9-44abd12736a9"
+material = "1318ae9a-e675-4774-aab9-44abd12736a9"
+name = "Broken Watchtower — Woodland Astral Crystal"
+region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "9761fbf9-9047-5c87-996b-0da65d00b99b"
+label = "row_9761fbf990475c87996b0da65d00b99b"
+
+[records.values]
+key = "ae786757-21ef-5fc5-ad85-7c306674da9c_21c97cfd-acfa-437a-a08b-45c244644ec4"
+material = "21c97cfd-acfa-437a-a08b-45c244644ec4"
+name = "Broken Watchtower — Woodland Amberscale"
+region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "d976877e-820d-5a84-b31a-ca9c24724d97"
+label = "row_d976877e820d5a84b31aca9c24724d97"
+
+[records.values]
+key = "ae786757-21ef-5fc5-ad85-7c306674da9c_4d16ec0f-877c-4f80-8948-7617f5ce1b6c"
+material = "4d16ec0f-877c-4f80-8948-7617f5ce1b6c"
+name = "Broken Watchtower — Woodland Dreamweave Fiber"
+region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "cd988932-8315-5357-a41d-bad1219aebc9"
+label = "row_cd98893283155357a41dbad1219aebc9"
+
+[records.values]
+key = "ae786757-21ef-5fc5-ad85-7c306674da9c_50348b25-d04c-4f80-902b-8333244ec185"
+material = "50348b25-d04c-4f80-902b-8333244ec185"
+name = "Broken Watchtower — Woodland Ash Heartwood"
+region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "1e3750c9-b7cc-5ed7-8bfd-c606d78cd0f6"
+label = "row_1e3750c9b7cc5ed78bfdc606d78cd0f6"
+
+[records.values]
+key = "ae786757-21ef-5fc5-ad85-7c306674da9c_6298b54b-e1b1-467a-91b7-9f3a8bc26753"
+material = "6298b54b-e1b1-467a-91b7-9f3a8bc26753"
+name = "Broken Watchtower — Woodland Reed Fiber"
+region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "e9976562-9936-5cc4-a12c-8d6920327f33"
+label = "row_e997656299365cc4a12c8d6920327f33"
+
+[records.values]
+key = "ae786757-21ef-5fc5-ad85-7c306674da9c_90b49505-6507-4ad3-93c8-3e8bb22f3047"
+material = "90b49505-6507-4ad3-93c8-3e8bb22f3047"
+name = "Broken Watchtower — Woodland Ebonheart Wood"
+region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "efa94af7-8ddb-52a9-ab37-4affda20c35d"
+label = "row_efa94af78ddb52a9ab374affda20c35d"
+
+[records.values]
+key = "ae786757-21ef-5fc5-ad85-7c306674da9c_940c9827-07dd-41f9-841b-3ed6ef84f88c"
+material = "940c9827-07dd-41f9-841b-3ed6ef84f88c"
+name = "Broken Watchtower — Woodland Amber Crystal"
+region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "a2d00135-10cf-5be3-a5f3-2a1b7fac32ee"
+label = "row_a2d0013510cf5be3a5f32a1b7fac32ee"
+
+[records.values]
+key = "ae786757-21ef-5fc5-ad85-7c306674da9c_aff261cb-0283-4d3f-93e1-a241b7c585c6"
+material = "aff261cb-0283-4d3f-93e1-a241b7c585c6"
+name = "Broken Watchtower — Woodland Silver Filament"
+region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "e0a5237f-565a-5284-85fa-69581d82e584"
+label = "row_e0a5237f565a528485fa69581d82e584"
+
+[records.values]
+key = "ae786757-21ef-5fc5-ad85-7c306674da9c_cb0cf11f-9d2a-47be-907e-ad279c447473"
+material = "cb0cf11f-9d2a-47be-907e-ad279c447473"
+name = "Broken Watchtower — Woodland Elderheart Resin"
+region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "921ec3f4-efa6-5830-bbbf-14b028c28465"
+label = "row_921ec3f4efa65830bbbf14b028c28465"
+
+[records.values]
+key = "ae786757-21ef-5fc5-ad85-7c306674da9c_cc828d16-f267-438c-a681-ce2d6a059f18"
+material = "cc828d16-f267-438c-a681-ce2d6a059f18"
+name = "Broken Watchtower — Woodland Thickscale Hide"
+region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "c0d58b8c-b83f-5159-8427-a85ffeb06fac"
+label = "row_c0d58b8cb83f51598427a85ffeb06fac"
+
+[records.values]
+key = "ae786757-21ef-5fc5-ad85-7c306674da9c_e24d8a1f-65b5-4651-be31-991d52f1436b"
+material = "e24d8a1f-65b5-4651-be31-991d52f1436b"
+name = "Broken Watchtower — Woodland Slatehide"
+region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "0938421a-d982-518f-ade1-374242edbd57"
+label = "row_0938421ad982518fade1374242edbd57"
+
+[records.values]
+key = "ae786757-21ef-5fc5-ad85-7c306674da9c_f56cf813-057c-4316-b7de-f63c8c1cd469"
+material = "f56cf813-057c-4316-b7de-f63c8c1cd469"
+name = "Broken Watchtower — Woodland Granite"
+region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "5f224c34-614f-5d65-b43e-391d6a08d27d"
+label = "row_5f224c34614f5d65b43e391d6a08d27d"
+
+[records.values]
+key = "ae786757-21ef-5fc5-ad85-7c306674da9c_f7bd16e8-b1e8-4dfe-8e94-ea842a0fbd24"
+material = "f7bd16e8-b1e8-4dfe-8e94-ea842a0fbd24"
+name = "Broken Watchtower — Woodland Sunstone"
+region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "77c594eb-c8b5-5f39-a267-1442c42718cf"
+label = "row_77c594ebc8b55f39a2671442c42718cf"
+
+[records.values]
+key = "ae786757-21ef-5fc5-ad85-7c306674da9c_fbaf1e3e-b649-4eef-bec3-ac39027e7d33"
+material = "fbaf1e3e-b649-4eef-bec3-ac39027e7d33"
+name = "Broken Watchtower — Woodland Eclipsium Ore"
+region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "e765caae-1a56-5c91-be35-f3d4ce18f10d"
+label = "row_e765caae1a565c91be35f3d4ce18f10d"
+
+[records.values]
+key = "b8255005-8c23-545d-b943-a6ab373b4c56_20000000-0000-4000-8002-00000000000b"
+material = "20000000-0000-4000-8002-00000000000b"
+name = "Smith's Rest — Unsorted Cavern Bog Iron"
+region = "b8255005-8c23-545d-b943-a6ab373b4c56"
+
+[[records]]
+uuid = "a6318c86-cfa7-5f92-b397-104ade847e6b"
+label = "row_a6318c86cfa75f92b397104ade847e6b"
+
+[records.values]
+key = "b8255005-8c23-545d-b943-a6ab373b4c56_614224c1-8f7b-4fa0-8ea8-9854d92e4adb"
+material = "614224c1-8f7b-4fa0-8ea8-9854d92e4adb"
+name = "Smith's Rest — Iron Ore"
+region = "b8255005-8c23-545d-b943-a6ab373b4c56"
+
+[[records]]
+uuid = "b9dd19f8-5e3c-53bd-be98-3681f9f36b9f"
+label = "row_b9dd19f85e3c53bdbe983681f9f36b9f"
+
+[records.values]
+key = "b8255005-8c23-545d-b943-a6ab373b4c56_86f9ab80-5013-45a0-ad5c-95cda39d8139"
+material = "86f9ab80-5013-45a0-ad5c-95cda39d8139"
+name = "Smith's Rest — Cavern Bog Iron"
+region = "b8255005-8c23-545d-b943-a6ab373b4c56"
+
+[[records]]
+uuid = "df9f5f9f-4306-5a36-a7cf-7443eeb5a425"
+label = "row_df9f5f9f43065a36a7cf7443eeb5a425"
+
+[records.values]
+key = "b8255005-8c23-545d-b943-a6ab373b4c56_d4f03716-174d-40b9-84e2-2962eb5a69d6"
+material = "d4f03716-174d-40b9-84e2-2962eb5a69d6"
+name = "Smith's Rest — Cavern Slate"
+region = "b8255005-8c23-545d-b943-a6ab373b4c56"
+
+[[records]]
+uuid = "30e5a619-ca72-5f29-aee1-29d0d92db065"
+label = "row_30e5a619ca725f29aee129d0d92db065"
+
+[records.values]
+key = "b99f3597-7f1c-53a5-9129-7d876ac5c764_19184e9b-ae80-4bf1-a044-1847651aaf90"
+material = "19184e9b-ae80-4bf1-a044-1847651aaf90"
+name = "Sunken Moon Reef — Tidal Dreamweave Fiber"
+region = "b99f3597-7f1c-53a5-9129-7d876ac5c764"
+
+[[records]]
+uuid = "76affe63-dc3a-55ab-9bce-83e3cb13c624"
+label = "row_76affe63dc3a55ab9bce83e3cb13c624"
+
+[records.values]
+key = "b99f3597-7f1c-53a5-9129-7d876ac5c764_242f1f3a-7359-4b95-98b7-d6cde7a24d33"
+material = "242f1f3a-7359-4b95-98b7-d6cde7a24d33"
+name = "Sunken Moon Reef — Tidal Astral Crystal"
+region = "b99f3597-7f1c-53a5-9129-7d876ac5c764"
+
+[[records]]
+uuid = "55d5ad38-814a-55be-8934-673a5a3a88eb"
+label = "row_55d5ad38814a55be8934673a5a3a88eb"
+
+[records.values]
+key = "b99f3597-7f1c-53a5-9129-7d876ac5c764_41b9edff-7fba-404f-8315-8fa86260321e"
+material = "41b9edff-7fba-404f-8315-8fa86260321e"
+name = "Sunken Moon Reef — Tidal Dreamlotus"
+region = "b99f3597-7f1c-53a5-9129-7d876ac5c764"
+
+[[records]]
+uuid = "a80e6aae-0d29-5377-89d5-229748f0086f"
+label = "row_a80e6aae0d29537789d5229748f0086f"
+
+[records.values]
+key = "b99f3597-7f1c-53a5-9129-7d876ac5c764_55b628b0-fd21-44d3-bf31-4b1781972498"
+material = "55b628b0-fd21-44d3-bf31-4b1781972498"
+name = "Sunken Moon Reef — Tidal Dawn Pearl"
+region = "b99f3597-7f1c-53a5-9129-7d876ac5c764"
+
+[[records]]
+uuid = "0d3e1664-a767-5238-a726-34b53967fc0e"
+label = "row_0d3e1664a7675238a72634b53967fc0e"
+
+[records.values]
+key = "b99f3597-7f1c-53a5-9129-7d876ac5c764_763d31e1-566b-4839-a4ca-2ed43ebb639e"
+material = "763d31e1-566b-4839-a4ca-2ed43ebb639e"
+name = "Sunken Moon Reef — Tidal Voidstone"
+region = "b99f3597-7f1c-53a5-9129-7d876ac5c764"
+
+[[records]]
+uuid = "902d5f8f-cad1-524d-94c7-225b959ad431"
+label = "row_902d5f8fcad1524d94c7225b959ad431"
+
+[records.values]
+key = "b99f3597-7f1c-53a5-9129-7d876ac5c764_9ff75a4e-1f53-482c-9544-b0db8b490d64"
+material = "9ff75a4e-1f53-482c-9544-b0db8b490d64"
+name = "Sunken Moon Reef — Tidal Elderheart Resin"
+region = "b99f3597-7f1c-53a5-9129-7d876ac5c764"
+
+[[records]]
+uuid = "2f11b419-14bb-592a-886a-c7fbb3733d04"
+label = "row_2f11b41914bb592a886ac7fbb3733d04"
+
+[records.values]
+key = "b99f3597-7f1c-53a5-9129-7d876ac5c764_b12f1458-5487-4883-a688-de6bcc38160f"
+material = "b12f1458-5487-4883-a688-de6bcc38160f"
+name = "Sunken Moon Reef — Tidal Eclipsium Ore"
+region = "b99f3597-7f1c-53a5-9129-7d876ac5c764"
+
+[[records]]
+uuid = "9a423ec1-7d06-5564-9921-fccfd1a5af6f"
+label = "row_9a423ec17d0655649921fccfd1a5af6f"
+
+[records.values]
+key = "b99f3597-7f1c-53a5-9129-7d876ac5c764_c9858b76-b02c-4286-8281-8e0cdd2f7eea"
+material = "c9858b76-b02c-4286-8281-8e0cdd2f7eea"
+name = "Sunken Moon Reef — Tidal Ancient Beast Hide"
+region = "b99f3597-7f1c-53a5-9129-7d876ac5c764"
+
+[[records]]
+uuid = "13291fcd-2c7f-54f0-8750-5e5ae50b08ff"
+label = "row_13291fcd2c7f54f087505e5ae50b08ff"
+
+[records.values]
+key = "b99f3597-7f1c-53a5-9129-7d876ac5c764_c9ef1b94-3227-429a-98a8-792a8ed24a05"
+material = "c9ef1b94-3227-429a-98a8-792a8ed24a05"
+name = "Sunken Moon Reef — Tidal Elderscale"
+region = "b99f3597-7f1c-53a5-9129-7d876ac5c764"
+
+[[records]]
+uuid = "d9ac71e8-d5e2-5ca3-8eb6-ca79d7e579b9"
+label = "row_d9ac71e8d5e25ca38eb6ca79d7e579b9"
+
+[records.values]
+key = "b99f3597-7f1c-53a5-9129-7d876ac5c764_eb24f285-25cd-46aa-9b74-cf99ae8fbe9a"
+material = "eb24f285-25cd-46aa-9b74-cf99ae8fbe9a"
+name = "Sunken Moon Reef — Tidal Ebonheart Wood"
+region = "b99f3597-7f1c-53a5-9129-7d876ac5c764"
+
+[[records]]
+uuid = "95c46545-8bce-5ab2-97d9-edc56ce7cb65"
+label = "row_95c465458bce5ab297d9edc56ce7cb65"
+
+[records.values]
+key = "bdceea5a-6b34-52ca-a782-0e21012921ac_083acbce-5b13-46a4-b126-3f00b061cb00"
+material = "083acbce-5b13-46a4-b126-3f00b061cb00"
+name = "Icicle Steps — Frostland Amberscale"
+region = "bdceea5a-6b34-52ca-a782-0e21012921ac"
+
+[[records]]
+uuid = "216a87d3-504e-5429-a18b-158e987dbab3"
+label = "row_216a87d3504e5429a18b158e987dbab3"
+
+[records.values]
+key = "bdceea5a-6b34-52ca-a782-0e21012921ac_0b7d0c2a-e10c-4e67-8bc7-3a02999e9f54"
+material = "0b7d0c2a-e10c-4e67-8bc7-3a02999e9f54"
+name = "Icicle Steps — Fen Obsidian"
+region = "bdceea5a-6b34-52ca-a782-0e21012921ac"
+
+[[records]]
+uuid = "bcfdc623-5fe5-5462-953e-ddade2398260"
+label = "row_bcfdc6235fe55462953eddade2398260"
+
+[records.values]
+key = "bdceea5a-6b34-52ca-a782-0e21012921ac_163cfedb-d776-4c29-8b4c-20cd493d5204"
+material = "163cfedb-d776-4c29-8b4c-20cd493d5204"
+name = "Icicle Steps — Relic Black Pearl"
+region = "bdceea5a-6b34-52ca-a782-0e21012921ac"
+
+[[records]]
+uuid = "741756e0-3ec7-5438-a5dc-39cba2479276"
+label = "row_741756e03ec75438a5dc39cba2479276"
+
+[records.values]
+key = "bdceea5a-6b34-52ca-a782-0e21012921ac_25af3f2a-0a1c-4940-be51-3ab583687b59"
+material = "25af3f2a-0a1c-4940-be51-3ab583687b59"
+name = "Icicle Steps — Frostland Foxglove Leaf"
+region = "bdceea5a-6b34-52ca-a782-0e21012921ac"
+
+[[records]]
+uuid = "82fdda58-2dc1-5391-8aa0-f31e9de85c97"
+label = "row_82fdda582dc153918aa0f31e9de85c97"
+
+[records.values]
+key = "bdceea5a-6b34-52ca-a782-0e21012921ac_3eeaaca5-6355-42b2-9f30-cd2ceb9df464"
+material = "3eeaaca5-6355-42b2-9f30-cd2ceb9df464"
+name = "Icicle Steps — Fen Nightbloom"
+region = "bdceea5a-6b34-52ca-a782-0e21012921ac"
+
+[[records]]
+uuid = "fb106532-4347-55de-a910-db46c106a6cb"
+label = "row_fb106532434755dea910db46c106a6cb"
+
+[records.values]
+key = "bdceea5a-6b34-52ca-a782-0e21012921ac_477da1ac-2e40-4563-af28-aa69cc4011d6"
+material = "477da1ac-2e40-4563-af28-aa69cc4011d6"
+name = "Icicle Steps — Relic Foxglove Leaf"
+region = "bdceea5a-6b34-52ca-a782-0e21012921ac"
+
+[[records]]
+uuid = "37965dac-772d-5b09-97d7-64ad16604c47"
+label = "row_37965dac772d5b0997d764ad16604c47"
+
+[records.values]
+key = "bdceea5a-6b34-52ca-a782-0e21012921ac_5b440f52-3911-4ba0-8cf2-3e2e1c8acc26"
+material = "5b440f52-3911-4ba0-8cf2-3e2e1c8acc26"
+name = "Icicle Steps — Fen Thickscale Hide"
+region = "bdceea5a-6b34-52ca-a782-0e21012921ac"
+
+[[records]]
+uuid = "89eb0def-4d88-5c15-aed9-cd035180a556"
+label = "row_89eb0def4d885c15aed9cd035180a556"
+
+[records.values]
+key = "bdceea5a-6b34-52ca-a782-0e21012921ac_6df7c320-8cd5-4f29-8a66-84cf0d761fc1"
+material = "6df7c320-8cd5-4f29-8a66-84cf0d761fc1"
+name = "Icicle Steps — Relic Ash Heartwood"
+region = "bdceea5a-6b34-52ca-a782-0e21012921ac"
+
+[[records]]
+uuid = "827fba85-f161-5c45-b86f-67d04d58dd0e"
+label = "row_827fba85f1615c45b86f67d04d58dd0e"
+
+[records.values]
+key = "bdceea5a-6b34-52ca-a782-0e21012921ac_6e3d5bc3-1fd6-49cc-ad91-d8dff89a0de4"
+material = "6e3d5bc3-1fd6-49cc-ad91-d8dff89a0de4"
+name = "Icicle Steps — Frostland Amber Crystal"
+region = "bdceea5a-6b34-52ca-a782-0e21012921ac"
+
+[[records]]
+uuid = "bfc3b797-93c4-51d9-ab9b-5d9a2d34cda2"
+label = "row_bfc3b79793c451d9ab9b5d9a2d34cda2"
+
+[records.values]
+key = "bdceea5a-6b34-52ca-a782-0e21012921ac_989d034c-db4f-4799-a39b-418bdeeb5ef7"
+material = "989d034c-db4f-4799-a39b-418bdeeb5ef7"
+name = "Icicle Steps — Frostland Amber Pearl"
+region = "bdceea5a-6b34-52ca-a782-0e21012921ac"
+
+[[records]]
+uuid = "a410a00c-1076-5a7d-b18a-dacc35d3fa86"
+label = "row_a410a00c10765a7db18adacc35d3fa86"
+
+[records.values]
+key = "bdceea5a-6b34-52ca-a782-0e21012921ac_cf4cd8e5-fb86-48c4-8f28-78bf9476cfab"
+material = "cf4cd8e5-fb86-48c4-8f28-78bf9476cfab"
+name = "Icicle Steps — Frostland Obsidian"
+region = "bdceea5a-6b34-52ca-a782-0e21012921ac"
+
+[[records]]
+uuid = "21b5ae7d-a16e-5892-ae94-e9720ee8749f"
+label = "row_21b5ae7da16e5892ae94e9720ee8749f"
+
+[records.values]
+key = "bdceea5a-6b34-52ca-a782-0e21012921ac_cf51a177-23c6-4f68-8dd4-f543febe7bda"
+material = "cf51a177-23c6-4f68-8dd4-f543febe7bda"
+name = "Icicle Steps — Frostland Yew Heartwood"
+region = "bdceea5a-6b34-52ca-a782-0e21012921ac"
+
+[[records]]
+uuid = "26426099-64cd-5f28-82b9-7610f0672f27"
+label = "row_2642609964cd5f2882b97610f0672f27"
+
+[records.values]
+key = "bdceea5a-6b34-52ca-a782-0e21012921ac_d1c58a10-285e-4c5f-ac48-6972d557710e"
+material = "d1c58a10-285e-4c5f-ac48-6972d557710e"
+name = "Icicle Steps — Fen Foxglove Leaf"
+region = "bdceea5a-6b34-52ca-a782-0e21012921ac"
+
+[[records]]
+uuid = "1340523a-e936-5de1-b488-7020e27472e7"
+label = "row_1340523ae9365de1b4887020e27472e7"
+
+[records.values]
+key = "bdceea5a-6b34-52ca-a782-0e21012921ac_e0c82292-2d50-4587-8922-d45d1859f92d"
+material = "e0c82292-2d50-4587-8922-d45d1859f92d"
+name = "Icicle Steps — Relic Ember Resin"
+region = "bdceea5a-6b34-52ca-a782-0e21012921ac"
+
+[[records]]
+uuid = "7c5b1970-4878-566a-b584-ebed27ebb1db"
+label = "row_7c5b19704878566ab584ebed27ebb1db"
+
+[records.values]
+key = "bdceea5a-6b34-52ca-a782-0e21012921ac_e3652e38-6f75-4185-8b51-bf594cc92f02"
+material = "e3652e38-6f75-4185-8b51-bf594cc92f02"
+name = "Icicle Steps — Relic Yew Heartwood"
+region = "bdceea5a-6b34-52ca-a782-0e21012921ac"
+
+[[records]]
+uuid = "d8331987-be53-53a1-b949-0d294e2541c5"
+label = "row_d8331987be5353a1b9490d294e2541c5"
+
+[records.values]
+key = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2_108d2d75-51a2-4f62-b21c-b4e4a838ff37"
+material = "108d2d75-51a2-4f62-b21c-b4e4a838ff37"
+name = "Willow Waystation — Woodland Pine Resin"
+region = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2"
+
+[[records]]
+uuid = "e87efc95-9032-5b2f-b3b7-4782a3a1d00f"
+label = "row_e87efc9590325b2fb3b74782a3a1d00f"
+
+[records.values]
+key = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2_20000000-0000-4000-8002-000000000001"
+material = "20000000-0000-4000-8002-000000000001"
+name = "Willow Waystation — Unsorted Woodland Bog Iron"
+region = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2"
+
+[[records]]
+uuid = "b5e64c24-2be4-5d9d-ab84-c560d6f3eed4"
+label = "row_b5e64c242be45d9dab84c560d6f3eed4"
+
+[records.values]
+key = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2_20000000-0000-4000-8002-000000000003"
+material = "20000000-0000-4000-8002-000000000003"
+name = "Willow Waystation — Unsorted Woodland Bronzevein Ore"
+region = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2"
+
+[[records]]
+uuid = "35a17f6e-c4a4-546d-8dd8-69787092d441"
+label = "row_35a17f6ec4a4546d8dd869787092d441"
+
+[records.values]
+key = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2_22bfd0e6-cfa8-48b5-8d82-6cf45602680e"
+material = "22bfd0e6-cfa8-48b5-8d82-6cf45602680e"
+name = "Willow Waystation — Woodland Bitterleaf"
+region = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2"
+
+[[records]]
+uuid = "681a530e-04e2-5180-b598-b01e7fc18e01"
+label = "row_681a530e04e25180b598b01e7fc18e01"
+
+[records.values]
+key = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2_7643ca7d-608e-4535-96a9-7be4ca9bd454"
+material = "7643ca7d-608e-4535-96a9-7be4ca9bd454"
+name = "Willow Waystation — Woodland Birch Heartwood"
+region = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2"
+
+[[records]]
+uuid = "eabb9e05-ee2e-5249-9d1d-e44d5c80821d"
+label = "row_eabb9e05ee2e52499d1de44d5c80821d"
+
+[records.values]
+key = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2_9f6d0aee-b50f-43fb-a99b-5ef6eb9a6ea9"
+material = "9f6d0aee-b50f-43fb-a99b-5ef6eb9a6ea9"
+name = "Willow Waystation — Woodland Bog Iron"
+region = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2"
+
+[[records]]
+uuid = "920cdfd5-9051-5518-841a-798aa0cad0f3"
+label = "row_920cdfd590515518841a798aa0cad0f3"
+
+[records.values]
+key = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2_b12aae25-1aff-4d72-a101-f34318344e37"
+material = "b12aae25-1aff-4d72-a101-f34318344e37"
+name = "Willow Waystation — Hardwood"
+region = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2"
+
+[[records]]
+uuid = "0ab1cfeb-53e4-575e-8473-0f354d045503"
+label = "row_0ab1cfeb53e4575e84730f354d045503"
+
+[records.values]
+key = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2_c6692e3e-92fc-4a3e-b437-06db71a41721"
+material = "c6692e3e-92fc-4a3e-b437-06db71a41721"
+name = "Willow Waystation — Woodland Mottled Hide"
+region = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2"
+
+[[records]]
+uuid = "1464fc9d-77bc-5be0-9848-b8d09b4ac43b"
+label = "row_1464fc9d77bc5be09848b8d09b4ac43b"
+
+[records.values]
+key = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2_f00ff365-0d36-43d5-83e9-f229cbb0a2df"
+material = "f00ff365-0d36-43d5-83e9-f229cbb0a2df"
+name = "Willow Waystation — Woodland Willow Heartwood"
+region = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2"
+
+[[records]]
+uuid = "1ac79ac5-de26-5bfb-881e-cdc282d2a1ec"
+label = "row_1ac79ac5de265bfb881ecdc282d2a1ec"
+
+[records.values]
+key = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2_ff62e1a8-47ea-42c9-a228-cb87a8c89d97"
+material = "ff62e1a8-47ea-42c9-a228-cb87a8c89d97"
+name = "Willow Waystation — Woodland Cedar Resin"
+region = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2"
+
+[[records]]
+uuid = "926b0ac8-a80c-556c-90bc-0bc5101d0019"
+label = "row_926b0ac8a80c556c90bc0bc5101d0019"
+
+[records.values]
+key = "cedc4ce7-be4f-5b1e-8216-057f01c3c4d2_09fcd6d7-0dba-4dd1-afef-9f2fe225beb0"
+material = "09fcd6d7-0dba-4dd1-afef-9f2fe225beb0"
+name = "Scorpion Hollow — Ember Red Hematite"
+region = "cedc4ce7-be4f-5b1e-8216-057f01c3c4d2"
+
+[[records]]
+uuid = "fa07f0e5-c7b1-5bce-b705-a5b3c76d22e9"
+label = "row_fa07f0e5c7b15bceb705a5b3c76d22e9"
+
+[records.values]
+key = "cedc4ce7-be4f-5b1e-8216-057f01c3c4d2_32c27364-9b8d-4dab-bc4e-a56e9f1dd68b"
+material = "32c27364-9b8d-4dab-bc4e-a56e9f1dd68b"
+name = "Scorpion Hollow — Ember Amber Crystal"
+region = "cedc4ce7-be4f-5b1e-8216-057f01c3c4d2"
+
+[[records]]
+uuid = "c6115210-712f-5e0f-bf48-6eed57e83bd1"
+label = "row_c6115210712f5e0fbf486eed57e83bd1"
+
+[records.values]
+key = "cedc4ce7-be4f-5b1e-8216-057f01c3c4d2_5fa87f93-50a7-4611-9b7e-e017c864a62e"
+material = "5fa87f93-50a7-4611-9b7e-e017c864a62e"
+name = "Scorpion Hollow — Ember Blazescale"
+region = "cedc4ce7-be4f-5b1e-8216-057f01c3c4d2"
+
+[[records]]
+uuid = "1d911b47-f14a-5428-8303-e97d387f1d87"
+label = "row_1d911b47f14a54288303e97d387f1d87"
+
+[records.values]
+key = "cedc4ce7-be4f-5b1e-8216-057f01c3c4d2_b227cb9d-48fa-4985-9281-097263490827"
+material = "b227cb9d-48fa-4985-9281-097263490827"
+name = "Scorpion Hollow — Ember Black Pearl"
+region = "cedc4ce7-be4f-5b1e-8216-057f01c3c4d2"
+
+[[records]]
+uuid = "89b6716d-9ada-5640-b87c-70491a6d33a2"
+label = "row_89b6716d9ada5640b87c70491a6d33a2"
+
+[records.values]
+key = "d1c89cb7-c9e5-50d2-8158-345b954015ce_013fd15c-1545-4776-9394-8ab96ef68076"
+material = "013fd15c-1545-4776-9394-8ab96ef68076"
+name = "Crater Cistern — Ember Sunstone"
+region = "d1c89cb7-c9e5-50d2-8158-345b954015ce"
+
+[[records]]
+uuid = "54b28564-cd73-553a-84d7-f7af7d47d32a"
+label = "row_54b28564cd73553a84d7f7af7d47d32a"
+
+[records.values]
+key = "d1c89cb7-c9e5-50d2-8158-345b954015ce_15670a92-ad38-4fac-99e4-df65046e6f8f"
+material = "15670a92-ad38-4fac-99e4-df65046e6f8f"
+name = "Crater Cistern — Dune Amberscale"
+region = "d1c89cb7-c9e5-50d2-8158-345b954015ce"
+
+[[records]]
+uuid = "91369939-4611-5358-b5d1-09e01ca1c101"
+label = "row_9136993946115358b5d109e01ca1c101"
+
+[records.values]
+key = "d1c89cb7-c9e5-50d2-8158-345b954015ce_650a12d5-0730-4b27-a7e6-18f33bb0fda7"
+material = "650a12d5-0730-4b27-a7e6-18f33bb0fda7"
+name = "Crater Cistern — Ember Golden Pyrite"
+region = "d1c89cb7-c9e5-50d2-8158-345b954015ce"
+
+[[records]]
+uuid = "43f94341-d915-5bd1-b89d-daf59c6f26a3"
+label = "row_43f94341d9155bd1b89ddaf59c6f26a3"
+
+[records.values]
+key = "d1c89cb7-c9e5-50d2-8158-345b954015ce_8ad3b7ca-9af3-4e0e-b458-acea3b35f988"
+material = "8ad3b7ca-9af3-4e0e-b458-acea3b35f988"
+name = "Crater Cistern — Dune Thickscale Hide"
+region = "d1c89cb7-c9e5-50d2-8158-345b954015ce"
+
+[[records]]
+uuid = "f3cc1ccc-a34b-5cf6-b0fc-cb5420fe49d8"
+label = "row_f3cc1ccca34b5cf6b0fccb5420fe49d8"
+
+[records.values]
+key = "d1c89cb7-c9e5-50d2-8158-345b954015ce_b2e23a2a-b769-4513-8f28-9b3113fa3227"
+material = "b2e23a2a-b769-4513-8f28-9b3113fa3227"
+name = "Crater Cistern — Dune Black Pearl"
+region = "d1c89cb7-c9e5-50d2-8158-345b954015ce"
+
+[[records]]
+uuid = "3e2df725-e066-5f5b-a9c8-fc7bde2ed3f5"
+label = "row_3e2df725e0665f5ba9c8fc7bde2ed3f5"
+
+[records.values]
+key = "d1c89cb7-c9e5-50d2-8158-345b954015ce_e781ae3e-12a0-4947-81a6-f8f478a7c7b7"
+material = "e781ae3e-12a0-4947-81a6-f8f478a7c7b7"
+name = "Crater Cistern — Dune Nightbloom"
+region = "d1c89cb7-c9e5-50d2-8158-345b954015ce"
+
+[[records]]
+uuid = "7248f86e-97b7-5f8a-86ef-224d193b633e"
+label = "row_7248f86e97b75f8a86ef224d193b633e"
+
+[records.values]
+key = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c_02d08a32-2915-49c0-9dfe-d84f69986f13"
+material = "02d08a32-2915-49c0-9dfe-d84f69986f13"
+name = "Stone Ring Ascent — Cavern Reed Fiber"
+region = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c"
+
+[[records]]
+uuid = "ae0659c8-9ef6-5fe7-83d7-573b9d21e408"
+label = "row_ae0659c89ef65fe783d7573b9d21e408"
+
+[records.values]
+key = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c_0dadd87d-b4a8-4e37-85a6-1ebad0864e27"
+material = "0dadd87d-b4a8-4e37-85a6-1ebad0864e27"
+name = "Stone Ring Ascent — Cavern Amber Crystal"
+region = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c"
+
+[[records]]
+uuid = "b671ddd4-93c0-5131-8478-600e4228fa1a"
+label = "row_b671ddd493c051318478600e4228fa1a"
+
+[records.values]
+key = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c_1ba1e26b-d9e6-4b82-ade4-c3b46c04402c"
+material = "1ba1e26b-d9e6-4b82-ade4-c3b46c04402c"
+name = "Stone Ring Ascent — Cavern Amber Pearl"
+region = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c"
+
+[[records]]
+uuid = "d126e6a0-435d-5261-abd0-2d71e5d0a914"
+label = "row_d126e6a0435d5261abd02d71e5d0a914"
+
+[records.values]
+key = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c_25df3e9a-907d-4da4-a712-4e49226f4a71"
+material = "25df3e9a-907d-4da4-a712-4e49226f4a71"
+name = "Stone Ring Ascent — Cavern Golden Pyrite"
+region = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c"
+
+[[records]]
+uuid = "37cbc888-5612-5599-bf4c-7d4182e092f0"
+label = "row_37cbc88856125599bf4c7d4182e092f0"
+
+[records.values]
+key = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c_37cbcb51-82a5-42d8-a4a5-25e2166ec226"
+material = "37cbcb51-82a5-42d8-a4a5-25e2166ec226"
+name = "Stone Ring Ascent — Cavern Slatehide"
+region = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c"
+
+[[records]]
+uuid = "3e220c89-1dcf-59ba-8fa8-9569b0e36fab"
+label = "row_3e220c891dcf59ba8fa89569b0e36fab"
+
+[records.values]
+key = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c_38d9289c-7c3f-4d9e-9bd6-f1b6b45d3adc"
+material = "38d9289c-7c3f-4d9e-9bd6-f1b6b45d3adc"
+name = "Stone Ring Ascent — Cavern Sunstone"
+region = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c"
+
+[[records]]
+uuid = "72f2e193-a40c-5ba9-aceb-5345b7fdb3d2"
+label = "row_72f2e193a40c5ba9aceb5345b7fdb3d2"
+
+[records.values]
+key = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c_3e6e13ee-1bc2-4eaa-bcc3-8017ff29b401"
+material = "3e6e13ee-1bc2-4eaa-bcc3-8017ff29b401"
+name = "Stone Ring Ascent — Cavern Granite"
+region = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c"
+
+[[records]]
+uuid = "02c5a8b8-43f9-5295-8a40-33ebe76c66b8"
+label = "row_02c5a8b843f952958a4033ebe76c66b8"
+
+[records.values]
+key = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c_6a9fee45-8c0c-47ab-bfb0-c275080163e1"
+material = "6a9fee45-8c0c-47ab-bfb0-c275080163e1"
+name = "Stone Ring Ascent — Cavern Blazescale"
+region = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c"
+
+[[records]]
+uuid = "56fff554-ee11-5342-8042-bce2b3a20621"
+label = "row_56fff554ee1153428042bce2b3a20621"
+
+[records.values]
+key = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c_9dddb1d6-cb49-4d9b-9765-66f0f2c90fb5"
+material = "9dddb1d6-cb49-4d9b-9765-66f0f2c90fb5"
+name = "Stone Ring Ascent — Cavern Nightbloom"
+region = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c"
+
+[[records]]
+uuid = "3864f343-d5db-57ba-b2ca-d8e9fe26ac82"
+label = "row_3864f343d5db57bab2cad8e9fe26ac82"
+
+[records.values]
+key = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c_bca6f5a5-898d-47ea-b5a1-024807405d8b"
+material = "bca6f5a5-898d-47ea-b5a1-024807405d8b"
+name = "Stone Ring Ascent — Cavern Foxglove Leaf"
+region = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c"
+
+[[records]]
+uuid = "8532589f-b7c1-552a-b0eb-5d3b99310461"
+label = "row_8532589fb7c1552ab0eb5d3b99310461"
+
+[records.values]
+key = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c_d8d9c4d2-30d1-42e6-8af1-4367382ba890"
+material = "d8d9c4d2-30d1-42e6-8af1-4367382ba890"
+name = "Stone Ring Ascent — Cavern Ash Heartwood"
+region = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c"
+
+[[records]]
+uuid = "7bee5ee5-24ac-5aeb-a0b8-49c7a83fac37"
+label = "row_7bee5ee524ac5aeba0b849c7a83fac37"
+
+[records.values]
+key = "e1af2a4e-953f-5f4d-ae3a-16b0003c5756_20000000-0000-4000-8002-00000000000b"
+material = "20000000-0000-4000-8002-00000000000b"
+name = "Salt Crossroads — Unsorted Cavern Bog Iron"
+region = "e1af2a4e-953f-5f4d-ae3a-16b0003c5756"
+
+[[records]]
+uuid = "d4c0372a-2c28-539c-acd8-f56e253730a8"
+label = "row_d4c0372a2c28539cacd8f56e253730a8"
+
+[records.values]
+key = "e1af2a4e-953f-5f4d-ae3a-16b0003c5756_4b100671-030f-42d1-a1a3-ba95cd801f76"
+material = "4b100671-030f-42d1-a1a3-ba95cd801f76"
+name = "Salt Crossroads — Cavern Pine Resin"
+region = "e1af2a4e-953f-5f4d-ae3a-16b0003c5756"
+
+[[records]]
+uuid = "48856889-bd7e-5cda-860a-769bf1f331de"
+label = "row_48856889bd7e5cda860a769bf1f331de"
+
+[records.values]
+key = "e1af2a4e-953f-5f4d-ae3a-16b0003c5756_605249d4-f765-4b09-a95c-6128b524f9c9"
+material = "605249d4-f765-4b09-a95c-6128b524f9c9"
+name = "Salt Crossroads — Cavern Flax Fiber"
+region = "e1af2a4e-953f-5f4d-ae3a-16b0003c5756"
+
+[[records]]
+uuid = "0da80495-dbd2-5dbc-8324-52ba41e1438b"
+label = "row_0da80495dbd25dbc832452ba41e1438b"
+
+[records.values]
+key = "e1af2a4e-953f-5f4d-ae3a-16b0003c5756_614224c1-8f7b-4fa0-8ea8-9854d92e4adb"
+material = "614224c1-8f7b-4fa0-8ea8-9854d92e4adb"
+name = "Salt Crossroads — Iron Ore"
+region = "e1af2a4e-953f-5f4d-ae3a-16b0003c5756"
+
+[[records]]
+uuid = "82d55197-825d-502b-bc22-9222111de358"
+label = "row_82d55197825d502bbc229222111de358"
+
+[records.values]
+key = "e1af2a4e-953f-5f4d-ae3a-16b0003c5756_86f9ab80-5013-45a0-ad5c-95cda39d8139"
+material = "86f9ab80-5013-45a0-ad5c-95cda39d8139"
+name = "Salt Crossroads — Cavern Bog Iron"
+region = "e1af2a4e-953f-5f4d-ae3a-16b0003c5756"
+
+[[records]]
+uuid = "05cfd770-56f9-58b3-99bb-5ac330780269"
+label = "row_05cfd77056f958b399bb5ac330780269"
+
+[records.values]
+key = "e1af2a4e-953f-5f4d-ae3a-16b0003c5756_d4f03716-174d-40b9-84e2-2962eb5a69d6"
+material = "d4f03716-174d-40b9-84e2-2962eb5a69d6"
+name = "Salt Crossroads — Cavern Slate"
+region = "e1af2a4e-953f-5f4d-ae3a-16b0003c5756"
+
+[[records]]
+uuid = "9c1feeb9-fc27-5530-bc9c-bc8661383861"
+label = "row_9c1feeb9fc275530bc9cbc8661383861"
+
+[records.values]
+key = "e1af2a4e-953f-5f4d-ae3a-16b0003c5756_dcd189c5-1bb3-4c19-b179-9cbea87b3ecf"
+material = "dcd189c5-1bb3-4c19-b179-9cbea87b3ecf"
+name = "Salt Crossroads — Cavern Cedar Resin"
+region = "e1af2a4e-953f-5f4d-ae3a-16b0003c5756"
+
+[[records]]
+uuid = "044a706b-5fbe-51c0-ba8b-740a6abea49c"
+label = "row_044a706b5fbe51c0ba8b740a6abea49c"
+
+[records.values]
+key = "e32eab72-c615-5297-8a1c-555abc967724_0fad4617-9638-4892-8557-1ea0f947a95f"
+material = "0fad4617-9638-4892-8557-1ea0f947a95f"
+name = "Astral Stairway — Lunar Reed Fiber"
+region = "e32eab72-c615-5297-8a1c-555abc967724"
+
+[[records]]
+uuid = "fdc3d1e9-017c-56fa-bd83-99cbb1d4db97"
+label = "row_fdc3d1e9017c56fabd8399cbb1d4db97"
+
+[records.values]
+key = "e32eab72-c615-5297-8a1c-555abc967724_17e04713-c944-40bb-a855-11d1a27550be"
+material = "17e04713-c944-40bb-a855-11d1a27550be"
+name = "Astral Stairway — Lunar Foxglove Leaf"
+region = "e32eab72-c615-5297-8a1c-555abc967724"
+
+[[records]]
+uuid = "ae3e7ebb-1897-59ea-a954-b75119885790"
+label = "row_ae3e7ebb189759eaa954b75119885790"
+
+[records.values]
+key = "e32eab72-c615-5297-8a1c-555abc967724_1d7ad485-bdbf-4345-aa9e-5cfec1bf135b"
+material = "1d7ad485-bdbf-4345-aa9e-5cfec1bf135b"
+name = "Astral Stairway — Highland Foxglove Leaf"
+region = "e32eab72-c615-5297-8a1c-555abc967724"
+
+[[records]]
+uuid = "5f80cc75-b214-5251-aa90-ed82cefc5e30"
+label = "row_5f80cc75b2145251aa90ed82cefc5e30"
+
+[records.values]
+key = "e32eab72-c615-5297-8a1c-555abc967724_1f2e7f57-305d-41bc-94e2-79662cd0788f"
+material = "1f2e7f57-305d-41bc-94e2-79662cd0788f"
+name = "Astral Stairway — Lunar Amber Pearl"
+region = "e32eab72-c615-5297-8a1c-555abc967724"
+
+[[records]]
+uuid = "db1f5d63-20ef-537e-8310-8091a33bd13f"
+label = "row_db1f5d6320ef537e83108091a33bd13f"
+
+[records.values]
+key = "e32eab72-c615-5297-8a1c-555abc967724_313b73be-9f07-441e-874a-d4bea7ad4294"
+material = "313b73be-9f07-441e-874a-d4bea7ad4294"
+name = "Astral Stairway — Tidal Amberscale"
+region = "e32eab72-c615-5297-8a1c-555abc967724"
+
+[[records]]
+uuid = "dd6a21f3-f337-5fc3-b02e-7eb28e31094c"
+label = "row_dd6a21f3f3375fc3b02e7eb28e31094c"
+
+[records.values]
+key = "e32eab72-c615-5297-8a1c-555abc967724_540f8ccd-73e4-4cc8-a2f3-e57476a8d03b"
+material = "540f8ccd-73e4-4cc8-a2f3-e57476a8d03b"
+name = "Astral Stairway — Lunar Amberscale"
+region = "e32eab72-c615-5297-8a1c-555abc967724"
+
+[[records]]
+uuid = "06e9f87e-4d41-51a3-80cb-3a56959a9836"
+label = "row_06e9f87e4d4151a380cb3a56959a9836"
+
+[records.values]
+key = "e32eab72-c615-5297-8a1c-555abc967724_985973de-8aa0-4f00-ad38-e1901a1a264c"
+material = "985973de-8aa0-4f00-ad38-e1901a1a264c"
+name = "Astral Stairway — Tidal Sunstone"
+region = "e32eab72-c615-5297-8a1c-555abc967724"
+
+[[records]]
+uuid = "5876dfd7-27b0-5cf4-9b59-f92c70a1d1fa"
+label = "row_5876dfd727b05cf49b59f92c70a1d1fa"
+
+[records.values]
+key = "e32eab72-c615-5297-8a1c-555abc967724_baed0b75-0873-4d67-84c8-2d880b20e3cf"
+material = "baed0b75-0873-4d67-84c8-2d880b20e3cf"
+name = "Astral Stairway — Tidal Amber Crystal"
+region = "e32eab72-c615-5297-8a1c-555abc967724"
+
+[[records]]
+uuid = "94dd411a-2b6b-5751-ae3c-cf5b57bfa0a0"
+label = "row_94dd411a2b6b5751ae3ccf5b57bfa0a0"
+
+[records.values]
+key = "e32eab72-c615-5297-8a1c-555abc967724_d8330f13-4015-48e0-9af2-5d306681f204"
+material = "d8330f13-4015-48e0-9af2-5d306681f204"
+name = "Astral Stairway — Tidal Nightbloom"
+region = "e32eab72-c615-5297-8a1c-555abc967724"
+
+[[records]]
+uuid = "465c3855-defa-5228-af3f-711306b5fcfd"
+label = "row_465c3855defa5228af3f711306b5fcfd"
+
+[records.values]
+key = "e32eab72-c615-5297-8a1c-555abc967724_ee738abd-d8f4-4359-8630-ddf0814beedd"
+material = "ee738abd-d8f4-4359-8630-ddf0814beedd"
+name = "Astral Stairway — Highland Amber Pearl"
+region = "e32eab72-c615-5297-8a1c-555abc967724"
+
+[[records]]
+uuid = "72478e96-3fbe-563e-bc25-b165135ece14"
+label = "row_72478e963fbe563ebc25b165135ece14"
+
+[records.values]
+key = "e32eab72-c615-5297-8a1c-555abc967724_ef8532b5-2c39-449e-8798-feea6c6a1e2d"
+material = "ef8532b5-2c39-449e-8798-feea6c6a1e2d"
+name = "Astral Stairway — Tidal Yew Heartwood"
+region = "e32eab72-c615-5297-8a1c-555abc967724"
+
+[[records]]
+uuid = "28bd5257-d274-55c0-88ed-b19528db6ec9"
+label = "row_28bd5257d27455c088edb19528db6ec9"
+
+[records.values]
+key = "e32eab72-c615-5297-8a1c-555abc967724_f61b17b7-0a38-437e-bb44-c7fb02994e7d"
+material = "f61b17b7-0a38-437e-bb44-c7fb02994e7d"
+name = "Astral Stairway — Lunar Red Hematite"
+region = "e32eab72-c615-5297-8a1c-555abc967724"
+
+[[records]]
+uuid = "0b4349d4-e85d-502d-bc6e-84f3b879ed2f"
+label = "row_0b4349d4e85d502dbc6e84f3b879ed2f"
+
+[records.values]
+key = "f3e88e11-16fd-5455-a868-c559bc092586_0c6a7eb5-2531-449b-9f4b-97c6a5cdfe01"
+material = "0c6a7eb5-2531-449b-9f4b-97c6a5cdfe01"
+name = "Basalt Gate — Dune Sunstone"
+region = "f3e88e11-16fd-5455-a868-c559bc092586"
+
+[[records]]
+uuid = "bd421c16-afb0-5bd3-88d6-fe83591a7c74"
+label = "row_bd421c16afb05bd388d6fe83591a7c74"
+
+[records.values]
+key = "f3e88e11-16fd-5455-a868-c559bc092586_0eb9779e-ad97-4044-b37d-e7eb43fe5caf"
+material = "0eb9779e-ad97-4044-b37d-e7eb43fe5caf"
+name = "Basalt Gate — Ember Slatehide"
+region = "f3e88e11-16fd-5455-a868-c559bc092586"
+
+[[records]]
+uuid = "11f207bd-845d-55e2-9dbf-43560278226b"
+label = "row_11f207bd845d55e29dbf43560278226b"
+
+[records.values]
+key = "f3e88e11-16fd-5455-a868-c559bc092586_4d213799-5699-4b5c-98e2-916324fa3ae9"
+material = "4d213799-5699-4b5c-98e2-916324fa3ae9"
+name = "Basalt Gate — Dune Ember Resin"
+region = "f3e88e11-16fd-5455-a868-c559bc092586"
+
+[[records]]
+uuid = "029e36fd-0906-561a-adf5-b3426d74732e"
+label = "row_029e36fd0906561aadf5b3426d74732e"
+
+[records.values]
+key = "f3e88e11-16fd-5455-a868-c559bc092586_705c8419-6be7-40c2-9c02-c4abbf5cf764"
+material = "705c8419-6be7-40c2-9c02-c4abbf5cf764"
+name = "Basalt Gate — Dune Yew Heartwood"
+region = "f3e88e11-16fd-5455-a868-c559bc092586"
+
+[[records]]
+uuid = "e068bb24-78df-5642-be8d-6d49f6ee7c50"
+label = "row_e068bb2478df5642be8d6d49f6ee7c50"
+
+[records.values]
+key = "f3e88e11-16fd-5455-a868-c559bc092586_b0cd364e-2ed3-4998-b813-0d70624792f7"
+material = "b0cd364e-2ed3-4998-b813-0d70624792f7"
+name = "Basalt Gate — Dune Obsidian"
+region = "f3e88e11-16fd-5455-a868-c559bc092586"
+
+[[records]]
+uuid = "30ad9f5a-21a1-55a1-b092-9ce201d35db0"
+label = "row_30ad9f5a21a155a1b0929ce201d35db0"
+
+[records.values]
+key = "f3e88e11-16fd-5455-a868-c559bc092586_c98ca07b-3faf-43d1-80b6-47f3dba93ed8"
+material = "c98ca07b-3faf-43d1-80b6-47f3dba93ed8"
+name = "Basalt Gate — Ember Ash Heartwood"
+region = "f3e88e11-16fd-5455-a868-c559bc092586"
+
+[[records]]
+uuid = "74749f40-9466-588e-99b7-ac70b3fdc03f"
+label = "row_74749f409466588e99b7ac70b3fdc03f"
+
+[records.values]
+key = "f570c798-19aa-5b49-9ba0-297923dec683_0b53502f-65ca-415d-bf45-2a82aab5d3ab"
+material = "0b53502f-65ca-415d-bf45-2a82aab5d3ab"
+name = "Galesplit Peak — Highland Ancient Beast Hide"
+region = "f570c798-19aa-5b49-9ba0-297923dec683"
+
+[[records]]
+uuid = "871abd6b-6a3e-5913-b65d-113bb730e2a2"
+label = "row_871abd6b6a3e5913b65d113bb730e2a2"
+
+[records.values]
+key = "f570c798-19aa-5b49-9ba0-297923dec683_3eff6f33-1dfb-43db-a25f-77a394a7cc2f"
+material = "3eff6f33-1dfb-43db-a25f-77a394a7cc2f"
+name = "Galesplit Peak — Highland Voidstone"
+region = "f570c798-19aa-5b49-9ba0-297923dec683"
+
+[[records]]
+uuid = "96f9cfb3-f4a8-5995-bab6-e309830be983"
+label = "row_96f9cfb3f4a85995bab6e309830be983"
+
+[records.values]
+key = "f570c798-19aa-5b49-9ba0-297923dec683_4be1d1de-2c53-46c7-aa31-bef7852c7a61"
+material = "4be1d1de-2c53-46c7-aa31-bef7852c7a61"
+name = "Galesplit Peak — Highland Elderscale"
+region = "f570c798-19aa-5b49-9ba0-297923dec683"
+
+[[records]]
+uuid = "e469dec3-d5b1-575f-a472-dd2fd798337a"
+label = "row_e469dec3d5b1575fa472dd2fd798337a"
+
+[records.values]
+key = "f570c798-19aa-5b49-9ba0-297923dec683_5c1aa287-b1e0-4665-bb92-92b18e031345"
+material = "5c1aa287-b1e0-4665-bb92-92b18e031345"
+name = "Galesplit Peak — Highland Dreamweave Fiber"
+region = "f570c798-19aa-5b49-9ba0-297923dec683"
+
+[[records]]
+uuid = "03672a15-a1c9-518b-98aa-d6f7e9acf6f7"
+label = "row_03672a15a1c9518b98aad6f7e9acf6f7"
+
+[records.values]
+key = "f570c798-19aa-5b49-9ba0-297923dec683_7281cfe4-9072-4a3e-9685-0d1587482ad1"
+material = "7281cfe4-9072-4a3e-9685-0d1587482ad1"
+name = "Galesplit Peak — Highland Ebonheart Wood"
+region = "f570c798-19aa-5b49-9ba0-297923dec683"
+
+[[records]]
+uuid = "07f10756-2893-5214-b5e0-674ac4c34a72"
+label = "row_07f1075628935214b5e0674ac4c34a72"
+
+[records.values]
+key = "f570c798-19aa-5b49-9ba0-297923dec683_76d5c481-5508-4c7f-9ce1-9e1ed2b17403"
+material = "76d5c481-5508-4c7f-9ce1-9e1ed2b17403"
+name = "Galesplit Peak — Highland Astral Crystal"
+region = "f570c798-19aa-5b49-9ba0-297923dec683"
+
+[[records]]
+uuid = "99170211-8daa-5e65-815a-32dcf0f73255"
+label = "row_991702118daa5e65815a32dcf0f73255"
+
+[records.values]
+key = "f570c798-19aa-5b49-9ba0-297923dec683_7ca5efa3-8daf-4773-973e-e2184c0f9092"
+material = "7ca5efa3-8daf-4773-973e-e2184c0f9092"
+name = "Galesplit Peak — Highland Dreamlotus"
+region = "f570c798-19aa-5b49-9ba0-297923dec683"
+
+[[records]]
+uuid = "862dae84-9202-54a1-8e54-add9f15e1a5b"
+label = "row_862dae84920254a18e54add9f15e1a5b"
+
+[records.values]
+key = "f570c798-19aa-5b49-9ba0-297923dec683_819c1014-37d9-43b2-b80f-0df945c817c9"
+material = "819c1014-37d9-43b2-b80f-0df945c817c9"
+name = "Galesplit Peak — Highland Eclipsium Ore"
+region = "f570c798-19aa-5b49-9ba0-297923dec683"
+
+[[records]]
+uuid = "a55de7d1-f15e-51cf-a0ff-efa80623e03f"
+label = "row_a55de7d1f15e51cfa0ffefa80623e03f"
+
+[records.values]
+key = "f570c798-19aa-5b49-9ba0-297923dec683_dd14ce59-5a5f-4629-9999-a21ca465b42f"
+material = "dd14ce59-5a5f-4629-9999-a21ca465b42f"
+name = "Galesplit Peak — Highland Elderheart Resin"
+region = "f570c798-19aa-5b49-9ba0-297923dec683"
+
+[[records]]
+uuid = "f54819b6-0dbd-5562-8762-711ac3c68884"
+label = "row_f54819b60dbd55628762711ac3c68884"
+
+[records.values]
+key = "f570c798-19aa-5b49-9ba0-297923dec683_e06a70ef-45b1-4d94-93a6-e961af3e0fc3"
+material = "e06a70ef-45b1-4d94-93a6-e961af3e0fc3"
+name = "Galesplit Peak — Highland Dawn Pearl"
+region = "f570c798-19aa-5b49-9ba0-297923dec683"
+
+[[records]]
+uuid = "9dfbbde3-d615-554d-9ca6-4d872d47fc20"
+label = "row_9dfbbde3d615554d9ca64d872d47fc20"
+
+[records.values]
+key = "fa8932af-5af1-5407-9311-1ba594abbf57_130e9c82-5e47-4cc5-94cc-f5ed27cb643e"
+material = "130e9c82-5e47-4cc5-94cc-f5ed27cb643e"
+name = "Hollow Belfry — Frostland Dreamweave Fiber"
+region = "fa8932af-5af1-5407-9311-1ba594abbf57"
+
+[[records]]
+uuid = "25191127-337c-5b27-b048-4f615d0fc582"
+label = "row_25191127337c5b27b0484f615d0fc582"
+
+[records.values]
+key = "fa8932af-5af1-5407-9311-1ba594abbf57_17c46cf2-a25e-4072-ae91-80cfa2ee3210"
+material = "17c46cf2-a25e-4072-ae91-80cfa2ee3210"
+name = "Hollow Belfry — Fen Voidstone"
+region = "fa8932af-5af1-5407-9311-1ba594abbf57"
+
+[[records]]
+uuid = "39aec164-ab42-50b3-b35b-1a9bb78e4b08"
+label = "row_39aec164ab4250b3b35b1a9bb78e4b08"
+
+[records.values]
+key = "fa8932af-5af1-5407-9311-1ba594abbf57_4dd29fce-5767-47c0-8efd-b84fc96fcc46"
+material = "4dd29fce-5767-47c0-8efd-b84fc96fcc46"
+name = "Hollow Belfry — Relic Dawn Pearl"
+region = "fa8932af-5af1-5407-9311-1ba594abbf57"
+
+[[records]]
+uuid = "d9edeb77-1117-5006-96d3-482939f4f1de"
+label = "row_d9edeb771117500696d3482939f4f1de"
+
+[records.values]
+key = "fa8932af-5af1-5407-9311-1ba594abbf57_68405724-2423-4c2b-8b3c-de0e9152c87a"
+material = "68405724-2423-4c2b-8b3c-de0e9152c87a"
+name = "Hollow Belfry — Frostland Voidstone"
+region = "fa8932af-5af1-5407-9311-1ba594abbf57"
+
+[[records]]
+uuid = "fc061267-d679-5ffe-856b-8bfdbde840c2"
+label = "row_fc061267d6795ffe856b8bfdbde840c2"
+
+[records.values]
+key = "fa8932af-5af1-5407-9311-1ba594abbf57_6db544c3-229a-429a-afc2-5206a0583215"
+material = "6db544c3-229a-429a-afc2-5206a0583215"
+name = "Hollow Belfry — Frostland Eclipsium Ore"
+region = "fa8932af-5af1-5407-9311-1ba594abbf57"
+
+[[records]]
+uuid = "94a0d12c-69a9-5066-a1a9-6dcf219c05e5"
+label = "row_94a0d12c69a95066a1a96dcf219c05e5"
+
+[records.values]
+key = "fa8932af-5af1-5407-9311-1ba594abbf57_7e505aa3-ef7f-4fbb-a173-49fefefde340"
+material = "7e505aa3-ef7f-4fbb-a173-49fefefde340"
+name = "Hollow Belfry — Fen Elderscale"
+region = "fa8932af-5af1-5407-9311-1ba594abbf57"
+
+[[records]]
+uuid = "fb73d4bb-eb46-59c6-8a35-be77d54dfc38"
+label = "row_fb73d4bbeb4659c68a35be77d54dfc38"
+
+[records.values]
+key = "fa8932af-5af1-5407-9311-1ba594abbf57_adf7fed5-51a0-4051-bdf3-41b241f416c3"
+material = "adf7fed5-51a0-4051-bdf3-41b241f416c3"
+name = "Hollow Belfry — Frostland Elderheart Resin"
+region = "fa8932af-5af1-5407-9311-1ba594abbf57"
+
+[[records]]
+uuid = "c4963933-9601-56a5-9bfe-f7189578adea"
+label = "row_c4963933960156a59bfef7189578adea"
+
+[records.values]
+key = "fa8932af-5af1-5407-9311-1ba594abbf57_b86084c6-a6fd-42fd-8396-af4ddfac848a"
+material = "b86084c6-a6fd-42fd-8396-af4ddfac848a"
+name = "Hollow Belfry — Relic Elderheart Resin"
+region = "fa8932af-5af1-5407-9311-1ba594abbf57"
+
+[[records]]
+uuid = "52295e3e-e400-5bdd-871d-b43cba8fe5b9"
+label = "row_52295e3ee4005bdd871db43cba8fe5b9"
+
+[records.values]
+key = "fa8932af-5af1-5407-9311-1ba594abbf57_b8984f16-5007-4dd5-bab9-af5008dab554"
+material = "b8984f16-5007-4dd5-bab9-af5008dab554"
+name = "Hollow Belfry — Relic Dreamlotus"
+region = "fa8932af-5af1-5407-9311-1ba594abbf57"
+
+[[records]]
+uuid = "20f4f1ee-71f6-5694-adfc-5e8118bd3462"
+label = "row_20f4f1ee71f65694adfc5e8118bd3462"
+
+[records.values]
+key = "fa8932af-5af1-5407-9311-1ba594abbf57_eada173a-18e2-4afb-8817-273bbd3aec0c"
+material = "eada173a-18e2-4afb-8817-273bbd3aec0c"
+name = "Hollow Belfry — Fen Dreamweave Fiber"
+region = "fa8932af-5af1-5407-9311-1ba594abbf57"
+
+[[records]]
+uuid = "e1920a77-df75-5576-8ce9-623d595c4595"
+label = "row_e1920a77df7555768ce9623d595c4595"
+
+[records.values]
+key = "fa8932af-5af1-5407-9311-1ba594abbf57_fc3f1515-010b-4b68-a46f-c7da9f5dbd37"
+material = "fc3f1515-010b-4b68-a46f-c7da9f5dbd37"
+name = "Hollow Belfry — Relic Astral Crystal"
+region = "fa8932af-5af1-5407-9311-1ba594abbf57"
+
+[[records]]
+uuid = "a7a834ae-f5b5-5228-b2f2-3dce3fbe39f4"
+label = "row_a7a834aef5b55228b2f23dce3fbe39f4"
+
+[records.values]
+key = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1_0be7016b-f6b9-409c-aa44-a6487a2a89f4"
+material = "0be7016b-f6b9-409c-aa44-a6487a2a89f4"
+name = "Setting Sun Sanctuary — Ember Dawn Pearl"
+region = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1"
+
+[[records]]
+uuid = "d88c2dc2-9b06-5e2a-9c20-0039e38aad00"
+label = "row_d88c2dc29b065e2a9c200039e38aad00"
+
+[records.values]
+key = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1_107f5bba-62c1-4998-8f4f-6bc98491900f"
+material = "107f5bba-62c1-4998-8f4f-6bc98491900f"
+name = "Setting Sun Sanctuary — Ember Eclipsium Ore"
+region = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1"
+
+[[records]]
+uuid = "25adbd14-414e-5790-acb2-6f5211138c6d"
+label = "row_25adbd14414e5790acb26f5211138c6d"
+
+[records.values]
+key = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1_3a3456ee-e0b0-459e-82a8-0b1a400678fb"
+material = "3a3456ee-e0b0-459e-82a8-0b1a400678fb"
+name = "Setting Sun Sanctuary — Dune Dreamweave Fiber"
+region = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1"
+
+[[records]]
+uuid = "36448df4-4642-5c89-a9a4-6dd76be1141f"
+label = "row_36448df446425c89a9a46dd76be1141f"
+
+[records.values]
+key = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1_3be651a1-31bf-48f5-8bbd-f968fe2e7d5e"
+material = "3be651a1-31bf-48f5-8bbd-f968fe2e7d5e"
+name = "Setting Sun Sanctuary — Dune Voidstone"
+region = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1"
+
+[[records]]
+uuid = "75ff722d-b16c-57de-b459-e65294963b30"
+label = "row_75ff722db16c57deb459e65294963b30"
+
+[records.values]
+key = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1_47df5d14-eab7-4c90-b85e-7e7c0cb23255"
+material = "47df5d14-eab7-4c90-b85e-7e7c0cb23255"
+name = "Setting Sun Sanctuary — Dune Eclipsium Ore"
+region = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1"
+
+[[records]]
+uuid = "f3d22702-aad1-54d3-b9a0-ed12e0d04376"
+label = "row_f3d22702aad154d3b9a0ed12e0d04376"
+
+[records.values]
+key = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1_8f42441c-0103-481e-b5f2-bd9842693e60"
+material = "8f42441c-0103-481e-b5f2-bd9842693e60"
+name = "Setting Sun Sanctuary — Dune Elderheart Resin"
+region = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1"
+
+[[records]]
+uuid = "0741d1cf-ec9d-5a3e-8bd8-74b2107b88d9"
+label = "row_0741d1cfec9d5a3e8bd874b2107b88d9"
+
+[records.values]
+key = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1_9e21b578-b94a-426f-b1c8-242c8a5a443c"
+material = "9e21b578-b94a-426f-b1c8-242c8a5a443c"
+name = "Setting Sun Sanctuary — Ember Ancient Beast Hide"
+region = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1"
+
+[[records]]
+uuid = "2b80eb35-2474-513e-b12f-31edb9039e35"
+label = "row_2b80eb352474513eb12f31edb9039e35"
+
+[records.values]
+key = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1_e8814371-061d-4872-8ca3-c8f62c69dfe2"
+material = "e8814371-061d-4872-8ca3-c8f62c69dfe2"
+name = "Setting Sun Sanctuary — Dune Dawn Pearl"
+region = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1"
+
+[[records]]
+uuid = "f819a37f-df82-5405-a06e-b851650ca5b8"
+label = "row_f819a37fdf825405a06eb851650ca5b8"
+
+[records.values]
+key = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1_eecfb6e6-dcfc-4a83-afab-dff0c42fc4f7"
+material = "eecfb6e6-dcfc-4a83-afab-dff0c42fc4f7"
+name = "Setting Sun Sanctuary — Ember Dreamlotus"
+region = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1"
+
+[[records]]
+uuid = "e9cb9454-68f2-52cf-b3c5-3fdfe4c34986"
+label = "row_e9cb945468f252cfb3c53fdfe4c34986"
+
+[records.values]
+key = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1_ef0532cf-3c80-4a42-844f-27e5707f20e5"
+material = "ef0532cf-3c80-4a42-844f-27e5707f20e5"
+name = "Setting Sun Sanctuary — Dune Ebonheart Wood"
+region = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1"
+
+[[records]]
+uuid = "2da25ec1-49ab-55dc-85da-021e33545385"
+label = "row_2da25ec149ab55dc85da021e33545385"
+
+[records.values]
+key = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1_f4126fbc-282b-4e1b-ba24-9a0ba3a6b676"
+material = "f4126fbc-282b-4e1b-ba24-9a0ba3a6b676"
+name = "Setting Sun Sanctuary — Dune Ancient Beast Hide"
+region = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1"

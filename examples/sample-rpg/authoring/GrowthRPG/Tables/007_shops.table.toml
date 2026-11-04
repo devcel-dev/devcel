@@ -1,0 +1,289 @@
+uuid = "10000000-0000-4000-8000-000000000007"
+display_name = "shops"
+description = ""
+
+[metadata]
+interface_order = []
+data_name = "shops"
+initial_transposed = false
+
+[metadata.edit_permissions]
+add_columns = true
+delete_columns = true
+add_rows = true
+delete_rows = true
+edit_cells = true
+
+[interface_implementations]
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-8007-000000000001"
+display_name = "key"
+data_name = "key"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-8007-000000000002"
+display_name = "name"
+data_name = "name"
+data_type = "String"
+default_value = "Blacksmith"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-8007-000000000003"
+display_name = "price"
+data_name = "price"
+data_type = "I64"
+default_value = "=LOOKUP(\"recipes\",\"key\",\"forge_sword\",\"cost\")+5"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-8007-000000000004"
+display_name = "stock"
+data_name = "stock"
+data_type = "I64"
+default_value = "12"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-8007-000000000005"
+display_name = "equipment"
+data_name = "equipment"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-000000000003"
+
+[[schema.columns]]
+read_only = false
+uuid = "d1969f32-d776-5fda-b8c9-69d1792a23d7"
+display_name = "region_key"
+data_name = "region_key"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "bffe5949-c40c-5328-aa18-393b89bbcd24"
+display_name = "tier"
+data_name = "tier"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "9dd69eb0-2396-576e-803a-89aa9950d8ba"
+display_name = "region_ref"
+data_name = "region_ref"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-00000000000b"
+
+[[records]]
+uuid = "20000000-0000-4000-8007-000000000001"
+label = "blacksmith"
+tags = ["rpg/shops", "catalog/seed-v1"]
+
+[records.values]
+equipment = "20000000-0000-4000-8003-000000000001"
+key = "blacksmith"
+name = "Ashforge Market Trading House"
+price = "2"
+region_key = "ash_market"
+region_ref = "76491b81-a10a-57a4-8643-e8f1cacffda7"
+stock = "0"
+
+[[records]]
+uuid = "e8d1d718-aa98-483c-ad46-42fed84120a9"
+tags = ["catalog/seed-v1"]
+
+[records.values]
+equipment = "b2450a9a-3774-4b1e-9731-ec36cb66bf79"
+key = "copper_outpost"
+name = "Willow Waystation Trading House"
+price = "2"
+region_key = "willow_inn"
+region_ref = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2"
+stock = "0"
+
+[[records]]
+uuid = "dfaf8390-d6d7-4149-b77c-f05909191bb6"
+tags = ["catalog/seed-v1"]
+
+[records.values]
+equipment = "8d592471-a0ce-4e16-aca7-247075c7ff0e"
+key = "lunar_emporium"
+name = "Lantern Town Trading House"
+price = "5"
+region_key = "lantern_town"
+region_ref = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+stock = "0"
+
+[[records]]
+uuid = "31273c8b-97ee-5fec-96bb-4e43eb581e70"
+label = "market_marsh"
+tags = ["catalog/generated", "catalog/seed-v1"]
+
+[records.values]
+equipment = "dee356f5-289c-55ae-b0f9-c2e32468f02c"
+key = "market_marsh"
+name = "Salt Crossroads Trading House"
+price = "5"
+region_key = "salt_crossing"
+region_ref = "e1af2a4e-953f-5f4d-ae3a-16b0003c5756"
+stock = "0"
+
+[[records]]
+uuid = "7255613b-2c3d-54ee-8738-a8fb8caf1708"
+label = "market_desert"
+tags = ["catalog/generated", "catalog/seed-v1"]
+
+[records.values]
+equipment = "a9877f2c-a42b-5122-ae46-30e98bbbef35"
+key = "market_desert"
+name = "Smith's Rest Trading House"
+price = "5"
+region_key = "smith_haven"
+region_ref = "b8255005-8c23-545d-b943-a6ab373b4c56"
+stock = "0"
+
+[[records]]
+uuid = "b144a8b4-262a-5360-a7dc-bbb4203f78a4"
+label = "market_tundra"
+tags = ["catalog/generated", "catalog/seed-v1"]
+
+[records.values]
+equipment = "a7177cac-3a79-5ed5-b7a6-6140b4b2c0af"
+key = "market_tundra"
+name = "Reedboat Harbor Trading House"
+price = "8"
+region_key = "reed_port"
+region_ref = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+stock = "0"
+
+[[records]]
+uuid = "3b4ec60c-5bfa-5d44-8ac6-a9e88f11bb38"
+label = "market_volcano"
+tags = ["catalog/generated", "catalog/seed-v1"]
+
+[records.values]
+equipment = "5f9b127c-45f6-5801-9e06-589ad7b7be77"
+key = "market_volcano"
+name = "Frostward Lodge Trading House"
+price = "8"
+region_key = "frost_lodge"
+region_ref = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+stock = "0"
+
+[[records]]
+uuid = "0dd2f88b-750c-5a18-bc75-581b7c4422c4"
+label = "market_ruins"
+tags = ["catalog/generated", "catalog/seed-v1"]
+
+[records.values]
+equipment = "9f114c80-1ad1-5a5a-a191-5c44524c8167"
+key = "market_ruins"
+name = "Clock Market Trading House"
+price = "8"
+region_key = "clock_market"
+region_ref = "0acea1b9-e1eb-5288-963a-a0e778c51327"
+stock = "0"
+
+[[records]]
+uuid = "5b3ed45b-2973-57f5-8640-b2f29ebd95b4"
+label = "market_coast"
+tags = ["catalog/generated", "catalog/seed-v1"]
+
+[records.values]
+equipment = "b0477c02-2b3f-5d00-ac06-9a91b2614ec1"
+key = "market_coast"
+name = "Dune Caravanserai Trading House"
+price = "11"
+region_key = "dune_caravan"
+region_ref = "83f4d132-8c54-5114-ae26-675379857f45"
+stock = "0"
+
+[[records]]
+uuid = "c88fdc66-d6a7-52f4-9fa3-395eb00c0fa0"
+label = "market_highlands"
+tags = ["catalog/generated", "catalog/seed-v1"]
+
+[records.values]
+equipment = "255c715f-7580-58fc-a41b-6e1d74f9a2ae"
+key = "market_highlands"
+name = "Ember Anchorage Trading House"
+price = "11"
+region_key = "ember_station"
+region_ref = "70742414-3a03-5930-bb22-8431bdc62458"
+stock = "0"
+
+[[records]]
+uuid = "6c9c7d2c-344e-571c-8326-296df971213e"
+label = "world_market_10"
+tags = ["catalog/world-v1"]
+
+[records.values]
+key = "world_market_10"
+name = "High Tide Harbor Trading House"
+price = "14"
+region_key = "tide_harbor"
+region_ref = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "b4bc05ae-4244-5942-9db1-50aed66fda15"
+label = "world_market_11"
+tags = ["catalog/world-v1"]
+
+[records.values]
+key = "world_market_11"
+name = "Starwatch Rest Trading House"
+price = "14"
+region_key = "star_rest"
+region_ref = "7d332bbd-a4a3-5938-9b59-3a1f987d6014"

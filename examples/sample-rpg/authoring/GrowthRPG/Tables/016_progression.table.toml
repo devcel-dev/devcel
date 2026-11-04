@@ -1,0 +1,64 @@
+uuid = "10000000-0000-4000-8000-000000000010"
+display_name = "progression"
+description = ""
+
+[metadata]
+interface_order = []
+data_name = "progression"
+initial_transposed = false
+
+[metadata.edit_permissions]
+add_columns = true
+delete_columns = true
+add_rows = true
+delete_rows = true
+edit_cells = true
+
+[interface_implementations]
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-8010-000000000001"
+display_name = "key"
+data_name = "key"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-8010-000000000002"
+display_name = "checkpoint"
+data_name = "checkpoint"
+data_type = "I64"
+default_value = "=LOOKUP(\"quests\",\"key\",\"clear_forest\",\"power\")+LOOKUP(\"economy\",\"key\",\"world\",\"sword_price\")"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-8010-000000000003"
+display_name = "phase"
+data_name = "phase"
+data_type = "I64"
+default_value = "1"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[records]]
+uuid = "20000000-0000-4000-8010-000000000001"
+label = "main"
+tags = ["rpg/progression", "catalog/seed-v1"]
+
+[records.values]
+key = "main"

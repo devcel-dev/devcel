@@ -1,0 +1,8 @@
+{
+  "package": "glsl-noise",
+  "version": "0.0.0",
+  "url": "https://registry.npmjs.org/glsl-noise/-/glsl-noise-0.0.0.tgz",
+  "integrity": "sha512-b/ZCF6amfAUb7dJM/MxRs7AetQEahYzJ8PtgfrmEdtw6uyGOr+ZSGtgjFm6mfsBkxJ4d2W7kg+Nlqzqvn3Bc0w==",
+  "archive_sha256": "854201bdb89876874823514ba294b0ac1457d64470a289830a4af51558598d20",
+  "drei_source": "https://github.com/pmndrs/drei/blob/v10.7.9/src/helpers/glsl/distort.vert.glsl"
+}

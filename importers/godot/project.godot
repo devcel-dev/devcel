@@ -1,0 +1,30 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Devcel Godot"
+run/main_scene="res://samples/demo.tscn"
+config/features=PackedStringArray("4.6")
+
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=640
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/devcel/plugin.cfg")
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.04, 0.055, 0.08, 1)

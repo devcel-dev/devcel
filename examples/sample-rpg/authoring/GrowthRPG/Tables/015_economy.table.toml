@@ -1,0 +1,64 @@
+uuid = "10000000-0000-4000-8000-00000000000f"
+display_name = "economy"
+description = ""
+
+[metadata]
+interface_order = []
+data_name = "economy"
+initial_transposed = false
+
+[metadata.edit_permissions]
+add_columns = true
+delete_columns = true
+add_rows = true
+delete_rows = true
+edit_cells = true
+
+[interface_implementations]
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-800f-000000000001"
+display_name = "key"
+data_name = "key"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-800f-000000000002"
+display_name = "world_bounty"
+data_name = "world_bounty"
+data_type = "I64"
+default_value = "=LOOKUP(\"regions\",\"key\",\"forest\",\"bounty\")+LOOKUP(\"achievements\",\"key\",\"collector\",\"value\")"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-800f-000000000003"
+display_name = "sword_price"
+data_name = "sword_price"
+data_type = "I64"
+default_value = "=LOOKUP(\"shops\",\"key\",\"blacksmith\",\"price\")*2"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[records]]
+uuid = "20000000-0000-4000-800f-000000000001"
+label = "world"
+tags = ["rpg/economy", "catalog/seed-v1"]
+
+[records.values]
+key = "world"

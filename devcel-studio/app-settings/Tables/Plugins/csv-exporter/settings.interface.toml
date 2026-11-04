@@ -1,0 +1,132 @@
+uuid = "be13151b-5555-8741-a367-4258868d6ea8"
+name = "Plugin_6373762d6578706f72746572_settings_Contract"
+current_version_id = "d7d885c8-49c0-8891-9bf1-4a6f04a80360"
+description = "CSV exporter settings contract"
+extends = []
+
+[[columns]]
+min_version = 0
+read_only = false
+uuid = "c898d96c-dbd2-5c77-8b94-576c70fc4834"
+display_name = "既定の区切り文字"
+data_name = "defaultDelimiter"
+tooltip = ""
+data_type = "Select"
+tags = []
+default_value = ","
+memo_text = ""
+required = true
+
+[columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 220
+
+[[columns.select_config.options]]
+value = ","
+label = "カンマ"
+
+[[columns.select_config.options]]
+value = ";"
+label = "セミコロン"
+
+[[columns.select_config.options]]
+value = "\t"
+label = "TAB"
+
+[[columns.select_config.options]]
+value = "|"
+label = "パイプ"
+
+[[columns]]
+min_version = 0
+read_only = false
+uuid = "852a980c-cea2-51a5-a07c-fbb3223fecf6"
+display_name = "既定の文字コード"
+data_name = "defaultEncoding"
+tooltip = ""
+data_type = "Select"
+tags = []
+default_value = "utf-8"
+memo_text = ""
+required = true
+
+[columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 220
+
+[[columns.select_config.options]]
+value = "utf-8"
+label = "UTF-8"
+
+[history.d7d885c8-49c0-8891-9bf1-4a6f04a80360]
+version_id = "d7d885c8-49c0-8891-9bf1-4a6f04a80360"
+timestamp = "2026-10-25T00:00:00Z"
+author = "System"
+comment = "Initial creation"
+
+[[history.d7d885c8-49c0-8891-9bf1-4a6f04a80360.changes]]
+
+[history.d7d885c8-49c0-8891-9bf1-4a6f04a80360.changes.ChangeDescription]
+new_description = "CSV exporter settings contract"
+
+[[history.d7d885c8-49c0-8891-9bf1-4a6f04a80360.changes]]
+
+[history.d7d885c8-49c0-8891-9bf1-4a6f04a80360.changes.AddColumn.column]
+min_version = 0
+read_only = false
+uuid = "c898d96c-dbd2-5c77-8b94-576c70fc4834"
+display_name = "既定の区切り文字"
+data_name = "defaultDelimiter"
+tooltip = ""
+data_type = "Select"
+tags = []
+default_value = ","
+memo_text = ""
+required = true
+
+[history.d7d885c8-49c0-8891-9bf1-4a6f04a80360.changes.AddColumn.column.style]
+color = "#FFFFFF"
+font_size = 12
+width = 220
+
+[[history.d7d885c8-49c0-8891-9bf1-4a6f04a80360.changes.AddColumn.column.select_config.options]]
+value = ","
+label = "カンマ"
+
+[[history.d7d885c8-49c0-8891-9bf1-4a6f04a80360.changes.AddColumn.column.select_config.options]]
+value = ";"
+label = "セミコロン"
+
+[[history.d7d885c8-49c0-8891-9bf1-4a6f04a80360.changes.AddColumn.column.select_config.options]]
+value = "\t"
+label = "TAB"
+
+[[history.d7d885c8-49c0-8891-9bf1-4a6f04a80360.changes.AddColumn.column.select_config.options]]
+value = "|"
+label = "パイプ"
+
+[[history.d7d885c8-49c0-8891-9bf1-4a6f04a80360.changes]]
+
+[history.d7d885c8-49c0-8891-9bf1-4a6f04a80360.changes.AddColumn.column]
+min_version = 0
+read_only = false
+uuid = "852a980c-cea2-51a5-a07c-fbb3223fecf6"
+display_name = "既定の文字コード"
+data_name = "defaultEncoding"
+tooltip = ""
+data_type = "Select"
+tags = []
+default_value = "utf-8"
+memo_text = ""
+required = true
+
+[history.d7d885c8-49c0-8891-9bf1-4a6f04a80360.changes.AddColumn.column.style]
+color = "#FFFFFF"
+font_size = 12
+width = 220
+
+[[history.d7d885c8-49c0-8891-9bf1-4a6f04a80360.changes.AddColumn.column.select_config.options]]
+value = "utf-8"
+label = "UTF-8"

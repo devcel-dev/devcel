@@ -1,0 +1,1896 @@
+{
+  "@esbuild/aix-ppc64@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/android-arm64@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/android-arm@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/android-x64@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/darwin-arm64@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/darwin-x64@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/freebsd-arm64@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/freebsd-x64@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/linux-arm64@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/linux-arm@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/linux-ia32@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/linux-loong64@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/linux-mips64el@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/linux-ppc64@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/linux-riscv64@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/linux-s390x@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/linux-x64@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/netbsd-arm64@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/netbsd-x64@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/openbsd-arm64@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/openbsd-x64@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/openharmony-arm64@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/sunos-x64@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/win32-arm64@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/win32-ia32@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@esbuild/win32-x64@0.28.2": [
+    {
+      "path": "third-party/upstream/npm-esbuild-0.28.2/LICENSE.md",
+      "url": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681",
+      "source_integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
+      "source_package": "esbuild@0.28.2",
+      "source_file": "LICENSE.md",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@mediapipe/tasks-vision@0.10.17": [
+    {
+      "path": "third-party/upstream/npm-mediapipe-tasks-vision-0.10.17/vision.d.ts.license-header.txt",
+      "url": "https://registry.npmjs.org/@mediapipe/tasks-vision/-/tasks-vision-0.10.17.tgz",
+      "sha256": "95180140019f8f1b7b419d97e4d8c3f43d8cbb2bdbf728ebf150b0c4b825c26b",
+      "source_file": "vision.d.ts",
+      "source_file_sha256": "fc8a3cf4a55f7d1ae3f2efdda84bbeaeea605a92e535ac52b99deed6366917d5",
+      "byte_range": [
+        0,
+        622
+      ],
+      "complete_license": false
+    },
+    {
+      "path": "third-party/upstream/npm-mediapipe-tasks-vision-0.10.17/Apache-2.0.txt",
+      "url": "https://github.com/spdx/license-list-data/blob/v3.27.0/text/Apache-2.0.txt",
+      "sha256": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+      "git_blob_sha": "137069b823873b8bcf42979bcf8e9371052d26a2",
+      "complete_license": true,
+      "review": [
+        "publisher-missing-license-file: original vision.d.ts header and copyright retained",
+        "standard-license-text: original header explicitly refers to http://www.apache.org/licenses/LICENSE-2.0; SPDX v3.27.0 text preserved unchanged"
+      ]
+    }
+  ],
+  "@napi-rs/wasm-runtime@1.1.4": [
+    {
+      "path": "third-party/upstream/npm-napi-rs-wasm-runtime-1.1.4/LICENSE",
+      "url": "https://github.com/napi-rs/napi-rs/blob/d5c3c43b45393f99ba151770f97bd472de533671/LICENSE",
+      "sha256": "3f1ce66533302df3a32edbfdfc0b78f0dd34659e4c1f5817162e5ea3c2297215",
+      "git_blob_sha": "7fe7e35eff46457f65a4e30a717fada632de9e03"
+    }
+  ],
+  "@napi-rs/wasm-runtime@1.2.5": [
+    {
+      "path": "third-party/upstream/npm-napi-rs-wasm-runtime-1.2.5/LICENSE",
+      "url": "https://github.com/napi-rs/napi-rs/blob/023a9f067af5d44c9a06c9a30b48fdd50ab18ac0/LICENSE",
+      "sha256": "3f1ce66533302df3a32edbfdfc0b78f0dd34659e4c1f5817162e5ea3c2297215",
+      "git_blob_sha": "7fe7e35eff46457f65a4e30a717fada632de9e03"
+    }
+  ],
+  "@oxc-parser/binding-android-arm-eabi@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-parser-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-parser/-/oxc-parser-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-SJ3/7ZPbgie8dr5Z9BI/M51zZbpXba+hRSG0MDzVwMW5CRQg2fjYE0jHGlLX4eeiibGgC/mzoDFKSDHwVZEHRQ==",
+      "source_package": "oxc-parser@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-parser/binding-android-arm64@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-parser-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-parser/-/oxc-parser-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-SJ3/7ZPbgie8dr5Z9BI/M51zZbpXba+hRSG0MDzVwMW5CRQg2fjYE0jHGlLX4eeiibGgC/mzoDFKSDHwVZEHRQ==",
+      "source_package": "oxc-parser@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-parser/binding-darwin-arm64@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-parser-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-parser/-/oxc-parser-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-SJ3/7ZPbgie8dr5Z9BI/M51zZbpXba+hRSG0MDzVwMW5CRQg2fjYE0jHGlLX4eeiibGgC/mzoDFKSDHwVZEHRQ==",
+      "source_package": "oxc-parser@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-parser/binding-darwin-x64@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-parser-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-parser/-/oxc-parser-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-SJ3/7ZPbgie8dr5Z9BI/M51zZbpXba+hRSG0MDzVwMW5CRQg2fjYE0jHGlLX4eeiibGgC/mzoDFKSDHwVZEHRQ==",
+      "source_package": "oxc-parser@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-parser/binding-freebsd-x64@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-parser-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-parser/-/oxc-parser-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-SJ3/7ZPbgie8dr5Z9BI/M51zZbpXba+hRSG0MDzVwMW5CRQg2fjYE0jHGlLX4eeiibGgC/mzoDFKSDHwVZEHRQ==",
+      "source_package": "oxc-parser@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-parser/binding-linux-arm-gnueabihf@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-parser-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-parser/-/oxc-parser-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-SJ3/7ZPbgie8dr5Z9BI/M51zZbpXba+hRSG0MDzVwMW5CRQg2fjYE0jHGlLX4eeiibGgC/mzoDFKSDHwVZEHRQ==",
+      "source_package": "oxc-parser@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-parser/binding-linux-arm-musleabihf@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-parser-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-parser/-/oxc-parser-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-SJ3/7ZPbgie8dr5Z9BI/M51zZbpXba+hRSG0MDzVwMW5CRQg2fjYE0jHGlLX4eeiibGgC/mzoDFKSDHwVZEHRQ==",
+      "source_package": "oxc-parser@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-parser/binding-linux-arm64-gnu@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-parser-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-parser/-/oxc-parser-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-SJ3/7ZPbgie8dr5Z9BI/M51zZbpXba+hRSG0MDzVwMW5CRQg2fjYE0jHGlLX4eeiibGgC/mzoDFKSDHwVZEHRQ==",
+      "source_package": "oxc-parser@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-parser/binding-linux-arm64-musl@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-parser-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-parser/-/oxc-parser-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-SJ3/7ZPbgie8dr5Z9BI/M51zZbpXba+hRSG0MDzVwMW5CRQg2fjYE0jHGlLX4eeiibGgC/mzoDFKSDHwVZEHRQ==",
+      "source_package": "oxc-parser@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-parser/binding-linux-ppc64-gnu@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-parser-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-parser/-/oxc-parser-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-SJ3/7ZPbgie8dr5Z9BI/M51zZbpXba+hRSG0MDzVwMW5CRQg2fjYE0jHGlLX4eeiibGgC/mzoDFKSDHwVZEHRQ==",
+      "source_package": "oxc-parser@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-parser/binding-linux-riscv64-gnu@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-parser-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-parser/-/oxc-parser-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-SJ3/7ZPbgie8dr5Z9BI/M51zZbpXba+hRSG0MDzVwMW5CRQg2fjYE0jHGlLX4eeiibGgC/mzoDFKSDHwVZEHRQ==",
+      "source_package": "oxc-parser@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-parser/binding-linux-riscv64-musl@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-parser-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-parser/-/oxc-parser-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-SJ3/7ZPbgie8dr5Z9BI/M51zZbpXba+hRSG0MDzVwMW5CRQg2fjYE0jHGlLX4eeiibGgC/mzoDFKSDHwVZEHRQ==",
+      "source_package": "oxc-parser@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-parser/binding-linux-s390x-gnu@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-parser-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-parser/-/oxc-parser-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-SJ3/7ZPbgie8dr5Z9BI/M51zZbpXba+hRSG0MDzVwMW5CRQg2fjYE0jHGlLX4eeiibGgC/mzoDFKSDHwVZEHRQ==",
+      "source_package": "oxc-parser@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-parser/binding-linux-x64-gnu@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-parser-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-parser/-/oxc-parser-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-SJ3/7ZPbgie8dr5Z9BI/M51zZbpXba+hRSG0MDzVwMW5CRQg2fjYE0jHGlLX4eeiibGgC/mzoDFKSDHwVZEHRQ==",
+      "source_package": "oxc-parser@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-parser/binding-linux-x64-musl@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-parser-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-parser/-/oxc-parser-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-SJ3/7ZPbgie8dr5Z9BI/M51zZbpXba+hRSG0MDzVwMW5CRQg2fjYE0jHGlLX4eeiibGgC/mzoDFKSDHwVZEHRQ==",
+      "source_package": "oxc-parser@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-parser/binding-openharmony-arm64@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-parser-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-parser/-/oxc-parser-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-SJ3/7ZPbgie8dr5Z9BI/M51zZbpXba+hRSG0MDzVwMW5CRQg2fjYE0jHGlLX4eeiibGgC/mzoDFKSDHwVZEHRQ==",
+      "source_package": "oxc-parser@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-parser/binding-wasm32-wasi@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-parser-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-parser/-/oxc-parser-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-SJ3/7ZPbgie8dr5Z9BI/M51zZbpXba+hRSG0MDzVwMW5CRQg2fjYE0jHGlLX4eeiibGgC/mzoDFKSDHwVZEHRQ==",
+      "source_package": "oxc-parser@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-parser/binding-win32-arm64-msvc@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-parser-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-parser/-/oxc-parser-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-SJ3/7ZPbgie8dr5Z9BI/M51zZbpXba+hRSG0MDzVwMW5CRQg2fjYE0jHGlLX4eeiibGgC/mzoDFKSDHwVZEHRQ==",
+      "source_package": "oxc-parser@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-parser/binding-win32-ia32-msvc@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-parser-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-parser/-/oxc-parser-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-SJ3/7ZPbgie8dr5Z9BI/M51zZbpXba+hRSG0MDzVwMW5CRQg2fjYE0jHGlLX4eeiibGgC/mzoDFKSDHwVZEHRQ==",
+      "source_package": "oxc-parser@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-parser/binding-win32-x64-msvc@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-parser-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-parser/-/oxc-parser-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-SJ3/7ZPbgie8dr5Z9BI/M51zZbpXba+hRSG0MDzVwMW5CRQg2fjYE0jHGlLX4eeiibGgC/mzoDFKSDHwVZEHRQ==",
+      "source_package": "oxc-parser@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-resolver/binding-android-arm-eabi@11.24.2": [
+    {
+      "path": "third-party/upstream/npm-oxc-resolver-11.24.2/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-resolver/-/oxc-resolver-11.24.2.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-FY91FiDBj7ls5MsFS9jN3tjz2o0/zsdSsymlakySaBwVJZorHhkWyICLZMKxlu1R9vYo+sd3z1jwb4J8x7bNDw==",
+      "source_package": "oxc-resolver@11.24.2",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-resolver/binding-android-arm64@11.24.2": [
+    {
+      "path": "third-party/upstream/npm-oxc-resolver-11.24.2/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-resolver/-/oxc-resolver-11.24.2.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-FY91FiDBj7ls5MsFS9jN3tjz2o0/zsdSsymlakySaBwVJZorHhkWyICLZMKxlu1R9vYo+sd3z1jwb4J8x7bNDw==",
+      "source_package": "oxc-resolver@11.24.2",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-resolver/binding-darwin-arm64@11.24.2": [
+    {
+      "path": "third-party/upstream/npm-oxc-resolver-11.24.2/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-resolver/-/oxc-resolver-11.24.2.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-FY91FiDBj7ls5MsFS9jN3tjz2o0/zsdSsymlakySaBwVJZorHhkWyICLZMKxlu1R9vYo+sd3z1jwb4J8x7bNDw==",
+      "source_package": "oxc-resolver@11.24.2",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-resolver/binding-darwin-x64@11.24.2": [
+    {
+      "path": "third-party/upstream/npm-oxc-resolver-11.24.2/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-resolver/-/oxc-resolver-11.24.2.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-FY91FiDBj7ls5MsFS9jN3tjz2o0/zsdSsymlakySaBwVJZorHhkWyICLZMKxlu1R9vYo+sd3z1jwb4J8x7bNDw==",
+      "source_package": "oxc-resolver@11.24.2",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-resolver/binding-freebsd-x64@11.24.2": [
+    {
+      "path": "third-party/upstream/npm-oxc-resolver-11.24.2/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-resolver/-/oxc-resolver-11.24.2.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-FY91FiDBj7ls5MsFS9jN3tjz2o0/zsdSsymlakySaBwVJZorHhkWyICLZMKxlu1R9vYo+sd3z1jwb4J8x7bNDw==",
+      "source_package": "oxc-resolver@11.24.2",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-resolver/binding-linux-arm-gnueabihf@11.24.2": [
+    {
+      "path": "third-party/upstream/npm-oxc-resolver-11.24.2/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-resolver/-/oxc-resolver-11.24.2.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-FY91FiDBj7ls5MsFS9jN3tjz2o0/zsdSsymlakySaBwVJZorHhkWyICLZMKxlu1R9vYo+sd3z1jwb4J8x7bNDw==",
+      "source_package": "oxc-resolver@11.24.2",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-resolver/binding-linux-arm-musleabihf@11.24.2": [
+    {
+      "path": "third-party/upstream/npm-oxc-resolver-11.24.2/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-resolver/-/oxc-resolver-11.24.2.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-FY91FiDBj7ls5MsFS9jN3tjz2o0/zsdSsymlakySaBwVJZorHhkWyICLZMKxlu1R9vYo+sd3z1jwb4J8x7bNDw==",
+      "source_package": "oxc-resolver@11.24.2",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-resolver/binding-linux-arm64-gnu@11.24.2": [
+    {
+      "path": "third-party/upstream/npm-oxc-resolver-11.24.2/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-resolver/-/oxc-resolver-11.24.2.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-FY91FiDBj7ls5MsFS9jN3tjz2o0/zsdSsymlakySaBwVJZorHhkWyICLZMKxlu1R9vYo+sd3z1jwb4J8x7bNDw==",
+      "source_package": "oxc-resolver@11.24.2",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-resolver/binding-linux-arm64-musl@11.24.2": [
+    {
+      "path": "third-party/upstream/npm-oxc-resolver-11.24.2/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-resolver/-/oxc-resolver-11.24.2.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-FY91FiDBj7ls5MsFS9jN3tjz2o0/zsdSsymlakySaBwVJZorHhkWyICLZMKxlu1R9vYo+sd3z1jwb4J8x7bNDw==",
+      "source_package": "oxc-resolver@11.24.2",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-resolver/binding-linux-ppc64-gnu@11.24.2": [
+    {
+      "path": "third-party/upstream/npm-oxc-resolver-11.24.2/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-resolver/-/oxc-resolver-11.24.2.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-FY91FiDBj7ls5MsFS9jN3tjz2o0/zsdSsymlakySaBwVJZorHhkWyICLZMKxlu1R9vYo+sd3z1jwb4J8x7bNDw==",
+      "source_package": "oxc-resolver@11.24.2",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-resolver/binding-linux-riscv64-gnu@11.24.2": [
+    {
+      "path": "third-party/upstream/npm-oxc-resolver-11.24.2/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-resolver/-/oxc-resolver-11.24.2.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-FY91FiDBj7ls5MsFS9jN3tjz2o0/zsdSsymlakySaBwVJZorHhkWyICLZMKxlu1R9vYo+sd3z1jwb4J8x7bNDw==",
+      "source_package": "oxc-resolver@11.24.2",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-resolver/binding-linux-riscv64-musl@11.24.2": [
+    {
+      "path": "third-party/upstream/npm-oxc-resolver-11.24.2/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-resolver/-/oxc-resolver-11.24.2.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-FY91FiDBj7ls5MsFS9jN3tjz2o0/zsdSsymlakySaBwVJZorHhkWyICLZMKxlu1R9vYo+sd3z1jwb4J8x7bNDw==",
+      "source_package": "oxc-resolver@11.24.2",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-resolver/binding-linux-s390x-gnu@11.24.2": [
+    {
+      "path": "third-party/upstream/npm-oxc-resolver-11.24.2/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-resolver/-/oxc-resolver-11.24.2.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-FY91FiDBj7ls5MsFS9jN3tjz2o0/zsdSsymlakySaBwVJZorHhkWyICLZMKxlu1R9vYo+sd3z1jwb4J8x7bNDw==",
+      "source_package": "oxc-resolver@11.24.2",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-resolver/binding-linux-x64-gnu@11.24.2": [
+    {
+      "path": "third-party/upstream/npm-oxc-resolver-11.24.2/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-resolver/-/oxc-resolver-11.24.2.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-FY91FiDBj7ls5MsFS9jN3tjz2o0/zsdSsymlakySaBwVJZorHhkWyICLZMKxlu1R9vYo+sd3z1jwb4J8x7bNDw==",
+      "source_package": "oxc-resolver@11.24.2",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-resolver/binding-linux-x64-musl@11.24.2": [
+    {
+      "path": "third-party/upstream/npm-oxc-resolver-11.24.2/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-resolver/-/oxc-resolver-11.24.2.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-FY91FiDBj7ls5MsFS9jN3tjz2o0/zsdSsymlakySaBwVJZorHhkWyICLZMKxlu1R9vYo+sd3z1jwb4J8x7bNDw==",
+      "source_package": "oxc-resolver@11.24.2",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-resolver/binding-openharmony-arm64@11.24.2": [
+    {
+      "path": "third-party/upstream/npm-oxc-resolver-11.24.2/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-resolver/-/oxc-resolver-11.24.2.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-FY91FiDBj7ls5MsFS9jN3tjz2o0/zsdSsymlakySaBwVJZorHhkWyICLZMKxlu1R9vYo+sd3z1jwb4J8x7bNDw==",
+      "source_package": "oxc-resolver@11.24.2",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-resolver/binding-wasm32-wasi@11.24.2": [
+    {
+      "path": "third-party/upstream/npm-oxc-resolver-11.24.2/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-resolver/-/oxc-resolver-11.24.2.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-FY91FiDBj7ls5MsFS9jN3tjz2o0/zsdSsymlakySaBwVJZorHhkWyICLZMKxlu1R9vYo+sd3z1jwb4J8x7bNDw==",
+      "source_package": "oxc-resolver@11.24.2",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-resolver/binding-win32-arm64-msvc@11.24.2": [
+    {
+      "path": "third-party/upstream/npm-oxc-resolver-11.24.2/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-resolver/-/oxc-resolver-11.24.2.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-FY91FiDBj7ls5MsFS9jN3tjz2o0/zsdSsymlakySaBwVJZorHhkWyICLZMKxlu1R9vYo+sd3z1jwb4J8x7bNDw==",
+      "source_package": "oxc-resolver@11.24.2",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-resolver/binding-win32-x64-msvc@11.24.2": [
+    {
+      "path": "third-party/upstream/npm-oxc-resolver-11.24.2/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-resolver/-/oxc-resolver-11.24.2.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-FY91FiDBj7ls5MsFS9jN3tjz2o0/zsdSsymlakySaBwVJZorHhkWyICLZMKxlu1R9vYo+sd3z1jwb4J8x7bNDw==",
+      "source_package": "oxc-resolver@11.24.2",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-transform/binding-android-arm-eabi@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-transform-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-transform/-/oxc-transform-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-ml0/elXPNnDnuHo3VHmEMN2fnybmKx7YL+0E+gMQ0fuHRZHXYJzF6YJ01KsCWg6FXY6pbZcjm7DC3xwGHnB/BA==",
+      "source_package": "oxc-transform@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-transform/binding-android-arm64@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-transform-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-transform/-/oxc-transform-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-ml0/elXPNnDnuHo3VHmEMN2fnybmKx7YL+0E+gMQ0fuHRZHXYJzF6YJ01KsCWg6FXY6pbZcjm7DC3xwGHnB/BA==",
+      "source_package": "oxc-transform@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-transform/binding-darwin-arm64@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-transform-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-transform/-/oxc-transform-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-ml0/elXPNnDnuHo3VHmEMN2fnybmKx7YL+0E+gMQ0fuHRZHXYJzF6YJ01KsCWg6FXY6pbZcjm7DC3xwGHnB/BA==",
+      "source_package": "oxc-transform@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-transform/binding-darwin-x64@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-transform-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-transform/-/oxc-transform-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-ml0/elXPNnDnuHo3VHmEMN2fnybmKx7YL+0E+gMQ0fuHRZHXYJzF6YJ01KsCWg6FXY6pbZcjm7DC3xwGHnB/BA==",
+      "source_package": "oxc-transform@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-transform/binding-freebsd-x64@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-transform-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-transform/-/oxc-transform-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-ml0/elXPNnDnuHo3VHmEMN2fnybmKx7YL+0E+gMQ0fuHRZHXYJzF6YJ01KsCWg6FXY6pbZcjm7DC3xwGHnB/BA==",
+      "source_package": "oxc-transform@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-transform/binding-linux-arm-gnueabihf@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-transform-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-transform/-/oxc-transform-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-ml0/elXPNnDnuHo3VHmEMN2fnybmKx7YL+0E+gMQ0fuHRZHXYJzF6YJ01KsCWg6FXY6pbZcjm7DC3xwGHnB/BA==",
+      "source_package": "oxc-transform@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-transform/binding-linux-arm-musleabihf@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-transform-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-transform/-/oxc-transform-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-ml0/elXPNnDnuHo3VHmEMN2fnybmKx7YL+0E+gMQ0fuHRZHXYJzF6YJ01KsCWg6FXY6pbZcjm7DC3xwGHnB/BA==",
+      "source_package": "oxc-transform@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-transform/binding-linux-arm64-gnu@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-transform-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-transform/-/oxc-transform-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-ml0/elXPNnDnuHo3VHmEMN2fnybmKx7YL+0E+gMQ0fuHRZHXYJzF6YJ01KsCWg6FXY6pbZcjm7DC3xwGHnB/BA==",
+      "source_package": "oxc-transform@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-transform/binding-linux-arm64-musl@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-transform-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-transform/-/oxc-transform-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-ml0/elXPNnDnuHo3VHmEMN2fnybmKx7YL+0E+gMQ0fuHRZHXYJzF6YJ01KsCWg6FXY6pbZcjm7DC3xwGHnB/BA==",
+      "source_package": "oxc-transform@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-transform/binding-linux-ppc64-gnu@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-transform-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-transform/-/oxc-transform-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-ml0/elXPNnDnuHo3VHmEMN2fnybmKx7YL+0E+gMQ0fuHRZHXYJzF6YJ01KsCWg6FXY6pbZcjm7DC3xwGHnB/BA==",
+      "source_package": "oxc-transform@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-transform/binding-linux-riscv64-gnu@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-transform-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-transform/-/oxc-transform-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-ml0/elXPNnDnuHo3VHmEMN2fnybmKx7YL+0E+gMQ0fuHRZHXYJzF6YJ01KsCWg6FXY6pbZcjm7DC3xwGHnB/BA==",
+      "source_package": "oxc-transform@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-transform/binding-linux-riscv64-musl@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-transform-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-transform/-/oxc-transform-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-ml0/elXPNnDnuHo3VHmEMN2fnybmKx7YL+0E+gMQ0fuHRZHXYJzF6YJ01KsCWg6FXY6pbZcjm7DC3xwGHnB/BA==",
+      "source_package": "oxc-transform@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-transform/binding-linux-s390x-gnu@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-transform-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-transform/-/oxc-transform-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-ml0/elXPNnDnuHo3VHmEMN2fnybmKx7YL+0E+gMQ0fuHRZHXYJzF6YJ01KsCWg6FXY6pbZcjm7DC3xwGHnB/BA==",
+      "source_package": "oxc-transform@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-transform/binding-linux-x64-gnu@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-transform-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-transform/-/oxc-transform-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-ml0/elXPNnDnuHo3VHmEMN2fnybmKx7YL+0E+gMQ0fuHRZHXYJzF6YJ01KsCWg6FXY6pbZcjm7DC3xwGHnB/BA==",
+      "source_package": "oxc-transform@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-transform/binding-linux-x64-musl@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-transform-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-transform/-/oxc-transform-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-ml0/elXPNnDnuHo3VHmEMN2fnybmKx7YL+0E+gMQ0fuHRZHXYJzF6YJ01KsCWg6FXY6pbZcjm7DC3xwGHnB/BA==",
+      "source_package": "oxc-transform@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-transform/binding-openharmony-arm64@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-transform-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-transform/-/oxc-transform-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-ml0/elXPNnDnuHo3VHmEMN2fnybmKx7YL+0E+gMQ0fuHRZHXYJzF6YJ01KsCWg6FXY6pbZcjm7DC3xwGHnB/BA==",
+      "source_package": "oxc-transform@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-transform/binding-wasm32-wasi@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-transform-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-transform/-/oxc-transform-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-ml0/elXPNnDnuHo3VHmEMN2fnybmKx7YL+0E+gMQ0fuHRZHXYJzF6YJ01KsCWg6FXY6pbZcjm7DC3xwGHnB/BA==",
+      "source_package": "oxc-transform@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-transform/binding-win32-arm64-msvc@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-transform-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-transform/-/oxc-transform-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-ml0/elXPNnDnuHo3VHmEMN2fnybmKx7YL+0E+gMQ0fuHRZHXYJzF6YJ01KsCWg6FXY6pbZcjm7DC3xwGHnB/BA==",
+      "source_package": "oxc-transform@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-transform/binding-win32-ia32-msvc@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-transform-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-transform/-/oxc-transform-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-ml0/elXPNnDnuHo3VHmEMN2fnybmKx7YL+0E+gMQ0fuHRZHXYJzF6YJ01KsCWg6FXY6pbZcjm7DC3xwGHnB/BA==",
+      "source_package": "oxc-transform@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxc-transform/binding-win32-x64-msvc@0.131.0": [
+    {
+      "path": "third-party/upstream/npm-oxc-transform-0.131.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxc-transform/-/oxc-transform-0.131.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-ml0/elXPNnDnuHo3VHmEMN2fnybmKx7YL+0E+gMQ0fuHRZHXYJzF6YJ01KsCWg6FXY6pbZcjm7DC3xwGHnB/BA==",
+      "source_package": "oxc-transform@0.131.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxlint/binding-android-arm-eabi@1.89.0": [
+    {
+      "path": "third-party/upstream/npm-oxlint-1.89.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxlint/-/oxlint-1.89.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-a25hkfo61okGPvJz432fRIPoxlKtNnOVy9w4rzrmGgNm4iVTPwpSQlmdqNWnp6p9QyyPVfAZRgnf5XvSBZFk/A==",
+      "source_package": "oxlint@1.89.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxlint/binding-android-arm64@1.89.0": [
+    {
+      "path": "third-party/upstream/npm-oxlint-1.89.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxlint/-/oxlint-1.89.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-a25hkfo61okGPvJz432fRIPoxlKtNnOVy9w4rzrmGgNm4iVTPwpSQlmdqNWnp6p9QyyPVfAZRgnf5XvSBZFk/A==",
+      "source_package": "oxlint@1.89.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxlint/binding-darwin-arm64@1.89.0": [
+    {
+      "path": "third-party/upstream/npm-oxlint-1.89.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxlint/-/oxlint-1.89.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-a25hkfo61okGPvJz432fRIPoxlKtNnOVy9w4rzrmGgNm4iVTPwpSQlmdqNWnp6p9QyyPVfAZRgnf5XvSBZFk/A==",
+      "source_package": "oxlint@1.89.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxlint/binding-darwin-x64@1.89.0": [
+    {
+      "path": "third-party/upstream/npm-oxlint-1.89.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxlint/-/oxlint-1.89.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-a25hkfo61okGPvJz432fRIPoxlKtNnOVy9w4rzrmGgNm4iVTPwpSQlmdqNWnp6p9QyyPVfAZRgnf5XvSBZFk/A==",
+      "source_package": "oxlint@1.89.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxlint/binding-freebsd-x64@1.89.0": [
+    {
+      "path": "third-party/upstream/npm-oxlint-1.89.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxlint/-/oxlint-1.89.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-a25hkfo61okGPvJz432fRIPoxlKtNnOVy9w4rzrmGgNm4iVTPwpSQlmdqNWnp6p9QyyPVfAZRgnf5XvSBZFk/A==",
+      "source_package": "oxlint@1.89.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxlint/binding-linux-arm-gnueabihf@1.89.0": [
+    {
+      "path": "third-party/upstream/npm-oxlint-1.89.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxlint/-/oxlint-1.89.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-a25hkfo61okGPvJz432fRIPoxlKtNnOVy9w4rzrmGgNm4iVTPwpSQlmdqNWnp6p9QyyPVfAZRgnf5XvSBZFk/A==",
+      "source_package": "oxlint@1.89.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxlint/binding-linux-arm-musleabihf@1.89.0": [
+    {
+      "path": "third-party/upstream/npm-oxlint-1.89.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxlint/-/oxlint-1.89.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-a25hkfo61okGPvJz432fRIPoxlKtNnOVy9w4rzrmGgNm4iVTPwpSQlmdqNWnp6p9QyyPVfAZRgnf5XvSBZFk/A==",
+      "source_package": "oxlint@1.89.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxlint/binding-linux-arm64-gnu@1.89.0": [
+    {
+      "path": "third-party/upstream/npm-oxlint-1.89.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxlint/-/oxlint-1.89.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-a25hkfo61okGPvJz432fRIPoxlKtNnOVy9w4rzrmGgNm4iVTPwpSQlmdqNWnp6p9QyyPVfAZRgnf5XvSBZFk/A==",
+      "source_package": "oxlint@1.89.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxlint/binding-linux-arm64-musl@1.89.0": [
+    {
+      "path": "third-party/upstream/npm-oxlint-1.89.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxlint/-/oxlint-1.89.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-a25hkfo61okGPvJz432fRIPoxlKtNnOVy9w4rzrmGgNm4iVTPwpSQlmdqNWnp6p9QyyPVfAZRgnf5XvSBZFk/A==",
+      "source_package": "oxlint@1.89.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxlint/binding-linux-ppc64-gnu@1.89.0": [
+    {
+      "path": "third-party/upstream/npm-oxlint-1.89.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxlint/-/oxlint-1.89.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-a25hkfo61okGPvJz432fRIPoxlKtNnOVy9w4rzrmGgNm4iVTPwpSQlmdqNWnp6p9QyyPVfAZRgnf5XvSBZFk/A==",
+      "source_package": "oxlint@1.89.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxlint/binding-linux-riscv64-gnu@1.89.0": [
+    {
+      "path": "third-party/upstream/npm-oxlint-1.89.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxlint/-/oxlint-1.89.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-a25hkfo61okGPvJz432fRIPoxlKtNnOVy9w4rzrmGgNm4iVTPwpSQlmdqNWnp6p9QyyPVfAZRgnf5XvSBZFk/A==",
+      "source_package": "oxlint@1.89.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxlint/binding-linux-riscv64-musl@1.89.0": [
+    {
+      "path": "third-party/upstream/npm-oxlint-1.89.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxlint/-/oxlint-1.89.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-a25hkfo61okGPvJz432fRIPoxlKtNnOVy9w4rzrmGgNm4iVTPwpSQlmdqNWnp6p9QyyPVfAZRgnf5XvSBZFk/A==",
+      "source_package": "oxlint@1.89.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxlint/binding-linux-s390x-gnu@1.89.0": [
+    {
+      "path": "third-party/upstream/npm-oxlint-1.89.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxlint/-/oxlint-1.89.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-a25hkfo61okGPvJz432fRIPoxlKtNnOVy9w4rzrmGgNm4iVTPwpSQlmdqNWnp6p9QyyPVfAZRgnf5XvSBZFk/A==",
+      "source_package": "oxlint@1.89.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxlint/binding-linux-x64-gnu@1.89.0": [
+    {
+      "path": "third-party/upstream/npm-oxlint-1.89.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxlint/-/oxlint-1.89.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-a25hkfo61okGPvJz432fRIPoxlKtNnOVy9w4rzrmGgNm4iVTPwpSQlmdqNWnp6p9QyyPVfAZRgnf5XvSBZFk/A==",
+      "source_package": "oxlint@1.89.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxlint/binding-linux-x64-musl@1.89.0": [
+    {
+      "path": "third-party/upstream/npm-oxlint-1.89.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxlint/-/oxlint-1.89.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-a25hkfo61okGPvJz432fRIPoxlKtNnOVy9w4rzrmGgNm4iVTPwpSQlmdqNWnp6p9QyyPVfAZRgnf5XvSBZFk/A==",
+      "source_package": "oxlint@1.89.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxlint/binding-openharmony-arm64@1.89.0": [
+    {
+      "path": "third-party/upstream/npm-oxlint-1.89.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxlint/-/oxlint-1.89.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-a25hkfo61okGPvJz432fRIPoxlKtNnOVy9w4rzrmGgNm4iVTPwpSQlmdqNWnp6p9QyyPVfAZRgnf5XvSBZFk/A==",
+      "source_package": "oxlint@1.89.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxlint/binding-win32-arm64-msvc@1.89.0": [
+    {
+      "path": "third-party/upstream/npm-oxlint-1.89.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxlint/-/oxlint-1.89.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-a25hkfo61okGPvJz432fRIPoxlKtNnOVy9w4rzrmGgNm4iVTPwpSQlmdqNWnp6p9QyyPVfAZRgnf5XvSBZFk/A==",
+      "source_package": "oxlint@1.89.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxlint/binding-win32-ia32-msvc@1.89.0": [
+    {
+      "path": "third-party/upstream/npm-oxlint-1.89.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxlint/-/oxlint-1.89.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-a25hkfo61okGPvJz432fRIPoxlKtNnOVy9w4rzrmGgNm4iVTPwpSQlmdqNWnp6p9QyyPVfAZRgnf5XvSBZFk/A==",
+      "source_package": "oxlint@1.89.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@oxlint/binding-win32-x64-msvc@1.89.0": [
+    {
+      "path": "third-party/upstream/npm-oxlint-1.89.0/LICENSE",
+      "url": "https://registry.npmjs.org/oxlint/-/oxlint-1.89.0.tgz",
+      "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+      "source_integrity": "sha512-a25hkfo61okGPvJz432fRIPoxlKtNnOVy9w4rzrmGgNm4iVTPwpSQlmdqNWnp6p9QyyPVfAZRgnf5XvSBZFk/A==",
+      "source_package": "oxlint@1.89.0",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@react-dnd/invariant@4.0.2": [
+    {
+      "path": "third-party/upstream/npm-react-dnd-utils-4.0.2/LICENSE",
+      "url": "https://github.com/react-dnd/react-dnd/blob/641fd36c130e42c3cf08987924151efa1452bca7/LICENSE",
+      "sha256": "10c8da64ecfa3067cf9231e0ba19b8d7730e7fed3ac5eaa37ccb97c3c5e71336",
+      "git_blob_sha": "af2353dca4ed9d421d1a124482e63977b28e895f"
+    }
+  ],
+  "@react-dnd/shallowequal@4.0.2": [
+    {
+      "path": "third-party/upstream/npm-react-dnd-utils-4.0.2/LICENSE",
+      "url": "https://github.com/react-dnd/react-dnd/blob/641fd36c130e42c3cf08987924151efa1452bca7/LICENSE",
+      "sha256": "10c8da64ecfa3067cf9231e0ba19b8d7730e7fed3ac5eaa37ccb97c3c5e71336",
+      "git_blob_sha": "af2353dca4ed9d421d1a124482e63977b28e895f"
+    }
+  ],
+  "@react-three/fiber@9.8.1": [
+    {
+      "path": "third-party/upstream/npm-react-three-fiber-9.8.1/LICENSE",
+      "url": "https://github.com/pmndrs/react-three-fiber/blob/53ec672ac4a7189711766b87ece18889abbb32d4/LICENSE",
+      "sha256": "9c35b5de7b7493a707fffe4eb23bd2f7f449153c1911f7c6eefb4e591fd5349a",
+      "git_blob_sha": "493cfb3c8335c31bea327e0e27a8cb22004111d7"
+    }
+  ],
+  "@rolldown/binding-android-arm-eabi@1.2.13": [
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/THIRD-PARTY-LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "a877291d800ed43692f3f9ae09d8e01cc6f7293ad39d43896059c188ffbb8b7c",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "THIRD-PARTY-LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@rolldown/binding-android-arm64@1.2.13": [
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/THIRD-PARTY-LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "a877291d800ed43692f3f9ae09d8e01cc6f7293ad39d43896059c188ffbb8b7c",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "THIRD-PARTY-LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@rolldown/binding-darwin-arm64@1.2.13": [
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/THIRD-PARTY-LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "a877291d800ed43692f3f9ae09d8e01cc6f7293ad39d43896059c188ffbb8b7c",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "THIRD-PARTY-LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@rolldown/binding-darwin-x64@1.2.13": [
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/THIRD-PARTY-LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "a877291d800ed43692f3f9ae09d8e01cc6f7293ad39d43896059c188ffbb8b7c",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "THIRD-PARTY-LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@rolldown/binding-freebsd-x64@1.2.13": [
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/THIRD-PARTY-LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "a877291d800ed43692f3f9ae09d8e01cc6f7293ad39d43896059c188ffbb8b7c",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "THIRD-PARTY-LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@rolldown/binding-linux-arm-gnueabihf@1.2.13": [
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/THIRD-PARTY-LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "a877291d800ed43692f3f9ae09d8e01cc6f7293ad39d43896059c188ffbb8b7c",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "THIRD-PARTY-LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@rolldown/binding-linux-arm64-gnu@1.2.13": [
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/THIRD-PARTY-LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "a877291d800ed43692f3f9ae09d8e01cc6f7293ad39d43896059c188ffbb8b7c",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "THIRD-PARTY-LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@rolldown/binding-linux-arm64-musl@1.2.13": [
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/THIRD-PARTY-LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "a877291d800ed43692f3f9ae09d8e01cc6f7293ad39d43896059c188ffbb8b7c",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "THIRD-PARTY-LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@rolldown/binding-linux-ppc64-gnu@1.2.13": [
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/THIRD-PARTY-LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "a877291d800ed43692f3f9ae09d8e01cc6f7293ad39d43896059c188ffbb8b7c",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "THIRD-PARTY-LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@rolldown/binding-linux-s390x-gnu@1.2.13": [
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/THIRD-PARTY-LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "a877291d800ed43692f3f9ae09d8e01cc6f7293ad39d43896059c188ffbb8b7c",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "THIRD-PARTY-LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@rolldown/binding-linux-x64-gnu@1.2.13": [
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/THIRD-PARTY-LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "a877291d800ed43692f3f9ae09d8e01cc6f7293ad39d43896059c188ffbb8b7c",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "THIRD-PARTY-LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@rolldown/binding-linux-x64-musl@1.2.13": [
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/THIRD-PARTY-LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "a877291d800ed43692f3f9ae09d8e01cc6f7293ad39d43896059c188ffbb8b7c",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "THIRD-PARTY-LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@rolldown/binding-openharmony-arm64@1.2.13": [
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/THIRD-PARTY-LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "a877291d800ed43692f3f9ae09d8e01cc6f7293ad39d43896059c188ffbb8b7c",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "THIRD-PARTY-LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@rolldown/binding-win32-arm64-msvc@1.2.13": [
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/THIRD-PARTY-LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "a877291d800ed43692f3f9ae09d8e01cc6f7293ad39d43896059c188ffbb8b7c",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "THIRD-PARTY-LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@rolldown/binding-win32-x64-msvc@1.2.13": [
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-rolldown-1.2.13/THIRD-PARTY-LICENSE",
+      "url": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.13.tgz",
+      "sha256": "a877291d800ed43692f3f9ae09d8e01cc6f7293ad39d43896059c188ffbb8b7c",
+      "source_integrity": "sha512-/5apOkwWxtACcQtZ5WlrAsKS4JwXVThQPJZ3RqIruRY9UG9M8e0VlXN068xum/JRKA4aIUoJ13ghe/kGCvidiQ==",
+      "source_package": "rolldown@1.2.13",
+      "source_file": "THIRD-PARTY-LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@tailwindcss/oxide-wasm32-wasi@4.3.3": [
+    {
+      "path": "third-party/upstream/npm-tailwindcss-oxide-4.3.3/LICENSE",
+      "url": "https://registry.npmjs.org/@tailwindcss/oxide/-/oxide-4.3.3.tgz",
+      "sha256": "60e0b68c0f35c078eef3a5d29419d0b03ff84ec1df9c3f9d6e39a519a5ae7985",
+      "source_integrity": "sha512-krXjAikiaFSPaK/FkAQT5UTx3VormQaiZ5hBFlJZ9UFQGB/rwg1MZIhHAG9smMQRTdyJxP6Qt5MwMtdyU5FWrA==",
+      "source_package": "@tailwindcss/oxide@4.3.3",
+      "source_file": "LICENSE",
+      "relationship": "Original license from the same-release parent package that explicitly declares this WASI platform artifact in optionalDependencies."
+    }
+  ],
+  "@tauri-apps/cli-darwin-arm64@2.12.2": [
+    {
+      "path": "third-party/upstream/npm-tauri-apps-cli-2.12.2/LICENSE-APACHE-2.0",
+      "url": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.12.2.tgz",
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "source_integrity": "sha512-PMSppzAnlT+BvZtRKuidxjRSm2r5t8kDpJ/czmmQUa0AtDNTwrjLE8vApK3phCWGg7isfnYL46Dl1jB4ArI0hA==",
+      "source_package": "@tauri-apps/cli@2.12.2",
+      "source_file": "LICENSE-APACHE-2.0",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-tauri-apps-cli-2.12.2/LICENSE-MIT",
+      "url": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.12.2.tgz",
+      "sha256": "9dd42ea92cff2ede5cd477cbfcce051b2d0115c0ac7f368ee88cb545055dff1d",
+      "source_integrity": "sha512-PMSppzAnlT+BvZtRKuidxjRSm2r5t8kDpJ/czmmQUa0AtDNTwrjLE8vApK3phCWGg7isfnYL46Dl1jB4ArI0hA==",
+      "source_package": "@tauri-apps/cli@2.12.2",
+      "source_file": "LICENSE-MIT",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@tauri-apps/cli-darwin-x64@2.12.2": [
+    {
+      "path": "third-party/upstream/npm-tauri-apps-cli-2.12.2/LICENSE-APACHE-2.0",
+      "url": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.12.2.tgz",
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "source_integrity": "sha512-PMSppzAnlT+BvZtRKuidxjRSm2r5t8kDpJ/czmmQUa0AtDNTwrjLE8vApK3phCWGg7isfnYL46Dl1jB4ArI0hA==",
+      "source_package": "@tauri-apps/cli@2.12.2",
+      "source_file": "LICENSE-APACHE-2.0",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-tauri-apps-cli-2.12.2/LICENSE-MIT",
+      "url": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.12.2.tgz",
+      "sha256": "9dd42ea92cff2ede5cd477cbfcce051b2d0115c0ac7f368ee88cb545055dff1d",
+      "source_integrity": "sha512-PMSppzAnlT+BvZtRKuidxjRSm2r5t8kDpJ/czmmQUa0AtDNTwrjLE8vApK3phCWGg7isfnYL46Dl1jB4ArI0hA==",
+      "source_package": "@tauri-apps/cli@2.12.2",
+      "source_file": "LICENSE-MIT",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@tauri-apps/cli-linux-arm-gnueabihf@2.12.2": [
+    {
+      "path": "third-party/upstream/npm-tauri-apps-cli-2.12.2/LICENSE-APACHE-2.0",
+      "url": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.12.2.tgz",
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "source_integrity": "sha512-PMSppzAnlT+BvZtRKuidxjRSm2r5t8kDpJ/czmmQUa0AtDNTwrjLE8vApK3phCWGg7isfnYL46Dl1jB4ArI0hA==",
+      "source_package": "@tauri-apps/cli@2.12.2",
+      "source_file": "LICENSE-APACHE-2.0",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-tauri-apps-cli-2.12.2/LICENSE-MIT",
+      "url": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.12.2.tgz",
+      "sha256": "9dd42ea92cff2ede5cd477cbfcce051b2d0115c0ac7f368ee88cb545055dff1d",
+      "source_integrity": "sha512-PMSppzAnlT+BvZtRKuidxjRSm2r5t8kDpJ/czmmQUa0AtDNTwrjLE8vApK3phCWGg7isfnYL46Dl1jB4ArI0hA==",
+      "source_package": "@tauri-apps/cli@2.12.2",
+      "source_file": "LICENSE-MIT",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@tauri-apps/cli-linux-arm64-gnu@2.12.2": [
+    {
+      "path": "third-party/upstream/npm-tauri-apps-cli-2.12.2/LICENSE-APACHE-2.0",
+      "url": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.12.2.tgz",
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "source_integrity": "sha512-PMSppzAnlT+BvZtRKuidxjRSm2r5t8kDpJ/czmmQUa0AtDNTwrjLE8vApK3phCWGg7isfnYL46Dl1jB4ArI0hA==",
+      "source_package": "@tauri-apps/cli@2.12.2",
+      "source_file": "LICENSE-APACHE-2.0",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-tauri-apps-cli-2.12.2/LICENSE-MIT",
+      "url": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.12.2.tgz",
+      "sha256": "9dd42ea92cff2ede5cd477cbfcce051b2d0115c0ac7f368ee88cb545055dff1d",
+      "source_integrity": "sha512-PMSppzAnlT+BvZtRKuidxjRSm2r5t8kDpJ/czmmQUa0AtDNTwrjLE8vApK3phCWGg7isfnYL46Dl1jB4ArI0hA==",
+      "source_package": "@tauri-apps/cli@2.12.2",
+      "source_file": "LICENSE-MIT",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@tauri-apps/cli-linux-arm64-musl@2.12.2": [
+    {
+      "path": "third-party/upstream/npm-tauri-apps-cli-2.12.2/LICENSE-APACHE-2.0",
+      "url": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.12.2.tgz",
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "source_integrity": "sha512-PMSppzAnlT+BvZtRKuidxjRSm2r5t8kDpJ/czmmQUa0AtDNTwrjLE8vApK3phCWGg7isfnYL46Dl1jB4ArI0hA==",
+      "source_package": "@tauri-apps/cli@2.12.2",
+      "source_file": "LICENSE-APACHE-2.0",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-tauri-apps-cli-2.12.2/LICENSE-MIT",
+      "url": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.12.2.tgz",
+      "sha256": "9dd42ea92cff2ede5cd477cbfcce051b2d0115c0ac7f368ee88cb545055dff1d",
+      "source_integrity": "sha512-PMSppzAnlT+BvZtRKuidxjRSm2r5t8kDpJ/czmmQUa0AtDNTwrjLE8vApK3phCWGg7isfnYL46Dl1jB4ArI0hA==",
+      "source_package": "@tauri-apps/cli@2.12.2",
+      "source_file": "LICENSE-MIT",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@tauri-apps/cli-linux-riscv64-gnu@2.12.2": [
+    {
+      "path": "third-party/upstream/npm-tauri-apps-cli-2.12.2/LICENSE-APACHE-2.0",
+      "url": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.12.2.tgz",
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "source_integrity": "sha512-PMSppzAnlT+BvZtRKuidxjRSm2r5t8kDpJ/czmmQUa0AtDNTwrjLE8vApK3phCWGg7isfnYL46Dl1jB4ArI0hA==",
+      "source_package": "@tauri-apps/cli@2.12.2",
+      "source_file": "LICENSE-APACHE-2.0",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-tauri-apps-cli-2.12.2/LICENSE-MIT",
+      "url": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.12.2.tgz",
+      "sha256": "9dd42ea92cff2ede5cd477cbfcce051b2d0115c0ac7f368ee88cb545055dff1d",
+      "source_integrity": "sha512-PMSppzAnlT+BvZtRKuidxjRSm2r5t8kDpJ/czmmQUa0AtDNTwrjLE8vApK3phCWGg7isfnYL46Dl1jB4ArI0hA==",
+      "source_package": "@tauri-apps/cli@2.12.2",
+      "source_file": "LICENSE-MIT",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@tauri-apps/cli-linux-x64-gnu@2.12.2": [
+    {
+      "path": "third-party/upstream/npm-tauri-apps-cli-2.12.2/LICENSE-APACHE-2.0",
+      "url": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.12.2.tgz",
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "source_integrity": "sha512-PMSppzAnlT+BvZtRKuidxjRSm2r5t8kDpJ/czmmQUa0AtDNTwrjLE8vApK3phCWGg7isfnYL46Dl1jB4ArI0hA==",
+      "source_package": "@tauri-apps/cli@2.12.2",
+      "source_file": "LICENSE-APACHE-2.0",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-tauri-apps-cli-2.12.2/LICENSE-MIT",
+      "url": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.12.2.tgz",
+      "sha256": "9dd42ea92cff2ede5cd477cbfcce051b2d0115c0ac7f368ee88cb545055dff1d",
+      "source_integrity": "sha512-PMSppzAnlT+BvZtRKuidxjRSm2r5t8kDpJ/czmmQUa0AtDNTwrjLE8vApK3phCWGg7isfnYL46Dl1jB4ArI0hA==",
+      "source_package": "@tauri-apps/cli@2.12.2",
+      "source_file": "LICENSE-MIT",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@tauri-apps/cli-linux-x64-musl@2.12.2": [
+    {
+      "path": "third-party/upstream/npm-tauri-apps-cli-2.12.2/LICENSE-APACHE-2.0",
+      "url": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.12.2.tgz",
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "source_integrity": "sha512-PMSppzAnlT+BvZtRKuidxjRSm2r5t8kDpJ/czmmQUa0AtDNTwrjLE8vApK3phCWGg7isfnYL46Dl1jB4ArI0hA==",
+      "source_package": "@tauri-apps/cli@2.12.2",
+      "source_file": "LICENSE-APACHE-2.0",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-tauri-apps-cli-2.12.2/LICENSE-MIT",
+      "url": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.12.2.tgz",
+      "sha256": "9dd42ea92cff2ede5cd477cbfcce051b2d0115c0ac7f368ee88cb545055dff1d",
+      "source_integrity": "sha512-PMSppzAnlT+BvZtRKuidxjRSm2r5t8kDpJ/czmmQUa0AtDNTwrjLE8vApK3phCWGg7isfnYL46Dl1jB4ArI0hA==",
+      "source_package": "@tauri-apps/cli@2.12.2",
+      "source_file": "LICENSE-MIT",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@tauri-apps/cli-win32-arm64-msvc@2.12.2": [
+    {
+      "path": "third-party/upstream/npm-tauri-apps-cli-2.12.2/LICENSE-APACHE-2.0",
+      "url": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.12.2.tgz",
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "source_integrity": "sha512-PMSppzAnlT+BvZtRKuidxjRSm2r5t8kDpJ/czmmQUa0AtDNTwrjLE8vApK3phCWGg7isfnYL46Dl1jB4ArI0hA==",
+      "source_package": "@tauri-apps/cli@2.12.2",
+      "source_file": "LICENSE-APACHE-2.0",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-tauri-apps-cli-2.12.2/LICENSE-MIT",
+      "url": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.12.2.tgz",
+      "sha256": "9dd42ea92cff2ede5cd477cbfcce051b2d0115c0ac7f368ee88cb545055dff1d",
+      "source_integrity": "sha512-PMSppzAnlT+BvZtRKuidxjRSm2r5t8kDpJ/czmmQUa0AtDNTwrjLE8vApK3phCWGg7isfnYL46Dl1jB4ArI0hA==",
+      "source_package": "@tauri-apps/cli@2.12.2",
+      "source_file": "LICENSE-MIT",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@tauri-apps/cli-win32-ia32-msvc@2.12.2": [
+    {
+      "path": "third-party/upstream/npm-tauri-apps-cli-2.12.2/LICENSE-APACHE-2.0",
+      "url": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.12.2.tgz",
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "source_integrity": "sha512-PMSppzAnlT+BvZtRKuidxjRSm2r5t8kDpJ/czmmQUa0AtDNTwrjLE8vApK3phCWGg7isfnYL46Dl1jB4ArI0hA==",
+      "source_package": "@tauri-apps/cli@2.12.2",
+      "source_file": "LICENSE-APACHE-2.0",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-tauri-apps-cli-2.12.2/LICENSE-MIT",
+      "url": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.12.2.tgz",
+      "sha256": "9dd42ea92cff2ede5cd477cbfcce051b2d0115c0ac7f368ee88cb545055dff1d",
+      "source_integrity": "sha512-PMSppzAnlT+BvZtRKuidxjRSm2r5t8kDpJ/czmmQUa0AtDNTwrjLE8vApK3phCWGg7isfnYL46Dl1jB4ArI0hA==",
+      "source_package": "@tauri-apps/cli@2.12.2",
+      "source_file": "LICENSE-MIT",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@tauri-apps/cli-win32-x64-msvc@2.12.2": [
+    {
+      "path": "third-party/upstream/npm-tauri-apps-cli-2.12.2/LICENSE-APACHE-2.0",
+      "url": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.12.2.tgz",
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "source_integrity": "sha512-PMSppzAnlT+BvZtRKuidxjRSm2r5t8kDpJ/czmmQUa0AtDNTwrjLE8vApK3phCWGg7isfnYL46Dl1jB4ArI0hA==",
+      "source_package": "@tauri-apps/cli@2.12.2",
+      "source_file": "LICENSE-APACHE-2.0",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    },
+    {
+      "path": "third-party/upstream/npm-tauri-apps-cli-2.12.2/LICENSE-MIT",
+      "url": "https://registry.npmjs.org/@tauri-apps/cli/-/cli-2.12.2.tgz",
+      "sha256": "9dd42ea92cff2ede5cd477cbfcce051b2d0115c0ac7f368ee88cb545055dff1d",
+      "source_integrity": "sha512-PMSppzAnlT+BvZtRKuidxjRSm2r5t8kDpJ/czmmQUa0AtDNTwrjLE8vApK3phCWGg7isfnYL46Dl1jB4ArI0hA==",
+      "source_package": "@tauri-apps/cli@2.12.2",
+      "source_file": "LICENSE-MIT",
+      "relationship": "Original license from the same-release parent package that explicitly declares this platform artifact in optionalDependencies."
+    }
+  ],
+  "@tybys/wasm-util@0.10.2": [
+    {
+      "path": "third-party/upstream/npm-tybys-wasm-util-0.10.2/package.json",
+      "url": "https://registry.npmjs.org/@tailwindcss/oxide-wasm32-wasi/-/oxide-wasm32-wasi-4.3.3.tgz",
+      "sha256": "a7b1718e6616ae2cd235a365d03b8d5b5e8c5d6a27e9f7604a3d51ed20ca9c29",
+      "complete_license": false,
+      "provenance_kind": "original-published-bundled-package",
+      "tarball_subpath": "package/node_modules/@tybys/wasm-util/package.json",
+      "parent_integrity": "sha512-jx1+rPhY/5Ympkktd656HBWEBLxP7dH06losBLjjf5vgCODXvi9KhtftWcMIwTFIDqBr7cRnQkdLnAG+IOlGvQ==",
+      "note": "Unmodified bundled package metadata and README; MIT is explicitly declared. Author metadata remains metadata; no copyright notice has been invented."
+    },
+    {
+      "path": "third-party/upstream/npm-tybys-wasm-util-0.10.2/README.md",
+      "url": "https://registry.npmjs.org/@tailwindcss/oxide-wasm32-wasi/-/oxide-wasm32-wasi-4.3.3.tgz",
+      "sha256": "e7288a5d4a20e664a27134523f05ddb98c78cfe51b8283362c3b490cb9d12018",
+      "complete_license": false,
+      "provenance_kind": "original-published-bundled-package",
+      "tarball_subpath": "package/node_modules/@tybys/wasm-util/README.md",
+      "parent_integrity": "sha512-jx1+rPhY/5Ympkktd656HBWEBLxP7dH06losBLjjf5vgCODXvi9KhtftWcMIwTFIDqBr7cRnQkdLnAG+IOlGvQ==",
+      "note": "Unmodified bundled package metadata and README; MIT is explicitly declared. Author metadata remains metadata; no copyright notice has been invented."
+    },
+    {
+      "path": "third-party/upstream/standard/MIT.txt",
+      "url": "https://github.com/spdx/license-list-data/blob/v3.27.0/text/MIT.txt",
+      "sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5",
+      "complete_license": true,
+      "provenance_kind": "standard-text-for-declared-SPDX-license",
+      "note": "Standard MIT text corresponding to the explicit package.json SPDX declaration. This is not a publisher-supplied LICENSE file. SPDX template placeholders are unmodified; no copyright year or holder has been invented.",
+      "review": [
+        "publisher-dedicated-LICENSE-file-absent; original MIT declaration and author metadata retained; standard MIT text supplied separately"
+      ],
+      "declaration_specification": "https://docs.npmjs.com/cli/v11/configuring-npm/package-json/#license",
+      "standard_identifier_specification": "https://spdx.dev/learn/handling-license-info/"
+    }
+  ],
+  "@wyw-in-js/processor-utils@2.4.0": [
+    {
+      "path": "third-party/upstream/npm-wyw-in-js-2.4.0/LICENSE",
+      "url": "https://github.com/wyw-in-js/wyw-in-js/blob/ff6a0e10a50b2b92c73bd76896ae7496d14c992e/LICENSE",
+      "sha256": "fde2f19eea2855ec7fe391e1daf8d4297dc7b24eefcf09b942149d7c5571f065",
+      "git_blob_sha": "0f5e3739d9fb54df5e8dde382b2644c235a6fcb1"
+    }
+  ],
+  "@wyw-in-js/processor-utils@2.5.0": [
+    {
+      "path": "third-party/upstream/npm-wyw-in-js-2.5.0/LICENSE",
+      "url": "https://github.com/wyw-in-js/wyw-in-js/blob/bd4186fc0e954e124ad77f77eb481a81f547ed70/LICENSE",
+      "sha256": "fde2f19eea2855ec7fe391e1daf8d4297dc7b24eefcf09b942149d7c5571f065",
+      "git_blob_sha": "0f5e3739d9fb54df5e8dde382b2644c235a6fcb1"
+    }
+  ],
+  "@wyw-in-js/shared@2.4.0": [
+    {
+      "path": "third-party/upstream/npm-wyw-in-js-2.4.0/LICENSE",
+      "url": "https://github.com/wyw-in-js/wyw-in-js/blob/ff6a0e10a50b2b92c73bd76896ae7496d14c992e/LICENSE",
+      "sha256": "fde2f19eea2855ec7fe391e1daf8d4297dc7b24eefcf09b942149d7c5571f065",
+      "git_blob_sha": "0f5e3739d9fb54df5e8dde382b2644c235a6fcb1"
+    }
+  ],
+  "@wyw-in-js/shared@2.5.0": [
+    {
+      "path": "third-party/upstream/npm-wyw-in-js-2.5.0/LICENSE",
+      "url": "https://github.com/wyw-in-js/wyw-in-js/blob/bd4186fc0e954e124ad77f77eb481a81f547ed70/LICENSE",
+      "sha256": "fde2f19eea2855ec7fe391e1daf8d4297dc7b24eefcf09b942149d7c5571f065",
+      "git_blob_sha": "0f5e3739d9fb54df5e8dde382b2644c235a6fcb1"
+    }
+  ],
+  "@wyw-in-js/transform@2.5.1": [
+    {
+      "path": "third-party/upstream/npm-wyw-in-js-2.5.1/LICENSE",
+      "url": "https://github.com/wyw-in-js/wyw-in-js/blob/2ee2b736aaeba4eed596031e8e5c912f0395ac4d/LICENSE",
+      "sha256": "fde2f19eea2855ec7fe391e1daf8d4297dc7b24eefcf09b942149d7c5571f065",
+      "git_blob_sha": "0f5e3739d9fb54df5e8dde382b2644c235a6fcb1"
+    }
+  ],
+  "@wyw-in-js/vite@2.5.1": [
+    {
+      "path": "third-party/upstream/npm-wyw-in-js-2.5.1/LICENSE",
+      "url": "https://github.com/wyw-in-js/wyw-in-js/blob/2ee2b736aaeba4eed596031e8e5c912f0395ac4d/LICENSE",
+      "sha256": "fde2f19eea2855ec7fe391e1daf8d4297dc7b24eefcf09b942149d7c5571f065",
+      "git_blob_sha": "0f5e3739d9fb54df5e8dde382b2644c235a6fcb1"
+    }
+  ],
+  "draco3d@1.5.7": [
+    {
+      "path": "third-party/upstream/npm-draco3d-1.5.7/LICENSE",
+      "url": "https://github.com/google/draco/blob/1.5.7/LICENSE",
+      "sha256": "d3709b0fb4b8a94bbb1d02b8a2e484f258b0d9c5c5a01f940391f3fe662cd1a4",
+      "git_blob_sha": "30109545483a9b9889532c2bd5254c6fee4eb121"
+    }
+  ],
+  "react-remove-scroll-bar@2.3.8": [
+    {
+      "path": "third-party/upstream/npm-react-remove-scroll-bar-2.3.8/package.json",
+      "url": "https://registry.npmjs.org/react-remove-scroll-bar/-/react-remove-scroll-bar-2.3.8.tgz",
+      "sha256": "e372f857ce05f266137c65293436b5380fec42ac311e6acb9378ed78b98d75d0",
+      "complete_license": false,
+      "provenance_kind": "original-published-package",
+      "note": "Unmodified published package metadata and README; MIT is explicitly declared. Author metadata is preserved as metadata, not converted into an invented copyright notice."
+    },
+    {
+      "path": "third-party/upstream/npm-react-remove-scroll-bar-2.3.8/README.md",
+      "url": "https://registry.npmjs.org/react-remove-scroll-bar/-/react-remove-scroll-bar-2.3.8.tgz",
+      "sha256": "486442209236ffa3893312e508694699a6b8834d30a2f9c083c1f3379983e4f9",
+      "complete_license": false,
+      "provenance_kind": "original-published-package",
+      "note": "Unmodified published package metadata and README; MIT is explicitly declared. Author metadata is preserved as metadata, not converted into an invented copyright notice."
+    },
+    {
+      "path": "third-party/upstream/standard/MIT.txt",
+      "url": "https://github.com/spdx/license-list-data/blob/v3.27.0/text/MIT.txt",
+      "sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5",
+      "complete_license": true,
+      "provenance_kind": "standard-text-for-declared-SPDX-license",
+      "note": "Standard MIT text corresponding to the explicit package.json SPDX declaration. This is not a publisher-supplied LICENSE file. SPDX template placeholders are unmodified; no copyright year or holder has been invented.",
+      "review": [
+        "publisher-dedicated-LICENSE-file-absent; original MIT declaration and author metadata retained; standard MIT text supplied separately"
+      ],
+      "declaration_specification": "https://docs.npmjs.com/cli/v11/configuring-npm/package-json/#license",
+      "standard_identifier_specification": "https://spdx.dev/learn/handling-license-info/"
+    }
+  ],
+  "@wyw-in-js/transform@2.6.0": [
+    {
+      "path": "third-party/upstream/npm-wyw-in-js-2.6.0/LICENSE",
+      "sha256": "fde2f19eea2855ec7fe391e1daf8d4297dc7b24eefcf09b942149d7c5571f065",
+      "url": "https://github.com/wyw-in-js/wyw-in-js/blob/01f5dcf4d037dff12f6b7228ead7a673930a9b8b/LICENSE",
+      "git_blob_sha": "0f5e3739d9fb54df5e8dde382b2644c235a6fcb1"
+    }
+  ],
+  "@wyw-in-js/vite@2.6.0": [
+    {
+      "path": "third-party/upstream/npm-wyw-in-js-2.6.0/LICENSE",
+      "sha256": "fde2f19eea2855ec7fe391e1daf8d4297dc7b24eefcf09b942149d7c5571f065",
+      "url": "https://github.com/wyw-in-js/wyw-in-js/blob/01f5dcf4d037dff12f6b7228ead7a673930a9b8b/LICENSE",
+      "git_blob_sha": "0f5e3739d9fb54df5e8dde382b2644c235a6fcb1"
+    }
+  ],
+  "@wyw-in-js/shared@2.6.0": [
+    {
+      "path": "third-party/upstream/npm-wyw-in-js-2.6.0/LICENSE",
+      "sha256": "fde2f19eea2855ec7fe391e1daf8d4297dc7b24eefcf09b942149d7c5571f065",
+      "url": "https://github.com/wyw-in-js/wyw-in-js/blob/01f5dcf4d037dff12f6b7228ead7a673930a9b8b/LICENSE",
+      "git_blob_sha": "0f5e3739d9fb54df5e8dde382b2644c235a6fcb1"
+    }
+  ],
+  "@wyw-in-js/processor-utils@2.6.0": [
+    {
+      "path": "third-party/upstream/npm-wyw-in-js-2.6.0/LICENSE",
+      "sha256": "fde2f19eea2855ec7fe391e1daf8d4297dc7b24eefcf09b942149d7c5571f065",
+      "url": "https://github.com/wyw-in-js/wyw-in-js/blob/01f5dcf4d037dff12f6b7228ead7a673930a9b8b/LICENSE",
+      "git_blob_sha": "0f5e3739d9fb54df5e8dde382b2644c235a6fcb1"
+    }
+  ]
+}

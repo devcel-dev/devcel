@@ -1,0 +1,65 @@
+uuid = "f5d2cb66-255e-5290-b774-4c423e921938"
+display_name = "個人スウォッチ ColorFloat"
+description = "Edit names, RGBA values, and display order in standard cells. Each row UUID is its swatch ID."
+records = []
+[metadata]
+interface_order = []
+initial_transposed = false
+edit_permissions = { add_columns = false, delete_columns = false, add_rows = true, delete_rows = true, edit_cells = true }
+
+parent_uuid = ""
+
+data_name = "UserColorFloatSwatches"
+
+[interface_implementations]
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "7982c2a1-393b-5dcc-9c5e-863970116c1b"
+display_name = "名前"
+data_name = "name"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 220
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "b4c9627d-d239-5ffd-a1f2-daa4d604a843"
+display_name = "値"
+data_name = "value"
+tooltip = ""
+data_type = "ColorFloat"
+tags = []
+default_value = "[1.0,1.0,1.0,1.0]"
+memo_text = ""
+required = true
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 220
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "03f4299e-79db-5556-9a81-f8fc62c75711"
+display_name = "表示順"
+data_name = "order"
+tooltip = ""
+data_type = "I32"
+tags = []
+default_value = "0"
+memo_text = ""
+required = true
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 220

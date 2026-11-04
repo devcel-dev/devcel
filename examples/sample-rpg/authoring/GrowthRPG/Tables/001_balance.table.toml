@@ -1,0 +1,122 @@
+uuid = "10000000-0000-4000-8000-000000000001"
+display_name = "balance"
+description = ""
+
+[metadata]
+interface_order = []
+data_name = "balance"
+initial_transposed = false
+
+[metadata.edit_permissions]
+add_columns = true
+delete_columns = true
+add_rows = true
+delete_rows = true
+edit_cells = true
+
+[interface_implementations]
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-8001-000000000001"
+display_name = "key"
+data_name = "key"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-8001-000000000002"
+display_name = "attack"
+data_name = "attack"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-8001-000000000003"
+display_name = "hp"
+data_name = "hp"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-8001-000000000004"
+display_name = "cost"
+data_name = "cost"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-8001-000000000005"
+display_name = "reward"
+data_name = "reward"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-8001-000000000006"
+display_name = "phase"
+data_name = "phase"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "75c53dc6-cff6-59fe-81a3-1744e8474617"
+display_name = "Rest Growth Permille"
+data_name = "rest_growth_permille"
+data_type = "I64"
+default_value = "40"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[records]]
+uuid = "20000000-0000-4000-8001-000000000001"
+label = "balance"
+tags = ["rpg/balance", "catalog/seed-v1"]
+
+[records.values]
+attack = "18"
+cost = "5"
+hp = "120"
+key = "balance"
+phase = "1"
+rest_growth_permille = "40"
+reward = "0"

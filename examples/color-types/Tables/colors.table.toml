@@ -1,0 +1,181 @@
+uuid = "2b030beb-4085-4c6c-a88b-01c34b327e83"
+display_name = "Color Practice"
+description = "Four RGBA components with separate precision and sRGB conversions"
+[metadata]
+interface_order = []
+initial_transposed = false
+edit_permissions = { add_columns = true, delete_columns = true, add_rows = true, delete_rows = true, edit_cells = true }
+
+parent_uuid = ""
+
+data_name = "colors"
+
+
+[interface_implementations]
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "5af41e09-2a3a-5b09-8e7a-ea5252ea5997"
+display_name = "label"
+data_name = "label"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 130
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "caa176cb-8cf5-5470-aef8-5a24fd2ba49c"
+display_name = "srgb_byte"
+data_name = "srgb_byte"
+tooltip = ""
+data_type = "Color32"
+tags = []
+default_value = "[255,255,255,255]"
+memo_text = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "d0e91bae-b953-556d-a56f-fafada0e9210"
+display_name = "normalized"
+data_name = "normalized"
+tooltip = ""
+data_type = "ColorFloat"
+tags = []
+default_value = "=COLOR_TO_FLOAT(srgb_byte)"
+memo_text = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "c5bbeca9-6847-57c8-93f8-8d981c7a7261"
+display_name = "linear"
+data_name = "linear"
+tooltip = ""
+data_type = "ColorFloat"
+tags = []
+default_value = "=SRGB_TO_LINEAR(COLOR_TO_FLOAT(srgb_byte))"
+memo_text = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "79af8887-1541-5767-94f7-c37e91d513bb"
+display_name = "encoded"
+data_name = "encoded"
+tooltip = ""
+data_type = "ColorFloat"
+tags = []
+default_value = "=LINEAR_TO_SRGB(linear)"
+memo_text = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "ba3ca6d2-fb7f-5485-8ded-412f837cb0f6"
+display_name = "hdr"
+data_name = "hdr"
+tooltip = ""
+data_type = "ColorFloat"
+tags = []
+default_value = "[1.0,1.0,1.0,1.0]"
+memo_text = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "87cf1468-c3a3-5ee2-93b8-f72a4e136b7c"
+display_name = "red"
+data_name = "red"
+tooltip = ""
+data_type = "F32"
+tags = []
+default_value = "=hdr.r"
+memo_text = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 130
+
+[[records]]
+uuid = "a88c06bb-f027-5725-95d4-7b50050730e7"
+parent_uuid = ""
+label = "Medium Red"
+min_version = 0
+tags = []
+
+[records.values]
+label = "Medium Red"
+srgb_byte = "[128,0,0,255]"
+hdr = "[4.0,0.25,-0.5,1.0]"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "a951b1ec-ce74-51dc-8fbf-bc2e357ef946"
+parent_uuid = ""
+label = "Transparent RGB"
+min_version = 0
+tags = []
+
+[records.values]
+label = "Transparent RGB"
+srgb_byte = "[64,128,255,0]"
+hdr = "[8.0,-0.25,2.0,0.0]"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "9cf155b5-7ad1-5e14-a343-6b9a74c06d53"
+parent_uuid = ""
+label = "Translucent White"
+min_version = 0
+tags = []
+
+[records.values]
+label = "Translucent White"
+srgb_byte = "[255,255,255,128]"
+hdr = "[1.0,1.0,1.0,0.5]"
+
+[records.interface_values]
+
+[records.memo_texts]

@@ -1,0 +1,11 @@
+# Godot 4 editor state, imported resources, shader caches, and export credentials.
+.godot/
+export_credentials.cfg
+
+# Temporary files created while saving Godot resources.
+*.tscn.tmp
+*.tres.tmp
+*.godot.tmp
+
+# Optional local export output directory; keep export_presets.cfg and *.uid.
+/game/exports/

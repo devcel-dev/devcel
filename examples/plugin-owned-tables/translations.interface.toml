@@ -1,0 +1,130 @@
+uuid = "407c7e65-e39d-88de-93a6-c0eef26da34b"
+name = "Plugin_7265706f72742d746f6f6c73_translations_Contract"
+current_version_id = "6114c23a-8711-8e60-875d-87eb73d57e4e"
+description = "Report tools translations contract"
+extends = []
+
+[[columns]]
+min_version = 0
+read_only = false
+uuid = "e3f28f98-44c1-5787-b0d3-8c21f1db06bb"
+display_name = "key"
+data_name = "key"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+
+[columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 220
+
+[[columns]]
+min_version = 0
+read_only = false
+uuid = "f4b2f00c-3298-5ecd-a6c4-c379f5d8f80e"
+display_name = "locale"
+data_name = "locale"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+
+[columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 220
+
+[[columns]]
+min_version = 0
+read_only = false
+uuid = "398e242c-a0ab-5f30-b4c1-999005209f83"
+display_name = "text"
+data_name = "text"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+
+[columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 220
+
+[history.6114c23a-8711-8e60-875d-87eb73d57e4e]
+version_id = "6114c23a-8711-8e60-875d-87eb73d57e4e"
+timestamp = "2026-10-25T00:00:00Z"
+author = "System"
+comment = "Initial creation"
+
+[[history.6114c23a-8711-8e60-875d-87eb73d57e4e.changes]]
+
+[history.6114c23a-8711-8e60-875d-87eb73d57e4e.changes.ChangeDescription]
+new_description = "Report tools translations contract"
+
+[[history.6114c23a-8711-8e60-875d-87eb73d57e4e.changes]]
+
+[history.6114c23a-8711-8e60-875d-87eb73d57e4e.changes.AddColumn.column]
+min_version = 0
+read_only = false
+uuid = "e3f28f98-44c1-5787-b0d3-8c21f1db06bb"
+display_name = "key"
+data_name = "key"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+
+[history.6114c23a-8711-8e60-875d-87eb73d57e4e.changes.AddColumn.column.style]
+color = "#FFFFFF"
+font_size = 12
+width = 220
+
+[[history.6114c23a-8711-8e60-875d-87eb73d57e4e.changes]]
+
+[history.6114c23a-8711-8e60-875d-87eb73d57e4e.changes.AddColumn.column]
+min_version = 0
+read_only = false
+uuid = "f4b2f00c-3298-5ecd-a6c4-c379f5d8f80e"
+display_name = "locale"
+data_name = "locale"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+
+[history.6114c23a-8711-8e60-875d-87eb73d57e4e.changes.AddColumn.column.style]
+color = "#FFFFFF"
+font_size = 12
+width = 220
+
+[[history.6114c23a-8711-8e60-875d-87eb73d57e4e.changes]]
+
+[history.6114c23a-8711-8e60-875d-87eb73d57e4e.changes.AddColumn.column]
+min_version = 0
+read_only = false
+uuid = "398e242c-a0ab-5f30-b4c1-999005209f83"
+display_name = "text"
+data_name = "text"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+
+[history.6114c23a-8711-8e60-875d-87eb73d57e4e.changes.AddColumn.column.style]
+color = "#FFFFFF"
+font_size = 12
+width = 220

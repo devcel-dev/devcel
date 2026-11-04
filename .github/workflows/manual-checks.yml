@@ -1,0 +1,55 @@
+name: Manual validation
+on:
+  workflow_dispatch:
+    inputs:
+      suite:
+        description: Validation group to execute explicitly
+        required: true
+        default: compact
+        type: choice
+        options: [compact, frontend, rust, lint, importers, native, all]
+permissions:
+  contents: read
+env:
+  PYTHONUTF8: '1'
+  CARGO_INCREMENTAL: '0'
+jobs:
+  validate:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: devcel-studio/package.json
+          cache: npm
+          cache-dependency-path: devcel-studio/package-lock.json
+      - name: Install toolchains
+        run: python scripts/ci-release.py toolchains
+      - name: Install Linux build dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          python scripts/ci-apt-cache.py install
+      - run: npm ci --prefix devcel-studio
+      - name: Execute selected validation group
+        env:
+          VALIDATION_SUITE: ${{ inputs.suite }}
+        run: python -c "import os, subprocess, sys; subprocess.run([sys.executable, 'scripts/manual-checks.py', os.environ['VALIDATION_SUITE']], check=True)"
+      - name: Retain manually requested native reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: manual-validation-${{ runner.os }}
+          path: release-reports/*.json
+          if-no-files-found: ignore
+          retention-days: 7

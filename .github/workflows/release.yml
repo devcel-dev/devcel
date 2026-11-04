@@ -1,0 +1,315 @@
+name: Release (tag or manual)
+on:
+  push:
+    tags: ['v[0-9]*.[0-9]*.[0-9]*']
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version without v (for example 0.0.3); source versions update automatically; select main'
+        required: true
+        type: string
+      recovery_run_id:
+        description: 'Completed release build run to publish without rebuilding (select default branch)'
+        required: false
+        type: string
+      recovery_attempt:
+        description: 'Exact latest attempt of the completed release build run'
+        required: false
+        type: string
+      rebuild_existing_tag:
+        description: 'Rebuild an existing unpublished tag from its expected commit; select main'
+        required: false
+        default: false
+        type: boolean
+      rebuild_commit:
+        description: 'Full expected source commit SHA; required only for existing-tag rebuild'
+        required: false
+        type: string
+permissions:
+  contents: read
+env:
+  PYTHONUTF8: '1'
+  # Shared bundled npm tarballs cannot be replaced while another Windows reader holds them.
+  DEVCEL_NPM_LICENSE_WORKERS: '1'
+  # Cache complete release artifacts; incremental compilation stays disabled.
+  CARGO_INCREMENTAL: '0'
+concurrency:
+  # Serialize all releases: different versions must not race to update main.
+  group: release-main
+  cancel-in-progress: false
+jobs:
+  prepare_manual:
+    if: github.event_name == 'workflow_dispatch' && !inputs.recovery_run_id && !inputs.recovery_attempt && !inputs.rebuild_existing_tag
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    outputs:
+      commit: ${{ steps.prepare.outputs.commit }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Prepare and commit release versions on main
+        id: prepare
+        env:
+          GIT_TERMINAL_PROMPT: '0'
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_VERSION: ${{ inputs.version }}
+          REBUILD_COMMIT: ${{ inputs.rebuild_commit }}
+        run: python scripts/ci-release.py prepare_manual_release
+  validate:
+    needs: prepare_manual
+    if: ${{ !cancelled() && !inputs.recovery_run_id && !inputs.recovery_attempt && (needs.prepare_manual.result == 'success' || needs.prepare_manual.result == 'skipped') }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      tag: ${{ steps.release.outputs.tag || steps.rebuild.outputs.tag }}
+      commit: ${{ steps.release.outputs.commit || steps.rebuild.outputs.commit }}
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      RELEASE_VERSION: ${{ inputs.version }}
+      REBUILD_EXISTING_TAG: ${{ inputs.rebuild_existing_tag }}
+      REBUILD_COMMIT: ${{ inputs.rebuild_commit }}
+      RECOVERY_RUN_ID: ${{ inputs.recovery_run_id }}
+      RECOVERY_ATTEMPT: ${{ inputs.recovery_attempt }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.prepare_manual.outputs.commit || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Validate release request and committed versions
+        if: ${{ !inputs.rebuild_existing_tag }}
+        id: release
+        env:
+          RELEASE_VERSION: ${{ inputs.version }}
+          SOURCE_COMMIT: ${{ needs.prepare_manual.outputs.commit || github.sha }}
+        run: python scripts/ci-release.py prepare_release
+      - name: Resolve existing tag from trusted main
+        if: inputs.rebuild_existing_tag
+        id: rebuild
+        run: python scripts/release_rebuild.py prepare
+      - uses: actions/checkout@v7
+        if: inputs.rebuild_existing_tag
+        with:
+          ref: ${{ steps.rebuild.outputs.commit }}
+          path: release-source
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify immutable existing-tag source
+        if: inputs.rebuild_existing_tag
+        run: python scripts/release_rebuild.py verify
+  create_tag:
+    needs: validate
+    if: github.event_name == 'workflow_dispatch' && !inputs.recovery_run_id && !inputs.recovery_attempt && !inputs.rebuild_existing_tag
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.validate.outputs.commit }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Create version tag without replacing an existing tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ needs.validate.outputs.tag }}
+          SOURCE_COMMIT: ${{ needs.validate.outputs.commit }}
+        run: python scripts/ci-release.py create_tag
+  build:
+    needs: [validate, create_tag]
+    # Tag pushes skip create_tag; a failed manual tag creation must stop the build.
+    if: ${{ !cancelled() && needs.validate.result == 'success' && (needs.create_tag.result == 'success' || needs.create_tag.result == 'skipped') }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 240
+    env:
+      CARGO_TERM_COLOR: always
+      # Share dependency artifacts with the isolated MIT importer source build.
+      CARGO_TARGET_DIR: ${{ github.workspace }}/target
+      SOURCE_COMMIT: ${{ needs.validate.outputs.commit }}
+      SOURCE_REPOSITORY: ${{ github.repository }}
+      RELEASE_TAG: ${{ needs.validate.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.validate.outputs.commit }}
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: devcel-studio/package.json
+          cache: npm
+          cache-dependency-path: devcel-studio/package-lock.json
+      - name: Install pinned toolchains
+        run: |
+          python scripts/ci-release.py toolchains
+      - name: Restore Rust release cache
+        id: rust-cache
+        uses: actions/cache/restore@v5
+        with:
+          path: |
+            ~/.cargo/registry/index
+            ~/.cargo/registry/cache
+            ~/.cargo/registry/src
+            ~/.cargo/git/db
+            target/release
+            target/*/release
+            !target/release/bundle
+            !target/release/incremental
+            !target/*/release/bundle
+            !target/*/release/incremental
+          key: rust-release-${{ matrix.os }}-${{ runner.arch }}-${{ hashFiles('rust-toolchain.toml', '**/Cargo.lock', '**/Cargo.toml', '.cargo/config*') }}-${{ env.RUSTFLAGS }}-${{ needs.validate.outputs.commit }}
+          restore-keys: |
+            rust-release-${{ matrix.os }}-${{ runner.arch }}-${{ hashFiles('rust-toolchain.toml', '**/Cargo.lock', '**/Cargo.toml', '.cargo/config*') }}-${{ env.RUSTFLAGS }}-
+      - name: Prepare Linux download cache
+        if: runner.os == 'Linux'
+        id: apt-plan
+        run: |
+          sudo apt-get update
+          python scripts/ci-apt-cache.py plan
+      - name: Restore Linux package downloads
+        if: runner.os == 'Linux' && steps.apt-plan.outputs.key != ''
+        id: apt-cache
+        uses: actions/cache/restore@v5
+        continue-on-error: true
+        env:
+          SEGMENT_DOWNLOAD_TIMEOUT_MINS: '2'
+        with:
+          path: ${{ runner.temp }}/devcel-apt-cache/*.deb
+          key: apt-v1-${{ matrix.os }}-${{ runner.arch }}-${{ hashFiles('scripts/ci-apt-cache.py') }}-${{ steps.apt-plan.outputs.key }}
+          restore-keys: |
+            apt-v1-${{ matrix.os }}-${{ runner.arch }}-${{ hashFiles('scripts/ci-apt-cache.py') }}-
+      - name: Install Linux build dependencies
+        if: runner.os == 'Linux'
+        id: apt-install
+        env:
+          APT_CACHE_HIT: ${{ steps.apt-cache.outputs.cache-hit }}
+        run: python scripts/ci-apt-cache.py install
+      - name: Save Linux package downloads
+        if: runner.os == 'Linux' && steps.apt-install.outputs.save == 'true' && steps.apt-plan.outputs.key != '' && steps.apt-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v5
+        continue-on-error: true
+        with:
+          path: ${{ runner.temp }}/devcel-apt-cache/*.deb
+          key: apt-v1-${{ matrix.os }}-${{ runner.arch }}-${{ hashFiles('scripts/ci-apt-cache.py') }}-${{ steps.apt-plan.outputs.key }}
+      - run: npm ci --prefix devcel-studio
+      - name: Build and package native release
+        run: python scripts/ci-release.py package
+      - uses: actions/upload-artifact@v7
+        with:
+          name: release-${{ runner.os }}
+          path: release-assets/*
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0
+      - name: Remove generated packages before caching
+        if: ${{ !cancelled() }}
+        run: python scripts/ci-release.py clean_native_outputs
+      - name: Save Rust release cache
+        # Preserve completed compilation even if later packaging fails.
+        if: ${{ !cancelled() && steps.rust-cache.outputs.cache-primary-key != '' && steps.rust-cache.outputs.cache-hit != 'true' }}
+        uses: actions/cache/save@v5
+        with:
+          path: |
+            ~/.cargo/registry/index
+            ~/.cargo/registry/cache
+            ~/.cargo/registry/src
+            ~/.cargo/git/db
+            target/release
+            target/*/release
+            !target/release/bundle
+            !target/release/incremental
+            !target/*/release/bundle
+            !target/*/release/incremental
+          key: ${{ steps.rust-cache.outputs.cache-primary-key }}
+  publish:
+    needs: [validate, build]
+    if: ${{ !cancelled() && needs.validate.result == 'success' && needs.build.result == 'success' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.validate.outputs.commit }}
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v8
+        with:
+          pattern: release-*
+          path: release-downloads
+      - name: Publish complete release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ needs.validate.outputs.tag }}
+          SOURCE_COMMIT: ${{ needs.validate.outputs.commit }}
+        run: python scripts/ci-release.py publish
+  recover_publication:
+    if: github.event_name == 'workflow_dispatch' && (inputs.recovery_run_id != '' || inputs.recovery_attempt != '')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      actions: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      RELEASE_VERSION: ${{ inputs.version }}
+      RECOVERY_RUN_ID: ${{ inputs.recovery_run_id }}
+      RECOVERY_ATTEMPT: ${{ inputs.recovery_attempt }}
+      REBUILD_EXISTING_TAG: ${{ inputs.rebuild_existing_tag }}
+      REBUILD_COMMIT: ${{ inputs.rebuild_commit }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Validate and pin the completed release artifacts
+        id: recovery
+        run: python scripts/release_recovery.py prepare
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ steps.recovery.outputs.commit }}
+          path: release-source
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/download-artifact@v8
+        with:
+          artifact-ids: ${{ steps.recovery.outputs.artifact_ids }}
+          run-id: ${{ steps.recovery.outputs.run_id }}
+          github-token: ${{ github.token }}
+          path: release-downloads
+          merge-multiple: false
+          digest-mismatch: error
+      - name: Publish the verified existing artifacts
+        run: python scripts/release_recovery.py publish

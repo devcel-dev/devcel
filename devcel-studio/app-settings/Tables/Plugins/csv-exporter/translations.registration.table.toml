@@ -1,0 +1,159 @@
+uuid = "fa2ae00a-9d45-8c3f-b2a9-f82965446a4a"
+display_name = "csv-exporter / translations"
+description = "One plugin resource registration"
+[metadata]
+interface_order = ["3af00752-cf43-4a47-9f8a-1a3e8f338fbd"]
+
+parent_uuid = ""
+
+data_name = "Plugin_6373762d6578706f72746572_translations_Registration"
+
+initial_transposed = true
+
+[metadata.edit_permissions]
+add_columns = false
+delete_columns = false
+add_rows = false
+delete_rows = false
+edit_cells = false
+
+[interface_implementations.3af00752-cf43-4a47-9f8a-1a3e8f338fbd]
+interface_uuid = "3af00752-cf43-4a47-9f8a-1a3e8f338fbd"
+synced_version_id = "c5e418cd-de18-4b40-a17f-c73c62a2e4bd"
+last_sync_date = "2026-10-25T06:23:17.269744200Z"
+effective_fingerprint = "8b2e86f612d9d608e2ebf8efb43ec6b78bd2d95d594489a20f0c281e8655c6e4"
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "9f9bf1a6-64a4-8c22-95d0-6357a66adbc2"
+display_name = "owner"
+data_name = "owner"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+interface_origin = "3af00752-cf43-4a47-9f8a-1a3e8f338fbd"
+interface_origin_name_fallback = "PluginResourceRegistration"
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "d5e05672-76b3-87af-8164-26d823c0ed25"
+display_name = "tableId"
+data_name = "tableId"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+interface_origin = "3af00752-cf43-4a47-9f8a-1a3e8f338fbd"
+interface_origin_name_fallback = "PluginResourceRegistration"
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "d46fb0d2-1fbd-814c-815c-da309c1f0cca"
+display_name = "kind"
+data_name = "kind"
+tooltip = ""
+data_type = "Select"
+tags = []
+default_value = ""
+memo_text = ""
+interface_origin = "3af00752-cf43-4a47-9f8a-1a3e8f338fbd"
+interface_origin_name_fallback = "PluginResourceRegistration"
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns.select_config.options]]
+value = "settings"
+label = "settings"
+
+[[schema.columns.select_config.options]]
+value = "translations"
+label = "translations"
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "a101ea10-3626-85de-9d82-d90e5628dd3e"
+display_name = "cardinality"
+data_name = "cardinality"
+tooltip = ""
+data_type = "Select"
+tags = []
+default_value = ""
+memo_text = ""
+interface_origin = "3af00752-cf43-4a47-9f8a-1a3e8f338fbd"
+interface_origin_name_fallback = "PluginResourceRegistration"
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns.select_config.options]]
+value = "singleton"
+label = "singleton"
+
+[[schema.columns.select_config.options]]
+value = "rows"
+label = "rows"
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "bf6f0e7e-37c1-8af3-aa77-a825f962555f"
+display_name = "Resource table"
+data_name = "target"
+tooltip = ""
+data_type = "TableRef"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[schema.columns.table_ref_config]
+interface_uuid = "305aab00-96ab-86c5-bff8-1d2dbe2e077c"
+
+[[records]]
+uuid = "bde60113-c0a8-8734-baf3-0a4eae9ea175"
+parent_uuid = ""
+label = "translations"
+min_version = 0
+tags = []
+
+[records.values]
+target = "578b1f66-e5ac-5e84-85dc-ef226b28e470"
+
+[records.interface_values]
+9f9bf1a6-64a4-8c22-95d0-6357a66adbc2 = "csv-exporter"
+a101ea10-3626-85de-9d82-d90e5628dd3e = "rows"
+d46fb0d2-1fbd-814c-815c-da309c1f0cca = "translations"
+d5e05672-76b3-87af-8164-26d823c0ed25 = "translations"
+
+[records.memo_texts]

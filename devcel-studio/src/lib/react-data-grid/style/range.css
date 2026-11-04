@@ -1,0 +1,33 @@
+/**
+ * Range selection style definitions
+ */
+
+/* Cells in the selection range */
+.rdg-cell--range-selected {
+  background-color: var(--rdg-range-selection-bg, hsl(var(--primary) / 0.1));
+  outline: 1px solid var(--rdg-range-selection-border, hsl(var(--primary) / 0.3));
+  outline-offset: -1px;
+}
+
+/* Starting cell of the selection range */
+.rdg-cell--range-start {
+  outline: 2px solid var(--rdg-range-selection-border, hsl(var(--primary) / 0.5));
+  outline-offset: -2px;
+}
+
+/* Cell hovered during range selection */
+.rdg-cell--range-hover {
+  background-color: var(--rdg-range-selection-hover-bg, hsl(var(--primary) / 0.2));
+}
+
+/* Headers during range selection */
+.rdg-header-cell--range-selected {
+  background-color: var(--rdg-range-selection-header-bg, hsl(var(--primary) / 0.15));
+  font-weight: 600;
+}
+
+/* Row indicators during range selection */
+.rdg-row-index--range-selected {
+  background-color: var(--rdg-range-selection-indicator-bg, hsl(var(--primary) / 0.15));
+  font-weight: 600;
+}

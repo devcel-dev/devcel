@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "platform": "windows",
+  "format": "Windows x64 portable ZIP",
+  "review_status": "verified",
+  "reviewed_artifact_formats": [
+    ".zip"
+  ],
+  "extraction_evidence": "scripts/package-windows-studio.py constructs an explicit file allowlist and verifies every archived byte against the current EXE, generated legal tree, Studio license, LICENSE-NOTICE and portable README. scripts/check-native-release-artifacts.py repeats that verification on the final ZIP, safely extracts it, and checks the complete native inventory. The EXE must exactly match the original build; no installer bundle-type mutation is permitted. Local fixture tests exercise malformed archives, altered bytes, unexpected files, and runtime imports. Actual build hashes and full payload evidence are emitted per CI run; this packaging review does not certify native GUI behavior.",
+  "bootstrapper_and_system_runtime_review": "The ZIP contains two first-party EXEs (Studio and the matching CLI) and legal/readme files, with no installer, bootstrapper, bundled DLL, or WebView2 browser runtime. Tauri build.windows.staticVCRuntime is explicitly true (Tauri configuration reference); pinned webview2-com-sys 0.39.1 uses WebView2LoaderStatic for the MSVC target (src/lib.rs). The PE import and delay-import tables are checked against Windows OS DLL names; unexpected runtime DLL imports fail. Microsoft Edge WebView2 Evergreen Runtime remains a host prerequisite, documented in the shipped README. It is included in Windows 11 and installed on most Windows 10 devices. Native launch must be tested separately.",
+  "references": [
+    "https://v2.tauri.app/reference/config/#windowsbuildconfig",
+    "https://docs.rs/crate/webview2-com-sys/0.39.1/source/src/lib.rs",
+    "https://learn.microsoft.com/en-us/microsoft-edge/webview2/concepts/distribution",
+    "https://learn.microsoft.com/en-us/microsoft-edge/webview2/concepts/evergreen-vs-fixed-version",
+    "https://learn.microsoft.com/en-us/windows/win32/api/winstring/nf-winstring-windowsinspectstring2"
+  ],
+  "native_components": [],
+  "bundled_cli_contract": {
+    "payload": "bin/devcel.exe",
+    "identity": "bin/manifest.json records canonical workspace version, platform RID, exact CLI SHA256 and source commit. Final extracted package verification compares the staged manifest and original first-party bytes, checks the separate CLI MIT license, and executes only the verified CLI --version with a 15-second timeout.",
+    "license": "bin/LICENSE-CLI.txt plus the complete shared legal aggregate",
+    "scope": "The Devcel CLI only; no AI harness, shell wrapper, PATH lookup or arbitrary executable is bundled. Actual artifact identities are emitted by each build; historical extraction evidence below is retained as historical evidence."
+  }
+}

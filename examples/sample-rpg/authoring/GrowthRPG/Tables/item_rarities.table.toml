@@ -1,0 +1,137 @@
+uuid = "0c8d1ef9-ef5e-4998-b17d-a161977a7210"
+display_name = "item_rarities"
+description = ""
+
+[metadata]
+interface_order = []
+data_name = "item_rarities"
+initial_transposed = false
+
+[metadata.edit_permissions]
+add_columns = true
+delete_columns = true
+add_rows = true
+delete_rows = true
+edit_cells = true
+
+[interface_implementations]
+
+[[schema.columns]]
+read_only = false
+uuid = "2dd071e0-b999-5fd7-98cd-8f8b73473759"
+display_name = "Key"
+data_name = "key"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "fa2b0e98-97c6-5e1b-b84e-7813c0079402"
+display_name = "Name"
+data_name = "name"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "26fb2036-7eb3-5bda-ab4b-5e93474fac40"
+display_name = "Color"
+data_name = "color"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "10d5bd57-36b5-55df-8003-970803153a08"
+display_name = "Rank"
+data_name = "rank"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "cb0230d0-82c1-5e96-ab20-66e67e51ca0a"
+display_name = "Description"
+data_name = "description"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[records]]
+uuid = "e7afb622-fe3b-548b-988a-9c0df7be0cdf"
+label = "Common"
+
+[records.values]
+color = "#D8E2EC"
+description = "Widely available from its natural sources."
+key = "common"
+name = "Common"
+rank = "0"
+
+[[records]]
+uuid = "55a9215f-a7c2-5fd1-88b0-11d448f5a6af"
+label = "Uncommon"
+
+[records.values]
+color = "#7FE0A2"
+description = "Less frequent, but regularly found in its natural sources."
+key = "uncommon"
+name = "Uncommon"
+rank = "1"
+
+[[records]]
+uuid = "1a088a44-1a59-5235-b4a0-e1157e2cec2c"
+label = "Rare"
+
+[records.values]
+color = "#78BFFF"
+description = "Found infrequently in its natural sources."
+key = "rare"
+name = "Rare"
+rank = "2"
+
+[[records]]
+uuid = "f167ac11-3205-5ee3-8629-8d24097ef2d3"
+label = "Epic"
+
+[records.values]
+color = "#C8A0FF"
+description = "Scarce even in its best natural sources."
+key = "epic"
+name = "Epic"
+rank = "3"
+
+[[records]]
+uuid = "4cba0abd-9ddf-5082-8fd9-32f52b97c8eb"
+label = "Legendary"
+
+[records.values]
+color = "#FFD17A"
+description = "Exceptionally scarce in its natural sources."
+key = "legendary"
+name = "Legendary"
+rank = "4"

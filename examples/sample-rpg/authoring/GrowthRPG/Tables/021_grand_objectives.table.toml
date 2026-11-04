@@ -1,0 +1,143 @@
+uuid = "c21b60a0-3f8a-5a81-b022-b6e7f7f489eb"
+display_name = "grand_objectives"
+description = "Forge & Field authored grand_objectives"
+
+[metadata]
+interface_order = []
+data_name = "grand_objectives"
+initial_transposed = false
+
+[metadata.edit_permissions]
+add_columns = true
+delete_columns = true
+add_rows = true
+delete_rows = true
+edit_cells = true
+
+[interface_implementations]
+
+[[schema.columns]]
+read_only = false
+uuid = "9f3e3015-f446-538b-9070-06d691019407"
+display_name = "key"
+data_name = "key"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "fc203d29-bb00-55ac-b90a-7c4036c12761"
+display_name = "name"
+data_name = "name"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "12306595-8502-58b7-8626-bd9d64807497"
+display_name = "region"
+data_name = "region"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-00000000000b"
+
+[[schema.columns]]
+read_only = false
+uuid = "46971e78-18d4-5852-9f03-01adf5aa8b80"
+display_name = "enemy"
+data_name = "enemy"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-000000000005"
+
+[[schema.columns]]
+read_only = false
+uuid = "aa1761a9-a3e8-5109-8d76-2d1d94486f82"
+display_name = "enabled"
+data_name = "enabled"
+data_type = "Boolean"
+default_value = "true"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "402c3a9c-a493-5923-8b66-6c94750cfdaf"
+display_name = "quest"
+data_name = "quest"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-00000000000d"
+
+[[records]]
+uuid = "995f6c2b-d5f5-59d3-8510-8ae3b46ecef2"
+label = "grand_request_da41c197-714f-5497-be36-272a55bced25"
+tags = ["catalog/quest-v1"]
+
+[records.values]
+enabled = "true"
+enemy = "e8fca366-c92b-4df1-9712-6022091b9238"
+key = "grand_request_da41c197-714f-5497-be36-272a55bced25"
+name = "Slay the Tidebreaker"
+quest = "da41c197-714f-5497-be36-272a55bced25"
+region = "b99f3597-7f1c-53a5-9129-7d876ac5c764"
+
+[[records]]
+uuid = "6c1fc424-be1b-5d40-9761-36d9baaa8973"
+label = "grand_request_f98e1e91-9cdb-5960-8a1e-43f2ce4ecdfa"
+tags = ["catalog/quest-v1"]
+
+[records.values]
+enabled = "true"
+enemy = "6c86faae-aa0c-436d-87fb-8bac3524029a"
+key = "grand_request_f98e1e91-9cdb-5960-8a1e-43f2ce4ecdfa"
+name = "Bring Down the Sky-Eclipsing Wyvern"
+quest = "f98e1e91-9cdb-5960-8a1e-43f2ce4ecdfa"
+region = "f570c798-19aa-5b49-9ba0-297923dec683"
+
+[[records]]
+uuid = "d63a5dd1-265c-5d06-a8de-ae566d22d00a"
+label = "grand_request_c4d24228-b7c1-5e00-a0e0-d1cef9d4aeb5"
+tags = ["catalog/quest-v1"]
+
+[records.values]
+enabled = "true"
+enemy = "8c1df1f6-529c-4fd1-a72e-934087ba92b8"
+key = "grand_request_c4d24228-b7c1-5e00-a0e0-d1cef9d4aeb5"
+name = "Slay the Dream-Eating Serpent"
+quest = "c4d24228-b7c1-5e00-a0e0-d1cef9d4aeb5"
+region = "54100e4e-e05a-5c5b-81d7-e2abf68e0340"

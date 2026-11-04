@@ -1,0 +1,58 @@
+uuid = "db5e89d1-77d6-5652-b47c-c8070ee1e1c7"
+display_name = "Report preferences"
+description = "Report preferences"
+[metadata]
+interface_order = ["30e8288d-4fce-8417-9b9a-51112186dbc2"]
+
+parent_uuid = ""
+
+data_name = "Plugin_7265706f72742d746f6f6c73_preferences"
+
+initial_transposed = false
+
+[metadata.edit_permissions]
+add_columns = true
+delete_columns = true
+add_rows = true
+delete_rows = true
+edit_cells = true
+
+[interface_implementations.30e8288d-4fce-8417-9b9a-51112186dbc2]
+interface_uuid = "30e8288d-4fce-8417-9b9a-51112186dbc2"
+synced_version_id = "88a13708-a895-8c4d-b28b-7d168951e33d"
+last_sync_date = "2026-10-25T00:00:00Z"
+effective_fingerprint = "da09b3c3fb2f40ba2e591bca4993564ff52ab27cd31df5840f5244598ff99ed1"
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "10ea158a-dbe9-5f7c-a60f-8e1f7468486f"
+display_name = "prefix"
+data_name = "prefix"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+interface_origin = "30e8288d-4fce-8417-9b9a-51112186dbc2"
+interface_origin_name_fallback = "Plugin_7265706f72742d746f6f6c73_preferences_Contract"
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 220
+
+[[records]]
+uuid = "8906e9ee-8f39-585f-bbf5-207af54461a5"
+parent_uuid = ""
+label = ""
+min_version = 0
+tags = []
+
+[records.values]
+
+[records.interface_values]
+10ea158a-dbe9-5f7c-a60f-8e1f7468486f = "Report"
+
+[records.memo_texts]

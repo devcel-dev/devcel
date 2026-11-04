@@ -1,0 +1,3495 @@
+uuid = "2db0533c-37f7-5df1-aa7a-c24ee637077f"
+display_name = "Translations: projectTags"
+description = "Reference cells use standard Devcel UUIDs. After reviewing a translation, set status=reviewed and its source revision."
+[metadata]
+interface_order = []
+
+parent_uuid = ""
+
+data_name = "Translations_projectTags"
+
+initial_transposed = false
+
+[metadata.edit_permissions]
+add_columns = true
+delete_columns = true
+add_rows = true
+delete_rows = true
+edit_cells = true
+
+[interface_implementations]
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "0d6df8fb-6d16-4f35-80f2-5580a206cb5b"
+display_name = "message_ref"
+data_name = "message_ref"
+tooltip = ""
+data_type = "Reference"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[schema.columns.reference_config]
+target_table_uuid = "7a0a8715-2a14-4373-8cc4-7eacd018e989"
+display_column_uuid = "00ab4850-9407-4058-943d-b4f00e039b68"
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "660b075b-a7e9-41db-95bd-8b78b4b26a3a"
+display_name = "locale_ref"
+data_name = "locale_ref"
+tooltip = ""
+data_type = "Reference"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[schema.columns.reference_config]
+target_table_uuid = "7fa7c67c-a425-4c26-9878-ab60644953c9"
+display_column_uuid = "ab227695-55ab-4f73-9515-9c2c4561bf37"
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "45b55f7a-b06f-46d9-99ab-2c5ee14fe32a"
+display_name = "message"
+data_name = "message"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 420
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "2ba4cc8a-a9d9-4a8b-b944-d1751d067d09"
+display_name = "status"
+data_name = "status"
+tooltip = ""
+data_type = "Select"
+tags = []
+default_value = "draft"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns.select_config.options]]
+value = "reviewed"
+label = "reviewed"
+
+[[schema.columns.select_config.options]]
+value = "draft"
+label = "draft"
+
+[[schema.columns.select_config.options]]
+value = "needs_review"
+label = "needs_review"
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "cfcd3651-05e3-47c4-ae46-6e648239f213"
+display_name = "reviewed_source_revision"
+data_name = "reviewed_source_revision"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+required = false
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "8c29df9e-9a9a-4953-811b-b9bfd4e5658e"
+display_name = "note"
+data_name = "note"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+required = false
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+
+
+
+[[records]]
+uuid = "bbf1371c-23bc-5dec-b97f-ccac32bd472c"
+parent_uuid = ""
+label = "record_bbf1371c23bc5decb97fccac32bd472c"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "53443caa-f352-491f-acf5-77e6308d4bf0"
+message = "プロジェクト設定が変更されました。再読み込みしてやり直してください"
+message_ref = "e8958704-2431-5863-8e40-744cf16a0ede"
+note = ""
+reviewed_source_revision = "e2cb407ee8b63f2297e119cb94de4ede598c15e468e6a5ec157e9b4b0a3a5e04"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "9fcd4447-89a0-5641-b42a-8fe1933efcea"
+parent_uuid = ""
+label = "record_9fcd444789a05641b42a8fe1933efcea"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a612b81c-02b4-400e-a28a-48238cb55e05"
+message = "The project settings changed. Reload and try again"
+message_ref = "e8958704-2431-5863-8e40-744cf16a0ede"
+note = ""
+reviewed_source_revision = "e2cb407ee8b63f2297e119cb94de4ede598c15e468e6a5ec157e9b4b0a3a5e04"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "83a5ab66-3829-5ed1-a27b-b30d5fca31e8"
+parent_uuid = ""
+label = "record_83a5ab6638295ed1a27bb30d5fca31e8"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "b42128cf-c528-5a33-ba26-b144de4c6f20"
+message = "Les paramètres du projet ont changé. Rechargez et réessayez"
+message_ref = "e8958704-2431-5863-8e40-744cf16a0ede"
+note = ""
+reviewed_source_revision = "e2cb407ee8b63f2297e119cb94de4ede598c15e468e6a5ec157e9b4b0a3a5e04"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "7f5b1fe5-2dff-50c5-864c-bcd66a21ab28"
+parent_uuid = ""
+label = "record_7f5b1fe52dff50c5864cbcd66a21ab28"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "3b9511f4-bae8-5e7d-a521-2d5633d5f3c2"
+message = "Los ajustes del proyecto han cambiado. Vuelve a cargar e inténtalo de nuevo"
+message_ref = "e8958704-2431-5863-8e40-744cf16a0ede"
+note = ""
+reviewed_source_revision = "e2cb407ee8b63f2297e119cb94de4ede598c15e468e6a5ec157e9b4b0a3a5e04"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "c167229e-e26f-5393-bd3a-cbe1c27b9142"
+parent_uuid = ""
+label = "record_c167229ee26f5393bd3acbe1c27b9142"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "6571b42e-49e5-5806-b0bb-6264367adcfe"
+message = "Die Projekteinstellungen wurden geändert. Neu laden und erneut versuchen"
+message_ref = "e8958704-2431-5863-8e40-744cf16a0ede"
+note = ""
+reviewed_source_revision = "e2cb407ee8b63f2297e119cb94de4ede598c15e468e6a5ec157e9b4b0a3a5e04"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "b7942bdb-e58e-57f4-8390-dc13194ec8cd"
+parent_uuid = ""
+label = "record_b7942bdbe58e57f48390dc13194ec8cd"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a539b8c2-d771-5b4e-bef8-ba7767812b72"
+message = "Le impostazioni del progetto sono cambiate. Ricarica e riprova"
+message_ref = "e8958704-2431-5863-8e40-744cf16a0ede"
+note = ""
+reviewed_source_revision = "e2cb407ee8b63f2297e119cb94de4ede598c15e468e6a5ec157e9b4b0a3a5e04"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "4613d2af-0f09-5821-b2cc-1adce6999199"
+parent_uuid = ""
+label = "record_4613d2af0f095821b2cc1adce6999199"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bd410527-d1a0-59cd-9972-a055d2338063"
+message = "项目设置已更改。请重新加载后重试"
+message_ref = "e8958704-2431-5863-8e40-744cf16a0ede"
+note = ""
+reviewed_source_revision = "e2cb407ee8b63f2297e119cb94de4ede598c15e468e6a5ec157e9b4b0a3a5e04"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "e22e2b96-60d0-5e1f-82d0-d46e07153fb7"
+parent_uuid = ""
+label = "record_e22e2b9660d05e1f82d0d46e07153fb7"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "2e56c33d-5b3d-51b3-a05a-9700e5ca2401"
+message = "專案設定已變更。請重新載入後重試"
+message_ref = "e8958704-2431-5863-8e40-744cf16a0ede"
+note = ""
+reviewed_source_revision = "e2cb407ee8b63f2297e119cb94de4ede598c15e468e6a5ec157e9b4b0a3a5e04"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "5a8a6569-5787-5f7a-8129-7bdd3bb9eed3"
+parent_uuid = ""
+label = "record_5a8a656957875f7a81297bdd3bb9eed3"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "fb94026c-d2df-583f-8dda-93a7b3492949"
+message = "Projektinställningarna har ändrats. Läs in igen och försök på nytt"
+message_ref = "e8958704-2431-5863-8e40-744cf16a0ede"
+note = ""
+reviewed_source_revision = "e2cb407ee8b63f2297e119cb94de4ede598c15e468e6a5ec157e9b4b0a3a5e04"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "ed6b9c86-d4b5-5a8e-a5dc-673af55a491f"
+parent_uuid = ""
+label = "record_ed6b9c86d4b55a8ea5dc673af55a491f"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bc2ab48c-47ba-5f0d-9c5a-487151074e14"
+message = "Projektin asetukset ovat muuttuneet. Lataa uudelleen ja yritä uudelleen"
+message_ref = "e8958704-2431-5863-8e40-744cf16a0ede"
+note = ""
+reviewed_source_revision = "e2cb407ee8b63f2297e119cb94de4ede598c15e468e6a5ec157e9b4b0a3a5e04"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "2a482362-fe5c-56e8-9822-316d45fb53bb"
+parent_uuid = ""
+label = "record_2a482362fe5c56e89822316d45fb53bb"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "5b8834dc-b8d4-51df-a8bb-933d8573c2cb"
+message = "Prosjektinnstillingene er endret. Last inn på nytt og prøv igjen"
+message_ref = "e8958704-2431-5863-8e40-744cf16a0ede"
+note = ""
+reviewed_source_revision = "e2cb407ee8b63f2297e119cb94de4ede598c15e468e6a5ec157e9b4b0a3a5e04"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "ac90d354-3740-5d8c-bd98-79b288da70a6"
+parent_uuid = ""
+label = "record_ac90d35437405d8cbd9879b288da70a6"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "7304c655-3bd1-5be1-82f6-50c140c3ced7"
+message = "تغيّرت إعدادات المشروع. أعد التحميل وحاول مجددًا"
+message_ref = "e8958704-2431-5863-8e40-744cf16a0ede"
+note = ""
+reviewed_source_revision = "e2cb407ee8b63f2297e119cb94de4ede598c15e468e6a5ec157e9b4b0a3a5e04"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "e9d76ba6-0473-5665-bf08-5c25731f7503"
+parent_uuid = ""
+label = "record_e9d76ba604735665bf085c25731f7503"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "0f6b59c7-a7d5-5417-9ade-9eca750f029c"
+message = "প্রকল্পের সেটিংস বদলে গেছে। আবার লোড করে চেষ্টা করুন"
+message_ref = "e8958704-2431-5863-8e40-744cf16a0ede"
+note = ""
+reviewed_source_revision = "e2cb407ee8b63f2297e119cb94de4ede598c15e468e6a5ec157e9b4b0a3a5e04"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "52cb6b53-1efd-51f5-a920-5ba78338413d"
+parent_uuid = ""
+label = "record_52cb6b531efd51f5a9205ba78338413d"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "acbd8612-2fc4-516a-8b84-4f0a3cd80831"
+message = "प्रोजेक्ट की सेटिंग्स बदल गई हैं। फिर से लोड करके दोबारा कोशिश करें"
+message_ref = "e8958704-2431-5863-8e40-744cf16a0ede"
+note = ""
+reviewed_source_revision = "e2cb407ee8b63f2297e119cb94de4ede598c15e468e6a5ec157e9b4b0a3a5e04"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "6f41768f-50cf-56ee-8dc3-2129e42d1122"
+parent_uuid = ""
+label = "record_6f41768f50cf56ee8dc32129e42d1122"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "4f626627-2fda-5739-8f33-46d5eb8bae0e"
+message = "Proiektuaren ezarpenak aldatu dira. Kargatu berriro eta saiatu berriz"
+message_ref = "e8958704-2431-5863-8e40-744cf16a0ede"
+note = ""
+reviewed_source_revision = "e2cb407ee8b63f2297e119cb94de4ede598c15e468e6a5ec157e9b4b0a3a5e04"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "7d7210ba-c08a-5d85-a352-beb4db2fe57b"
+parent_uuid = ""
+label = "record_7d7210bac08a5d85a352beb4db2fe57b"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "086c8431-4df5-5570-b34b-d59375292efd"
+message = "La configuració del projecte ha canviat. Torneu a carregar i torneu-ho a provar"
+message_ref = "e8958704-2431-5863-8e40-744cf16a0ede"
+note = ""
+reviewed_source_revision = "e2cb407ee8b63f2297e119cb94de4ede598c15e468e6a5ec157e9b4b0a3a5e04"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "ebca14af-2b5d-5f76-8b61-7f6b88b4cd0d"
+parent_uuid = ""
+label = "record_ebca14af2b5d5f768b617f6b88b4cd0d"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "53443caa-f352-491f-acf5-77e6308d4bf0"
+message = "タグ名を入力してください"
+message_ref = "a9783ee9-f3b4-57f3-b3ab-80291fe0d861"
+note = ""
+reviewed_source_revision = "9ffd460a2133b07cb57fc70b660671d11e5e6ee9b9b8601e792f53246ebd1e25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "cebac819-b239-5e4e-861d-1b759cc35f45"
+parent_uuid = ""
+label = "record_cebac819b2395e4e861d1b759cc35f45"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a612b81c-02b4-400e-a28a-48238cb55e05"
+message = "A tag name is required"
+message_ref = "a9783ee9-f3b4-57f3-b3ab-80291fe0d861"
+note = ""
+reviewed_source_revision = "9ffd460a2133b07cb57fc70b660671d11e5e6ee9b9b8601e792f53246ebd1e25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "8d23a5c4-d52a-5c87-a01e-e1b85a26867b"
+parent_uuid = ""
+label = "record_8d23a5c4d52a5c87a01ee1b85a26867b"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "b42128cf-c528-5a33-ba26-b144de4c6f20"
+message = "Un nom de tag est requis"
+message_ref = "a9783ee9-f3b4-57f3-b3ab-80291fe0d861"
+note = ""
+reviewed_source_revision = "9ffd460a2133b07cb57fc70b660671d11e5e6ee9b9b8601e792f53246ebd1e25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "f001772c-5590-57d1-84bd-800b9afc7622"
+parent_uuid = ""
+label = "record_f001772c559057d184bd800b9afc7622"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "3b9511f4-bae8-5e7d-a521-2d5633d5f3c2"
+message = "Se requiere un nombre de etiqueta"
+message_ref = "a9783ee9-f3b4-57f3-b3ab-80291fe0d861"
+note = ""
+reviewed_source_revision = "9ffd460a2133b07cb57fc70b660671d11e5e6ee9b9b8601e792f53246ebd1e25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "7576f977-900a-5199-b566-59b964d53b60"
+parent_uuid = ""
+label = "record_7576f977900a5199b56659b964d53b60"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "6571b42e-49e5-5806-b0bb-6264367adcfe"
+message = "Ein Tag-Name ist erforderlich"
+message_ref = "a9783ee9-f3b4-57f3-b3ab-80291fe0d861"
+note = ""
+reviewed_source_revision = "9ffd460a2133b07cb57fc70b660671d11e5e6ee9b9b8601e792f53246ebd1e25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "1ef1b442-f19e-52b1-bf36-2bbd52bc74c0"
+parent_uuid = ""
+label = "record_1ef1b442f19e52b1bf362bbd52bc74c0"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a539b8c2-d771-5b4e-bef8-ba7767812b72"
+message = "È richiesto un nome per il tag"
+message_ref = "a9783ee9-f3b4-57f3-b3ab-80291fe0d861"
+note = ""
+reviewed_source_revision = "9ffd460a2133b07cb57fc70b660671d11e5e6ee9b9b8601e792f53246ebd1e25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "cd745be5-2308-5331-ac40-67f05c660945"
+parent_uuid = ""
+label = "record_cd745be523085331ac4067f05c660945"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bd410527-d1a0-59cd-9972-a055d2338063"
+message = "请输入标签名称"
+message_ref = "a9783ee9-f3b4-57f3-b3ab-80291fe0d861"
+note = ""
+reviewed_source_revision = "9ffd460a2133b07cb57fc70b660671d11e5e6ee9b9b8601e792f53246ebd1e25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "1cee4b54-806b-5167-a15f-551fca1b285a"
+parent_uuid = ""
+label = "record_1cee4b54806b5167a15f551fca1b285a"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "2e56c33d-5b3d-51b3-a05a-9700e5ca2401"
+message = "請輸入標籤名稱"
+message_ref = "a9783ee9-f3b4-57f3-b3ab-80291fe0d861"
+note = ""
+reviewed_source_revision = "9ffd460a2133b07cb57fc70b660671d11e5e6ee9b9b8601e792f53246ebd1e25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "e60f187a-5ad4-5033-bdce-d676f82ea13f"
+parent_uuid = ""
+label = "record_e60f187a5ad45033bdced676f82ea13f"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "fb94026c-d2df-583f-8dda-93a7b3492949"
+message = "Ett taggnamn krävs"
+message_ref = "a9783ee9-f3b4-57f3-b3ab-80291fe0d861"
+note = ""
+reviewed_source_revision = "9ffd460a2133b07cb57fc70b660671d11e5e6ee9b9b8601e792f53246ebd1e25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "070809d3-be6a-54cc-a4ba-e2822715a660"
+parent_uuid = ""
+label = "record_070809d3be6a54cca4bae2822715a660"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bc2ab48c-47ba-5f0d-9c5a-487151074e14"
+message = "Tunnisteen nimi vaaditaan"
+message_ref = "a9783ee9-f3b4-57f3-b3ab-80291fe0d861"
+note = ""
+reviewed_source_revision = "9ffd460a2133b07cb57fc70b660671d11e5e6ee9b9b8601e792f53246ebd1e25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "a977763e-8fb6-5fec-8b77-49fa5baa3620"
+parent_uuid = ""
+label = "record_a977763e8fb65fec8b7749fa5baa3620"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "5b8834dc-b8d4-51df-a8bb-933d8573c2cb"
+message = "Et taggnavn er påkrevd"
+message_ref = "a9783ee9-f3b4-57f3-b3ab-80291fe0d861"
+note = ""
+reviewed_source_revision = "9ffd460a2133b07cb57fc70b660671d11e5e6ee9b9b8601e792f53246ebd1e25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "f86803ff-378f-5bd3-9df5-184c1ea041cc"
+parent_uuid = ""
+label = "record_f86803ff378f5bd39df5184c1ea041cc"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "7304c655-3bd1-5be1-82f6-50c140c3ced7"
+message = "اسم الوسم مطلوب"
+message_ref = "a9783ee9-f3b4-57f3-b3ab-80291fe0d861"
+note = ""
+reviewed_source_revision = "9ffd460a2133b07cb57fc70b660671d11e5e6ee9b9b8601e792f53246ebd1e25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "8c4e41b0-fe3d-5a5d-9008-d74cd05bed1b"
+parent_uuid = ""
+label = "record_8c4e41b0fe3d5a5d9008d74cd05bed1b"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "0f6b59c7-a7d5-5417-9ade-9eca750f029c"
+message = "ট্যাগের নাম প্রয়োজন"
+message_ref = "a9783ee9-f3b4-57f3-b3ab-80291fe0d861"
+note = ""
+reviewed_source_revision = "9ffd460a2133b07cb57fc70b660671d11e5e6ee9b9b8601e792f53246ebd1e25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "35ef179c-de89-5043-a12d-04b4da5fe862"
+parent_uuid = ""
+label = "record_35ef179cde895043a12d04b4da5fe862"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "acbd8612-2fc4-516a-8b84-4f0a3cd80831"
+message = "टैग का नाम आवश्यक है"
+message_ref = "a9783ee9-f3b4-57f3-b3ab-80291fe0d861"
+note = ""
+reviewed_source_revision = "9ffd460a2133b07cb57fc70b660671d11e5e6ee9b9b8601e792f53246ebd1e25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "8652060a-7a4d-5139-a03d-3a70f404d4c3"
+parent_uuid = ""
+label = "record_8652060a7a4d5139a03d3a70f404d4c3"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "4f626627-2fda-5739-8f33-46d5eb8bae0e"
+message = "Etiketaren izena behar da"
+message_ref = "a9783ee9-f3b4-57f3-b3ab-80291fe0d861"
+note = ""
+reviewed_source_revision = "9ffd460a2133b07cb57fc70b660671d11e5e6ee9b9b8601e792f53246ebd1e25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "48f83e7d-a9a6-535e-b42a-9a9f58d46c3a"
+parent_uuid = ""
+label = "record_48f83e7da9a6535eb42a9a9f58d46c3a"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "086c8431-4df5-5570-b34b-d59375292efd"
+message = "Cal un nom per a l’etiqueta"
+message_ref = "a9783ee9-f3b4-57f3-b3ab-80291fe0d861"
+note = ""
+reviewed_source_revision = "9ffd460a2133b07cb57fc70b660671d11e5e6ee9b9b8601e792f53246ebd1e25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "6347e436-98ac-56c6-b2a3-9ff832dfe086"
+parent_uuid = ""
+label = "record_6347e43698ac56c6b2a39ff832dfe086"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "53443caa-f352-491f-acf5-77e6308d4bf0"
+message = "そのタグプリセットは既に存在します"
+message_ref = "1bd07dd2-0403-54c1-9a23-00c1da29a08a"
+note = ""
+reviewed_source_revision = "e8d400071f7b9d4c17913f9baa9e5d3a6c9bbd2efe1625d0f6609628283c2a82"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "4894bdd0-1561-5b86-90bc-412753babad4"
+parent_uuid = ""
+label = "record_4894bdd015615b8690bc412753babad4"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a612b81c-02b4-400e-a28a-48238cb55e05"
+message = "That tag preset already exists"
+message_ref = "1bd07dd2-0403-54c1-9a23-00c1da29a08a"
+note = ""
+reviewed_source_revision = "e8d400071f7b9d4c17913f9baa9e5d3a6c9bbd2efe1625d0f6609628283c2a82"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "abb422ba-8195-59ab-9f13-4e52e6c4c9e1"
+parent_uuid = ""
+label = "record_abb422ba819559ab9f134e52e6c4c9e1"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "b42128cf-c528-5a33-ba26-b144de4c6f20"
+message = "Ce préréglage de tag existe déjà"
+message_ref = "1bd07dd2-0403-54c1-9a23-00c1da29a08a"
+note = ""
+reviewed_source_revision = "e8d400071f7b9d4c17913f9baa9e5d3a6c9bbd2efe1625d0f6609628283c2a82"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "5bea0089-cbea-55c5-8cbf-49643bda45ee"
+parent_uuid = ""
+label = "record_5bea0089cbea55c58cbf49643bda45ee"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "3b9511f4-bae8-5e7d-a521-2d5633d5f3c2"
+message = "Esa etiqueta predefinida ya existe"
+message_ref = "1bd07dd2-0403-54c1-9a23-00c1da29a08a"
+note = ""
+reviewed_source_revision = "e8d400071f7b9d4c17913f9baa9e5d3a6c9bbd2efe1625d0f6609628283c2a82"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "cbddea03-8641-516b-b7e8-53fa565a8263"
+parent_uuid = ""
+label = "record_cbddea038641516bb7e853fa565a8263"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "6571b42e-49e5-5806-b0bb-6264367adcfe"
+message = "Diese Tag-Vorlage existiert bereits"
+message_ref = "1bd07dd2-0403-54c1-9a23-00c1da29a08a"
+note = ""
+reviewed_source_revision = "e8d400071f7b9d4c17913f9baa9e5d3a6c9bbd2efe1625d0f6609628283c2a82"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "aa3a7db2-a523-5902-8c71-bfca596d20fb"
+parent_uuid = ""
+label = "record_aa3a7db2a52359028c71bfca596d20fb"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a539b8c2-d771-5b4e-bef8-ba7767812b72"
+message = "Questo tag predefinito esiste già"
+message_ref = "1bd07dd2-0403-54c1-9a23-00c1da29a08a"
+note = ""
+reviewed_source_revision = "e8d400071f7b9d4c17913f9baa9e5d3a6c9bbd2efe1625d0f6609628283c2a82"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "863c91e3-f042-5c08-8d6c-364e89f38f23"
+parent_uuid = ""
+label = "record_863c91e3f0425c088d6c364e89f38f23"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bd410527-d1a0-59cd-9972-a055d2338063"
+message = "该标签预设已存在"
+message_ref = "1bd07dd2-0403-54c1-9a23-00c1da29a08a"
+note = ""
+reviewed_source_revision = "e8d400071f7b9d4c17913f9baa9e5d3a6c9bbd2efe1625d0f6609628283c2a82"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "1be59496-6b9c-5c0d-9b31-37ca6e0a7ccc"
+parent_uuid = ""
+label = "record_1be594966b9c5c0d9b3137ca6e0a7ccc"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "2e56c33d-5b3d-51b3-a05a-9700e5ca2401"
+message = "該標籤預設已存在"
+message_ref = "1bd07dd2-0403-54c1-9a23-00c1da29a08a"
+note = ""
+reviewed_source_revision = "e8d400071f7b9d4c17913f9baa9e5d3a6c9bbd2efe1625d0f6609628283c2a82"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "cfe16058-dace-50eb-a4b3-897613e7e995"
+parent_uuid = ""
+label = "record_cfe16058dace50eba4b3897613e7e995"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "fb94026c-d2df-583f-8dda-93a7b3492949"
+message = "Den förinställda taggen finns redan"
+message_ref = "1bd07dd2-0403-54c1-9a23-00c1da29a08a"
+note = ""
+reviewed_source_revision = "e8d400071f7b9d4c17913f9baa9e5d3a6c9bbd2efe1625d0f6609628283c2a82"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "349ba163-270a-57fe-a55d-8bf170e03d20"
+parent_uuid = ""
+label = "record_349ba163270a57fea55d8bf170e03d20"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bc2ab48c-47ba-5f0d-9c5a-487151074e14"
+message = "Tämä esiasetettu tunniste on jo olemassa"
+message_ref = "1bd07dd2-0403-54c1-9a23-00c1da29a08a"
+note = ""
+reviewed_source_revision = "e8d400071f7b9d4c17913f9baa9e5d3a6c9bbd2efe1625d0f6609628283c2a82"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "9c9d6c97-968a-5a9a-9965-86fbc870a2c2"
+parent_uuid = ""
+label = "record_9c9d6c97968a5a9a996586fbc870a2c2"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "5b8834dc-b8d4-51df-a8bb-933d8573c2cb"
+message = "Den forhåndsdefinerte taggen finnes allerede"
+message_ref = "1bd07dd2-0403-54c1-9a23-00c1da29a08a"
+note = ""
+reviewed_source_revision = "e8d400071f7b9d4c17913f9baa9e5d3a6c9bbd2efe1625d0f6609628283c2a82"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "18c0cc0f-eef6-5044-94a4-fce6f012b075"
+parent_uuid = ""
+label = "record_18c0cc0feef6504494a4fce6f012b075"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "7304c655-3bd1-5be1-82f6-50c140c3ced7"
+message = "هذا الوسم المحدد مسبقًا موجود بالفعل"
+message_ref = "1bd07dd2-0403-54c1-9a23-00c1da29a08a"
+note = ""
+reviewed_source_revision = "e8d400071f7b9d4c17913f9baa9e5d3a6c9bbd2efe1625d0f6609628283c2a82"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "de78cc31-2f31-512a-8a2c-1a54848e340a"
+parent_uuid = ""
+label = "record_de78cc312f31512a8a2c1a54848e340a"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "0f6b59c7-a7d5-5417-9ade-9eca750f029c"
+message = "এই পূর্বনির্ধারিত ট্যাগটি আগে থেকেই আছে"
+message_ref = "1bd07dd2-0403-54c1-9a23-00c1da29a08a"
+note = ""
+reviewed_source_revision = "e8d400071f7b9d4c17913f9baa9e5d3a6c9bbd2efe1625d0f6609628283c2a82"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "65e4f5e0-03fe-5393-9568-9060230a2141"
+parent_uuid = ""
+label = "record_65e4f5e003fe539395689060230a2141"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "acbd8612-2fc4-516a-8b84-4f0a3cd80831"
+message = "यह पूर्वनिर्धारित टैग पहले से मौजूद है"
+message_ref = "1bd07dd2-0403-54c1-9a23-00c1da29a08a"
+note = ""
+reviewed_source_revision = "e8d400071f7b9d4c17913f9baa9e5d3a6c9bbd2efe1625d0f6609628283c2a82"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "557a4a62-7262-53b2-9c9f-76c6c7acec97"
+parent_uuid = ""
+label = "record_557a4a62726253b29c9f76c6c7acec97"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "4f626627-2fda-5739-8f33-46d5eb8bae0e"
+message = "Aurrez ezarritako etiketa hori badago jada"
+message_ref = "1bd07dd2-0403-54c1-9a23-00c1da29a08a"
+note = ""
+reviewed_source_revision = "e8d400071f7b9d4c17913f9baa9e5d3a6c9bbd2efe1625d0f6609628283c2a82"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "8ee15db0-59b2-529a-ae5b-f6016c5d64e7"
+parent_uuid = ""
+label = "record_8ee15db059b2529aae5bf6016c5d64e7"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "086c8431-4df5-5570-b34b-d59375292efd"
+message = "Aquesta etiqueta predefinida ja existeix"
+message_ref = "1bd07dd2-0403-54c1-9a23-00c1da29a08a"
+note = ""
+reviewed_source_revision = "e8d400071f7b9d4c17913f9baa9e5d3a6c9bbd2efe1625d0f6609628283c2a82"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "7cf9bdd8-7070-518a-bac4-41e04fe59d01"
+parent_uuid = ""
+label = "record_7cf9bdd87070518abac441e04fe59d01"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "53443caa-f352-491f-acf5-77e6308d4bf0"
+message = "タグプリセットは既に削除されています"
+message_ref = "4f191d60-53bd-5189-b344-408093cdc174"
+note = ""
+reviewed_source_revision = "515752714ecdeba3e823864379ee05168c11bb56cca04c1f340aadbc9f2bef25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "fe0c3a9b-15dc-5c26-b433-9a24c874df70"
+parent_uuid = ""
+label = "record_fe0c3a9b15dc5c26b4339a24c874df70"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a612b81c-02b4-400e-a28a-48238cb55e05"
+message = "The tag preset no longer exists"
+message_ref = "4f191d60-53bd-5189-b344-408093cdc174"
+note = ""
+reviewed_source_revision = "515752714ecdeba3e823864379ee05168c11bb56cca04c1f340aadbc9f2bef25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "525fe93e-081c-5654-90de-175850454af7"
+parent_uuid = ""
+label = "record_525fe93e081c565490de175850454af7"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "b42128cf-c528-5a33-ba26-b144de4c6f20"
+message = "Le préréglage de tag n’existe plus"
+message_ref = "4f191d60-53bd-5189-b344-408093cdc174"
+note = ""
+reviewed_source_revision = "515752714ecdeba3e823864379ee05168c11bb56cca04c1f340aadbc9f2bef25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "f1e1b6b0-0754-581b-9b09-55414a3bfa61"
+parent_uuid = ""
+label = "record_f1e1b6b00754581b9b0955414a3bfa61"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "3b9511f4-bae8-5e7d-a521-2d5633d5f3c2"
+message = "La etiqueta predefinida ya no existe"
+message_ref = "4f191d60-53bd-5189-b344-408093cdc174"
+note = ""
+reviewed_source_revision = "515752714ecdeba3e823864379ee05168c11bb56cca04c1f340aadbc9f2bef25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "f763edd7-63f6-5eac-b868-2588392f2691"
+parent_uuid = ""
+label = "record_f763edd763f65eacb8682588392f2691"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "6571b42e-49e5-5806-b0bb-6264367adcfe"
+message = "Die Tag-Vorlage existiert nicht mehr"
+message_ref = "4f191d60-53bd-5189-b344-408093cdc174"
+note = ""
+reviewed_source_revision = "515752714ecdeba3e823864379ee05168c11bb56cca04c1f340aadbc9f2bef25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "97135c13-5986-5959-afd5-6bf4fe548055"
+parent_uuid = ""
+label = "record_97135c1359865959afd56bf4fe548055"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a539b8c2-d771-5b4e-bef8-ba7767812b72"
+message = "Il tag predefinito non esiste più"
+message_ref = "4f191d60-53bd-5189-b344-408093cdc174"
+note = ""
+reviewed_source_revision = "515752714ecdeba3e823864379ee05168c11bb56cca04c1f340aadbc9f2bef25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "f4f109b6-a577-5989-913a-f0737c28d23f"
+parent_uuid = ""
+label = "record_f4f109b6a5775989913af0737c28d23f"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bd410527-d1a0-59cd-9972-a055d2338063"
+message = "该标签预设已不存在"
+message_ref = "4f191d60-53bd-5189-b344-408093cdc174"
+note = ""
+reviewed_source_revision = "515752714ecdeba3e823864379ee05168c11bb56cca04c1f340aadbc9f2bef25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "6a444b56-d359-5829-afa3-f6dd741744d4"
+parent_uuid = ""
+label = "record_6a444b56d3595829afa3f6dd741744d4"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "2e56c33d-5b3d-51b3-a05a-9700e5ca2401"
+message = "該標籤預設已不存在"
+message_ref = "4f191d60-53bd-5189-b344-408093cdc174"
+note = ""
+reviewed_source_revision = "515752714ecdeba3e823864379ee05168c11bb56cca04c1f340aadbc9f2bef25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "33cc7456-4618-562b-a2d4-cb94ffb60813"
+parent_uuid = ""
+label = "record_33cc74564618562ba2d4cb94ffb60813"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "fb94026c-d2df-583f-8dda-93a7b3492949"
+message = "Den förinställda taggen finns inte längre"
+message_ref = "4f191d60-53bd-5189-b344-408093cdc174"
+note = ""
+reviewed_source_revision = "515752714ecdeba3e823864379ee05168c11bb56cca04c1f340aadbc9f2bef25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "83a58305-f5f4-5115-ab98-61a3147a89be"
+parent_uuid = ""
+label = "record_83a58305f5f45115ab9861a3147a89be"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bc2ab48c-47ba-5f0d-9c5a-487151074e14"
+message = "Esiasetettua tunnistetta ei enää ole"
+message_ref = "4f191d60-53bd-5189-b344-408093cdc174"
+note = ""
+reviewed_source_revision = "515752714ecdeba3e823864379ee05168c11bb56cca04c1f340aadbc9f2bef25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "0e1291e2-fbea-5905-8fbd-a0f30f224284"
+parent_uuid = ""
+label = "record_0e1291e2fbea59058fbda0f30f224284"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "5b8834dc-b8d4-51df-a8bb-933d8573c2cb"
+message = "Den forhåndsdefinerte taggen finnes ikke lenger"
+message_ref = "4f191d60-53bd-5189-b344-408093cdc174"
+note = ""
+reviewed_source_revision = "515752714ecdeba3e823864379ee05168c11bb56cca04c1f340aadbc9f2bef25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "2d0967e6-7cb5-5c70-9074-d8d092b3b79e"
+parent_uuid = ""
+label = "record_2d0967e67cb55c709074d8d092b3b79e"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "7304c655-3bd1-5be1-82f6-50c140c3ced7"
+message = "لم يعد الوسم المحدد مسبقًا موجودًا"
+message_ref = "4f191d60-53bd-5189-b344-408093cdc174"
+note = ""
+reviewed_source_revision = "515752714ecdeba3e823864379ee05168c11bb56cca04c1f340aadbc9f2bef25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "69c7c524-17ef-5a7e-ba07-f352ba42c3c7"
+parent_uuid = ""
+label = "record_69c7c52417ef5a7eba07f352ba42c3c7"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "0f6b59c7-a7d5-5417-9ade-9eca750f029c"
+message = "পূর্বনির্ধারিত ট্যাগটি আর নেই"
+message_ref = "4f191d60-53bd-5189-b344-408093cdc174"
+note = ""
+reviewed_source_revision = "515752714ecdeba3e823864379ee05168c11bb56cca04c1f340aadbc9f2bef25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "107b1ded-d3f4-581a-873f-7399fdca08e3"
+parent_uuid = ""
+label = "record_107b1dedd3f4581a873f7399fdca08e3"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "acbd8612-2fc4-516a-8b84-4f0a3cd80831"
+message = "पूर्वनिर्धारित टैग अब मौजूद नहीं है"
+message_ref = "4f191d60-53bd-5189-b344-408093cdc174"
+note = ""
+reviewed_source_revision = "515752714ecdeba3e823864379ee05168c11bb56cca04c1f340aadbc9f2bef25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "7d2a22c4-1182-559b-8cbb-91ffc5565ec2"
+parent_uuid = ""
+label = "record_7d2a22c41182559b8cbb91ffc5565ec2"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "4f626627-2fda-5739-8f33-46d5eb8bae0e"
+message = "Aurrez ezarritako etiketa jada ez dago"
+message_ref = "4f191d60-53bd-5189-b344-408093cdc174"
+note = ""
+reviewed_source_revision = "515752714ecdeba3e823864379ee05168c11bb56cca04c1f340aadbc9f2bef25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "9542ea80-edd8-54dc-a2d3-4baa388d0db3"
+parent_uuid = ""
+label = "record_9542ea80edd854dca2d34baa388d0db3"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "086c8431-4df5-5570-b34b-d59375292efd"
+message = "L’etiqueta predefinida ja no existeix"
+message_ref = "4f191d60-53bd-5189-b344-408093cdc174"
+note = ""
+reviewed_source_revision = "515752714ecdeba3e823864379ee05168c11bb56cca04c1f340aadbc9f2bef25"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "9ba83af3-e583-5d8e-820a-b9255bcebee9"
+parent_uuid = ""
+label = "record_9ba83af3e5835d8e820ab9255bcebee9"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "53443caa-f352-491f-acf5-77e6308d4bf0"
+message = "ディスク上のタグプリセットが変更されました。プロジェクトを開き直してください"
+message_ref = "9c513139-22de-51af-a58d-7715f3c463c0"
+note = ""
+reviewed_source_revision = "1de24d13536cbe156e8236437ca2bdf65e8dc7712a6e1d335ad543feac18b4fd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "34f27d65-e1f7-5288-9630-8b1d2e7ed03f"
+parent_uuid = ""
+label = "record_34f27d65e1f7528896308b1d2e7ed03f"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a612b81c-02b4-400e-a28a-48238cb55e05"
+message = "The project tag presets changed on disk. Reopen the project"
+message_ref = "9c513139-22de-51af-a58d-7715f3c463c0"
+note = ""
+reviewed_source_revision = "1de24d13536cbe156e8236437ca2bdf65e8dc7712a6e1d335ad543feac18b4fd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "7151b073-a6d7-5977-a3e7-e8870220e91a"
+parent_uuid = ""
+label = "record_7151b073a6d75977a3e7e8870220e91a"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "b42128cf-c528-5a33-ba26-b144de4c6f20"
+message = "Les préréglages de tags du projet ont changé sur le disque. Rouvrez le projet"
+message_ref = "9c513139-22de-51af-a58d-7715f3c463c0"
+note = ""
+reviewed_source_revision = "1de24d13536cbe156e8236437ca2bdf65e8dc7712a6e1d335ad543feac18b4fd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "6a00aff7-9588-5e55-87bf-90ecf1de1153"
+parent_uuid = ""
+label = "record_6a00aff795885e5587bf90ecf1de1153"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "3b9511f4-bae8-5e7d-a521-2d5633d5f3c2"
+message = "Las etiquetas predefinidas del proyecto han cambiado en el disco. Vuelve a abrir el proyecto"
+message_ref = "9c513139-22de-51af-a58d-7715f3c463c0"
+note = ""
+reviewed_source_revision = "1de24d13536cbe156e8236437ca2bdf65e8dc7712a6e1d335ad543feac18b4fd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "bfbf2a4b-b006-52f8-99e2-9e48fe5b08e1"
+parent_uuid = ""
+label = "record_bfbf2a4bb00652f899e29e48fe5b08e1"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "6571b42e-49e5-5806-b0bb-6264367adcfe"
+message = "Die Tag-Vorlagen des Projekts wurden auf dem Datenträger geändert. Öffnen Sie das Projekt erneut"
+message_ref = "9c513139-22de-51af-a58d-7715f3c463c0"
+note = ""
+reviewed_source_revision = "1de24d13536cbe156e8236437ca2bdf65e8dc7712a6e1d335ad543feac18b4fd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "1f046939-640d-5856-baeb-4d3e3879cff3"
+parent_uuid = ""
+label = "record_1f046939640d5856baeb4d3e3879cff3"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a539b8c2-d771-5b4e-bef8-ba7767812b72"
+message = "I tag predefiniti del progetto sono cambiati su disco. Riapri il progetto"
+message_ref = "9c513139-22de-51af-a58d-7715f3c463c0"
+note = ""
+reviewed_source_revision = "1de24d13536cbe156e8236437ca2bdf65e8dc7712a6e1d335ad543feac18b4fd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "263f3260-4f23-5b10-b905-58e0419513c2"
+parent_uuid = ""
+label = "record_263f32604f235b10b90558e0419513c2"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bd410527-d1a0-59cd-9972-a055d2338063"
+message = "磁盘上的项目标签预设已更改。请重新打开项目"
+message_ref = "9c513139-22de-51af-a58d-7715f3c463c0"
+note = ""
+reviewed_source_revision = "1de24d13536cbe156e8236437ca2bdf65e8dc7712a6e1d335ad543feac18b4fd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "0bd781a9-25d4-5343-921f-8ac1cf35cb01"
+parent_uuid = ""
+label = "record_0bd781a925d45343921f8ac1cf35cb01"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "2e56c33d-5b3d-51b3-a05a-9700e5ca2401"
+message = "磁碟上的專案標籤預設已變更。請重新開啟專案"
+message_ref = "9c513139-22de-51af-a58d-7715f3c463c0"
+note = ""
+reviewed_source_revision = "1de24d13536cbe156e8236437ca2bdf65e8dc7712a6e1d335ad543feac18b4fd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "ad79cbf4-702f-5bda-8c25-ab8081cd39d4"
+parent_uuid = ""
+label = "record_ad79cbf4702f5bda8c25ab8081cd39d4"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "fb94026c-d2df-583f-8dda-93a7b3492949"
+message = "Projektets förinställda taggar har ändrats på disken. Öppna projektet igen"
+message_ref = "9c513139-22de-51af-a58d-7715f3c463c0"
+note = ""
+reviewed_source_revision = "1de24d13536cbe156e8236437ca2bdf65e8dc7712a6e1d335ad543feac18b4fd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "8b942141-2bad-5868-9de7-000ab47abd66"
+parent_uuid = ""
+label = "record_8b9421412bad58689de7000ab47abd66"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bc2ab48c-47ba-5f0d-9c5a-487151074e14"
+message = "Projektin esiasetetut tunnisteet ovat muuttuneet levyllä. Avaa projekti uudelleen"
+message_ref = "9c513139-22de-51af-a58d-7715f3c463c0"
+note = ""
+reviewed_source_revision = "1de24d13536cbe156e8236437ca2bdf65e8dc7712a6e1d335ad543feac18b4fd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "63e5e52b-ff7b-5a71-9f44-b5a0568542c7"
+parent_uuid = ""
+label = "record_63e5e52bff7b5a719f44b5a0568542c7"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "5b8834dc-b8d4-51df-a8bb-933d8573c2cb"
+message = "Prosjektets forhåndsdefinerte tagger er endret på disken. Åpne prosjektet på nytt"
+message_ref = "9c513139-22de-51af-a58d-7715f3c463c0"
+note = ""
+reviewed_source_revision = "1de24d13536cbe156e8236437ca2bdf65e8dc7712a6e1d335ad543feac18b4fd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "b6c4a12a-0b1e-5bca-92c1-054213709631"
+parent_uuid = ""
+label = "record_b6c4a12a0b1e5bca92c1054213709631"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "7304c655-3bd1-5be1-82f6-50c140c3ced7"
+message = "تغيّرت وسوم المشروع المحددة مسبقًا على القرص. أعد فتح المشروع"
+message_ref = "9c513139-22de-51af-a58d-7715f3c463c0"
+note = ""
+reviewed_source_revision = "1de24d13536cbe156e8236437ca2bdf65e8dc7712a6e1d335ad543feac18b4fd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "17f2d5a6-0168-5e6c-83ec-87b7dd846c18"
+parent_uuid = ""
+label = "record_17f2d5a601685e6c83ec87b7dd846c18"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "0f6b59c7-a7d5-5417-9ade-9eca750f029c"
+message = "ডিস্কে প্রকল্পের পূর্বনির্ধারিত ট্যাগ বদলে গেছে। প্রকল্পটি আবার খুলুন"
+message_ref = "9c513139-22de-51af-a58d-7715f3c463c0"
+note = ""
+reviewed_source_revision = "1de24d13536cbe156e8236437ca2bdf65e8dc7712a6e1d335ad543feac18b4fd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "9ab0c2b2-97df-57e6-ba5b-9334b1c7a519"
+parent_uuid = ""
+label = "record_9ab0c2b297df57e6ba5b9334b1c7a519"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "acbd8612-2fc4-516a-8b84-4f0a3cd80831"
+message = "डिस्क पर प्रोजेक्ट के पूर्वनिर्धारित टैग बदल गए हैं। प्रोजेक्ट फिर से खोलें"
+message_ref = "9c513139-22de-51af-a58d-7715f3c463c0"
+note = ""
+reviewed_source_revision = "1de24d13536cbe156e8236437ca2bdf65e8dc7712a6e1d335ad543feac18b4fd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "3c176a03-d63f-530d-983f-22972d2e4588"
+parent_uuid = ""
+label = "record_3c176a03d63f530d983f22972d2e4588"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "4f626627-2fda-5739-8f33-46d5eb8bae0e"
+message = "Proiektuaren aurrez ezarritako etiketak diskoan aldatu dira. Ireki berriro proiektua"
+message_ref = "9c513139-22de-51af-a58d-7715f3c463c0"
+note = ""
+reviewed_source_revision = "1de24d13536cbe156e8236437ca2bdf65e8dc7712a6e1d335ad543feac18b4fd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "51c4a631-3798-596b-adbe-c050eed76904"
+parent_uuid = ""
+label = "record_51c4a6313798596badbec050eed76904"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "086c8431-4df5-5570-b34b-d59375292efd"
+message = "Les etiquetes predefinides del projecte han canviat al disc. Torneu a obrir el projecte"
+message_ref = "9c513139-22de-51af-a58d-7715f3c463c0"
+note = ""
+reviewed_source_revision = "1de24d13536cbe156e8236437ca2bdf65e8dc7712a6e1d335ad543feac18b4fd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "edf4f302-2616-5282-a27b-e360467dd64b"
+parent_uuid = ""
+label = "record_edf4f30226165282a27be360467dd64b"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "53443caa-f352-491f-acf5-77e6308d4bf0"
+message = "ディスク上のプロジェクト設定が変更されました。再読み込みしてやり直してください"
+message_ref = "4c186d83-40d9-5a65-95b7-8cb1053c70de"
+note = ""
+reviewed_source_revision = "0dc73d37dc7ed82fb47136883b756df687828a80216ac7101974b29b89bfcc2d"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "a76b6643-90f5-5b42-93de-03c24aa3d253"
+parent_uuid = ""
+label = "record_a76b664390f55b4293de03c24aa3d253"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a612b81c-02b4-400e-a28a-48238cb55e05"
+message = "The project settings changed on disk. Reload and try again"
+message_ref = "4c186d83-40d9-5a65-95b7-8cb1053c70de"
+note = ""
+reviewed_source_revision = "0dc73d37dc7ed82fb47136883b756df687828a80216ac7101974b29b89bfcc2d"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "e1ef079e-cd30-5692-af28-e385a496a5e4"
+parent_uuid = ""
+label = "record_e1ef079ecd305692af28e385a496a5e4"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "b42128cf-c528-5a33-ba26-b144de4c6f20"
+message = "Les paramètres du projet ont changé sur le disque. Rechargez et réessayez"
+message_ref = "4c186d83-40d9-5a65-95b7-8cb1053c70de"
+note = ""
+reviewed_source_revision = "0dc73d37dc7ed82fb47136883b756df687828a80216ac7101974b29b89bfcc2d"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "18350257-2f02-52ce-abba-a1bbe11d122f"
+parent_uuid = ""
+label = "record_183502572f0252ceabbaa1bbe11d122f"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "3b9511f4-bae8-5e7d-a521-2d5633d5f3c2"
+message = "Los ajustes del proyecto han cambiado en el disco. Vuelve a cargar e inténtalo de nuevo"
+message_ref = "4c186d83-40d9-5a65-95b7-8cb1053c70de"
+note = ""
+reviewed_source_revision = "0dc73d37dc7ed82fb47136883b756df687828a80216ac7101974b29b89bfcc2d"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "40e8ee69-b884-5597-af50-1635d8f617db"
+parent_uuid = ""
+label = "record_40e8ee69b8845597af501635d8f617db"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "6571b42e-49e5-5806-b0bb-6264367adcfe"
+message = "Die Projekteinstellungen wurden auf dem Datenträger geändert. Neu laden und erneut versuchen"
+message_ref = "4c186d83-40d9-5a65-95b7-8cb1053c70de"
+note = ""
+reviewed_source_revision = "0dc73d37dc7ed82fb47136883b756df687828a80216ac7101974b29b89bfcc2d"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "1e260710-ad10-5fe7-9d85-7bc02a1fcd37"
+parent_uuid = ""
+label = "record_1e260710ad105fe79d857bc02a1fcd37"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a539b8c2-d771-5b4e-bef8-ba7767812b72"
+message = "Le impostazioni del progetto sono cambiate su disco. Ricarica e riprova"
+message_ref = "4c186d83-40d9-5a65-95b7-8cb1053c70de"
+note = ""
+reviewed_source_revision = "0dc73d37dc7ed82fb47136883b756df687828a80216ac7101974b29b89bfcc2d"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "af0f9c73-0687-5f73-978b-c85da001c7d8"
+parent_uuid = ""
+label = "record_af0f9c7306875f73978bc85da001c7d8"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bd410527-d1a0-59cd-9972-a055d2338063"
+message = "磁盘上的项目设置已更改。请重新加载后重试"
+message_ref = "4c186d83-40d9-5a65-95b7-8cb1053c70de"
+note = ""
+reviewed_source_revision = "0dc73d37dc7ed82fb47136883b756df687828a80216ac7101974b29b89bfcc2d"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "f94ee33d-19ce-517a-889c-23d58ffa1c8d"
+parent_uuid = ""
+label = "record_f94ee33d19ce517a889c23d58ffa1c8d"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "2e56c33d-5b3d-51b3-a05a-9700e5ca2401"
+message = "磁碟上的專案設定已變更。請重新載入後重試"
+message_ref = "4c186d83-40d9-5a65-95b7-8cb1053c70de"
+note = ""
+reviewed_source_revision = "0dc73d37dc7ed82fb47136883b756df687828a80216ac7101974b29b89bfcc2d"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "6721757c-3a5f-5e29-9a82-1d47134b20f5"
+parent_uuid = ""
+label = "record_6721757c3a5f5e299a821d47134b20f5"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "fb94026c-d2df-583f-8dda-93a7b3492949"
+message = "Projektinställningarna har ändrats på disken. Läs in igen och försök på nytt"
+message_ref = "4c186d83-40d9-5a65-95b7-8cb1053c70de"
+note = ""
+reviewed_source_revision = "0dc73d37dc7ed82fb47136883b756df687828a80216ac7101974b29b89bfcc2d"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "d4dbfbed-8f1a-5b98-b803-458ee2f61e29"
+parent_uuid = ""
+label = "record_d4dbfbed8f1a5b98b803458ee2f61e29"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bc2ab48c-47ba-5f0d-9c5a-487151074e14"
+message = "Projektin asetukset ovat muuttuneet levyllä. Lataa uudelleen ja yritä uudelleen"
+message_ref = "4c186d83-40d9-5a65-95b7-8cb1053c70de"
+note = ""
+reviewed_source_revision = "0dc73d37dc7ed82fb47136883b756df687828a80216ac7101974b29b89bfcc2d"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "21754057-fc55-5636-b069-0a4e7fe89124"
+parent_uuid = ""
+label = "record_21754057fc555636b0690a4e7fe89124"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "5b8834dc-b8d4-51df-a8bb-933d8573c2cb"
+message = "Prosjektinnstillingene er endret på disken. Last inn på nytt og prøv igjen"
+message_ref = "4c186d83-40d9-5a65-95b7-8cb1053c70de"
+note = ""
+reviewed_source_revision = "0dc73d37dc7ed82fb47136883b756df687828a80216ac7101974b29b89bfcc2d"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "a3842684-61d9-5745-b7f3-431931ad8842"
+parent_uuid = ""
+label = "record_a384268461d95745b7f3431931ad8842"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "7304c655-3bd1-5be1-82f6-50c140c3ced7"
+message = "تغيّرت إعدادات المشروع على القرص. أعد التحميل وحاول مجددًا"
+message_ref = "4c186d83-40d9-5a65-95b7-8cb1053c70de"
+note = ""
+reviewed_source_revision = "0dc73d37dc7ed82fb47136883b756df687828a80216ac7101974b29b89bfcc2d"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "33e052cd-25f5-524e-b259-1af261dc8f85"
+parent_uuid = ""
+label = "record_33e052cd25f5524eb2591af261dc8f85"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "0f6b59c7-a7d5-5417-9ade-9eca750f029c"
+message = "ডিস্কে প্রকল্পের সেটিংস বদলে গেছে। আবার লোড করে চেষ্টা করুন"
+message_ref = "4c186d83-40d9-5a65-95b7-8cb1053c70de"
+note = ""
+reviewed_source_revision = "0dc73d37dc7ed82fb47136883b756df687828a80216ac7101974b29b89bfcc2d"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "f54a3723-3d19-5222-b3f4-b91bb3ef8cf3"
+parent_uuid = ""
+label = "record_f54a37233d195222b3f4b91bb3ef8cf3"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "acbd8612-2fc4-516a-8b84-4f0a3cd80831"
+message = "डिस्क पर प्रोजेक्ट की सेटिंग्स बदल गई हैं। फिर से लोड करके दोबारा कोशिश करें"
+message_ref = "4c186d83-40d9-5a65-95b7-8cb1053c70de"
+note = ""
+reviewed_source_revision = "0dc73d37dc7ed82fb47136883b756df687828a80216ac7101974b29b89bfcc2d"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "92208b22-a5e6-5344-9c5c-69e23726f77a"
+parent_uuid = ""
+label = "record_92208b22a5e653449c5c69e23726f77a"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "4f626627-2fda-5739-8f33-46d5eb8bae0e"
+message = "Proiektuaren ezarpenak diskoan aldatu dira. Kargatu berriro eta saiatu berriz"
+message_ref = "4c186d83-40d9-5a65-95b7-8cb1053c70de"
+note = ""
+reviewed_source_revision = "0dc73d37dc7ed82fb47136883b756df687828a80216ac7101974b29b89bfcc2d"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "f687e94a-5a1c-561d-97af-6b56dcf839f5"
+parent_uuid = ""
+label = "record_f687e94a5a1c561d97af6b56dcf839f5"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "086c8431-4df5-5570-b34b-d59375292efd"
+message = "La configuració del projecte ha canviat al disc. Torneu a carregar i torneu-ho a provar"
+message_ref = "4c186d83-40d9-5a65-95b7-8cb1053c70de"
+note = ""
+reviewed_source_revision = "0dc73d37dc7ed82fb47136883b756df687828a80216ac7101974b29b89bfcc2d"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "4038dedb-fa03-51f8-8782-db951e5c8d7f"
+parent_uuid = ""
+label = "record_4038dedbfa0351f88782db951e5c8d7f"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "53443caa-f352-491f-acf5-77e6308d4bf0"
+message = "読み込み済みのテーブルがディスク上で変更されました。タグプリセットを編集する前に再読み込みしてください"
+message_ref = "e71d0be0-80ac-5a6e-b97f-6bb254a3065d"
+note = ""
+reviewed_source_revision = "b86d42a8364c3816b6b12a611c26dd2e2214a4da2a94f78029ff9e29044a0127"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "94aca7a8-0625-58b0-8a19-a2125df40b43"
+parent_uuid = ""
+label = "record_94aca7a8062558b08a19a2125df40b43"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a612b81c-02b4-400e-a28a-48238cb55e05"
+message = "A loaded table changed on disk. Reload it before editing tag presets"
+message_ref = "e71d0be0-80ac-5a6e-b97f-6bb254a3065d"
+note = ""
+reviewed_source_revision = "b86d42a8364c3816b6b12a611c26dd2e2214a4da2a94f78029ff9e29044a0127"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "f794ff6d-171a-560c-b00f-197ef99f15af"
+parent_uuid = ""
+label = "record_f794ff6d171a560cb00f197ef99f15af"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "b42128cf-c528-5a33-ba26-b144de4c6f20"
+message = "Une table chargée a changé sur le disque. Rechargez-la avant de modifier les préréglages de tags"
+message_ref = "e71d0be0-80ac-5a6e-b97f-6bb254a3065d"
+note = ""
+reviewed_source_revision = "b86d42a8364c3816b6b12a611c26dd2e2214a4da2a94f78029ff9e29044a0127"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "deb6620c-fec1-50aa-894c-f0a70c8de88d"
+parent_uuid = ""
+label = "record_deb6620cfec150aa894cf0a70c8de88d"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "3b9511f4-bae8-5e7d-a521-2d5633d5f3c2"
+message = "Una tabla cargada ha cambiado en el disco. Vuelve a cargarla antes de editar las etiquetas predefinidas"
+message_ref = "e71d0be0-80ac-5a6e-b97f-6bb254a3065d"
+note = ""
+reviewed_source_revision = "b86d42a8364c3816b6b12a611c26dd2e2214a4da2a94f78029ff9e29044a0127"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "d4bad781-5fae-53e4-8d92-9df6c393f46b"
+parent_uuid = ""
+label = "record_d4bad7815fae53e48d929df6c393f46b"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "6571b42e-49e5-5806-b0bb-6264367adcfe"
+message = "Eine geladene Tabelle wurde auf dem Datenträger geändert. Laden Sie sie vor dem Bearbeiten der Tag-Vorlagen neu"
+message_ref = "e71d0be0-80ac-5a6e-b97f-6bb254a3065d"
+note = ""
+reviewed_source_revision = "b86d42a8364c3816b6b12a611c26dd2e2214a4da2a94f78029ff9e29044a0127"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "7c4163e7-1400-592b-a861-f7283ff83e95"
+parent_uuid = ""
+label = "record_7c4163e71400592ba861f7283ff83e95"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a539b8c2-d771-5b4e-bef8-ba7767812b72"
+message = "Una tabella caricata è cambiata su disco. Ricaricala prima di modificare i tag predefiniti"
+message_ref = "e71d0be0-80ac-5a6e-b97f-6bb254a3065d"
+note = ""
+reviewed_source_revision = "b86d42a8364c3816b6b12a611c26dd2e2214a4da2a94f78029ff9e29044a0127"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "00bb65ba-88ae-528f-987f-261bc6ac1ff8"
+parent_uuid = ""
+label = "record_00bb65ba88ae528f987f261bc6ac1ff8"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bd410527-d1a0-59cd-9972-a055d2338063"
+message = "已加载的表在磁盘上发生了更改。编辑标签预设前请重新加载该表"
+message_ref = "e71d0be0-80ac-5a6e-b97f-6bb254a3065d"
+note = ""
+reviewed_source_revision = "b86d42a8364c3816b6b12a611c26dd2e2214a4da2a94f78029ff9e29044a0127"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "4c3eb197-49e3-5394-9894-d0f58bb83e02"
+parent_uuid = ""
+label = "record_4c3eb19749e353949894d0f58bb83e02"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "2e56c33d-5b3d-51b3-a05a-9700e5ca2401"
+message = "已載入的資料表在磁碟上發生了變更。編輯標籤預設前請重新載入該資料表"
+message_ref = "e71d0be0-80ac-5a6e-b97f-6bb254a3065d"
+note = ""
+reviewed_source_revision = "b86d42a8364c3816b6b12a611c26dd2e2214a4da2a94f78029ff9e29044a0127"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "a3242f36-674a-56c5-9845-b2a00860b3a6"
+parent_uuid = ""
+label = "record_a3242f36674a56c59845b2a00860b3a6"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "fb94026c-d2df-583f-8dda-93a7b3492949"
+message = "En inläst tabell har ändrats på disken. Läs in den igen innan du redigerar förinställda taggar"
+message_ref = "e71d0be0-80ac-5a6e-b97f-6bb254a3065d"
+note = ""
+reviewed_source_revision = "b86d42a8364c3816b6b12a611c26dd2e2214a4da2a94f78029ff9e29044a0127"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "f54f0e57-0493-5664-9fd3-01c301a77cd1"
+parent_uuid = ""
+label = "record_f54f0e57049356649fd301c301a77cd1"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bc2ab48c-47ba-5f0d-9c5a-487151074e14"
+message = "Ladattu taulukko on muuttunut levyllä. Lataa se uudelleen ennen esiasetettujen tunnisteiden muokkaamista"
+message_ref = "e71d0be0-80ac-5a6e-b97f-6bb254a3065d"
+note = ""
+reviewed_source_revision = "b86d42a8364c3816b6b12a611c26dd2e2214a4da2a94f78029ff9e29044a0127"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "018250cf-4178-584d-8025-8e5cb84225fd"
+parent_uuid = ""
+label = "record_018250cf4178584d80258e5cb84225fd"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "5b8834dc-b8d4-51df-a8bb-933d8573c2cb"
+message = "En innlastet tabell er endret på disken. Last den inn på nytt før du redigerer forhåndsdefinerte tagger"
+message_ref = "e71d0be0-80ac-5a6e-b97f-6bb254a3065d"
+note = ""
+reviewed_source_revision = "b86d42a8364c3816b6b12a611c26dd2e2214a4da2a94f78029ff9e29044a0127"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "a176e3e7-d67d-5b5a-99d0-766e3843f447"
+parent_uuid = ""
+label = "record_a176e3e7d67d5b5a99d0766e3843f447"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "7304c655-3bd1-5be1-82f6-50c140c3ced7"
+message = "تغيّر جدول محمّل على القرص. أعد تحميله قبل تعديل الوسوم المحددة مسبقًا"
+message_ref = "e71d0be0-80ac-5a6e-b97f-6bb254a3065d"
+note = ""
+reviewed_source_revision = "b86d42a8364c3816b6b12a611c26dd2e2214a4da2a94f78029ff9e29044a0127"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "4954ebba-44f3-57e4-838e-61e015ba6af2"
+parent_uuid = ""
+label = "record_4954ebba44f357e4838e61e015ba6af2"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "0f6b59c7-a7d5-5417-9ade-9eca750f029c"
+message = "লোড করা একটি টেবিল ডিস্কে বদলে গেছে। পূর্বনির্ধারিত ট্যাগ সম্পাদনার আগে টেবিলটি আবার লোড করুন"
+message_ref = "e71d0be0-80ac-5a6e-b97f-6bb254a3065d"
+note = ""
+reviewed_source_revision = "b86d42a8364c3816b6b12a611c26dd2e2214a4da2a94f78029ff9e29044a0127"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "3b9df81d-ce55-5b08-913f-03566365a346"
+parent_uuid = ""
+label = "record_3b9df81dce555b08913f03566365a346"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "acbd8612-2fc4-516a-8b84-4f0a3cd80831"
+message = "लोड की गई एक तालिका डिस्क पर बदल गई है। पूर्वनिर्धारित टैग संपादित करने से पहले उसे फिर से लोड करें"
+message_ref = "e71d0be0-80ac-5a6e-b97f-6bb254a3065d"
+note = ""
+reviewed_source_revision = "b86d42a8364c3816b6b12a611c26dd2e2214a4da2a94f78029ff9e29044a0127"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "53bf10bd-b5fb-5c06-a34f-98f058e2db61"
+parent_uuid = ""
+label = "record_53bf10bdb5fb5c06a34f98f058e2db61"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "4f626627-2fda-5739-8f33-46d5eb8bae0e"
+message = "Kargatutako taula bat diskoan aldatu da. Kargatu berriro aurrez ezarritako etiketak editatu aurretik"
+message_ref = "e71d0be0-80ac-5a6e-b97f-6bb254a3065d"
+note = ""
+reviewed_source_revision = "b86d42a8364c3816b6b12a611c26dd2e2214a4da2a94f78029ff9e29044a0127"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "45797f56-0772-5e75-b003-420dfcbebc04"
+parent_uuid = ""
+label = "record_45797f5607725e75b003420dfcbebc04"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "086c8431-4df5-5570-b34b-d59375292efd"
+message = "Una taula carregada ha canviat al disc. Torneu-la a carregar abans d’editar les etiquetes predefinides"
+message_ref = "e71d0be0-80ac-5a6e-b97f-6bb254a3065d"
+note = ""
+reviewed_source_revision = "b86d42a8364c3816b6b12a611c26dd2e2214a4da2a94f78029ff9e29044a0127"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "881dafbe-0476-54dc-b6ac-8baafa34550f"
+parent_uuid = ""
+label = "record_881dafbe047654dcb6ac8baafa34550f"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "53443caa-f352-491f-acf5-77e6308d4bf0"
+message = "タグ「{name}」はテーブル「{table}」で使用中です。先に行と列からタグを外してください"
+message_ref = "42ad752b-4c77-58bc-bfff-9ee59552dc7e"
+note = ""
+reviewed_source_revision = "ea21f991c1932d07acb7e0eeace04652ee84bfac77ebf79ce4839bafd79529e7"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "ff7a452a-eee8-5fc0-8bc6-5cc4ab68f911"
+parent_uuid = ""
+label = "record_ff7a452aeee85fc08bc65cc4ab68f911"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a612b81c-02b4-400e-a28a-48238cb55e05"
+message = "Tag “{name}” is still used in table “{table}”; remove its row and column assignments first"
+message_ref = "42ad752b-4c77-58bc-bfff-9ee59552dc7e"
+note = ""
+reviewed_source_revision = "ea21f991c1932d07acb7e0eeace04652ee84bfac77ebf79ce4839bafd79529e7"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "43961e7b-abcf-5bb9-9bef-24c2537adc61"
+parent_uuid = ""
+label = "record_43961e7babcf5bb99bef24c2537adc61"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "b42128cf-c528-5a33-ba26-b144de4c6f20"
+message = "Le tag « {name} » est encore utilisé dans la table « {table} » ; retirez-le d’abord des lignes et des colonnes"
+message_ref = "42ad752b-4c77-58bc-bfff-9ee59552dc7e"
+note = ""
+reviewed_source_revision = "ea21f991c1932d07acb7e0eeace04652ee84bfac77ebf79ce4839bafd79529e7"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "d6e37bf2-3aa8-57bc-a090-6e01be1f6e1d"
+parent_uuid = ""
+label = "record_d6e37bf23aa857bca0906e01be1f6e1d"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "3b9511f4-bae8-5e7d-a521-2d5633d5f3c2"
+message = "La etiqueta «{name}» todavía se usa en la tabla «{table}»; quítala primero de las filas y columnas"
+message_ref = "42ad752b-4c77-58bc-bfff-9ee59552dc7e"
+note = ""
+reviewed_source_revision = "ea21f991c1932d07acb7e0eeace04652ee84bfac77ebf79ce4839bafd79529e7"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "f7db3994-0009-57c3-84f4-ae3efdfdb8c6"
+parent_uuid = ""
+label = "record_f7db3994000957c384f4ae3efdfdb8c6"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "6571b42e-49e5-5806-b0bb-6264367adcfe"
+message = "Der Tag „{name}“ wird noch in der Tabelle „{table}“ verwendet; entfernen Sie zuerst seine Zuweisungen zu Zeilen und Spalten"
+message_ref = "42ad752b-4c77-58bc-bfff-9ee59552dc7e"
+note = ""
+reviewed_source_revision = "ea21f991c1932d07acb7e0eeace04652ee84bfac77ebf79ce4839bafd79529e7"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "bbb8e21e-efd8-5ef5-89d5-0224700bea45"
+parent_uuid = ""
+label = "record_bbb8e21eefd85ef589d50224700bea45"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a539b8c2-d771-5b4e-bef8-ba7767812b72"
+message = "Il tag «{name}» è ancora utilizzato nella tabella «{table}»; rimuovilo prima dalle righe e dalle colonne"
+message_ref = "42ad752b-4c77-58bc-bfff-9ee59552dc7e"
+note = ""
+reviewed_source_revision = "ea21f991c1932d07acb7e0eeace04652ee84bfac77ebf79ce4839bafd79529e7"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "03915ad1-aa2c-592b-a6c7-0fb04149701b"
+parent_uuid = ""
+label = "record_03915ad1aa2c592ba6c70fb04149701b"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bd410527-d1a0-59cd-9972-a055d2338063"
+message = "标签“{name}”仍在表“{table}”中使用；请先从行和列中移除该标签"
+message_ref = "42ad752b-4c77-58bc-bfff-9ee59552dc7e"
+note = ""
+reviewed_source_revision = "ea21f991c1932d07acb7e0eeace04652ee84bfac77ebf79ce4839bafd79529e7"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "0e3d4ada-9787-5b30-89fd-fc767a5e7160"
+parent_uuid = ""
+label = "record_0e3d4ada97875b3089fdfc767a5e7160"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "2e56c33d-5b3d-51b3-a05a-9700e5ca2401"
+message = "標籤「{name}」仍用於資料表「{table}」；請先從列與欄移除該標籤"
+message_ref = "42ad752b-4c77-58bc-bfff-9ee59552dc7e"
+note = ""
+reviewed_source_revision = "ea21f991c1932d07acb7e0eeace04652ee84bfac77ebf79ce4839bafd79529e7"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "98156a4b-4a7b-5c72-9852-d582a24cdd8e"
+parent_uuid = ""
+label = "record_98156a4b4a7b5c729852d582a24cdd8e"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "fb94026c-d2df-583f-8dda-93a7b3492949"
+message = "Taggen ”{name}” används fortfarande i tabellen ”{table}”; ta först bort den från raderna och kolumnerna"
+message_ref = "42ad752b-4c77-58bc-bfff-9ee59552dc7e"
+note = ""
+reviewed_source_revision = "ea21f991c1932d07acb7e0eeace04652ee84bfac77ebf79ce4839bafd79529e7"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "6b5dc690-4ee0-5a85-aaa2-e026eaf521a7"
+parent_uuid = ""
+label = "record_6b5dc6904ee05a85aaa2e026eaf521a7"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bc2ab48c-47ba-5f0d-9c5a-487151074e14"
+message = "Tunniste ”{name}” on yhä käytössä taulukossa ”{table}”; poista se ensin riveiltä ja sarakkeista"
+message_ref = "42ad752b-4c77-58bc-bfff-9ee59552dc7e"
+note = ""
+reviewed_source_revision = "ea21f991c1932d07acb7e0eeace04652ee84bfac77ebf79ce4839bafd79529e7"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "7f3afd34-45d8-5aa8-9b16-bf976cd76764"
+parent_uuid = ""
+label = "record_7f3afd3445d85aa89b16bf976cd76764"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "5b8834dc-b8d4-51df-a8bb-933d8573c2cb"
+message = "Taggen «{name}» brukes fortsatt i tabellen «{table}»; fjern den først fra radene og kolonnene"
+message_ref = "42ad752b-4c77-58bc-bfff-9ee59552dc7e"
+note = ""
+reviewed_source_revision = "ea21f991c1932d07acb7e0eeace04652ee84bfac77ebf79ce4839bafd79529e7"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "4c428c16-f808-5a9a-863a-35678f164e04"
+parent_uuid = ""
+label = "record_4c428c16f8085a9a863a35678f164e04"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "7304c655-3bd1-5be1-82f6-50c140c3ced7"
+message = "لا يزال الوسم «{name}» مستخدمًا في الجدول «{table}»؛ أزله من الصفوف والأعمدة أولًا"
+message_ref = "42ad752b-4c77-58bc-bfff-9ee59552dc7e"
+note = ""
+reviewed_source_revision = "ea21f991c1932d07acb7e0eeace04652ee84bfac77ebf79ce4839bafd79529e7"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "c9db025b-ced2-576b-bab1-b4b8d461e0f9"
+parent_uuid = ""
+label = "record_c9db025bced2576bbab1b4b8d461e0f9"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "0f6b59c7-a7d5-5417-9ade-9eca750f029c"
+message = "“{name}” ট্যাগটি এখনও “{table}” টেবিলে ব্যবহৃত হচ্ছে; আগে সারি ও কলাম থেকে ট্যাগটি সরান"
+message_ref = "42ad752b-4c77-58bc-bfff-9ee59552dc7e"
+note = ""
+reviewed_source_revision = "ea21f991c1932d07acb7e0eeace04652ee84bfac77ebf79ce4839bafd79529e7"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "e775ab13-9b9f-5832-8e21-7ab8ae34e767"
+parent_uuid = ""
+label = "record_e775ab139b9f58328e217ab8ae34e767"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "acbd8612-2fc4-516a-8b84-4f0a3cd80831"
+message = "“{name}” टैग अभी भी “{table}” तालिका में उपयोग हो रहा है; पहले इसे पंक्तियों और कॉलम से हटाएँ"
+message_ref = "42ad752b-4c77-58bc-bfff-9ee59552dc7e"
+note = ""
+reviewed_source_revision = "ea21f991c1932d07acb7e0eeace04652ee84bfac77ebf79ce4839bafd79529e7"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "5a2aae11-e4f1-5390-954f-9209b3ac3155"
+parent_uuid = ""
+label = "record_5a2aae11e4f15390954f9209b3ac3155"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "4f626627-2fda-5739-8f33-46d5eb8bae0e"
+message = "«{name}» etiketa oraindik «{table}» taulan erabiltzen da; kendu lehenik errenkada eta zutabeetatik"
+message_ref = "42ad752b-4c77-58bc-bfff-9ee59552dc7e"
+note = ""
+reviewed_source_revision = "ea21f991c1932d07acb7e0eeace04652ee84bfac77ebf79ce4839bafd79529e7"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "de943592-f489-5076-b2e1-44c847b1c78d"
+parent_uuid = ""
+label = "record_de943592f4895076b2e144c847b1c78d"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "086c8431-4df5-5570-b34b-d59375292efd"
+message = "L’etiqueta «{name}» encara s’utilitza a la taula «{table}»; elimineu-la primer de les files i columnes"
+message_ref = "42ad752b-4c77-58bc-bfff-9ee59552dc7e"
+note = ""
+reviewed_source_revision = "ea21f991c1932d07acb7e0eeace04652ee84bfac77ebf79ce4839bafd79529e7"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "1b323f19-be2f-5a94-9dd2-ad80cb7eb09b"
+parent_uuid = ""
+label = "record_1b323f19be2f5a949dd2ad80cb7eb09b"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "53443caa-f352-491f-acf5-77e6308d4bf0"
+message = "タグを追加するには、プロジェクトに登録されたタグプリセットを選択してください"
+message_ref = "4d3572b3-d760-5edd-9e69-3ef62dc8c141"
+note = ""
+reviewed_source_revision = "cc206f8c8075d6cd8ca7383dab53191485d95c71173247e7de3a06b2bc2f20dc"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "7d7672c2-8d53-5458-b2d3-31c8d46fbace"
+parent_uuid = ""
+label = "record_7d7672c28d535458b2d331c8d46fbace"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a612b81c-02b4-400e-a28a-48238cb55e05"
+message = "Choose a registered project tag preset when adding a tag"
+message_ref = "4d3572b3-d760-5edd-9e69-3ef62dc8c141"
+note = ""
+reviewed_source_revision = "cc206f8c8075d6cd8ca7383dab53191485d95c71173247e7de3a06b2bc2f20dc"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "12d9cea7-5ed8-55b4-9022-633931a44c65"
+parent_uuid = ""
+label = "record_12d9cea75ed855b49022633931a44c65"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "b42128cf-c528-5a33-ba26-b144de4c6f20"
+message = "Choisissez un préréglage de tag enregistré dans le projet pour ajouter un tag"
+message_ref = "4d3572b3-d760-5edd-9e69-3ef62dc8c141"
+note = ""
+reviewed_source_revision = "cc206f8c8075d6cd8ca7383dab53191485d95c71173247e7de3a06b2bc2f20dc"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "50f0bea8-712c-5642-8789-1f42ee339dc6"
+parent_uuid = ""
+label = "record_50f0bea8712c564287891f42ee339dc6"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "3b9511f4-bae8-5e7d-a521-2d5633d5f3c2"
+message = "Para añadir una etiqueta, elige una etiqueta predefinida registrada en el proyecto"
+message_ref = "4d3572b3-d760-5edd-9e69-3ef62dc8c141"
+note = ""
+reviewed_source_revision = "cc206f8c8075d6cd8ca7383dab53191485d95c71173247e7de3a06b2bc2f20dc"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "518aa316-4100-5222-b725-543a5423aa86"
+parent_uuid = ""
+label = "record_518aa31641005222b725543a5423aa86"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "6571b42e-49e5-5806-b0bb-6264367adcfe"
+message = "Wählen Sie zum Hinzufügen eines Tags eine registrierte Tag-Vorlage des Projekts"
+message_ref = "4d3572b3-d760-5edd-9e69-3ef62dc8c141"
+note = ""
+reviewed_source_revision = "cc206f8c8075d6cd8ca7383dab53191485d95c71173247e7de3a06b2bc2f20dc"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "e6e51e20-9ad4-54e6-b18a-3350e7116761"
+parent_uuid = ""
+label = "record_e6e51e209ad454e6b18a3350e7116761"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a539b8c2-d771-5b4e-bef8-ba7767812b72"
+message = "Per aggiungere un tag, scegli un tag predefinito registrato nel progetto"
+message_ref = "4d3572b3-d760-5edd-9e69-3ef62dc8c141"
+note = ""
+reviewed_source_revision = "cc206f8c8075d6cd8ca7383dab53191485d95c71173247e7de3a06b2bc2f20dc"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "f6feef8c-e826-56ae-a889-b30a5b1eabf6"
+parent_uuid = ""
+label = "record_f6feef8ce82656aea889b30a5b1eabf6"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bd410527-d1a0-59cd-9972-a055d2338063"
+message = "添加标签时，请选择已在项目中注册的标签预设"
+message_ref = "4d3572b3-d760-5edd-9e69-3ef62dc8c141"
+note = ""
+reviewed_source_revision = "cc206f8c8075d6cd8ca7383dab53191485d95c71173247e7de3a06b2bc2f20dc"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "5d156aac-25f6-5249-a86e-178a53439690"
+parent_uuid = ""
+label = "record_5d156aac25f65249a86e178a53439690"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "2e56c33d-5b3d-51b3-a05a-9700e5ca2401"
+message = "新增標籤時，請選取已在專案中註冊的標籤預設"
+message_ref = "4d3572b3-d760-5edd-9e69-3ef62dc8c141"
+note = ""
+reviewed_source_revision = "cc206f8c8075d6cd8ca7383dab53191485d95c71173247e7de3a06b2bc2f20dc"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "180b8400-1b5f-5e0d-ad60-121ef29c6579"
+parent_uuid = ""
+label = "record_180b84001b5f5e0dad60121ef29c6579"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "fb94026c-d2df-583f-8dda-93a7b3492949"
+message = "Välj en registrerad förinställd tagg i projektet när du lägger till en tagg"
+message_ref = "4d3572b3-d760-5edd-9e69-3ef62dc8c141"
+note = ""
+reviewed_source_revision = "cc206f8c8075d6cd8ca7383dab53191485d95c71173247e7de3a06b2bc2f20dc"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "784f449f-bbb9-5c5d-be5d-6c41f5aa9a07"
+parent_uuid = ""
+label = "record_784f449fbbb95c5dbe5d6c41f5aa9a07"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bc2ab48c-47ba-5f0d-9c5a-487151074e14"
+message = "Kun lisäät tunnisteen, valitse projektiin rekisteröity esiasetettu tunniste"
+message_ref = "4d3572b3-d760-5edd-9e69-3ef62dc8c141"
+note = ""
+reviewed_source_revision = "cc206f8c8075d6cd8ca7383dab53191485d95c71173247e7de3a06b2bc2f20dc"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "92876d55-effa-59ae-9b15-0643247cd470"
+parent_uuid = ""
+label = "record_92876d55effa59ae9b150643247cd470"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "5b8834dc-b8d4-51df-a8bb-933d8573c2cb"
+message = "Velg en registrert forhåndsdefinert tagg i prosjektet når du legger til en tagg"
+message_ref = "4d3572b3-d760-5edd-9e69-3ef62dc8c141"
+note = ""
+reviewed_source_revision = "cc206f8c8075d6cd8ca7383dab53191485d95c71173247e7de3a06b2bc2f20dc"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "cb34790b-942d-555f-82f4-24d112a4add1"
+parent_uuid = ""
+label = "record_cb34790b942d555f82f424d112a4add1"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "7304c655-3bd1-5be1-82f6-50c140c3ced7"
+message = "اختر وسمًا محددًا مسبقًا ومسجّلًا في المشروع عند إضافة وسم"
+message_ref = "4d3572b3-d760-5edd-9e69-3ef62dc8c141"
+note = ""
+reviewed_source_revision = "cc206f8c8075d6cd8ca7383dab53191485d95c71173247e7de3a06b2bc2f20dc"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "ba1c92b8-0794-5c6c-89d4-90a4a7dff9eb"
+parent_uuid = ""
+label = "record_ba1c92b807945c6c89d490a4a7dff9eb"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "0f6b59c7-a7d5-5417-9ade-9eca750f029c"
+message = "ট্যাগ যোগ করার সময় প্রকল্পে নিবন্ধিত একটি পূর্বনির্ধারিত ট্যাগ বেছে নিন"
+message_ref = "4d3572b3-d760-5edd-9e69-3ef62dc8c141"
+note = ""
+reviewed_source_revision = "cc206f8c8075d6cd8ca7383dab53191485d95c71173247e7de3a06b2bc2f20dc"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "c1bd38fe-8855-515b-be15-ee06d8feec0d"
+parent_uuid = ""
+label = "record_c1bd38fe8855515bbe15ee06d8feec0d"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "acbd8612-2fc4-516a-8b84-4f0a3cd80831"
+message = "टैग जोड़ते समय प्रोजेक्ट में पंजीकृत पूर्वनिर्धारित टैग चुनें"
+message_ref = "4d3572b3-d760-5edd-9e69-3ef62dc8c141"
+note = ""
+reviewed_source_revision = "cc206f8c8075d6cd8ca7383dab53191485d95c71173247e7de3a06b2bc2f20dc"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "d04df9c7-cc9a-525d-9e36-8d7325c05d92"
+parent_uuid = ""
+label = "record_d04df9c7cc9a525d9e368d7325c05d92"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "4f626627-2fda-5739-8f33-46d5eb8bae0e"
+message = "Etiketa bat gehitzean, hautatu proiektuan erregistratutako aurrez ezarritako etiketa bat"
+message_ref = "4d3572b3-d760-5edd-9e69-3ef62dc8c141"
+note = ""
+reviewed_source_revision = "cc206f8c8075d6cd8ca7383dab53191485d95c71173247e7de3a06b2bc2f20dc"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "b7e9e79e-4667-54c3-b09f-0d3f651a517b"
+parent_uuid = ""
+label = "record_b7e9e79e466754c3b09f0d3f651a517b"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "086c8431-4df5-5570-b34b-d59375292efd"
+message = "Quan afegiu una etiqueta, trieu una etiqueta predefinida registrada al projecte"
+message_ref = "4d3572b3-d760-5edd-9e69-3ef62dc8c141"
+note = ""
+reviewed_source_revision = "cc206f8c8075d6cd8ca7383dab53191485d95c71173247e7de3a06b2bc2f20dc"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "b298ec98-4bce-5095-83a3-66196c470ebb"
+parent_uuid = ""
+label = "record_b298ec984bce509583a366196c470ebb"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "53443caa-f352-491f-acf5-77e6308d4bf0"
+message = "タグの変更処理を復旧する必要があります。プロジェクトを開き直してから続けてください。"
+message_ref = "1a82a85d-21c3-5729-86da-6358e9b84f78"
+note = ""
+reviewed_source_revision = "c545f9bb504f5550564e090971f7b5076bd2cd0b05f0d298b95880afe4e58018"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "a146a6a3-ccc2-53cb-b420-2ed55d8312f1"
+parent_uuid = ""
+label = "record_a146a6a3ccc253cbb4202ed55d8312f1"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a612b81c-02b4-400e-a28a-48238cb55e05"
+message = "A tag transaction needs recovery. Reopen the project before continuing."
+message_ref = "1a82a85d-21c3-5729-86da-6358e9b84f78"
+note = ""
+reviewed_source_revision = "c545f9bb504f5550564e090971f7b5076bd2cd0b05f0d298b95880afe4e58018"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "a8b21b06-6bec-5b6f-9819-37b9cf7e9afe"
+parent_uuid = ""
+label = "record_a8b21b066bec5b6f981937b9cf7e9afe"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "b42128cf-c528-5a33-ba26-b144de4c6f20"
+message = "Une opération sur les tags nécessite une récupération. Rouvrez le projet avant de continuer."
+message_ref = "1a82a85d-21c3-5729-86da-6358e9b84f78"
+note = ""
+reviewed_source_revision = "c545f9bb504f5550564e090971f7b5076bd2cd0b05f0d298b95880afe4e58018"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "3e6f8f2f-4a1b-5739-b80e-e4fde3bb7fe4"
+parent_uuid = ""
+label = "record_3e6f8f2f4a1b5739b80ee4fde3bb7fe4"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "3b9511f4-bae8-5e7d-a521-2d5633d5f3c2"
+message = "Es necesario recuperar una operación de etiquetas. Vuelve a abrir el proyecto antes de continuar."
+message_ref = "1a82a85d-21c3-5729-86da-6358e9b84f78"
+note = ""
+reviewed_source_revision = "c545f9bb504f5550564e090971f7b5076bd2cd0b05f0d298b95880afe4e58018"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "19adf2f5-b1f7-501b-9e99-4ebece196ef8"
+parent_uuid = ""
+label = "record_19adf2f5b1f7501b9e994ebece196ef8"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "6571b42e-49e5-5806-b0bb-6264367adcfe"
+message = "Ein Tag-Vorgang muss wiederhergestellt werden. Öffnen Sie das Projekt erneut, bevor Sie fortfahren."
+message_ref = "1a82a85d-21c3-5729-86da-6358e9b84f78"
+note = ""
+reviewed_source_revision = "c545f9bb504f5550564e090971f7b5076bd2cd0b05f0d298b95880afe4e58018"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "ce2d88fc-d29d-5392-abc1-3a47e9df50d0"
+parent_uuid = ""
+label = "record_ce2d88fcd29d5392abc13a47e9df50d0"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a539b8c2-d771-5b4e-bef8-ba7767812b72"
+message = "È necessario ripristinare un’operazione sui tag. Riapri il progetto prima di continuare."
+message_ref = "1a82a85d-21c3-5729-86da-6358e9b84f78"
+note = ""
+reviewed_source_revision = "c545f9bb504f5550564e090971f7b5076bd2cd0b05f0d298b95880afe4e58018"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "889490f9-6512-5844-897a-a9a170560026"
+parent_uuid = ""
+label = "record_889490f965125844897aa9a170560026"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bd410527-d1a0-59cd-9972-a055d2338063"
+message = "标签事务需要恢复。请重新打开项目后再继续。"
+message_ref = "1a82a85d-21c3-5729-86da-6358e9b84f78"
+note = ""
+reviewed_source_revision = "c545f9bb504f5550564e090971f7b5076bd2cd0b05f0d298b95880afe4e58018"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "6eaa9652-2033-5e4e-b3c7-d7a7cc81312a"
+parent_uuid = ""
+label = "record_6eaa965220335e4eb3c7d7a7cc81312a"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "2e56c33d-5b3d-51b3-a05a-9700e5ca2401"
+message = "標籤交易需要復原。請重新開啟專案後再繼續。"
+message_ref = "1a82a85d-21c3-5729-86da-6358e9b84f78"
+note = ""
+reviewed_source_revision = "c545f9bb504f5550564e090971f7b5076bd2cd0b05f0d298b95880afe4e58018"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "12af5809-d6e1-5458-91f6-abdb15e70ef5"
+parent_uuid = ""
+label = "record_12af5809d6e1545891f6abdb15e70ef5"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "fb94026c-d2df-583f-8dda-93a7b3492949"
+message = "En taggåtgärd behöver återställas. Öppna projektet igen innan du fortsätter."
+message_ref = "1a82a85d-21c3-5729-86da-6358e9b84f78"
+note = ""
+reviewed_source_revision = "c545f9bb504f5550564e090971f7b5076bd2cd0b05f0d298b95880afe4e58018"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "ec687b13-6efb-57fa-9241-7c70c40a0b61"
+parent_uuid = ""
+label = "record_ec687b136efb57fa92417c70c40a0b61"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bc2ab48c-47ba-5f0d-9c5a-487151074e14"
+message = "Tunnistetoiminto on palautettava. Avaa projekti uudelleen ennen jatkamista."
+message_ref = "1a82a85d-21c3-5729-86da-6358e9b84f78"
+note = ""
+reviewed_source_revision = "c545f9bb504f5550564e090971f7b5076bd2cd0b05f0d298b95880afe4e58018"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "b56b793c-5345-5ef7-a662-6e01b8d8375b"
+parent_uuid = ""
+label = "record_b56b793c53455ef7a6626e01b8d8375b"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "5b8834dc-b8d4-51df-a8bb-933d8573c2cb"
+message = "En taggoperasjon må gjenopprettes. Åpne prosjektet på nytt før du fortsetter."
+message_ref = "1a82a85d-21c3-5729-86da-6358e9b84f78"
+note = ""
+reviewed_source_revision = "c545f9bb504f5550564e090971f7b5076bd2cd0b05f0d298b95880afe4e58018"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "700f228c-44d7-52a8-8a5e-0ab145ded83c"
+parent_uuid = ""
+label = "record_700f228c44d752a88a5e0ab145ded83c"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "7304c655-3bd1-5be1-82f6-50c140c3ced7"
+message = "تحتاج عملية وسوم إلى الاسترداد. أعد فتح المشروع قبل المتابعة."
+message_ref = "1a82a85d-21c3-5729-86da-6358e9b84f78"
+note = ""
+reviewed_source_revision = "c545f9bb504f5550564e090971f7b5076bd2cd0b05f0d298b95880afe4e58018"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "92f4e674-4c28-5401-b05f-8558f5b8e959"
+parent_uuid = ""
+label = "record_92f4e6744c285401b05f8558f5b8e959"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "0f6b59c7-a7d5-5417-9ade-9eca750f029c"
+message = "একটি ট্যাগ অপারেশন পুনরুদ্ধার করা প্রয়োজন। চালিয়ে যাওয়ার আগে প্রকল্পটি আবার খুলুন।"
+message_ref = "1a82a85d-21c3-5729-86da-6358e9b84f78"
+note = ""
+reviewed_source_revision = "c545f9bb504f5550564e090971f7b5076bd2cd0b05f0d298b95880afe4e58018"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "27924786-fb91-5bdf-850c-f1479a9c47e5"
+parent_uuid = ""
+label = "record_27924786fb915bdf850cf1479a9c47e5"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "acbd8612-2fc4-516a-8b84-4f0a3cd80831"
+message = "टैग से जुड़ी एक कार्रवाई को पुनर्स्थापित करना आवश्यक है। आगे बढ़ने से पहले प्रोजेक्ट फिर से खोलें।"
+message_ref = "1a82a85d-21c3-5729-86da-6358e9b84f78"
+note = ""
+reviewed_source_revision = "c545f9bb504f5550564e090971f7b5076bd2cd0b05f0d298b95880afe4e58018"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "85ebc8d2-6776-58e2-9079-1166fe09aa1d"
+parent_uuid = ""
+label = "record_85ebc8d2677658e290791166fe09aa1d"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "4f626627-2fda-5739-8f33-46d5eb8bae0e"
+message = "Etiketa-eragiketa bat berreskuratu behar da. Ireki berriro proiektua jarraitu aurretik."
+message_ref = "1a82a85d-21c3-5729-86da-6358e9b84f78"
+note = ""
+reviewed_source_revision = "c545f9bb504f5550564e090971f7b5076bd2cd0b05f0d298b95880afe4e58018"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "04ecbadd-13cd-5388-870d-f5fefccb4f3b"
+parent_uuid = ""
+label = "record_04ecbadd13cd5388870df5fefccb4f3b"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "086c8431-4df5-5570-b34b-d59375292efd"
+message = "Cal recuperar una operació d’etiquetes. Torneu a obrir el projecte abans de continuar."
+message_ref = "1a82a85d-21c3-5729-86da-6358e9b84f78"
+note = ""
+reviewed_source_revision = "c545f9bb504f5550564e090971f7b5076bd2cd0b05f0d298b95880afe4e58018"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "be600bb0-7633-5c81-a370-9a481c22711a"
+parent_uuid = ""
+label = "record_be600bb076335c81a3709a481c22711a"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "53443caa-f352-491f-acf5-77e6308d4bf0"
+message = "半角英字・数字・アンダースコア（_）を1〜255文字で入力してください。先頭は半角英字またはアンダースコアにしてください。"
+message_ref = "a371b9c7-1982-5a34-bb62-dded07128159"
+note = ""
+reviewed_source_revision = "29a09cfdb82f210ee168e3621980cef37e1d06fe2a2f065a0d1f610b704a6b9c"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "46223e78-cbb1-5379-983b-66b502e048fe"
+parent_uuid = ""
+label = "record_46223e78cbb15379983b66b502e048fe"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a612b81c-02b4-400e-a28a-48238cb55e05"
+message = "Use 1–255 ASCII characters: letters, digits, or underscores (_). Start with a letter or underscore."
+message_ref = "a371b9c7-1982-5a34-bb62-dded07128159"
+note = ""
+reviewed_source_revision = "29a09cfdb82f210ee168e3621980cef37e1d06fe2a2f065a0d1f610b704a6b9c"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "355c71a7-7fc9-52fc-b162-3ce350c56f83"
+parent_uuid = ""
+label = "record_355c71a77fc952fcb1623ce350c56f83"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "b42128cf-c528-5a33-ba26-b144de4c6f20"
+message = "Utilisez de 1 à 255 caractères ASCII : lettres, chiffres ou tirets bas (_). Commencez par une lettre ou un tiret bas."
+message_ref = "a371b9c7-1982-5a34-bb62-dded07128159"
+note = ""
+reviewed_source_revision = "29a09cfdb82f210ee168e3621980cef37e1d06fe2a2f065a0d1f610b704a6b9c"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "47bdc1c2-8910-59db-bd3a-5618a2822bca"
+parent_uuid = ""
+label = "record_47bdc1c2891059dbbd3a5618a2822bca"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "3b9511f4-bae8-5e7d-a521-2d5633d5f3c2"
+message = "Usa entre 1 y 255 caracteres ASCII: letras, dígitos o guiones bajos (_). Empieza con una letra o un guion bajo."
+message_ref = "a371b9c7-1982-5a34-bb62-dded07128159"
+note = ""
+reviewed_source_revision = "29a09cfdb82f210ee168e3621980cef37e1d06fe2a2f065a0d1f610b704a6b9c"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "611958ec-1738-5179-91b7-1d97ebd95af6"
+parent_uuid = ""
+label = "record_611958ec1738517991b71d97ebd95af6"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "6571b42e-49e5-5806-b0bb-6264367adcfe"
+message = "Verwenden Sie 1–255 ASCII-Zeichen: Buchstaben, Ziffern oder Unterstriche (_). Beginnen Sie mit einem Buchstaben oder Unterstrich."
+message_ref = "a371b9c7-1982-5a34-bb62-dded07128159"
+note = ""
+reviewed_source_revision = "29a09cfdb82f210ee168e3621980cef37e1d06fe2a2f065a0d1f610b704a6b9c"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "8f0a5520-ed7d-57c0-936f-70b135e54c14"
+parent_uuid = ""
+label = "record_8f0a5520ed7d57c0936f70b135e54c14"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a539b8c2-d771-5b4e-bef8-ba7767812b72"
+message = "Usa da 1 a 255 caratteri ASCII: lettere, cifre o trattini bassi (_). Inizia con una lettera o un trattino basso."
+message_ref = "a371b9c7-1982-5a34-bb62-dded07128159"
+note = ""
+reviewed_source_revision = "29a09cfdb82f210ee168e3621980cef37e1d06fe2a2f065a0d1f610b704a6b9c"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "95822b5f-06f8-50fc-8560-5f488527f78e"
+parent_uuid = ""
+label = "record_95822b5f06f850fc85605f488527f78e"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bd410527-d1a0-59cd-9972-a055d2338063"
+message = "请输入 1–255 个 ASCII 字符，仅限字母、数字或下划线（_），并以字母或下划线开头。"
+message_ref = "a371b9c7-1982-5a34-bb62-dded07128159"
+note = ""
+reviewed_source_revision = "29a09cfdb82f210ee168e3621980cef37e1d06fe2a2f065a0d1f610b704a6b9c"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "ffe57bde-9d4c-5289-9aeb-d6b0ff85e3c0"
+parent_uuid = ""
+label = "record_ffe57bde9d4c52899aebd6b0ff85e3c0"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "2e56c33d-5b3d-51b3-a05a-9700e5ca2401"
+message = "請輸入 1–255 個 ASCII 字元，僅限字母、數字或底線（_），並以字母或底線開頭。"
+message_ref = "a371b9c7-1982-5a34-bb62-dded07128159"
+note = ""
+reviewed_source_revision = "29a09cfdb82f210ee168e3621980cef37e1d06fe2a2f065a0d1f610b704a6b9c"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "0ef1a45f-0869-5d2a-810b-d44ec56ca2d6"
+parent_uuid = ""
+label = "record_0ef1a45f08695d2a810bd44ec56ca2d6"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "fb94026c-d2df-583f-8dda-93a7b3492949"
+message = "Använd 1–255 ASCII-tecken: bokstäver, siffror eller understreck (_). Börja med en bokstav eller ett understreck."
+message_ref = "a371b9c7-1982-5a34-bb62-dded07128159"
+note = ""
+reviewed_source_revision = "29a09cfdb82f210ee168e3621980cef37e1d06fe2a2f065a0d1f610b704a6b9c"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "4a788d93-22b0-53af-bb22-0a3dd53624ea"
+parent_uuid = ""
+label = "record_4a788d9322b053afbb220a3dd53624ea"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bc2ab48c-47ba-5f0d-9c5a-487151074e14"
+message = "Käytä 1–255 ASCII-merkkiä: kirjaimia, numeroita tai alaviivoja (_). Aloita kirjaimella tai alaviivalla."
+message_ref = "a371b9c7-1982-5a34-bb62-dded07128159"
+note = ""
+reviewed_source_revision = "29a09cfdb82f210ee168e3621980cef37e1d06fe2a2f065a0d1f610b704a6b9c"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "a2a03719-758d-5a01-ac24-079bde035c49"
+parent_uuid = ""
+label = "record_a2a03719758d5a01ac24079bde035c49"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "5b8834dc-b8d4-51df-a8bb-933d8573c2cb"
+message = "Bruk 1–255 ASCII-tegn: bokstaver, sifre eller understreker (_). Start med en bokstav eller understrek."
+message_ref = "a371b9c7-1982-5a34-bb62-dded07128159"
+note = ""
+reviewed_source_revision = "29a09cfdb82f210ee168e3621980cef37e1d06fe2a2f065a0d1f610b704a6b9c"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "cd1e33c3-0437-5305-a52d-973b91ee78b8"
+parent_uuid = ""
+label = "record_cd1e33c304375305a52d973b91ee78b8"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "7304c655-3bd1-5be1-82f6-50c140c3ced7"
+message = "استخدم من 1 إلى 255 محرف ASCII: أحرفًا أو أرقامًا أو شرطات سفلية (_). ابدأ بحرف أو شرطة سفلية."
+message_ref = "a371b9c7-1982-5a34-bb62-dded07128159"
+note = ""
+reviewed_source_revision = "29a09cfdb82f210ee168e3621980cef37e1d06fe2a2f065a0d1f610b704a6b9c"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "6af72825-ac96-5840-9c16-b600687ee5ae"
+parent_uuid = ""
+label = "record_6af72825ac9658409c16b600687ee5ae"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "0f6b59c7-a7d5-5417-9ade-9eca750f029c"
+message = "১–২৫৫টি ASCII অক্ষর ব্যবহার করুন: বর্ণ, সংখ্যা বা আন্ডারস্কোর (_)। বর্ণ বা আন্ডারস্কোর দিয়ে শুরু করুন।"
+message_ref = "a371b9c7-1982-5a34-bb62-dded07128159"
+note = ""
+reviewed_source_revision = "29a09cfdb82f210ee168e3621980cef37e1d06fe2a2f065a0d1f610b704a6b9c"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "6423f5e8-5f3e-55c2-92e8-bd429b011306"
+parent_uuid = ""
+label = "record_6423f5e85f3e55c292e8bd429b011306"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "acbd8612-2fc4-516a-8b84-4f0a3cd80831"
+message = "केवल 1–255 ASCII वर्ण इस्तेमाल करें: अक्षर, अंक या अंडरस्कोर (_)। शुरुआत अक्षर या अंडरस्कोर से करें।"
+message_ref = "a371b9c7-1982-5a34-bb62-dded07128159"
+note = ""
+reviewed_source_revision = "29a09cfdb82f210ee168e3621980cef37e1d06fe2a2f065a0d1f610b704a6b9c"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "a73328cb-5eda-5fee-9ebc-1f34b770eb2f"
+parent_uuid = ""
+label = "record_a73328cb5eda5fee9ebc1f34b770eb2f"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "4f626627-2fda-5739-8f33-46d5eb8bae0e"
+message = "Erabili 1–255 ASCII karaktere: letrak, digituak edo azpimarrak (_). Hasi letra edo azpimarra batekin."
+message_ref = "a371b9c7-1982-5a34-bb62-dded07128159"
+note = ""
+reviewed_source_revision = "29a09cfdb82f210ee168e3621980cef37e1d06fe2a2f065a0d1f610b704a6b9c"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "b9030bd7-8292-5d5b-a6c4-b3ee1c91348d"
+parent_uuid = ""
+label = "record_b9030bd782925d5ba6c4b3ee1c91348d"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "086c8431-4df5-5570-b34b-d59375292efd"
+message = "Utilitzeu entre 1 i 255 caràcters ASCII: lletres, dígits o guions baixos (_). Comenceu amb una lletra o un guió baix."
+message_ref = "a371b9c7-1982-5a34-bb62-dded07128159"
+note = ""
+reviewed_source_revision = "29a09cfdb82f210ee168e3621980cef37e1d06fe2a2f065a0d1f610b704a6b9c"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]

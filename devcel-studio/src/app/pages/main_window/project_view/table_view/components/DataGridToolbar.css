@@ -1,0 +1,15 @@
+.data-grid-toolbar-viewport {
+  container-type: inline-size;
+}
+
+/* Keep busy/idle geometry identical; compact only when the viewport narrows. */
+@container (max-width: 850px) {
+  .grid-save-status {
+    width: 24px;
+    padding-inline: 5px;
+    gap: 0;
+  }
+  .grid-save-status .grid-save-label {
+    display: none;
+  }
+}

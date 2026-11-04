@@ -1,0 +1,116 @@
+uuid = "b64f83fc-d0c5-43d0-879f-c9a492bba657"
+display_name = "Enemy Data"
+description = ""
+[metadata]
+interface_order = []
+initial_transposed = false
+edit_permissions = { add_columns = true, delete_columns = true, add_rows = true, delete_rows = true, edit_cells = true }
+
+parent_uuid = ""
+
+data_name = "enemies"
+
+
+[interface_implementations]
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "2aeb758f-0216-40c1-aa59-c56bcd993bcc"
+display_name = "name"
+data_name = "name"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "6346b285-9391-457e-b06b-ba8327e19b15"
+display_name = "hp"
+data_name = "hp"
+tooltip = ""
+data_type = "I32"
+tags = []
+default_value = ""
+memo_text = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "c1dcd01d-cad6-4ca9-ac37-0625152ed25f"
+display_name = "double_hp"
+data_name = "double_hp"
+tooltip = ""
+data_type = "I32"
+tags = []
+default_value = ""
+memo_text = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+min_version = 2
+uuid = "ad2d146c-1188-4e23-859b-501674311a42"
+display_name = "reward"
+data_name = "reward"
+tooltip = ""
+data_type = "I32"
+tags = []
+default_value = ""
+memo_text = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[records]]
+uuid = "11111111-1111-4111-8111-111111111111"
+parent_uuid = ""
+label = ""
+min_version = 1
+tags = []
+
+[records.values]
+double_hp = "=hp * 2"
+hp = "100"
+name = "Slime"
+reward = "5"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "22222222-2222-4222-8222-222222222222"
+parent_uuid = ""
+label = ""
+min_version = 2
+tags = []
+
+[records.values]
+double_hp = "=hp * 2"
+hp = "500"
+name = "Dragon"
+reward = "50"
+
+[records.interface_values]
+
+[records.memo_texts]

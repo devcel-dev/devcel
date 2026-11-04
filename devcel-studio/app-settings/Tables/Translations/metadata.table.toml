@@ -1,0 +1,2885 @@
+uuid = "128ad24f-07a1-5ae7-95d1-5bb3046c45cb"
+display_name = "Translations: metadata"
+description = "Reference cells use standard Devcel UUIDs. After reviewing a translation, set status=reviewed and its source revision."
+[metadata]
+interface_order = []
+
+parent_uuid = ""
+
+data_name = "Translations_metadata"
+
+initial_transposed = false
+
+[metadata.edit_permissions]
+add_columns = true
+delete_columns = true
+add_rows = true
+delete_rows = true
+edit_cells = true
+
+[interface_implementations]
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "0d6df8fb-6d16-4f35-80f2-5580a206cb5b"
+display_name = "message_ref"
+data_name = "message_ref"
+tooltip = ""
+data_type = "Reference"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[schema.columns.reference_config]
+target_table_uuid = "7a0a8715-2a14-4373-8cc4-7eacd018e989"
+display_column_uuid = "00ab4850-9407-4058-943d-b4f00e039b68"
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "660b075b-a7e9-41db-95bd-8b78b4b26a3a"
+display_name = "locale_ref"
+data_name = "locale_ref"
+tooltip = ""
+data_type = "Reference"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[schema.columns.reference_config]
+target_table_uuid = "7fa7c67c-a425-4c26-9878-ab60644953c9"
+display_column_uuid = "ab227695-55ab-4f73-9515-9c2c4561bf37"
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "45b55f7a-b06f-46d9-99ab-2c5ee14fe32a"
+display_name = "message"
+data_name = "message"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 420
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "2ba4cc8a-a9d9-4a8b-b944-d1751d067d09"
+display_name = "status"
+data_name = "status"
+tooltip = ""
+data_type = "Select"
+tags = []
+default_value = "draft"
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns.select_config.options]]
+value = "reviewed"
+label = "reviewed"
+
+[[schema.columns.select_config.options]]
+value = "draft"
+label = "draft"
+
+[[schema.columns.select_config.options]]
+value = "needs_review"
+label = "needs_review"
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "cfcd3651-05e3-47c4-ae46-6e648239f213"
+display_name = "reviewed_source_revision"
+data_name = "reviewed_source_revision"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+required = false
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "8c29df9e-9a9a-4953-811b-b9bfd4e5658e"
+display_name = "note"
+data_name = "note"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+required = false
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+
+[[records]]
+uuid = "504c72ac-e87c-5b75-992c-f34cf05e271d"
+parent_uuid = ""
+label = "record_504c72ace87c5b75992cf34cf05e271d"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "53443caa-f352-491f-acf5-77e6308d4bf0"
+message = "タグ"
+message_ref = "37daf6db-8060-531e-bfbf-a3b25d9fd8a9"
+note = ""
+reviewed_source_revision = "302eafc71d9d24e6aaea6886617e6d1ab9e9e380abbc1caf4bc3beecae7d5375"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "5553b116-7ba6-57a6-8ca9-375ce606a012"
+parent_uuid = ""
+label = "record_5553b1167ba657a68ca9375ce606a012"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a612b81c-02b4-400e-a28a-48238cb55e05"
+message = "Tags"
+message_ref = "37daf6db-8060-531e-bfbf-a3b25d9fd8a9"
+note = ""
+reviewed_source_revision = "302eafc71d9d24e6aaea6886617e6d1ab9e9e380abbc1caf4bc3beecae7d5375"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "971ffd58-9306-587e-adee-a95288047900"
+parent_uuid = ""
+label = "record_971ffd589306587eadeea95288047900"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "b42128cf-c528-5a33-ba26-b144de4c6f20"
+message = "Tags"
+message_ref = "37daf6db-8060-531e-bfbf-a3b25d9fd8a9"
+note = ""
+reviewed_source_revision = "302eafc71d9d24e6aaea6886617e6d1ab9e9e380abbc1caf4bc3beecae7d5375"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "09a97c3a-f741-5419-9191-fb690211c1b9"
+parent_uuid = ""
+label = "record_09a97c3af74154199191fb690211c1b9"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "3b9511f4-bae8-5e7d-a521-2d5633d5f3c2"
+message = "Etiquetas"
+message_ref = "37daf6db-8060-531e-bfbf-a3b25d9fd8a9"
+note = ""
+reviewed_source_revision = "302eafc71d9d24e6aaea6886617e6d1ab9e9e380abbc1caf4bc3beecae7d5375"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "b5321642-5463-53cd-9b9c-d13250f542d0"
+parent_uuid = ""
+label = "record_b5321642546353cd9b9cd13250f542d0"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "6571b42e-49e5-5806-b0bb-6264367adcfe"
+message = "Tags"
+message_ref = "37daf6db-8060-531e-bfbf-a3b25d9fd8a9"
+note = ""
+reviewed_source_revision = "302eafc71d9d24e6aaea6886617e6d1ab9e9e380abbc1caf4bc3beecae7d5375"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "7e1789f4-ef4c-5bf0-b8e3-f1bbf41e5755"
+parent_uuid = ""
+label = "record_7e1789f4ef4c5bf0b8e3f1bbf41e5755"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a539b8c2-d771-5b4e-bef8-ba7767812b72"
+message = "Tag"
+message_ref = "37daf6db-8060-531e-bfbf-a3b25d9fd8a9"
+note = ""
+reviewed_source_revision = "302eafc71d9d24e6aaea6886617e6d1ab9e9e380abbc1caf4bc3beecae7d5375"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "b7b980d2-3c95-5741-abb5-c879d15b2119"
+parent_uuid = ""
+label = "record_b7b980d23c955741abb5c879d15b2119"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bd410527-d1a0-59cd-9972-a055d2338063"
+message = "标签"
+message_ref = "37daf6db-8060-531e-bfbf-a3b25d9fd8a9"
+note = ""
+reviewed_source_revision = "302eafc71d9d24e6aaea6886617e6d1ab9e9e380abbc1caf4bc3beecae7d5375"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "24c1bc20-55c7-5896-af95-39532721d79c"
+parent_uuid = ""
+label = "record_24c1bc2055c75896af9539532721d79c"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "2e56c33d-5b3d-51b3-a05a-9700e5ca2401"
+message = "標籤"
+message_ref = "37daf6db-8060-531e-bfbf-a3b25d9fd8a9"
+note = ""
+reviewed_source_revision = "302eafc71d9d24e6aaea6886617e6d1ab9e9e380abbc1caf4bc3beecae7d5375"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "55f3d8f7-4fb7-5db1-8b0c-b3d7994adb8f"
+parent_uuid = ""
+label = "record_55f3d8f74fb75db18b0cb3d7994adb8f"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "fb94026c-d2df-583f-8dda-93a7b3492949"
+message = "Taggar"
+message_ref = "37daf6db-8060-531e-bfbf-a3b25d9fd8a9"
+note = ""
+reviewed_source_revision = "302eafc71d9d24e6aaea6886617e6d1ab9e9e380abbc1caf4bc3beecae7d5375"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "09577baf-8047-50e5-afbd-186a23c6f510"
+parent_uuid = ""
+label = "record_09577baf804750e5afbd186a23c6f510"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bc2ab48c-47ba-5f0d-9c5a-487151074e14"
+message = "Tunnisteet"
+message_ref = "37daf6db-8060-531e-bfbf-a3b25d9fd8a9"
+note = ""
+reviewed_source_revision = "302eafc71d9d24e6aaea6886617e6d1ab9e9e380abbc1caf4bc3beecae7d5375"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "16dbeabe-bd2c-54b3-8822-c176ac30c65f"
+parent_uuid = ""
+label = "record_16dbeabebd2c54b38822c176ac30c65f"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "5b8834dc-b8d4-51df-a8bb-933d8573c2cb"
+message = "Tagger"
+message_ref = "37daf6db-8060-531e-bfbf-a3b25d9fd8a9"
+note = ""
+reviewed_source_revision = "302eafc71d9d24e6aaea6886617e6d1ab9e9e380abbc1caf4bc3beecae7d5375"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "03f5a010-ec68-5c8f-9b56-c05433d750ba"
+parent_uuid = ""
+label = "record_03f5a010ec685c8f9b56c05433d750ba"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "7304c655-3bd1-5be1-82f6-50c140c3ced7"
+message = "الوسوم"
+message_ref = "37daf6db-8060-531e-bfbf-a3b25d9fd8a9"
+note = ""
+reviewed_source_revision = "302eafc71d9d24e6aaea6886617e6d1ab9e9e380abbc1caf4bc3beecae7d5375"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "7ebfe68b-ac75-5187-881e-eeb7ad4381c2"
+parent_uuid = ""
+label = "record_7ebfe68bac755187881eeeb7ad4381c2"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "0f6b59c7-a7d5-5417-9ade-9eca750f029c"
+message = "ট্যাগ"
+message_ref = "37daf6db-8060-531e-bfbf-a3b25d9fd8a9"
+note = ""
+reviewed_source_revision = "302eafc71d9d24e6aaea6886617e6d1ab9e9e380abbc1caf4bc3beecae7d5375"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "39538dbf-0d01-50dc-bffa-18e318ac6902"
+parent_uuid = ""
+label = "record_39538dbf0d0150dcbffa18e318ac6902"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "acbd8612-2fc4-516a-8b84-4f0a3cd80831"
+message = "टैग"
+message_ref = "37daf6db-8060-531e-bfbf-a3b25d9fd8a9"
+note = ""
+reviewed_source_revision = "302eafc71d9d24e6aaea6886617e6d1ab9e9e380abbc1caf4bc3beecae7d5375"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "b81f9ec6-c4df-5827-a4f4-2551be0f3a71"
+parent_uuid = ""
+label = "record_b81f9ec6c4df5827a4f42551be0f3a71"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "53443caa-f352-491f-acf5-77e6308d4bf0"
+message = "文字サイズ"
+message_ref = "a35c2dde-e802-5a83-9a34-059507f92d74"
+note = ""
+reviewed_source_revision = "5b7f26f90dfc9280bc2186e0941e63618eb7f640711d9a48e410702096406b23"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "b1b80297-f219-52f3-bc0e-5233726c9b66"
+parent_uuid = ""
+label = "record_b1b80297f21952f3bc0e5233726c9b66"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a612b81c-02b4-400e-a28a-48238cb55e05"
+message = "Font size"
+message_ref = "a35c2dde-e802-5a83-9a34-059507f92d74"
+note = ""
+reviewed_source_revision = "5b7f26f90dfc9280bc2186e0941e63618eb7f640711d9a48e410702096406b23"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "d82d72c4-1f7b-5c5a-96a0-abdfbe926a97"
+parent_uuid = ""
+label = "record_d82d72c41f7b5c5a96a0abdfbe926a97"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "b42128cf-c528-5a33-ba26-b144de4c6f20"
+message = "Taille de police"
+message_ref = "a35c2dde-e802-5a83-9a34-059507f92d74"
+note = ""
+reviewed_source_revision = "5b7f26f90dfc9280bc2186e0941e63618eb7f640711d9a48e410702096406b23"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "f4970970-e27b-5cf0-8a9e-3df4aa19809d"
+parent_uuid = ""
+label = "record_f4970970e27b5cf08a9e3df4aa19809d"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "3b9511f4-bae8-5e7d-a521-2d5633d5f3c2"
+message = "Tamaño de letra"
+message_ref = "a35c2dde-e802-5a83-9a34-059507f92d74"
+note = ""
+reviewed_source_revision = "5b7f26f90dfc9280bc2186e0941e63618eb7f640711d9a48e410702096406b23"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "ac772579-e5ce-5b37-8034-b650533e1bde"
+parent_uuid = ""
+label = "record_ac772579e5ce5b378034b650533e1bde"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "6571b42e-49e5-5806-b0bb-6264367adcfe"
+message = "Schriftgröße"
+message_ref = "a35c2dde-e802-5a83-9a34-059507f92d74"
+note = ""
+reviewed_source_revision = "5b7f26f90dfc9280bc2186e0941e63618eb7f640711d9a48e410702096406b23"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "96fd9cd8-1e74-5d82-87fc-c5e50ada0a5f"
+parent_uuid = ""
+label = "record_96fd9cd81e745d8287fcc5e50ada0a5f"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a539b8c2-d771-5b4e-bef8-ba7767812b72"
+message = "Dimensione carattere"
+message_ref = "a35c2dde-e802-5a83-9a34-059507f92d74"
+note = ""
+reviewed_source_revision = "5b7f26f90dfc9280bc2186e0941e63618eb7f640711d9a48e410702096406b23"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "28b2080c-bb5d-5636-9f09-38638abc9bf1"
+parent_uuid = ""
+label = "record_28b2080cbb5d56369f0938638abc9bf1"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bd410527-d1a0-59cd-9972-a055d2338063"
+message = "字号"
+message_ref = "a35c2dde-e802-5a83-9a34-059507f92d74"
+note = ""
+reviewed_source_revision = "5b7f26f90dfc9280bc2186e0941e63618eb7f640711d9a48e410702096406b23"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "d7da1d19-2c12-5ef1-9b36-ff1113c919a7"
+parent_uuid = ""
+label = "record_d7da1d192c125ef19b36ff1113c919a7"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "2e56c33d-5b3d-51b3-a05a-9700e5ca2401"
+message = "字型大小"
+message_ref = "a35c2dde-e802-5a83-9a34-059507f92d74"
+note = ""
+reviewed_source_revision = "5b7f26f90dfc9280bc2186e0941e63618eb7f640711d9a48e410702096406b23"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "0a5fc245-ae59-510a-a8c6-1b3aaf925cb0"
+parent_uuid = ""
+label = "record_0a5fc245ae59510aa8c61b3aaf925cb0"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "fb94026c-d2df-583f-8dda-93a7b3492949"
+message = "Teckenstorlek"
+message_ref = "a35c2dde-e802-5a83-9a34-059507f92d74"
+note = ""
+reviewed_source_revision = "5b7f26f90dfc9280bc2186e0941e63618eb7f640711d9a48e410702096406b23"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "0bf3b3ed-3b6f-5e9c-a063-a3227bc1cedf"
+parent_uuid = ""
+label = "record_0bf3b3ed3b6f5e9ca063a3227bc1cedf"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bc2ab48c-47ba-5f0d-9c5a-487151074e14"
+message = "Fonttikoko"
+message_ref = "a35c2dde-e802-5a83-9a34-059507f92d74"
+note = ""
+reviewed_source_revision = "5b7f26f90dfc9280bc2186e0941e63618eb7f640711d9a48e410702096406b23"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "a2ecb4ce-ea5c-591a-86b4-bb44e7cd97e1"
+parent_uuid = ""
+label = "record_a2ecb4ceea5c591a86b4bb44e7cd97e1"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "5b8834dc-b8d4-51df-a8bb-933d8573c2cb"
+message = "Skriftstørrelse"
+message_ref = "a35c2dde-e802-5a83-9a34-059507f92d74"
+note = ""
+reviewed_source_revision = "5b7f26f90dfc9280bc2186e0941e63618eb7f640711d9a48e410702096406b23"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "3ec19235-0515-5393-80a7-543d3d253e0e"
+parent_uuid = ""
+label = "record_3ec192350515539380a7543d3d253e0e"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "7304c655-3bd1-5be1-82f6-50c140c3ced7"
+message = "حجم الخط"
+message_ref = "a35c2dde-e802-5a83-9a34-059507f92d74"
+note = ""
+reviewed_source_revision = "5b7f26f90dfc9280bc2186e0941e63618eb7f640711d9a48e410702096406b23"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "9ec1c173-5f62-5f8b-9a68-34a0fc7968ad"
+parent_uuid = ""
+label = "record_9ec1c1735f625f8b9a6834a0fc7968ad"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "0f6b59c7-a7d5-5417-9ade-9eca750f029c"
+message = "ফন্টের আকার"
+message_ref = "a35c2dde-e802-5a83-9a34-059507f92d74"
+note = ""
+reviewed_source_revision = "5b7f26f90dfc9280bc2186e0941e63618eb7f640711d9a48e410702096406b23"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "bf5e6ded-5c0c-5e90-91c1-55376b721ae7"
+parent_uuid = ""
+label = "record_bf5e6ded5c0c5e9091c155376b721ae7"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "acbd8612-2fc4-516a-8b84-4f0a3cd80831"
+message = "फ़ॉन्ट आकार"
+message_ref = "a35c2dde-e802-5a83-9a34-059507f92d74"
+note = ""
+reviewed_source_revision = "5b7f26f90dfc9280bc2186e0941e63618eb7f640711d9a48e410702096406b23"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "45e77c6a-6ce0-56f9-893d-6afe5fc368e0"
+parent_uuid = ""
+label = "record_45e77c6a6ce056f9893d6afe5fc368e0"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "53443caa-f352-491f-acf5-77e6308d4bf0"
+message = "セルのメモ"
+message_ref = "250481e7-b402-56ce-a6a0-d82c24c23252"
+note = ""
+reviewed_source_revision = "71c8539f672ef25fd74b13132e61a32e194b984900b4d553ea16d711660dfacd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "a2f233fa-543f-5f23-9193-f13e6900536e"
+parent_uuid = ""
+label = "record_a2f233fa543f5f239193f13e6900536e"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a612b81c-02b4-400e-a28a-48238cb55e05"
+message = "Cell memo"
+message_ref = "250481e7-b402-56ce-a6a0-d82c24c23252"
+note = ""
+reviewed_source_revision = "71c8539f672ef25fd74b13132e61a32e194b984900b4d553ea16d711660dfacd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "6902b294-b837-5cc9-beea-a103e6fa55b6"
+parent_uuid = ""
+label = "record_6902b294b8375cc9beeaa103e6fa55b6"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "b42128cf-c528-5a33-ba26-b144de4c6f20"
+message = "Note de cellule"
+message_ref = "250481e7-b402-56ce-a6a0-d82c24c23252"
+note = ""
+reviewed_source_revision = "71c8539f672ef25fd74b13132e61a32e194b984900b4d553ea16d711660dfacd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "3d40f91b-0983-5205-ae7a-d36a09dc9962"
+parent_uuid = ""
+label = "record_3d40f91b09835205ae7ad36a09dc9962"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "3b9511f4-bae8-5e7d-a521-2d5633d5f3c2"
+message = "Nota de celda"
+message_ref = "250481e7-b402-56ce-a6a0-d82c24c23252"
+note = ""
+reviewed_source_revision = "71c8539f672ef25fd74b13132e61a32e194b984900b4d553ea16d711660dfacd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "c287194d-a99e-5a4d-b46a-e0c9e546b934"
+parent_uuid = ""
+label = "record_c287194da99e5a4db46ae0c9e546b934"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "6571b42e-49e5-5806-b0bb-6264367adcfe"
+message = "Zellnotiz"
+message_ref = "250481e7-b402-56ce-a6a0-d82c24c23252"
+note = ""
+reviewed_source_revision = "71c8539f672ef25fd74b13132e61a32e194b984900b4d553ea16d711660dfacd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "630f740e-6a47-5c14-964f-9d6f3e806eb0"
+parent_uuid = ""
+label = "record_630f740e6a475c14964f9d6f3e806eb0"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a539b8c2-d771-5b4e-bef8-ba7767812b72"
+message = "Nota della cella"
+message_ref = "250481e7-b402-56ce-a6a0-d82c24c23252"
+note = ""
+reviewed_source_revision = "71c8539f672ef25fd74b13132e61a32e194b984900b4d553ea16d711660dfacd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "35337f6c-1ced-5bf8-99df-c745a7126257"
+parent_uuid = ""
+label = "record_35337f6c1ced5bf899dfc745a7126257"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bd410527-d1a0-59cd-9972-a055d2338063"
+message = "单元格备注"
+message_ref = "250481e7-b402-56ce-a6a0-d82c24c23252"
+note = ""
+reviewed_source_revision = "71c8539f672ef25fd74b13132e61a32e194b984900b4d553ea16d711660dfacd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "54dafc31-f100-5dbd-bd9e-2903a2ac5513"
+parent_uuid = ""
+label = "record_54dafc31f1005dbdbd9e2903a2ac5513"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "2e56c33d-5b3d-51b3-a05a-9700e5ca2401"
+message = "儲存格備註"
+message_ref = "250481e7-b402-56ce-a6a0-d82c24c23252"
+note = ""
+reviewed_source_revision = "71c8539f672ef25fd74b13132e61a32e194b984900b4d553ea16d711660dfacd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "dc425ccd-a873-59f3-b7ec-bab487134c21"
+parent_uuid = ""
+label = "record_dc425ccda87359f3b7ecbab487134c21"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "fb94026c-d2df-583f-8dda-93a7b3492949"
+message = "Cellanteckning"
+message_ref = "250481e7-b402-56ce-a6a0-d82c24c23252"
+note = ""
+reviewed_source_revision = "71c8539f672ef25fd74b13132e61a32e194b984900b4d553ea16d711660dfacd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "27ba3c9b-b97e-5324-a427-f6ff5e0b52fa"
+parent_uuid = ""
+label = "record_27ba3c9bb97e5324a427f6ff5e0b52fa"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bc2ab48c-47ba-5f0d-9c5a-487151074e14"
+message = "Solun muistiinpano"
+message_ref = "250481e7-b402-56ce-a6a0-d82c24c23252"
+note = ""
+reviewed_source_revision = "71c8539f672ef25fd74b13132e61a32e194b984900b4d553ea16d711660dfacd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "64fa9453-af89-5795-854b-0dd7df1bca1a"
+parent_uuid = ""
+label = "record_64fa9453af895795854b0dd7df1bca1a"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "5b8834dc-b8d4-51df-a8bb-933d8573c2cb"
+message = "Cellenotat"
+message_ref = "250481e7-b402-56ce-a6a0-d82c24c23252"
+note = ""
+reviewed_source_revision = "71c8539f672ef25fd74b13132e61a32e194b984900b4d553ea16d711660dfacd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "460c880d-6b5c-5824-86c0-c0a2940d90a9"
+parent_uuid = ""
+label = "record_460c880d6b5c582486c0c0a2940d90a9"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "7304c655-3bd1-5be1-82f6-50c140c3ced7"
+message = "ملاحظة الخلية"
+message_ref = "250481e7-b402-56ce-a6a0-d82c24c23252"
+note = ""
+reviewed_source_revision = "71c8539f672ef25fd74b13132e61a32e194b984900b4d553ea16d711660dfacd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "09643d3b-0a9a-586c-81f8-202fbe9d0618"
+parent_uuid = ""
+label = "record_09643d3b0a9a586c81f8202fbe9d0618"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "0f6b59c7-a7d5-5417-9ade-9eca750f029c"
+message = "সেলের নোট"
+message_ref = "250481e7-b402-56ce-a6a0-d82c24c23252"
+note = ""
+reviewed_source_revision = "71c8539f672ef25fd74b13132e61a32e194b984900b4d553ea16d711660dfacd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "631acfc4-d881-5d2f-ac94-37f6fb00d3f6"
+parent_uuid = ""
+label = "record_631acfc4d8815d2fac9437f6fb00d3f6"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "acbd8612-2fc4-516a-8b84-4f0a3cd80831"
+message = "सेल नोट"
+message_ref = "250481e7-b402-56ce-a6a0-d82c24c23252"
+note = ""
+reviewed_source_revision = "71c8539f672ef25fd74b13132e61a32e194b984900b4d553ea16d711660dfacd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "cd655e3a-e5e0-5092-9604-9c74f3401352"
+parent_uuid = ""
+label = "record_cd655e3ae5e0509296049c74f3401352"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "53443caa-f352-491f-acf5-77e6308d4bf0"
+message = "親レコード"
+message_ref = "d8f4334c-dba0-5e1b-b4e5-ae34584bae44"
+note = ""
+reviewed_source_revision = "02c6f06231d398d4fb19d0212341c0ee829a3efb1bfc8a8662ffcaf908d8eb73"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "f6a42645-cad4-5927-ba38-ecddd64933fe"
+parent_uuid = ""
+label = "record_f6a42645cad45927ba38ecddd64933fe"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a612b81c-02b4-400e-a28a-48238cb55e05"
+message = "Parent record"
+message_ref = "d8f4334c-dba0-5e1b-b4e5-ae34584bae44"
+note = ""
+reviewed_source_revision = "02c6f06231d398d4fb19d0212341c0ee829a3efb1bfc8a8662ffcaf908d8eb73"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "f473158b-bfa6-55cd-98e0-6d690bb5b382"
+parent_uuid = ""
+label = "record_f473158bbfa655cd98e06d690bb5b382"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "b42128cf-c528-5a33-ba26-b144de4c6f20"
+message = "Enregistrement parent"
+message_ref = "d8f4334c-dba0-5e1b-b4e5-ae34584bae44"
+note = ""
+reviewed_source_revision = "02c6f06231d398d4fb19d0212341c0ee829a3efb1bfc8a8662ffcaf908d8eb73"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "fcda4a7a-ac79-5ffb-aed9-5170015cc3e2"
+parent_uuid = ""
+label = "record_fcda4a7aac795ffbaed95170015cc3e2"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "3b9511f4-bae8-5e7d-a521-2d5633d5f3c2"
+message = "Registro padre"
+message_ref = "d8f4334c-dba0-5e1b-b4e5-ae34584bae44"
+note = ""
+reviewed_source_revision = "02c6f06231d398d4fb19d0212341c0ee829a3efb1bfc8a8662ffcaf908d8eb73"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "28bdd519-1eac-5a53-94d1-8773b33d94ca"
+parent_uuid = ""
+label = "record_28bdd5191eac5a5394d18773b33d94ca"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "6571b42e-49e5-5806-b0bb-6264367adcfe"
+message = "Übergeordneter Datensatz"
+message_ref = "d8f4334c-dba0-5e1b-b4e5-ae34584bae44"
+note = ""
+reviewed_source_revision = "02c6f06231d398d4fb19d0212341c0ee829a3efb1bfc8a8662ffcaf908d8eb73"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "24888fbc-2aff-57b0-aba8-e7054a86b5a7"
+parent_uuid = ""
+label = "record_24888fbc2aff57b0aba8e7054a86b5a7"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a539b8c2-d771-5b4e-bef8-ba7767812b72"
+message = "Record padre"
+message_ref = "d8f4334c-dba0-5e1b-b4e5-ae34584bae44"
+note = ""
+reviewed_source_revision = "02c6f06231d398d4fb19d0212341c0ee829a3efb1bfc8a8662ffcaf908d8eb73"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "4e0954b8-2172-5b3b-b734-6aea44318b44"
+parent_uuid = ""
+label = "record_4e0954b821725b3bb7346aea44318b44"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bd410527-d1a0-59cd-9972-a055d2338063"
+message = "父记录"
+message_ref = "d8f4334c-dba0-5e1b-b4e5-ae34584bae44"
+note = ""
+reviewed_source_revision = "02c6f06231d398d4fb19d0212341c0ee829a3efb1bfc8a8662ffcaf908d8eb73"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "e3c50544-6d03-589b-ba7b-154b11d8e7e1"
+parent_uuid = ""
+label = "record_e3c505446d03589bba7b154b11d8e7e1"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "2e56c33d-5b3d-51b3-a05a-9700e5ca2401"
+message = "父記錄"
+message_ref = "d8f4334c-dba0-5e1b-b4e5-ae34584bae44"
+note = ""
+reviewed_source_revision = "02c6f06231d398d4fb19d0212341c0ee829a3efb1bfc8a8662ffcaf908d8eb73"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "d64df6f0-8400-532d-bf0e-4cbe69741b60"
+parent_uuid = ""
+label = "record_d64df6f08400532dbf0e4cbe69741b60"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "fb94026c-d2df-583f-8dda-93a7b3492949"
+message = "Överordnad post"
+message_ref = "d8f4334c-dba0-5e1b-b4e5-ae34584bae44"
+note = ""
+reviewed_source_revision = "02c6f06231d398d4fb19d0212341c0ee829a3efb1bfc8a8662ffcaf908d8eb73"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "2d20ac90-b7ac-5bba-9324-8d30189a556a"
+parent_uuid = ""
+label = "record_2d20ac90b7ac5bba93248d30189a556a"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bc2ab48c-47ba-5f0d-9c5a-487151074e14"
+message = "Ylätietue"
+message_ref = "d8f4334c-dba0-5e1b-b4e5-ae34584bae44"
+note = ""
+reviewed_source_revision = "02c6f06231d398d4fb19d0212341c0ee829a3efb1bfc8a8662ffcaf908d8eb73"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "9a23c4c5-30e2-5f01-b761-45ee87511674"
+parent_uuid = ""
+label = "record_9a23c4c530e25f01b76145ee87511674"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "5b8834dc-b8d4-51df-a8bb-933d8573c2cb"
+message = "Overordnet post"
+message_ref = "d8f4334c-dba0-5e1b-b4e5-ae34584bae44"
+note = ""
+reviewed_source_revision = "02c6f06231d398d4fb19d0212341c0ee829a3efb1bfc8a8662ffcaf908d8eb73"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "b3dfa79f-af1c-5b71-94d6-7d8386953e08"
+parent_uuid = ""
+label = "record_b3dfa79faf1c5b7194d67d8386953e08"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "7304c655-3bd1-5be1-82f6-50c140c3ced7"
+message = "السجل الأصل"
+message_ref = "d8f4334c-dba0-5e1b-b4e5-ae34584bae44"
+note = ""
+reviewed_source_revision = "02c6f06231d398d4fb19d0212341c0ee829a3efb1bfc8a8662ffcaf908d8eb73"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "4362674b-5a78-5d60-83a6-ea4012652a65"
+parent_uuid = ""
+label = "record_4362674b5a785d6083a6ea4012652a65"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "0f6b59c7-a7d5-5417-9ade-9eca750f029c"
+message = "মূল রেকর্ড"
+message_ref = "d8f4334c-dba0-5e1b-b4e5-ae34584bae44"
+note = ""
+reviewed_source_revision = "02c6f06231d398d4fb19d0212341c0ee829a3efb1bfc8a8662ffcaf908d8eb73"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "2a2af73f-5e05-5ccf-ba92-fd4310f2ed57"
+parent_uuid = ""
+label = "record_2a2af73f5e055ccfba92fd4310f2ed57"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "acbd8612-2fc4-516a-8b84-4f0a3cd80831"
+message = "मूल रिकॉर्ड"
+message_ref = "d8f4334c-dba0-5e1b-b4e5-ae34584bae44"
+note = ""
+reviewed_source_revision = "02c6f06231d398d4fb19d0212341c0ee829a3efb1bfc8a8662ffcaf908d8eb73"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "d5a7aa07-1e56-5075-a160-c3164a8c4b9d"
+parent_uuid = ""
+label = "record_d5a7aa071e565075a160c3164a8c4b9d"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "53443caa-f352-491f-acf5-77e6308d4bf0"
+message = "親を解除"
+message_ref = "2a243675-deaa-5bfb-b679-0a6b0d3a6871"
+note = ""
+reviewed_source_revision = "89d3c29c032f27cae472f08ef95f1a2fe986648cd6cb604beceef355992751e1"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "884d7ad9-ba21-5cc3-83e6-48ced903c358"
+parent_uuid = ""
+label = "record_884d7ad9ba215cc383e648ced903c358"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a612b81c-02b4-400e-a28a-48238cb55e05"
+message = "Detach parent"
+message_ref = "2a243675-deaa-5bfb-b679-0a6b0d3a6871"
+note = ""
+reviewed_source_revision = "89d3c29c032f27cae472f08ef95f1a2fe986648cd6cb604beceef355992751e1"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "cfde6a90-b42d-585c-a794-ffa9edae1c92"
+parent_uuid = ""
+label = "record_cfde6a90b42d585ca794ffa9edae1c92"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "b42128cf-c528-5a33-ba26-b144de4c6f20"
+message = "Détacher le parent"
+message_ref = "2a243675-deaa-5bfb-b679-0a6b0d3a6871"
+note = ""
+reviewed_source_revision = "89d3c29c032f27cae472f08ef95f1a2fe986648cd6cb604beceef355992751e1"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "ced61ffb-f2d3-56ab-9043-75deb0075756"
+parent_uuid = ""
+label = "record_ced61ffbf2d356ab904375deb0075756"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "3b9511f4-bae8-5e7d-a521-2d5633d5f3c2"
+message = "Desvincular padre"
+message_ref = "2a243675-deaa-5bfb-b679-0a6b0d3a6871"
+note = ""
+reviewed_source_revision = "89d3c29c032f27cae472f08ef95f1a2fe986648cd6cb604beceef355992751e1"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "460eab56-2b43-5814-9437-0d4c63d3d4df"
+parent_uuid = ""
+label = "record_460eab562b43581494370d4c63d3d4df"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "6571b42e-49e5-5806-b0bb-6264367adcfe"
+message = "Überordnung lösen"
+message_ref = "2a243675-deaa-5bfb-b679-0a6b0d3a6871"
+note = ""
+reviewed_source_revision = "89d3c29c032f27cae472f08ef95f1a2fe986648cd6cb604beceef355992751e1"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "886eb4d2-7486-5f08-956f-95290b03c1de"
+parent_uuid = ""
+label = "record_886eb4d274865f08956f95290b03c1de"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a539b8c2-d771-5b4e-bef8-ba7767812b72"
+message = "Scollega padre"
+message_ref = "2a243675-deaa-5bfb-b679-0a6b0d3a6871"
+note = ""
+reviewed_source_revision = "89d3c29c032f27cae472f08ef95f1a2fe986648cd6cb604beceef355992751e1"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "88e94bdf-9388-5953-a0bf-4fbea941e070"
+parent_uuid = ""
+label = "record_88e94bdf93885953a0bf4fbea941e070"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bd410527-d1a0-59cd-9972-a055d2338063"
+message = "解除父记录"
+message_ref = "2a243675-deaa-5bfb-b679-0a6b0d3a6871"
+note = ""
+reviewed_source_revision = "89d3c29c032f27cae472f08ef95f1a2fe986648cd6cb604beceef355992751e1"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "f2c4a5a1-289b-5883-842b-faf3892ff8ae"
+parent_uuid = ""
+label = "record_f2c4a5a1289b5883842bfaf3892ff8ae"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "2e56c33d-5b3d-51b3-a05a-9700e5ca2401"
+message = "解除父記錄"
+message_ref = "2a243675-deaa-5bfb-b679-0a6b0d3a6871"
+note = ""
+reviewed_source_revision = "89d3c29c032f27cae472f08ef95f1a2fe986648cd6cb604beceef355992751e1"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "7f8c10bb-1bd4-588d-9b5c-ebf64d3e1bcf"
+parent_uuid = ""
+label = "record_7f8c10bb1bd4588d9b5cebf64d3e1bcf"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "fb94026c-d2df-583f-8dda-93a7b3492949"
+message = "Koppla från överordnad"
+message_ref = "2a243675-deaa-5bfb-b679-0a6b0d3a6871"
+note = ""
+reviewed_source_revision = "89d3c29c032f27cae472f08ef95f1a2fe986648cd6cb604beceef355992751e1"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "792a7563-7428-5418-84bb-f5eb09883b77"
+parent_uuid = ""
+label = "record_792a75637428541884bbf5eb09883b77"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bc2ab48c-47ba-5f0d-9c5a-487151074e14"
+message = "Irrota ylätietue"
+message_ref = "2a243675-deaa-5bfb-b679-0a6b0d3a6871"
+note = ""
+reviewed_source_revision = "89d3c29c032f27cae472f08ef95f1a2fe986648cd6cb604beceef355992751e1"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "89640354-fa2d-5d74-a80b-b27e1ce9a7d6"
+parent_uuid = ""
+label = "record_89640354fa2d5d74a80bb27e1ce9a7d6"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "5b8834dc-b8d4-51df-a8bb-933d8573c2cb"
+message = "Koble fra overordnet"
+message_ref = "2a243675-deaa-5bfb-b679-0a6b0d3a6871"
+note = ""
+reviewed_source_revision = "89d3c29c032f27cae472f08ef95f1a2fe986648cd6cb604beceef355992751e1"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "7223b35b-a7b8-5dfb-9799-9170d9824797"
+parent_uuid = ""
+label = "record_7223b35ba7b85dfb97999170d9824797"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "7304c655-3bd1-5be1-82f6-50c140c3ced7"
+message = "فصل الأصل"
+message_ref = "2a243675-deaa-5bfb-b679-0a6b0d3a6871"
+note = ""
+reviewed_source_revision = "89d3c29c032f27cae472f08ef95f1a2fe986648cd6cb604beceef355992751e1"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "0bb8355c-20f4-574f-ab1b-ec8130e2f1aa"
+parent_uuid = ""
+label = "record_0bb8355c20f4574fab1bec8130e2f1aa"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "0f6b59c7-a7d5-5417-9ade-9eca750f029c"
+message = "মূল রেকর্ড বিচ্ছিন্ন করুন"
+message_ref = "2a243675-deaa-5bfb-b679-0a6b0d3a6871"
+note = ""
+reviewed_source_revision = "89d3c29c032f27cae472f08ef95f1a2fe986648cd6cb604beceef355992751e1"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "48da2def-ac1e-58f1-9673-adb2633d1da1"
+parent_uuid = ""
+label = "record_48da2defac1e58f19673adb2633d1da1"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "acbd8612-2fc4-516a-8b84-4f0a3cd80831"
+message = "मूल से अलग करें"
+message_ref = "2a243675-deaa-5bfb-b679-0a6b0d3a6871"
+note = ""
+reviewed_source_revision = "89d3c29c032f27cae472f08ef95f1a2fe986648cd6cb604beceef355992751e1"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "01b133c3-21b4-5c6c-8ca1-c96e52e567e6"
+parent_uuid = ""
+label = "record_01b133c321b45c6c8ca1c96e52e567e6"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "53443caa-f352-491f-acf5-77e6308d4bf0"
+message = "親から継承"
+message_ref = "ed6d210c-34f3-564d-a967-8a1760f476f3"
+note = ""
+reviewed_source_revision = "a70568abf431a698680d088e37c6978f48c95c4946c84715aa82cd85bc67ce72"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "d0f9c11a-ece2-566f-8a9b-ff0eba881513"
+parent_uuid = ""
+label = "record_d0f9c11aece2566f8a9bff0eba881513"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a612b81c-02b4-400e-a28a-48238cb55e05"
+message = "Inherit from parent"
+message_ref = "ed6d210c-34f3-564d-a967-8a1760f476f3"
+note = ""
+reviewed_source_revision = "a70568abf431a698680d088e37c6978f48c95c4946c84715aa82cd85bc67ce72"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "657fcf8d-a036-55e8-a4df-b10bc6f29ba3"
+parent_uuid = ""
+label = "record_657fcf8da03655e8a4dfb10bc6f29ba3"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "b42128cf-c528-5a33-ba26-b144de4c6f20"
+message = "Hériter du parent"
+message_ref = "ed6d210c-34f3-564d-a967-8a1760f476f3"
+note = ""
+reviewed_source_revision = "a70568abf431a698680d088e37c6978f48c95c4946c84715aa82cd85bc67ce72"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "e08f22d9-3279-5f73-aa22-85fd886bf5a1"
+parent_uuid = ""
+label = "record_e08f22d932795f73aa2285fd886bf5a1"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "3b9511f4-bae8-5e7d-a521-2d5633d5f3c2"
+message = "Heredar del padre"
+message_ref = "ed6d210c-34f3-564d-a967-8a1760f476f3"
+note = ""
+reviewed_source_revision = "a70568abf431a698680d088e37c6978f48c95c4946c84715aa82cd85bc67ce72"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "01051fc6-9e03-5b91-858a-43c8c52d4630"
+parent_uuid = ""
+label = "record_01051fc69e035b91858a43c8c52d4630"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "6571b42e-49e5-5806-b0bb-6264367adcfe"
+message = "Vom übergeordneten Datensatz erben"
+message_ref = "ed6d210c-34f3-564d-a967-8a1760f476f3"
+note = ""
+reviewed_source_revision = "a70568abf431a698680d088e37c6978f48c95c4946c84715aa82cd85bc67ce72"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "ac90fe31-a27d-56c3-bf98-1921eb1df9db"
+parent_uuid = ""
+label = "record_ac90fe31a27d56c3bf981921eb1df9db"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a539b8c2-d771-5b4e-bef8-ba7767812b72"
+message = "Eredita dal padre"
+message_ref = "ed6d210c-34f3-564d-a967-8a1760f476f3"
+note = ""
+reviewed_source_revision = "a70568abf431a698680d088e37c6978f48c95c4946c84715aa82cd85bc67ce72"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "0c5596f4-466e-502f-8dbb-8ebc6d525212"
+parent_uuid = ""
+label = "record_0c5596f4466e502f8dbb8ebc6d525212"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bd410527-d1a0-59cd-9972-a055d2338063"
+message = "从父记录继承"
+message_ref = "ed6d210c-34f3-564d-a967-8a1760f476f3"
+note = ""
+reviewed_source_revision = "a70568abf431a698680d088e37c6978f48c95c4946c84715aa82cd85bc67ce72"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "aae0634b-50ed-59c5-8c55-b57f49ff25b3"
+parent_uuid = ""
+label = "record_aae0634b50ed59c58c55b57f49ff25b3"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "2e56c33d-5b3d-51b3-a05a-9700e5ca2401"
+message = "繼承父記錄"
+message_ref = "ed6d210c-34f3-564d-a967-8a1760f476f3"
+note = ""
+reviewed_source_revision = "a70568abf431a698680d088e37c6978f48c95c4946c84715aa82cd85bc67ce72"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "8c7d9b58-d82a-562a-b37d-27fe8935689e"
+parent_uuid = ""
+label = "record_8c7d9b58d82a562ab37d27fe8935689e"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "fb94026c-d2df-583f-8dda-93a7b3492949"
+message = "Ärv från överordnad"
+message_ref = "ed6d210c-34f3-564d-a967-8a1760f476f3"
+note = ""
+reviewed_source_revision = "a70568abf431a698680d088e37c6978f48c95c4946c84715aa82cd85bc67ce72"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "7ffa1534-cab4-5d3d-8622-dc3939836200"
+parent_uuid = ""
+label = "record_7ffa1534cab45d3d8622dc3939836200"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bc2ab48c-47ba-5f0d-9c5a-487151074e14"
+message = "Peri ylätietueelta"
+message_ref = "ed6d210c-34f3-564d-a967-8a1760f476f3"
+note = ""
+reviewed_source_revision = "a70568abf431a698680d088e37c6978f48c95c4946c84715aa82cd85bc67ce72"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "a39aa372-ae0e-563a-8745-3e4eafd301c0"
+parent_uuid = ""
+label = "record_a39aa372ae0e563a87453e4eafd301c0"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "5b8834dc-b8d4-51df-a8bb-933d8573c2cb"
+message = "Arv fra overordnet"
+message_ref = "ed6d210c-34f3-564d-a967-8a1760f476f3"
+note = ""
+reviewed_source_revision = "a70568abf431a698680d088e37c6978f48c95c4946c84715aa82cd85bc67ce72"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "2b256dae-67b3-5fa9-9946-cdb2dbf8e1c0"
+parent_uuid = ""
+label = "record_2b256dae67b35fa99946cdb2dbf8e1c0"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "7304c655-3bd1-5be1-82f6-50c140c3ced7"
+message = "وراثة من الأصل"
+message_ref = "ed6d210c-34f3-564d-a967-8a1760f476f3"
+note = ""
+reviewed_source_revision = "a70568abf431a698680d088e37c6978f48c95c4946c84715aa82cd85bc67ce72"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "37aa309f-babe-5b4b-aa89-2ba2e9dc94b4"
+parent_uuid = ""
+label = "record_37aa309fbabe5b4baa892ba2e9dc94b4"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "0f6b59c7-a7d5-5417-9ade-9eca750f029c"
+message = "মূল থেকে উত্তরাধিকার"
+message_ref = "ed6d210c-34f3-564d-a967-8a1760f476f3"
+note = ""
+reviewed_source_revision = "a70568abf431a698680d088e37c6978f48c95c4946c84715aa82cd85bc67ce72"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "7b8dece0-294c-5139-a765-9edd05c60ae3"
+parent_uuid = ""
+label = "record_7b8dece0294c5139a7659edd05c60ae3"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "acbd8612-2fc4-516a-8b84-4f0a3cd80831"
+message = "मूल से प्राप्त करें"
+message_ref = "ed6d210c-34f3-564d-a967-8a1760f476f3"
+note = ""
+reviewed_source_revision = "a70568abf431a698680d088e37c6978f48c95c4946c84715aa82cd85bc67ce72"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "f71187ef-95df-5038-bae2-61881a160440"
+parent_uuid = ""
+label = "record_f71187ef95df5038bae261881a160440"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "53443caa-f352-491f-acf5-77e6308d4bf0"
+message = "列の既定値"
+message_ref = "5845bc38-f99a-584e-8aed-151fd751f84a"
+note = ""
+reviewed_source_revision = "85daf32019ce6913c007ad69b21748f4bf400672acec0d2d9d73e942bd4019cf"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "48d32dd5-22ce-5c3b-9856-f173375b44ed"
+parent_uuid = ""
+label = "record_48d32dd522ce5c3b9856f173375b44ed"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a612b81c-02b4-400e-a28a-48238cb55e05"
+message = "Column default"
+message_ref = "5845bc38-f99a-584e-8aed-151fd751f84a"
+note = ""
+reviewed_source_revision = "85daf32019ce6913c007ad69b21748f4bf400672acec0d2d9d73e942bd4019cf"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "51eb1c7a-58f6-5db3-9c44-cea29c1823af"
+parent_uuid = ""
+label = "record_51eb1c7a58f65db39c44cea29c1823af"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "b42128cf-c528-5a33-ba26-b144de4c6f20"
+message = "Valeur par défaut de la colonne"
+message_ref = "5845bc38-f99a-584e-8aed-151fd751f84a"
+note = ""
+reviewed_source_revision = "85daf32019ce6913c007ad69b21748f4bf400672acec0d2d9d73e942bd4019cf"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "8effd060-ea66-5338-b89a-9f3a7f6a08d3"
+parent_uuid = ""
+label = "record_8effd060ea665338b89a9f3a7f6a08d3"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "3b9511f4-bae8-5e7d-a521-2d5633d5f3c2"
+message = "Valor predeterminado de columna"
+message_ref = "5845bc38-f99a-584e-8aed-151fd751f84a"
+note = ""
+reviewed_source_revision = "85daf32019ce6913c007ad69b21748f4bf400672acec0d2d9d73e942bd4019cf"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "7803dc18-9253-5b50-bd69-64593e60256d"
+parent_uuid = ""
+label = "record_7803dc1892535b50bd6964593e60256d"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "6571b42e-49e5-5806-b0bb-6264367adcfe"
+message = "Spaltenstandard"
+message_ref = "5845bc38-f99a-584e-8aed-151fd751f84a"
+note = ""
+reviewed_source_revision = "85daf32019ce6913c007ad69b21748f4bf400672acec0d2d9d73e942bd4019cf"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "b4a64f3e-7092-55aa-806b-59577d54bd3a"
+parent_uuid = ""
+label = "record_b4a64f3e709255aa806b59577d54bd3a"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a539b8c2-d771-5b4e-bef8-ba7767812b72"
+message = "Valore predefinito della colonna"
+message_ref = "5845bc38-f99a-584e-8aed-151fd751f84a"
+note = ""
+reviewed_source_revision = "85daf32019ce6913c007ad69b21748f4bf400672acec0d2d9d73e942bd4019cf"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "e0986e6a-493f-5d4b-a78e-12e4df47d3fc"
+parent_uuid = ""
+label = "record_e0986e6a493f5d4ba78e12e4df47d3fc"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bd410527-d1a0-59cd-9972-a055d2338063"
+message = "列默认值"
+message_ref = "5845bc38-f99a-584e-8aed-151fd751f84a"
+note = ""
+reviewed_source_revision = "85daf32019ce6913c007ad69b21748f4bf400672acec0d2d9d73e942bd4019cf"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "948de52a-f6eb-5b96-9ed5-908788a46406"
+parent_uuid = ""
+label = "record_948de52af6eb5b969ed5908788a46406"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "2e56c33d-5b3d-51b3-a05a-9700e5ca2401"
+message = "欄預設值"
+message_ref = "5845bc38-f99a-584e-8aed-151fd751f84a"
+note = ""
+reviewed_source_revision = "85daf32019ce6913c007ad69b21748f4bf400672acec0d2d9d73e942bd4019cf"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "7c8b5829-ca70-565c-80cb-6915e8e0f511"
+parent_uuid = ""
+label = "record_7c8b5829ca70565c80cb6915e8e0f511"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "fb94026c-d2df-583f-8dda-93a7b3492949"
+message = "Kolumnstandard"
+message_ref = "5845bc38-f99a-584e-8aed-151fd751f84a"
+note = ""
+reviewed_source_revision = "85daf32019ce6913c007ad69b21748f4bf400672acec0d2d9d73e942bd4019cf"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "7563b60c-c256-5acb-aced-96c349f6cd84"
+parent_uuid = ""
+label = "record_7563b60cc2565acbaced96c349f6cd84"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bc2ab48c-47ba-5f0d-9c5a-487151074e14"
+message = "Sarakkeen oletusarvo"
+message_ref = "5845bc38-f99a-584e-8aed-151fd751f84a"
+note = ""
+reviewed_source_revision = "85daf32019ce6913c007ad69b21748f4bf400672acec0d2d9d73e942bd4019cf"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "37b78f7d-b46d-55f0-a5ca-ad1e03a8d904"
+parent_uuid = ""
+label = "record_37b78f7db46d55f0a5caad1e03a8d904"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "5b8834dc-b8d4-51df-a8bb-933d8573c2cb"
+message = "Kolonnestandard"
+message_ref = "5845bc38-f99a-584e-8aed-151fd751f84a"
+note = ""
+reviewed_source_revision = "85daf32019ce6913c007ad69b21748f4bf400672acec0d2d9d73e942bd4019cf"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "613f3355-8c2e-5c7d-8863-b6cf18e137cb"
+parent_uuid = ""
+label = "record_613f33558c2e5c7d8863b6cf18e137cb"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "7304c655-3bd1-5be1-82f6-50c140c3ced7"
+message = "القيمة الافتراضية للعمود"
+message_ref = "5845bc38-f99a-584e-8aed-151fd751f84a"
+note = ""
+reviewed_source_revision = "85daf32019ce6913c007ad69b21748f4bf400672acec0d2d9d73e942bd4019cf"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "3a3fab12-8c08-518c-8746-9fc8eee1792a"
+parent_uuid = ""
+label = "record_3a3fab128c08518c87469fc8eee1792a"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "0f6b59c7-a7d5-5417-9ade-9eca750f029c"
+message = "কলামের পূর্বনির্ধারিত মান"
+message_ref = "5845bc38-f99a-584e-8aed-151fd751f84a"
+note = ""
+reviewed_source_revision = "85daf32019ce6913c007ad69b21748f4bf400672acec0d2d9d73e942bd4019cf"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "3a33332d-b4a8-5e73-88e3-8d596d6d3375"
+parent_uuid = ""
+label = "record_3a33332db4a85e7388e38d596d6d3375"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "acbd8612-2fc4-516a-8b84-4f0a3cd80831"
+message = "कॉलम का डिफ़ॉल्ट"
+message_ref = "5845bc38-f99a-584e-8aed-151fd751f84a"
+note = ""
+reviewed_source_revision = "85daf32019ce6913c007ad69b21748f4bf400672acec0d2d9d73e942bd4019cf"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "461cb060-4a95-5875-8f06-1b4cf17ee407"
+parent_uuid = ""
+label = "record_461cb0604a9558758f061b4cf17ee407"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "53443caa-f352-491f-acf5-77e6308d4bf0"
+message = "明示的に空にする"
+message_ref = "ae7dd2da-b474-52e0-a041-57a3f96e7709"
+note = ""
+reviewed_source_revision = "1a13d24e7bea22ce8bf4704bc570519e465559eb94b18b52e638e6be2ddc3c05"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "b0db28f6-ff3f-529c-96ff-81edc1cea4d6"
+parent_uuid = ""
+label = "record_b0db28f6ff3f529c96ff81edc1cea4d6"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a612b81c-02b4-400e-a28a-48238cb55e05"
+message = "Explicit empty"
+message_ref = "ae7dd2da-b474-52e0-a041-57a3f96e7709"
+note = ""
+reviewed_source_revision = "1a13d24e7bea22ce8bf4704bc570519e465559eb94b18b52e638e6be2ddc3c05"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "337fc739-b012-54f7-9ca0-2d1f89ef1527"
+parent_uuid = ""
+label = "record_337fc739b01254f79ca02d1f89ef1527"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "b42128cf-c528-5a33-ba26-b144de4c6f20"
+message = "Vide explicite"
+message_ref = "ae7dd2da-b474-52e0-a041-57a3f96e7709"
+note = ""
+reviewed_source_revision = "1a13d24e7bea22ce8bf4704bc570519e465559eb94b18b52e638e6be2ddc3c05"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "882d4863-edbc-5165-99b4-7026ffc1c694"
+parent_uuid = ""
+label = "record_882d4863edbc516599b47026ffc1c694"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "3b9511f4-bae8-5e7d-a521-2d5633d5f3c2"
+message = "Vacío explícito"
+message_ref = "ae7dd2da-b474-52e0-a041-57a3f96e7709"
+note = ""
+reviewed_source_revision = "1a13d24e7bea22ce8bf4704bc570519e465559eb94b18b52e638e6be2ddc3c05"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "04421ff0-3995-538a-811c-e5a3709e663f"
+parent_uuid = ""
+label = "record_04421ff03995538a811ce5a3709e663f"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "6571b42e-49e5-5806-b0bb-6264367adcfe"
+message = "Explizit leer"
+message_ref = "ae7dd2da-b474-52e0-a041-57a3f96e7709"
+note = ""
+reviewed_source_revision = "1a13d24e7bea22ce8bf4704bc570519e465559eb94b18b52e638e6be2ddc3c05"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "6aabcb44-874a-57ca-b9c9-52a38e657865"
+parent_uuid = ""
+label = "record_6aabcb44874a57cab9c952a38e657865"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a539b8c2-d771-5b4e-bef8-ba7767812b72"
+message = "Vuoto esplicito"
+message_ref = "ae7dd2da-b474-52e0-a041-57a3f96e7709"
+note = ""
+reviewed_source_revision = "1a13d24e7bea22ce8bf4704bc570519e465559eb94b18b52e638e6be2ddc3c05"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "873c46ae-0dd5-51fe-a66a-e412f72714b4"
+parent_uuid = ""
+label = "record_873c46ae0dd551fea66ae412f72714b4"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bd410527-d1a0-59cd-9972-a055d2338063"
+message = "显式为空"
+message_ref = "ae7dd2da-b474-52e0-a041-57a3f96e7709"
+note = ""
+reviewed_source_revision = "1a13d24e7bea22ce8bf4704bc570519e465559eb94b18b52e638e6be2ddc3c05"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "db84f989-21f2-5d62-860c-a51dd6ad7e2c"
+parent_uuid = ""
+label = "record_db84f98921f25d62860ca51dd6ad7e2c"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "2e56c33d-5b3d-51b3-a05a-9700e5ca2401"
+message = "明確設為空白"
+message_ref = "ae7dd2da-b474-52e0-a041-57a3f96e7709"
+note = ""
+reviewed_source_revision = "1a13d24e7bea22ce8bf4704bc570519e465559eb94b18b52e638e6be2ddc3c05"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "a46109f3-af35-5bdf-b10e-aae0723de25c"
+parent_uuid = ""
+label = "record_a46109f3af355bdfb10eaae0723de25c"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "fb94026c-d2df-583f-8dda-93a7b3492949"
+message = "Uttryckligen tom"
+message_ref = "ae7dd2da-b474-52e0-a041-57a3f96e7709"
+note = ""
+reviewed_source_revision = "1a13d24e7bea22ce8bf4704bc570519e465559eb94b18b52e638e6be2ddc3c05"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "c6abb0a4-1a91-51fc-aaca-530d9c165459"
+parent_uuid = ""
+label = "record_c6abb0a41a9151fcaaca530d9c165459"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bc2ab48c-47ba-5f0d-9c5a-487151074e14"
+message = "Nimenomaisesti tyhjä"
+message_ref = "ae7dd2da-b474-52e0-a041-57a3f96e7709"
+note = ""
+reviewed_source_revision = "1a13d24e7bea22ce8bf4704bc570519e465559eb94b18b52e638e6be2ddc3c05"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "7cb4124e-2492-5c74-9fc0-ed593626a0f0"
+parent_uuid = ""
+label = "record_7cb4124e24925c749fc0ed593626a0f0"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "5b8834dc-b8d4-51df-a8bb-933d8573c2cb"
+message = "Uttrykkelig tom"
+message_ref = "ae7dd2da-b474-52e0-a041-57a3f96e7709"
+note = ""
+reviewed_source_revision = "1a13d24e7bea22ce8bf4704bc570519e465559eb94b18b52e638e6be2ddc3c05"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "947a3e38-8cd7-58c3-8c5f-7935c27ac86b"
+parent_uuid = ""
+label = "record_947a3e388cd758c38c5f7935c27ac86b"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "7304c655-3bd1-5be1-82f6-50c140c3ced7"
+message = "فارغ صراحةً"
+message_ref = "ae7dd2da-b474-52e0-a041-57a3f96e7709"
+note = ""
+reviewed_source_revision = "1a13d24e7bea22ce8bf4704bc570519e465559eb94b18b52e638e6be2ddc3c05"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "e26cf27a-65e0-5ec9-bb1a-14c8bb33aca7"
+parent_uuid = ""
+label = "record_e26cf27a65e05ec9bb1a14c8bb33aca7"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "0f6b59c7-a7d5-5417-9ade-9eca750f029c"
+message = "স্পষ্টভাবে খালি"
+message_ref = "ae7dd2da-b474-52e0-a041-57a3f96e7709"
+note = ""
+reviewed_source_revision = "1a13d24e7bea22ce8bf4704bc570519e465559eb94b18b52e638e6be2ddc3c05"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "a451e782-2b69-549f-aa69-d6540ad8d0a7"
+parent_uuid = ""
+label = "record_a451e7822b69549faa69d6540ad8d0a7"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "acbd8612-2fc4-516a-8b84-4f0a3cd80831"
+message = "स्पष्ट रूप से खाली"
+message_ref = "ae7dd2da-b474-52e0-a041-57a3f96e7709"
+note = ""
+reviewed_source_revision = "1a13d24e7bea22ce8bf4704bc570519e465559eb94b18b52e638e6be2ddc3c05"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "19a9f74c-baf3-5eaa-a7b2-59b0454f853c"
+parent_uuid = ""
+label = "record_19a9f74cbaf35eaaa7b259b0454f853c"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "53443caa-f352-491f-acf5-77e6308d4bf0"
+message = "値をコピー"
+message_ref = "a5b25b54-1a84-529c-98c6-d9f2f5eedd5f"
+note = ""
+reviewed_source_revision = "37dc005c73d06e42ed908622c598b27790a9d631f1ce538135300f4818846d81"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "1acb9236-5efe-54ae-a24e-dcdd9acb8599"
+parent_uuid = ""
+label = "record_1acb92365efe54aea24edcdd9acb8599"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a612b81c-02b4-400e-a28a-48238cb55e05"
+message = "Copy values"
+message_ref = "a5b25b54-1a84-529c-98c6-d9f2f5eedd5f"
+note = ""
+reviewed_source_revision = "37dc005c73d06e42ed908622c598b27790a9d631f1ce538135300f4818846d81"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "7df64778-5e16-598a-9f29-1661698ca74d"
+parent_uuid = ""
+label = "record_7df647785e16598a9f291661698ca74d"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "b42128cf-c528-5a33-ba26-b144de4c6f20"
+message = "Copier les valeurs"
+message_ref = "a5b25b54-1a84-529c-98c6-d9f2f5eedd5f"
+note = ""
+reviewed_source_revision = "37dc005c73d06e42ed908622c598b27790a9d631f1ce538135300f4818846d81"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "48ee9323-5420-5424-ab92-c41c2abca2f5"
+parent_uuid = ""
+label = "record_48ee932354205424ab92c41c2abca2f5"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "3b9511f4-bae8-5e7d-a521-2d5633d5f3c2"
+message = "Copiar valores"
+message_ref = "a5b25b54-1a84-529c-98c6-d9f2f5eedd5f"
+note = ""
+reviewed_source_revision = "37dc005c73d06e42ed908622c598b27790a9d631f1ce538135300f4818846d81"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "6e08e07e-8f65-53f8-a33d-c521c3619d2f"
+parent_uuid = ""
+label = "record_6e08e07e8f6553f8a33dc521c3619d2f"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "6571b42e-49e5-5806-b0bb-6264367adcfe"
+message = "Werte kopieren"
+message_ref = "a5b25b54-1a84-529c-98c6-d9f2f5eedd5f"
+note = ""
+reviewed_source_revision = "37dc005c73d06e42ed908622c598b27790a9d631f1ce538135300f4818846d81"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "911c7caf-ffe3-57ef-82ca-3ca8cb4b6a40"
+parent_uuid = ""
+label = "record_911c7cafffe357ef82ca3ca8cb4b6a40"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "a539b8c2-d771-5b4e-bef8-ba7767812b72"
+message = "Copia valori"
+message_ref = "a5b25b54-1a84-529c-98c6-d9f2f5eedd5f"
+note = ""
+reviewed_source_revision = "37dc005c73d06e42ed908622c598b27790a9d631f1ce538135300f4818846d81"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "d576555c-382e-590e-857c-8cbcdb1365ee"
+parent_uuid = ""
+label = "record_d576555c382e590e857c8cbcdb1365ee"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bd410527-d1a0-59cd-9972-a055d2338063"
+message = "复制值"
+message_ref = "a5b25b54-1a84-529c-98c6-d9f2f5eedd5f"
+note = ""
+reviewed_source_revision = "37dc005c73d06e42ed908622c598b27790a9d631f1ce538135300f4818846d81"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "5f3b99d7-cd43-5945-85bf-1ea867a0cf54"
+parent_uuid = ""
+label = "record_5f3b99d7cd43594585bf1ea867a0cf54"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "2e56c33d-5b3d-51b3-a05a-9700e5ca2401"
+message = "複製值"
+message_ref = "a5b25b54-1a84-529c-98c6-d9f2f5eedd5f"
+note = ""
+reviewed_source_revision = "37dc005c73d06e42ed908622c598b27790a9d631f1ce538135300f4818846d81"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "896e2021-b581-5c94-b495-8356bf5e90e2"
+parent_uuid = ""
+label = "record_896e2021b5815c94b4958356bf5e90e2"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "fb94026c-d2df-583f-8dda-93a7b3492949"
+message = "Kopiera värden"
+message_ref = "a5b25b54-1a84-529c-98c6-d9f2f5eedd5f"
+note = ""
+reviewed_source_revision = "37dc005c73d06e42ed908622c598b27790a9d631f1ce538135300f4818846d81"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "5de4cae5-f4db-5612-8255-a38757400a96"
+parent_uuid = ""
+label = "record_5de4cae5f4db56128255a38757400a96"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "bc2ab48c-47ba-5f0d-9c5a-487151074e14"
+message = "Kopioi arvot"
+message_ref = "a5b25b54-1a84-529c-98c6-d9f2f5eedd5f"
+note = ""
+reviewed_source_revision = "37dc005c73d06e42ed908622c598b27790a9d631f1ce538135300f4818846d81"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "ff962019-a3c5-51dc-9131-89cac7a0dadc"
+parent_uuid = ""
+label = "record_ff962019a3c551dc913189cac7a0dadc"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "5b8834dc-b8d4-51df-a8bb-933d8573c2cb"
+message = "Kopier verdier"
+message_ref = "a5b25b54-1a84-529c-98c6-d9f2f5eedd5f"
+note = ""
+reviewed_source_revision = "37dc005c73d06e42ed908622c598b27790a9d631f1ce538135300f4818846d81"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "51b10167-13a1-5bff-852d-336774b8912c"
+parent_uuid = ""
+label = "record_51b1016713a15bff852d336774b8912c"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "7304c655-3bd1-5be1-82f6-50c140c3ced7"
+message = "نسخ القيم"
+message_ref = "a5b25b54-1a84-529c-98c6-d9f2f5eedd5f"
+note = ""
+reviewed_source_revision = "37dc005c73d06e42ed908622c598b27790a9d631f1ce538135300f4818846d81"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "ff84e980-ffc7-5c23-a61c-90f66a0c0542"
+parent_uuid = ""
+label = "record_ff84e980ffc75c23a61c90f66a0c0542"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "0f6b59c7-a7d5-5417-9ade-9eca750f029c"
+message = "মান কপি করুন"
+message_ref = "a5b25b54-1a84-529c-98c6-d9f2f5eedd5f"
+note = ""
+reviewed_source_revision = "37dc005c73d06e42ed908622c598b27790a9d631f1ce538135300f4818846d81"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "f336dc95-49dc-5a94-87e5-79ce9560dbce"
+parent_uuid = ""
+label = "record_f336dc9549dc5a9487e579ce9560dbce"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "acbd8612-2fc4-516a-8b84-4f0a3cd80831"
+message = "मान कॉपी करें"
+message_ref = "a5b25b54-1a84-529c-98c6-d9f2f5eedd5f"
+note = ""
+reviewed_source_revision = "37dc005c73d06e42ed908622c598b27790a9d631f1ce538135300f4818846d81"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "5cb4e9f0-aa55-5290-9476-2874d603d1c3"
+parent_uuid = ""
+label = "record_5cb4e9f0aa55529094762874d603d1c3"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "4f626627-2fda-5739-8f33-46d5eb8bae0e"
+message = "Gelaxkaren oharra"
+message_ref = "250481e7-b402-56ce-a6a0-d82c24c23252"
+note = ""
+reviewed_source_revision = "71c8539f672ef25fd74b13132e61a32e194b984900b4d553ea16d711660dfacd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "3c935aa5-cf08-5c2a-b375-4903d3d646aa"
+parent_uuid = ""
+label = "record_3c935aa5cf085c2ab3754903d3d646aa"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "4f626627-2fda-5739-8f33-46d5eb8bae0e"
+message = "Kopiatu balioak"
+message_ref = "a5b25b54-1a84-529c-98c6-d9f2f5eedd5f"
+note = ""
+reviewed_source_revision = "37dc005c73d06e42ed908622c598b27790a9d631f1ce538135300f4818846d81"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "266f23b5-cdb7-508d-93a1-33524117de75"
+parent_uuid = ""
+label = "record_266f23b5cdb7508d93a133524117de75"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "4f626627-2fda-5739-8f33-46d5eb8bae0e"
+message = "Zutabearen balio lehenetsia"
+message_ref = "5845bc38-f99a-584e-8aed-151fd751f84a"
+note = ""
+reviewed_source_revision = "85daf32019ce6913c007ad69b21748f4bf400672acec0d2d9d73e942bd4019cf"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "09e7f2c6-d7b7-5352-a137-13ac5eda65fe"
+parent_uuid = ""
+label = "record_09e7f2c6d7b75352a13713ac5eda65fe"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "4f626627-2fda-5739-8f33-46d5eb8bae0e"
+message = "Bereizi gurasotik"
+message_ref = "2a243675-deaa-5bfb-b679-0a6b0d3a6871"
+note = ""
+reviewed_source_revision = "89d3c29c032f27cae472f08ef95f1a2fe986648cd6cb604beceef355992751e1"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "47f5c328-eb0c-5e03-a2f5-2aa81d2b30b7"
+parent_uuid = ""
+label = "record_47f5c328eb0c5e03a2f52aa81d2b30b7"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "4f626627-2fda-5739-8f33-46d5eb8bae0e"
+message = "Hutsune esplizitua"
+message_ref = "ae7dd2da-b474-52e0-a041-57a3f96e7709"
+note = ""
+reviewed_source_revision = "1a13d24e7bea22ce8bf4704bc570519e465559eb94b18b52e638e6be2ddc3c05"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "20f33583-d9da-5a52-a17b-2fc9c6e950ed"
+parent_uuid = ""
+label = "record_20f33583d9da5a52a17b2fc9c6e950ed"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "4f626627-2fda-5739-8f33-46d5eb8bae0e"
+message = "Letra-tamaina"
+message_ref = "a35c2dde-e802-5a83-9a34-059507f92d74"
+note = ""
+reviewed_source_revision = "5b7f26f90dfc9280bc2186e0941e63618eb7f640711d9a48e410702096406b23"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "bf59bf45-2268-5c75-a919-dcf5e967f06b"
+parent_uuid = ""
+label = "record_bf59bf4522685c75a919dcf5e967f06b"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "4f626627-2fda-5739-8f33-46d5eb8bae0e"
+message = "Heredatu gurasotik"
+message_ref = "ed6d210c-34f3-564d-a967-8a1760f476f3"
+note = ""
+reviewed_source_revision = "a70568abf431a698680d088e37c6978f48c95c4946c84715aa82cd85bc67ce72"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "3e8baf25-88cf-562b-a061-3b4befab3422"
+parent_uuid = ""
+label = "record_3e8baf2588cf562ba0613b4befab3422"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "4f626627-2fda-5739-8f33-46d5eb8bae0e"
+message = "Erregistro gurasoa"
+message_ref = "d8f4334c-dba0-5e1b-b4e5-ae34584bae44"
+note = ""
+reviewed_source_revision = "02c6f06231d398d4fb19d0212341c0ee829a3efb1bfc8a8662ffcaf908d8eb73"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "8b3bcc39-8794-5f55-bbba-162f17f21f4b"
+parent_uuid = ""
+label = "record_8b3bcc3987945f55bbba162f17f21f4b"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "4f626627-2fda-5739-8f33-46d5eb8bae0e"
+message = "Etiketak"
+message_ref = "37daf6db-8060-531e-bfbf-a3b25d9fd8a9"
+note = ""
+reviewed_source_revision = "302eafc71d9d24e6aaea6886617e6d1ab9e9e380abbc1caf4bc3beecae7d5375"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "c59c3497-7871-5859-bdcf-edcef4e1222f"
+parent_uuid = ""
+label = "record_c59c349778715859bdcfedcef4e1222f"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "086c8431-4df5-5570-b34b-d59375292efd"
+message = "Nota de la cel·la"
+message_ref = "250481e7-b402-56ce-a6a0-d82c24c23252"
+note = ""
+reviewed_source_revision = "71c8539f672ef25fd74b13132e61a32e194b984900b4d553ea16d711660dfacd"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "603ed1a3-98e5-5301-834f-942c58339680"
+parent_uuid = ""
+label = "record_603ed1a398e55301834f942c58339680"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "086c8431-4df5-5570-b34b-d59375292efd"
+message = "Copia els valors"
+message_ref = "a5b25b54-1a84-529c-98c6-d9f2f5eedd5f"
+note = ""
+reviewed_source_revision = "37dc005c73d06e42ed908622c598b27790a9d631f1ce538135300f4818846d81"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "fc5f68c3-161e-53f5-882e-afac46352d2c"
+parent_uuid = ""
+label = "record_fc5f68c3161e53f5882eafac46352d2c"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "086c8431-4df5-5570-b34b-d59375292efd"
+message = "Valor per defecte de la columna"
+message_ref = "5845bc38-f99a-584e-8aed-151fd751f84a"
+note = ""
+reviewed_source_revision = "85daf32019ce6913c007ad69b21748f4bf400672acec0d2d9d73e942bd4019cf"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "9b562246-51d9-5d2e-b15c-18a1e425a403"
+parent_uuid = ""
+label = "record_9b56224651d95d2eb15c18a1e425a403"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "086c8431-4df5-5570-b34b-d59375292efd"
+message = "Desvincula el registre pare"
+message_ref = "2a243675-deaa-5bfb-b679-0a6b0d3a6871"
+note = ""
+reviewed_source_revision = "89d3c29c032f27cae472f08ef95f1a2fe986648cd6cb604beceef355992751e1"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "cb62d31b-aba4-5871-85c1-14b4cf191818"
+parent_uuid = ""
+label = "record_cb62d31baba4587185c114b4cf191818"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "086c8431-4df5-5570-b34b-d59375292efd"
+message = "Buit explícit"
+message_ref = "ae7dd2da-b474-52e0-a041-57a3f96e7709"
+note = ""
+reviewed_source_revision = "1a13d24e7bea22ce8bf4704bc570519e465559eb94b18b52e638e6be2ddc3c05"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "c2b77fa2-1b82-5832-adb6-e1beb2d9edd6"
+parent_uuid = ""
+label = "record_c2b77fa21b825832adb6e1beb2d9edd6"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "086c8431-4df5-5570-b34b-d59375292efd"
+message = "Mida de la lletra"
+message_ref = "a35c2dde-e802-5a83-9a34-059507f92d74"
+note = ""
+reviewed_source_revision = "5b7f26f90dfc9280bc2186e0941e63618eb7f640711d9a48e410702096406b23"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "d4e3860d-4bbe-5c6e-8c55-ab3921d17e6c"
+parent_uuid = ""
+label = "record_d4e3860d4bbe5c6e8c55ab3921d17e6c"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "086c8431-4df5-5570-b34b-d59375292efd"
+message = "Hereta del registre pare"
+message_ref = "ed6d210c-34f3-564d-a967-8a1760f476f3"
+note = ""
+reviewed_source_revision = "a70568abf431a698680d088e37c6978f48c95c4946c84715aa82cd85bc67ce72"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "2257aad0-9a19-5d01-9fd1-51696c72c977"
+parent_uuid = ""
+label = "record_2257aad09a195d019fd151696c72c977"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "086c8431-4df5-5570-b34b-d59375292efd"
+message = "Registre pare"
+message_ref = "d8f4334c-dba0-5e1b-b4e5-ae34584bae44"
+note = ""
+reviewed_source_revision = "02c6f06231d398d4fb19d0212341c0ee829a3efb1bfc8a8662ffcaf908d8eb73"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "dbe1a069-5c45-5d18-aef1-c2b874a09885"
+parent_uuid = ""
+label = "record_dbe1a0695c455d18aef1c2b874a09885"
+min_version = 0
+tags = []
+
+[records.values]
+locale_ref = "086c8431-4df5-5570-b34b-d59375292efd"
+message = "Etiquetes"
+message_ref = "37daf6db-8060-531e-bfbf-a3b25d9fd8a9"
+note = ""
+reviewed_source_revision = "302eafc71d9d24e6aaea6886617e6d1ab9e9e380abbc1caf4bc3beecae7d5375"
+status = "reviewed"
+
+[records.interface_values]
+
+[records.memo_texts]

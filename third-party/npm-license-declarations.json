@@ -1,0 +1,8 @@
+{
+  "webgl-constants@1.1.1": {
+    "license": "MIT",
+    "path": "LICENSE",
+    "sha256": "0969fa65680b694452c2c65981df14af5c192da24f2b1f87bdd51d8ed24efcfa",
+    "reason": "The original installed LICENSE explicitly identifies the MIT License, includes the full permission and disclaimer, and credits Tim van Scherpenzeel (2019). The npm manifest omits a license field."
+  }
+}

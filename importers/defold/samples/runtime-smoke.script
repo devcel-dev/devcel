@@ -1,0 +1,27 @@
+-- Add /samples/master.full.json, /samples/master.minimal.json and
+-- /samples/master.invalid-column.json to Custom Resources; attach this script to a test GO.
+local devcel=require 'devcel.runtime.database'
+function init(self)
+    local a,b=devcel.new('base'),devcel.new('event')
+    assert(a:load_resource('/samples/master.full.json'))
+    assert(b:load_resource('/samples/master.minimal.json'))
+    local hero=a:by_id('Heroes','hero-1')
+    assert(hero:get('hp')==100 and hero:get('wide')=='9007199254740993')
+    assert(hero:get('huge')=='18446744073709551615')
+    assert(hero:get('color_float').r==-0.25 and hero:get('color_float').g==2 and hero:get('color_float').a==0)
+    assert(hero:reference('item'):get('label')=='回復薬')
+    assert(hero:table_reference('drops'):name()=='Items')
+    for _,name in ipairs(a:tables()) do
+        for _,id in ipairs(a:table(name):ids()) do
+            for _,col in ipairs(a:table(name):columns()) do
+                assert(a:by_id(name,id):get_raw(col)==b:by_id(name,id):get_raw(col))
+            end
+        end
+    end
+    local previous=a:manifest().content_hash
+    assert(not a:load_resource('/samples/master.invalid-column.json'))
+    assert(a.last_error:find('unknown column',1,true))
+    assert(a:manifest().content_hash==previous and a:by_id('Heroes','hero-1'):get('hp')==100)
+    assert(hero:get('hp')==100 and b:by_id('Heroes','hero-1'):get('hp')==100)
+    print('DEVCEL RUNTIME SMOKE PASSED')
+end

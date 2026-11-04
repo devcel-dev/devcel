@@ -1,0 +1,18 @@
+{
+  "settingsTables": [
+    {
+      "cardinality": "singleton",
+      "contract": "settings.interface.toml",
+      "id": "settings",
+      "path": "settings.table.toml"
+    }
+  ],
+  "translationTables": [
+    {
+      "cardinality": "rows",
+      "contract": "translations.interface.toml",
+      "id": "translations",
+      "path": "translations.table.toml"
+    }
+  ]
+}

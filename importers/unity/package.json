@@ -1,0 +1,22 @@
+{
+  "name": "org.devcel.unity",
+  "displayName": "Devcel Unity Importer",
+  "description": "Unity importer, typed references and code generation. Git installs use a separately verified matching native-tools dependency.",
+  "unity": "2021.3",
+  "keywords": [
+    "devcel",
+    "master data",
+    "table",
+    "codegen",
+    "importer"
+  ],
+  "author": {
+    "name": "Devcel"
+  },
+  "documentationUrl": "https://github.com/devcel-dev/devcel/tree/main/importers/unity",
+  "hideInEditor": false,
+  "dependencies": {
+    "com.unity.modules.unitywebrequest": "1.0.0",
+    "com.unity.modules.jsonserialize": "1.0.0"
+  }
+}

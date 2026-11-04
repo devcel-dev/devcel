@@ -1,0 +1,125 @@
+uuid = "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbb2"
+name = "Combatant"
+current_version_id = "763d27b3-29d7-4a92-9919-b6cb37cc05c8"
+description = "Shared character contract for jobs and enemies"
+extends = []
+
+[[columns]]
+read_only = false
+min_version = 0
+uuid = "30000000-0000-4000-9000-000000000001"
+display_name = "name"
+data_name = "name"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = "Unknown"
+memo_text = ""
+
+[columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[columns]]
+read_only = false
+min_version = 0
+uuid = "30000000-0000-4000-9000-000000000002"
+display_name = "hp"
+data_name = "hp"
+tooltip = ""
+data_type = "I64"
+tags = []
+default_value = "1"
+memo_text = ""
+
+[columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[columns]]
+read_only = false
+min_version = 0
+uuid = "30000000-0000-4000-9000-000000000003"
+display_name = "attack"
+data_name = "attack"
+tooltip = ""
+data_type = "I64"
+tags = []
+default_value = "0"
+memo_text = ""
+
+[columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[history.1d120b23-415c-468d-b9c0-a267b033b658]
+version_id = "1d120b23-415c-468d-b9c0-a267b033b658"
+timestamp = "2026-10-04T08:38:59.454019291Z"
+changes = [{ ChangeDescription = { new_description = "Shared character contract for jobs and enemies" } }]
+author = "System"
+comment = "Initial definition"
+
+[history.763d27b3-29d7-4a92-9919-b6cb37cc05c8]
+version_id = "763d27b3-29d7-4a92-9919-b6cb37cc05c8"
+parent_version_id = "1d120b23-415c-468d-b9c0-a267b033b658"
+timestamp = "2026-10-04T08:38:59.454036506Z"
+
+[[history.763d27b3-29d7-4a92-9919-b6cb37cc05c8.changes]]
+
+[history.763d27b3-29d7-4a92-9919-b6cb37cc05c8.changes.AddColumn.column]
+read_only = false
+min_version = 0
+uuid = "30000000-0000-4000-9000-000000000001"
+display_name = "name"
+data_name = "name"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = "Unknown"
+memo_text = ""
+
+[history.763d27b3-29d7-4a92-9919-b6cb37cc05c8.changes.AddColumn.column.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[history.763d27b3-29d7-4a92-9919-b6cb37cc05c8.changes]]
+
+[history.763d27b3-29d7-4a92-9919-b6cb37cc05c8.changes.AddColumn.column]
+read_only = false
+min_version = 0
+uuid = "30000000-0000-4000-9000-000000000002"
+display_name = "hp"
+data_name = "hp"
+tooltip = ""
+data_type = "I64"
+tags = []
+default_value = "1"
+memo_text = ""
+
+[history.763d27b3-29d7-4a92-9919-b6cb37cc05c8.changes.AddColumn.column.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[history.763d27b3-29d7-4a92-9919-b6cb37cc05c8.changes]]
+
+[history.763d27b3-29d7-4a92-9919-b6cb37cc05c8.changes.AddColumn.column]
+read_only = false
+min_version = 0
+uuid = "30000000-0000-4000-9000-000000000003"
+display_name = "attack"
+data_name = "attack"
+tooltip = ""
+data_type = "I64"
+tags = []
+default_value = "0"
+memo_text = ""
+
+[history.763d27b3-29d7-4a92-9919-b6cb37cc05c8.changes.AddColumn.column.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100

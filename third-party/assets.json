@@ -1,0 +1,470 @@
+{
+  "schema_version": 1,
+  "audited_on": "2026-10-14",
+  "scope": "Vendored source, copied UI/example code, and non-package-manager assets. npm/Cargo dependency licenses are inventoried separately.",
+  "assets": [
+    {
+      "id": "react-data-grid",
+      "name": "react-data-grid (Devcel-modified source)",
+      "paths": [
+        "devcel-studio/src/lib/react-data-grid/**"
+      ],
+      "upstream": "https://github.com/Comcast/react-data-grid",
+      "version": "7.0.0-beta.56",
+      "license": "MIT",
+      "license_files": [
+        {
+          "path": "devcel-studio/src/lib/react-data-grid/LICENSE",
+          "sha256": "947a72d66a57aa644d11a1d862e8c85864f308f3fcb3e435e1dd23c108df5a49",
+          "upstream_url": "https://github.com/Comcast/react-data-grid/blob/v7.0.0-beta.56/LICENSE",
+          "upstream_git_blob_sha": "45955c9893f0cd6daee5ca5f67ea760b73893ef2"
+        }
+      ],
+      "status": "verified",
+      "evidence": [
+        {
+          "path": "devcel-studio/src/lib/react-data-grid/package.json",
+          "detail": "Local package metadata identifies upstream and version 7.0.0-beta.56."
+        },
+        {
+          "url": "https://github.com/Comcast/react-data-grid/tree/64605fa9bf1145f7d02623585aabb074115276ce",
+          "detail": "Verified commit for tag v7.0.0-beta.56. Former adazzle repository redirects to Comcast."
+        }
+      ],
+      "notes": [
+        "License retains both original Prometheus Research and modified Adazzle copyright notices.",
+        "This is a modified copy; the version identifies the documented upstream base, not an assertion of an unmodified release."
+      ],
+      "distribution": "studio-runtime"
+    },
+    {
+      "id": "shadcn-ui",
+      "name": "shadcn/ui copied components and cn utility",
+      "paths": [
+        "devcel-studio/src/components/ui/accordion.tsx",
+        "devcel-studio/src/components/ui/alert.tsx",
+        "devcel-studio/src/components/ui/alert-dialog.tsx",
+        "devcel-studio/src/components/ui/badge.tsx",
+        "devcel-studio/src/components/ui/button.tsx",
+        "devcel-studio/src/components/ui/card.tsx",
+        "devcel-studio/src/components/ui/checkbox.tsx",
+        "devcel-studio/src/components/ui/context-menu.tsx",
+        "devcel-studio/src/components/ui/dialog.tsx",
+        "devcel-studio/src/components/ui/dropdown-menu.tsx",
+        "devcel-studio/src/components/ui/input.tsx",
+        "devcel-studio/src/components/ui/label.tsx",
+        "devcel-studio/src/components/ui/popover.tsx",
+        "devcel-studio/src/components/ui/radio-group.tsx",
+        "devcel-studio/src/components/ui/scroll-area.tsx",
+        "devcel-studio/src/components/ui/select.tsx",
+        "devcel-studio/src/components/ui/separator.tsx",
+        "devcel-studio/src/components/ui/switch.tsx",
+        "devcel-studio/src/components/ui/table.tsx",
+        "devcel-studio/src/components/ui/tabs.tsx",
+        "devcel-studio/src/components/ui/textarea.tsx",
+        "devcel-studio/src/components/ui/tooltip.tsx",
+        "devcel-studio/src/lib/utils.ts"
+      ],
+      "upstream": "https://github.com/shadcn-ui/ui",
+      "version": "new-york components; compared against shadcn@2.3.0",
+      "license": "MIT",
+      "license_files": [
+        {
+          "path": "devcel-studio/src/components/ui/LICENSE.shadcn-ui",
+          "sha256": "1564074e13439397221ffd522e2e504d56561994a23d371aa5e3ad43e4f5423f",
+          "upstream_url": "https://github.com/shadcn-ui/ui/blob/shadcn@2.3.0/LICENSE.md",
+          "upstream_git_blob_sha": "fad4d887a681dd49233e5ed01ee2c7a1513089a0"
+        }
+      ],
+      "status": "verified",
+      "evidence": [
+        {
+          "path": "devcel-studio/components.json",
+          "detail": "Identifies shadcn/ui new-york source style."
+        },
+        {
+          "url": "https://github.com/shadcn-ui/ui/tree/c8c4027b6b192822ea2952b225ee4760cddedf0d",
+          "detail": "Verified commit for comparison tag shadcn@2.3.0; original import revision was not recorded."
+        },
+        {
+          "path": "devcel-studio/src/lib/utils.ts",
+          "upstream_url": "https://github.com/shadcn-ui/ui/blob/c8c4027b6b192822ea2952b225ee4760cddedf0d/apps/www/registry/new-york/lib/utils.ts",
+          "upstream_git_blob_sha": "bd0c391ddd1088e9067844c48835bf4abcd61783",
+          "detail": "cn function matches the upstream utility."
+        },
+        {
+          "path": "devcel-studio/src/components/ui/accordion.tsx",
+          "upstream_url": "https://github.com/shadcn-ui/ui/blob/shadcn@2.3.0/apps/www/registry/new-york/ui/accordion.tsx",
+          "upstream_git_blob_sha": "2f55a32f4d374342e6aa22e0fee985e9e60c1a3c",
+          "comparison": "modified-derived-component"
+        },
+        {
+          "path": "devcel-studio/src/components/ui/alert.tsx",
+          "upstream_url": "https://github.com/shadcn-ui/ui/blob/shadcn@2.3.0/apps/www/registry/new-york/ui/alert.tsx",
+          "upstream_git_blob_sha": "5afd41d142c95c74069ebb5460117e74ead3b9df",
+          "comparison": "modified-derived-component"
+        },
+        {
+          "path": "devcel-studio/src/components/ui/alert-dialog.tsx",
+          "upstream_url": "https://github.com/shadcn-ui/ui/blob/shadcn@2.3.0/apps/www/registry/new-york/ui/alert-dialog.tsx",
+          "upstream_git_blob_sha": "13a807d5f18ef936d46c7567d93f4ecc93717581",
+          "comparison": "modified-derived-component"
+        },
+        {
+          "path": "devcel-studio/src/components/ui/badge.tsx",
+          "upstream_url": "https://github.com/shadcn-ui/ui/blob/shadcn@2.3.0/apps/www/registry/new-york/ui/badge.tsx",
+          "upstream_git_blob_sha": "e87d62bf1a2b2a0e1cf0b0dc94c2836525f40b67",
+          "comparison": "modified-derived-component"
+        },
+        {
+          "path": "devcel-studio/src/components/ui/button.tsx",
+          "upstream_url": "https://github.com/shadcn-ui/ui/blob/shadcn@2.3.0/apps/www/registry/new-york/ui/button.tsx",
+          "upstream_git_blob_sha": "65d4fcd9ca74240125c5f72cf84c873781141fea",
+          "comparison": "matches-after-line-ending-and-edge-whitespace-normalization"
+        },
+        {
+          "path": "devcel-studio/src/components/ui/card.tsx",
+          "upstream_url": "https://github.com/shadcn-ui/ui/blob/shadcn@2.3.0/apps/www/registry/new-york/ui/card.tsx",
+          "upstream_git_blob_sha": "cabfbfc59d955db9efc2049783cad4a71db55442",
+          "comparison": "matches-after-line-ending-and-edge-whitespace-normalization"
+        },
+        {
+          "path": "devcel-studio/src/components/ui/checkbox.tsx",
+          "upstream_url": "https://github.com/shadcn-ui/ui/blob/shadcn@2.3.0/apps/www/registry/new-york/ui/checkbox.tsx",
+          "upstream_git_blob_sha": "c6fdd071b5d4133824ae4d805a3034132830a1b2",
+          "comparison": "modified-derived-component"
+        },
+        {
+          "path": "devcel-studio/src/components/ui/context-menu.tsx",
+          "upstream_url": "https://github.com/shadcn-ui/ui/blob/shadcn@2.3.0/apps/www/registry/new-york/ui/context-menu.tsx",
+          "upstream_git_blob_sha": "f7257a6debca6874f15cfb9f30f9422396029e85",
+          "comparison": "modified-derived-component"
+        },
+        {
+          "path": "devcel-studio/src/components/ui/dialog.tsx",
+          "upstream_url": "https://github.com/shadcn-ui/ui/blob/shadcn@2.3.0/apps/www/registry/new-york/ui/dialog.tsx",
+          "upstream_git_blob_sha": "1647513eced8f9e788c0e8b63c99654d3a542a9c",
+          "comparison": "modified-derived-component"
+        },
+        {
+          "path": "devcel-studio/src/components/ui/dropdown-menu.tsx",
+          "upstream_url": "https://github.com/shadcn-ui/ui/blob/shadcn@2.3.0/apps/www/registry/new-york/ui/dropdown-menu.tsx",
+          "upstream_git_blob_sha": "082639fb59551c8354fb8e8bab136b75c116020c",
+          "comparison": "modified-derived-component"
+        },
+        {
+          "path": "devcel-studio/src/components/ui/input.tsx",
+          "upstream_url": "https://github.com/shadcn-ui/ui/blob/shadcn@2.3.0/apps/www/registry/new-york/ui/input.tsx",
+          "upstream_git_blob_sha": "69b64fb2455114c3eeda2d18741af0027b3c5e89",
+          "comparison": "matches-after-line-ending-and-edge-whitespace-normalization"
+        },
+        {
+          "path": "devcel-studio/src/components/ui/label.tsx",
+          "upstream_url": "https://github.com/shadcn-ui/ui/blob/shadcn@2.3.0/apps/www/registry/new-york/ui/label.tsx",
+          "upstream_git_blob_sha": "534182176bf87f9308355514adc884d2b69750a5",
+          "comparison": "modified-derived-component"
+        },
+        {
+          "path": "devcel-studio/src/components/ui/popover.tsx",
+          "upstream_url": "https://github.com/shadcn-ui/ui/blob/shadcn@2.3.0/apps/www/registry/new-york/ui/popover.tsx",
+          "upstream_git_blob_sha": "29c7bd2a443213fffbb4038587997ad01b205383",
+          "comparison": "modified-derived-component"
+        },
+        {
+          "path": "devcel-studio/src/components/ui/radio-group.tsx",
+          "upstream_url": "https://github.com/shadcn-ui/ui/blob/shadcn@2.3.0/apps/www/registry/new-york/ui/radio-group.tsx",
+          "upstream_git_blob_sha": "0bdf6853fccc6ba250ce89d78a4f5b72b7347279",
+          "comparison": "modified-derived-component"
+        },
+        {
+          "path": "devcel-studio/src/components/ui/scroll-area.tsx",
+          "upstream_url": "https://github.com/shadcn-ui/ui/blob/shadcn@2.3.0/apps/www/registry/new-york/ui/scroll-area.tsx",
+          "upstream_git_blob_sha": "0b4a48d87fabda1c6e9612172abb56a78e26c14f",
+          "comparison": "modified-derived-component"
+        },
+        {
+          "path": "devcel-studio/src/components/ui/select.tsx",
+          "upstream_url": "https://github.com/shadcn-ui/ui/blob/shadcn@2.3.0/apps/www/registry/new-york/ui/select.tsx",
+          "upstream_git_blob_sha": "0cbf77d15a58d50d81e3976596064cdfb61337b1",
+          "comparison": "modified-derived-component"
+        },
+        {
+          "path": "devcel-studio/src/components/ui/separator.tsx",
+          "upstream_url": "https://github.com/shadcn-ui/ui/blob/shadcn@2.3.0/apps/www/registry/new-york/ui/separator.tsx",
+          "upstream_git_blob_sha": "12d81c4a853472948b6dd2e85eff99b5d12fe60b",
+          "comparison": "matches-after-line-ending-and-edge-whitespace-normalization"
+        },
+        {
+          "path": "devcel-studio/src/components/ui/switch.tsx",
+          "upstream_url": "https://github.com/shadcn-ui/ui/blob/shadcn@2.3.0/apps/www/registry/new-york/ui/switch.tsx",
+          "upstream_git_blob_sha": "5f4117f0f242bc03d8372e6380389bb4bf88cb79",
+          "comparison": "modified-derived-component"
+        },
+        {
+          "path": "devcel-studio/src/components/ui/table.tsx",
+          "upstream_url": "https://github.com/shadcn-ui/ui/blob/shadcn@2.3.0/apps/www/registry/new-york/ui/table.tsx",
+          "upstream_git_blob_sha": "c0df655c0bf26af1148d038e1d013e884663b240",
+          "comparison": "modified-derived-component"
+        },
+        {
+          "path": "devcel-studio/src/components/ui/tabs.tsx",
+          "upstream_url": "https://github.com/shadcn-ui/ui/blob/shadcn@2.3.0/apps/www/registry/new-york/ui/tabs.tsx",
+          "upstream_git_blob_sha": "0f4caebb1170ec24e5acab012544ccedb09b15a2",
+          "comparison": "modified-derived-component"
+        },
+        {
+          "path": "devcel-studio/src/components/ui/textarea.tsx",
+          "upstream_url": "https://github.com/shadcn-ui/ui/blob/shadcn@2.3.0/apps/www/registry/new-york/ui/textarea.tsx",
+          "upstream_git_blob_sha": "e56b0affd7e03bd8359092a81d81c606ab09972d",
+          "comparison": "modified-derived-component"
+        },
+        {
+          "path": "devcel-studio/src/components/ui/tooltip.tsx",
+          "upstream_url": "https://github.com/shadcn-ui/ui/blob/shadcn@2.3.0/apps/www/registry/new-york/ui/tooltip.tsx",
+          "upstream_git_blob_sha": "a66b3f22019c44e790760ecd218c288eac2af7eb",
+          "comparison": "modified-derived-component"
+        }
+      ],
+      "notes": [
+        "Four components match the reference source except for line endings/edge whitespace; the others are adapted.",
+        "Original import commit unknown; this does not prevent retaining the verified upstream MIT text."
+      ],
+      "distribution": "studio-runtime"
+    },
+    {
+      "id": "novel-editor-examples",
+      "name": "Novel editor extension and slash-command examples",
+      "paths": [
+        "devcel-studio/src/lib/markdown-extensions.ts",
+        "devcel-studio/src/lib/markdown-slash-command.tsx"
+      ],
+      "upstream": "https://github.com/steven-tey/novel",
+      "version": "examples reviewed at fa95098e66476c466faebb8211baa5869c101a9c",
+      "license": "Apache-2.0",
+      "license_files": [
+        {
+          "path": "devcel-studio/src/lib/LICENSE.novel",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "upstream_url": "https://github.com/steven-tey/novel/blob/fa95098e66476c466faebb8211baa5869c101a9c/LICENSE",
+          "upstream_git_blob_sha": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64"
+        }
+      ],
+      "status": "verified",
+      "evidence": [
+        {
+          "path": "devcel-studio/src/lib/markdown-extensions.ts",
+          "url": "https://github.com/steven-tey/novel/blob/fa95098e66476c466faebb8211baa5869c101a9c/apps/web/components/tailwind/extensions.ts",
+          "detail": "Comparison identified substantial matching example configuration/command code. Devcel changes include localization, extension selection, supported actions and editor behavior; subsequent integration changes do not remove the source lineage."
+        },
+        {
+          "path": "devcel-studio/src/lib/markdown-slash-command.tsx",
+          "url": "https://github.com/steven-tey/novel/blob/fa95098e66476c466faebb8211baa5869c101a9c/apps/web/components/tailwind/slash-command.tsx",
+          "detail": "Comparison identified substantial matching example configuration/command code. Devcel changes include localization, extension selection, supported actions and editor behavior; subsequent integration changes do not remove the source lineage."
+        }
+      ],
+      "notes": [
+        "Original import commit unknown; the pinned comparison commit contains the matching example code and Apache-2.0 license.",
+        "No separate NOTICE file was found in the full tree of the comparison commit.",
+        "Modified files carry prominent modification notices; LICENSE.novel is the original upstream license text."
+      ],
+      "distribution": "studio-runtime"
+    },
+    {
+      "id": "tailwindcss-typography-generated",
+      "name": "Tailwind CSS Typography generated prose styles",
+      "paths": [
+        "devcel-studio/src/styles/markdown-typography.css"
+      ],
+      "upstream": "https://github.com/tailwindlabs/tailwindcss-typography",
+      "version": "0.5.20 (generated with Tailwind CSS 3.4.19)",
+      "license": "MIT",
+      "license_files": [
+        {
+          "path": "third-party/upstream/tailwindcss-typography-0.5.20/LICENSE",
+          "sha256": "60e0b68c0f35c078eef3a5d29419d0b03ff84ec1df9c3f9d6e39a519a5ae7985",
+          "upstream_url": "https://registry.npmjs.org/@tailwindcss/typography/-/typography-0.5.20.tgz"
+        }
+      ],
+      "status": "verified",
+      "evidence": [
+        {
+          "path": "devcel-studio/src/styles/markdown-typography.css",
+          "detail": "136 prose/prose-lg rules extracted from the existing production build using PostCSS; selectors and declaration values retained. Only formatting and components-layer wrapper added. Original MIT text also retained in CSS header."
+        }
+      ],
+      "notes": [
+        "Generated styles remain distributed after the build-time typography dependency is removed."
+      ],
+      "distribution": "studio-runtime"
+    },
+    {
+      "id": "tailwindcss-design-tokens",
+      "name": "Tailwind CSS design-token source values",
+      "paths": [
+        "devcel-studio/design-tokens.cjs"
+      ],
+      "upstream": "https://github.com/tailwindlabs/tailwindcss",
+      "version": "3.4.19",
+      "license": "MIT",
+      "license_files": [
+        {
+          "path": "third-party/upstream/tailwindcss-3.4.19/LICENSE",
+          "sha256": "60e0b68c0f35c078eef3a5d29419d0b03ff84ec1df9c3f9d6e39a519a5ae7985",
+          "upstream_url": "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.4.19.tgz"
+        }
+      ],
+      "status": "verified",
+      "distribution": "studio-generated-styles",
+      "evidence": [
+        {
+          "path": "devcel-studio/design-tokens.cjs",
+          "detail": "22 original color palettes and boxShadow/blur/dropShadow theme values extracted from the installed Tailwind CSS 3.4.19 defaultTheme.js and colors.js used by the Devcel design tokens. Original MIT notice retained."
+        }
+      ],
+      "notes": [
+        "No claim that the extracted configuration is an unmodified copy of the full Tailwind package."
+      ]
+    },
+    {
+      "id": "drei-background-subset",
+      "name": "Drei Stars and MeshDistortMaterial subset",
+      "paths": [
+        "devcel-studio/src/lib/drei-background/**"
+      ],
+      "upstream": "https://github.com/pmndrs/drei",
+      "version": "10.7.9",
+      "license": "MIT",
+      "license_files": [
+        {
+          "path": "devcel-studio/src/lib/drei-background/LICENSE",
+          "sha256": "2e36b208b403882158daf95cae207087bbb830db4d434a79ebafffca177244c8"
+        }
+      ],
+      "status": "verified",
+      "distribution": "studio-runtime",
+      "evidence": [
+        {
+          "path": "devcel-studio/src/lib/drei-background/provenance.json",
+          "detail": "Exact original npm archive paths and per-file SHA-256. Stars, types, constants and shader are unchanged; MeshDistortMaterial replaces the Babel extends helper with native Object.assign for the supported ES2020+ environment."
+        }
+      ],
+      "notes": [
+        "Original notices are preserved; no new copyright ownership is asserted."
+      ]
+    },
+    {
+      "id": "glsl-simplex-noise",
+      "name": "glsl-noise simplex 3D shader",
+      "paths": [
+        "devcel-studio/src/lib/drei-background/helpers/glsl/distort.vert.glsl.js"
+      ],
+      "upstream": "https://github.com/hughsk/glsl-noise",
+      "version": "0.0.0",
+      "license": "MIT",
+      "license_files": [
+        {
+          "path": "devcel-studio/src/lib/drei-background/helpers/glsl/LICENSE-glsl-noise",
+          "sha256": "bce6c887104eda776ad5e3a2c0b249d1ef5adca91573b350e7147a59d65757f1"
+        }
+      ],
+      "status": "verified",
+      "distribution": "studio-runtime",
+      "evidence": [
+        {
+          "url": "https://github.com/pmndrs/drei/blob/v10.7.9/src/helpers/glsl/distort.vert.glsl",
+          "detail": "Drei source imports glsl-noise/simplex/3d."
+        },
+        {
+          "path": "third-party/upstream/glsl-noise-0.0.0/SOURCE.json",
+          "detail": "Public registry archive integrity verified. After removing comments, preprocessor lines and whitespace only, the original simplex shader is exactly equal to the vendored minified shader (1362 characters). Original source copyright and complete MIT license retained."
+        }
+      ],
+      "notes": [
+        "Original notices are preserved; no new copyright ownership is asserted."
+      ]
+    }
+  ],
+  "removed_assets": [
+    {
+      "path": "devcel-studio/public/tauri.svg",
+      "sha256": "3f32698a9cb64f4d06d4df89ecb903418347589a17d297208a7f68741a8b5672",
+      "normalized_lf_sha256": "e5d2738bbaa5543c4684001a558dc53165da9b636144827b28db1dcfacf81aa8",
+      "status": "removed-unused-starter-asset",
+      "reason": "No application source, HTML, build configuration, or import-glob reference was found. Remaining references were historical validation manifests. Public assets were otherwise copied into the frontend distribution even when unused.",
+      "upstream": "https://github.com/tauri-apps/create-tauri-app/blob/16a754703baf0ca40fd4462dfc7674bc99bf3ef3/templates/_assets_/tauri.svg",
+      "license_evidence": "https://github.com/tauri-apps/tauri#licenses",
+      "notes": "Upstream explicitly labels its logo CC-BY-NC-ND without a version. Removed instead of misclassifying it under the software MIT/Apache license or inventing a license version."
+    },
+    {
+      "path": "devcel-studio/public/vite.svg",
+      "sha256": "4a748afd443918bb16591c834c401dae33e87861ab5dbad0811c3a3b4a9214fb",
+      "normalized_lf_sha256": "4a748afd443918bb16591c834c401dae33e87861ab5dbad0811c3a3b4a9214fb",
+      "status": "removed-unused-starter-asset",
+      "reason": "No application source, HTML, build configuration, or import-glob reference was found. Remaining references were historical validation manifests. Public assets were otherwise copied into the frontend distribution even when unused.",
+      "upstream": "https://github.com/vitejs/vite/blob/v6.3.5/packages/create-vite/template-react-ts/public/vite.svg",
+      "notes": "Compared with upstream starter asset: exact after line-ending and edge-whitespace normalization. Removed because it is unused."
+    },
+    {
+      "path": "devcel-studio/src/app/assets/react.svg",
+      "sha256": "35ef61ed53b323ae94a16a8ec659b3d0af3880698791133f23b084085ab1c2e5",
+      "normalized_lf_sha256": "35ef61ed53b323ae94a16a8ec659b3d0af3880698791133f23b084085ab1c2e5",
+      "status": "removed-unused-starter-asset",
+      "reason": "No application source, HTML, build configuration, or import-glob reference was found. Remaining references were historical validation manifests. Public assets were otherwise copied into the frontend distribution even when unused.",
+      "upstream": "https://github.com/vitejs/vite/blob/v6.3.5/packages/create-vite/template-react-ts/src/assets/react.svg",
+      "notes": "Compared with upstream starter asset: exact after line-ending and edge-whitespace normalization. Removed because it is unused."
+    }
+  ],
+  "exclusions": [
+    {
+      "id": "fonts",
+      "status": "none-found",
+      "paths": [
+        "devcel-studio/src/**",
+        "devcel-studio/public/**",
+        "assets/**",
+        "examples/**"
+      ],
+      "evidence": "No ttf/otf/woff/woff2/eot files, @font-face, or remote Google Fonts imports found. Font family names only refer to system fallback fonts; no font binaries are redistributed."
+    },
+    {
+      "id": "devcel-brand",
+      "status": "user-supplied-project-artwork",
+      "paths": [
+        "assets/brand/**",
+        "devcel-studio/public/brand/**",
+        "devcel-studio/public/devcel.png",
+        "devcel-studio/src-tauri/icons/**"
+      ],
+      "evidence": "Devcel brand artwork was supplied by the user for integration. assets/brand/README.md describes the collection; scripts/check-brand-assets.cjs verified public copies, native icon formats, dimensions, and references.",
+      "notes": "Classified as user-supplied project artwork, not third-party OSS. This does not assert copyright transfer or the absence of third-party rights, and no third-party license is invented."
+    },
+    {
+      "id": "plugin-template-and-sdk-samples",
+      "status": "project-code-no-external-vendor-identified",
+      "paths": [
+        "devcel-studio/templates/plugin-template/**",
+        "importers/unity/**",
+        "importers/godot/**",
+        "examples/**"
+      ],
+      "evidence": "Source/import/header scan found no additional vendored library. SDK/addon LICENSE files already contain the Devcel MIT license. npm/Cargo dependencies are handled separately."
+    },
+    {
+      "id": "react-window-reference",
+      "status": "reference-link-only",
+      "paths": [
+        "devcel-studio/src/lib/react-data-grid/hooks/useViewportRows.ts"
+      ],
+      "evidence": "The source comment links to VariableSizeList.js as an approach to consider. No separately vendored react-window package or source file was found. A reference link alone was not treated as proof of copying."
+    },
+    {
+      "id": "validation-screenshots",
+      "status": "project-validation-output",
+      "paths": [
+        "docs/validation/**/screenshots/**"
+      ],
+      "evidence": "These are checked-in Devcel validation captures; no separately bundled third-party media identified."
+    }
+  ],
+  "unknowns": []
+}

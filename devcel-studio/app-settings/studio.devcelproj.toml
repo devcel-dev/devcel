@@ -1,0 +1,5 @@
+project_name = "studio"
+project_description = "Devcel Studio personal settings, color swatches, plugins, themes, and translations"
+uuid = "d8f42727-dbb7-486d-9c90-d65407a0cd9b"
+color = "#6495ed"
+tag_presets = []

@@ -1,0 +1,18 @@
+[package]
+name = "devcel-runtime"
+edition.workspace = true
+license = "MIT"
+description = "Lightweight read-only runtime reader for Devcel exported data (game/DLL side)"
+
+[lib]
+# cdylib: C ABI shared library loaded by game engines such as Unity and Unreal
+# rlib: Rust consumers and tests
+crate-type = ["cdylib", "rlib"]
+name = "devcel_runtime"
+
+[dependencies]
+# Keep dependencies limited to reading runtime bundle JSON.
+serde = { workspace = true }
+serde_json = { workspace = true }
+# Lock-free snapshot replacement for hot reload
+arc-swap = "1.7"

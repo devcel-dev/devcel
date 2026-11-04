@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "localization",
+  "description": "Receive application language changes and update native window titles; no filesystem or network access",
+  "windows": ["options", "main", "wizard", "table_view", "add-column", "column-color", "project-edit-dialog", "export-dialog", "plugin-manager", "plugin-packages", "reference-config-dialog", "app-updater", "table-rule-*", "bulk-rows-*"],
+  "permissions": ["core:event:allow-listen", "core:event:allow-unlisten", "core:window:allow-set-title", "core:window:allow-close"]
+}

@@ -1,0 +1,59 @@
+uuid = "0de0da47-cf7c-5dce-b945-b6583fec0148"
+display_name = "プラグイン有効・無効"
+description = "Enable or disable plugins through standard settings. External packages require separate execution approval. Unregistered external plugins are disabled."
+[metadata]
+interface_order = []
+initial_transposed = false
+edit_permissions = { add_columns = false, delete_columns = false, add_rows = true, delete_rows = true, edit_cells = true }
+
+parent_uuid = ""
+
+data_name = "PluginStates"
+
+[interface_implementations]
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "5041794f-89ab-5c1e-a048-55eaaf168f56"
+display_name = "プラグインID"
+data_name = "pluginId"
+tooltip = ""
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 220
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "7a7e1d99-c56e-5e38-a219-4aa723f9f368"
+display_name = "有効"
+data_name = "enabled"
+tooltip = ""
+data_type = "Boolean"
+tags = []
+default_value = "false"
+memo_text = ""
+required = true
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 220
+
+[[records]]
+uuid = "ace89caf-ca66-54c6-8265-5ae5ca8a6bbb"
+parent_uuid = ""
+label = "record_ace89cafca6654c682655ae5ca8a6bbb"
+min_version = 0
+tags = []
+[records.values]
+pluginId = "csv-exporter"
+enabled = "true"
+[records.interface_values]
+[records.memo_texts]

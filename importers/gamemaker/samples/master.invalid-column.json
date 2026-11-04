@@ -1,0 +1,32 @@
+{
+  "manifest": {
+    "schema_version": 1,
+    "content_hash": "must-not-replace-the-good-snapshot",
+    "content_version": 1,
+    "data_revision": 2,
+    "generated_at": "2026-10-14T00:00:00Z",
+    "mode": "full"
+  },
+  "project_name": "Invalid unknown-column fixture",
+  "tables": [
+    {
+      "name": "Heroes",
+      "uuid": "heroes-uuid",
+      "columns": [
+        {
+          "name": "hp",
+          "data_type": "I32"
+        }
+      ],
+      "records": [
+        {
+          "id": "hero-1",
+          "values": {
+            "hp": "777",
+            "undefined_column": "this must be rejected"
+          }
+        }
+      ]
+    }
+  ]
+}

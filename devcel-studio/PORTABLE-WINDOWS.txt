@@ -1,0 +1,20 @@
+Devcel Studio for Windows x64
+
+Open devcel-studio.exe in this folder. For a CI release ZIP, extract the
+entire ZIP first. Local build-all-windows outputs this folder directly.
+Keep the bin and legal folders and license files with the application.
+bin/devcel.exe is the matching Devcel CLI; run bin\devcel.exe --version to
+check it. bin/manifest.json records its version, target, SHA256 and source
+commit. No PATH search or separate CLI installation is needed for this copy.
+
+Requires Windows 10 or later and Microsoft Edge WebView2 Runtime 111 or later.
+WebView2 is included with Windows 11 and installed on most Windows 10 devices.
+If it is missing, install the Evergreen Runtime from Microsoft:
+https://developer.microsoft.com/en-us/microsoft-edge/webview2/
+
+The Microsoft Visual C++ runtime and WebView2 loader are statically linked.
+The WebView2 browser runtime is supplied by Windows/Microsoft separately.
+Settings are saved in your Windows user profile. Projects are saved where you
+choose. To update, extract the new release to a new folder and open its EXE.
+
+License: see LICENSE-STUDIO.txt, bin/LICENSE-CLI.txt, LICENSE-NOTICE, and legal/.

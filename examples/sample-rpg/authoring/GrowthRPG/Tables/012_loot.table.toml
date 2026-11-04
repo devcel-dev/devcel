@@ -1,0 +1,1298 @@
+uuid = "10000000-0000-4000-8000-00000000000c"
+display_name = "loot"
+description = ""
+
+[metadata]
+interface_order = []
+data_name = "loot"
+initial_transposed = false
+
+[metadata.edit_permissions]
+add_columns = true
+delete_columns = true
+add_rows = true
+delete_rows = true
+edit_cells = true
+
+[interface_implementations]
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-800c-000000000001"
+display_name = "key"
+data_name = "key"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-800c-000000000002"
+display_name = "material"
+data_name = "material"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-000000000002"
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-800c-000000000003"
+display_name = "quantity"
+data_name = "quantity"
+data_type = "I64"
+default_value = "1"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-800c-000000000004"
+display_name = "unit_value"
+data_name = "unit_value"
+data_type = "I64"
+default_value = "0"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-800c-000000000005"
+display_name = "rarity"
+data_name = "rarity"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[schema.columns]]
+read_only = false
+uuid = "30000000-0000-4000-800c-000000000006"
+display_name = "value"
+data_name = "value"
+data_type = "I64"
+default_value = "=quantity*unit_value"
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000001"
+label = "loot_00000"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00000"
+material = "20000000-0000-4000-8002-000000000001"
+quantity = "1"
+rarity = "common"
+unit_value = "2"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000002"
+label = "loot_00001"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00001"
+material = "20000000-0000-4000-8002-000000000002"
+quantity = "2"
+rarity = "rare"
+unit_value = "3"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000003"
+label = "loot_00002"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00002"
+material = "20000000-0000-4000-8002-000000000003"
+quantity = "3"
+rarity = "rare"
+unit_value = "4"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000004"
+label = "loot_00003"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00003"
+material = "20000000-0000-4000-8002-000000000004"
+quantity = "4"
+rarity = "common"
+unit_value = "5"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000005"
+label = "loot_00004"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00004"
+material = "20000000-0000-4000-8002-000000000005"
+quantity = "1"
+rarity = "rare"
+unit_value = "6"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000006"
+label = "loot_00005"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00005"
+material = "20000000-0000-4000-8002-000000000006"
+quantity = "2"
+rarity = "rare"
+unit_value = "7"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000007"
+label = "loot_00006"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00006"
+material = "20000000-0000-4000-8002-000000000007"
+quantity = "3"
+rarity = "common"
+unit_value = "8"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000008"
+label = "loot_00007"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00007"
+material = "20000000-0000-4000-8002-000000000008"
+quantity = "4"
+rarity = "rare"
+unit_value = "9"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000009"
+label = "loot_00008"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00008"
+material = "20000000-0000-4000-8002-000000000009"
+quantity = "1"
+rarity = "rare"
+unit_value = "10"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000000a"
+label = "loot_00009"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00009"
+material = "20000000-0000-4000-8002-00000000000a"
+quantity = "2"
+rarity = "common"
+unit_value = "11"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000000b"
+label = "loot_00010"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00010"
+material = "20000000-0000-4000-8002-00000000000b"
+quantity = "3"
+rarity = "rare"
+unit_value = "12"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000000c"
+label = "loot_00011"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00011"
+material = "20000000-0000-4000-8002-00000000000c"
+quantity = "4"
+rarity = "rare"
+unit_value = "13"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000000d"
+label = "loot_00012"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00012"
+material = "20000000-0000-4000-8002-00000000000d"
+quantity = "1"
+rarity = "common"
+unit_value = "14"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000000e"
+label = "loot_00013"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00013"
+material = "20000000-0000-4000-8002-00000000000e"
+quantity = "2"
+rarity = "rare"
+unit_value = "2"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000000f"
+label = "loot_00014"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00014"
+material = "20000000-0000-4000-8002-00000000000f"
+quantity = "3"
+rarity = "rare"
+unit_value = "3"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000010"
+label = "loot_00015"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00015"
+material = "20000000-0000-4000-8002-000000000010"
+quantity = "4"
+rarity = "common"
+unit_value = "4"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000011"
+label = "loot_00016"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00016"
+material = "20000000-0000-4000-8002-000000000011"
+quantity = "1"
+rarity = "rare"
+unit_value = "5"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000012"
+label = "loot_00017"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00017"
+material = "20000000-0000-4000-8002-000000000012"
+quantity = "2"
+rarity = "rare"
+unit_value = "6"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000013"
+label = "loot_00018"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00018"
+material = "20000000-0000-4000-8002-000000000013"
+quantity = "3"
+rarity = "common"
+unit_value = "7"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000014"
+label = "loot_00019"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00019"
+material = "20000000-0000-4000-8002-000000000014"
+quantity = "4"
+rarity = "rare"
+unit_value = "8"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000015"
+label = "loot_00020"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00020"
+material = "20000000-0000-4000-8002-000000000015"
+quantity = "1"
+rarity = "rare"
+unit_value = "9"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000016"
+label = "loot_00021"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00021"
+material = "20000000-0000-4000-8002-000000000016"
+quantity = "2"
+rarity = "common"
+unit_value = "10"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000017"
+label = "loot_00022"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00022"
+material = "20000000-0000-4000-8002-000000000017"
+quantity = "3"
+rarity = "rare"
+unit_value = "11"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000018"
+label = "loot_00023"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00023"
+material = "20000000-0000-4000-8002-000000000018"
+quantity = "4"
+rarity = "rare"
+unit_value = "12"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000019"
+label = "loot_00024"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00024"
+material = "20000000-0000-4000-8002-000000000019"
+quantity = "1"
+rarity = "common"
+unit_value = "13"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000001a"
+label = "loot_00025"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00025"
+material = "20000000-0000-4000-8002-00000000001a"
+quantity = "2"
+rarity = "rare"
+unit_value = "14"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000001b"
+label = "loot_00026"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00026"
+material = "20000000-0000-4000-8002-00000000001b"
+quantity = "3"
+rarity = "rare"
+unit_value = "2"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000001c"
+label = "loot_00027"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00027"
+material = "20000000-0000-4000-8002-00000000001c"
+quantity = "4"
+rarity = "common"
+unit_value = "3"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000001d"
+label = "loot_00028"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00028"
+material = "20000000-0000-4000-8002-00000000001d"
+quantity = "1"
+rarity = "rare"
+unit_value = "4"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000001e"
+label = "loot_00029"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00029"
+material = "20000000-0000-4000-8002-00000000001e"
+quantity = "2"
+rarity = "rare"
+unit_value = "5"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000001f"
+label = "loot_00030"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00030"
+material = "20000000-0000-4000-8002-00000000001f"
+quantity = "3"
+rarity = "common"
+unit_value = "6"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000020"
+label = "loot_00031"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00031"
+material = "20000000-0000-4000-8002-000000000020"
+quantity = "4"
+rarity = "rare"
+unit_value = "7"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000021"
+label = "loot_00032"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00032"
+material = "20000000-0000-4000-8002-000000000021"
+quantity = "1"
+rarity = "rare"
+unit_value = "8"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000022"
+label = "loot_00033"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00033"
+material = "20000000-0000-4000-8002-000000000022"
+quantity = "2"
+rarity = "common"
+unit_value = "9"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000023"
+label = "loot_00034"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00034"
+material = "20000000-0000-4000-8002-000000000023"
+quantity = "3"
+rarity = "rare"
+unit_value = "10"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000024"
+label = "loot_00035"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00035"
+material = "20000000-0000-4000-8002-000000000024"
+quantity = "4"
+rarity = "rare"
+unit_value = "11"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000025"
+label = "loot_00036"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00036"
+material = "20000000-0000-4000-8002-000000000025"
+quantity = "1"
+rarity = "common"
+unit_value = "12"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000026"
+label = "loot_00037"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00037"
+material = "20000000-0000-4000-8002-000000000026"
+quantity = "2"
+rarity = "rare"
+unit_value = "13"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000027"
+label = "loot_00038"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00038"
+material = "20000000-0000-4000-8002-000000000027"
+quantity = "3"
+rarity = "rare"
+unit_value = "14"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000028"
+label = "loot_00039"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00039"
+material = "20000000-0000-4000-8002-000000000028"
+quantity = "4"
+rarity = "common"
+unit_value = "2"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000029"
+label = "loot_00040"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00040"
+material = "20000000-0000-4000-8002-000000000029"
+quantity = "1"
+rarity = "rare"
+unit_value = "3"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000002a"
+label = "loot_00041"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00041"
+material = "20000000-0000-4000-8002-00000000002a"
+quantity = "2"
+rarity = "rare"
+unit_value = "4"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000002b"
+label = "loot_00042"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00042"
+material = "20000000-0000-4000-8002-00000000002b"
+quantity = "3"
+rarity = "common"
+unit_value = "5"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000002c"
+label = "loot_00043"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00043"
+material = "20000000-0000-4000-8002-00000000002c"
+quantity = "4"
+rarity = "rare"
+unit_value = "6"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000002d"
+label = "loot_00044"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00044"
+material = "20000000-0000-4000-8002-00000000002d"
+quantity = "1"
+rarity = "rare"
+unit_value = "7"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000002e"
+label = "loot_00045"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00045"
+material = "20000000-0000-4000-8002-00000000002e"
+quantity = "2"
+rarity = "common"
+unit_value = "8"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000002f"
+label = "loot_00046"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00046"
+material = "20000000-0000-4000-8002-00000000002f"
+quantity = "3"
+rarity = "rare"
+unit_value = "9"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000030"
+label = "loot_00047"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00047"
+material = "20000000-0000-4000-8002-000000000030"
+quantity = "4"
+rarity = "rare"
+unit_value = "10"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000031"
+label = "loot_00048"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00048"
+material = "20000000-0000-4000-8002-000000000031"
+quantity = "1"
+rarity = "common"
+unit_value = "11"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000032"
+label = "loot_00049"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00049"
+material = "20000000-0000-4000-8002-000000000032"
+quantity = "2"
+rarity = "rare"
+unit_value = "12"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000033"
+label = "loot_00050"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00050"
+material = "20000000-0000-4000-8002-000000000033"
+quantity = "3"
+rarity = "rare"
+unit_value = "13"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000034"
+label = "loot_00051"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00051"
+material = "20000000-0000-4000-8002-000000000034"
+quantity = "4"
+rarity = "common"
+unit_value = "14"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000035"
+label = "loot_00052"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00052"
+material = "20000000-0000-4000-8002-000000000035"
+quantity = "1"
+rarity = "rare"
+unit_value = "2"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000036"
+label = "loot_00053"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00053"
+material = "20000000-0000-4000-8002-000000000036"
+quantity = "2"
+rarity = "rare"
+unit_value = "3"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000037"
+label = "loot_00054"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00054"
+material = "20000000-0000-4000-8002-000000000037"
+quantity = "3"
+rarity = "common"
+unit_value = "4"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000038"
+label = "loot_00055"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00055"
+material = "20000000-0000-4000-8002-000000000038"
+quantity = "4"
+rarity = "rare"
+unit_value = "5"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000039"
+label = "loot_00056"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00056"
+material = "20000000-0000-4000-8002-000000000039"
+quantity = "1"
+rarity = "rare"
+unit_value = "6"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000003a"
+label = "loot_00057"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00057"
+material = "20000000-0000-4000-8002-00000000003a"
+quantity = "2"
+rarity = "common"
+unit_value = "7"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000003b"
+label = "loot_00058"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00058"
+material = "20000000-0000-4000-8002-00000000003b"
+quantity = "3"
+rarity = "rare"
+unit_value = "8"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000003c"
+label = "loot_00059"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00059"
+material = "20000000-0000-4000-8002-00000000003c"
+quantity = "4"
+rarity = "rare"
+unit_value = "9"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000003d"
+label = "loot_00060"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00060"
+material = "20000000-0000-4000-8002-00000000003d"
+quantity = "1"
+rarity = "common"
+unit_value = "10"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000003e"
+label = "loot_00061"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00061"
+material = "20000000-0000-4000-8002-00000000003e"
+quantity = "2"
+rarity = "rare"
+unit_value = "11"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000003f"
+label = "loot_00062"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00062"
+material = "20000000-0000-4000-8002-00000000003f"
+quantity = "3"
+rarity = "rare"
+unit_value = "12"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000040"
+label = "loot_00063"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00063"
+material = "20000000-0000-4000-8002-000000000040"
+quantity = "4"
+rarity = "common"
+unit_value = "13"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000041"
+label = "loot_00064"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00064"
+material = "20000000-0000-4000-8002-000000000041"
+quantity = "1"
+rarity = "rare"
+unit_value = "14"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000042"
+label = "loot_00065"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00065"
+material = "20000000-0000-4000-8002-000000000042"
+quantity = "2"
+rarity = "rare"
+unit_value = "2"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000043"
+label = "loot_00066"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00066"
+material = "20000000-0000-4000-8002-000000000043"
+quantity = "3"
+rarity = "common"
+unit_value = "3"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000044"
+label = "loot_00067"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00067"
+material = "20000000-0000-4000-8002-000000000044"
+quantity = "4"
+rarity = "rare"
+unit_value = "4"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000045"
+label = "loot_00068"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00068"
+material = "20000000-0000-4000-8002-000000000045"
+quantity = "1"
+rarity = "rare"
+unit_value = "5"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000046"
+label = "loot_00069"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00069"
+material = "20000000-0000-4000-8002-000000000046"
+quantity = "2"
+rarity = "common"
+unit_value = "6"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000047"
+label = "loot_00070"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00070"
+material = "20000000-0000-4000-8002-000000000047"
+quantity = "3"
+rarity = "rare"
+unit_value = "7"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000048"
+label = "loot_00071"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00071"
+material = "20000000-0000-4000-8002-000000000048"
+quantity = "4"
+rarity = "rare"
+unit_value = "8"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000049"
+label = "loot_00072"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00072"
+material = "20000000-0000-4000-8002-000000000049"
+quantity = "1"
+rarity = "common"
+unit_value = "9"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000004a"
+label = "loot_00073"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00073"
+material = "20000000-0000-4000-8002-00000000004a"
+quantity = "2"
+rarity = "rare"
+unit_value = "10"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000004b"
+label = "loot_00074"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00074"
+material = "20000000-0000-4000-8002-00000000004b"
+quantity = "3"
+rarity = "rare"
+unit_value = "11"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000004c"
+label = "loot_00075"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00075"
+material = "20000000-0000-4000-8002-00000000004c"
+quantity = "4"
+rarity = "common"
+unit_value = "12"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000004d"
+label = "loot_00076"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00076"
+material = "20000000-0000-4000-8002-00000000004d"
+quantity = "1"
+rarity = "rare"
+unit_value = "13"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000004e"
+label = "loot_00077"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00077"
+material = "20000000-0000-4000-8002-00000000004e"
+quantity = "2"
+rarity = "rare"
+unit_value = "14"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000004f"
+label = "loot_00078"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00078"
+material = "20000000-0000-4000-8002-00000000004f"
+quantity = "3"
+rarity = "common"
+unit_value = "2"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000050"
+label = "loot_00079"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00079"
+material = "20000000-0000-4000-8002-000000000050"
+quantity = "4"
+rarity = "rare"
+unit_value = "3"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000051"
+label = "loot_00080"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00080"
+material = "20000000-0000-4000-8002-000000000051"
+quantity = "1"
+rarity = "rare"
+unit_value = "4"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000052"
+label = "loot_00081"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00081"
+material = "20000000-0000-4000-8002-000000000052"
+quantity = "2"
+rarity = "common"
+unit_value = "5"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000053"
+label = "loot_00082"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00082"
+material = "20000000-0000-4000-8002-000000000053"
+quantity = "3"
+rarity = "rare"
+unit_value = "6"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000054"
+label = "loot_00083"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00083"
+material = "20000000-0000-4000-8002-000000000054"
+quantity = "4"
+rarity = "rare"
+unit_value = "7"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000055"
+label = "loot_00084"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00084"
+material = "20000000-0000-4000-8002-000000000055"
+quantity = "1"
+rarity = "common"
+unit_value = "8"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000056"
+label = "loot_00085"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00085"
+material = "20000000-0000-4000-8002-000000000056"
+quantity = "2"
+rarity = "rare"
+unit_value = "9"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000057"
+label = "loot_00086"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00086"
+material = "20000000-0000-4000-8002-000000000057"
+quantity = "3"
+rarity = "rare"
+unit_value = "10"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000058"
+label = "loot_00087"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00087"
+material = "20000000-0000-4000-8002-000000000058"
+quantity = "4"
+rarity = "common"
+unit_value = "11"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000059"
+label = "loot_00088"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00088"
+material = "20000000-0000-4000-8002-000000000059"
+quantity = "1"
+rarity = "rare"
+unit_value = "12"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000005a"
+label = "loot_00089"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00089"
+material = "20000000-0000-4000-8002-00000000005a"
+quantity = "2"
+rarity = "rare"
+unit_value = "13"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000005b"
+label = "loot_00090"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00090"
+material = "20000000-0000-4000-8002-00000000005b"
+quantity = "3"
+rarity = "common"
+unit_value = "14"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000005c"
+label = "loot_00091"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00091"
+material = "20000000-0000-4000-8002-00000000005c"
+quantity = "4"
+rarity = "rare"
+unit_value = "2"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000005d"
+label = "loot_00092"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00092"
+material = "20000000-0000-4000-8002-00000000005d"
+quantity = "1"
+rarity = "rare"
+unit_value = "3"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000005e"
+label = "loot_00093"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00093"
+material = "20000000-0000-4000-8002-00000000005e"
+quantity = "2"
+rarity = "common"
+unit_value = "4"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-00000000005f"
+label = "loot_00094"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00094"
+material = "20000000-0000-4000-8002-00000000005f"
+quantity = "3"
+rarity = "rare"
+unit_value = "5"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000060"
+label = "loot_00095"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00095"
+material = "20000000-0000-4000-8002-000000000060"
+quantity = "4"
+rarity = "rare"
+unit_value = "6"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000061"
+label = "loot_00096"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00096"
+material = "20000000-0000-4000-8002-000000000061"
+quantity = "1"
+rarity = "common"
+unit_value = "7"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000062"
+label = "loot_00097"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00097"
+material = "20000000-0000-4000-8002-000000000062"
+quantity = "2"
+rarity = "rare"
+unit_value = "8"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000063"
+label = "loot_00098"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00098"
+material = "20000000-0000-4000-8002-000000000063"
+quantity = "3"
+rarity = "rare"
+unit_value = "9"
+
+[[records]]
+uuid = "20000000-0000-4000-800c-000000000064"
+label = "loot_00099"
+tags = ["rpg/loot", "catalog/seed-v1"]
+
+[records.values]
+key = "loot_00099"
+material = "20000000-0000-4000-8002-000000000064"
+quantity = "4"
+rarity = "common"
+unit_value = "10"

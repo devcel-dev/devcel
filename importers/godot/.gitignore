@@ -1,0 +1,8 @@
+.godot/
+.devcel/*
+!.devcel/devcel.import.json
+*.devcel-state.json
+*.devcel-owner.json
+*.devcel-lock
+test-output/*
+!test-output/.gitkeep

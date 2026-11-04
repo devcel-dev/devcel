@@ -1,0 +1,69 @@
+uuid = "682923bd-8e8d-55b6-a9dd-f628431954bd"
+display_name = "Plugin resources"
+description = "Plugin resources with per-resource interface contracts"
+[metadata]
+interface_order = []
+
+parent_uuid = ""
+
+data_name = "PluginResources"
+
+initial_transposed = false
+
+[metadata.edit_permissions]
+add_columns = false
+delete_columns = false
+add_rows = false
+delete_rows = false
+edit_cells = false
+
+[interface_implementations]
+
+[[schema.columns]]
+min_version = 0
+read_only = false
+uuid = "38865a39-f27f-8e2a-a4f7-68569a703c48"
+display_name = "Resource registration"
+data_name = "registration"
+tooltip = ""
+data_type = "TableRef"
+tags = []
+default_value = ""
+memo_text = ""
+required = true
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 100
+
+[schema.columns.table_ref_config]
+interface_uuid = "3af00752-cf43-4a47-9f8a-1a3e8f338fbd"
+
+[[records]]
+uuid = "0d1a9c19-f73b-8d6a-aa42-2deceaa18bef"
+parent_uuid = ""
+label = "CSV exporter / settings"
+min_version = 0
+tags = []
+
+[records.values]
+registration = "28c2bfbd-9963-8cbf-8502-6040b18d826a"
+
+[records.interface_values]
+
+[records.memo_texts]
+
+[[records]]
+uuid = "ed5a3513-f74a-8102-a63a-8184fe0f2f23"
+parent_uuid = ""
+label = "CSV exporter / translations"
+min_version = 0
+tags = []
+
+[records.values]
+registration = "fa2ae00a-9d45-8c3f-b2a9-f82965446a4a"
+
+[records.interface_values]
+
+[records.memo_texts]

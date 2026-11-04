@@ -1,0 +1,7 @@
+Binaries/
+Intermediate/
+Saved/
+Tools/*/
+Tools/manifest.json
+Tools/cli-source.tar.gz
+ThirdPartyNotices/

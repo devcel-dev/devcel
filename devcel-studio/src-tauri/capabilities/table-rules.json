@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "table-rules",
+  "description": "Input warning and new-record value collection windows",
+  "windows": ["table-rule-*"],
+  "permissions": ["core:window:allow-close", "core:window:allow-destroy", "core:event:allow-listen", "core:event:allow-unlisten"]
+}

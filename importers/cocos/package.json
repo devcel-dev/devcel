@@ -1,0 +1,79 @@
+{
+  "name": "devcel-importer",
+  "description": "Devcel saved-project importer for Cocos Creator 3.8",
+  "author": "Devcel",
+  "package_version": 2,
+  "editor": ">=3.8.0 <4.0.0",
+  "main": "./dist/main.js",
+  "scripts": {
+    "prepare-sdk": "node scripts/prepare.cjs",
+    "build": "tsc -p tsconfig.json",
+    "verify": "node tests/workflow.cjs && node tests/tag_filters.cjs"
+  },
+  "panels": {
+    "default": {
+      "title": "Devcel Import",
+      "type": "simple",
+      "main": "./dist/panel.js",
+      "icon": "./icon.svg",
+      "size": {
+        "width": 760,
+        "height": 760,
+        "min-width": 620,
+        "min-height": 500
+      }
+    }
+  },
+  "contributions": {
+    "messages": {
+      "open-panel": {
+        "methods": [
+          "openPanel"
+        ]
+      },
+      "config": {
+        "methods": [
+          "config"
+        ]
+      },
+      "save": {
+        "methods": [
+          "save"
+        ]
+      },
+      "import": {
+        "methods": [
+          "importSource"
+        ]
+      },
+      "status": {
+        "methods": [
+          "status"
+        ]
+      },
+      "watch": {
+        "methods": [
+          "watch"
+        ]
+      },
+      "choose-project": {
+        "methods": [
+          "chooseProject"
+        ]
+      },
+      "tag-presets": {
+        "methods": [
+          "tagPresets"
+        ]
+      }
+    },
+    "menu": [
+      {
+        "path": "i18n:menu.extension",
+        "label": "Devcel Import",
+        "message": "open-panel"
+      }
+    ]
+  },
+  "license": "MIT"
+}

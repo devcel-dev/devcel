@@ -1,0 +1,193 @@
+uuid = "6a6882ac-5a9a-51fc-b1d3-3ba3169b3a6e"
+display_name = "アプリ設定"
+description = "Personal settings. Editing value cells applies the changes to the application."
+[metadata]
+interface_order = []
+initial_transposed = true
+edit_permissions = { add_columns = false, delete_columns = false, add_rows = false, delete_rows = false, edit_cells = true }
+
+parent_uuid = ""
+
+data_name = "UserSettings"
+
+[interface_implementations]
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "0b0c717a-e3e5-5c57-b2a8-6460d753b954"
+display_name = "表示言語"
+data_name = "locale"
+tooltip = ""
+data_type = "Select"
+tags = []
+default_value = "system"
+memo_text = ""
+required = true
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns.select_config.options]]
+value = "system"
+label = "system"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "af3c91ac-5b4d-5d65-89d3-41102912eb8b"
+display_name = "テーマ"
+data_name = "theme"
+tooltip = ""
+data_type = "Select"
+tags = []
+default_value = "system"
+memo_text = ""
+required = true
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns.select_config.options]]
+value = "system"
+label = "system"
+
+
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "e663c97a-889b-5bbb-91d8-c08515e2c921"
+display_name = "起動時に更新を確認"
+data_name = "automaticUpdateChecks"
+tooltip = ""
+data_type = "Boolean"
+tags = []
+default_value = "false"
+memo_text = ""
+required = true
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "b3572d14-bf5c-523f-b559-6306092b875a"
+display_name = "Color32 表示"
+data_name = "color32Display"
+tooltip = ""
+data_type = "Select"
+tags = []
+default_value = "srgb"
+memo_text = ""
+required = true
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns.select_config.options]]
+value = "srgb"
+label = "srgb"
+
+[[schema.columns.select_config.options]]
+value = "linear"
+label = "linear"
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "3b75d243-5adc-5582-ac98-364ec79df602"
+display_name = "ColorFloat 表示"
+data_name = "colorFloatDisplay"
+tooltip = ""
+data_type = "Select"
+tags = []
+default_value = "linear"
+memo_text = ""
+required = true
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 180
+
+[[schema.columns.select_config.options]]
+value = "srgb"
+label = "srgb"
+
+[[schema.columns.select_config.options]]
+value = "linear"
+label = "linear"
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "96f3a457-f644-545c-af7e-6d820510b800"
+display_name = "プラグインテーマ ID"
+data_name = "pluginTheme"
+tooltip = "空欄は組み込みテーマを使用"
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+required = false
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 220
+
+
+[[schema.columns]]
+read_only = false
+min_version = 0
+uuid = "ba576d0d-140d-5227-9ede-6752eb40cce2"
+display_name = "プラグインカタログURL"
+data_name = "pluginCatalogUrl"
+tooltip = "空欄は未設定。認証情報やfragmentを含まないHTTPS URL。"
+data_type = "String"
+tags = []
+default_value = ""
+memo_text = ""
+required = false
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 220
+
+[[records]]
+uuid = "2d91634f-ceea-5be7-aafd-a769cc262ba5"
+parent_uuid = ""
+label = "record_2d91634fceea5be7aafda769cc262ba5"
+min_version = 0
+tags = []
+[records.values]
+pluginTheme = ""
+pluginCatalogUrl = ""
+locale = "system"
+theme = "system"
+automaticUpdateChecks = "false"
+color32Display = "srgb"
+colorFloatDisplay = "linear"
+[records.interface_values]
+[records.memo_texts]

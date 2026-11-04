@@ -1,0 +1,69 @@
+{
+  "package": "@react-three/drei",
+  "version": "10.7.9",
+  "source": "https://registry.npmjs.org/@react-three/drei/-/drei-10.7.9.tgz",
+  "license": "MIT",
+  "files": [
+    {
+      "path": "core/Stars.js",
+      "originalSha256": "720ba34b6755bdce05d49f63ae6421b2e3019ad413dd006ce6312ba3c39eb97d",
+      "vendoredSha256": "720ba34b6755bdce05d49f63ae6421b2e3019ad413dd006ce6312ba3c39eb97d",
+      "changed": false
+    },
+    {
+      "path": "core/Stars.d.ts",
+      "originalSha256": "cc08bd4e50ec465e694826816b4797e6f6a4a5211e98bb76bb05342439c7ce38",
+      "vendoredSha256": "cc08bd4e50ec465e694826816b4797e6f6a4a5211e98bb76bb05342439c7ce38",
+      "changed": false
+    },
+    {
+      "path": "core/MeshDistortMaterial.js",
+      "originalSha256": "230a419717c0f7e948a8794ba7bcd66eadd0c8f1fe46d02b9c6342c6bebbb94a",
+      "vendoredSha256": "4d6b2cedae373f4ab8dbfd6ded4f89896e99913a3a2c3dafda3c3fd31f8edfd9",
+      "changed": true
+    },
+    {
+      "path": "core/MeshDistortMaterial.d.ts",
+      "originalSha256": "ff4a940841cc11f423a911011edef12b47541e48c02cd5be4e8aa0addb0cf3f7",
+      "vendoredSha256": "ff4a940841cc11f423a911011edef12b47541e48c02cd5be4e8aa0addb0cf3f7",
+      "changed": false
+    },
+    {
+      "path": "helpers/constants.js",
+      "originalSha256": "55baac1e87374bb0eee21847844203241fff59d0eec6a32794e84267d74718ac",
+      "vendoredSha256": "55baac1e87374bb0eee21847844203241fff59d0eec6a32794e84267d74718ac",
+      "changed": false
+    },
+    {
+      "path": "helpers/glsl/distort.vert.glsl.js",
+      "originalSha256": "a4c9cf89df142b405bb6d330da106588947638efcb09cfc4512278aa794ebca6",
+      "vendoredSha256": "a4c9cf89df142b405bb6d330da106588947638efcb09cfc4512278aa794ebca6",
+      "changed": false
+    },
+    {
+      "path": "helpers/ts-utils.d.ts",
+      "originalSha256": "be3daf180476b92514b9003e9bd1583a2a71ad80c9342f627ca325b863ca55d4",
+      "vendoredSha256": "be3daf180476b92514b9003e9bd1583a2a71ad80c9342f627ca325b863ca55d4",
+      "changed": false
+    },
+    {
+      "path": "LICENSE",
+      "originalSha256": "2e36b208b403882158daf95cae207087bbb830db4d434a79ebafffca177244c8",
+      "vendoredSha256": "2e36b208b403882158daf95cae207087bbb830db4d434a79ebafffca177244c8",
+      "changed": false
+    }
+  ],
+  "changes": [
+    "MeshDistortMaterial.js: replace Babel extends helper with equivalent ES2020 Object.assign; no shader or rendering changes.",
+    "index.ts: new local re-export entry point."
+  ],
+  "shaderProvenance": {
+    "package": "glsl-noise",
+    "version": "0.0.0",
+    "source": "https://registry.npmjs.org/glsl-noise/-/glsl-noise-0.0.0.tgz",
+    "sourceFile": "simplex/3d.glsl",
+    "sourceSha256": "911ac380c7147792a8ada51347e5221de6e75181421b867957b0a17274605cfe",
+    "comparison": "Identical after stripping comments/preprocessor lines/whitespace; no arithmetic or tokens changed",
+    "license": "helpers/glsl/LICENSE-glsl-noise"
+  }
+}

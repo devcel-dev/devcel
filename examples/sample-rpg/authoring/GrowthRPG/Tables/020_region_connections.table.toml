@@ -1,0 +1,1215 @@
+uuid = "e122e585-6cd8-5a57-b8c3-b6a39e9b0c7c"
+display_name = "region_connections"
+description = "Forge & Field authored region_connections"
+
+[metadata]
+interface_order = []
+data_name = "region_connections"
+initial_transposed = false
+
+[metadata.edit_permissions]
+add_columns = true
+delete_columns = true
+add_rows = true
+delete_rows = true
+edit_cells = true
+
+[interface_implementations]
+
+[[schema.columns]]
+read_only = false
+uuid = "76ed0652-80a3-5d38-9999-199b6b9f57d7"
+display_name = "key"
+data_name = "key"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "de80e749-969e-5ba9-a58a-9f10da3e1c15"
+display_name = "name"
+data_name = "name"
+data_type = "String"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[[schema.columns]]
+read_only = false
+uuid = "0d41ae88-7887-5e87-8778-c2b0940aaa44"
+display_name = "from_region"
+data_name = "from_region"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-00000000000b"
+
+[[schema.columns]]
+read_only = false
+uuid = "adfdb36f-07b7-536d-8e5e-f67e9e5ca907"
+display_name = "to_region"
+data_name = "to_region"
+data_type = "Reference"
+default_value = ""
+
+[schema.columns.style]
+color = "#FFFFFF"
+font_size = 12
+width = 140
+
+[schema.columns.reference_config]
+target_table_uuid = "10000000-0000-4000-8000-00000000000b"
+
+[[records]]
+uuid = "cf89831a-45aa-5fb9-913c-a9f6985dab4a"
+
+[records.values]
+from_region = "20000000-0000-4000-800b-000000000002"
+key = "road_154a6748-3133-5e63-bb6a-b82bb085e41d_20000000-0000-4000-800b-000000000002"
+name = "Glimmering Mine — Fern Ravine"
+to_region = "154a6748-3133-5e63-bb6a-b82bb085e41d"
+
+[[records]]
+uuid = "e56beac8-f135-5924-a139-a821ce434bdd"
+
+[records.values]
+from_region = "154a6748-3133-5e63-bb6a-b82bb085e41d"
+key = "road_154a6748-3133-5e63-bb6a-b82bb085e41d_d71ebf1c-3a11-563c-a089-fd4432baabe8"
+name = "Fern Ravine — Winterbud Thicket"
+to_region = "d71ebf1c-3a11-563c-a089-fd4432baabe8"
+
+[[records]]
+uuid = "69777b54-6ef6-5260-89f5-d1863dde8ba3"
+
+[records.values]
+from_region = "d71ebf1c-3a11-563c-a089-fd4432baabe8"
+key = "road_b8255005-8c23-545d-b943-a6ab373b4c56_d71ebf1c-3a11-563c-a089-fd4432baabe8"
+name = "Winterbud Thicket — Smith's Rest"
+to_region = "b8255005-8c23-545d-b943-a6ab373b4c56"
+
+[[records]]
+uuid = "9f4b82e7-1c39-540b-8bb7-2ce41027fccb"
+
+[records.values]
+from_region = "b8255005-8c23-545d-b943-a6ab373b4c56"
+key = "road_b8255005-8c23-545d-b943-a6ab373b4c56_dc86c626-89aa-54f0-940f-baa05a3618ff"
+name = "Smith's Rest — Bat Grotto"
+to_region = "dc86c626-89aa-54f0-940f-baa05a3618ff"
+
+[[records]]
+uuid = "424f9d72-1e88-5a0c-bfc2-46d6406a169e"
+
+[records.values]
+from_region = "dc86c626-89aa-54f0-940f-baa05a3618ff"
+key = "road_c53364f8-4657-56f1-b2d0-eb16132633b3_dc86c626-89aa-54f0-940f-baa05a3618ff"
+name = "Bat Grotto — Slate Brook"
+to_region = "c53364f8-4657-56f1-b2d0-eb16132633b3"
+
+[[records]]
+uuid = "7f9b0871-9ecb-5d11-95c7-4384fc542fdb"
+
+[records.values]
+from_region = "c53364f8-4657-56f1-b2d0-eb16132633b3"
+key = "road_11c973c4-d43a-5d99-b03e-cfd759a62f95_c53364f8-4657-56f1-b2d0-eb16132633b3"
+name = "Slate Brook — Cracked Forge"
+to_region = "11c973c4-d43a-5d99-b03e-cfd759a62f95"
+
+[[records]]
+uuid = "2dc64d24-1444-5f11-8826-2cbe3dd20390"
+
+[records.values]
+from_region = "11c973c4-d43a-5d99-b03e-cfd759a62f95"
+key = "road_11c973c4-d43a-5d99-b03e-cfd759a62f95_1c35f184-8452-59b4-83ed-c138f7afd91e"
+name = "Cracked Forge — Frost Cleft"
+to_region = "1c35f184-8452-59b4-83ed-c138f7afd91e"
+
+[[records]]
+uuid = "cb7155f7-8527-5495-9ac8-3613c938e869"
+
+[records.values]
+from_region = "1c35f184-8452-59b4-83ed-c138f7afd91e"
+key = "road_1c35f184-8452-59b4-83ed-c138f7afd91e_835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+name = "Frost Cleft — Frostward Lodge"
+to_region = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+
+[[records]]
+uuid = "e35c50ee-58d1-5b9a-9da9-bd384b62a7a8"
+
+[records.values]
+from_region = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+key = "road_05b31c7d-8560-5de9-97ab-af15ac955f6a_835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+name = "Frostward Lodge — Clockwork Vault-Tomb"
+to_region = "05b31c7d-8560-5de9-97ab-af15ac955f6a"
+
+[[records]]
+uuid = "f1dfd2a4-18f4-5e4c-a4ff-d96dec7ecd4f"
+
+[records.values]
+from_region = "05b31c7d-8560-5de9-97ab-af15ac955f6a"
+key = "road_05b31c7d-8560-5de9-97ab-af15ac955f6a_45a63e98-f65d-58c5-ae5d-5ba19bf050b6"
+name = "Clockwork Vault-Tomb — Storm Shelf"
+to_region = "45a63e98-f65d-58c5-ae5d-5ba19bf050b6"
+
+[[records]]
+uuid = "ff2fd6bc-10bb-572e-82c5-4681b84c6114"
+
+[records.values]
+from_region = "45a63e98-f65d-58c5-ae5d-5ba19bf050b6"
+key = "road_45a63e98-f65d-58c5-ae5d-5ba19bf050b6_ff1f8405-63e6-50da-bb94-1b0b99ddae4d"
+name = "Storm Shelf — Goldwash Diggings"
+to_region = "ff1f8405-63e6-50da-bb94-1b0b99ddae4d"
+
+[[records]]
+uuid = "7e8da285-1ff6-563e-aaef-be233d20cfb3"
+
+[records.values]
+from_region = "ff1f8405-63e6-50da-bb94-1b0b99ddae4d"
+key = "road_06c8d288-026b-59f6-81b0-5f802b83dddb_ff1f8405-63e6-50da-bb94-1b0b99ddae4d"
+name = "Goldwash Diggings — Starfall Quarry"
+to_region = "06c8d288-026b-59f6-81b0-5f802b83dddb"
+
+[[records]]
+uuid = "73778d70-8229-51ad-87c3-de5370797a0a"
+
+[records.values]
+from_region = "06c8d288-026b-59f6-81b0-5f802b83dddb"
+key = "road_06c8d288-026b-59f6-81b0-5f802b83dddb_7d332bbd-a4a3-5938-9b59-3a1f987d6014"
+name = "Starfall Quarry — Starwatch Rest"
+to_region = "7d332bbd-a4a3-5938-9b59-3a1f987d6014"
+
+[[records]]
+uuid = "6a23eb18-df92-565f-92ed-f99ab946b976"
+
+[records.values]
+from_region = "7d332bbd-a4a3-5938-9b59-3a1f987d6014"
+key = "road_3de179c0-0029-543a-9c29-65bfbd6d7886_7d332bbd-a4a3-5938-9b59-3a1f987d6014"
+name = "Starwatch Rest — Cloud Terrace"
+to_region = "3de179c0-0029-543a-9c29-65bfbd6d7886"
+
+[[records]]
+uuid = "cd7e7290-53af-5026-b6b9-1cda345de356"
+
+[records.values]
+from_region = "3de179c0-0029-543a-9c29-65bfbd6d7886"
+key = "road_3de179c0-0029-543a-9c29-65bfbd6d7886_f570c798-19aa-5b49-9ba0-297923dec683"
+name = "Cloud Terrace — Galesplit Peak"
+to_region = "f570c798-19aa-5b49-9ba0-297923dec683"
+
+[[records]]
+uuid = "53306d2b-f158-5e46-a032-e9c2c9288281"
+
+[records.values]
+from_region = "154a6748-3133-5e63-bb6a-b82bb085e41d"
+key = "road_154a6748-3133-5e63-bb6a-b82bb085e41d_3c134b71-889d-5593-b97b-b3368296dbcc"
+name = "Fern Ravine — Glass Quarry"
+to_region = "3c134b71-889d-5593-b97b-b3368296dbcc"
+
+[[records]]
+uuid = "77f25e9a-090b-5701-871a-9db1f01e09c8"
+
+[records.values]
+from_region = "3c134b71-889d-5593-b97b-b3368296dbcc"
+key = "road_3c134b71-889d-5593-b97b-b3368296dbcc_51380d65-c7da-5703-a91b-1924e65e6c7d"
+name = "Glass Quarry — Blue Scree"
+to_region = "51380d65-c7da-5703-a91b-1924e65e6c7d"
+
+[[records]]
+uuid = "f46f2d68-91f6-5598-8d14-fac959f1b8d9"
+
+[records.values]
+from_region = "51380d65-c7da-5703-a91b-1924e65e6c7d"
+key = "road_51380d65-c7da-5703-a91b-1924e65e6c7d_5fd6161e-b998-58b9-9928-86676cec6641"
+name = "Blue Scree — Copper Cutting"
+to_region = "5fd6161e-b998-58b9-9928-86676cec6641"
+
+[[records]]
+uuid = "613f96c3-88c9-555f-a745-b0e2eec504c5"
+
+[records.values]
+from_region = "5fd6161e-b998-58b9-9928-86676cec6641"
+key = "road_5fd6161e-b998-58b9-9928-86676cec6641_d71ebf1c-3a11-563c-a089-fd4432baabe8"
+name = "Copper Cutting — Winterbud Thicket"
+to_region = "d71ebf1c-3a11-563c-a089-fd4432baabe8"
+
+[[records]]
+uuid = "fbd85532-4f7d-5bbb-8086-53b3e9d04ea0"
+
+[records.values]
+from_region = "dc86c626-89aa-54f0-940f-baa05a3618ff"
+key = "road_0a09e552-89ac-50d3-9a3b-e40724344187_dc86c626-89aa-54f0-940f-baa05a3618ff"
+name = "Bat Grotto — Echo Tunnel"
+to_region = "0a09e552-89ac-50d3-9a3b-e40724344187"
+
+[[records]]
+uuid = "d8091f7a-b227-5911-a993-19db6daee060"
+
+[records.values]
+from_region = "0a09e552-89ac-50d3-9a3b-e40724344187"
+key = "road_0a09e552-89ac-50d3-9a3b-e40724344187_dea3a1d9-fa1f-52c7-ade2-02d934c5d00c"
+name = "Echo Tunnel — Stone Ring Ascent"
+to_region = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c"
+
+[[records]]
+uuid = "a4a530b6-d5c3-505c-8c7c-293b8c3f3236"
+
+[records.values]
+from_region = "dea3a1d9-fa1f-52c7-ade2-02d934c5d00c"
+key = "road_8e18ff2d-7404-4081-9096-2fa9ed3a9f09_dea3a1d9-fa1f-52c7-ade2-02d934c5d00c"
+name = "Stone Ring Ascent — Old Clock Square"
+to_region = "8e18ff2d-7404-4081-9096-2fa9ed3a9f09"
+
+[[records]]
+uuid = "d34c1bfc-751d-59e6-aa32-3354ac3046dc"
+
+[records.values]
+from_region = "8e18ff2d-7404-4081-9096-2fa9ed3a9f09"
+key = "road_8e18ff2d-7404-4081-9096-2fa9ed3a9f09_c53364f8-4657-56f1-b2d0-eb16132633b3"
+name = "Old Clock Square — Slate Brook"
+to_region = "c53364f8-4657-56f1-b2d0-eb16132633b3"
+
+[[records]]
+uuid = "84646fe7-f293-5424-892a-3265bc3011dd"
+
+[records.values]
+from_region = "1c35f184-8452-59b4-83ed-c138f7afd91e"
+key = "road_1c35f184-8452-59b4-83ed-c138f7afd91e_fa8932af-5af1-5407-9311-1ba594abbf57"
+name = "Frost Cleft — Hollow Belfry"
+to_region = "fa8932af-5af1-5407-9311-1ba594abbf57"
+
+[[records]]
+uuid = "e28d4349-8a4d-5237-8d9f-322c650d03d1"
+
+[records.values]
+from_region = "fa8932af-5af1-5407-9311-1ba594abbf57"
+key = "road_83e27ea2-5fe3-4049-858b-66322f3d0fa0_fa8932af-5af1-5407-9311-1ba594abbf57"
+name = "Hollow Belfry — Hoarfrost Grassland"
+to_region = "83e27ea2-5fe3-4049-858b-66322f3d0fa0"
+
+[[records]]
+uuid = "31484748-5191-57c8-8b70-fbc62b5e9eb2"
+
+[records.values]
+from_region = "83e27ea2-5fe3-4049-858b-66322f3d0fa0"
+key = "road_83e27ea2-5fe3-4049-858b-66322f3d0fa0_bdceea5a-6b34-52ca-a782-0e21012921ac"
+name = "Hoarfrost Grassland — Icicle Steps"
+to_region = "bdceea5a-6b34-52ca-a782-0e21012921ac"
+
+[[records]]
+uuid = "4e952985-4f50-5c7b-a6a5-6197fbada401"
+
+[records.values]
+from_region = "bdceea5a-6b34-52ca-a782-0e21012921ac"
+key = "road_835b6aaa-417f-5ee9-8a8a-00c2cfa66426_bdceea5a-6b34-52ca-a782-0e21012921ac"
+name = "Icicle Steps — Frostward Lodge"
+to_region = "835b6aaa-417f-5ee9-8a8a-00c2cfa66426"
+
+[[records]]
+uuid = "ffd9309f-f126-5c9d-8502-3c5e0efd3d28"
+
+[records.values]
+from_region = "45a63e98-f65d-58c5-ae5d-5ba19bf050b6"
+key = "road_45a63e98-f65d-58c5-ae5d-5ba19bf050b6_85c33f41-5fd5-5707-8133-798f786d84d4"
+name = "Storm Shelf — Hunter's Ridge"
+to_region = "85c33f41-5fd5-5707-8133-798f786d84d4"
+
+[[records]]
+uuid = "3305b8c1-76ce-5ef5-8ff3-64d9cd992126"
+
+[records.values]
+from_region = "85c33f41-5fd5-5707-8133-798f786d84d4"
+key = "road_162d47f0-bb7d-5a4e-ac48-5a73bd7e894f_85c33f41-5fd5-5707-8133-798f786d84d4"
+name = "Hunter's Ridge — Wyvern Cleft"
+to_region = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+
+[[records]]
+uuid = "9a80ba4c-13d0-5db9-9d23-2f4cd6c00e38"
+
+[records.values]
+from_region = "162d47f0-bb7d-5a4e-ac48-5a73bd7e894f"
+key = "road_162d47f0-bb7d-5a4e-ac48-5a73bd7e894f_98031082-242e-48e4-acf0-69fffeef22b0"
+name = "Wyvern Cleft — Windcut Cliffs"
+to_region = "98031082-242e-48e4-acf0-69fffeef22b0"
+
+[[records]]
+uuid = "b7f6bbdd-ca2b-50aa-9eb1-1b13afb1ca34"
+
+[records.values]
+from_region = "98031082-242e-48e4-acf0-69fffeef22b0"
+key = "road_98031082-242e-48e4-acf0-69fffeef22b0_ff1f8405-63e6-50da-bb94-1b0b99ddae4d"
+name = "Windcut Cliffs — Goldwash Diggings"
+to_region = "ff1f8405-63e6-50da-bb94-1b0b99ddae4d"
+
+[[records]]
+uuid = "e360207a-5aad-55fc-8e84-f520283ad234"
+
+[records.values]
+from_region = "7d332bbd-a4a3-5938-9b59-3a1f987d6014"
+key = "road_7d332bbd-a4a3-5938-9b59-3a1f987d6014_dcce7b0e-595c-596c-bf58-a0f2afa0ffc0"
+name = "Starwatch Rest — Cinder Gallery"
+to_region = "dcce7b0e-595c-596c-bf58-a0f2afa0ffc0"
+
+[[records]]
+uuid = "497403f3-2b70-5b65-91d9-811a0100ca68"
+
+[records.values]
+from_region = "dcce7b0e-595c-596c-bf58-a0f2afa0ffc0"
+key = "road_2ccc532e-dcb6-5665-a53b-a054aaad59c5_dcce7b0e-595c-596c-bf58-a0f2afa0ffc0"
+name = "Cinder Gallery — Skyroot Shore"
+to_region = "2ccc532e-dcb6-5665-a53b-a054aaad59c5"
+
+[[records]]
+uuid = "0457ca3e-d288-507e-8fc3-56a4188c6db0"
+
+[records.values]
+from_region = "2ccc532e-dcb6-5665-a53b-a054aaad59c5"
+key = "road_2ccc532e-dcb6-5665-a53b-a054aaad59c5_3de179c0-0029-543a-9c29-65bfbd6d7886"
+name = "Skyroot Shore — Cloud Terrace"
+to_region = "3de179c0-0029-543a-9c29-65bfbd6d7886"
+
+[[records]]
+uuid = "a707371c-cf7c-5373-9b9b-44a75f82f9a6"
+label = "road_712b7f9a-9973-5097-ae2e-44785c6b1fd6_ee00670b-3936-59ec-9fb7-80be95aff430"
+tags = ["catalog/world-v1"]
+
+[records.values]
+from_region = "712b7f9a-9973-5097-ae2e-44785c6b1fd6"
+key = "road_712b7f9a-9973-5097-ae2e-44785c6b1fd6_ee00670b-3936-59ec-9fb7-80be95aff430"
+name = "Foxfire Hollow — Birch Road"
+to_region = "ee00670b-3936-59ec-9fb7-80be95aff430"
+
+[[records]]
+uuid = "bd1acc03-4cd3-5f15-9dd7-e0054742cd77"
+
+[records.values]
+from_region = "712b7f9a-9973-5097-ae2e-44785c6b1fd6"
+key = "road_29e3734d-c67e-54c4-889d-4573cdaf43aa_712b7f9a-9973-5097-ae2e-44785c6b1fd6"
+name = "Foxfire Hollow — Resin Glen"
+to_region = "29e3734d-c67e-54c4-889d-4573cdaf43aa"
+
+[[records]]
+uuid = "83428c3b-69bb-5d23-8df6-79cf0c0b7576"
+
+[records.values]
+from_region = "29e3734d-c67e-54c4-889d-4573cdaf43aa"
+key = "road_29e3734d-c67e-54c4-889d-4573cdaf43aa_867ee5c5-fd9b-567c-a100-fba37a6ad752"
+name = "Resin Glen — Reedboat Harbor"
+to_region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+
+[[records]]
+uuid = "7181794e-35c4-5c31-a6bf-0178d5b7550a"
+
+[records.values]
+from_region = "867ee5c5-fd9b-567c-a100-fba37a6ad752"
+key = "road_67ae4423-5649-5239-ae43-019c7295995d_867ee5c5-fd9b-567c-a100-fba37a6ad752"
+name = "Reedboat Harbor — Silvermirror Mere"
+to_region = "67ae4423-5649-5239-ae43-019c7295995d"
+
+[[records]]
+uuid = "ea96bb4f-f333-5ba0-b305-f1665d143b94"
+
+[records.values]
+from_region = "67ae4423-5649-5239-ae43-019c7295995d"
+key = "road_44beca51-c271-4f7b-9ba2-a0438f077836_67ae4423-5649-5239-ae43-019c7295995d"
+name = "Silvermirror Mere — Firefly Marsh"
+to_region = "44beca51-c271-4f7b-9ba2-a0438f077836"
+
+[[records]]
+uuid = "bf93adb0-d9cc-5bfb-b24f-665e63973c79"
+
+[records.values]
+from_region = "44beca51-c271-4f7b-9ba2-a0438f077836"
+key = "road_0db4391c-8fae-5cec-a65e-fb2c27d97ce2_44beca51-c271-4f7b-9ba2-a0438f077836"
+name = "Firefly Marsh — Sigil Garden"
+to_region = "0db4391c-8fae-5cec-a65e-fb2c27d97ce2"
+
+[[records]]
+uuid = "1b858137-a5a1-5ab5-b94f-f2b4b4af3ed8"
+
+[records.values]
+from_region = "0db4391c-8fae-5cec-a65e-fb2c27d97ce2"
+key = "road_0acea1b9-e1eb-5288-963a-a0e778c51327_0db4391c-8fae-5cec-a65e-fb2c27d97ce2"
+name = "Sigil Garden — Clock Market"
+to_region = "0acea1b9-e1eb-5288-963a-a0e778c51327"
+
+[[records]]
+uuid = "de918548-cc78-52f3-aa7c-c02a7667db04"
+
+[records.values]
+from_region = "0acea1b9-e1eb-5288-963a-a0e778c51327"
+key = "road_0acea1b9-e1eb-5288-963a-a0e778c51327_a83b48a5-20de-523a-a061-1464ed6b1764"
+name = "Clock Market — Rotwood Court"
+to_region = "a83b48a5-20de-523a-a061-1464ed6b1764"
+
+[[records]]
+uuid = "97b6cf83-adb9-5701-9c2e-f1d01b6623ca"
+
+[records.values]
+from_region = "a83b48a5-20de-523a-a061-1464ed6b1764"
+key = "road_9b38535c-6bf3-47c8-a2ab-bfa4b3edec89_a83b48a5-20de-523a-a061-1464ed6b1764"
+name = "Rotwood Court — Tidemirror Shore"
+to_region = "9b38535c-6bf3-47c8-a2ab-bfa4b3edec89"
+
+[[records]]
+uuid = "a14bb561-b748-5a36-ba29-ca876e2da18e"
+
+[records.values]
+from_region = "9b38535c-6bf3-47c8-a2ab-bfa4b3edec89"
+key = "road_1de78829-608e-59aa-b8b1-a00729c41f61_9b38535c-6bf3-47c8-a2ab-bfa4b3edec89"
+name = "Tidemirror Shore — Wraith Anchorage"
+to_region = "1de78829-608e-59aa-b8b1-a00729c41f61"
+
+[[records]]
+uuid = "a5454a3e-2861-5b92-bcad-7102c7dc052c"
+
+[records.values]
+from_region = "1de78829-608e-59aa-b8b1-a00729c41f61"
+key = "road_1de78829-608e-59aa-b8b1-a00729c41f61_1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+name = "Wraith Anchorage — High Tide Harbor"
+to_region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "001ceec7-ac18-5fce-909e-a83064198920"
+
+[records.values]
+from_region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+key = "road_1e17a67e-3cef-5ae5-8007-ab3a6841b05c_50c7964a-fa49-53c5-abb3-0aed20fcb4fb"
+name = "High Tide Harbor — Moonwhite Reedbed"
+to_region = "50c7964a-fa49-53c5-abb3-0aed20fcb4fb"
+
+[[records]]
+uuid = "92a1cdcf-f644-5e27-92aa-ec92671715f7"
+
+[records.values]
+from_region = "50c7964a-fa49-53c5-abb3-0aed20fcb4fb"
+key = "road_1a5639b4-32f4-5ad5-bd8b-2e6d6e163f11_50c7964a-fa49-53c5-abb3-0aed20fcb4fb"
+name = "Moonwhite Reedbed — Coral Stairway"
+to_region = "1a5639b4-32f4-5ad5-bd8b-2e6d6e163f11"
+
+[[records]]
+uuid = "14996440-0ccd-5bf9-b3d2-5a92c161f980"
+
+[records.values]
+from_region = "1a5639b4-32f4-5ad5-bd8b-2e6d6e163f11"
+key = "road_1a5639b4-32f4-5ad5-bd8b-2e6d6e163f11_b99f3597-7f1c-53a5-9129-7d876ac5c764"
+name = "Coral Stairway — Sunken Moon Reef"
+to_region = "b99f3597-7f1c-53a5-9129-7d876ac5c764"
+
+[[records]]
+uuid = "0ef3464c-f41f-558d-a580-de9842600582"
+
+[records.values]
+from_region = "712b7f9a-9973-5097-ae2e-44785c6b1fd6"
+key = "road_712b7f9a-9973-5097-ae2e-44785c6b1fd6_7a1803d8-3df3-51b7-8549-eb3b0eef8efb"
+name = "Foxfire Hollow — Blackiron Ford"
+to_region = "7a1803d8-3df3-51b7-8549-eb3b0eef8efb"
+
+[[records]]
+uuid = "0084acb7-6e2e-5e35-bdc9-02ad0ce4701c"
+
+[records.values]
+from_region = "7a1803d8-3df3-51b7-8549-eb3b0eef8efb"
+key = "road_7a1803d8-3df3-51b7-8549-eb3b0eef8efb_93189b1e-ca94-57ce-a9a1-9293c2eb6744"
+name = "Blackiron Ford — Twilight Spring"
+to_region = "93189b1e-ca94-57ce-a9a1-9293c2eb6744"
+
+[[records]]
+uuid = "1dad2e13-c6a4-5a72-a799-264f3222e434"
+label = "road_93189b1e-ca94-57ce-a9a1-9293c2eb6744_b5c8341a-e5f5-5756-9482-583a7277da5f"
+tags = ["catalog/world-v1"]
+
+[records.values]
+from_region = "93189b1e-ca94-57ce-a9a1-9293c2eb6744"
+key = "road_93189b1e-ca94-57ce-a9a1-9293c2eb6744_b5c8341a-e5f5-5756-9482-583a7277da5f"
+name = "Twilight Spring — Silkcocoon Basin"
+to_region = "b5c8341a-e5f5-5756-9482-583a7277da5f"
+
+[[records]]
+uuid = "ef65dba9-1fc7-5bd1-bfd2-4e8e04336928"
+
+[records.values]
+from_region = "b5c8341a-e5f5-5756-9482-583a7277da5f"
+key = "road_29e3734d-c67e-54c4-889d-4573cdaf43aa_b5c8341a-e5f5-5756-9482-583a7277da5f"
+name = "Silkcocoon Basin — Resin Glen"
+to_region = "29e3734d-c67e-54c4-889d-4573cdaf43aa"
+
+[[records]]
+uuid = "0a1ee685-ea8d-5c9a-a6f8-631e087ff6cf"
+
+[records.values]
+from_region = "67ae4423-5649-5239-ae43-019c7295995d"
+key = "road_67ae4423-5649-5239-ae43-019c7295995d_d7bbc253-d8d8-549b-a115-f40433c84b1f"
+name = "Silvermirror Mere — Drowned Library"
+to_region = "d7bbc253-d8d8-549b-a115-f40433c84b1f"
+
+[[records]]
+uuid = "6ac093fc-03f4-5e78-a2f4-5b58fa0ff432"
+
+[records.values]
+from_region = "d7bbc253-d8d8-549b-a115-f40433c84b1f"
+key = "road_602f3c7d-56cc-52f4-ac42-175a8646168d_d7bbc253-d8d8-549b-a115-f40433c84b1f"
+name = "Drowned Library — Hydra Nest"
+to_region = "602f3c7d-56cc-52f4-ac42-175a8646168d"
+
+[[records]]
+uuid = "ff7dc259-3d0a-5d94-a3f4-0053b69309bf"
+
+[records.values]
+from_region = "602f3c7d-56cc-52f4-ac42-175a8646168d"
+key = "road_40c0927f-2a75-57bf-87ea-dc7242264044_602f3c7d-56cc-52f4-ac42-175a8646168d"
+name = "Hydra Nest — Pearl Shoal"
+to_region = "40c0927f-2a75-57bf-87ea-dc7242264044"
+
+[[records]]
+uuid = "b42b1e40-2a0c-5a20-8f31-73b5d050edf6"
+
+[records.values]
+from_region = "40c0927f-2a75-57bf-87ea-dc7242264044"
+key = "road_40c0927f-2a75-57bf-87ea-dc7242264044_44beca51-c271-4f7b-9ba2-a0438f077836"
+name = "Pearl Shoal — Firefly Marsh"
+to_region = "44beca51-c271-4f7b-9ba2-a0438f077836"
+
+[[records]]
+uuid = "79d64dfb-5613-5b0b-b615-b1f53bd7a8b0"
+
+[records.values]
+from_region = "0acea1b9-e1eb-5288-963a-a0e778c51327"
+key = "road_0acea1b9-e1eb-5288-963a-a0e778c51327_4a94701e-84fa-5b02-aac0-07f4c4f62a4c"
+name = "Clock Market — Reed Maze"
+to_region = "4a94701e-84fa-5b02-aac0-07f4c4f62a4c"
+
+[[records]]
+uuid = "6de61e1f-3238-5735-afe9-cb352af06bf4"
+
+[records.values]
+from_region = "4a94701e-84fa-5b02-aac0-07f4c4f62a4c"
+key = "road_0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_4a94701e-84fa-5b02-aac0-07f4c4f62a4c"
+name = "Reed Maze — Sunken Throne"
+to_region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+
+[[records]]
+uuid = "a1487500-29c7-5c63-9e5c-e3961df55f9f"
+
+[records.values]
+from_region = "0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5"
+key = "road_0d40d2cb-b9ed-5e94-bbc9-a31a38ed02c5_d49f87e6-9cd4-521a-8ab1-2a36a4192285"
+name = "Sunken Throne — Fossil Riverbed"
+to_region = "d49f87e6-9cd4-521a-8ab1-2a36a4192285"
+
+[[records]]
+uuid = "6aee521e-7b14-5c0f-b273-8b5e26f89535"
+
+[records.values]
+from_region = "d49f87e6-9cd4-521a-8ab1-2a36a4192285"
+key = "road_a83b48a5-20de-523a-a061-1464ed6b1764_d49f87e6-9cd4-521a-8ab1-2a36a4192285"
+name = "Fossil Riverbed — Rotwood Court"
+to_region = "a83b48a5-20de-523a-a061-1464ed6b1764"
+
+[[records]]
+uuid = "a518f0c3-84dc-58d7-bc8c-929dea9734a8"
+
+[records.values]
+from_region = "1de78829-608e-59aa-b8b1-a00729c41f61"
+key = "road_1de78829-608e-59aa-b8b1-a00729c41f61_2dcde8dc-4a07-5e11-9677-362141e61ae3"
+name = "Wraith Anchorage — Eclipse Reef"
+to_region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+
+[[records]]
+uuid = "04cbbfdd-5996-5b13-9e74-3c7b32b93177"
+
+[records.values]
+from_region = "2dcde8dc-4a07-5e11-9677-362141e61ae3"
+key = "road_16089e8c-d7fa-4cf0-8339-c3ef99aaadf3_2dcde8dc-4a07-5e11-9677-362141e61ae3"
+name = "Eclipse Reef — Moonlit Hollow"
+to_region = "16089e8c-d7fa-4cf0-8339-c3ef99aaadf3"
+
+[[records]]
+uuid = "dd6378bd-ecff-59e2-a921-626e93e8a410"
+
+[records.values]
+from_region = "16089e8c-d7fa-4cf0-8339-c3ef99aaadf3"
+key = "road_16089e8c-d7fa-4cf0-8339-c3ef99aaadf3_6ba8a95e-6045-5ad3-a172-04ed4bc0b1d3"
+name = "Moonlit Hollow — Dry Canal"
+to_region = "6ba8a95e-6045-5ad3-a172-04ed4bc0b1d3"
+
+[[records]]
+uuid = "95c73924-fd1e-5070-9db4-29eb19215fa0"
+
+[records.values]
+from_region = "6ba8a95e-6045-5ad3-a172-04ed4bc0b1d3"
+key = "road_1e17a67e-3cef-5ae5-8007-ab3a6841b05c_6ba8a95e-6045-5ad3-a172-04ed4bc0b1d3"
+name = "Dry Canal — High Tide Harbor"
+to_region = "1e17a67e-3cef-5ae5-8007-ab3a6841b05c"
+
+[[records]]
+uuid = "7da8c01e-6655-53f0-b96a-eecc947400ef"
+
+[records.values]
+from_region = "50c7964a-fa49-53c5-abb3-0aed20fcb4fb"
+key = "road_13b88c8a-4e94-53dd-8ec1-498773176ebc_50c7964a-fa49-53c5-abb3-0aed20fcb4fb"
+name = "Moonwhite Reedbed — Hollow Spring"
+to_region = "13b88c8a-4e94-53dd-8ec1-498773176ebc"
+
+[[records]]
+uuid = "01b3741c-5195-5473-a094-2e71a51a82ce"
+
+[records.values]
+from_region = "13b88c8a-4e94-53dd-8ec1-498773176ebc"
+key = "road_13b88c8a-4e94-53dd-8ec1-498773176ebc_627a933b-fa90-57ad-a829-46787f0f5cff"
+name = "Hollow Spring — Silvertide Inlet"
+to_region = "627a933b-fa90-57ad-a829-46787f0f5cff"
+
+[[records]]
+uuid = "73afb7c9-dfbc-59ae-a800-8809940e6163"
+
+[records.values]
+from_region = "627a933b-fa90-57ad-a829-46787f0f5cff"
+key = "road_1a5639b4-32f4-5ad5-bd8b-2e6d6e163f11_627a933b-fa90-57ad-a829-46787f0f5cff"
+name = "Silvertide Inlet — Coral Stairway"
+to_region = "1a5639b4-32f4-5ad5-bd8b-2e6d6e163f11"
+
+[[records]]
+uuid = "2f11c824-5ae5-5e8b-9c37-6ad4ac789431"
+
+[records.values]
+from_region = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb"
+key = "road_18a66bc2-b0bf-52fb-8321-745ee92bd1fb_c8ed3014-ced8-4150-bb2f-485cc98a3ba8"
+name = "Buried Arena — Windripple Dunes"
+to_region = "c8ed3014-ced8-4150-bb2f-485cc98a3ba8"
+
+[[records]]
+uuid = "1431d01e-2fa9-5dc7-8449-60c935153f8b"
+
+[records.values]
+from_region = "c8ed3014-ced8-4150-bb2f-485cc98a3ba8"
+key = "road_66885a47-0dcc-5a05-ac8b-3372718538eb_c8ed3014-ced8-4150-bb2f-485cc98a3ba8"
+name = "Windripple Dunes — Sunken Orchard"
+to_region = "66885a47-0dcc-5a05-ac8b-3372718538eb"
+
+[[records]]
+uuid = "1952930a-1fdd-5a6f-82d9-5f73bc28e66f"
+
+[records.values]
+from_region = "66885a47-0dcc-5a05-ac8b-3372718538eb"
+key = "road_66885a47-0dcc-5a05-ac8b-3372718538eb_e1af2a4e-953f-5f4d-ae3a-16b0003c5756"
+name = "Sunken Orchard — Salt Crossroads"
+to_region = "e1af2a4e-953f-5f4d-ae3a-16b0003c5756"
+
+[[records]]
+uuid = "2add6b77-da52-5196-bd4c-4316d6d01347"
+
+[records.values]
+from_region = "e1af2a4e-953f-5f4d-ae3a-16b0003c5756"
+key = "road_e1af2a4e-953f-5f4d-ae3a-16b0003c5756_fa6bb6f7-a7fb-5ec3-b7f4-5e1ee3ac7cc7"
+name = "Salt Crossroads — Blackwater Pool"
+to_region = "fa6bb6f7-a7fb-5ec3-b7f4-5e1ee3ac7cc7"
+
+[[records]]
+uuid = "5fc2e836-e3e2-547d-aac5-26a1910f8f81"
+
+[records.values]
+from_region = "fa6bb6f7-a7fb-5ec3-b7f4-5e1ee3ac7cc7"
+key = "road_9b6e3ca3-2472-4bbe-8e9e-0f75da126644_fa6bb6f7-a7fb-5ec3-b7f4-5e1ee3ac7cc7"
+name = "Blackwater Pool — Obsidian Mountain Pass"
+to_region = "9b6e3ca3-2472-4bbe-8e9e-0f75da126644"
+
+[[records]]
+uuid = "ff9b2a41-ecb3-5052-bc68-f49bfa14c063"
+
+[records.values]
+from_region = "9b6e3ca3-2472-4bbe-8e9e-0f75da126644"
+key = "road_81750351-c861-5d45-a3e3-8f31a379e8c8_9b6e3ca3-2472-4bbe-8e9e-0f75da126644"
+name = "Obsidian Mountain Pass — Drake Slope"
+to_region = "81750351-c861-5d45-a3e3-8f31a379e8c8"
+
+[[records]]
+uuid = "e834ee25-ce8b-50ee-b558-5ad191ae6653"
+
+[records.values]
+from_region = "81750351-c861-5d45-a3e3-8f31a379e8c8"
+key = "road_81750351-c861-5d45-a3e3-8f31a379e8c8_83f4d132-8c54-5114-ae26-675379857f45"
+name = "Drake Slope — Dune Caravanserai"
+to_region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "b39d9f22-4aa7-540a-a041-944c8a3a5465"
+
+[records.values]
+from_region = "83f4d132-8c54-5114-ae26-675379857f45"
+key = "road_83f4d132-8c54-5114-ae26-675379857f45_a863b6f5-2d22-58ac-ba4d-cc2daadc0130"
+name = "Dune Caravanserai — Sunglass Flats"
+to_region = "a863b6f5-2d22-58ac-ba4d-cc2daadc0130"
+
+[[records]]
+uuid = "aa3f7155-c6a8-5a64-b952-5ee96c3a4672"
+
+[records.values]
+from_region = "a863b6f5-2d22-58ac-ba4d-cc2daadc0130"
+key = "road_72bdf44d-537e-5c9a-be81-ad32e67997cf_a863b6f5-2d22-58ac-ba4d-cc2daadc0130"
+name = "Sunglass Flats — Dreaming Fen"
+to_region = "72bdf44d-537e-5c9a-be81-ad32e67997cf"
+
+[[records]]
+uuid = "9994c8c5-67a2-543d-935c-07258a1cc440"
+
+[records.values]
+from_region = "72bdf44d-537e-5c9a-be81-ad32e67997cf"
+key = "road_1834eb44-7f01-5ac5-9684-ec8a4f31cf05_72bdf44d-537e-5c9a-be81-ad32e67997cf"
+name = "Dreaming Fen — Basalt Delta"
+to_region = "1834eb44-7f01-5ac5-9684-ec8a4f31cf05"
+
+[[records]]
+uuid = "3934c74f-c458-5b52-b96a-218e5ae2dc73"
+
+[records.values]
+from_region = "1834eb44-7f01-5ac5-9684-ec8a4f31cf05"
+key = "road_1834eb44-7f01-5ac5-9684-ec8a4f31cf05_70742414-3a03-5930-bb22-8431bdc62458"
+name = "Basalt Delta — Ember Anchorage"
+to_region = "70742414-3a03-5930-bb22-8431bdc62458"
+
+[[records]]
+uuid = "684fd541-f8e5-5ae1-8251-573d63b10e63"
+
+[records.values]
+from_region = "70742414-3a03-5930-bb22-8431bdc62458"
+key = "road_70742414-3a03-5930-bb22-8431bdc62458_c7fb0f9d-1b8b-5975-8db0-f8df5f28e213"
+name = "Ember Anchorage — Red Mesa"
+to_region = "c7fb0f9d-1b8b-5975-8db0-f8df5f28e213"
+
+[[records]]
+uuid = "a8065fb2-d82d-5fb4-badc-6138d39c617e"
+
+[records.values]
+from_region = "c7fb0f9d-1b8b-5975-8db0-f8df5f28e213"
+key = "road_43d9a8d0-dec2-5b39-8033-2b2a6d10753c_c7fb0f9d-1b8b-5975-8db0-f8df5f28e213"
+name = "Red Mesa — Starless Crown"
+to_region = "43d9a8d0-dec2-5b39-8033-2b2a6d10753c"
+
+[[records]]
+uuid = "c8ca4f0b-b15b-5f7d-9abf-23ec49e6094d"
+label = "road_43d9a8d0-dec2-5b39-8033-2b2a6d10753c_54100e4e-e05a-5c5b-81d7-e2abf68e0340"
+tags = ["catalog/world-v1"]
+
+[records.values]
+from_region = "43d9a8d0-dec2-5b39-8033-2b2a6d10753c"
+key = "road_43d9a8d0-dec2-5b39-8033-2b2a6d10753c_54100e4e-e05a-5c5b-81d7-e2abf68e0340"
+name = "Starless Crown — Dreameater Abyss"
+to_region = "54100e4e-e05a-5c5b-81d7-e2abf68e0340"
+
+[[records]]
+uuid = "87bef726-30cb-5008-8880-57eebcc3a850"
+
+[records.values]
+from_region = "fa6bb6f7-a7fb-5ec3-b7f4-5e1ee3ac7cc7"
+key = "road_cedc4ce7-be4f-5b1e-8216-057f01c3c4d2_fa6bb6f7-a7fb-5ec3-b7f4-5e1ee3ac7cc7"
+name = "Blackwater Pool — Scorpion Hollow"
+to_region = "cedc4ce7-be4f-5b1e-8216-057f01c3c4d2"
+
+[[records]]
+uuid = "cd25dbd4-2f30-5527-bf93-4b65e462e83b"
+
+[records.values]
+from_region = "cedc4ce7-be4f-5b1e-8216-057f01c3c4d2"
+key = "road_07072777-b717-5c52-888c-4867d4d66a6e_cedc4ce7-be4f-5b1e-8216-057f01c3c4d2"
+name = "Scorpion Hollow — Dune Well"
+to_region = "07072777-b717-5c52-888c-4867d4d66a6e"
+
+[[records]]
+uuid = "c0aa9c5b-cca5-5d7b-bd42-da2475e25423"
+label = "road_07072777-b717-5c52-888c-4867d4d66a6e_4aa778ed-a008-5ff5-9dba-d7898ca44e0b"
+tags = ["catalog/world-v1"]
+
+[records.values]
+from_region = "07072777-b717-5c52-888c-4867d4d66a6e"
+key = "road_07072777-b717-5c52-888c-4867d4d66a6e_4aa778ed-a008-5ff5-9dba-d7898ca44e0b"
+name = "Dune Well — Obsidian Torrent"
+to_region = "4aa778ed-a008-5ff5-9dba-d7898ca44e0b"
+
+[[records]]
+uuid = "d20160de-f170-5275-8c84-7de2b7ec6bcb"
+
+[records.values]
+from_region = "4aa778ed-a008-5ff5-9dba-d7898ca44e0b"
+key = "road_4aa778ed-a008-5ff5-9dba-d7898ca44e0b_9b6e3ca3-2472-4bbe-8e9e-0f75da126644"
+name = "Obsidian Torrent — Obsidian Mountain Pass"
+to_region = "9b6e3ca3-2472-4bbe-8e9e-0f75da126644"
+
+[[records]]
+uuid = "fb56d3a2-287e-540c-9d7c-c34b1c449dae"
+
+[records.values]
+from_region = "81750351-c861-5d45-a3e3-8f31a379e8c8"
+key = "road_81750351-c861-5d45-a3e3-8f31a379e8c8_8d36f10a-26d4-5a38-a306-02624f790a47"
+name = "Drake Slope — Thunder Shaft"
+to_region = "8d36f10a-26d4-5a38-a306-02624f790a47"
+
+[[records]]
+uuid = "9ea22091-5b45-593c-9ead-706ca3a525d4"
+
+[records.values]
+from_region = "8d36f10a-26d4-5a38-a306-02624f790a47"
+key = "road_8d36f10a-26d4-5a38-a306-02624f790a47_d1b9d287-723e-5a6f-bb33-44f55d2ba5f2"
+name = "Thunder Shaft — Sulfur Fen"
+to_region = "d1b9d287-723e-5a6f-bb33-44f55d2ba5f2"
+
+[[records]]
+uuid = "72eb08be-1e77-5646-b102-b9c2b7e27fe8"
+
+[records.values]
+from_region = "d1b9d287-723e-5a6f-bb33-44f55d2ba5f2"
+key = "road_d1b9d287-723e-5a6f-bb33-44f55d2ba5f2_f3e88e11-16fd-5455-a868-c559bc092586"
+name = "Sulfur Fen — Basalt Gate"
+to_region = "f3e88e11-16fd-5455-a868-c559bc092586"
+
+[[records]]
+uuid = "3eabe12a-fd3d-541f-9ad0-295091e17c9c"
+
+[records.values]
+from_region = "f3e88e11-16fd-5455-a868-c559bc092586"
+key = "road_83f4d132-8c54-5114-ae26-675379857f45_f3e88e11-16fd-5455-a868-c559bc092586"
+name = "Basalt Gate — Dune Caravanserai"
+to_region = "83f4d132-8c54-5114-ae26-675379857f45"
+
+[[records]]
+uuid = "73e0d558-9fb9-596b-b11a-da8df2e0cc03"
+
+[records.values]
+from_region = "a863b6f5-2d22-58ac-ba4d-cc2daadc0130"
+key = "road_307900a0-64ef-590d-a61a-857dc7d674c6_a863b6f5-2d22-58ac-ba4d-cc2daadc0130"
+name = "Sunglass Flats — Smelter Bridge"
+to_region = "307900a0-64ef-590d-a61a-857dc7d674c6"
+
+[[records]]
+uuid = "f08a1446-221d-5686-9f68-b59340d63ec9"
+
+[records.values]
+from_region = "307900a0-64ef-590d-a61a-857dc7d674c6"
+key = "road_307900a0-64ef-590d-a61a-857dc7d674c6_3ec4e464-b53b-52cb-aa51-637849f7e676"
+name = "Smelter Bridge — Magma Cradle"
+to_region = "3ec4e464-b53b-52cb-aa51-637849f7e676"
+
+[[records]]
+uuid = "81c814cd-8ecb-56ae-b995-215013f9a679"
+
+[records.values]
+from_region = "3ec4e464-b53b-52cb-aa51-637849f7e676"
+key = "road_3ec4e464-b53b-52cb-aa51-637849f7e676_5a45b267-bbc6-51ac-82fb-03483ca47b15"
+name = "Magma Cradle — Ember Grove"
+to_region = "5a45b267-bbc6-51ac-82fb-03483ca47b15"
+
+[[records]]
+uuid = "86534a6c-34e4-5fc2-aa7a-4fe494717a61"
+
+[records.values]
+from_region = "5a45b267-bbc6-51ac-82fb-03483ca47b15"
+key = "road_5a45b267-bbc6-51ac-82fb-03483ca47b15_72bdf44d-537e-5c9a-be81-ad32e67997cf"
+name = "Ember Grove — Dreaming Fen"
+to_region = "72bdf44d-537e-5c9a-be81-ad32e67997cf"
+
+[[records]]
+uuid = "5a772947-8225-532e-9d0d-4d761c7e3a04"
+
+[records.values]
+from_region = "1834eb44-7f01-5ac5-9684-ec8a4f31cf05"
+key = "road_1834eb44-7f01-5ac5-9684-ec8a4f31cf05_fd3a773f-1ffa-5a3c-b732-9c75b29836c1"
+name = "Basalt Delta — Setting Sun Sanctuary"
+to_region = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1"
+
+[[records]]
+uuid = "3dde2361-80f8-5db7-9907-6d16b097e07b"
+
+[records.values]
+from_region = "fd3a773f-1ffa-5a3c-b732-9c75b29836c1"
+key = "road_e32eab72-c615-5297-8a1c-555abc967724_fd3a773f-1ffa-5a3c-b732-9c75b29836c1"
+name = "Setting Sun Sanctuary — Astral Stairway"
+to_region = "e32eab72-c615-5297-8a1c-555abc967724"
+
+[[records]]
+uuid = "0f360348-d2d5-534a-8786-d381764e51d5"
+
+[records.values]
+from_region = "e32eab72-c615-5297-8a1c-555abc967724"
+key = "road_a01bdb09-c8fc-53b3-9e41-ee4c7af92483_e32eab72-c615-5297-8a1c-555abc967724"
+name = "Astral Stairway — Scarlet Canyon"
+to_region = "a01bdb09-c8fc-53b3-9e41-ee4c7af92483"
+
+[[records]]
+uuid = "11e8c726-52da-5297-9e07-c1dc6df3d2e6"
+
+[records.values]
+from_region = "a01bdb09-c8fc-53b3-9e41-ee4c7af92483"
+key = "road_70742414-3a03-5930-bb22-8431bdc62458_a01bdb09-c8fc-53b3-9e41-ee4c7af92483"
+name = "Scarlet Canyon — Ember Anchorage"
+to_region = "70742414-3a03-5930-bb22-8431bdc62458"
+
+[[records]]
+uuid = "f096389f-e940-5f30-b5a3-7a6f8ec1829c"
+
+[records.values]
+from_region = "c7fb0f9d-1b8b-5975-8db0-f8df5f28e213"
+key = "road_8c4db2e2-5395-5dbf-bd38-91d6cc669cfb_c7fb0f9d-1b8b-5975-8db0-f8df5f28e213"
+name = "Red Mesa — Mirage Tower"
+to_region = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb"
+
+[[records]]
+uuid = "13d797c8-792f-5040-a69c-fe96df32f0f9"
+label = "road_8c4db2e2-5395-5dbf-bd38-91d6cc669cfb_d1c89cb7-c9e5-50d2-8158-345b954015ce"
+tags = ["catalog/world-v1"]
+
+[records.values]
+from_region = "8c4db2e2-5395-5dbf-bd38-91d6cc669cfb"
+key = "road_8c4db2e2-5395-5dbf-bd38-91d6cc669cfb_d1c89cb7-c9e5-50d2-8158-345b954015ce"
+name = "Mirage Tower — Crater Cistern"
+to_region = "d1c89cb7-c9e5-50d2-8158-345b954015ce"
+
+[[records]]
+uuid = "06f8b0ff-f8f2-521a-b17a-7a9f16def480"
+
+[records.values]
+from_region = "d1c89cb7-c9e5-50d2-8158-345b954015ce"
+key = "road_43d9a8d0-dec2-5b39-8033-2b2a6d10753c_d1c89cb7-c9e5-50d2-8158-345b954015ce"
+name = "Crater Cistern — Starless Crown"
+to_region = "43d9a8d0-dec2-5b39-8033-2b2a6d10753c"
+
+[[records]]
+uuid = "fc6031e4-748b-5ef9-bcfc-305f3e7a9c9e"
+
+[records.values]
+from_region = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2"
+key = "road_aa5a8f59-7c21-5bdc-8900-4b192b8ddab0_c9618e8f-f34e-53e9-ad26-56df80e1bbf2"
+name = "Willow Waystation — Mossy Quarry"
+to_region = "aa5a8f59-7c21-5bdc-8900-4b192b8ddab0"
+
+[[records]]
+uuid = "81752e79-ed5e-5361-a619-92ab26ed87eb"
+
+[records.values]
+from_region = "c9618e8f-f34e-53e9-ad26-56df80e1bbf2"
+key = "road_442243c2-99e6-5e60-ba87-fecb633053a3_c9618e8f-f34e-53e9-ad26-56df80e1bbf2"
+name = "Willow Waystation — Tuskbeast Den"
+to_region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "a722ec05-d794-558c-9ca6-a05aa3a759dd"
+
+[records.values]
+from_region = "aa5a8f59-7c21-5bdc-8900-4b192b8ddab0"
+key = "road_442243c2-99e6-5e60-ba87-fecb633053a3_aa5a8f59-7c21-5bdc-8900-4b192b8ddab0"
+name = "Mossy Quarry — Tuskbeast Den"
+to_region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "5de94269-d6cb-5571-b27e-ab010f0d0b55"
+
+[records.values]
+from_region = "aa5a8f59-7c21-5bdc-8900-4b192b8ddab0"
+key = "road_6864acd2-7486-5e49-bc5d-c14f7bfb2d71_aa5a8f59-7c21-5bdc-8900-4b192b8ddab0"
+name = "Mossy Quarry — Clay Brook"
+to_region = "6864acd2-7486-5e49-bc5d-c14f7bfb2d71"
+
+[[records]]
+uuid = "e70cd577-8b38-5d74-9112-de43e1c16e3e"
+label = "road_442243c2-99e6-5e60-ba87-fecb633053a3_6864acd2-7486-5e49-bc5d-c14f7bfb2d71"
+tags = ["catalog/world-v1"]
+
+[records.values]
+from_region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+key = "road_442243c2-99e6-5e60-ba87-fecb633053a3_6864acd2-7486-5e49-bc5d-c14f7bfb2d71"
+name = "Tuskbeast Den — Clay Brook"
+to_region = "6864acd2-7486-5e49-bc5d-c14f7bfb2d71"
+
+[[records]]
+uuid = "bc662d80-bd1a-55f8-9cbc-a8470ebbc1f4"
+label = "road_442243c2-99e6-5e60-ba87-fecb633053a3_ae786757-21ef-5fc5-ad85-7c306674da9c"
+tags = ["catalog/world-v1"]
+
+[records.values]
+from_region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+key = "road_442243c2-99e6-5e60-ba87-fecb633053a3_ae786757-21ef-5fc5-ad85-7c306674da9c"
+name = "Tuskbeast Den — Broken Watchtower"
+to_region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "34da318d-b489-5894-989f-d368e0756385"
+
+[records.values]
+from_region = "76491b81-a10a-57a4-8643-e8f1cacffda7"
+key = "road_76491b81-a10a-57a4-8643-e8f1cacffda7_acfccb01-869c-545c-a2b6-4d5a8e7a5cd7"
+name = "Ashforge Market — Reed Riverbank"
+to_region = "acfccb01-869c-545c-a2b6-4d5a8e7a5cd7"
+
+[[records]]
+uuid = "19b8cdbf-a20d-5a2f-b9e0-0d4e2fef0819"
+label = "road_35613b21-21c4-5393-8f0c-eafbff2c270c_76491b81-a10a-57a4-8643-e8f1cacffda7"
+tags = ["catalog/world-v1"]
+
+[records.values]
+from_region = "35613b21-21c4-5393-8f0c-eafbff2c270c"
+key = "road_35613b21-21c4-5393-8f0c-eafbff2c270c_76491b81-a10a-57a4-8643-e8f1cacffda7"
+name = "Amber Woods — Ashforge Market"
+to_region = "76491b81-a10a-57a4-8643-e8f1cacffda7"
+
+[[records]]
+uuid = "513c79dd-3153-5e82-a51f-39cb6ca466e0"
+label = "road_20000000-0000-4000-800b-000000000001_acfccb01-869c-545c-a2b6-4d5a8e7a5cd7"
+tags = ["catalog/world-v1"]
+
+[records.values]
+from_region = "20000000-0000-4000-800b-000000000001"
+key = "road_20000000-0000-4000-800b-000000000001_acfccb01-869c-545c-a2b6-4d5a8e7a5cd7"
+name = "Copperleaf Crossing — Reed Riverbank"
+to_region = "acfccb01-869c-545c-a2b6-4d5a8e7a5cd7"
+
+[[records]]
+uuid = "9fde14b9-7989-53c3-80dc-ef9011da458a"
+
+[records.values]
+from_region = "35613b21-21c4-5393-8f0c-eafbff2c270c"
+key = "road_20000000-0000-4000-800b-000000000001_35613b21-21c4-5393-8f0c-eafbff2c270c"
+name = "Amber Woods — Copperleaf Crossing"
+to_region = "20000000-0000-4000-800b-000000000001"
+
+[[records]]
+uuid = "e81c8fb8-124d-5473-beaf-424e1c0bbada"
+
+[records.values]
+from_region = "35613b21-21c4-5393-8f0c-eafbff2c270c"
+key = "road_35613b21-21c4-5393-8f0c-eafbff2c270c_ae786757-21ef-5fc5-ad85-7c306674da9c"
+name = "Amber Woods — Broken Watchtower"
+to_region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "c36a12e0-2299-5749-a128-876183b1f6eb"
+label = "road_35613b21-21c4-5393-8f0c-eafbff2c270c_acfccb01-869c-545c-a2b6-4d5a8e7a5cd7"
+tags = ["catalog/world-v1"]
+
+[records.values]
+from_region = "35613b21-21c4-5393-8f0c-eafbff2c270c"
+key = "road_35613b21-21c4-5393-8f0c-eafbff2c270c_acfccb01-869c-545c-a2b6-4d5a8e7a5cd7"
+name = "Amber Woods — Reed Riverbank"
+to_region = "acfccb01-869c-545c-a2b6-4d5a8e7a5cd7"
+
+[[records]]
+uuid = "c8a3b981-f5b7-5afa-9b03-efeed1af618c"
+
+[records.values]
+from_region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+key = "road_1bdf6766-97e2-5bd7-9c6d-5adab1aba7a6_8062140b-5914-5129-ae4a-964bd8e0c7a7"
+name = "Lantern Town — Thorn Meadow"
+to_region = "1bdf6766-97e2-5bd7-9c6d-5adab1aba7a6"
+
+[[records]]
+uuid = "a384af29-e32f-53fa-9ce6-45966cc7ce47"
+label = "road_7d7bb240-3917-592f-a620-7891a5bd64e2_8062140b-5914-5129-ae4a-964bd8e0c7a7"
+tags = ["catalog/world-v1"]
+
+[records.values]
+from_region = "7d7bb240-3917-592f-a620-7891a5bd64e2"
+key = "road_7d7bb240-3917-592f-a620-7891a5bd64e2_8062140b-5914-5129-ae4a-964bd8e0c7a7"
+name = "Ashwood Copse — Lantern Town"
+to_region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+
+[[records]]
+uuid = "473cfc69-dfb2-59d2-b877-b0599d427ee2"
+
+[records.values]
+from_region = "1bdf6766-97e2-5bd7-9c6d-5adab1aba7a6"
+key = "road_1bdf6766-97e2-5bd7-9c6d-5adab1aba7a6_ae786757-21ef-5fc5-ad85-7c306674da9c"
+name = "Thorn Meadow — Broken Watchtower"
+to_region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "fa6f71b1-112b-50b0-8847-eaa4f3419f1d"
+
+[records.values]
+from_region = "1bdf6766-97e2-5bd7-9c6d-5adab1aba7a6"
+key = "road_1bdf6766-97e2-5bd7-9c6d-5adab1aba7a6_6864acd2-7486-5e49-bc5d-c14f7bfb2d71"
+name = "Thorn Meadow — Clay Brook"
+to_region = "6864acd2-7486-5e49-bc5d-c14f7bfb2d71"
+
+[[records]]
+uuid = "812e7836-1f05-5383-a0d3-377112ed87a9"
+
+[records.values]
+from_region = "7d7bb240-3917-592f-a620-7891a5bd64e2"
+key = "road_6864acd2-7486-5e49-bc5d-c14f7bfb2d71_7d7bb240-3917-592f-a620-7891a5bd64e2"
+name = "Ashwood Copse — Clay Brook"
+to_region = "6864acd2-7486-5e49-bc5d-c14f7bfb2d71"
+
+[[records]]
+uuid = "bde70229-3b1d-5ba1-b3e7-17f52a4533da"
+
+[records.values]
+from_region = "20000000-0000-4000-800b-000000000001"
+key = "road_20000000-0000-4000-800b-000000000001_ae786757-21ef-5fc5-ad85-7c306674da9c"
+name = "Copperleaf Crossing — Broken Watchtower"
+to_region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+
+[[records]]
+uuid = "34129789-5360-570a-bbf5-547cc3fa4357"
+
+[records.values]
+from_region = "ae786757-21ef-5fc5-ad85-7c306674da9c"
+key = "road_6864acd2-7486-5e49-bc5d-c14f7bfb2d71_ae786757-21ef-5fc5-ad85-7c306674da9c"
+name = "Broken Watchtower — Clay Brook"
+to_region = "6864acd2-7486-5e49-bc5d-c14f7bfb2d71"
+
+[[records]]
+uuid = "33146785-239f-563b-8e7b-be5f7fcda1b4"
+
+[records.values]
+from_region = "aa5a8f59-7c21-5bdc-8900-4b192b8ddab0"
+key = "road_20000000-0000-4000-800b-000000000002_aa5a8f59-7c21-5bdc-8900-4b192b8ddab0"
+name = "Mossy Quarry — Glimmering Mine"
+to_region = "20000000-0000-4000-800b-000000000002"
+
+[[records]]
+uuid = "d6a12eee-0d64-57d5-ac5c-d04189f7a789"
+label = "road_76491b81-a10a-57a4-8643-e8f1cacffda7_ee00670b-3936-59ec-9fb7-80be95aff430"
+tags = ["catalog/world-v1"]
+
+[records.values]
+from_region = "76491b81-a10a-57a4-8643-e8f1cacffda7"
+key = "road_76491b81-a10a-57a4-8643-e8f1cacffda7_ee00670b-3936-59ec-9fb7-80be95aff430"
+name = "Ashforge Market — Birch Road"
+to_region = "ee00670b-3936-59ec-9fb7-80be95aff430"
+
+[[records]]
+uuid = "8f89c5e1-6021-5ef9-a241-efda20081dd0"
+
+[records.values]
+from_region = "8062140b-5914-5129-ae4a-964bd8e0c7a7"
+key = "road_18a66bc2-b0bf-52fb-8321-745ee92bd1fb_8062140b-5914-5129-ae4a-964bd8e0c7a7"
+name = "Lantern Town — Buried Arena"
+to_region = "18a66bc2-b0bf-52fb-8321-745ee92bd1fb"
+
+[[records]]
+uuid = "eb9449d9-c675-5be1-91fe-c11da8ffea4d"
+
+[records.values]
+from_region = "20000000-0000-4000-800b-000000000001"
+key = "road_20000000-0000-4000-800b-000000000001_442243c2-99e6-5e60-ba87-fecb633053a3"
+name = "Copperleaf Crossing — Tuskbeast Den"
+to_region = "442243c2-99e6-5e60-ba87-fecb633053a3"
+
+[[records]]
+uuid = "48bdfef6-02d7-54b8-96bd-0a7e6784c99b"
+
+[records.values]
+from_region = "1bdf6766-97e2-5bd7-9c6d-5adab1aba7a6"
+key = "road_1bdf6766-97e2-5bd7-9c6d-5adab1aba7a6_7d7bb240-3917-592f-a620-7891a5bd64e2"
+name = "Thorn Meadow — Ashwood Copse"
+to_region = "7d7bb240-3917-592f-a620-7891a5bd64e2"

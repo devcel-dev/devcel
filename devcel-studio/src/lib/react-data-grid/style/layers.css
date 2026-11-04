@@ -1,0 +1,59 @@
+/**
+ * layers.css - CSS layer definitions and precedence
+ * 
+ * Use CSS @layer to explicitly control react-data-grid style precedence.
+ * This prevents style conflicts and ensures a predictable cascade order.
+ * 
+ * Later CSS layers take precedence over earlier ones.
+ * Layers lower in this list therefore have higher priority.
+ */
+
+/**
+ * Do not inherit cell positioning coordinates into descendants, limiting style recalculation when coordinates change.
+ * Do not define initial values, preserving existing fallbacks when values are unspecified.
+ */
+@property --rdg-global-column-start {
+  syntax: "*";
+  inherits: false;
+}
+
+@property --rdg-global-column-end {
+  syntax: "*";
+  inherits: false;
+}
+
+/**
+ * Define sublayers within the main rdg layer
+ * 
+ * Layer precedence, from low to high:
+ * 1. Defaults - Basic resets and default styles
+ * 2. FocusSink - Invisible elements for focus management
+ * 3. CheckboxInput - Checkbox input elements
+ * 4. CheckboxIcon - Checkbox icon display
+ * 5. CheckboxLabel - Checkbox labels
+ * 6. Cell - Regular data cell styles
+ * 7. HeaderCell - Header cell styles
+ * 8. SummaryCell - Summary cell styles
+ * 9. EditCell - Cells being edited
+ * 10. Row - Data row styles
+ * 11. HeaderRow - Header row styles
+ * 12. SummaryRow - Summary row styles
+ * 13. GroupedRow - Grouped row styles
+ * 14. Root - Root container styles (highest priority)
+ */
+@layer rdg {
+  @layer Defaults,
+    FocusSink,
+    CheckboxInput,
+    CheckboxIcon,
+    CheckboxLabel,
+    Cell,
+    HeaderCell,
+    SummaryCell,
+    EditCell,
+    Row,
+    HeaderRow,
+    SummaryRow,
+    GroupedRow,
+    Root;
+}

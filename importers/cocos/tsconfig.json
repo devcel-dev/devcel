@@ -1,0 +1,1 @@
+{"compilerOptions":{"target":"ES2020","module":"commonjs","strict":true,"lib":["ES2020","DOM"],"outDir":"dist","rootDir":"source","skipLibCheck":true},"include":["source/**/*.ts"]}
