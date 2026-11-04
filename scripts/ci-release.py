@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Local checks, release-build CI, and Windows/Linux release packaging (Python 3.11+)."""
+"""Local checks, release-build CI, and Windows/Linux/macOS release packaging (Python 3.11+)."""
 from __future__ import annotations
 import argparse
 import hashlib
 import json
 import os
+import platform
 from pathlib import Path
 import re
 import shutil
@@ -190,6 +191,9 @@ def toolchains():
     run('npm', 'install', '--global', 'npm@'+package['volta']['npm'])
     toolchain = tomllib.loads((ROOT/'rust-toolchain.toml').read_text())['toolchain']
     run('rustup', 'toolchain', 'install', toolchain['channel'], '--profile', 'minimal')
+    if sys.platform == 'darwin':
+        run('rustup', 'target', 'add', '--toolchain', toolchain['channel'],
+            'x86_64-apple-darwin', 'aarch64-apple-darwin')
 
 
 def check():
@@ -658,7 +662,12 @@ def platform_config():
         return 'windows', 'win-x64', None, 'devcel-studio.exe'
     if sys.platform == 'linux':
         return 'linux', 'linux-x64', 'deb', 'devcel-studio'
-    raise ValueError('Automated releases support Windows x64 and Linux x64.')
+    if sys.platform == 'darwin':
+        arch = {'x86_64': 'x64', 'arm64': 'arm64', 'aarch64': 'arm64'}.get(platform.machine())
+        if arch:
+            # Request app explicitly: dmg-only bundling deletes its intermediate app.
+            return 'macos-'+arch, 'osx-'+arch, 'app,dmg', 'devcel-studio'
+    raise ValueError('Unsupported native release OS/CPU.')
 
 
 def frontend_release():
@@ -694,6 +703,8 @@ def clean_native_outputs():
 
 def build_native():
     system, importer_platform, bundles, executable = platform_config()
+    if system.startswith('macos-'):
+        studio_cli.configure_macos(ROOT)
     run(sys.executable, 'scripts/generate-third-party-notices.py', '--ensure')
     # Restored caches can contain old packaging outputs even when glob excludes
     # name them: tar recursively archives a selected parent directory.
@@ -708,6 +719,13 @@ def build_native():
     run('npm', 'run', 'tauri', '--', 'build', *options,
         '--config', cli_config, cwd=ROOT/'devcel-studio')
     target = cargo_target()
+    if system.startswith('macos-'):
+        # Resources must retain the bytes hashed before the outer app is signed.
+        app = target/'release/bundle/macos/devcel-studio.app'
+        staged = studio_cli.validate(ROOT/studio_cli.DIRECTORY, importer_platform)
+        if studio_cli.validate(app/'Contents/Resources/bin', importer_platform) != staged:
+            raise ValueError('macOS bundled CLI differs from the staged payload')
+        run('codesign', '--verify', '--deep', '--strict', app)
     if system == 'windows':
         # A dedicated directory cannot accidentally ship stale MSI/NSIS files.
         portable = target/'release/portable'
@@ -722,12 +740,21 @@ def build_native():
 
 
 def native_artifact_dir(system, target):
-    return target/'release'/('portable' if system == 'windows' else 'bundle/deb')
+    folder = 'bundle/dmg' if system.startswith('macos-') else ('portable' if system == 'windows' else 'bundle/deb')
+    return target/'release'/folder
+
+
+def studio_binary(system, executable, target):
+    # The signed Mach-O differs from the unsigned Cargo output. Compare the DMG
+    # to the sealed app produced by this build, not a normalized/stripped binary.
+    if system.startswith('macos-'):
+        return target/'release/bundle/macos/devcel-studio.app/Contents/MacOS'/executable
+    return target/'release'/executable
 
 
 def verify_native(system, executable, target):
-    run(sys.executable, 'scripts/check-native-release-artifacts.py', '--platform', system,
-        '--bundle-dir', native_artifact_dir(system, target), '--first-party', target/'release'/executable,
+    run(sys.executable, 'scripts/check-native-release-artifacts.py', '--platform', 'macos' if system.startswith('macos-') else system,
+        '--bundle-dir', native_artifact_dir(system, target), '--first-party', studio_binary(system, executable, target),
         '--first-party', ROOT/studio_cli.DIRECTORY/('devcel.exe' if system == 'windows' else 'devcel'),
         '--report-dir', ROOT/'release-reports')
 
@@ -739,7 +766,7 @@ def inspect_native():
     if out.exists(): shutil.rmtree(out)
     out.mkdir()
     shutil.copytree(native_artifact_dir(system, target), out/'bundle')
-    shutil.copyfile(target/'release'/executable, out/executable)
+    shutil.copyfile(studio_binary(system, executable, target), out/executable)
     shutil.copytree(ROOT/studio_cli.DIRECTORY, out/'bundled-cli')
     # Keep evidence even when the fail-closed notice review rejects the payload.
     verify_native(system, executable, target)
@@ -749,7 +776,8 @@ def studio_asset_name(system, tag):
     """The public Studio filename, independent of native bundler conventions."""
     if not SEMVER.fullmatch(tag):
         raise ValueError('A valid release tag is required for Studio asset naming.')
-    formats = {'linux': ('linux-x64', 'deb'), 'windows': ('windows-x64', 'zip')}
+    formats = {'linux': ('linux-x64', 'deb'), 'windows': ('windows-x64', 'zip'),
+               'macos-x64': ('macos-x64', 'dmg'), 'macos-arm64': ('macos-arm64', 'dmg')}
     if system not in formats:
         raise ValueError('Unsupported Studio release platform: '+system)
     platform, extension = formats[system]
@@ -763,7 +791,7 @@ def package():
     elif out.exists(): shutil.rmtree(out)
     out.mkdir()
     name = studio_asset_name(system, os.environ['RELEASE_TAG'])
-    suffix = '.zip' if system == 'windows' else '.deb'
+    suffix = Path(name).suffix
     artifacts = [path for path in native_artifact_dir(system, target).rglob('*')
                  if path.is_file() and path.suffix.lower() == suffix]
     if len(artifacts) != 1 or artifacts[0].is_symlink():
@@ -786,17 +814,20 @@ def package():
 
 
 def collect_assets(downloads, destination, tag, expected_commit=None, expected_repository=None):
-    expected_studio = {system: studio_asset_name(system.lower(), tag)
-                       for system in ('Linux', 'Windows')}
-    roots = [downloads/'release-Linux', downloads/'release-Windows']
+    platforms = {'Linux': ('linux', 'linux-x64'), 'Windows': ('windows', 'win-x64'),
+                 'macOS-X64': ('macos-x64', 'osx-x64'), 'macOS-ARM64': ('macos-arm64', 'osx-arm64')}
+    expected_studio = {label: studio_asset_name(system, tag)
+                       for label, (system, _) in platforms.items()}
+    roots = [downloads/('release-'+label) for label in platforms]
     if any(not path.is_dir() for path in roots):
-        raise ValueError('Both native release artifact sets are required.')
+        raise ValueError('All four native release artifact sets are required.')
     destination.mkdir(parents=True, exist_ok=True)
     files = []
     for directory in roots:
         entries = sorted(directory.iterdir())
         if not entries: raise ValueError(f'Empty release artifact set: {directory.name}')
-        platform = 'linux-x64' if directory.name == 'release-Linux' else 'win-x64'
+        label = directory.name.removeprefix('release-')
+        platform = platforms[label][1]
         for engine in ('unity', 'godot', 'unreal', 'rpgmaker', 'wolf', 'gamemaker', 'defold', 'cocos', 'javascript'):
             expected = directory/f'devcel-{engine}-{tag[1:]}-{platform}.zip'
             if list(directory.glob(f'devcel-{engine}-*-{platform}.zip')) != [expected]:
@@ -826,10 +857,12 @@ def collect_assets(downloads, destination, tag, expected_commit=None, expected_r
                         or platform not in manifest.get('binaries', {})):
                     raise ValueError('Importer version/source commit/platform mismatch')
         system = directory.name.removeprefix('release-')
-        studio = list(directory.glob('*.deb' if system == 'Linux' else 'devcel-studio-*.zip'))
+        studio = list(directory.glob('devcel-studio-*'+Path(expected_studio[system]).suffix))
         if len(studio) != 1 or studio[0].name != expected_studio[system]:
             raise ValueError(f'Missing, duplicate, or wrong-version/platform Studio package: {platform}')
-        if any(path.suffix.lower() in {'.appimage', '.rpm', '.dmg', '.msi', '.exe'} for path in entries):
+        forbidden = {'.appimage', '.rpm', '.msi', '.exe'}
+        if not platform.startswith('osx-'): forbidden.add('.dmg')
+        if any(path.suffix.lower() in forbidden for path in entries):
             raise ValueError('Unsupported release installer')
         if platform == 'linux-x64' and not (directory/release_source.ASSET).is_file():
             raise ValueError('Matching source-access manifest is required.')

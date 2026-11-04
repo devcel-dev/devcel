@@ -14,7 +14,7 @@ Follow [Tauri prerequisites](https://v2.tauri.app/start/prerequisites/):
 - macOS: Xcode or Xcode Command Line Tools for desktop development.
 - Linux: GTK 3, WebKitGTK 4.1 and C/C++ build tools. See [Linux development](linux.md).
 
-Automated distribution targets are Windows x64 and Linux x64; see [CI and releases](releasing.md). macOS builds remain available locally. Actual platform coverage must be recorded separately alongside the checks described in [Contributing](../../CONTRIBUTING.md#check-the-result).
+Automated distribution targets are Windows x64, Linux x64, macOS Intel and macOS Apple Silicon; see [CI and releases](releasing.md). macOS produces one native DMG per CPU. Actual platform coverage must be recorded separately alongside the checks described in [Contributing](../../CONTRIBUTING.md#check-the-result).
 
 ### Keep Node selectors synchronized
 
@@ -46,7 +46,7 @@ python scripts/release_source.py --check
 python scripts/ci-release.py build_native
 ```
 
-Install the pinned Node version and platform prerequisites first. `toolchains` installs the pinned npm and Rust versions. The release frontend hook reuses the staged production CLI for catalog generation, synchronizes the plugin SDK and builds Vite. `build_native` stages that CLI and creates the Windows portable ZIP or Linux deb package. Signing, timestamps and platform environments can change bytes; this is a source rebuild procedure, not a promise of byte-identical binaries.
+Install the pinned Node version and platform prerequisites first. `toolchains` installs the pinned npm and Rust versions. The release frontend hook reuses the staged production CLI for catalog generation, synchronizes the plugin SDK and builds Vite. `build_native` stages that CLI and creates the Windows portable ZIP, Linux deb package or native macOS DMG. Signing, timestamps and platform environments can change bytes; this is a source rebuild procedure, not a promise of byte-identical binaries.
 
 `SOURCE-ACCESS.json` and [Source delivery](source-delivery.md) distinguish locked registry build artifacts from preferred editable dependency source. No secret, publisher signing key or update-service credential is needed to build and run a modified no-bundle executable. The standard updater is disabled.
 
@@ -108,3 +108,36 @@ pwsh -File ./build-all-windows.ps1 -Distribution -Configuration release -OutputD
 This mode creates the portable Studio folder and all nine CLI-bundled importer packages, including source and license evidence. Their integrity checks remain mandatory. Importers use release mode. A credential-free GitHub origin supplies the source repository; `-SourceRepository owner/repo` overrides it. Source archives require both `-SourceRepository` and `-SourceCommit <full-commit>` from their source metadata; they cannot inherit an unrelated enclosing checkout. The command does not publish a GitHub Release.
 
 Both modes write `build_log.txt` and `build_summary.txt` in the timestamped output folder. A failed native command stops the build and returns a nonzero exit code. `-Clean` only removes the repository's Cargo target, rejecting external or linked directories.
+
+## macOS local build
+
+Use a native terminal on the intended Intel or Apple Silicon Mac, with Xcode
+Command Line Tools, Python 3.11+ (also available as `python` for the Tauri build hook)
+and the pinned Node version installed. Do not use
+a Rosetta terminal to produce the Apple Silicon distribution. From the repo root:
+
+```sh
+python3 scripts/ci-release.py toolchains
+npm ci --prefix devcel-studio
+python3 scripts/ci-release.py build_native
+python3 scripts/package-importers.py --out dist/importers --source-repository eight-ways/devcel --source-commit "$(git rev-parse HEAD)"
+```
+
+The Studio app is `target/release/bundle/macos/devcel-studio.app`; the DMG is in
+`target/release/bundle/dmg/`. `CARGO_TARGET_DIR` overrides the target root.
+The build sets `MACOSX_DEPLOYMENT_TARGET` from the existing Tauri minimum (13.3)
+for the CLI and runtime as well as Studio. Both Darwin Rust targets are installed
+because the Unity dylib contains both CPUs; other binaries match the native host.
+The same entry points are used by CI and Release. `build_native` stages the CLI,
+license and SHA-256 manifest under the app's `Contents/Resources/bin/`.
+
+Signatures are ad-hoc and no Apple notarization is performed. See the
+[distribution constraints](releasing.md#macos-distribution-status) before publishing.
+On each CPU, install the DMG, launch from Applications, create/edit/save/reopen a
+project, exercise Studio's bundled CLI and import into the actual target editors.
+Test a browser-downloaded package separately for quarantine/Gatekeeper behavior.
+Record macOS version, CPU and editor versions with the results. The manual
+`native` and `importers` suites provide additional CLI/package checks; they do
+not replace these GUI checks. macOS 13.3 compatibility must be tested separately
+from the macOS 15 build runners. No macOS execution is established by tests run
+on Windows or by inspecting the packaging configuration.

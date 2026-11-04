@@ -29,6 +29,20 @@ fn regular(path: &Path, max_bytes: u64) -> Result<(), String> {
     Ok(())
 }
 
+fn platform_id() -> &'static str {
+    if cfg!(all(target_os = "macos", target_arch = "aarch64")) {
+        "osx-arm64"
+    } else if cfg!(all(target_os = "macos", target_arch = "x86_64")) {
+        "osx-x64"
+    } else if cfg!(all(windows, target_arch = "x86_64")) {
+        "win-x64"
+    } else if cfg!(all(target_os = "linux", target_arch = "x86_64")) {
+        "linux-x64"
+    } else {
+        "unsupported"
+    }
+}
+
 fn resolve(root: &Path) -> Result<BundledCliInfo, String> {
     let bin = root.join("bin");
     let metadata = fs::symlink_metadata(&bin).map_err(|_| "Bundled CLI is not installed")?;
@@ -51,11 +65,7 @@ fn resolve(root: &Path) -> Result<BundledCliInfo, String> {
     } else {
         "devcel"
     };
-    let platform = if cfg!(windows) {
-        "win-x64"
-    } else {
-        "linux-x64"
-    };
+    let platform = platform_id();
     let hex = |s: &str, len| {
         s.len() == len
             && s.bytes()
@@ -120,11 +130,7 @@ mod tests {
         } else {
             "devcel"
         };
-        let platform = if cfg!(windows) {
-            "win-x64"
-        } else {
-            "linux-x64"
-        };
+        let platform = platform_id();
         fs::write(bin.join(executable), b"fixture").unwrap();
         let mut value = serde_json::json!({"schema_version":1,"version":"hoge",
             "platform":platform,"executable":executable,"sha256":format!("{:x}",Sha256::digest(b"fixture")),"source_commit":"a".repeat(40)});

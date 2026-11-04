@@ -12,7 +12,8 @@ from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = '.github/workflows/release.yml'
-BUILDS = {'release-Linux': 'build (ubuntu-24.04)', 'release-Windows': 'build (windows-2022)'}
+BUILDS = {'release-Linux': 'build (ubuntu-24.04)', 'release-Windows': 'build (windows-2022)',
+          'release-macOS-X64': 'build (macos-15-intel)', 'release-macOS-ARM64': 'build (macos-15)'}
 SHA = re.compile(r'[0-9a-f]{40}')
 DIGEST = re.compile(r'sha256:[0-9a-f]{64}')
 
@@ -147,7 +148,7 @@ def inspect(environment=None, now=None):
             raise ValueError('Artifact expiry/digest/commit/attempt scope mismatch: '+name)
         pinned.append({k: artifact[k] for k in ('id', 'name', 'digest', 'size_in_bytes', 'created_at', 'updated_at', 'expires_at')})
         number(artifact['id'])
-    if len({a['id'] for a in pinned}) != 2:
+    if len({a['id'] for a in pinned}) != len(BUILDS):
         raise ValueError('Release artifact identities must be distinct')
     no_release(repository, tag)
     return {'repository': repository, 'repository_id': repo['id'], 'publisher': publisher,
