@@ -120,7 +120,7 @@ a Rosetta terminal to produce the Apple Silicon distribution. From the repo root
 python3 scripts/ci-release.py toolchains
 npm ci --prefix devcel-studio
 python3 scripts/ci-release.py build_native
-python3 scripts/package-importers.py --out dist/importers --source-repository eight-ways/devcel --source-commit "$(git rev-parse HEAD)"
+python3 scripts/package-importers.py --out dist/importers --source-repository devcel-dev/devcel --source-commit "$(git rev-parse HEAD)"
 ```
 
 The Studio app is `target/release/bundle/macos/devcel-studio.app`; the DMG is in

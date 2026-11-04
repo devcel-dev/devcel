@@ -296,21 +296,20 @@ class ReleaseTests(unittest.TestCase):
                 with self.assertRaises(ValueError): ci.prepare_release()
             self.assertEqual(output.read_bytes(), before)
 
-    def test_create_tag_uses_only_create_ref_api(self):
+    def test_tag_preflight_is_read_only(self):
         tag, commit = 'v1.2.3-rc.1', 'a'*40
         env = {'GITHUB_EVENT_NAME': 'workflow_dispatch', 'GITHUB_REF': 'refs/heads/main',
-               'RELEASE_TAG': tag, 'SOURCE_COMMIT': commit}
-        response = json.dumps({'ref': 'refs/tags/'+tag, 'object': {'sha': commit}})
+               'RELEASE_TAG': tag, 'SOURCE_COMMIT': commit, 'GH_REPO': 'owner/repo'}
+        response = ''
         with patch.dict(ci.os.environ, env), patch.object(ci, 'validate') as validate, \
                 patch.object(ci, 'checked_commit', return_value=commit), patch.object(ci, 'run', return_value=response) as run:
             ci.create_tag()
         validate.assert_called_once_with(tag)
-        run.assert_called_once_with('gh', 'api', '--method', 'POST', 'repos/{owner}/{repo}/git/refs',
-                                    '--raw-field', 'ref=refs/tags/'+tag, '--raw-field', 'sha='+commit, capture=True)
+        run.assert_called_once_with('git', 'ls-remote', '--refs', 'https://github.com/owner/repo.git', 'refs/tags/'+tag, capture=True)
 
     def test_existing_tag_or_api_failure_never_retries_or_overwrites(self):
         env = {'GITHUB_EVENT_NAME': 'workflow_dispatch', 'GITHUB_REF': 'refs/heads/main',
-               'RELEASE_TAG': 'v1.2.3', 'SOURCE_COMMIT': 'a'*40}
+               'RELEASE_TAG': 'v1.2.3', 'SOURCE_COMMIT': 'a'*40, 'GH_REPO': 'owner/repo'}
         for status in (409, 422):
             with patch.dict(ci.os.environ, env), patch.object(ci, 'validate'), \
                     patch.object(ci, 'checked_commit', return_value='a'*40), \
@@ -335,13 +334,13 @@ class ReleaseTests(unittest.TestCase):
 
     def test_create_tag_checks_api_response(self):
         env = {'GITHUB_EVENT_NAME': 'workflow_dispatch', 'GITHUB_REF': 'refs/heads/main',
-               'RELEASE_TAG': 'v1.2.3', 'SOURCE_COMMIT': 'a'*40}
+               'RELEASE_TAG': 'v1.2.3', 'SOURCE_COMMIT': 'a'*40, 'GH_REPO': 'owner/repo'}
         for response in ({}, {'ref': 'refs/tags/v1.2.3', 'object': {'sha': 'b'*40}},
                          {'ref': 'refs/tags/v1.2.4', 'object': {'sha': 'a'*40}}):
             with patch.dict(ci.os.environ, env), patch.object(ci, 'validate'), \
                     patch.object(ci, 'checked_commit', return_value='a'*40), \
                     patch.object(ci, 'run', return_value=json.dumps(response)):
-                with self.assertRaisesRegex(ValueError, 'creation response'): ci.create_tag()
+                with self.assertRaisesRegex(ValueError, 'already exists'): ci.create_tag()
 
     def test_runners_avoid_full_local_suite_and_preserve_local_checks(self):
         for name in ('ci.yml', 'release.yml'):
@@ -785,8 +784,8 @@ class ReleaseTests(unittest.TestCase):
             root = Path(temp)
             self.fixture(root)
             files = ci.collect_assets(root, root/'out', 'v0.1.0')
-            self.assertEqual(len(files), 46)
-            self.assertEqual(len((root/'out/SHA256SUMS.txt').read_text().splitlines()), 45)
+            self.assertEqual(len(files), 48)
+            self.assertEqual(len((root/'out/SHA256SUMS.txt').read_text().splitlines()), 47)
             self.assertEqual(len(list((root/'out').glob('org.devcel.unity-*.tgz'))), 4)
 
     def test_publication_requires_both_mobile_artifacts(self):
@@ -1116,6 +1115,45 @@ class ReleaseTests(unittest.TestCase):
             self.assertEqual(calls[5],('gh','release','upload','v0.1.0','asset'))
             self.assertEqual(calls[6],('gh','release','edit','v0.1.0','--draft=false'))
 
+    def test_new_release_stages_complete_package_before_creating_normal_tag(self):
+        self.check_new_release_publication(False)
+        self.check_new_release_publication(True)
+
+    def check_new_release_publication(self, resume):
+        events = []
+        def collect(*args):
+            events.append('collect'); return ['asset']
+        def stage(*args):
+            events.append('stage'); return 'b'*40
+        def command(*args, **kwargs):
+            if args[:2] == ('git', 'ls-remote'): return 'b'*40+'\trefs/tags/v0.1.0' if resume else ''
+            if 'releases?per_page=100' in str(args): return '[[]]'
+            if args == ('gh', 'api', 'repos/{owner}/{repo}'):
+                return '{"full_name":"owner/repo","visibility":"public"}'
+            if 'push' in args:
+                events.append('push')
+                self.assertEqual(args[-2:], ('https://github.com/owner/repo.git', 'b'*40+':refs/tags/v0.1.0'))
+                self.assertNotIn('--force', args)
+            if '--jq' in args: return 'b'*40
+            if args[:3] == ('gh','release','create'):
+                events.append('create')
+                self.assertIn('?path=/upm#v0.1.0', Path(args[args.index('--notes-file')+1]).read_text())
+            if args[:3] == ('gh','release','upload'): events.append('upload')
+            if args[:3] == ('gh','release','edit'): events.append('publish')
+            return ''
+        with self.publication_fixture(), patch.dict(ci.os.environ, {
+                'GITHUB_EVENT_NAME':'workflow_dispatch', 'RECOVERY_RUN_ID':'', 'REBUILD_EXISTING_TAG':'false',
+                'RELEASE_TAG':'v0.1.0','SOURCE_COMMIT':'a'*40,'GH_REPO':'owner/repo'}), \
+                patch.object(ci,'validate'), patch.object(ci,'checked_commit',return_value='a'*40), \
+                patch.object(ci,'collect_assets',side_effect=collect), \
+                patch.object(ci.unity_git_package,'stage_release',side_effect=stage), \
+                patch.object(ci.release_source,'validate_index'), \
+                patch.object(ci.release_source,'source_index',return_value={}), \
+                patch.object(ci.release_source,'source_notes',return_value='source'), \
+                patch.object(ci,'run',side_effect=command):
+            ci.publish()
+        self.assertEqual(events, ['collect','stage']+([] if resume else ['push'])+['create','upload','publish'])
+
     def test_publication_notes_normalize_input_and_bind_version(self):
         self.assertEqual(ci.publication_notes('v0.1.0', 'Exact source', 'Changes\r\n\r\nImproved editing.\r\n', '0.1.0'),
                          'Changes\n\nImproved editing.\n\nExact source')
@@ -1175,11 +1213,12 @@ class ReleaseTests(unittest.TestCase):
                              'Exact source directions')
 
     def test_changed_tag_stops_publication(self):
-        with patch.dict(ci.os.environ, {'RELEASE_TAG':'v0.1.0','SOURCE_COMMIT':'a'*40}), \
+        with patch.dict(ci.os.environ, {'RELEASE_TAG':'v0.1.0','SOURCE_COMMIT':'a'*40,'GH_REPO':'owner/repo'}), \
                 patch.object(ci,'validate'), patch.object(ci,'checked_commit',return_value='a'*40), \
+                patch.object(ci.unity_git_package, 'source_identity', return_value='c'*40), \
                 patch.object(ci,'collect_assets') as collect, patch.object(ci,'run',return_value='b'*40) as run:
             with self.assertRaisesRegex(ValueError,'no longer points'): ci.publish()
-            collect.assert_not_called(); self.assertEqual(run.call_count,1)
+            collect.assert_not_called(); self.assertEqual(run.call_count,2)
 
     def test_existing_release_stops_before_upload(self):
         for draft in (True,False):
@@ -1546,6 +1585,7 @@ class ManualVersionPreparationTests(unittest.TestCase):
         with patch.dict(ci.os.environ, {**self.environment(), 'GITHUB_EVENT_NAME': 'push',
                                        'GITHUB_REF': 'refs/tags/v0.0.3'}), \
                 patch.object(ci, 'release_request', return_value=('v0.0.3', 'a'*40)), \
+                patch.object(ci, 'run', return_value=''), \
                 patch.object(release_version, 'bump') as bump, patch.object(ci, 'emit_release'):
             ci.prepare_release()
         bump.assert_not_called()

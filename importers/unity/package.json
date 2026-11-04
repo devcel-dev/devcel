@@ -13,7 +13,7 @@
   "author": {
     "name": "Devcel"
   },
-  "documentationUrl": "https://github.com/eight-ways/devcel/tree/main/importers/unity",
+  "documentationUrl": "https://github.com/devcel-dev/devcel/tree/main/importers/unity",
   "hideInEditor": false,
   "dependencies": {
     "com.unity.modules.unitywebrequest": "1.0.0",

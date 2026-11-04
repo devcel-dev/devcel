@@ -123,7 +123,7 @@ namespace Devcel.Unity.Editor
                         throw new InvalidOperationException("The native PluginImporter OS/CPU/distribution settings are invalid. Run Devcel > Repair Native Plugin Settings: " + importer.assetPath);
                     if (runtimeRequired && rule == required)
                     {
-                        if (rule.OS.Length == 0) DevcelNativePackage.ValidatePlayer(DevcelPaths.DistributionRoot, rule.Path);
+                        DevcelNativePackage.ValidatePlayer(DevcelPaths.DistributionRoot, rule.Path);
                         if (!DevcelNativeBinary.Validate(System.IO.Path.Combine(DevcelPaths.DistributionRoot, rule.Path), rule.Target, out string error))
                             throw new InvalidOperationException(error);
                         found = true;
