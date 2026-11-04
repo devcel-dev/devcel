@@ -1,0 +1,34 @@
+name: Unity mobile runtime builds
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mobile:
+    name: mobile (${{ matrix.system }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - system: android
+            os: ubuntu-24.04
+          - system: ios
+            os: macos-15
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/build-unity-mobile
+        with:
+          system: ${{ matrix.system }}
+          source-commit: ${{ github.sha }}
+      - uses: actions/upload-artifact@v7
+        with:
+          name: unity-mobile-${{ matrix.system }}
+          path: mobile-artifacts/*.zip
+          if-no-files-found: error
+          retention-days: 7

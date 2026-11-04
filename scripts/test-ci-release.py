@@ -8,6 +8,8 @@ import re
 import subprocess
 import tempfile
 import unittest
+from test_unity_upm import fixture_entries
+from test_unity_mobile import fixture as mobile_fixture
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -156,7 +158,7 @@ class ReleaseTests(unittest.TestCase):
 
     def test_triggers_and_permissions(self):
         directory = ROOT/'.github/workflows'
-        self.assertEqual({p.name for p in directory.iterdir()}, {'ci.yml', 'release.yml', 'manual-checks.yml'})
+        self.assertEqual({p.name for p in directory.iterdir()}, {'ci.yml', 'release.yml', 'manual-checks.yml', 'unity-mobile.yml'})
         ci_text = (directory/'ci.yml').read_text()
         release = (directory/'release.yml').read_text()
         self.assertIn('on:\n  pull_request:\n    branches: [main]\n', ci_text)
@@ -165,7 +167,7 @@ class ReleaseTests(unittest.TestCase):
         self.assertIn("on:\n  push:\n    tags: ['v[0-9]*.[0-9]*.[0-9]*']\n", release)
         self.assertIn('  workflow_dispatch:\n    inputs:\n      version:', release)
         self.assertIn('        required: true\n        type: string', release)
-        self.assertIn('needs: [validate, build]', release)
+        self.assertIn('needs: [validate, build, mobile]', release)
         self.assertEqual(release.count('contents: write'), 4)
         for job in ('validate', 'build'):
             block = re.search(r'(?ms)^  '+job+r':\n(.*?)(?=^  [a-z_]+:|\Z)', release).group(1)
@@ -182,10 +184,10 @@ class ReleaseTests(unittest.TestCase):
         self.assertIn('group: release-main', release)
         self.assertIn('cancel-in-progress: false', release)
         self.assertIn('ref: ${{ github.sha }}', release)
-        self.assertEqual(release.count('ref: ${{ needs.validate.outputs.commit }}'), 3)
+        self.assertEqual(release.count('ref: ${{ needs.validate.outputs.commit }}'), 4)
         self.assertEqual(release.count('SOURCE_COMMIT: ${{ needs.validate.outputs.commit }}'), 3)
         self.assertEqual(release.count('RELEASE_TAG: ${{ needs.validate.outputs.tag }}'), 3)
-        self.assertEqual(release.count('persist-credentials: false'), 8)
+        self.assertEqual(release.count('persist-credentials: false'), 9)
         self.assertEqual(release.count('run: python scripts/ci-release.py package'), 1)
         self.assertEqual(release.count('run: python scripts/ci-release.py publish'), 1)
         self.assertEqual(release.count('GH_TOKEN: ${{ github.token }}'), 5)
@@ -745,10 +747,16 @@ class ReleaseTests(unittest.TestCase):
             for engine in ('unity', 'godot', 'unreal', 'rpgmaker', 'wolf', 'gamemaker', 'defold', 'cocos', 'javascript'):
                 import zipfile
                 with zipfile.ZipFile(directory/f'devcel-{engine}-0.1.0-{platform}.zip', 'w') as archive:
-                    archive.writestr('sdk/bin/manifest.json', json.dumps({'schema_version':1, 'version':'0.1.0', 'source_commit':'a'*40, 'source_repository':'owner/repo', 'supportedPlatforms':[platform], 'binaries':{platform:{'path':platform+'/devcel'}}}))
+                    if engine == 'unity':
+                        for name, raw in fixture_entries(platform).items():
+                            archive.writestr(name, raw)
+                    else:
+                        archive.writestr('sdk/bin/manifest.json', json.dumps({'schema_version':1, 'version':'0.1.0', 'source_commit':'a'*40, 'source_repository':'owner/repo', 'supportedPlatforms':[platform], 'binaries':{platform:{'path':platform+'/devcel'}}}))
             (directory/ci.studio_asset_name(system.lower(), 'v0.1.0')).write_bytes(b'fixture')
         (root/'release-Windows/devcel-studio-0.1.0-windows-x64.zip').write_bytes(b'portable')
         (root/'release-Linux/SOURCE-ACCESS.json').write_bytes(b'source')
+        for system in ('android', 'ios'):
+            mobile_fixture(root/f'release-mobile-{system}'/f'unity-mobile-{system}.zip', system)
 
     def test_collect_rejects_old_importer_filename_and_manifest_identity(self):
         import zipfile
@@ -758,7 +766,7 @@ class ReleaseTests(unittest.TestCase):
                 self.fixture(root)
                 path = root/'release-Windows/devcel-unity-0.1.0-win-x64.zip'
                 with zipfile.ZipFile(path) as archive:
-                    manifest = json.loads(archive.read('sdk/bin/manifest.json'))
+                    manifest = json.loads(archive.read('devcel-unity/Tools~/manifest.json'))
                 manifest[field] = wrong
                 with zipfile.ZipFile(path, 'w') as archive:
                     archive.writestr('sdk/bin/manifest.json', json.dumps(manifest))
@@ -777,8 +785,18 @@ class ReleaseTests(unittest.TestCase):
             root = Path(temp)
             self.fixture(root)
             files = ci.collect_assets(root, root/'out', 'v0.1.0')
-            self.assertEqual(len(files), 42)
-            self.assertEqual(len((root/'out/SHA256SUMS.txt').read_text().splitlines()), 41)
+            self.assertEqual(len(files), 46)
+            self.assertEqual(len((root/'out/SHA256SUMS.txt').read_text().splitlines()), 45)
+            self.assertEqual(len(list((root/'out').glob('org.devcel.unity-*.tgz'))), 4)
+
+    def test_publication_requires_both_mobile_artifacts(self):
+        for system in ('android', 'ios'):
+            with self.subTest(system=system), tempfile.TemporaryDirectory() as temp:
+                root = Path(temp)
+                self.fixture(root)
+                (root/f'release-mobile-{system}'/f'unity-mobile-{system}.zip').unlink()
+                with self.assertRaisesRegex(ValueError, 'mobile runtime artifact sets'):
+                    ci.collect_assets(root, root/'out', 'v0.1.0')
 
     def test_studio_asset_names_match_release_version_and_platform(self):
         for version in ('0.0.2', '0.0.3', '1.2.3-rc.1'):

@@ -24,6 +24,7 @@ import release_source
 import release_privacy
 import studio_cli
 import importer_versions
+import unity_upm
 from product_version import read_version
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -232,7 +233,7 @@ def check():
     run('cargo', 'test', '--locked', '--workspace')
     run('cargo', 'clippy', '--locked', '--workspace', '--all-targets', '--all-features',
         '--', '-D', 'warnings')
-    for script in ('test-package-sources.py', 'test-native-distribution-notices.py',
+    for script in ('test-package-sources.py', 'test_unity_upm.py', 'test_unity_mobile.py', 'test-native-distribution-notices.py',
                    'test-npm-license-tarballs.py', 'test-third-party-notices.py', 'test-windows-portable.py'):
         run(sys.executable, 'scripts/'+script)
     run('node', 'scripts/test-importer-tag-filters.cjs')
@@ -875,6 +876,18 @@ def collect_assets(downloads, destination, tag, expected_commit=None, expected_r
             if target.exists(): raise ValueError('Duplicate release asset: '+source.name)
             shutil.copyfile(source, target)
             files.append(target)
+    # Mobile archives belong to the same immutable release source. They add
+    # Player runtimes without replacing the Editor's platform-specific runtime.
+    mobile = {system: downloads/f'release-mobile-{system}'/f'unity-mobile-{system}.zip'
+              for system in ('android', 'ios')}
+    for path in mobile.values():
+        if not path.is_file() or path.is_symlink() or list(path.parent.iterdir()) != [path]:
+            raise ValueError('Both exact mobile runtime artifact sets are required')
+    for source in list(files):
+        prefix = f'devcel-unity-{tag[1:]}-'
+        if source.name.startswith(prefix) and source.suffix == '.zip':
+            platform = source.name[len(prefix):-4]
+            files.append(unity_upm.create(source, destination, tag[1:], platform, mobile))
     sums = destination/'SHA256SUMS.txt'
     sums.write_text(''.join(hashlib.sha256(path.read_bytes()).hexdigest()+'  '+path.name+'\n'
                             for path in sorted(files)), encoding='utf-8', newline='\n')

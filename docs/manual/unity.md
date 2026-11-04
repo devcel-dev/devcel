@@ -6,9 +6,9 @@ Import saved Devcel tables into Unity and check Studio edits in a running game. 
 
 ## 1. Prepare the projects
 
-You need a saved manifest and its Tables folder, plus the CLI-bundled importer ZIP for your editor OS/CPU. A source-code archive does not include the required executable.
+You need a saved manifest and its Tables folder, plus the CLI-bundled UPM tarball for your Editor OS/CPU. A source-code archive does not include the required executable.
 
-The Devcel Unity package declares Unity **2021.3** as its minimum. Its `package.json` version pins the exact bundled CLI version; release preparation keeps it synchronized with the Cargo workspace version. Install the target OS's devcel_runtime library with it; the runtime's **API_VERSION is 1**.
+The Devcel Unity package declares Unity **2021.3** as its minimum. Packaging generates its `package.json` version and native manifest from the canonical Studio product version in `tauri.conf.json`. Its native source fingerprint and payload hashes bind the SDK to the bundled tools; the runtime's **API_VERSION is 1**.
 
 ### Folder layout
 
@@ -27,12 +27,14 @@ Put generated JSON/code outside the source project and reserve its output paths 
 
 ### Install the package
 
-1. Extract `devcel-unity-<version>-<rid>.zip` for the editor's OS/CPU.
-2. Add its devcel-unity folder as a UPM local package, embed it under Packages, or copy it under Assets.
-3. Keep the complete package, including Tools~/<rid>/devcel (devcel.exe on Windows), its manifest, and Plugins runtime libraries.
+1. Download `org.devcel.unity-<version>-<rid>.tgz` from [Releases](https://github.com/eight-ways/devcel/releases). Choose `win-x64`, `linux-x64`, `osx-x64`, or `osx-arm64` for your Editor process OS/CPU.
+2. Keep it at a stable location outside Assets/Packages (for example `LocalPackages/`). Open **Window > Package Manager > + > Add package from tarball** and select it without extracting it. Newer Unity versions call this **Install package from tarball**.
+3. UPM installs the complete SDK, CLI and runtime together. No native companion or PATH CLI is required. Do not install a second copy under Assets or as an embedded package.
 4. Open **Devcel → Importer**.
 
 ![Importer after a successful reimport, with FileWatch enabled](images/unity-importer-overview.png)
+
+For updates, select the new matching tarball in Package Manager and restart Unity before importing, then regenerate your game sources. Keep the tarball, manifest and lock file together in version control; updates are explicit. Remove old embedded/Assets copies and an existing `org.devcel.native` companion when migrating. The [SDK installation guide](../../importers/unity/README.md) covers migration, rollback and teams using different Editor platforms. Existing ZIP distributions remain usable through **Add package from disk**, selecting the extracted `devcel-unity/package.json`.
 
 The screenshots below show Devcel 0.0.2 in Unity 6.3 LTS on Windows. They use the same sample with content version 2 after the version-filter exercise; use version 1 for the initial steps below.
 
@@ -241,7 +243,7 @@ For manual-only operation, set the common automatic mode to Off. Save in Studio,
 
 - Editor import platforms and Player targets are separate. A single-RID ZIP may not include the native runtime for another target OS.
 - Native layouts currently cover Windows x64, Linux x64, and macOS universal. macOS needs both x86_64 and arm64 slices.
-- Android, iOS, and WebGL native integration is unsupported. Builds for those targets stop when registered Devcel projects exist. FromJson still requires the native runtime.
+- Release UPM tarballs include Android ARM64 (API 23+) and iOS ARM64 device (iOS 13+) runtimes. Install the Unity target module and follow the [mobile Player guide](../../importers/unity/Documentation~/MOBILE.md). Other Android ABIs, iOS Simulator and WebGL remain unsupported. FromJson still requires the native runtime; CLI execution remains Editor-only.
 - **Import before build** defaults to Off. When enabled, failed imports or changed generated C# stop the build; compile changed code before rebuilding.
 - Configuration and runtime-layout validation still runs when pre-build import is off. Already imported JSON, generated code, and required runtime can build without source projects or the CLI.
 - Player contents use runtime JSON, generated code, and runtime libraries. Keep editor CLI, source TOML, and authoring settings out of Resources and StreamingAssets.

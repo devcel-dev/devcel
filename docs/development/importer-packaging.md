@@ -73,6 +73,21 @@ Use the `importers` group in Manual validation to extract all nine ZIPs and test
 
 Always build distributable binaries from the source matching their stated licenses; do not merely relabel an older binary. Build each supported RID with its native toolchain and verify the extracted package.
 
+## Unity Package Manager release assets
+
+Release publication converts each validated Unity ZIP into `org.devcel.unity-<version>-<rid>.tgz` and includes it in `SHA256SUMS.txt`. Each tarball has a `package/` root and retains the desktop package files, including plugin `.meta` files, notices and matching source, except the outer `INSTALL.txt`. Publication also adds the verified Android ARM64 and iOS ARM64 device runtimes, their build metadata and NDK notices, and extends the native manifest with `player_runtimes` hashes. The Editor runtime stays platform-specific. The conversion checks version, repository, commit, native source fingerprint, binary formats and payload hashes; it never runs the CLI or establishes Unity compatibility.
+
+The version remains generated from `devcel-studio/src-tauri/tauri.conf.json`; do not add a version to the source Unity template. Recovery deterministically recreates the same tarballs from the recorded ZIP bytes, without rebuilding binaries. For a local generated ZIP, run:
+
+```sh
+python scripts/unity_upm.py dist/importers/devcel-unity-<version>-<rid>.zip --out dist/upm --version <version> --platform <rid>
+python scripts/test_unity_upm.py
+```
+
+The complete tarball needs no `org.devcel.native` companion. That legacy companion installer remains for separately generated SDK/native setups; do not combine it with a full tarball. See the [Unity SDK guide](../../importers/unity/README.md) for installation and explicit updates. Test tarball installation in Unity and import/Player execution separately from archive checks.
+
+The local command above produces a desktop-only tarball. Supply both `--mobile-android` and `--mobile-ios` archives to include mobile Players; the release pipeline requires both. See [mobile build and acceptance instructions](../../importers/unity/Documentation~/MOBILE.md). Release recovery also pins the two mobile build job artifacts. The desktop ZIPs remain desktop-only installation alternatives.
+
 ## Platform acceptance
 
 Some ZIP tools discard executable mode. On Linux/macOS, first verify manifest/hash and regular-file/ancestor-path safety, then restore only the bundled CLI owner's execute bit if necessary. Do not repair symlinks, checksum mismatches, or unrelated paths automatically. Failure must remain explicit.

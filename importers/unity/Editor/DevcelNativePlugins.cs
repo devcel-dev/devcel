@@ -22,6 +22,8 @@ namespace Devcel.Unity.Editor
             new Rule("Plugins/Windows/x86_64/devcel_runtime.dll", "Windows", "x86_64", BuildTarget.StandaloneWindows64),
             new Rule("Plugins/Linux/x86_64/libdevcel_runtime.so", "Linux", "x86_64", BuildTarget.StandaloneLinux64),
             new Rule("Plugins/macOS/libdevcel_runtime.dylib", "OSX", "AnyCPU", BuildTarget.StandaloneOSX),
+            new Rule("Plugins/Android/arm64-v8a/libdevcel_runtime.so", "", "ARM64", BuildTarget.Android),
+            new Rule("Plugins/iOS/libdevcel_runtime.a", "", "ARM64", BuildTarget.iOS),
         };
 
         static DevcelNativePlugins() { EditorApplication.delayCall += RepairInstalled; }
@@ -64,8 +66,9 @@ namespace Devcel.Unity.Editor
 
         internal static bool Matches(PluginImporter importer, Rule rule)
         {
-            if (!importer.isNativePlugin || importer.GetCompatibleWithAnyPlatform() || !importer.GetCompatibleWithEditor() ||
-                importer.GetEditorData("OS") != rule.OS || importer.GetEditorData("CPU") != rule.CPU ||
+            bool editor = rule.OS.Length != 0;
+            if (!importer.isNativePlugin || importer.GetCompatibleWithAnyPlatform() || importer.GetCompatibleWithEditor() != editor ||
+                (editor && (importer.GetEditorData("OS") != rule.OS || importer.GetEditorData("CPU") != rule.CPU)) ||
                 importer.GetPlatformData(rule.Target, "CPU") != rule.CPU || importer.isPreloaded ||
                 (importer.DefineConstraints != null && importer.DefineConstraints.Length != 0)) return false;
             foreach (BuildTarget target in PlayerTargets())
@@ -78,9 +81,9 @@ namespace Devcel.Unity.Editor
             if (!importer.isNativePlugin) return false; // Do not treat managed DLLs as native plugins.
             if (Matches(importer, rule)) return false;
             importer.SetCompatibleWithAnyPlatform(false);
-            importer.SetCompatibleWithEditor(true);
-            importer.SetEditorData("OS", rule.OS);
-            importer.SetEditorData("CPU", rule.CPU);
+            importer.SetCompatibleWithEditor(rule.OS.Length != 0);
+            importer.SetEditorData("OS", rule.OS.Length != 0 ? rule.OS : "AnyOS");
+            importer.SetEditorData("CPU", rule.OS.Length != 0 ? rule.CPU : "AnyCPU");
             importer.SetEditorData("DefaultValueInitialized", "true");
             foreach (BuildTarget target in PlayerTargets()) importer.SetCompatibleWithPlatform(target, target == rule.Target);
             importer.SetPlatformData(rule.Target, "CPU", rule.CPU);
@@ -93,7 +96,7 @@ namespace Devcel.Unity.Editor
         {
             string name = System.IO.Path.GetFileName(path).ToLowerInvariant();
             return name == "devcel_runtime.dll" || name == "libdevcel_runtime.so" ||
-                name == "devcel_runtime.dylib" || name == "libdevcel_runtime.dylib";
+                name == "devcel_runtime.dylib" || name == "libdevcel_runtime.dylib" || name == "libdevcel_runtime.a";
         }
 
         internal static void ValidateForBuild(BuildTarget target, bool runtimeRequired)
@@ -101,7 +104,14 @@ namespace Devcel.Unity.Editor
             Rule required = null;
             foreach (var rule in Rules) if (rule.Target == target) required = rule;
             if (runtimeRequired && required == null)
-                throw new InvalidOperationException("Devcel native runtime distribution is supported only for Windows x64 / Linux x64 / macOS universal. " + target + " runtime is not supported.");
+                throw new InvalidOperationException("Devcel native runtime supports Windows x64, Linux x64, macOS universal, Android ARM64 and iOS ARM64 devices. Unsupported target: " + target);
+            if (runtimeRequired && target == BuildTarget.Android &&
+                (PlayerSettings.Android.targetArchitectures != AndroidArchitecture.ARM64 || (int)PlayerSettings.Android.minSdkVersion < 23))
+                throw new InvalidOperationException("Devcel Android runtime requires only ARM64 and Minimum API Level 23 or later. Other Android ABIs are not bundled.");
+            if (runtimeRequired && target == BuildTarget.iOS &&
+                (PlayerSettings.iOS.sdkVersion != iOSSdkVersion.DeviceSDK ||
+                 !Version.TryParse(PlayerSettings.iOS.targetOSVersionString, out Version minimum) || minimum < new Version(13, 0)))
+                throw new InvalidOperationException("Devcel iOS runtime requires Device SDK (ARM64) and iOS 13.0 or later. Simulator libraries are not bundled.");
             if (runtimeRequired || DevcelPaths.DistributionRoot != DevcelPaths.PackageRoot) DevcelNativePackage.Validate(DevcelPaths.DistributionRoot, requireCli: false);
             bool found = false;
             foreach (var importer in PluginImporter.GetAllImporters())
@@ -113,6 +123,7 @@ namespace Devcel.Unity.Editor
                         throw new InvalidOperationException("The native PluginImporter OS/CPU/distribution settings are invalid. Run Devcel > Repair Native Plugin Settings: " + importer.assetPath);
                     if (runtimeRequired && rule == required)
                     {
+                        if (rule.OS.Length == 0) DevcelNativePackage.ValidatePlayer(DevcelPaths.DistributionRoot, rule.Path);
                         if (!DevcelNativeBinary.Validate(System.IO.Path.Combine(DevcelPaths.DistributionRoot, rule.Path), rule.Target, out string error))
                             throw new InvalidOperationException(error);
                         found = true;
