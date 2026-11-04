@@ -53,7 +53,7 @@ class ReleaseTests(unittest.TestCase):
         text = (ROOT/'.github/workflows/ci.yml').read_text()
         jobs = text.split('jobs:\n', 1)[1]
         self.assertEqual(re.findall(r'^  ([a-z_]+):$', jobs, re.MULTILINE), ['check'])
-        self.assertIn('os: [ubuntu-24.04, windows-2022]', jobs)
+        self.assertIn('os: [ubuntu-24.04, windows-2022, macos-15-intel, macos-15]', jobs)
         prefix = jobs.split('    strategy:', 1)[0]
         self.assertNotIn('needs:', prefix)
         self.assertNotIn('if:', prefix)
@@ -171,9 +171,9 @@ class ReleaseTests(unittest.TestCase):
             block = re.search(r'(?ms)^  '+job+r':\n(.*?)(?=^  [a-z_]+:|\Z)', release).group(1)
             self.assertNotIn('contents: write', block)
         for text in (ci_text, release):
-            for forbidden in ('schedule:', 'pull_request_target:', 'macos-', 'branches: ["*"]'):
+            for forbidden in ('schedule:', 'pull_request_target:', 'branches: ["*"]'):
                 self.assertNotIn(forbidden, text)
-            self.assertIn('os: [ubuntu-24.04, windows-2022]', text)
+            self.assertIn('os: [ubuntu-24.04, windows-2022, macos-15-intel, macos-15]', text)
             self.assertIn('persist-credentials: false', text)
             self.assertIn("env:\n  PYTHONUTF8: '1'\n", text)
 
@@ -651,7 +651,7 @@ class ReleaseTests(unittest.TestCase):
         for name, command in (('ci.yml', 'build_native'), ('release.yml', 'package')):
             text = (ROOT/'.github/workflows'/name).read_text()
             self.assertIn('python scripts/ci-release.py '+command, text)
-            self.assertIn('os: [ubuntu-24.04, windows-2022]', text)
+            self.assertIn('os: [ubuntu-24.04, windows-2022, macos-15-intel, macos-15]', text)
             for forbidden in ('strict_checks', 'compact_checks', 'inspect_native', 'cargo test', '--no-run', 'RUSTFLAGS: -D warnings'):
                 self.assertNotIn(forbidden, text)
         text = (ROOT/'.github/workflows/manual-checks.yml').read_text()
@@ -738,15 +738,15 @@ class ReleaseTests(unittest.TestCase):
             self.assertFalse((root/'release-assets').exists())
 
     def fixture(self, root):
-        for system, platform, suffixes in [('Linux', 'linux-x64', ['deb']),
-                                          ('Windows', 'win-x64', [])]:
+        for system, platform in [('Linux', 'linux-x64'), ('Windows', 'win-x64'),
+                                 ('macOS-X64', 'osx-x64'), ('macOS-ARM64', 'osx-arm64')]:
             directory = root/('release-'+system)
             directory.mkdir()
             for engine in ('unity', 'godot', 'unreal', 'rpgmaker', 'wolf', 'gamemaker', 'defold', 'cocos', 'javascript'):
                 import zipfile
                 with zipfile.ZipFile(directory/f'devcel-{engine}-0.1.0-{platform}.zip', 'w') as archive:
                     archive.writestr('sdk/bin/manifest.json', json.dumps({'schema_version':1, 'version':'0.1.0', 'source_commit':'a'*40, 'source_repository':'owner/repo', 'supportedPlatforms':[platform], 'binaries':{platform:{'path':platform+'/devcel'}}}))
-            for suffix in suffixes: (directory/f'devcel-studio-0.1.0-linux-x64.{suffix}').write_bytes(b'fixture')
+            (directory/ci.studio_asset_name(system.lower(), 'v0.1.0')).write_bytes(b'fixture')
         (root/'release-Windows/devcel-studio-0.1.0-windows-x64.zip').write_bytes(b'portable')
         (root/'release-Linux/SOURCE-ACCESS.json').write_bytes(b'source')
 
@@ -777,12 +777,13 @@ class ReleaseTests(unittest.TestCase):
             root = Path(temp)
             self.fixture(root)
             files = ci.collect_assets(root, root/'out', 'v0.1.0')
-            self.assertEqual(len(files), 22)
-            self.assertEqual(len((root/'out/SHA256SUMS.txt').read_text().splitlines()), 21)
+            self.assertEqual(len(files), 42)
+            self.assertEqual(len((root/'out/SHA256SUMS.txt').read_text().splitlines()), 41)
 
     def test_studio_asset_names_match_release_version_and_platform(self):
         for version in ('0.0.2', '0.0.3', '1.2.3-rc.1'):
-            for system, suffix in (('linux', 'linux-x64.deb'), ('windows', 'windows-x64.zip')):
+            for system, suffix in (('linux', 'linux-x64.deb'), ('windows', 'windows-x64.zip'),
+                                   ('macos-x64', 'macos-x64.dmg'), ('macos-arm64', 'macos-arm64.dmg')):
                 with self.subTest(version=version, system=system):
                     self.assertEqual(ci.studio_asset_name(system, 'v'+version),
                                      f'devcel-studio-{version}-{suffix}')
@@ -810,7 +811,7 @@ class ReleaseTests(unittest.TestCase):
                         ci.collect_assets(root, root/'out', 'v0.1.0')
 
     def test_collect_rejects_missing_or_duplicate_studio_assets(self):
-        for system in ('Linux', 'Windows'):
+        for system in ('Linux', 'Windows', 'macOS-X64', 'macOS-ARM64'):
             for duplicate in (False, True):
                 with self.subTest(system=system, duplicate=duplicate), tempfile.TemporaryDirectory() as temp:
                     root = Path(temp); self.fixture(root)
@@ -828,7 +829,7 @@ class ReleaseTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp); self.fixture(root)
             payloads = {}
-            for system in ('Linux', 'Windows'):
+            for system in ('Linux', 'Windows', 'macOS-X64', 'macOS-ARM64'):
                 name = ci.studio_asset_name(system.lower(), 'v0.1.0')
                 payloads[name] = (system+'\r\n').encode()+bytes(range(256))
                 (root/('release-'+system)/name).write_bytes(payloads[name])
@@ -846,6 +847,63 @@ class ReleaseTests(unittest.TestCase):
             (root/'release-Linux/studio.AppImage').write_bytes(b'unreviewed')
             with self.assertRaisesRegex(ValueError, 'Unsupported release installer'):
                 ci.collect_assets(root, root/'out', 'v0.1.0')
+
+    def test_macos_native_platform_and_toolchains(self):
+        for machine, rid in (('x86_64', 'x64'), ('arm64', 'arm64')):
+            with patch.object(ci.sys, 'platform', 'darwin'), patch.object(ci.platform, 'machine', return_value=machine):
+                self.assertEqual(ci.platform_config(), ('macos-'+rid, 'osx-'+rid, 'dmg', 'devcel-studio'))
+                with patch.object(ci, 'run') as run:
+                    ci.toolchains()
+                self.assertIn(('rustup', 'target', 'add', '--toolchain', '1.99.0',
+                               'x86_64-apple-darwin', 'aarch64-apple-darwin'), [c.args for c in run.call_args_list])
+        with patch.object(ci.sys, 'platform', 'darwin'), patch.object(ci.platform, 'machine', return_value='other'):
+            with self.assertRaises(ValueError): ci.platform_config()
+
+    def test_macos_build_checks_sealed_payload_and_propagates_signing_failure(self):
+        for rid in ('x64', 'arm64'):
+            with tempfile.TemporaryDirectory() as temp, patch.dict(ci.os.environ, {'CARGO_TARGET_DIR': temp}), \
+                    patch.object(ci, 'platform_config', return_value=('macos-'+rid, 'osx-'+rid, 'dmg', 'devcel-studio')), \
+                    patch.object(ci.studio_cli, 'configure_macos'), \
+                    patch.object(ci.studio_cli, 'stage', return_value=Path('cli.conf.json')), \
+                    patch.object(ci.studio_cli, 'validate', return_value={'sha256': 'signed'}) as validate, \
+                    patch.object(ci, 'run') as run:
+                ci.build_native()
+                calls = [c.args for c in run.call_args_list]
+                self.assertEqual(calls[2][:7], ('npm', 'run', 'tauri', '--', 'build', '--bundles', 'dmg'))
+                self.assertEqual(calls[-1], ('codesign', '--verify', '--deep', '--strict',
+                                            Path(temp)/'release/bundle/macos/devcel-studio.app'))
+                self.assertEqual(validate.call_args.args, (Path(temp)/'release/bundle/macos/devcel-studio.app/Contents/Resources/bin', 'osx-'+rid))
+                validate.side_effect = [{'sha256': 'original'}, {'sha256': 'modified'}]
+                with self.assertRaisesRegex(ValueError, 'differs'): ci.build_native()
+                validate.side_effect = None
+                run.side_effect = lambda *args, **kwargs: (_ for _ in ()).throw(subprocess.CalledProcessError(1, args)) if args[0] == 'codesign' else None
+                with self.assertRaises(subprocess.CalledProcessError): ci.build_native()
+
+    def test_missing_macos_architecture_stops_publication(self):
+        for label in ('macOS-X64', 'macOS-ARM64'):
+            with self.subTest(label=label), tempfile.TemporaryDirectory() as temp:
+                root = Path(temp); self.fixture(root)
+                ci.shutil.rmtree(root/('release-'+label))
+                with self.assertRaisesRegex(ValueError, 'All four'):
+                    ci.collect_assets(root, root/'out', 'v0.1.0')
+
+    def test_macos_cli_signed_before_manifest_hash_and_configured_ad_hoc(self):
+        for rid in ('osx-x64', 'osx-arm64'):
+            with self.subTest(rid=rid), tempfile.TemporaryDirectory() as temp:
+                root = Path(temp)
+                for name in ('devcel-studio/src-tauri/tauri.conf.json', 'scripts/tauri-release.conf.json', 'devcel-cli/LICENSE'):
+                    destination = root/name; destination.parent.mkdir(parents=True, exist_ok=True)
+                    destination.write_bytes((ROOT/name).read_bytes())
+                target = root/'target/release'; target.mkdir(parents=True)
+                (target/'devcel').write_bytes(b'unsigned')
+                def sign(command, **kwargs):
+                    self.assertEqual(command[:4], ['codesign', '--force', '--sign', '-'])
+                    Path(command[4]).write_bytes(b'signed')
+                with patch.object(ci.studio_cli.subprocess, 'run', side_effect=sign):
+                    config = ci.studio_cli.stage(root, target.parent, rid, source_commit='a'*40)
+                manifest = ci.studio_cli.validate(root/ci.studio_cli.DIRECTORY, rid)
+                self.assertEqual(manifest['sha256'], ci.hashlib.sha256(b'signed').hexdigest())
+                self.assertEqual(json.loads(config.read_text())['bundle']['macOS']['signingIdentity'], '-')
 
     def test_linux_build_selects_deb_only(self):
         with patch.object(ci.sys, 'platform', 'linux'):
