@@ -1154,6 +1154,22 @@ class ReleaseTests(unittest.TestCase):
             ci.publish()
         self.assertEqual(events, ['collect','stage']+([] if resume else ['push'])+['create','upload','publish'])
 
+    def test_existing_git_tag_payload_drift_stops_before_remote_writes(self):
+        with self.publication_fixture(), patch.dict(ci.os.environ, {
+                'GITHUB_EVENT_NAME':'workflow_dispatch', 'REBUILD_EXISTING_TAG':'true',
+                'RELEASE_TAG':'v0.1.0','SOURCE_COMMIT':'a'*40,'GH_REPO':'owner/repo'}), \
+                patch.object(ci,'validate'), patch.object(ci,'checked_commit',return_value='a'*40), \
+                patch.object(ci,'collect_assets',return_value=['asset']), \
+                patch.object(ci.unity_git_package,'source_identity',return_value='a'*40), \
+                patch.object(ci.unity_git_package,'stage_release',return_value='c'*40), \
+                patch.object(ci.unity_git_package,'verify_release_tree',side_effect=ValueError('immutable release tag')) as verify, \
+                patch.object(ci,'run',side_effect=['b'*40, '', '[[]]', '']) as run:
+            with self.assertRaisesRegex(ValueError, 'immutable release tag'):
+                ci.publish()
+            verify.assert_called_once_with(ci.ROOT, 'b'*40, 'c'*40)
+            self.assertFalse(any(call.args[:2] == ('gh','release') or 'push' in call.args
+                                 for call in run.call_args_list))
+
     def test_publication_notes_normalize_input_and_bind_version(self):
         self.assertEqual(ci.publication_notes('v0.1.0', 'Exact source', 'Changes\r\n\r\nImproved editing.\r\n', '0.1.0'),
                          'Changes\n\nImproved editing.\n\nExact source')
@@ -1585,10 +1601,20 @@ class ManualVersionPreparationTests(unittest.TestCase):
         with patch.dict(ci.os.environ, {**self.environment(), 'GITHUB_EVENT_NAME': 'push',
                                        'GITHUB_REF': 'refs/tags/v0.0.3'}), \
                 patch.object(ci, 'release_request', return_value=('v0.0.3', 'a'*40)), \
-                patch.object(ci, 'run', return_value=''), \
+                patch.object(ci, 'run', return_value='upm'), \
+                patch.object(ci.unity_git_package, 'source_identity', return_value='a'*40), \
                 patch.object(release_version, 'bump') as bump, patch.object(ci, 'emit_release'):
             ci.prepare_release()
         bump.assert_not_called()
+
+    def test_source_only_tag_push_is_rejected_without_publication(self):
+        with patch.dict(ci.os.environ, {**self.environment(), 'GITHUB_EVENT_NAME': 'push',
+                                       'GITHUB_REF': 'refs/tags/v0.0.3'}), \
+                patch.object(ci, 'release_request', return_value=('v0.0.3', 'a'*40)), \
+                patch.object(ci, 'run', return_value=''), patch.object(ci, 'emit_release') as emit:
+            with self.assertRaisesRegex(ValueError, 'must already contain generated /upm'):
+                ci.prepare_release()
+        emit.assert_not_called()
 
     def test_dispatch_preparation_is_separate_and_validate_stays_read_only(self):
         text = (ROOT/'.github/workflows/release.yml').read_text()

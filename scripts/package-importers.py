@@ -187,7 +187,7 @@ def bundle_documentation(repo, stage, dest, engine, bundled, source_commit, sour
             edits.append((start, end, replacement))
         for start, end, value in reversed(edits): text = text[:start] + value + text[end:]
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(text, encoding='utf-8')
+        path.write_text(text, encoding='utf-8', newline='\n')
 
 def verify_cli(cli):
     help_text = run(cli, 'pull', '--help')
