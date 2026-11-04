@@ -34,11 +34,11 @@ The importer selects `Tools~/<rid>/devcel[.exe]` through the manifest. On the ta
 python scripts/package-importers.py --out dist/importers --source-repository <owner/repo> --source-commit <git-commit>
 ```
 
-The packager performs release CLI/runtime builds, version and pull checks, real-CLI import, source/notice collection, binary hashing, and import from a ZIP extracted to another directory. Missing binaries, wrong OS/CPU, version mismatch, or missing pull support fail packaging. Windows helper scripts use this same path. macOS requires Xcode and both Rust targets to create a universal runtime dylib.
+The packager performs release CLI/runtime builds, metadata checks, source/notice collection, and binary hashing. Release publication also creates a complete UPM `.tgz` from each generated Unity ZIP; install it through Package Manager's tarball option. Packaging does not perform a real Unity import or Player execution test. Windows helper scripts use this same build path. macOS requires Xcode and both Rust targets to create a universal runtime dylib.
 
 Editor CLI OS and Player runtime OS are separate requirements. A single-RID ZIP may lack the runtime for another Player target; the missing-runtime gate remains active. See [bundled CLI packaging](../../../docs/development/importer-packaging.md) for manifests and coverage.
 
-Automatic import requires `watch --ensure-server --parent-stdin`. Packaging and pre-save validation check both options in `watch --help`.
+Automatic import requires `watch --ensure-server --parent-stdin`. Verify these options with the real CLI as part of manual acceptance.
 
 ## Settings contract
 

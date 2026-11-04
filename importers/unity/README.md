@@ -9,7 +9,19 @@ The source [`package.json`](package.json) is a template; packaging generates its
 
 ## Package installation
 
-Extract the matching Unity importer release and use Unity Package Manager's **Add package from disk** to select `devcel-unity/package.json`. Keep the complete package, including its native companion and `Tools~` files. The UPM identity is `org.devcel.unity`; when editing `Packages/manifest.json` directly, its dependency key is `"org.devcel.unity":`. Use a generated distribution or local build folder; the raw source template is not an installable Git dependency. See the [Unity manual](../../docs/manual/unity.md) for the import and runtime workflow.
+Download `org.devcel.unity-<version>-<rid>.tgz` from [Releases](https://github.com/eight-ways/devcel/releases). In **Window > Package Manager**, select **+ > Add package from tarball** (or **Install package from tarball** in newer Unity versions) and choose the downloaded file. Do not extract it. The UPM identity is `org.devcel.unity`; when editing `Packages/manifest.json` directly, its dependency key is `"org.devcel.unity":`.
+
+Choose `win-x64` for Windows x64, `linux-x64` for Linux x64, `osx-x64` for an Intel macOS Editor, or `osx-arm64` for an Apple Silicon Editor. Choose by the Editor process architecture, including when running under Rosetta. Each tarball includes its CLI, matching native runtime, generated version and fingerprint, plugin metadata, licenses and corresponding source. macOS runtimes contain both desktop CPU slices. No separate `org.devcel.native` package is needed.
+
+Keep the tarball at a stable project-relative location outside `Assets` and `Packages`, for example `LocalPackages/`, and commit it together with `Packages/manifest.json` and `Packages/packages-lock.json` when sharing that dependency. UPM records a local file dependency; it does not download future releases automatically. Teams using different Editor platforms must select their matching tarball; the packages are not interchangeable across OS/CPU. See the [Unity manual](../../docs/manual/unity.md) for the import and runtime workflow.
+
+### Updates and migration
+
+Stop Play mode, remove any older Assets-based copy or embedded `Packages/org.devcel.unity` copy, and remove a previously installed `org.devcel.native` companion through Package Manager before switching to the complete tarball. Preserve your settings under `Assets/DevcelUnity/Editor` and generated game data. Install only one SDK and one matching runtime.
+
+To upgrade or roll back, select the desired version/platform tarball through Package Manager, update the manifest and lock file in version control, then restart Unity to unload the old native runtime. Reimport your sources with that package's CLI to regenerate matching C#. Never mix SDK files, CLI files or native libraries from different distributions, or edit `Library/PackageCache`.
+
+The raw repository Git URL is not an installable package: `package.json` is a template and native binaries are generated at release time. A scoped registry is not required for tarball installation.
 
 ## Import workflow
 

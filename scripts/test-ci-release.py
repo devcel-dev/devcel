@@ -8,6 +8,7 @@ import re
 import subprocess
 import tempfile
 import unittest
+from test_unity_upm import fixture_entries
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -745,7 +746,11 @@ class ReleaseTests(unittest.TestCase):
             for engine in ('unity', 'godot', 'unreal', 'rpgmaker', 'wolf', 'gamemaker', 'defold', 'cocos', 'javascript'):
                 import zipfile
                 with zipfile.ZipFile(directory/f'devcel-{engine}-0.1.0-{platform}.zip', 'w') as archive:
-                    archive.writestr('sdk/bin/manifest.json', json.dumps({'schema_version':1, 'version':'0.1.0', 'source_commit':'a'*40, 'source_repository':'owner/repo', 'supportedPlatforms':[platform], 'binaries':{platform:{'path':platform+'/devcel'}}}))
+                    if engine == 'unity':
+                        for name, raw in fixture_entries(platform).items():
+                            archive.writestr(name, raw)
+                    else:
+                        archive.writestr('sdk/bin/manifest.json', json.dumps({'schema_version':1, 'version':'0.1.0', 'source_commit':'a'*40, 'source_repository':'owner/repo', 'supportedPlatforms':[platform], 'binaries':{platform:{'path':platform+'/devcel'}}}))
             for suffix in suffixes: (directory/f'devcel-studio-0.1.0-linux-x64.{suffix}').write_bytes(b'fixture')
         (root/'release-Windows/devcel-studio-0.1.0-windows-x64.zip').write_bytes(b'portable')
         (root/'release-Linux/SOURCE-ACCESS.json').write_bytes(b'source')
@@ -758,7 +763,7 @@ class ReleaseTests(unittest.TestCase):
                 self.fixture(root)
                 path = root/'release-Windows/devcel-unity-0.1.0-win-x64.zip'
                 with zipfile.ZipFile(path) as archive:
-                    manifest = json.loads(archive.read('sdk/bin/manifest.json'))
+                    manifest = json.loads(archive.read('devcel-unity/Tools~/manifest.json'))
                 manifest[field] = wrong
                 with zipfile.ZipFile(path, 'w') as archive:
                     archive.writestr('sdk/bin/manifest.json', json.dumps(manifest))
@@ -777,8 +782,9 @@ class ReleaseTests(unittest.TestCase):
             root = Path(temp)
             self.fixture(root)
             files = ci.collect_assets(root, root/'out', 'v0.1.0')
-            self.assertEqual(len(files), 22)
-            self.assertEqual(len((root/'out/SHA256SUMS.txt').read_text().splitlines()), 21)
+            self.assertEqual(len(files), 24)
+            self.assertEqual(len((root/'out/SHA256SUMS.txt').read_text().splitlines()), 23)
+            self.assertEqual(len(list((root/'out').glob('org.devcel.unity-*.tgz'))), 2)
 
     def test_studio_asset_names_match_release_version_and_platform(self):
         for version in ('0.0.2', '0.0.3', '1.2.3-rc.1'):

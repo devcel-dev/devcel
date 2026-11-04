@@ -73,6 +73,19 @@ Use the `importers` group in Manual validation to extract all nine ZIPs and test
 
 Always build distributable binaries from the source matching their stated licenses; do not merely relabel an older binary. Build each supported RID with its native toolchain and verify the extracted package.
 
+## Unity Package Manager release assets
+
+Release publication converts each validated Unity ZIP into `org.devcel.unity-<version>-<rid>.tgz` and includes it in `SHA256SUMS.txt`. This applies to every native release platform, including both macOS Editor architectures when enabled by the release matrix. Each tarball has a `package/` root and preserves all files from `devcel-unity/`, including plugin `.meta` files, notices and matching source. It excludes only the ZIP's outer `INSTALL.txt`. No platform payloads are merged. The conversion checks package/manifest versions, source fingerprint, native payload hashes and required files; it never runs the CLI or establishes Unity compatibility.
+
+The version remains generated from `devcel-studio/src-tauri/tauri.conf.json`; do not add a version to the source Unity template. Recovery deterministically recreates the same tarballs from the recorded ZIP bytes, without rebuilding binaries. For a local generated ZIP, run:
+
+```sh
+python scripts/unity_upm.py dist/importers/devcel-unity-<version>-<rid>.zip --out dist/upm --version <version> --platform <rid>
+python scripts/test_unity_upm.py
+```
+
+The complete tarball needs no `org.devcel.native` companion. That legacy companion installer remains for separately generated SDK/native setups; do not combine it with a full tarball. See the [Unity SDK guide](../../importers/unity/README.md) for installation and explicit updates. Test tarball installation in Unity and import/Player execution separately from archive checks.
+
 ## Platform acceptance
 
 Some ZIP tools discard executable mode. On Linux/macOS, first verify manifest/hash and regular-file/ancestor-path safety, then restore only the bundled CLI owner's execute bit if necessary. Do not repair symlinks, checksum mismatches, or unrelated paths automatically. Failure must remain explicit.

@@ -23,6 +23,7 @@ import release_source
 import release_privacy
 import studio_cli
 import importer_versions
+import unity_upm
 from product_version import read_version
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -842,6 +843,13 @@ def collect_assets(downloads, destination, tag, expected_commit=None, expected_r
             if target.exists(): raise ValueError('Duplicate release asset: '+source.name)
             shutil.copyfile(source, target)
             files.append(target)
+    # Derive UPM assets from the already validated native ZIPs. Recovery uses
+    # the same deterministic conversion; no rebuild or platform merging occurs.
+    for source in list(files):
+        prefix = f'devcel-unity-{tag[1:]}-'
+        if source.name.startswith(prefix) and source.suffix == '.zip':
+            platform = source.name[len(prefix):-4]
+            files.append(unity_upm.create(source, destination, tag[1:], platform))
     sums = destination/'SHA256SUMS.txt'
     sums.write_text(''.join(hashlib.sha256(path.read_bytes()).hexdigest()+'  '+path.name+'\n'
                             for path in sorted(files)), encoding='utf-8', newline='\n')
