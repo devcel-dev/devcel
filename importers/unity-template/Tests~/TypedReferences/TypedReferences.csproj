@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><TestFramework Condition="'$(TestFramework)' == ''">net8.0</TestFramework><TargetFramework>$(TestFramework)</TargetFramework><OutputType>Exe</OutputType><Nullable>enable</Nullable><TreatWarningsAsErrors>true</TreatWarningsAsErrors><EnableDefaultCompileItems>false</EnableDefaultCompileItems></PropertyGroup>
+  <ItemGroup><Compile Include="$(GeneratedDirectory)/Devcel.cs"/><Compile Include="Program.cs"/></ItemGroup>
+</Project>

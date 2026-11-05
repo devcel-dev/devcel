@@ -1126,18 +1126,21 @@ class ReleaseTests(unittest.TestCase):
         def stage(*args):
             events.append('stage'); return 'b'*40
         def command(*args, **kwargs):
-            if args[:2] == ('git', 'ls-remote'): return 'b'*40+'\trefs/tags/v0.1.0' if resume else ''
+            if args[:2] == ('git', 'ls-remote'):
+                if args[-1] == 'refs/heads/main': return ('b' if resume or 'push' in events else 'a')*40+'\trefs/heads/main'
+                return 'b'*40+'\trefs/tags/v0.1.0' if resume else ''
             if 'releases?per_page=100' in str(args): return '[[]]'
             if args == ('gh', 'api', 'repos/{owner}/{repo}'):
                 return '{"full_name":"owner/repo","visibility":"public"}'
             if 'push' in args:
                 events.append('push')
-                self.assertEqual(args[-2:], ('https://github.com/owner/repo.git', 'b'*40+':refs/tags/v0.1.0'))
+                self.assertIn('--atomic', args)
+                self.assertEqual(args[-2:], ('b'*40+':refs/heads/main', 'b'*40+':refs/tags/v0.1.0'))
                 self.assertNotIn('--force', args)
             if '--jq' in args: return 'b'*40
             if args[:3] == ('gh','release','create'):
                 events.append('create')
-                self.assertIn('?path=/upm#v0.1.0', Path(args[args.index('--notes-file')+1]).read_text())
+                self.assertIn('?path=/importers/unity#v0.1.0', Path(args[args.index('--notes-file')+1]).read_text())
             if args[:3] == ('gh','release','upload'): events.append('upload')
             if args[:3] == ('gh','release','edit'): events.append('publish')
             return ''
@@ -1612,7 +1615,7 @@ class ManualVersionPreparationTests(unittest.TestCase):
                                        'GITHUB_REF': 'refs/tags/v0.0.3'}), \
                 patch.object(ci, 'release_request', return_value=('v0.0.3', 'a'*40)), \
                 patch.object(ci, 'run', return_value=''), patch.object(ci, 'emit_release') as emit:
-            with self.assertRaisesRegex(ValueError, 'must already contain generated /upm'):
+            with self.assertRaisesRegex(ValueError, 'must already contain generated Unity package'):
                 ci.prepare_release()
         emit.assert_not_called()
 

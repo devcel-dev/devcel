@@ -76,14 +76,14 @@ class RecoveryTests(unittest.TestCase):
         data = {
             'git/ref/tags/v0.1.0': {'object':{'type':'commit','sha':T}},
             'commits/refs/tags/v0.1.0': {'sha':T,'parents':[{'sha':A}], 'commit':{'tree':{'sha':'d'*40}}},
-            'git/trees/'+'d'*40: {'tree':[entry, {'path':'upm','mode':'040000','type':'tree','sha':'f'*40}]},
+            'git/trees/'+'d'*40+'?recursive=1': {'tree':[entry, {'path':'importers/unity/Tools~/manifest.json','mode':'100644','type':'blob','sha':'f'*40}]},
             'git/commits/'+A: {'tree':{'sha':'1'*40}},
-            'git/trees/'+'1'*40: {'tree':[entry]},
-            'contents/upm/Tools~/manifest.json?ref='+T: {'content':base64.b64encode(json.dumps({
+            'git/trees/'+'1'*40+'?recursive=1': {'tree':[entry]},
+            'contents/importers/unity/Tools~/manifest.json?ref='+T: {'content':base64.b64encode(json.dumps({
                 'source_commit':A,'source_repository':'owner/repo','version':'0.1.0'}).encode()).decode()}}
         with patch.object(r, 'api', side_effect=lambda repo, suffix: data[suffix]):
             self.assertEqual(r.tag_identity('owner/repo','v0.1.0')['source_commit'], A)
-            data['git/trees/'+'1'*40]['tree'] = [dict(entry, sha='2'*40)]
+            data['git/trees/'+'1'*40+'?recursive=1']['tree'] = [dict(entry, sha='2'*40)]
             with self.assertRaisesRegex(ValueError, 'outside'):
                 r.tag_identity('owner/repo','v0.1.0')
 

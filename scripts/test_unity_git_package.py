@@ -40,7 +40,7 @@ class GitPackageTests(unittest.TestCase):
             desktop, mobile = fixture(root)
             for rid in package.RIDS:
                 stage = root/('stage-'+rid); dest = stage/'devcel-unity'
-                shutil.copytree(repo/'importers/unity', dest, ignore=shutil.ignore_patterns('__pycache__'))
+                shutil.copytree(repo/'importers/unity-template', dest, ignore=shutil.ignore_patterns('__pycache__'))
                 for name, raw in fixture_entries(rid).items():
                     path = stage/name; path.parent.mkdir(parents=True, exist_ok=True); path.write_bytes(raw)
                 packaging.bundle_documentation(repo, stage, dest, 'unity', dest/'Tools~', 'a'*40, 'owner/repo')
@@ -69,11 +69,17 @@ class GitPackageTests(unittest.TestCase):
                 return subprocess.run(['git', *args], cwd=repo, check=True, text=True, capture_output=True).stdout.strip()
             git('init', '--quiet')
             (repo/'source.txt').write_text('unchanged source')
+            old_package = repo/'importers/unity'; old_package.mkdir(parents=True)
+            (old_package/'package.json').write_text('{\"name\":\"template\"}')
+            (old_package/'obsolete.txt').write_text('old source-only file')
             git('add', '.')
             git('-c', 'user.name=eight-ways', '-c', 'user.email=145819685+eight-ways@users.noreply.github.com', 'commit', '-qm', 'Source')
             source = git('rev-parse', 'HEAD')
             desktop, mobile = fixture(root, source)
             outputs = package.create(desktop, mobile, root/'out', '0.1.0', source, 'owner/repo')
+            repeated = package.create(desktop, mobile, root/'out-repeat', '0.1.0', source, 'owner/repo')
+            self.assertEqual(outputs[0].read_bytes(), repeated[0].read_bytes())
+            self.assertEqual(outputs[1].read_bytes(), repeated[1].read_bytes())
             report = json.loads(outputs[1].read_text())
             self.assertFalse(report['git_lfs'])
             self.assertLess(report['largest_file_bytes'], package.MAX_BLOB)
@@ -84,10 +90,18 @@ class GitPackageTests(unittest.TestCase):
             self.assertEqual(git('rev-parse', 'HEAD'), source)
             self.assertEqual(git('status', '--porcelain'), '')
             git('tag', 'v0.1.0', release)
+            remote = root/'remote.git'
+            subprocess.run(['git', 'init', '--bare', '--quiet', str(remote)], check=True)
+            git('push', str(remote), source+':refs/heads/main')
+            git('push', '--atomic', str(remote), release+':refs/heads/main', release+':refs/tags/v0.1.0')
+            refs = subprocess.run(['git', '--git-dir', str(remote), 'show-ref'], check=True, text=True, capture_output=True).stdout
+            self.assertIn(release+' refs/heads/main', refs)
+            self.assertIn(release+' refs/tags/v0.1.0', refs)
             clone = root/'clone'
             subprocess.run(['git', 'clone', '--quiet', '--branch', 'v0.1.0', 'file:///' + repo.as_posix() if os.name == 'nt' else repo.as_uri(), str(clone)], check=True)
             self.assertEqual((clone/'source.txt').read_text(), 'unchanged source')
-            clone = clone/'upm'
+            clone = clone/'importers'/'unity'
+            self.assertFalse((clone/'obsolete.txt').exists())
             manifest = json.loads((clone/'Tools~/manifest.json').read_text())
             self.assertEqual(set(manifest['supportedPlatforms']), set(package.RIDS))
             self.assertEqual(len(manifest['native_runtimes']), 3)
