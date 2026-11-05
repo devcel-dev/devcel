@@ -222,7 +222,7 @@ def verify_cli(cli):
 
 def verify_unity_version(repo):
     """Fail before compiling if the package contract and Studio release have drifted."""
-    package = json.loads((repo / 'importers/unity/package.json').read_text(encoding='utf-8'))
+    package = json.loads((repo / 'importers/unity-template/package.json').read_text(encoding='utf-8'))
     version = read_version(repo)
     if not isinstance(package, dict) or package.get('name') != 'org.devcel.unity' or 'version' in package:
         raise RuntimeError('Unity release-version template must name org.devcel.unity without a stored version')
@@ -342,11 +342,11 @@ def main():
             stage=scratch/engine; stage.mkdir()
             if engine=='unity':
                 dest=stage/'devcel-unity'
-                shutil.copytree(repo/'importers/unity',dest,ignore=shutil.ignore_patterns('Tools~','Plugins','Plugins.meta','Library','Temp','.git','test-output'))
+                shutil.copytree(repo/'importers/unity-template',dest,ignore=shutil.ignore_patterns('Tools~','Plugins','Plugins.meta','Library','Temp','.git','test-output'))
                 bundled=dest/'Tools~'
                 plugin=dest/'Plugins'/runtime_dir/runtime_name; plugin.parent.mkdir(parents=True,exist_ok=True)
                 shutil.copyfile(runtime,plugin)
-                shutil.copyfile(repo/"importers/unity/Tools~/NativePluginMetadata"/runtime_dir/(runtime_name+".meta"), Path(str(plugin)+".meta"))
+                shutil.copyfile(repo/"importers/unity-template/Tools~/NativePluginMetadata"/runtime_dir/(runtime_name+".meta"), Path(str(plugin)+".meta"))
             elif engine=='godot':
                 dest=stage/'addons/devcel'
                 shutil.copytree(repo/'importers/godot/addons/devcel',dest,ignore=shutil.ignore_patterns('bin','.godot','.git','test-output'))

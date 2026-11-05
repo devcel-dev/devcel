@@ -28,13 +28,13 @@ Put generated JSON/code outside the source project and reserve its output paths 
 ### Install the package
 
 1. Open **Window > Package Manager > + > Add package from git URL** (or **Install package from Git URL**).
-2. Enter `https://github.com/devcel-dev/devcel.git?path=/upm#v<version>`, replacing `<version>` with a published release tag listed by [Releases](https://github.com/devcel-dev/devcel/releases). Git must be installed on your computer.
+2. Enter `https://github.com/devcel-dev/devcel.git?path=/importers/unity`. To pin a release, append `#v<version>` using a published tag listed by [Releases](https://github.com/devcel-dev/devcel/releases). Git must be installed on your computer.
 3. The same URL includes all four desktop Editor CLIs, desktop runtimes and Android/iOS ARM64 device runtimes. No native companion or PATH CLI is required.
 4. Open **Devcel > Importer**.
 
 As of 2026-11-04, the published v0.0.1 release contains Windows/Linux importer ZIPs only. The Git-installable package, macOS and mobile distributions described here require a newer release published by this pipeline; they are not downloads available in v0.0.1.
 
-Use the `/upm` path at a new release tag. The source `main` branch and `?path=/importers/unity` contain ungenerated templates. Preserve the Git dependency in `Packages/manifest.json` and its resolved commit in `Packages/packages-lock.json`.
+The default branch contains the most recently generated package after the first new release. The editable template is `importers/unity-template`. Preserve the Git dependency in `Packages/manifest.json` and its resolved commit in `Packages/packages-lock.json`.
 
 ![Importer after a successful reimport, with FileWatch enabled](images/unity-importer-overview.png)
 

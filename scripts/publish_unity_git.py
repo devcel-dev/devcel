@@ -16,4 +16,4 @@ if __name__ == '__main__':
     commit = unity_git_package.stage_release(args.archive, args.report, args.repo, args.author_name, args.author_email)
     print(json.dumps({'release_commit': commit, 'source_commit': metadata['source_commit'],
         'tag': metadata['tag'], 'published': False,
-        'git_url': 'https://github.com/'+metadata['source_repository']+'.git?path=/upm#'+metadata['tag']}, indent=2))
+        'git_url': 'https://github.com/'+metadata['source_repository']+'.git?path=/importers/unity#'+metadata['tag']}, indent=2))

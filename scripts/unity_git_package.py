@@ -164,11 +164,11 @@ def assemble(desktop, mobile, destination, version, commit, repository):
             'macos_runtime_provider': 'osx-arm64'}
 
 
-PACKAGE_PATH = 'upm'
+PACKAGE_PATH = 'importers/unity'
 
 
 def release_commit(package, repository_root, source_commit, version, *, author_name, author_email):
-    """Add only /upm to the source tree, using an isolated index; change no refs."""
+    """Replace the Unity package subtree in an isolated index; change no refs."""
     root = Path(repository_root).resolve()
     env = dict(os.environ, GIT_AUTHOR_NAME=author_name, GIT_AUTHOR_EMAIL=author_email,
                GIT_COMMITTER_NAME=author_name, GIT_COMMITTER_EMAIL=author_email,
@@ -178,6 +178,7 @@ def release_commit(package, repository_root, source_commit, version, *, author_n
         env.pop(key, None)
     with tempfile.TemporaryDirectory(prefix='devcel-release-tree-') as temp:
         stage = Path(temp)/'tree'; stage.mkdir()
+        (stage/PACKAGE_PATH).parent.mkdir(parents=True, exist_ok=True)
         shutil.copytree(package, stage/PACKAGE_PATH)
         empty = Path(temp)/'empty'; empty.mkdir()
         attrs = Path(temp)/'attributes'; attrs.touch()
@@ -192,9 +193,8 @@ def release_commit(package, repository_root, source_commit, version, *, author_n
             raise ValueError('Exact source commit required')
         timestamp = git('show', '-s', '--format=%cI', source_commit)
         env.update(GIT_AUTHOR_DATE=timestamp, GIT_COMMITTER_DATE=timestamp)
-        if git('ls-tree', source_commit, '--', PACKAGE_PATH):
-            raise ValueError('Source already contains generated /upm; use the original source commit')
         git('read-tree', source_commit)
+        git('rm', '-r', '--cached', '--ignore-unmatch', '--', PACKAGE_PATH)
         git('add', '--force', '--all', '--', PACKAGE_PATH)
         for path in (stage/PACKAGE_PATH).glob('Tools~/*/devcel'):
             git('update-index', '--chmod=+x', path.relative_to(stage).as_posix())
@@ -206,7 +206,7 @@ def release_commit(package, repository_root, source_commit, version, *, author_n
 
 
 def source_identity(root, release_commit):
-    """Validate the release envelope: one source parent, only an added /upm tree."""
+    """Validate the release envelope: one source parent and only the Unity package subtree changed."""
     def git(*args):
         return subprocess.run(['git', *args], cwd=root, check=True, text=True, capture_output=True).stdout.strip()
     parts = git('rev-list', '--parents', '-n', '1', release_commit).split()
@@ -214,8 +214,8 @@ def source_identity(root, release_commit):
         raise ValueError('Release package commit must have exactly one source parent')
     source = parts[1]
     changes = git('diff-tree', '--no-commit-id', '--name-status', '-r', source, release_commit).splitlines()
-    if not changes or any(not line.startswith('A\t'+PACKAGE_PATH+'/') for line in changes):
-        raise ValueError('Release commit may only add the generated /upm package')
+    if not changes or any(len(line.split('\t')) != 2 or not line.split('\t')[1].startswith(PACKAGE_PATH+'/') for line in changes):
+        raise ValueError('Release commit may only change the generated Unity package subtree')
     manifest = json.loads(git('show', release_commit+':'+PACKAGE_PATH+'/Tools~/manifest.json'))
     package = json.loads(git('show', release_commit+':'+PACKAGE_PATH+'/package.json'))
     if manifest.get('source_commit') != source or manifest.get('version') != package.get('version'):
@@ -229,7 +229,7 @@ def verify_release_tree(root, existing, prepared):
         return subprocess.run(['git', 'rev-parse', commit+':'+PACKAGE_PATH], cwd=root,
                               check=True, text=True, capture_output=True).stdout.strip()
     if source_identity(root, existing) != source_identity(root, prepared) or tree(existing) != tree(prepared):
-        raise ValueError('Rebuilt package differs from the immutable release tag /upm tree; use the original artifacts or a new version, never move the tag.')
+        raise ValueError('Rebuilt package differs from the immutable release tag Unity package tree; use the original artifacts or a new version, never move the tag.')
 
 
 def create(desktop, mobile, output, version, commit, repository, author_name=None, author_email=None):

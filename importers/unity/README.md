@@ -5,21 +5,21 @@ For installation, first import, and automatic import, start with the [Unity manu
 - **Authoring and generation:** the `devcel` CLI, backed by `devcel-core`, runs as a subprocess to generate typed C# accessors and version-filtered JSON bundles.
 - **Reading in the Editor and game:** generated `database.Get(reference)` returns live typed handles backed by an eagerly prepared managed read model. Normal acquisition, including strings and nested references, does not allocate managed objects. Low-level raw `Row` access remains available; its string/reference getters can allocate and its rows must be reacquired after reload.
 
-The source [`package.json`](package.json) is a template; packaging generates its version from the canonical Tauri setting. Unity Editor 2021.3 or later is required.
+The editable Unity package template is under `importers/unity-template`; packaging generates its version from the canonical Tauri setting. Unity Editor 2021.3 or later is required.
 
 ## Package installation
 
-Use **Window > Package Manager > + > Add package from git URL** (called **Install package from Git URL** in newer Unity versions). Use the exact `v<version>` tag announced by the release:
+Use **Window > Package Manager > + > Add package from git URL** (called **Install package from Git URL** in newer Unity versions). Use the following URL:
 
 ```text
-https://github.com/devcel-dev/devcel.git?path=/upm#v<version>
+https://github.com/devcel-dev/devcel.git?path=/importers/unity
 ```
 
-Replace `<version>` with an actually published UPM version. Install Git on the Editor machine. The normal release tag contains the complete package under `/upm`. Use `?path=/upm`; do not use `main` or `?path=/importers/unity`. Those contain templates without the generated version or native payloads.
+Install Git on the Editor machine. The default branch supplies the latest generated package; append `#v<version>` to select a published release tag. The editable source template is `importers/unity-template`.
 
 One Git URL supplies Windows x64, Linux x64, Intel macOS and Apple Silicon Editor CLIs; Windows/Linux x64 and macOS universal runtimes; and Android ARM64/iOS ARM64 device runtimes. The Editor selects its CLI automatically, including an Intel process under Rosetta. Platform-specific plugin metadata selects Player libraries. No separate `org.devcel.native`, PATH CLI, registry or Git LFS is required. See the [mobile Player guide](Documentation~/MOBILE.md) for target modules and device requirements.
 
-Commit `Packages/manifest.json` and `Packages/packages-lock.json` with the game. A dependency looks like `"org.devcel.unity": "https://github.com/devcel-dev/devcel.git?path=/upm#v<version>"`. Every team member uses the same URL. The immutable tag and lock file pin the package; releases never move an existing tag.
+Commit `Packages/manifest.json` and `Packages/packages-lock.json` with the game. A dependency looks like `"org.devcel.unity": "https://github.com/devcel-dev/devcel.git?path=/importers/unity"`. Every team member uses the same URL. The immutable tag and lock file pin the package; releases never move an existing tag.
 
 As of 2026-11-04, the published v0.0.1 release contains Windows/Linux importer ZIPs only. The Git-installable package, macOS and mobile distributions described here require a newer release published by this pipeline; they are not downloads available in v0.0.1.
 
@@ -55,7 +55,7 @@ Use the [Unity manual](../../docs/manual/unity.md) for setup and troubleshooting
 
 ### Building from source
 
-Use the [packaging workflow](../../docs/development/importer-packaging.md) to generate an installable UPM folder from a fixed checkout. Do not install the raw `importers/unity` Git path: its metadata is a build template and its native binaries are generated separately. Product version, native source fingerprint and payload hashes are generated automatically. Never change those fields to force mismatched tools to load.
+Use the [packaging workflow](../../docs/development/importer-packaging.md) to generate an installable UPM folder from a fixed checkout. The editable `importers/unity-template` is not a complete package; generate the package before using its distribution path. Product version, native source fingerprint and payload hashes are generated automatically. Never change those fields to force mismatched tools to load.
 
 ### Full distribution installation
 

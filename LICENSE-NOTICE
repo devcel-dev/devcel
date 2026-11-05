@@ -20,6 +20,7 @@ Maintenance and redistribution: third-party/README.md
 
 All engine SDKs below are MIT licensed (each directory includes LICENSE):
 - importers/unity
+- importers/unity-template
 - importers/godot
 - importers/rpgmaker
 - importers/wolf

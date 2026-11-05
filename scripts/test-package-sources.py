@@ -57,13 +57,13 @@ class PackagingSources(unittest.TestCase):
     def test_first_party_application_and_unity_identities(self):
         repo = HERE.parent
         app = json.loads((repo/'devcel-studio/src-tauri/tauri.conf.json').read_text(encoding='utf-8'))
-        unity = json.loads((repo/'importers/unity/package.json').read_text(encoding='utf-8'))
+        unity = json.loads((repo/'importers/unity-template/package.json').read_text(encoding='utf-8'))
         self.assertEqual(app['identifier'], 'org.devcel')
         self.assertEqual(unity['name'], 'org.devcel.unity')
-        self.assertIn('"org.devcel.unity":', (repo/'importers/unity/README.md').read_text(encoding='utf-8'))
-        self.assertIn('Packages/org.devcel.unity', (repo/'importers/unity/Editor/DevcelPaths.cs').read_text(encoding='utf-8'))
+        self.assertIn('"org.devcel.unity":', (repo/'importers/unity-template/README.md').read_text(encoding='utf-8'))
+        self.assertIn('Packages/org.devcel.unity', (repo/'importers/unity-template/Editor/DevcelPaths.cs').read_text(encoding='utf-8'))
         # Package paths derive from Unity's resolved package metadata, without an alias.
-        paths = (repo/'importers/unity/Editor/DevcelPaths.cs').read_text(encoding='utf-8')
+        paths = (repo/'importers/unity-template/Editor/DevcelPaths.cs').read_text(encoding='utf-8')
         self.assertIn('"Packages/" + info.name', paths)
         # Preserve the ordinary display and npm names independently of reverse-DNS IDs.
         self.assertEqual(app['app']['windows'][0]['title'], 'Devcel Studio')
@@ -72,23 +72,23 @@ class PackagingSources(unittest.TestCase):
 
     def test_unity_cli_release_contract(self):
         repo = HERE.parent
-        package = json.loads((repo/'importers/unity/package.json').read_text(encoding='utf-8'))
+        package = json.loads((repo/'importers/unity-template/package.json').read_text(encoding='utf-8'))
         self.assertNotIn('version', package)
         self.assertEqual(importers.verify_unity_version(repo), importers.read_version(repo))
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             write(root/'devcel-studio/src-tauri/tauri.conf.json', json.dumps({'version':'3.2.1-rc.2'}))
-            write(root/'importers/unity/package.json', json.dumps({'name':'org.devcel.unity'}))
+            write(root/'importers/unity-template/package.json', json.dumps({'name':'org.devcel.unity'}))
             self.assertEqual(importers.verify_unity_version(root), '3.2.1-rc.2')
             for data in [{'name':'org.devcel.unity', 'version':'3.2.0'},
                          {'name':'other.package', 'version':'3.2.1-rc.2'},
                          {'name':'org.devcel.unity', 'version':None}]:
-                write(root/'importers/unity/package.json', json.dumps(data))
+                write(root/'importers/unity-template/package.json', json.dumps(data))
                 with self.assertRaises((RuntimeError, ValueError)):
                     importers.verify_unity_version(root)
             for invalid in ['', '1.2', '1.02.3', '1.2.3-01', '1.2.3+build', '1.2.3\n']:
                 write(root/'devcel-studio/src-tauri/tauri.conf.json', json.dumps({'version':invalid}))
-                write(root/'importers/unity/package.json', json.dumps({'name':'org.devcel.unity', 'version':invalid}))
+                write(root/'importers/unity-template/package.json', json.dumps({'name':'org.devcel.unity', 'version':invalid}))
                 with self.assertRaises((RuntimeError, ValueError)):
                     importers.verify_unity_version(root)
 
@@ -96,7 +96,7 @@ class PackagingSources(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             write(root/'devcel-studio/src-tauri/tauri.conf.json', json.dumps({'version':'3.2.1'}))
-            write(root/'importers/unity/package.json', json.dumps({'name':'org.devcel.unity', 'version':'3.2.0'}))
+            write(root/'importers/unity-template/package.json', json.dumps({'name':'org.devcel.unity', 'version':'3.2.0'}))
             out = root/'out'
             argv = ['package-importers.py', '--repo', str(root), '--out', str(out),
                     '--source-repository', 'example/repo', '--source-commit', 'a'*40]
