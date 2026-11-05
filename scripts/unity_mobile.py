@@ -199,7 +199,7 @@ def build(system, out, repository, commit, ndk=None):
     binary = output_root/target/'release'/Path(PATHS[system]).name
     raw = binary.read_bytes()
     check_binary(raw, system)
-    meta = (ROOT/'importers/unity/Tools~/NativePluginMetadata'/Path(PATHS[system]).relative_to('Plugins')).with_suffix(binary.suffix + '.meta').read_bytes()
+    meta = (ROOT/'importers/unity-template/Tools~/NativePluginMetadata'/Path(PATHS[system]).relative_to('Plugins')).with_suffix(binary.suffix + '.meta').read_bytes()
     value.update(sha256=hashlib.sha256(raw).hexdigest(), meta_sha256=hashlib.sha256(meta).hexdigest())
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)

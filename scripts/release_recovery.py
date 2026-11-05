@@ -61,23 +61,30 @@ def tag_identity(repository, tag):
     if obj.get('type') not in ('commit', 'tag') or not SHA.fullmatch(obj.get('sha', '')) or not SHA.fullmatch(commit):
         raise ValueError('Invalid tag identity')
     result = {'object': obj['sha'], 'type': obj['type'], 'commit': commit}
-    # New releases add only /upm to the exact built source tree. Preserve both
-    # identities: the immutable release tag and the native build's source parent.
+    # A generated package commit changes only importers/unity relative to its source.
     if 'commit' in detail:
-        tree = api(repository, 'git/trees/'+detail['commit']['tree']['sha'])
+        tree = api(repository, 'git/trees/'+detail['commit']['tree']['sha']+'?recursive=1')
         if tree.get('truncated'):
             raise ValueError('Incomplete release tree')
-        entries = {entry['path']: entry for entry in tree['tree']}
-        if 'upm' in entries:
+        entries = {e['path']: e for e in tree['tree'] if e.get('type') != 'tree'}
+        manifest_path = 'importers/unity/Tools~/manifest.json'
+        if manifest_path in entries:
             parents = detail['parents']
             if len(parents) != 1:
                 raise ValueError('Git package release requires one source parent')
             source = parents[0]['sha']
             parent = api(repository, 'git/commits/'+source)
-            old = api(repository, 'git/trees/'+parent['tree']['sha'])
-            if old.get('truncated') or {k:v for k,v in entries.items() if k != 'upm'} != {e['path']:e for e in old['tree']}:
+            old = api(repository, 'git/trees/'+parent['tree']['sha']+'?recursive=1')
+            if old.get('truncated'):
+                raise ValueError('Incomplete parent tree')
+            outside = lambda e: e['path'] != 'importers/unity' and not e['path'].startswith('importers/unity/') and e.get('type') != 'tree'
+            def identity(e):
+                return (e.get('mode'), e.get('type'), e.get('sha'))
+            current = {e['path']:identity(e) for e in tree['tree'] if outside(e)}
+            previous = {e['path']:identity(e) for e in old['tree'] if outside(e)}
+            if current != previous:
                 raise ValueError('Release commit changes files outside the generated package')
-            blob = api(repository, 'contents/upm/Tools~/manifest.json?ref='+commit)
+            blob = api(repository, 'contents/'+manifest_path+'?ref='+commit)
             manifest = json.loads(base64.b64decode(blob['content']))
             if manifest.get('source_commit') != source or manifest.get('source_repository') != repository or manifest.get('version') != tag[1:]:
                 raise ValueError('Release package provenance mismatch')
