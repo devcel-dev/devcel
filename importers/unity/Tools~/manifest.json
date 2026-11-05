@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "version": "0.0.2",
+  "source_commit": "248271eafc07e38e7b76958b411fca6caee38ec4",
+  "source_repository": "devcel-dev/devcel",
+  "source_fingerprint": "446ed86b9105ddc45131066546ffe0f70e734ec0a0edd10642228ae20292e9fb",
+  "supportedPlatforms": [
+    "win-x64",
+    "linux-x64",
+    "osx-x64",
+    "osx-arm64"
+  ],
+  "binaries": {
+    "win-x64": {
+      "path": "win-x64/devcel.exe",
+      "sha256": "b3a427627d259223e8174767f8ad55c2aca904caa54d4f0cda80e5dc7f355b20",
+      "target": "x86_64-pc-windows-msvc"
+    },
+    "linux-x64": {
+      "path": "linux-x64/devcel",
+      "sha256": "f34d960189cfbd93109d1bfd18cbeb6ed172dcf17edeae080c2bdeb3cfd5d439",
+      "target": "x86_64-unknown-linux-gnu",
+      "minimum_glibc": "2.39"
+    },
+    "osx-x64": {
+      "path": "osx-x64/devcel",
+      "sha256": "0a4bd8771e063b4cb9c10a80051f17b927a71f5a945901bcc5bad34f1d815662",
+      "target": "x86_64-apple-darwin"
+    },
+    "osx-arm64": {
+      "path": "osx-arm64/devcel",
+      "sha256": "a4687b6d488338e0008782cc1172e1b14aee9f301ec90843f0bd224fba9fc8c3",
+      "target": "aarch64-apple-darwin"
+    }
+  },
+  "native_runtimes": [
+    {
+      "path": "Plugins/Windows/x86_64/devcel_runtime.dll",
+      "sha256": "936bc13b75deb437231d7a84a4bf9c77d226b2ff65039b0814bde0bfd7454753"
+    },
+    {
+      "path": "Plugins/Linux/x86_64/libdevcel_runtime.so",
+      "sha256": "172d6f70555d36bec8f8c2640832b4e7975d97be72648911a42cd85e0cbabaef"
+    },
+    {
+      "path": "Plugins/macOS/libdevcel_runtime.dylib",
+      "sha256": "f5f609dfdbce152352ab379d674f3f59cb7a89a20b3e79af8262ce421e6a1963"
+    }
+  ],
+  "player_runtimes": [
+    {
+      "path": "Plugins/Android/arm64-v8a/libdevcel_runtime.so",
+      "sha256": "c8af919a587f5c46ef37b20c66efab64c477f3cef2164d306d14abbdd1e68779"
+    },
+    {
+      "path": "Plugins/iOS/libdevcel_runtime.a",
+      "sha256": "af3c2a8af700990a19a6004847b2022df58b832a2aa9f87ab9debcee484d0223"
+    }
+  ],
+  "source_archives": [
+    {
+      "platform": "win-x64",
+      "sha256": "e22552483b61bfcfa361ed8e625f87c8601cf7d0fbc1712efd20cb149fb7482f",
+      "url": "https://github.com/devcel-dev/devcel/releases/download/v0.0.2/devcel-unity-0.0.2-win-x64.zip",
+      "archive_entry": "devcel-unity/Tools~/cli-source.tar.gz"
+    },
+    {
+      "platform": "linux-x64",
+      "sha256": "e85b27a835f7c5ba2da76a0385633add0117f4a8ff1e07ff6738de0427c06ce0",
+      "url": "https://github.com/devcel-dev/devcel/releases/download/v0.0.2/devcel-unity-0.0.2-linux-x64.zip",
+      "archive_entry": "devcel-unity/Tools~/cli-source.tar.gz"
+    },
+    {
+      "platform": "osx-x64",
+      "sha256": "db08273f3cbcc4fc470d006d71b3bf4b5163371214621dbc4fe140bc0763970d",
+      "url": "https://github.com/devcel-dev/devcel/releases/download/v0.0.2/devcel-unity-0.0.2-osx-x64.zip",
+      "archive_entry": "devcel-unity/Tools~/cli-source.tar.gz"
+    },
+    {
+      "platform": "osx-arm64",
+      "sha256": "a899c5c4571263457c4068acd4bea816f337dd1cfc124f256b5f47fdceaf7c6e",
+      "url": "https://github.com/devcel-dev/devcel/releases/download/v0.0.2/devcel-unity-0.0.2-osx-arm64.zip",
+      "archive_entry": "devcel-unity/Tools~/cli-source.tar.gz"
+    }
+  ],
+  "original_source_commit": "db0b980a13ec21e06065df2eabf6a932f6a39e0e"
+}
