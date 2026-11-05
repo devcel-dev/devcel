@@ -106,7 +106,7 @@ def build(source, target):
     version = json.loads((source/'devcel-studio/src-tauri/tauri.conf.json').read_text(encoding='utf-8'))['version']
     paths = [p.relative_to(source).as_posix() for p in (source/'scripts').glob('*.py')]
     paths += list(bundled_plugin_versions.SOURCES)
-    paths += ['devcel-studio/src-tauri/tauri.conf.json', 'importers/unity/package.json',
+    paths += ['devcel-studio/src-tauri/tauri.conf.json', 'importers/unity-template/package.json',
               'importers/javascript/package.json', 'importers/cocos/package.json',
               'importers/unreal/Devcel.uplugin', 'importers/godot/addons/devcel/plugin.cfg']
     for name in paths:

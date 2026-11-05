@@ -19,7 +19,7 @@ class VersionTests(unittest.TestCase):
         names = [CONFIG, 'devcel-studio/package.json', 'devcel-studio/package-lock.json',
                  'Cargo.lock', 'third-party/preferred-sources.json', *plugins.SOURCES]
         for engine, (name, _) in importers.IDENTITIES.items():
-            names.append(f'importers/{engine}/{name}')
+            names.append(f"importers/{'unity-template' if engine == 'unity' else engine}/{name}")
         names.append('importers/godot/addons/devcel/plugin.cfg')
         for name in names:
             target = self.root/name
@@ -84,7 +84,7 @@ class VersionTests(unittest.TestCase):
         self.assertFalse(list(config.parent.glob('.product-version-*')))
 
     def test_duplicate_source_version_is_rejected_by_packaging(self):
-        path = self.root/'importers/unity/package.json'
+        path = self.root/'importers/unity-template/package.json'
         value = json.loads(path.read_bytes()); value['version'] = '9.9.9'
         path.write_text(json.dumps(value))
         with self.assertRaisesRegex(ValueError, 'only in tauri'):

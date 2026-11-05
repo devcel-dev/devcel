@@ -95,7 +95,7 @@ def prepare_release():
                                   os.environ.get('SOURCE_COMMIT') or os.environ['GITHUB_SHA'])
     if os.environ['GITHUB_EVENT_NAME'] == 'push':
         if not run('git', 'ls-tree', commit, '--', unity_git_package.PACKAGE_PATH, capture=True).strip():
-            raise ValueError('A new release tag must already contain generated /upm. Use manual release preparation or stage the complete package before tagging; never move an existing tag.')
+            raise ValueError('A new release tag must already contain generated Unity package. Use manual release preparation or stage the complete package before tagging; never move an existing tag.')
         commit = unity_git_package.source_identity(ROOT, commit)
     emit_release(tag, commit)
 
@@ -977,13 +977,20 @@ def publish(source_root=None, before_create=None, before_publish=None):
         else:
             if run('git', 'ls-remote', '--refs', remote, 'refs/tags/'+tag, capture=True).strip():
                 raise ValueError('Release tag was created concurrently; no tag was changed.')
-            # Explicit source SHA -> new normal release tag only; never main or force.
+            # Publish main and the immutable tag together; reject concurrent main updates.
+            main = run('git', 'ls-remote', '--refs', remote, 'refs/heads/main', capture=True).strip()
+            if main != commit+'\trefs/heads/main':
+                raise ValueError('Main moved since the source build; refusing to publish stale Unity assets.')
             run('git', '-c', 'credential.helper=', '-c', 'credential.helper=!gh auth git-credential',
-                'push', remote, release_commit+':refs/tags/'+tag, cwd=source_root)
+                'push', '--atomic', remote, release_commit+':refs/heads/main',
+                release_commit+':refs/tags/'+tag, cwd=source_root)
         if run('gh', 'api', 'repos/{owner}/{repo}/commits/refs/tags/'+tag, '--jq', '.sha', capture=True).strip() != release_commit:
             raise ValueError('Tag publication outcome uncertain; inspect remotely before retrying.')
+        main_now = run('git', 'ls-remote', '--refs', remote, 'refs/heads/main', capture=True).strip()
+        if main_now != release_commit+'\trefs/heads/main':
+            raise ValueError('Main no longer points to the generated package commit; inspect before publishing.')
     if git_package_available:
-        notes += '\n\nUnity Git URL: `https://github.com/'+repository+'.git?path=/upm#'+tag+'`\n'
+        notes += '\n\nUnity Git URL: `https://github.com/'+repository+'.git?path=/importers/unity#'+tag+'`\n'
     # Create a draft first so failed uploads cannot expose an incomplete release.
     # Existing tags are mandatory; an existing release causes failure, never overwrite.
     with tempfile.TemporaryDirectory(prefix='devcel-release-notes-', dir=os.environ.get('RUNNER_TEMP')) as directory:

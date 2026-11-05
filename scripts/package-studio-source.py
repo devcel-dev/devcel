@@ -31,6 +31,10 @@ def copy_source(repo, stage):
         paths=[source] if source.is_file() else sorted(source.rglob('*'))
         for path in paths:
             relative=path.relative_to(repo)
+            # The generated Unity distribution can contain platform binaries and
+            # vendored archives; its editable sources live in unity-template.
+            if relative.parts[:2] == ('importers', 'unity') and len(relative.parts) > 2 and relative.parts[2] in ('Plugins', 'Tools~', 'ThirdPartyNotices', 'Plugins.meta', 'ThirdPartyNotices.meta'):
+                continue
             if relative.parts[:2] == ('third-party', 'generated') or relative.as_posix() in ('devcel-studio/public/legal/THIRD-PARTY-NOTICES.txt', 'importers/unity/Editor/NativeRequirements.json'): continue
             if any(part in EXCLUDED_DIRS and not (part == 'dist' and relative.parts[:2] == ('importers', 'cocos')) for part in relative.parts) or path.name.endswith(EXCLUDED_SUFFIXES): continue
             if path.is_symlink(): raise RuntimeError(f'Release source symlink requires explicit review: {relative}')

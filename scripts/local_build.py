@@ -120,7 +120,7 @@ def stage(repo, native, out, kind, platform='win-x64', source_commit=None):
                 manifest.update(source_fingerprint=identity, native_runtime={
                     'path': plugin.relative_to(dest).as_posix(), 'sha256': digest(runtime)})
                 manifest_path.write_text(json.dumps(manifest, indent=2)+'\n', encoding='utf-8')
-                metadata = repo/'importers/unity/Tools~/NativePluginMetadata'/folder/(runtime.name+'.meta')
+                metadata = repo/'importers/unity-template/Tools~/NativePluginMetadata'/folder/(runtime.name+'.meta')
                 shutil.copyfile(metadata, Path(str(plugin)+'.meta'))
             legal = dest/'ThirdPartyNotices'
             legal.mkdir(exist_ok=True)
