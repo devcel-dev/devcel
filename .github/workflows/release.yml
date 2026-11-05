@@ -126,7 +126,7 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
-      - name: Create version tag without replacing an existing tag
+      - name: Check new version tag is absent (creation deferred until packaging)
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
@@ -135,12 +135,12 @@ jobs:
         run: python scripts/ci-release.py create_tag
   build:
     needs: [validate, create_tag]
-    # Tag pushes skip create_tag; a failed manual tag creation must stop the build.
+    # Tag pushes skip create_tag; a failed new-tag preflight must stop the build.
     if: ${{ !cancelled() && needs.validate.result == 'success' && (needs.create_tag.result == 'success' || needs.create_tag.result == 'skipped') }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-24.04, windows-2022]
+        os: [ubuntu-24.04, windows-2022, macos-15-intel, macos-15]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 240
     env:
@@ -220,7 +220,7 @@ jobs:
         run: python scripts/ci-release.py package
       - uses: actions/upload-artifact@v7
         with:
-          name: release-${{ runner.os }}
+          name: release-${{ runner.os }}${{ runner.os == 'macOS' && format('-{0}', runner.arch) || '' }}
           path: release-assets/*
           if-no-files-found: error
           retention-days: 7
@@ -245,9 +245,39 @@ jobs:
             !target/*/release/bundle
             !target/*/release/incremental
           key: ${{ steps.rust-cache.outputs.cache-primary-key }}
+  mobile:
+    name: mobile (${{ matrix.system }})
+    needs: [validate, create_tag]
+    if: ${{ !cancelled() && needs.validate.result == 'success' && (needs.create_tag.result == 'success' || needs.create_tag.result == 'skipped') }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - system: android
+            os: ubuntu-24.04
+          - system: ios
+            os: macos-15
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.validate.outputs.commit }}
+          persist-credentials: false
+      - uses: ./.github/actions/build-unity-mobile
+        with:
+          system: ${{ matrix.system }}
+          source-commit: ${{ needs.validate.outputs.commit }}
+      - uses: actions/upload-artifact@v7
+        with:
+          name: release-mobile-${{ matrix.system }}
+          path: mobile-artifacts/*.zip
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0
   publish:
-    needs: [validate, build]
-    if: ${{ !cancelled() && needs.validate.result == 'success' && needs.build.result == 'success' }}
+    needs: [validate, build, mobile]
+    if: ${{ !cancelled() && needs.validate.result == 'success' && needs.build.result == 'success' && needs.mobile.result == 'success' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:

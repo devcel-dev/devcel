@@ -444,6 +444,7 @@
       "paths": [
         "devcel-studio/templates/plugin-template/**",
         "importers/unity/**",
+        "importers/unity-template/**",
         "importers/godot/**",
         "examples/**"
       ],

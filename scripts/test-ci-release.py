@@ -8,6 +8,8 @@ import re
 import subprocess
 import tempfile
 import unittest
+from test_unity_upm import fixture_entries
+from test_unity_mobile import fixture as mobile_fixture
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -53,7 +55,7 @@ class ReleaseTests(unittest.TestCase):
         text = (ROOT/'.github/workflows/ci.yml').read_text()
         jobs = text.split('jobs:\n', 1)[1]
         self.assertEqual(re.findall(r'^  ([a-z_]+):$', jobs, re.MULTILINE), ['check'])
-        self.assertIn('os: [ubuntu-24.04, windows-2022]', jobs)
+        self.assertIn('os: [ubuntu-24.04, windows-2022, macos-15-intel, macos-15]', jobs)
         prefix = jobs.split('    strategy:', 1)[0]
         self.assertNotIn('needs:', prefix)
         self.assertNotIn('if:', prefix)
@@ -156,7 +158,7 @@ class ReleaseTests(unittest.TestCase):
 
     def test_triggers_and_permissions(self):
         directory = ROOT/'.github/workflows'
-        self.assertEqual({p.name for p in directory.iterdir()}, {'ci.yml', 'release.yml', 'manual-checks.yml'})
+        self.assertEqual({p.name for p in directory.iterdir()}, {'ci.yml', 'release.yml', 'manual-checks.yml', 'unity-mobile.yml'})
         ci_text = (directory/'ci.yml').read_text()
         release = (directory/'release.yml').read_text()
         self.assertIn('on:\n  pull_request:\n    branches: [main]\n', ci_text)
@@ -165,15 +167,15 @@ class ReleaseTests(unittest.TestCase):
         self.assertIn("on:\n  push:\n    tags: ['v[0-9]*.[0-9]*.[0-9]*']\n", release)
         self.assertIn('  workflow_dispatch:\n    inputs:\n      version:', release)
         self.assertIn('        required: true\n        type: string', release)
-        self.assertIn('needs: [validate, build]', release)
+        self.assertIn('needs: [validate, build, mobile]', release)
         self.assertEqual(release.count('contents: write'), 4)
         for job in ('validate', 'build'):
             block = re.search(r'(?ms)^  '+job+r':\n(.*?)(?=^  [a-z_]+:|\Z)', release).group(1)
             self.assertNotIn('contents: write', block)
         for text in (ci_text, release):
-            for forbidden in ('schedule:', 'pull_request_target:', 'macos-', 'branches: ["*"]'):
+            for forbidden in ('schedule:', 'pull_request_target:', 'branches: ["*"]'):
                 self.assertNotIn(forbidden, text)
-            self.assertIn('os: [ubuntu-24.04, windows-2022]', text)
+            self.assertIn('os: [ubuntu-24.04, windows-2022, macos-15-intel, macos-15]', text)
             self.assertIn('persist-credentials: false', text)
             self.assertIn("env:\n  PYTHONUTF8: '1'\n", text)
 
@@ -182,10 +184,10 @@ class ReleaseTests(unittest.TestCase):
         self.assertIn('group: release-main', release)
         self.assertIn('cancel-in-progress: false', release)
         self.assertIn('ref: ${{ github.sha }}', release)
-        self.assertEqual(release.count('ref: ${{ needs.validate.outputs.commit }}'), 3)
+        self.assertEqual(release.count('ref: ${{ needs.validate.outputs.commit }}'), 4)
         self.assertEqual(release.count('SOURCE_COMMIT: ${{ needs.validate.outputs.commit }}'), 3)
         self.assertEqual(release.count('RELEASE_TAG: ${{ needs.validate.outputs.tag }}'), 3)
-        self.assertEqual(release.count('persist-credentials: false'), 8)
+        self.assertEqual(release.count('persist-credentials: false'), 9)
         self.assertEqual(release.count('run: python scripts/ci-release.py package'), 1)
         self.assertEqual(release.count('run: python scripts/ci-release.py publish'), 1)
         self.assertEqual(release.count('GH_TOKEN: ${{ github.token }}'), 5)
@@ -294,21 +296,20 @@ class ReleaseTests(unittest.TestCase):
                 with self.assertRaises(ValueError): ci.prepare_release()
             self.assertEqual(output.read_bytes(), before)
 
-    def test_create_tag_uses_only_create_ref_api(self):
+    def test_tag_preflight_is_read_only(self):
         tag, commit = 'v1.2.3-rc.1', 'a'*40
         env = {'GITHUB_EVENT_NAME': 'workflow_dispatch', 'GITHUB_REF': 'refs/heads/main',
-               'RELEASE_TAG': tag, 'SOURCE_COMMIT': commit}
-        response = json.dumps({'ref': 'refs/tags/'+tag, 'object': {'sha': commit}})
+               'RELEASE_TAG': tag, 'SOURCE_COMMIT': commit, 'GH_REPO': 'owner/repo'}
+        response = ''
         with patch.dict(ci.os.environ, env), patch.object(ci, 'validate') as validate, \
                 patch.object(ci, 'checked_commit', return_value=commit), patch.object(ci, 'run', return_value=response) as run:
             ci.create_tag()
         validate.assert_called_once_with(tag)
-        run.assert_called_once_with('gh', 'api', '--method', 'POST', 'repos/{owner}/{repo}/git/refs',
-                                    '--raw-field', 'ref=refs/tags/'+tag, '--raw-field', 'sha='+commit, capture=True)
+        run.assert_called_once_with('git', 'ls-remote', '--refs', 'https://github.com/owner/repo.git', 'refs/tags/'+tag, capture=True)
 
     def test_existing_tag_or_api_failure_never_retries_or_overwrites(self):
         env = {'GITHUB_EVENT_NAME': 'workflow_dispatch', 'GITHUB_REF': 'refs/heads/main',
-               'RELEASE_TAG': 'v1.2.3', 'SOURCE_COMMIT': 'a'*40}
+               'RELEASE_TAG': 'v1.2.3', 'SOURCE_COMMIT': 'a'*40, 'GH_REPO': 'owner/repo'}
         for status in (409, 422):
             with patch.dict(ci.os.environ, env), patch.object(ci, 'validate'), \
                     patch.object(ci, 'checked_commit', return_value='a'*40), \
@@ -333,13 +334,13 @@ class ReleaseTests(unittest.TestCase):
 
     def test_create_tag_checks_api_response(self):
         env = {'GITHUB_EVENT_NAME': 'workflow_dispatch', 'GITHUB_REF': 'refs/heads/main',
-               'RELEASE_TAG': 'v1.2.3', 'SOURCE_COMMIT': 'a'*40}
+               'RELEASE_TAG': 'v1.2.3', 'SOURCE_COMMIT': 'a'*40, 'GH_REPO': 'owner/repo'}
         for response in ({}, {'ref': 'refs/tags/v1.2.3', 'object': {'sha': 'b'*40}},
                          {'ref': 'refs/tags/v1.2.4', 'object': {'sha': 'a'*40}}):
             with patch.dict(ci.os.environ, env), patch.object(ci, 'validate'), \
                     patch.object(ci, 'checked_commit', return_value='a'*40), \
                     patch.object(ci, 'run', return_value=json.dumps(response)):
-                with self.assertRaisesRegex(ValueError, 'creation response'): ci.create_tag()
+                with self.assertRaisesRegex(ValueError, 'already exists'): ci.create_tag()
 
     def test_runners_avoid_full_local_suite_and_preserve_local_checks(self):
         for name in ('ci.yml', 'release.yml'):
@@ -651,7 +652,7 @@ class ReleaseTests(unittest.TestCase):
         for name, command in (('ci.yml', 'build_native'), ('release.yml', 'package')):
             text = (ROOT/'.github/workflows'/name).read_text()
             self.assertIn('python scripts/ci-release.py '+command, text)
-            self.assertIn('os: [ubuntu-24.04, windows-2022]', text)
+            self.assertIn('os: [ubuntu-24.04, windows-2022, macos-15-intel, macos-15]', text)
             for forbidden in ('strict_checks', 'compact_checks', 'inspect_native', 'cargo test', '--no-run', 'RUSTFLAGS: -D warnings'):
                 self.assertNotIn(forbidden, text)
         text = (ROOT/'.github/workflows/manual-checks.yml').read_text()
@@ -738,17 +739,23 @@ class ReleaseTests(unittest.TestCase):
             self.assertFalse((root/'release-assets').exists())
 
     def fixture(self, root):
-        for system, platform, suffixes in [('Linux', 'linux-x64', ['deb']),
-                                          ('Windows', 'win-x64', [])]:
+        for system, platform in [('Linux', 'linux-x64'), ('Windows', 'win-x64'),
+                                 ('macOS-X64', 'osx-x64'), ('macOS-ARM64', 'osx-arm64')]:
             directory = root/('release-'+system)
             directory.mkdir()
             for engine in ('unity', 'godot', 'unreal', 'rpgmaker', 'wolf', 'gamemaker', 'defold', 'cocos', 'javascript'):
                 import zipfile
                 with zipfile.ZipFile(directory/f'devcel-{engine}-0.1.0-{platform}.zip', 'w') as archive:
-                    archive.writestr('sdk/bin/manifest.json', json.dumps({'schema_version':1, 'version':'0.1.0', 'source_commit':'a'*40, 'source_repository':'owner/repo', 'supportedPlatforms':[platform], 'binaries':{platform:{'path':platform+'/devcel'}}}))
-            for suffix in suffixes: (directory/f'devcel-studio-0.1.0-linux-x64.{suffix}').write_bytes(b'fixture')
+                    if engine == 'unity':
+                        for name, raw in fixture_entries(platform).items():
+                            archive.writestr(name, raw)
+                    else:
+                        archive.writestr('sdk/bin/manifest.json', json.dumps({'schema_version':1, 'version':'0.1.0', 'source_commit':'a'*40, 'source_repository':'owner/repo', 'supportedPlatforms':[platform], 'binaries':{platform:{'path':platform+'/devcel'}}}))
+            (directory/ci.studio_asset_name(system.lower(), 'v0.1.0')).write_bytes(b'fixture')
         (root/'release-Windows/devcel-studio-0.1.0-windows-x64.zip').write_bytes(b'portable')
         (root/'release-Linux/SOURCE-ACCESS.json').write_bytes(b'source')
+        for system in ('android', 'ios'):
+            mobile_fixture(root/f'release-mobile-{system}'/f'unity-mobile-{system}.zip', system)
 
     def test_collect_rejects_old_importer_filename_and_manifest_identity(self):
         import zipfile
@@ -758,7 +765,7 @@ class ReleaseTests(unittest.TestCase):
                 self.fixture(root)
                 path = root/'release-Windows/devcel-unity-0.1.0-win-x64.zip'
                 with zipfile.ZipFile(path) as archive:
-                    manifest = json.loads(archive.read('sdk/bin/manifest.json'))
+                    manifest = json.loads(archive.read('devcel-unity/Tools~/manifest.json'))
                 manifest[field] = wrong
                 with zipfile.ZipFile(path, 'w') as archive:
                     archive.writestr('sdk/bin/manifest.json', json.dumps(manifest))
@@ -777,12 +784,23 @@ class ReleaseTests(unittest.TestCase):
             root = Path(temp)
             self.fixture(root)
             files = ci.collect_assets(root, root/'out', 'v0.1.0')
-            self.assertEqual(len(files), 22)
-            self.assertEqual(len((root/'out/SHA256SUMS.txt').read_text().splitlines()), 21)
+            self.assertEqual(len(files), 48)
+            self.assertEqual(len((root/'out/SHA256SUMS.txt').read_text().splitlines()), 47)
+            self.assertEqual(len(list((root/'out').glob('org.devcel.unity-*.tgz'))), 4)
+
+    def test_publication_requires_both_mobile_artifacts(self):
+        for system in ('android', 'ios'):
+            with self.subTest(system=system), tempfile.TemporaryDirectory() as temp:
+                root = Path(temp)
+                self.fixture(root)
+                (root/f'release-mobile-{system}'/f'unity-mobile-{system}.zip').unlink()
+                with self.assertRaisesRegex(ValueError, 'mobile runtime artifact sets'):
+                    ci.collect_assets(root, root/'out', 'v0.1.0')
 
     def test_studio_asset_names_match_release_version_and_platform(self):
         for version in ('0.0.2', '0.0.3', '1.2.3-rc.1'):
-            for system, suffix in (('linux', 'linux-x64.deb'), ('windows', 'windows-x64.zip')):
+            for system, suffix in (('linux', 'linux-x64.deb'), ('windows', 'windows-x64.zip'),
+                                   ('macos-x64', 'macos-x64.dmg'), ('macos-arm64', 'macos-arm64.dmg')):
                 with self.subTest(version=version, system=system):
                     self.assertEqual(ci.studio_asset_name(system, 'v'+version),
                                      f'devcel-studio-{version}-{suffix}')
@@ -810,7 +828,7 @@ class ReleaseTests(unittest.TestCase):
                         ci.collect_assets(root, root/'out', 'v0.1.0')
 
     def test_collect_rejects_missing_or_duplicate_studio_assets(self):
-        for system in ('Linux', 'Windows'):
+        for system in ('Linux', 'Windows', 'macOS-X64', 'macOS-ARM64'):
             for duplicate in (False, True):
                 with self.subTest(system=system, duplicate=duplicate), tempfile.TemporaryDirectory() as temp:
                     root = Path(temp); self.fixture(root)
@@ -828,7 +846,7 @@ class ReleaseTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp); self.fixture(root)
             payloads = {}
-            for system in ('Linux', 'Windows'):
+            for system in ('Linux', 'Windows', 'macOS-X64', 'macOS-ARM64'):
                 name = ci.studio_asset_name(system.lower(), 'v0.1.0')
                 payloads[name] = (system+'\r\n').encode()+bytes(range(256))
                 (root/('release-'+system)/name).write_bytes(payloads[name])
@@ -846,6 +864,63 @@ class ReleaseTests(unittest.TestCase):
             (root/'release-Linux/studio.AppImage').write_bytes(b'unreviewed')
             with self.assertRaisesRegex(ValueError, 'Unsupported release installer'):
                 ci.collect_assets(root, root/'out', 'v0.1.0')
+
+    def test_macos_native_platform_and_toolchains(self):
+        for machine, rid in (('x86_64', 'x64'), ('arm64', 'arm64')):
+            with patch.object(ci.sys, 'platform', 'darwin'), patch.object(ci.platform, 'machine', return_value=machine):
+                self.assertEqual(ci.platform_config(), ('macos-'+rid, 'osx-'+rid, 'app,dmg', 'devcel-studio'))
+                with patch.object(ci, 'run') as run:
+                    ci.toolchains()
+                self.assertIn(('rustup', 'target', 'add', '--toolchain', '1.99.0',
+                               'x86_64-apple-darwin', 'aarch64-apple-darwin'), [c.args for c in run.call_args_list])
+        with patch.object(ci.sys, 'platform', 'darwin'), patch.object(ci.platform, 'machine', return_value='other'):
+            with self.assertRaises(ValueError): ci.platform_config()
+
+    def test_macos_build_checks_sealed_payload_and_propagates_signing_failure(self):
+        for rid in ('x64', 'arm64'):
+            with tempfile.TemporaryDirectory() as temp, patch.dict(ci.os.environ, {'CARGO_TARGET_DIR': temp}), \
+                    patch.object(ci, 'platform_config', return_value=('macos-'+rid, 'osx-'+rid, 'app,dmg', 'devcel-studio')), \
+                    patch.object(ci.studio_cli, 'configure_macos'), \
+                    patch.object(ci.studio_cli, 'stage', return_value=Path('cli.conf.json')), \
+                    patch.object(ci.studio_cli, 'validate', return_value={'sha256': 'signed'}) as validate, \
+                    patch.object(ci, 'run') as run:
+                ci.build_native()
+                calls = [c.args for c in run.call_args_list]
+                self.assertEqual(calls[2][:7], ('npm', 'run', 'tauri', '--', 'build', '--bundles', 'app,dmg'))
+                self.assertEqual(calls[-1], ('codesign', '--verify', '--deep', '--strict',
+                                            Path(temp)/'release/bundle/macos/devcel-studio.app'))
+                self.assertEqual(validate.call_args.args, (Path(temp)/'release/bundle/macos/devcel-studio.app/Contents/Resources/bin', 'osx-'+rid))
+                validate.side_effect = [{'sha256': 'original'}, {'sha256': 'modified'}]
+                with self.assertRaisesRegex(ValueError, 'differs'): ci.build_native()
+                validate.side_effect = None
+                run.side_effect = lambda *args, **kwargs: (_ for _ in ()).throw(subprocess.CalledProcessError(1, args)) if args[0] == 'codesign' else None
+                with self.assertRaises(subprocess.CalledProcessError): ci.build_native()
+
+    def test_missing_macos_architecture_stops_publication(self):
+        for label in ('macOS-X64', 'macOS-ARM64'):
+            with self.subTest(label=label), tempfile.TemporaryDirectory() as temp:
+                root = Path(temp); self.fixture(root)
+                ci.shutil.rmtree(root/('release-'+label))
+                with self.assertRaisesRegex(ValueError, 'All four'):
+                    ci.collect_assets(root, root/'out', 'v0.1.0')
+
+    def test_macos_cli_signed_before_manifest_hash_and_configured_ad_hoc(self):
+        for rid in ('osx-x64', 'osx-arm64'):
+            with self.subTest(rid=rid), tempfile.TemporaryDirectory() as temp:
+                root = Path(temp)
+                for name in ('devcel-studio/src-tauri/tauri.conf.json', 'scripts/tauri-release.conf.json', 'devcel-cli/LICENSE'):
+                    destination = root/name; destination.parent.mkdir(parents=True, exist_ok=True)
+                    destination.write_bytes((ROOT/name).read_bytes())
+                target = root/'target/release'; target.mkdir(parents=True)
+                (target/'devcel').write_bytes(b'unsigned')
+                def sign(command, **kwargs):
+                    self.assertEqual(command[:4], ['codesign', '--force', '--sign', '-'])
+                    Path(command[4]).write_bytes(b'signed')
+                with patch.object(ci.studio_cli.subprocess, 'run', side_effect=sign):
+                    config = ci.studio_cli.stage(root, target.parent, rid, source_commit='a'*40)
+                manifest = ci.studio_cli.validate(root/ci.studio_cli.DIRECTORY, rid)
+                self.assertEqual(manifest['sha256'], ci.hashlib.sha256(b'signed').hexdigest())
+                self.assertEqual(json.loads(config.read_text())['bundle']['macOS']['signingIdentity'], '-')
 
     def test_linux_build_selects_deb_only(self):
         with patch.object(ci.sys, 'platform', 'linux'):
@@ -1040,6 +1115,64 @@ class ReleaseTests(unittest.TestCase):
             self.assertEqual(calls[5],('gh','release','upload','v0.1.0','asset'))
             self.assertEqual(calls[6],('gh','release','edit','v0.1.0','--draft=false'))
 
+    def test_new_release_stages_complete_package_before_creating_normal_tag(self):
+        self.check_new_release_publication(False)
+        self.check_new_release_publication(True)
+
+    def check_new_release_publication(self, resume):
+        events = []
+        def collect(*args):
+            events.append('collect'); return ['asset']
+        def stage(*args):
+            events.append('stage'); return 'b'*40
+        def command(*args, **kwargs):
+            if args[:2] == ('git', 'ls-remote'):
+                if args[-1] == 'refs/heads/main': return ('b' if resume or 'push' in events else 'a')*40+'\trefs/heads/main'
+                return 'b'*40+'\trefs/tags/v0.1.0' if resume else ''
+            if 'releases?per_page=100' in str(args): return '[[]]'
+            if args == ('gh', 'api', 'repos/{owner}/{repo}'):
+                return '{"full_name":"owner/repo","visibility":"public"}'
+            if 'push' in args:
+                events.append('push')
+                self.assertIn('--atomic', args)
+                self.assertEqual(args[-2:], ('b'*40+':refs/heads/main', 'b'*40+':refs/tags/v0.1.0'))
+                self.assertNotIn('--force', args)
+            if '--jq' in args: return 'b'*40
+            if args[:3] == ('gh','release','create'):
+                events.append('create')
+                self.assertIn('?path=/importers/unity#v0.1.0', Path(args[args.index('--notes-file')+1]).read_text())
+            if args[:3] == ('gh','release','upload'): events.append('upload')
+            if args[:3] == ('gh','release','edit'): events.append('publish')
+            return ''
+        with self.publication_fixture(), patch.dict(ci.os.environ, {
+                'GITHUB_EVENT_NAME':'workflow_dispatch', 'RECOVERY_RUN_ID':'', 'REBUILD_EXISTING_TAG':'false',
+                'RELEASE_TAG':'v0.1.0','SOURCE_COMMIT':'a'*40,'GH_REPO':'owner/repo'}), \
+                patch.object(ci,'validate'), patch.object(ci,'checked_commit',return_value='a'*40), \
+                patch.object(ci,'collect_assets',side_effect=collect), \
+                patch.object(ci.unity_git_package,'stage_release',side_effect=stage), \
+                patch.object(ci.release_source,'validate_index'), \
+                patch.object(ci.release_source,'source_index',return_value={}), \
+                patch.object(ci.release_source,'source_notes',return_value='source'), \
+                patch.object(ci,'run',side_effect=command):
+            ci.publish()
+        self.assertEqual(events, ['collect','stage']+([] if resume else ['push'])+['create','upload','publish'])
+
+    def test_existing_git_tag_payload_drift_stops_before_remote_writes(self):
+        with self.publication_fixture(), patch.dict(ci.os.environ, {
+                'GITHUB_EVENT_NAME':'workflow_dispatch', 'REBUILD_EXISTING_TAG':'true',
+                'RELEASE_TAG':'v0.1.0','SOURCE_COMMIT':'a'*40,'GH_REPO':'owner/repo'}), \
+                patch.object(ci,'validate'), patch.object(ci,'checked_commit',return_value='a'*40), \
+                patch.object(ci,'collect_assets',return_value=['asset']), \
+                patch.object(ci.unity_git_package,'source_identity',return_value='a'*40), \
+                patch.object(ci.unity_git_package,'stage_release',return_value='c'*40), \
+                patch.object(ci.unity_git_package,'verify_release_tree',side_effect=ValueError('immutable release tag')) as verify, \
+                patch.object(ci,'run',side_effect=['b'*40, '', '[[]]', '']) as run:
+            with self.assertRaisesRegex(ValueError, 'immutable release tag'):
+                ci.publish()
+            verify.assert_called_once_with(ci.ROOT, 'b'*40, 'c'*40)
+            self.assertFalse(any(call.args[:2] == ('gh','release') or 'push' in call.args
+                                 for call in run.call_args_list))
+
     def test_publication_notes_normalize_input_and_bind_version(self):
         self.assertEqual(ci.publication_notes('v0.1.0', 'Exact source', 'Changes\r\n\r\nImproved editing.\r\n', '0.1.0'),
                          'Changes\n\nImproved editing.\n\nExact source')
@@ -1099,11 +1232,12 @@ class ReleaseTests(unittest.TestCase):
                              'Exact source directions')
 
     def test_changed_tag_stops_publication(self):
-        with patch.dict(ci.os.environ, {'RELEASE_TAG':'v0.1.0','SOURCE_COMMIT':'a'*40}), \
+        with patch.dict(ci.os.environ, {'RELEASE_TAG':'v0.1.0','SOURCE_COMMIT':'a'*40,'GH_REPO':'owner/repo'}), \
                 patch.object(ci,'validate'), patch.object(ci,'checked_commit',return_value='a'*40), \
+                patch.object(ci.unity_git_package, 'source_identity', return_value='c'*40), \
                 patch.object(ci,'collect_assets') as collect, patch.object(ci,'run',return_value='b'*40) as run:
             with self.assertRaisesRegex(ValueError,'no longer points'): ci.publish()
-            collect.assert_not_called(); self.assertEqual(run.call_count,1)
+            collect.assert_not_called(); self.assertEqual(run.call_count,2)
 
     def test_existing_release_stops_before_upload(self):
         for draft in (True,False):
@@ -1470,9 +1604,20 @@ class ManualVersionPreparationTests(unittest.TestCase):
         with patch.dict(ci.os.environ, {**self.environment(), 'GITHUB_EVENT_NAME': 'push',
                                        'GITHUB_REF': 'refs/tags/v0.0.3'}), \
                 patch.object(ci, 'release_request', return_value=('v0.0.3', 'a'*40)), \
+                patch.object(ci, 'run', return_value='upm'), \
+                patch.object(ci.unity_git_package, 'source_identity', return_value='a'*40), \
                 patch.object(release_version, 'bump') as bump, patch.object(ci, 'emit_release'):
             ci.prepare_release()
         bump.assert_not_called()
+
+    def test_source_only_tag_push_is_rejected_without_publication(self):
+        with patch.dict(ci.os.environ, {**self.environment(), 'GITHUB_EVENT_NAME': 'push',
+                                       'GITHUB_REF': 'refs/tags/v0.0.3'}), \
+                patch.object(ci, 'release_request', return_value=('v0.0.3', 'a'*40)), \
+                patch.object(ci, 'run', return_value=''), patch.object(ci, 'emit_release') as emit:
+            with self.assertRaisesRegex(ValueError, 'must already contain generated Unity package'):
+                ci.prepare_release()
+        emit.assert_not_called()
 
     def test_dispatch_preparation_is_separate_and_validate_stays_read_only(self):
         text = (ROOT/'.github/workflows/release.yml').read_text()

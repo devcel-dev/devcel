@@ -16,6 +16,8 @@ namespace Devcel.Unity.Editor
         [Serializable] private sealed class Manifest {
             public int schema_version; public string source_fingerprint;
             public NativeBinary native_runtime;
+            public NativeBinary[] native_runtimes;
+            public NativeBinary[] player_runtimes;
         }
         [Serializable] private sealed class NativeBinary { public string path, sha256; }
         internal static PackageInfo Installed => Array.Find(PackageInfo.GetAllRegisteredPackages(), item => item.name == Name);
@@ -31,16 +33,14 @@ namespace Devcel.Unity.Editor
                 manifest == null || manifest.schema_version != 1 ||
                 manifest.source_fingerprint != required.source_fingerprint)
                 throw new IOException("Native tools do not match this SDK source revision. Install the corresponding Devcel Unity distribution.");
-            if (manifest.native_runtime == null || string.IsNullOrEmpty(manifest.native_runtime.path))
-                throw new IOException("The matching native runtime manifest is missing.");
             string expected = Application.platform == RuntimePlatform.WindowsEditor ? "Plugins/Windows/x86_64/devcel_runtime.dll" :
                 Application.platform == RuntimePlatform.OSXEditor ? "Plugins/macOS/libdevcel_runtime.dylib" : "Plugins/Linux/x86_64/libdevcel_runtime.so";
-            if (manifest.native_runtime.path != expected) throw new IOException("Native runtime does not match this Editor platform.");
-            string native = Path.GetFullPath(Path.Combine(root, manifest.native_runtime.path));
+            NativeBinary editorRuntime = FindRuntime(manifest, expected);
+            string native = Path.GetFullPath(Path.Combine(root, editorRuntime.path));
             SafePath(root, native);
             using (var input = File.OpenRead(native))
             using (var sha = SHA256.Create())
-                if (!string.Equals(BitConverter.ToString(sha.ComputeHash(input)).Replace("-", ""), manifest.native_runtime.sha256, StringComparison.OrdinalIgnoreCase))
+                if (!string.Equals(BitConverter.ToString(sha.ComputeHash(input)).Replace("-", ""), editorRuntime.sha256, StringComparison.OrdinalIgnoreCase))
                     throw new IOException("Native runtime checksum mismatch.");
             BuildTarget target = Application.platform == RuntimePlatform.WindowsEditor ? BuildTarget.StandaloneWindows64 :
                 Application.platform == RuntimePlatform.OSXEditor ? BuildTarget.StandaloneOSX : BuildTarget.StandaloneLinux64;
@@ -58,6 +58,35 @@ namespace Devcel.Unity.Editor
                 current = Path.Combine(current, part);
                 if ((File.GetAttributes(current) & FileAttributes.ReparsePoint) != 0) throw new IOException("Linked native payload paths are unsupported.");
             }
+        }
+
+        internal static void ValidatePlayer(string root, string relative)
+        {
+            SafePath(root, Path.Combine(root, "Tools~/manifest.json"));
+            var manifest = JsonUtility.FromJson<Manifest>(File.ReadAllText(Path.Combine(root, "Tools~/manifest.json")));
+            if (manifest == null || manifest.schema_version != 1)
+                throw new IOException("The native runtime manifest is invalid.");
+            NativeBinary entry = FindRuntime(manifest, relative);
+            string path = Path.Combine(root, relative);
+            SafePath(root, path);
+            using (var input = File.OpenRead(path))
+            using (var sha = SHA256.Create())
+                if (!string.Equals(BitConverter.ToString(sha.ComputeHash(input)).Replace("-", ""), entry.sha256, StringComparison.OrdinalIgnoreCase))
+                    throw new IOException("Player runtime checksum mismatch: " + relative);
+        }
+
+        private static NativeBinary FindRuntime(Manifest manifest, string relative)
+        {
+            NativeBinary found = null;
+            foreach (var group in new[] { new[] { manifest.native_runtime }, manifest.native_runtimes, manifest.player_runtimes })
+                foreach (var item in group ?? Array.Empty<NativeBinary>())
+                    if (item != null && item.path == relative)
+                    {
+                        if (found != null) throw new IOException("Duplicate native runtime manifest entry: " + relative);
+                        found = item;
+                    }
+            if (found == null) throw new IOException("The runtime is missing from this distribution. Install the complete matching Git UPM release: " + relative);
+            return found;
         }
 
         [MenuItem("Devcel/Install Matching Native Tools", priority = 3)]

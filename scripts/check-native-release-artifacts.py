@@ -35,6 +35,18 @@ def verify_deb_notices(root, repo):
         raise RuntimeError(f'Debian notices differ: missing={missing}, extra={extra}, changed={changed}')
     return {'verified_files':len(expected),'payload_root':'usr/lib/devcel-studio/legal'}
 
+def verify_macos_notices(app, repo):
+    expected = distribution_files(repo/'third-party/generated')
+    legal = app/'Contents/Resources/legal'
+    actual = {p.relative_to(legal).as_posix(): p for p in legal.rglob('*') if p.is_file()}
+    if legal.is_symlink() or not legal.is_dir() or set(actual) != set(expected):
+        raise RuntimeError('macOS legal payload differs from generated notices')
+    for name, source in expected.items():
+        if actual[name].is_symlink() or actual[name].read_bytes() != source.read_bytes():
+            raise RuntimeError('macOS notice missing, linked or changed: '+name)
+    return {'verified_files': len(expected), 'payload_root': 'Contents/Resources/legal'}
+
+
 def extract(artifact, root):
     suffix=artifact.suffix.lower()
     if suffix=='.zip':
@@ -117,9 +129,21 @@ def main():
                 extract(artifact,root)
                 release_privacy.check_tree(root)
                 packaged_cli=None
-                if args.platform in ('windows','linux'):
-                    cli_platform='win-x64' if args.platform=='windows' else 'linux-x64'
-                    cli_root=root/'bin' if args.platform=='windows' else root/'usr/lib/devcel-studio/bin'
+                macos_notices=None
+                if args.platform in ('windows','linux','macos'):
+                    if args.platform == 'macos':
+                        import platform
+                        arch = {'x86_64':'x64', 'arm64':'arm64', 'aarch64':'arm64'}.get(platform.machine())
+                        if arch is None: raise RuntimeError('Unsupported macOS CPU')
+                        cli_platform = 'osx-'+arch
+                        apps = list(root.rglob('devcel-studio.app'))
+                        if len(apps) != 1: raise RuntimeError('Expected one Studio app bundle')
+                        cli_root = apps[0]/'Contents/Resources/bin'
+                        macos_notices = verify_macos_notices(apps[0], repo)
+                        run(['codesign','--verify','--deep','--strict',apps[0]])
+                    else:
+                        cli_platform='win-x64' if args.platform=='windows' else 'linux-x64'
+                        cli_root=root/'bin' if args.platform=='windows' else root/'usr/lib/devcel-studio/bin'
                     packaged_cli=studio_cli.smoke(cli_root,cli_platform)
                     if packaged_cli != studio_cli.validate(repo/studio_cli.DIRECTORY,cli_platform):
                         raise RuntimeError('Packaged CLI manifest differs from staged source')
@@ -131,6 +155,7 @@ def main():
                     review_evidence=evidence.collect(root,files)
                     if portable_report:review_evidence['portable_validation']=portable_report
                     if deb_notices:review_evidence['deb_notice_validation']=deb_notices
+                    if macos_notices:review_evidence['macos_notice_validation']=macos_notices
                     if packaged_cli:review_evidence['bundled_cli_validation']=packaged_cli
                 except Exception as exc: review_evidence={'evidence_only':True,'collection_error':release_privacy.diagnostic(exc, 'evidence-collection-failed')}
             except Exception as error:files=[];errors=[release_privacy.diagnostic(error, 'Incomplete artifact inspection')]

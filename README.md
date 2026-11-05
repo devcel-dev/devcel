@@ -8,6 +8,11 @@
 
 # Devcel
 
+[![Latest release](https://img.shields.io/github/v/release/devcel-dev/devcel)](https://github.com/devcel-dev/devcel/releases/latest)
+[![Studio downloads: Windows and Linux](https://img.shields.io/badge/Studio_downloads-Windows_%7C_Linux-blue)](https://github.com/devcel-dev/devcel/releases/latest)
+[![Studio license: GPL-3.0](https://img.shields.io/badge/Studio-GPL--3.0-blue)](devcel-studio/LICENSE)
+[![Core, CLI, runtime, and SDK licenses: MIT](https://img.shields.io/badge/Core%2FCLI%2Fruntime%2FSDKs-MIT-blue)](LICENSE-NOTICE)
+
 Devcel is a table editor for game master data. Define tables and edit their contents in Studio, with projects, tables, and shared interfaces saved locally as TOML text files. Keep them in version control to review diffs and track changes alongside your game code.
 
 ![Devcel Studio showing RPG enemy data, calculated health, color swatches, and growth curves.](docs/images/studio-overview.jpg)

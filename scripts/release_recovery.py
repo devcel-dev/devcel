@@ -2,6 +2,7 @@
 """Publish immutable artifacts from a completed release build without rebuilding."""
 from __future__ import annotations
 import argparse
+import base64
 from datetime import datetime, timezone
 import importlib.util
 import json
@@ -12,7 +13,9 @@ from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = '.github/workflows/release.yml'
-BUILDS = {'release-Linux': 'build (ubuntu-24.04)', 'release-Windows': 'build (windows-2022)'}
+BUILDS = {'release-Linux': 'build (ubuntu-24.04)', 'release-Windows': 'build (windows-2022)',
+          'release-macOS-X64': 'build (macos-15-intel)', 'release-macOS-ARM64': 'build (macos-15)',
+          'release-mobile-android': 'mobile (android)', 'release-mobile-ios': 'mobile (ios)'}
 SHA = re.compile(r'[0-9a-f]{40}')
 DIGEST = re.compile(r'sha256:[0-9a-f]{64}')
 
@@ -53,10 +56,40 @@ def stamp(value):
 
 def tag_identity(repository, tag):
     obj = api(repository, 'git/ref/tags/'+quote(tag, safe=''))['object']
-    commit = api(repository, 'commits/refs/tags/'+quote(tag, safe=''))['sha']
+    detail = api(repository, 'commits/refs/tags/'+quote(tag, safe=''))
+    commit = detail['sha']
     if obj.get('type') not in ('commit', 'tag') or not SHA.fullmatch(obj.get('sha', '')) or not SHA.fullmatch(commit):
         raise ValueError('Invalid tag identity')
-    return {'object': obj['sha'], 'type': obj['type'], 'commit': commit}
+    result = {'object': obj['sha'], 'type': obj['type'], 'commit': commit}
+    # A generated package commit changes only importers/unity relative to its source.
+    if 'commit' in detail:
+        tree = api(repository, 'git/trees/'+detail['commit']['tree']['sha']+'?recursive=1')
+        if tree.get('truncated'):
+            raise ValueError('Incomplete release tree')
+        entries = {e['path']: e for e in tree['tree'] if e.get('type') != 'tree'}
+        manifest_path = 'importers/unity/Tools~/manifest.json'
+        if manifest_path in entries:
+            parents = detail['parents']
+            if len(parents) != 1:
+                raise ValueError('Git package release requires one source parent')
+            source = parents[0]['sha']
+            parent = api(repository, 'git/commits/'+source)
+            old = api(repository, 'git/trees/'+parent['tree']['sha']+'?recursive=1')
+            if old.get('truncated'):
+                raise ValueError('Incomplete parent tree')
+            outside = lambda e: e['path'] != 'importers/unity' and not e['path'].startswith('importers/unity/') and e.get('type') != 'tree'
+            def identity(e):
+                return (e.get('mode'), e.get('type'), e.get('sha'))
+            current = {e['path']:identity(e) for e in tree['tree'] if outside(e)}
+            previous = {e['path']:identity(e) for e in old['tree'] if outside(e)}
+            if current != previous:
+                raise ValueError('Release commit changes files outside the generated package')
+            blob = api(repository, 'contents/'+manifest_path+'?ref='+commit)
+            manifest = json.loads(base64.b64decode(blob['content']))
+            if manifest.get('source_commit') != source or manifest.get('source_repository') != repository or manifest.get('version') != tag[1:]:
+                raise ValueError('Release package provenance mismatch')
+            result['source_commit'] = source
+    return result
 
 
 def no_release(repository, tag):
@@ -147,13 +180,13 @@ def inspect(environment=None, now=None):
             raise ValueError('Artifact expiry/digest/commit/attempt scope mismatch: '+name)
         pinned.append({k: artifact[k] for k in ('id', 'name', 'digest', 'size_in_bytes', 'created_at', 'updated_at', 'expires_at')})
         number(artifact['id'])
-    if len({a['id'] for a in pinned}) != 2:
+    if len({a['id'] for a in pinned}) != len(BUILDS):
         raise ValueError('Release artifact identities must be distinct')
     no_release(repository, tag)
     return {'repository': repository, 'repository_id': repo['id'], 'publisher': publisher,
             'default_branch': branch, 'run_id': run_id, 'attempt': attempt,
             'event': run['event'], 'run_head': run['head_sha'], 'tag': tag,
-            'tag_identity': identity, 'commit': identity['commit'], 'artifacts': pinned}
+            'tag_identity': identity, 'commit': identity.get('source_commit', identity['commit']), 'artifacts': pinned}
 
 
 def plan_path():

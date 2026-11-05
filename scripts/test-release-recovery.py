@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Release recovery provenance, immutable source, and fail-closed publication tests."""
 import copy
+import base64
 from datetime import datetime, timezone
 import importlib.util
 import json
@@ -34,7 +35,7 @@ class RecoveryTests(unittest.TestCase):
                       'status': 'completed', 'conclusion': 'success',
                       'started_at': '2026-01-01T00:00:00Z', 'completed_at': '2026-01-01T00:02:00Z'}
                      for i, name in enumerate(('validate', *r.BUILDS.values()), 1)]
-        self.artifacts = [{'id': i, 'name': name, 'digest': 'sha256:'+str(i)*64, 'size_in_bytes': 100,
+        self.artifacts = [{'id': i, 'name': name, 'digest': 'sha256:'+format(i, '064x'), 'size_in_bytes': 100,
                            'expired': False, 'created_at': '2026-01-01T00:01:00Z',
                            'updated_at': '2026-01-01T00:01:01Z', 'expires_at': '2030-01-01T00:00:00Z',
                            'workflow_run': {'id': 123, 'repository_id': 1, 'head_repository_id': 1, 'head_sha': A}}
@@ -62,13 +63,29 @@ class RecoveryTests(unittest.TestCase):
     def test_exact_build_artifacts_are_pinned_to_distinct_publisher_and_source(self):
         plan = self.inspect()
         self.assertEqual((plan['publisher'], plan['commit']), (B, A))
-        self.assertEqual([a['id'] for a in plan['artifacts']], [5, 6])
+        self.assertEqual([a['id'] for a in plan['artifacts']], [5, 6, 7, 8, 9, 10])
         self.assertEqual(plan['tag_identity'], {'object': T, 'type': 'tag', 'commit': A})
         self.assertIn('actions/runs/123/attempts/2/jobs?per_page=100', self.calls)
 
     def test_lightweight_tags_are_supported(self):
         self.tag = {'object': {'type': 'commit', 'sha': A}}
         self.assertEqual(self.inspect()['tag_identity']['object'], A)
+
+    def test_normal_release_tag_resolves_exact_source_parent_and_rejects_source_changes(self):
+        entry = {'path':'source', 'mode':'100644', 'type':'blob', 'sha':'c'*40}
+        data = {
+            'git/ref/tags/v0.1.0': {'object':{'type':'commit','sha':T}},
+            'commits/refs/tags/v0.1.0': {'sha':T,'parents':[{'sha':A}], 'commit':{'tree':{'sha':'d'*40}}},
+            'git/trees/'+'d'*40+'?recursive=1': {'tree':[entry, {'path':'importers/unity/Tools~/manifest.json','mode':'100644','type':'blob','sha':'f'*40}]},
+            'git/commits/'+A: {'tree':{'sha':'1'*40}},
+            'git/trees/'+'1'*40+'?recursive=1': {'tree':[entry]},
+            'contents/importers/unity/Tools~/manifest.json?ref='+T: {'content':base64.b64encode(json.dumps({
+                'source_commit':A,'source_repository':'owner/repo','version':'0.1.0'}).encode()).decode()}}
+        with patch.object(r, 'api', side_effect=lambda repo, suffix: data[suffix]):
+            self.assertEqual(r.tag_identity('owner/repo','v0.1.0')['source_commit'], A)
+            data['git/trees/'+'1'*40+'?recursive=1']['tree'] = [dict(entry, sha='2'*40)]
+            with self.assertRaisesRegex(ValueError, 'outside'):
+                r.tag_identity('owner/repo','v0.1.0')
 
     def test_manual_preparation_does_not_assume_run_head_is_built_commit(self):
         for item in (self.run, self.latest):
@@ -191,7 +208,7 @@ class RecoveryTests(unittest.TestCase):
                 r.prepare()
                 self.assertEqual(json.loads(r.plan_path().read_text()), plan)
             self.assertEqual(output.read_text().splitlines(),
-                             ['tag=v0.1.0', 'commit='+A, 'run_id=123', 'artifact_ids=5,6'])
+                             ['tag=v0.1.0', 'commit='+A, 'run_id=123', 'artifact_ids=5,6,7,8,9,10'])
         with patch.dict(os.environ, {'RUNNER_TEMP': str(r.ROOT)}):
             with self.assertRaisesRegex(ValueError, 'outside'): r.plan_path()
 

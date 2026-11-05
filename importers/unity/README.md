@@ -5,11 +5,31 @@ For installation, first import, and automatic import, start with the [Unity manu
 - **Authoring and generation:** the `devcel` CLI, backed by `devcel-core`, runs as a subprocess to generate typed C# accessors and version-filtered JSON bundles.
 - **Reading in the Editor and game:** generated `database.Get(reference)` returns live typed handles backed by an eagerly prepared managed read model. Normal acquisition, including strings and nested references, does not allocate managed objects. Low-level raw `Row` access remains available; its string/reference getters can allocate and its rows must be reacquired after reload.
 
-The source [`package.json`](package.json) is a template; packaging generates its version from the canonical Tauri setting. Unity Editor 2021.3 or later is required.
+The editable Unity package template is under `importers/unity-template`; packaging generates its version from the canonical Tauri setting. Unity Editor 2021.3 or later is required.
 
 ## Package installation
 
-Extract the matching Unity importer release and use Unity Package Manager's **Add package from disk** to select `devcel-unity/package.json`. Keep the complete package, including its native companion and `Tools~` files. The UPM identity is `org.devcel.unity`; when editing `Packages/manifest.json` directly, its dependency key is `"org.devcel.unity":`. Use a generated distribution or local build folder; the raw source template is not an installable Git dependency. See the [Unity manual](../../docs/manual/unity.md) for the import and runtime workflow.
+Use **Window > Package Manager > + > Add package from git URL** (called **Install package from Git URL** in newer Unity versions). Use the following URL:
+
+```text
+https://github.com/devcel-dev/devcel.git?path=/importers/unity
+```
+
+Install Git on the Editor machine. The default branch supplies the latest generated package; append `#v<version>` to select a published release tag. The editable source template is `importers/unity-template`.
+
+One Git URL supplies Windows x64, Linux x64, Intel macOS and Apple Silicon Editor CLIs; Windows/Linux x64 and macOS universal runtimes; and Android ARM64/iOS ARM64 device runtimes. The Editor selects its CLI automatically, including an Intel process under Rosetta. Platform-specific plugin metadata selects Player libraries. No separate `org.devcel.native`, PATH CLI, registry or Git LFS is required. See the [mobile Player guide](Documentation~/MOBILE.md) for target modules and device requirements.
+
+Commit `Packages/manifest.json` and `Packages/packages-lock.json` with the game. A dependency looks like `"org.devcel.unity": "https://github.com/devcel-dev/devcel.git?path=/importers/unity"`. Every team member uses the same URL. The immutable tag and lock file pin the package; releases never move an existing tag.
+
+As of 2026-11-04, the published v0.0.1 release contains Windows/Linux importer ZIPs only. The Git-installable package, macOS and mobile distributions described here require a newer release published by this pipeline; they are not downloads available in v0.0.1.
+
+### Updates and migration
+
+Stop Play mode, remove an older Assets-based or embedded SDK copy and any `org.devcel.native` companion through Package Manager, preserving settings under `Assets/DevcelUnity/Editor` and generated game data. Add the complete Git package once.
+
+To upgrade or roll back, change the Git URL to the desired published release tag, resolve the package in Package Manager, commit both package manifest and lock file, and restart Unity to unload the previous native library. Reimport sources to regenerate matching C#. Never combine SDK/CLI/runtime files from different distributions or edit `Library/PackageCache`.
+
+OS-specific `.tgz` files remain an offline alternative: use **Add package from tarball**, keep the file at a stable project-relative location outside Assets/Packages and share it with the game. Choose the Editor RID (`win-x64`, `linux-x64`, `osx-x64`, `osx-arm64`); these tarballs are not interchangeable across desktop OSes. Older ZIPs use **Add package from disk** on the extracted `devcel-unity/package.json` and may lack mobile runtimes.
 
 ## Import workflow
 
@@ -35,7 +55,7 @@ Use the [Unity manual](../../docs/manual/unity.md) for setup and troubleshooting
 
 ### Building from source
 
-Use the [packaging workflow](../../docs/development/importer-packaging.md) to generate an installable UPM folder from a fixed checkout. Do not install the raw `importers/unity` Git path: its metadata is a build template and its native binaries are generated separately. Product version, native source fingerprint and payload hashes are generated automatically. Never change those fields to force mismatched tools to load.
+Use the [packaging workflow](../../docs/development/importer-packaging.md) to generate an installable UPM folder from a fixed checkout. The editable `importers/unity-template` is not a complete package; generate the package before using its distribution path. Product version, native source fingerprint and payload hashes are generated automatically. Never change those fields to force mismatched tools to load.
 
 ### Full distribution installation
 
@@ -108,7 +128,7 @@ yield return DevcelBundle.LoadText("Devcel/MyGame/master.json", json => {
 });
 ```
 
-This is an I/O example only. Native runtime packages support desktop targets; text loading does not establish Android/iOS/WebGL support for generated databases.
+Generated complete Git packages and release UPM tarballs contain Android ARM64 and iOS ARM64 device runtimes. Use `LoadText` and `FromJson` on Android, where StreamingAssets may live inside the APK. See [mobile Players](Documentation~/MOBILE.md) for settings, native linking, build prerequisites and device acceptance. WebGL and iOS Simulator are not supported.
 
 ## Color32 / ColorFloat
 
@@ -177,9 +197,9 @@ Build artifacts such as `devcel.exe` and native libraries are ignored by Git and
 
 ## Editor / Player packaging
 
-See [DISTRIBUTION.md](Documentation~/DISTRIBUTION.md). Managed code is constrained by asmdefs, native code by PluginImporter. The read-only runtime supports the Editor and desktop Players; the CLI stays in `Tools~`, settings in `Assets/DevcelUnity/Editor`.
+See [DISTRIBUTION.md](Documentation~/DISTRIBUTION.md). Managed code is constrained by asmdefs, native code by PluginImporter. The read-only runtime supports desktop Players and the [bundled mobile targets](Documentation~/MOBILE.md); the CLI stays in `Tools~`, settings in `Assets/DevcelUnity/Editor`.
 
-Settings use schema `1` and long `contentVersion`; missing/mismatched schemas are rejected without modifying the asset. Bundled `.meta` files and idempotent repair cover Windows x64, Linux x64, and macOS universal. Missing libraries, wrong CPUs, and invalid settings stop builds. Numeric versions are `0..4294967295`; only `-1` means all content. Release builds keep the selected environment.
+Settings use schema `1` and long `contentVersion`; missing/mismatched schemas are rejected without modifying the asset. Bundled `.meta` files and idempotent repair cover Windows x64, Linux x64, macOS universal, Android ARM64 and iOS ARM64 device runtimes. Missing libraries, wrong CPUs, and invalid settings stop builds. Numeric versions are `0..4294967295`; only `-1` means all content. Release builds keep the selected environment.
 
 ## Tests
 

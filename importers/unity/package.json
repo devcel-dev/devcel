@@ -1,7 +1,7 @@
 {
   "name": "org.devcel.unity",
   "displayName": "Devcel Unity Importer",
-  "description": "Unity importer, typed references and code generation. Git installs use a separately verified matching native-tools dependency.",
+  "description": "Unity importer, typed references and code generation with bundled desktop and mobile runtimes. Install the complete Git package from a normal release tag.",
   "unity": "2021.3",
   "keywords": [
     "devcel",

@@ -1,6 +1,6 @@
 # Devcel Importers
 
-Choose an importer for your engine and use the installation ZIP for your operating system and CPU. GitHub source archives do not include an executable CLI.
+Choose an importer for your engine. Unity uses the complete Git UPM package described in its guide; other engines use an installation ZIP for the Editor operating system and CPU. GitHub source archives do not include an executable CLI.
 
 - [Unity](unity/README.md): Editor wizard, generated C# types, and automatic import of saved changes
 - [Godot](godot/README.md): Editor dock, GDScript reader, and automatic import of saved changes

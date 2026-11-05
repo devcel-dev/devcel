@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Local checks, release-build CI, and Windows/Linux release packaging (Python 3.11+)."""
+"""Local checks, release-build CI, and Windows/Linux/macOS release packaging (Python 3.11+)."""
 from __future__ import annotations
 import argparse
 import hashlib
 import json
 import os
+import platform
 from pathlib import Path
 import re
 import shutil
@@ -23,6 +24,8 @@ import release_source
 import release_privacy
 import studio_cli
 import importer_versions
+import unity_upm
+import unity_git_package
 from product_version import read_version
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -90,6 +93,10 @@ def prepare_release():
     tag, commit = release_request(os.environ['GITHUB_EVENT_NAME'], os.environ['GITHUB_REF'],
                                   os.environ.get('RELEASE_VERSION', ''),
                                   os.environ.get('SOURCE_COMMIT') or os.environ['GITHUB_SHA'])
+    if os.environ['GITHUB_EVENT_NAME'] == 'push':
+        if not run('git', 'ls-tree', commit, '--', unity_git_package.PACKAGE_PATH, capture=True).strip():
+            raise ValueError('A new release tag must already contain generated Unity package. Use manual release preparation or stage the complete package before tagging; never move an existing tag.')
+        commit = unity_git_package.source_identity(ROOT, commit)
     emit_release(tag, commit)
 
 
@@ -168,21 +175,19 @@ def prepare_manual_release():
 
 
 def create_tag():
-    """Create only: an existing tag or a concurrent creator fails without mutation."""
+    """Preflight the new tag; creation is deferred until package assembly."""
     if os.environ['GITHUB_EVENT_NAME'] != 'workflow_dispatch' or os.environ['GITHUB_REF'] != 'refs/heads/main':
         raise ValueError('Only a manual main release may create a version tag.')
     tag = os.environ['RELEASE_TAG']
     validate(tag)
     commit = checked_commit(os.environ['SOURCE_COMMIT'])
-    # POST creates a new ref atomically. Never PATCH, force-push, or delete a tag.
-    # The built-in GITHUB_TOKEN does not start another push workflow; this run
-    # continues directly into the same build and publication jobs as a tag push.
-    result = json.loads(run('gh', 'api', '--method', 'POST', 'repos/{owner}/{repo}/git/refs',
-                            '--raw-field', 'ref=refs/tags/'+tag, '--raw-field', 'sha='+commit,
-                            capture=True))
-    if result.get('ref') != 'refs/tags/'+tag or result.get('object', {}).get('sha') != commit:
-        raise ValueError('Tag creation response did not confirm the requested commit.')
-    print(f'Created {tag} at {commit}')
+    # Reserve nothing: final tag creation occurs only after all six builds and
+    # the combined UPM package are complete. Existing tags are never moved.
+    repository = os.environ['GH_REPO']
+    if run('git', 'ls-remote', '--refs', 'https://github.com/'+repository+'.git',
+           'refs/tags/'+tag, capture=True).strip():
+        raise ValueError('Release tag already exists; never replace it.')
+    print(f'Validated new release {tag} from {commit}; tag creation deferred until packaging')
 
 
 def toolchains():
@@ -190,6 +195,9 @@ def toolchains():
     run('npm', 'install', '--global', 'npm@'+package['volta']['npm'])
     toolchain = tomllib.loads((ROOT/'rust-toolchain.toml').read_text())['toolchain']
     run('rustup', 'toolchain', 'install', toolchain['channel'], '--profile', 'minimal')
+    if sys.platform == 'darwin':
+        run('rustup', 'target', 'add', '--toolchain', toolchain['channel'],
+            'x86_64-apple-darwin', 'aarch64-apple-darwin')
 
 
 def check():
@@ -228,7 +236,7 @@ def check():
     run('cargo', 'test', '--locked', '--workspace')
     run('cargo', 'clippy', '--locked', '--workspace', '--all-targets', '--all-features',
         '--', '-D', 'warnings')
-    for script in ('test-package-sources.py', 'test-native-distribution-notices.py',
+    for script in ('test-package-sources.py', 'test_unity_upm.py', 'test_unity_mobile.py', 'test-native-distribution-notices.py',
                    'test-npm-license-tarballs.py', 'test-third-party-notices.py', 'test-windows-portable.py'):
         run(sys.executable, 'scripts/'+script)
     run('node', 'scripts/test-importer-tag-filters.cjs')
@@ -658,7 +666,12 @@ def platform_config():
         return 'windows', 'win-x64', None, 'devcel-studio.exe'
     if sys.platform == 'linux':
         return 'linux', 'linux-x64', 'deb', 'devcel-studio'
-    raise ValueError('Automated releases support Windows x64 and Linux x64.')
+    if sys.platform == 'darwin':
+        arch = {'x86_64': 'x64', 'arm64': 'arm64', 'aarch64': 'arm64'}.get(platform.machine())
+        if arch:
+            # Request app explicitly: dmg-only bundling deletes its intermediate app.
+            return 'macos-'+arch, 'osx-'+arch, 'app,dmg', 'devcel-studio'
+    raise ValueError('Unsupported native release OS/CPU.')
 
 
 def frontend_release():
@@ -694,6 +707,8 @@ def clean_native_outputs():
 
 def build_native():
     system, importer_platform, bundles, executable = platform_config()
+    if system.startswith('macos-'):
+        studio_cli.configure_macos(ROOT)
     run(sys.executable, 'scripts/generate-third-party-notices.py', '--ensure')
     # Restored caches can contain old packaging outputs even when glob excludes
     # name them: tar recursively archives a selected parent directory.
@@ -708,6 +723,13 @@ def build_native():
     run('npm', 'run', 'tauri', '--', 'build', *options,
         '--config', cli_config, cwd=ROOT/'devcel-studio')
     target = cargo_target()
+    if system.startswith('macos-'):
+        # Resources must retain the bytes hashed before the outer app is signed.
+        app = target/'release/bundle/macos/devcel-studio.app'
+        staged = studio_cli.validate(ROOT/studio_cli.DIRECTORY, importer_platform)
+        if studio_cli.validate(app/'Contents/Resources/bin', importer_platform) != staged:
+            raise ValueError('macOS bundled CLI differs from the staged payload')
+        run('codesign', '--verify', '--deep', '--strict', app)
     if system == 'windows':
         # A dedicated directory cannot accidentally ship stale MSI/NSIS files.
         portable = target/'release/portable'
@@ -722,12 +744,21 @@ def build_native():
 
 
 def native_artifact_dir(system, target):
-    return target/'release'/('portable' if system == 'windows' else 'bundle/deb')
+    folder = 'bundle/dmg' if system.startswith('macos-') else ('portable' if system == 'windows' else 'bundle/deb')
+    return target/'release'/folder
+
+
+def studio_binary(system, executable, target):
+    # The signed Mach-O differs from the unsigned Cargo output. Compare the DMG
+    # to the sealed app produced by this build, not a normalized/stripped binary.
+    if system.startswith('macos-'):
+        return target/'release/bundle/macos/devcel-studio.app/Contents/MacOS'/executable
+    return target/'release'/executable
 
 
 def verify_native(system, executable, target):
-    run(sys.executable, 'scripts/check-native-release-artifacts.py', '--platform', system,
-        '--bundle-dir', native_artifact_dir(system, target), '--first-party', target/'release'/executable,
+    run(sys.executable, 'scripts/check-native-release-artifacts.py', '--platform', 'macos' if system.startswith('macos-') else system,
+        '--bundle-dir', native_artifact_dir(system, target), '--first-party', studio_binary(system, executable, target),
         '--first-party', ROOT/studio_cli.DIRECTORY/('devcel.exe' if system == 'windows' else 'devcel'),
         '--report-dir', ROOT/'release-reports')
 
@@ -739,7 +770,7 @@ def inspect_native():
     if out.exists(): shutil.rmtree(out)
     out.mkdir()
     shutil.copytree(native_artifact_dir(system, target), out/'bundle')
-    shutil.copyfile(target/'release'/executable, out/executable)
+    shutil.copyfile(studio_binary(system, executable, target), out/executable)
     shutil.copytree(ROOT/studio_cli.DIRECTORY, out/'bundled-cli')
     # Keep evidence even when the fail-closed notice review rejects the payload.
     verify_native(system, executable, target)
@@ -749,7 +780,8 @@ def studio_asset_name(system, tag):
     """The public Studio filename, independent of native bundler conventions."""
     if not SEMVER.fullmatch(tag):
         raise ValueError('A valid release tag is required for Studio asset naming.')
-    formats = {'linux': ('linux-x64', 'deb'), 'windows': ('windows-x64', 'zip')}
+    formats = {'linux': ('linux-x64', 'deb'), 'windows': ('windows-x64', 'zip'),
+               'macos-x64': ('macos-x64', 'dmg'), 'macos-arm64': ('macos-arm64', 'dmg')}
     if system not in formats:
         raise ValueError('Unsupported Studio release platform: '+system)
     platform, extension = formats[system]
@@ -763,7 +795,7 @@ def package():
     elif out.exists(): shutil.rmtree(out)
     out.mkdir()
     name = studio_asset_name(system, os.environ['RELEASE_TAG'])
-    suffix = '.zip' if system == 'windows' else '.deb'
+    suffix = Path(name).suffix
     artifacts = [path for path in native_artifact_dir(system, target).rglob('*')
                  if path.is_file() and path.suffix.lower() == suffix]
     if len(artifacts) != 1 or artifacts[0].is_symlink():
@@ -786,17 +818,20 @@ def package():
 
 
 def collect_assets(downloads, destination, tag, expected_commit=None, expected_repository=None):
-    expected_studio = {system: studio_asset_name(system.lower(), tag)
-                       for system in ('Linux', 'Windows')}
-    roots = [downloads/'release-Linux', downloads/'release-Windows']
+    platforms = {'Linux': ('linux', 'linux-x64'), 'Windows': ('windows', 'win-x64'),
+                 'macOS-X64': ('macos-x64', 'osx-x64'), 'macOS-ARM64': ('macos-arm64', 'osx-arm64')}
+    expected_studio = {label: studio_asset_name(system, tag)
+                       for label, (system, _) in platforms.items()}
+    roots = [downloads/('release-'+label) for label in platforms]
     if any(not path.is_dir() for path in roots):
-        raise ValueError('Both native release artifact sets are required.')
+        raise ValueError('All four native release artifact sets are required.')
     destination.mkdir(parents=True, exist_ok=True)
     files = []
     for directory in roots:
         entries = sorted(directory.iterdir())
         if not entries: raise ValueError(f'Empty release artifact set: {directory.name}')
-        platform = 'linux-x64' if directory.name == 'release-Linux' else 'win-x64'
+        label = directory.name.removeprefix('release-')
+        platform = platforms[label][1]
         for engine in ('unity', 'godot', 'unreal', 'rpgmaker', 'wolf', 'gamemaker', 'defold', 'cocos', 'javascript'):
             expected = directory/f'devcel-{engine}-{tag[1:]}-{platform}.zip'
             if list(directory.glob(f'devcel-{engine}-*-{platform}.zip')) != [expected]:
@@ -826,10 +861,12 @@ def collect_assets(downloads, destination, tag, expected_commit=None, expected_r
                         or platform not in manifest.get('binaries', {})):
                     raise ValueError('Importer version/source commit/platform mismatch')
         system = directory.name.removeprefix('release-')
-        studio = list(directory.glob('*.deb' if system == 'Linux' else 'devcel-studio-*.zip'))
+        studio = list(directory.glob('devcel-studio-*'+Path(expected_studio[system]).suffix))
         if len(studio) != 1 or studio[0].name != expected_studio[system]:
             raise ValueError(f'Missing, duplicate, or wrong-version/platform Studio package: {platform}')
-        if any(path.suffix.lower() in {'.appimage', '.rpm', '.dmg', '.msi', '.exe'} for path in entries):
+        forbidden = {'.appimage', '.rpm', '.msi', '.exe'}
+        if not platform.startswith('osx-'): forbidden.add('.dmg')
+        if any(path.suffix.lower() in forbidden for path in entries):
             raise ValueError('Unsupported release installer')
         if platform == 'linux-x64' and not (directory/release_source.ASSET).is_file():
             raise ValueError('Matching source-access manifest is required.')
@@ -842,6 +879,22 @@ def collect_assets(downloads, destination, tag, expected_commit=None, expected_r
             if target.exists(): raise ValueError('Duplicate release asset: '+source.name)
             shutil.copyfile(source, target)
             files.append(target)
+    # Mobile archives belong to the same immutable release source. They add
+    # Player runtimes without replacing the Editor's platform-specific runtime.
+    mobile = {system: downloads/f'release-mobile-{system}'/f'unity-mobile-{system}.zip'
+              for system in ('android', 'ios')}
+    for path in mobile.values():
+        if not path.is_file() or path.is_symlink() or list(path.parent.iterdir()) != [path]:
+            raise ValueError('Both exact mobile runtime artifact sets are required')
+    for source in list(files):
+        prefix = f'devcel-unity-{tag[1:]}-'
+        if source.name.startswith(prefix) and source.suffix == '.zip':
+            platform = source.name[len(prefix):-4]
+            files.append(unity_upm.create(source, destination, tag[1:], platform, mobile))
+    files += unity_git_package.create(
+        {rid: destination/f'devcel-unity-{tag[1:]}-{rid}.zip' for rid in unity_git_package.RIDS},
+        mobile, destination, tag[1:], expected_commit, expected_repository,
+        'github-actions[bot]', '41898282+github-actions[bot]@users.noreply.github.com')
     sums = destination/'SHA256SUMS.txt'
     sums.write_text(''.join(hashlib.sha256(path.read_bytes()).hexdigest()+'  '+path.name+'\n'
                             for path in sorted(files)), encoding='utf-8', newline='\n')
@@ -868,10 +921,22 @@ def publish(source_root=None, before_create=None, before_publish=None):
     tag = os.environ['RELEASE_TAG']
     validate(tag, root=source_root)
     commit = checked_commit(os.environ['SOURCE_COMMIT'], root=source_root)
-    # Resolve annotated and lightweight tags alike; fail if a tag moved during the build.
-    tagged = run('gh', 'api', 'repos/{owner}/{repo}/commits/refs/tags/'+tag, '--jq', '.sha', capture=True).strip()
-    if tagged != commit:
-        raise ValueError('Release tag no longer points to the built commit.')
+    new_release = (os.environ.get('GITHUB_EVENT_NAME') == 'workflow_dispatch' and
+                   not os.environ.get('RECOVERY_RUN_ID') and os.environ.get('REBUILD_EXISTING_TAG') != 'true')
+    git_package_available = new_release
+    existing_prepared_tag = ''
+    existing_git_release = None
+    if new_release:
+        existing_prepared_tag = run('git', 'ls-remote', '--refs', 'https://github.com/'+os.environ['GH_REPO']+'.git',
+                                    'refs/tags/'+tag, capture=True).strip()
+    else:
+        tagged = run('gh', 'api', 'repos/{owner}/{repo}/commits/refs/tags/'+tag, '--jq', '.sha', capture=True).strip()
+        if tagged != commit:
+            run('git', 'fetch', '--no-tags', 'https://github.com/'+os.environ['GH_REPO']+'.git', tagged, cwd=source_root)
+            if unity_git_package.source_identity(source_root, tagged) != commit:
+                raise ValueError('Release tag no longer points to the built source.')
+            git_package_available = True
+            existing_git_release = tagged
     # Include draft releases and every page. API errors must not mean "absent".
     releases = json.loads(run('gh', 'api', '--paginate', '--slurp',
                              'repos/{owner}/{repo}/releases?per_page=100', capture=True))
@@ -880,6 +945,12 @@ def publish(source_root=None, before_create=None, before_publish=None):
     repository = os.environ['GH_REPO']
     run(sys.executable, ROOT/'scripts/generate-third-party-notices.py', '--ensure', '--repo', source_root)
     files = collect_assets(ROOT/'release-downloads', ROOT/'release-publish', tag, commit, repository)
+    if existing_git_release:
+        prepared = unity_git_package.stage_release(
+            ROOT/'release-publish'/f'org.devcel.unity-{tag[1:]}-git.zip',
+            ROOT/'release-publish'/f'org.devcel.unity-{tag[1:]}-git.json', source_root,
+            'github-actions[bot]', '41898282+github-actions[bot]@users.noreply.github.com')
+        unity_git_package.verify_release_tree(source_root, existing_git_release, prepared)
     release_privacy.check_bytes((ROOT/'release-publish'/release_source.ASSET).read_bytes(), release_source.ASSET)
     release_privacy.check_bytes((ROOT/'release-publish'/'SHA256SUMS.txt').read_bytes(), 'SHA256SUMS.txt')
     release_source.validate_index(ROOT/'release-publish'/release_source.ASSET, repository, commit, tag, source_root)
@@ -894,6 +965,32 @@ def publish(source_root=None, before_create=None, before_publish=None):
                               os.environ.get('PRODUCT_RELEASE_NOTES_VERSION', ''))
     if before_create is not None:
         before_create()
+    if new_release:
+        release_commit = unity_git_package.stage_release(
+            ROOT/'release-publish'/f'org.devcel.unity-{tag[1:]}-git.zip',
+            ROOT/'release-publish'/f'org.devcel.unity-{tag[1:]}-git.json', source_root,
+            'github-actions[bot]', '41898282+github-actions[bot]@users.noreply.github.com')
+        remote = 'https://github.com/'+repository+'.git'
+        if existing_prepared_tag:
+            if existing_prepared_tag != release_commit+'\trefs/tags/'+tag:
+                raise ValueError('Existing tag differs from the exact prepared release; no tag was changed.')
+        else:
+            if run('git', 'ls-remote', '--refs', remote, 'refs/tags/'+tag, capture=True).strip():
+                raise ValueError('Release tag was created concurrently; no tag was changed.')
+            # Publish main and the immutable tag together; reject concurrent main updates.
+            main = run('git', 'ls-remote', '--refs', remote, 'refs/heads/main', capture=True).strip()
+            if main != commit+'\trefs/heads/main':
+                raise ValueError('Main moved since the source build; refusing to publish stale Unity assets.')
+            run('git', '-c', 'credential.helper=', '-c', 'credential.helper=!gh auth git-credential',
+                'push', '--atomic', remote, release_commit+':refs/heads/main',
+                release_commit+':refs/tags/'+tag, cwd=source_root)
+        if run('gh', 'api', 'repos/{owner}/{repo}/commits/refs/tags/'+tag, '--jq', '.sha', capture=True).strip() != release_commit:
+            raise ValueError('Tag publication outcome uncertain; inspect remotely before retrying.')
+        main_now = run('git', 'ls-remote', '--refs', remote, 'refs/heads/main', capture=True).strip()
+        if main_now != release_commit+'\trefs/heads/main':
+            raise ValueError('Main no longer points to the generated package commit; inspect before publishing.')
+    if git_package_available:
+        notes += '\n\nUnity Git URL: `https://github.com/'+repository+'.git?path=/importers/unity#'+tag+'`\n'
     # Create a draft first so failed uploads cannot expose an incomplete release.
     # Existing tags are mandatory; an existing release causes failure, never overwrite.
     with tempfile.TemporaryDirectory(prefix='devcel-release-notes-', dir=os.environ.get('RUNNER_TEMP')) as directory:

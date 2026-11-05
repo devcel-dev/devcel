@@ -12,7 +12,8 @@ IDENTITIES = {'unity': ('package.json', 'version'), 'javascript': ('package.json
 def source_root(root, engine):
     if engine not in ENGINES:
         raise ValueError('Unknown importer')
-    return Path(root)/'importers'/engine/('addons/devcel' if engine == 'godot' else '')
+    folder = 'unity-template' if engine == 'unity' else engine
+    return Path(root)/'importers'/folder/('addons/devcel' if engine == 'godot' else '')
 
 
 def payload_files(root, engine):
