@@ -130,7 +130,7 @@ yield return DevcelBundle.LoadText("Devcel/MyGame/master.json", json => {
 });
 ```
 
-Generated complete Git packages and release UPM tarballs contain Android ARMv7/ARM64/x86/x86_64 and iOS ARM64 device runtimes after the next release; v0.0.2 contains Android ARM64 only. Use `LoadText` and `FromJson` on Android, where StreamingAssets may live inside the APK. See [mobile Players](Documentation~/MOBILE.md) for settings, native linking, build prerequisites and device acceptance. WebGL and iOS Simulator are not supported.
+Generated complete Git packages and release UPM tarballs contain Android ARMv7/ARM64/x86/x86_64 and iOS ARM64 device runtimes after the next release; v0.0.2 contains Android ARM64 only. Use `LoadText` and `FromJson` on Android, where StreamingAssets may live inside the APK. See [mobile Players](Documentation~/MOBILE.md) for settings, native linking, build prerequisites and device acceptance. Newly generated releases also include a WebGL runtime; see [WebGL Player](Documentation~/WEBGL.md). iOS Simulator is not supported.
 
 ## Color32 / ColorFloat
 

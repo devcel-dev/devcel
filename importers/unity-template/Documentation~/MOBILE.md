@@ -9,7 +9,7 @@ Release v0.0.2 includes the Git-installable package and Windows, Linux and macOS
 | Android ARMv7, ARM64, x86 and x86_64 | `Plugins/Android/<abi>/libdevcel_runtime.so` | Select the desired bundled ABIs, minimum API 23 or later |
 | iOS ARM64 device | `Plugins/iOS/libdevcel_runtime.a` | Device SDK, minimum iOS 13.0 or later |
 
-iOS Simulator and WebGL are not included. Android x86 (32-bit) requires a Unity version that supports that architecture. Existing v0.0.2 distributions only contain Android ARM64; the additional Android ABIs require a later release. Native binary/header checks and successful CI compilation are not device execution acceptance.
+iOS Simulator is not included. See [WebGL Player](WEBGL.md) for browser builds. Android x86 (32-bit) requires a Unity version that supports that architecture. Existing v0.0.2 distributions only contain Android ARM64; the additional Android ABIs require a later release. Native binary/header checks and successful CI compilation are not device execution acceptance.
 
 ## Import in the Editor
 
@@ -47,10 +47,11 @@ Use the repository's pinned Rust toolchain from a clean recorded commit. For And
 ```sh
 python scripts/unity_mobile.py --system android --ndk /path/to/ndk/28.2.13676358 --out mobile/android --source-repository devcel-dev/devcel --source-commit <full-sha>
 python scripts/unity_mobile.py --system ios --out mobile/ios --source-repository devcel-dev/devcel --source-commit <full-sha>
-python scripts/unity_upm.py dist/devcel-unity-<version>-<editor-rid>.zip --out dist/upm --version <version> --platform <editor-rid> --mobile-android mobile/android/unity-mobile-android.zip --mobile-ios mobile/ios/unity-mobile-ios.zip
+python scripts/unity_mobile.py --system webgl --out mobile/webgl --source-repository devcel-dev/devcel --source-commit <full-sha>
+python scripts/unity_upm.py dist/devcel-unity-<version>-<editor-rid>.zip --out dist/upm --version <version> --platform <editor-rid> --mobile-android mobile/android/unity-mobile-android.zip --mobile-ios mobile/ios/unity-mobile-ios.zip --mobile-webgl mobile/webgl/unity-mobile-webgl.zip
 ```
 
-The mobile ZIPs are internal build inputs, not installable packages. Publication verifies that their version, repository, commit and native source fingerprint match the desktop package, validates binary formats and hashes, and adds them to the common Git package and each OS-specific release tarball. The source desktop CLI archive contains the same runtime source and pinned Rust dependency sources. Android NDK original notices are also bundled. The native mobile manifest records target toolchains, minimum OS/API and iOS link libraries. Recovering a release requires both mobile job artifacts as well as all four desktop build artifacts.
+The mobile ZIPs are internal build inputs, not installable packages. Publication verifies that their version, repository, commit and native source fingerprint match the desktop package, validates binary formats and hashes, and adds them to the common Git package and each OS-specific release tarball. The source desktop CLI archive contains the same runtime source and pinned Rust dependency sources. Android NDK original notices are also bundled. The native mobile manifest records target toolchains, minimum OS/API and iOS link libraries. Recovering a release requires Android, iOS and WebGL artifacts as well as all four desktop build artifacts.
 
 ## Acceptance on actual devices
 

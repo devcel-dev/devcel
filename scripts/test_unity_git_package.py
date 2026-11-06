@@ -21,7 +21,7 @@ def fixture(root, commit="a"*40):
         values = fixture_entries(rid)
         values["devcel-unity/Tools~/manifest.json"] = values["devcel-unity/Tools~/manifest.json"].replace(("a"*40).encode(), commit.encode())
         write_zip(desktop[rid], values)
-    mobile = {system: root/(system+'.zip') for system in ('android', 'ios')}
+    mobile = {system: root/(system+'.zip') for system in ('android', 'ios', 'webgl')}
     for system, path in mobile.items():
         values = mobile_fixture(path, system)
         name = f"Tools~/Mobile/{system}.json"
@@ -105,7 +105,7 @@ class GitPackageTests(unittest.TestCase):
             manifest = json.loads((clone/'Tools~/manifest.json').read_text())
             self.assertEqual(set(manifest['supportedPlatforms']), set(package.RIDS))
             self.assertEqual(len(manifest['native_runtimes']), 3)
-            self.assertEqual(len(manifest['player_runtimes']), 5)
+            self.assertEqual(len(manifest['player_runtimes']), 6)
             self.assertNotIn('native_runtime', manifest)
             self.assertIn('folderAsset: yes', (clone/'Plugins.meta').read_text())
             self.assertTrue((clone/'Plugins/Android/arm64-v8a.meta').is_file())

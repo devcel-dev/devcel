@@ -22,8 +22,9 @@ import release_privacy
 ROOT = Path(__file__).resolve().parents[1]
 NDK_VERSION = '28.2.13676358'
 PATHS = {'android': 'Plugins/Android/arm64-v8a/libdevcel_runtime.so',
-         'ios': 'Plugins/iOS/libdevcel_runtime.a'}
-TARGETS = {'android': 'aarch64-linux-android', 'ios': 'aarch64-apple-ios'}
+         'ios': 'Plugins/iOS/libdevcel_runtime.a', 'webgl': 'Plugins/WebGL/libdevcel_runtime.a'}
+TARGETS = {'android': 'aarch64-linux-android', 'ios': 'aarch64-apple-ios', 'webgl': 'wasm32-unknown-emscripten'}
+WEBGL_RUST = '1.85.1'
 ANDROID_ABIS = {
     'arm64-v8a': ('aarch64-linux-android', 'aarch64-linux-android23-clang', 2, 183),
     'armeabi-v7a': ('armv7-linux-androideabi', 'armv7a-linux-androideabi23-clang', 1, 40),
@@ -72,6 +73,29 @@ def check_binary(raw, system, abi='arm64-v8a'):
                 raise ValueError('Android runtime requires 16 KB compatible PT_LOAD segments')
         if not loads:
             raise ValueError('Android runtime has no load segments')
+    elif system == 'webgl':
+        if not raw.startswith(b'!<arch>\n'):
+            raise ValueError('WebGL runtime must be a static archive')
+        offset, objects = 8, 0
+        while offset < len(raw):
+            if offset + 60 > len(raw) or raw[offset + 58:offset + 60] != b'`\n':
+                raise ValueError('Invalid WebGL archive member')
+            name = raw[offset:offset + 16].decode('ascii').strip()
+            size = int(raw[offset + 48:offset + 58])
+            start, end = offset + 60, offset + 60 + size
+            if size < 0 or end > len(raw):
+                raise ValueError('Truncated WebGL archive')
+            if name.startswith('#1/'):
+                start += int(name[3:])
+            if start > end:
+                raise ValueError('Invalid WebGL archive member name')
+            if name not in ('/', '//', '/SYM64/'):
+                if raw[start:start + 8] != b'\0asm\x01\0\0\0':
+                    raise ValueError('WebGL archive must contain WebAssembly objects')
+                objects += 1
+            offset = end + (size & 1)
+        if offset != len(raw) or not objects:
+            raise ValueError('No WebAssembly objects found')
     else:
         if not raw.startswith(b'!<arch>\n'):
             raise ValueError('iOS runtime must be a static archive')
@@ -158,7 +182,9 @@ def load(path, system, version, commit, repository, source_fingerprint):
                 raise ValueError('Android NDK original notice missing or changed')
     if system == 'ios' and (value.get('minimum_os') != '13.0' or not valid_ios_flags(value.get('link_flags'))):
         raise ValueError('Invalid iOS link requirements')
-    if system == 'ios':
+    if system == 'webgl' and value.get('webgl_rust') != WEBGL_RUST:
+        raise ValueError('WebGL Rust toolchain mismatch')
+    if system in ('ios', 'webgl'):
         check_binary(contents[binary], system)
     return contents, ([{'path': item['path'], 'sha256': item['sha256']} for item in value['variants'].values()]
                       if system == 'android' else [{'path': binary, 'sha256': value['sha256']}])
@@ -202,13 +228,15 @@ def build(system, out, repository, commit, ndk=None):
         value.update(minimum_api=23, ndk=NDK_VERSION)
         notices = {output: (ndk/original).read_bytes() for original, output in NDK_NOTICES.items()}
         value['notice_hashes'] = {name: hashlib.sha256(data).hexdigest() for name, data in notices.items()}
-    else:
+    elif system == 'ios':
         env['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
         env['SDKROOT'] = run('xcrun', '--sdk', 'iphoneos', '--show-sdk-path').strip()
         value.update(minimum_os='13.0', xcode=run('xcodebuild', '-version').strip())
+    else:
+        value.update(webgl_rust=WEBGL_RUST, rustc=run('rustc', '+' + WEBGL_RUST, '--version').strip())
     env['CARGO_ENCODED_RUSTFLAGS'] = '\x1f'.join(filter(None, flags))
-    command = ['cargo', 'rustc', '--locked', '--release', '--lib', '-p', 'devcel-runtime', '--target', target,
-               '--crate-type', 'staticlib' if system == 'ios' else 'cdylib']
+    command = ['cargo'] + (['+' + WEBGL_RUST] if system == 'webgl' else []) + ['rustc', '--locked', '--release', '--lib', '-p', 'devcel-runtime', '--target', target,
+               '--crate-type', 'staticlib' if system in ('ios', 'webgl') else 'cdylib']
     if system == 'ios':
         command += ['--', '--print', 'native-static-libs']
     log = run(*command, env=env)

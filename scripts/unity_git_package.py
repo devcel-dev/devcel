@@ -1,6 +1,6 @@
 """Assemble one complete Git-installable Unity package without publishing refs.
 
-Four native desktop ZIPs and both mobile artifacts must share a source identity.
+Four native desktop ZIPs and Android, iOS and WebGL artifacts must share a source identity.
 The generated package is added to a release commit before its normal v<version> tag.
 No network, remote push, or source branch modification occurs here.
 """
@@ -72,8 +72,8 @@ def add_missing_metadata(files):
 
 
 def assemble(desktop, mobile, destination, version, commit, repository):
-    if set(desktop) != set(RIDS) or set(mobile) != {'android', 'ios'}:
-        raise ValueError('Four Editor RIDs and both mobile artifacts are required')
+    if set(desktop) != set(RIDS) or set(mobile) != {'android', 'ios', 'webgl'}:
+        raise ValueError('Four Editor RIDs and Android, iOS and WebGL artifacts are required')
     if not unity_upm.VERSION.fullmatch(version):
         raise ValueError('Invalid package version')
     if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]*/[A-Za-z0-9][A-Za-z0-9_.-]*', repository):
@@ -136,7 +136,7 @@ def assemble(desktop, mobile, destination, version, commit, repository):
                            archive.read(entries['ThirdPartyNotices/THIRD-PARTY-NOTICES.txt']))
     files['ThirdPartyNotices/THIRD-PARTY-NOTICES.txt'] = b''.join(notices)
     players = []
-    for system in ('android', 'ios'):
+    for system in ('android', 'ios', 'webgl'):
         additions, runtime = unity_mobile.load(mobile[system], system, version, commit, repository, required_fingerprint)
         if set(additions) & set(files):
             raise ValueError('Mobile payload collision')
@@ -284,11 +284,12 @@ if __name__ == '__main__':
     parser.add_argument('--desktop-dir', type=Path, required=True)
     parser.add_argument('--mobile-android', type=Path, required=True)
     parser.add_argument('--mobile-ios', type=Path, required=True)
+    parser.add_argument('--mobile-webgl', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--version', required=True)
     parser.add_argument('--source-commit', required=True)
     parser.add_argument('--source-repository', required=True)
     args = parser.parse_args()
     print(create({rid: args.desktop_dir/f'devcel-unity-{args.version}-{rid}.zip' for rid in RIDS},
-        {'android': args.mobile_android, 'ios': args.mobile_ios}, args.out, args.version,
+        {'android': args.mobile_android, 'ios': args.mobile_ios, 'webgl': args.mobile_webgl}, args.out, args.version,
         args.source_commit, args.source_repository))

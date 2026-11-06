@@ -45,7 +45,7 @@ class UpmTests(unittest.TestCase):
                 root = Path(directory)
                 values = fixture_entries(platform)
                 write_zip(root/'source.zip', values)
-                mobile = {system: root/(system+'.zip') for system in ('android', 'ios')}
+                mobile = {system: root/(system+'.zip') for system in ('android', 'ios', 'webgl')}
                 for system, path in mobile.items():
                     mobile_fixture(path, system)
                 package = unity_upm.create(root/'source.zip', root, '0.1.0', platform, mobile)
@@ -53,7 +53,7 @@ class UpmTests(unittest.TestCase):
                     manifest = json.load(archive.extractfile('package/Tools~/manifest.json'))
                     self.assertEqual(manifest['native_runtime']['path'], unity_upm.RUNTIMES[platform])
                     self.assertEqual({x['path'] for x in manifest['player_runtimes']},
-                                     {f'Plugins/Android/{abi}/libdevcel_runtime.so' for abi in unity_upm.unity_mobile.ANDROID_ABIS} | {'Plugins/iOS/libdevcel_runtime.a'})
+                                     {f'Plugins/Android/{abi}/libdevcel_runtime.so' for abi in unity_upm.unity_mobile.ANDROID_ABIS} | {'Plugins/iOS/libdevcel_runtime.a', 'Plugins/WebGL/libdevcel_runtime.a'})
                     self.assertIn('package/ThirdPartyNotices/AndroidNDK-NOTICE.txt', archive.getnames())
 
     def test_all_platforms_preserve_every_byte_and_use_upm_root(self):

@@ -15,7 +15,8 @@ ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = '.github/workflows/release.yml'
 BUILDS = {'release-Linux': 'build (ubuntu-24.04)', 'release-Windows': 'build (windows-2022)',
           'release-macOS-X64': 'build (macos-15-intel)', 'release-macOS-ARM64': 'build (macos-15)',
-          'release-mobile-android': 'mobile (android)', 'release-mobile-ios': 'mobile (ios)'}
+          'release-mobile-android': 'mobile (android)', 'release-mobile-ios': 'mobile (ios)',
+          'release-mobile-webgl': 'mobile (webgl)'}
 SHA = re.compile(r'[0-9a-f]{40}')
 DIGEST = re.compile(r'sha256:[0-9a-f]{64}')
 

@@ -93,8 +93,8 @@ def create(source, destination, version, platform, mobile_archives=None):
         validate(archive, entries, version, platform)
         additions = {}
         if mobile_archives is not None:
-            if set(mobile_archives) != {'android', 'ios'}:
-                raise ValueError('Both Android and iOS runtime archives are required')
+            if set(mobile_archives) != {'android', 'ios', 'webgl'}:
+                raise ValueError('Android, iOS and WebGL runtime archives are required')
             manifest = json.loads(archive.read(entries['Tools~/manifest.json']))
             manifest['player_runtimes'] = []
             for system, mobile_archive in mobile_archives.items():
@@ -133,8 +133,9 @@ if __name__ == '__main__':
     parser.add_argument('--platform', required=True, choices=RUNTIMES)
     parser.add_argument('--mobile-android', type=Path)
     parser.add_argument('--mobile-ios', type=Path)
+    parser.add_argument('--mobile-webgl', type=Path)
     args = parser.parse_args()
-    mobile = {'android': args.mobile_android, 'ios': args.mobile_ios} if args.mobile_android and args.mobile_ios else None
-    if bool(args.mobile_android) != bool(args.mobile_ios):
-        parser.error('Supply both mobile runtime archives')
+    mobile = {'android': args.mobile_android, 'ios': args.mobile_ios, 'webgl': args.mobile_webgl} if args.mobile_android and args.mobile_ios and args.mobile_webgl else None
+    if any((args.mobile_android, args.mobile_ios, args.mobile_webgl)) and mobile is None:
+        parser.error('Supply Android, iOS and WebGL runtime archives')
     print(create(args.zip, args.out, args.version, args.platform, mobile))

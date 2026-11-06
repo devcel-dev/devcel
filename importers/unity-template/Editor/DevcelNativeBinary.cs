@@ -39,12 +39,43 @@ namespace Devcel.Unity.Editor
                     else if (target == BuildTarget.StandaloneOSX) valid = IsUniversalDylib(reader);
                     else if (target == BuildTarget.Android) valid = IsAndroid(reader, path.Replace('\\', '/'));
                     else if (target == BuildTarget.iOS) valid = IsIosDeviceArchive(reader);
+                    else if (target == BuildTarget.WebGL) valid = IsWebAssemblyArchive(reader);
                     if (valid) return true;
                 }
                 error = "The native runtime format/CPU does not match its target (macOS universal, Android ABI with 16 KB alignment, or iOS ARM64 device archive required): " + path;
             }
             catch (Exception ex) { error = "Cannot validate the native runtime: " + path + " (" + ex.Message + ")"; }
             return false;
+        }
+
+        private static bool IsWebAssemblyArchive(BinaryReader reader)
+        {
+            var stream = reader.BaseStream;
+            if (stream.Length < 8 || System.Text.Encoding.ASCII.GetString(reader.ReadBytes(8)) != "!<arch>\n") return false;
+            bool found = false;
+            while (stream.Position < stream.Length)
+            {
+                if (stream.Length - stream.Position < 60) return false;
+                byte[] header = reader.ReadBytes(60);
+                string name = System.Text.Encoding.ASCII.GetString(header, 0, 16).Trim();
+                if (header[58] != (byte)'`' || header[59] != (byte)'\n' ||
+                    !long.TryParse(System.Text.Encoding.ASCII.GetString(header, 48, 10).Trim(), out long size) || size < 0 || size > stream.Length - stream.Position) return false;
+                long start = stream.Position, end = start + size;
+                if (name.StartsWith("#1/"))
+                {
+                    if (!int.TryParse(name.Substring(3), out int nameBytes) || nameBytes < 0 || nameBytes > size) return false;
+                    start += nameBytes;
+                }
+                if (name != "/" && name != "//" && name != "/SYM64/")
+                {
+                    if (end - start < 8) return false;
+                    stream.Position = start;
+                    if (reader.ReadUInt32() != 0x6d736100 || reader.ReadUInt32() != 1) return false;
+                    found = true;
+                }
+                stream.Position = end + (size & 1);
+            }
+            return found && stream.Position == stream.Length;
         }
 
         private static uint BigEndian32(BinaryReader reader)

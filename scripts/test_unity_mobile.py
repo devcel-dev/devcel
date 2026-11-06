@@ -29,8 +29,14 @@ def ios_binary(platform=2, cpu=0x0100000c):
     return b'!<arch>\n' + header + obj
 
 
+def webgl_binary():
+    obj = b'\0asm\x01\0\0\0'
+    header = b'test.o/         ' + b'0           ' + b'0     0     ' + b'100644  ' + str(len(obj)).encode().ljust(10) + b'`\n'
+    return b'!<arch>\n' + header + obj
+
+
 def fixture(path, system):
-    raw = android_binary() if system == 'android' else ios_binary()
+    raw = android_binary() if system == 'android' else webgl_binary() if system == 'webgl' else ios_binary()
     value = {'schema_version': 1, 'system': system, 'version': '0.1.0', 'source_commit': 'a'*40,
              'source_repository': 'owner/repo', 'source_fingerprint': 'b'*64,
              'target': mobile.TARGETS[system], 'path': mobile.PATHS[system],
@@ -40,8 +46,10 @@ def fixture(path, system):
         notices = {name: b'original NDK notice fixture' for name in mobile.NDK_NOTICES.values()}
         value.update(minimum_api=23, ndk=mobile.NDK_VERSION,
                      notice_hashes={name: hashlib.sha256(data).hexdigest() for name, data in notices.items()})
-    else:
+    elif system == 'ios':
         value.update(minimum_os='13.0', link_flags=['-lSystem', '-liconv'])
+    else:
+        value.update(webgl_rust=mobile.WEBGL_RUST)
     values = {**notices, mobile.PATHS[system]: raw, mobile.PATHS[system] + '.meta': b'meta'}
     if system == 'android':
         value['variants'] = {}
@@ -79,6 +87,7 @@ class MobileTests(unittest.TestCase):
         mobile.check_binary(android_binary(cpu=3, elf_class=1), 'android', 'x86')
         mobile.check_binary(android_binary(cpu=62), 'android', 'x86_64')
         mobile.check_binary(ios_binary(), 'ios')
+        mobile.check_binary(webgl_binary(), 'webgl')
         for system, data in [('android', android_binary(4096)), ('android', android_binary(cpu=62)),
                              ('ios', ios_binary(platform=7)), ('ios', ios_binary(cpu=0x01000007)),
                              ('android', android_binary()[:-1]), ('ios', ios_binary()[:-1])]:
@@ -86,6 +95,8 @@ class MobileTests(unittest.TestCase):
                 mobile.check_binary(data, system)
         with self.assertRaises(ValueError):
             mobile.check_binary(android_binary(cpu=40, elf_class=1), 'android', 'arm64-v8a')
+        with self.assertRaises(ValueError):
+            mobile.check_binary(ios_binary(), 'webgl')
 
     def test_both_artifacts_validate_exact_identity_and_payloads(self):
         for system in mobile.PATHS:

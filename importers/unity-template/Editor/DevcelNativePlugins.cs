@@ -27,6 +27,7 @@ namespace Devcel.Unity.Editor
             new Rule("Plugins/Android/x86/libdevcel_runtime.so", "", "x86", BuildTarget.Android),
             new Rule("Plugins/Android/x86_64/libdevcel_runtime.so", "", "x86_64", BuildTarget.Android),
             new Rule("Plugins/iOS/libdevcel_runtime.a", "", "ARM64", BuildTarget.iOS),
+            new Rule("Plugins/WebGL/libdevcel_runtime.a", "", "", BuildTarget.WebGL),
         };
 
         static DevcelNativePlugins() { EditorApplication.delayCall += RepairInstalled; }
@@ -72,7 +73,7 @@ namespace Devcel.Unity.Editor
             bool editor = rule.OS.Length != 0;
             if (!importer.isNativePlugin || importer.GetCompatibleWithAnyPlatform() || importer.GetCompatibleWithEditor() != editor ||
                 (editor && (importer.GetEditorData("OS") != rule.OS || importer.GetEditorData("CPU") != rule.CPU)) ||
-                importer.GetPlatformData(rule.Target, "CPU") != rule.CPU || importer.isPreloaded ||
+                (rule.CPU.Length != 0 && importer.GetPlatformData(rule.Target, "CPU") != rule.CPU) || importer.isPreloaded ||
                 (importer.DefineConstraints != null && importer.DefineConstraints.Length != 0)) return false;
             foreach (BuildTarget target in PlayerTargets())
                 if (importer.GetCompatibleWithPlatform(target) != (target == rule.Target)) return false;
@@ -89,7 +90,7 @@ namespace Devcel.Unity.Editor
             importer.SetEditorData("CPU", rule.OS.Length != 0 ? rule.CPU : "AnyCPU");
             importer.SetEditorData("DefaultValueInitialized", "true");
             foreach (BuildTarget target in PlayerTargets()) importer.SetCompatibleWithPlatform(target, target == rule.Target);
-            importer.SetPlatformData(rule.Target, "CPU", rule.CPU);
+            if (rule.CPU.Length != 0) importer.SetPlatformData(rule.Target, "CPU", rule.CPU);
             importer.isPreloaded = false;
             importer.DefineConstraints = Array.Empty<string>();
             return true;
