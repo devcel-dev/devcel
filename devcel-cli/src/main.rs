@@ -517,6 +517,7 @@ enum InterfaceColumnCmd {
         /// Column name (data_name)
         name: String,
         /// true / false
+        #[arg(action = clap::ArgAction::Set)]
         required: bool,
     },
     /// Set column constraints (unspecified constraints are cleared)
@@ -2171,6 +2172,70 @@ async fn run(cli: Cli) {
                 }
             }
         }
+    }
+}
+
+#[cfg(test)]
+mod interface_required_cli_tests {
+    use super::*;
+    use clap::{error::ErrorKind, CommandFactory};
+
+    #[test]
+    fn positional_required_boolean_and_help_are_valid() {
+        Cli::command().debug_assert();
+        for (raw, expected) in [("true", true), ("false", false)] {
+            let cli = Cli::try_parse_from([
+                "devcel",
+                "interface",
+                "column",
+                "required",
+                "common",
+                "hp",
+                raw,
+            ])
+            .unwrap();
+            match cli.command {
+                Command::Interface {
+                    cmd:
+                        InterfaceCmd::Column {
+                            cmd:
+                                InterfaceColumnCmd::Required {
+                                    interface,
+                                    name,
+                                    required,
+                                },
+                        },
+                } => {
+                    assert_eq!(
+                        (interface.as_str(), name.as_str(), required),
+                        ("common", "hp", expected)
+                    );
+                }
+                _ => panic!("unexpected command"),
+            }
+        }
+        for raw in ["yes", "1", ""] {
+            let error = Cli::try_parse_from([
+                "devcel",
+                "interface",
+                "column",
+                "required",
+                "common",
+                "hp",
+                raw,
+            ])
+            .err()
+            .expect("invalid boolean must fail");
+            assert_eq!(error.kind(), ErrorKind::InvalidValue);
+        }
+        assert!(
+            Cli::try_parse_from(["devcel", "interface", "column", "required", "common", "hp"])
+                .is_err()
+        );
+        let help = Cli::try_parse_from(["devcel", "interface", "column", "required", "--help"])
+            .err()
+            .unwrap();
+        assert_eq!(help.kind(), ErrorKind::DisplayHelp);
     }
 }
 

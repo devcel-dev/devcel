@@ -85,8 +85,6 @@ Imported means that import succeeded; Up to date means source/configuration/outp
 
 Use the command's --help to check argument placement. Client mode requires a live server; decide whether you need saved-file access or connected editing state. Use UUIDs when names are ambiguous. Stop connected editors before intentional local writes.
 
-For the current interface column required argument-parser limitation, use the [direct-operation workaround](cli.md#interface-columns).
-
 ## A plugin will not activate
 
 Check compatible app/API versions, dependencies, approval, and Enabled state. Installing alone leaves the package inactive. Changed package contents need new approval. After a timeout, refresh the list and inspect the main window before retrying.

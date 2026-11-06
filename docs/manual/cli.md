@@ -186,7 +186,7 @@ Same-named local and interface columns do not imply shared ownership or storage.
 | `interface column rename INTERFACE OLD NEW` | `devcel -p "$P" interface column rename common hp health` |
 | `interface column type INTERFACE NAME TYPE` | `devcel -p "$P" interface column type common hp I64` |
 | `interface column default INTERFACE NAME VALUE` | `devcel -p "$P" interface column default common hp 10`; empty text clears it |
-| `interface column required` | Existing-field required flag; see workaround below |
+| `interface column required INTERFACE NAME true/false` | `devcel -p "$P" interface column required common hp true`; use `false` to make it optional |
 | `interface column constraints INTERFACE NAME` | `devcel -p "$P" interface column constraints common hp --unique --min 0 --max 999`; patterns use --pattern |
 | `interface column curve-config INTERFACE NAME` | `devcel -p "$P" interface column curve-config common growth --start 0 --end 100` |
 | `interface column table-ref-config INTERFACE NAME TARGET_INTERFACE` | `devcel -p "$P" interface column table-ref-config common rewards reward_table` |
@@ -194,13 +194,12 @@ Same-named local and interface columns do not imply shared ownership or storage.
 
 Constraints replaces the entire constraint set: omitted constraints are removed. Include an existing minimum when updating only the maximum.
 
-The current positional Boolean declaration for `interface column required INTERFACE NAME true/false` has an argument-parser limitation, including debug-build help. The add command's --required flag works. For an existing field, obtain data.uuid from interface get and use:
+In released CLI v0.0.2, `interface column required` can fail due to an argument-parser assertion. For that version, obtain `data.uuid` from `interface get` and use the direct operation instead:
 
 ```sh
 devcel -p "$P" op '{"op":"SetInterfaceColumnRequired","data":{"interface_uuid":"REPLACE_WITH_INTERFACE_UUID","column_name":"hp","required":false}}'
 ```
 
-Verify the result with interface get.
 
 ### Export
 
