@@ -21,7 +21,7 @@ One Git URL supplies Windows x64, Linux x64, Intel macOS and Apple Silicon Edito
 
 Commit `Packages/manifest.json` and `Packages/packages-lock.json` with the game. A dependency looks like `"org.devcel.unity": "https://github.com/devcel-dev/devcel.git?path=/importers/unity"`. Every team member uses the same URL. The immutable tag and lock file pin the package; releases never move an existing tag.
 
-As of 2026-11-04, the published v0.0.1 release contains Windows/Linux importer ZIPs only. The Git-installable package, macOS and mobile distributions described here require a newer release published by this pipeline; they are not downloads available in v0.0.1.
+Release v0.0.2 includes the Git-installable package and Windows, Linux and macOS importer distributions. The older v0.0.1 release contains Windows/Linux importer ZIPs only.
 
 ### Updates and migration
 

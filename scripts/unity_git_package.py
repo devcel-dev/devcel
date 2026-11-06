@@ -9,6 +9,7 @@ import hashlib
 import importlib.util
 import json
 import os
+import re
 from pathlib import Path
 import posixpath
 import shutil
@@ -75,6 +76,8 @@ def assemble(desktop, mobile, destination, version, commit, repository):
         raise ValueError('Four Editor RIDs and both mobile artifacts are required')
     if not unity_upm.VERSION.fullmatch(version):
         raise ValueError('Invalid package version')
+    if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]*/[A-Za-z0-9][A-Za-z0-9_.-]*', repository):
+        raise ValueError('Invalid source repository')
     destination = Path(destination)
     if destination.exists():
         raise ValueError('Git package destination must not exist')
@@ -111,9 +114,11 @@ def assemble(desktop, mobile, destination, version, commit, repository):
                     if name == 'Tools~/manifest.json' or name in shared:
                         continue
                     if name == 'Tools~/cli-source.tar.gz':
-                        output = 'Tools~/Sources/' + rid + '/cli-source.tar.gz'
-                        files[output] = archive.read(entry)
-                        sources.append({'platform': rid, 'path': output.removeprefix('Tools~/'),
+                        # The unchanged matching source archive remains in the
+                        # published per-RID Unity ZIP, not in Git history.
+                        url = f'https://github.com/{repository}/releases/download/v{version}/devcel-unity-{version}-{rid}.zip'
+                        sources.append({'platform': rid, 'url': url,
+                                        'archive_entry': 'devcel-unity/Tools~/cli-source.tar.gz',
                                         'sha256': manifest['source_sha256']})
                     elif name.startswith('Tools~/' + rid + '/'):
                         files[name] = archive.read(entry)
