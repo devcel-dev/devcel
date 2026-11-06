@@ -1,4 +1,4 @@
-"""Build pinned ARM64 mobile Player runtimes and verify their release inputs.
+"""Build pinned Android ABI and iOS device runtimes and verify release inputs.
 
 Internal CI archives are combined with the licensed desktop Unity distribution
 by unity_upm.py; they are not standalone user installation packages.
@@ -24,6 +24,12 @@ NDK_VERSION = '28.2.13676358'
 PATHS = {'android': 'Plugins/Android/arm64-v8a/libdevcel_runtime.so',
          'ios': 'Plugins/iOS/libdevcel_runtime.a'}
 TARGETS = {'android': 'aarch64-linux-android', 'ios': 'aarch64-apple-ios'}
+ANDROID_ABIS = {
+    'arm64-v8a': ('aarch64-linux-android', 'aarch64-linux-android23-clang', 2, 183),
+    'armeabi-v7a': ('armv7-linux-androideabi', 'armv7a-linux-androideabi23-clang', 1, 40),
+    'x86': ('i686-linux-android', 'i686-linux-android23-clang', 1, 3),
+    'x86_64': ('x86_64-linux-android', 'x86_64-linux-android23-clang', 2, 62),
+}
 NDK_NOTICES = {'NOTICE': 'ThirdPartyNotices/AndroidNDK-NOTICE.txt',
                'NOTICE.toolchain': 'ThirdPartyNotices/AndroidNDK-NOTICE-toolchain.txt'}
 
@@ -45,13 +51,14 @@ def valid_ios_flags(flags):
     return True
 
 
-def check_binary(raw, system):
+def check_binary(raw, system, abi='arm64-v8a'):
     if system == 'android':
-        if len(raw) < 64 or raw[:6] != b'\x7fELF\x02\x01' or struct.unpack_from('<HH', raw, 16) != (3, 183):
-            raise ValueError('Android runtime must be an ELF64 ARM64 shared library')
-        offset = struct.unpack_from('<Q', raw, 32)[0]
-        size, count = struct.unpack_from('<HH', raw, 54)
-        if size < 56 or not count or offset + size * count > len(raw):
+        _, _, elf_class, machine = ANDROID_ABIS[abi]
+        if len(raw) < 64 or raw[:6] != b'\x7fELF' + bytes([elf_class, 1]) or struct.unpack_from('<HH', raw, 16) != (3, machine):
+            raise ValueError('Android runtime has the wrong ELF class or CPU for ' + abi)
+        offset = struct.unpack_from('<Q' if elf_class == 2 else '<I', raw, 32 if elf_class == 2 else 28)[0]
+        size, count = struct.unpack_from('<HH', raw, 54 if elf_class == 2 else 42)
+        if size < (56 if elf_class == 2 else 32) or not count or offset + size * count > len(raw):
             raise ValueError('Invalid Android program headers')
         loads = 0
         for i in range(count):
@@ -59,8 +66,8 @@ def check_binary(raw, system):
             if struct.unpack_from('<I', raw, header)[0] != 1:
                 continue
             loads += 1
-            file_offset, address = struct.unpack_from('<QQ', raw, header + 8)
-            alignment = struct.unpack_from('<Q', raw, header + 48)[0]
+            file_offset, address = struct.unpack_from('<QQ' if elf_class == 2 else '<II', raw, header + (8 if elf_class == 2 else 4))
+            alignment = struct.unpack_from('<Q' if elf_class == 2 else '<I', raw, header + (48 if elf_class == 2 else 28))[0]
             if alignment < 16384 or alignment & (alignment - 1) or file_offset % 16384 != address % 16384:
                 raise ValueError('Android runtime requires 16 KB compatible PT_LOAD segments')
         if not loads:
@@ -116,7 +123,9 @@ def load(path, system, version, commit, repository, source_fingerprint):
     metadata = f'Tools~/Mobile/{system}.json'
     with zipfile.ZipFile(path) as archive:
         names = archive.namelist()
-        expected = {binary, binary + '.meta', metadata} | (set(NDK_NOTICES.values()) if system == 'android' else set())
+        binaries = ([f'Plugins/Android/{abi}/libdevcel_runtime.so' for abi in ANDROID_ABIS]
+                    if system == 'android' else [binary])
+        expected = {metadata} | {item + suffix for item in binaries for suffix in ('', '.meta')} | (set(NDK_NOTICES.values()) if system == 'android' else set())
         if len(names) != len(expected) or set(names) != expected:
             raise ValueError('Unexpected mobile artifact contents')
         if any(entry.file_size > 256 * 1024 * 1024 or (entry.external_attr >> 16) & 0o170000 == 0o120000 for entry in archive.infolist()):
@@ -133,13 +142,26 @@ def load(path, system, version, commit, repository, source_fingerprint):
     if system == 'android' and (value.get('minimum_api') != 23 or value.get('ndk') != NDK_VERSION):
         raise ValueError('Android build requirements mismatch')
     if system == 'android':
+        variants = value.get('variants', {})
+        if set(variants) != set(ANDROID_ABIS):
+            raise ValueError('Android ABI list mismatch')
+        for abi, (target, _, _, _) in ANDROID_ABIS.items():
+            path = f'Plugins/Android/{abi}/libdevcel_runtime.so'
+            item = variants[abi]
+            if (item.get('target') != target or item.get('path') != path or
+                    item.get('sha256') != hashlib.sha256(contents[path]).hexdigest() or
+                    item.get('meta_sha256') != hashlib.sha256(contents[path + '.meta']).hexdigest()):
+                raise ValueError('Android ABI source/hash mismatch: ' + abi)
+            check_binary(contents[path], system, abi)
         for name in NDK_NOTICES.values():
             if not contents[name] or value.get('notice_hashes', {}).get(name) != hashlib.sha256(contents[name]).hexdigest():
                 raise ValueError('Android NDK original notice missing or changed')
     if system == 'ios' and (value.get('minimum_os') != '13.0' or not valid_ios_flags(value.get('link_flags'))):
         raise ValueError('Invalid iOS link requirements')
-    check_binary(contents[binary], system)
-    return contents, {'path': binary, 'sha256': value['sha256']}
+    if system == 'ios':
+        check_binary(contents[binary], system)
+    return contents, ([{'path': item['path'], 'sha256': item['sha256']} for item in value['variants'].values()]
+                      if system == 'android' else [{'path': binary, 'sha256': value['sha256']}])
 
 
 def run(*command, env=None):
@@ -201,11 +223,31 @@ def build(system, out, repository, commit, ndk=None):
     check_binary(raw, system)
     meta = (ROOT/'importers/unity-template/Tools~/NativePluginMetadata'/Path(PATHS[system]).relative_to('Plugins')).with_suffix(binary.suffix + '.meta').read_bytes()
     value.update(sha256=hashlib.sha256(raw).hexdigest(), meta_sha256=hashlib.sha256(meta).hexdigest())
+    payload = {PATHS[system]: raw, PATHS[system] + '.meta': meta}
+    if system == 'android':
+        value['variants'] = {}
+        for abi, (abi_target, clang, _, _) in ANDROID_ABIS.items():
+            abi_path = f'Plugins/Android/{abi}/libdevcel_runtime.so'
+            if abi != 'arm64-v8a':
+                abi_linker = ndk/'toolchains/llvm/prebuilt'/host/'bin'/(clang + ('.cmd' if platform.system() == 'Windows' else ''))
+                if not abi_linker.is_file():
+                    raise ValueError('NDK linker missing for ' + abi)
+                env['CARGO_TARGET_' + abi_target.upper().replace('-', '_') + '_LINKER'] = str(abi_linker.resolve())
+                run('cargo', 'rustc', '--locked', '--release', '--lib', '-p', 'devcel-runtime', '--target', abi_target,
+                    '--crate-type', 'cdylib', env=env)
+                raw = (output_root/abi_target/'release'/'libdevcel_runtime.so').read_bytes()
+                meta = (ROOT/'importers/unity-template/Tools~/NativePluginMetadata/Android'/abi/'libdevcel_runtime.so.meta').read_bytes()
+            check_binary(raw, system, abi)
+            payload[abi_path] = raw
+            payload[abi_path + '.meta'] = meta
+            value['variants'][abi] = {'target': abi_target, 'path': abi_path,
+                                      'sha256': hashlib.sha256(raw).hexdigest(),
+                                      'meta_sha256': hashlib.sha256(meta).hexdigest()}
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
     destination = out/f'unity-mobile-{system}.zip'
     with zipfile.ZipFile(destination, 'x', compression=zipfile.ZIP_DEFLATED) as archive:
-        for name, data in {**notices, PATHS[system]: raw, PATHS[system] + '.meta': meta,
+        for name, data in {**notices, **payload,
                            f'Tools~/Mobile/{system}.json': (json.dumps(value, indent=2)+'\n').encode()}.items():
             entry = zipfile.ZipInfo(name, (1980, 1, 1, 0, 0, 0))
             entry.create_system = 3

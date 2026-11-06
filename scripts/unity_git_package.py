@@ -141,7 +141,7 @@ def assemble(desktop, mobile, destination, version, commit, repository):
         if set(additions) & set(files):
             raise ValueError('Mobile payload collision')
         files.update(additions)
-        players.append(runtime)
+        players.extend(runtime)
     manifest = {'schema_version': 1, 'version': version, 'source_commit': commit,
                 'source_repository': repository, 'source_fingerprint': required_fingerprint,
                 'supportedPlatforms': list(RIDS), 'binaries': binaries,

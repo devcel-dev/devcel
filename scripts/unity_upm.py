@@ -103,7 +103,7 @@ def create(source, destination, version, platform, mobile_archives=None):
                 if set(contents) & (set(entries) | set(additions)):
                     raise ValueError('Mobile payload collides with an existing package file')
                 additions.update(contents)
-                manifest['player_runtimes'].append(runtime)
+                manifest['player_runtimes'].extend(runtime)
             additions['Tools~/manifest.json'] = (json.dumps(manifest, indent=2)+'\n').encode()
         destination.mkdir(parents=True, exist_ok=True)
         with target.open('xb') as output:

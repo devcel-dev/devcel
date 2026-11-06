@@ -247,7 +247,7 @@ For manual-only operation, set the common automatic mode to Off. Save in Studio,
 
 - Editor import platforms and Player targets are separate. A single-RID ZIP may not include the native runtime for another target OS.
 - Native layouts currently cover Windows x64, Linux x64, and macOS universal. macOS needs both x86_64 and arm64 slices.
-- Generated complete Git UPM packages include Android ARM64 (API 23+) and iOS ARM64 device (iOS 13+) runtimes. Install the Unity target module and follow the [mobile Player guide](../../importers/unity/Documentation~/MOBILE.md). Other Android ABIs, iOS Simulator and WebGL remain unsupported. FromJson still requires the native runtime; CLI execution remains Editor-only.
+- Newly generated Git UPM packages include Android ARMv7, ARM64, x86 and x86_64 (API 23+) and iOS ARM64 device (iOS 13+) runtimes. Release v0.0.2 includes Android ARM64 only. Install the Unity target module and follow the [mobile Player guide](../../importers/unity/Documentation~/MOBILE.md). Android x86 (32-bit) requires a Unity version that supports it; iOS Simulator and WebGL remain unsupported. FromJson still requires the native runtime; CLI execution remains Editor-only.
 - **Import before build** defaults to Off. When enabled, failed imports or changed generated C# stop the build; compile changed code before rebuilding.
 - Configuration and runtime-layout validation still runs when pre-build import is off. Already imported JSON, generated code, and required runtime can build without source projects or the CLI.
 - Player contents use runtime JSON, generated code, and runtime libraries. Keep editor CLI, source TOML, and authoring settings out of Resources and StreamingAssets.

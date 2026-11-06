@@ -37,11 +37,11 @@ namespace Devcel.Unity.Editor
                         }
                     }
                     else if (target == BuildTarget.StandaloneOSX) valid = IsUniversalDylib(reader);
-                    else if (target == BuildTarget.Android) valid = IsAndroidArm64(reader);
+                    else if (target == BuildTarget.Android) valid = IsAndroid(reader, path.Replace('\\', '/'));
                     else if (target == BuildTarget.iOS) valid = IsIosDeviceArchive(reader);
                     if (valid) return true;
                 }
-                error = "The native runtime format/CPU does not match its target (macOS universal, Android ARM64 with 16 KB alignment, or iOS ARM64 device archive required): " + path;
+                error = "The native runtime format/CPU does not match its target (macOS universal, Android ABI with 16 KB alignment, or iOS ARM64 device archive required): " + path;
             }
             catch (Exception ex) { error = "Cannot validate the native runtime: " + path + " (" + ex.Message + ")"; }
             return false;
@@ -52,27 +52,34 @@ namespace Devcel.Unity.Editor
             uint value = reader.ReadUInt32();
             return ((value & 0xff) << 24) | ((value & 0xff00) << 8) | ((value >> 8) & 0xff00) | (value >> 24);
         }
-        private static bool IsAndroidArm64(BinaryReader reader)
+        private static bool IsAndroid(BinaryReader reader, string path)
         {
             var stream = reader.BaseStream;
-            if (stream.Length < 64 || reader.ReadUInt32() != 0x464c457f || reader.ReadByte() != 2 || reader.ReadByte() != 1) return false;
+            bool arm32 = path.Contains("/Android/armeabi-v7a/");
+            bool x86 = path.Contains("/Android/x86/");
+            bool is32 = arm32 || x86;
+            bool arm64 = path.Contains("/Android/arm64-v8a/");
+            bool x64 = path.Contains("/Android/x86_64/");
+            if (!is32 && !arm64 && !x64) return false;
+            if (stream.Length < 64 || reader.ReadUInt32() != 0x464c457f || reader.ReadByte() != (is32 ? 1 : 2) || reader.ReadByte() != 1) return false;
             stream.Position = 16;
-            if (reader.ReadUInt16() != 3 || reader.ReadUInt16() != 183) return false;
-            stream.Position = 32;
-            ulong offset = reader.ReadUInt64();
-            stream.Position = 54;
+            if (reader.ReadUInt16() != 3 || reader.ReadUInt16() != (arm32 ? 40 : x86 ? 3 : arm64 ? 183 : 62)) return false;
+            stream.Position = is32 ? 28 : 32;
+            ulong offset = is32 ? reader.ReadUInt32() : reader.ReadUInt64();
+            stream.Position = is32 ? 42 : 54;
             ushort size = reader.ReadUInt16(), count = reader.ReadUInt16();
-            if (size < 56 || count == 0 || offset > (ulong)stream.Length || (ulong)size * count > (ulong)stream.Length - offset) return false;
+            if (size < (is32 ? 32 : 56) || count == 0 || offset > (ulong)stream.Length || (ulong)size * count > (ulong)stream.Length - offset) return false;
             bool load = false;
             for (int i = 0; i < count; i++)
             {
                 stream.Position = (long)offset + i * size;
                 if (reader.ReadUInt32() != 1) continue; // PT_LOAD
                 load = true;
-                stream.Position += 4;
-                ulong fileOffset = reader.ReadUInt64(), address = reader.ReadUInt64();
-                stream.Position = (long)offset + i * size + 48;
-                ulong alignment = reader.ReadUInt64();
+                if (!is32) stream.Position += 4;
+                ulong fileOffset = is32 ? reader.ReadUInt32() : reader.ReadUInt64();
+                ulong address = is32 ? reader.ReadUInt32() : reader.ReadUInt64();
+                stream.Position = (long)offset + i * size + (is32 ? 28 : 48);
+                ulong alignment = is32 ? reader.ReadUInt32() : reader.ReadUInt64();
                 if (alignment < 16384 || (alignment & (alignment - 1)) != 0 || fileOffset % 16384 != address % 16384) return false;
             }
             return load;

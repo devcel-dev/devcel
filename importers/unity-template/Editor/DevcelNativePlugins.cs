@@ -23,6 +23,9 @@ namespace Devcel.Unity.Editor
             new Rule("Plugins/Linux/x86_64/libdevcel_runtime.so", "Linux", "x86_64", BuildTarget.StandaloneLinux64),
             new Rule("Plugins/macOS/libdevcel_runtime.dylib", "OSX", "AnyCPU", BuildTarget.StandaloneOSX),
             new Rule("Plugins/Android/arm64-v8a/libdevcel_runtime.so", "", "ARM64", BuildTarget.Android),
+            new Rule("Plugins/Android/armeabi-v7a/libdevcel_runtime.so", "", "ARMv7", BuildTarget.Android),
+            new Rule("Plugins/Android/x86/libdevcel_runtime.so", "", "x86", BuildTarget.Android),
+            new Rule("Plugins/Android/x86_64/libdevcel_runtime.so", "", "x86_64", BuildTarget.Android),
             new Rule("Plugins/iOS/libdevcel_runtime.a", "", "ARM64", BuildTarget.iOS),
         };
 
@@ -101,19 +104,31 @@ namespace Devcel.Unity.Editor
 
         internal static void ValidateForBuild(BuildTarget target, bool runtimeRequired)
         {
-            Rule required = null;
-            foreach (var rule in Rules) if (rule.Target == target) required = rule;
-            if (runtimeRequired && required == null)
-                throw new InvalidOperationException("Devcel native runtime supports Windows x64, Linux x64, macOS universal, Android ARM64 and iOS ARM64 devices. Unsupported target: " + target);
+            var required = new List<Rule>();
+            AndroidArchitecture androidSelected = PlayerSettings.Android.targetArchitectures;
+            Enum.TryParse("X86_64", out AndroidArchitecture androidX64);
+            Enum.TryParse("X86", out AndroidArchitecture androidX86);
             if (runtimeRequired && target == BuildTarget.Android &&
-                (PlayerSettings.Android.targetArchitectures != AndroidArchitecture.ARM64 || (int)PlayerSettings.Android.minSdkVersion < 23))
-                throw new InvalidOperationException("Devcel Android runtime requires only ARM64 and Minimum API Level 23 or later. Other Android ABIs are not bundled.");
+                ((int)PlayerSettings.Android.minSdkVersion < 23 || androidSelected == 0 ||
+                 (androidSelected & ~(AndroidArchitecture.ARM64 | AndroidArchitecture.ARMv7 | androidX64 | androidX86)) != 0))
+                throw new InvalidOperationException("Devcel Android runtime requires ARMv7, ARM64, x86 or x86_64 and Minimum API Level 23 or later.");
+            foreach (var rule in Rules)
+            {
+                if (rule.Target != target) continue;
+                if (target != BuildTarget.Android ||
+                    (rule.CPU == "ARM64" && (androidSelected & AndroidArchitecture.ARM64) != 0) ||
+                    (rule.CPU == "ARMv7" && (androidSelected & AndroidArchitecture.ARMv7) != 0) ||
+                    (rule.CPU == "x86" && androidX86 != 0 && (androidSelected & androidX86) != 0) ||
+                    (rule.CPU == "x86_64" && androidX64 != 0 && (androidSelected & androidX64) != 0)) required.Add(rule);
+            }
+            if (runtimeRequired && required.Count == 0)
+                throw new InvalidOperationException("Devcel native runtime supports Windows x64, Linux x64, macOS universal, Android ARMv7/ARM64/x86/x86_64 and iOS ARM64 devices. Unsupported target: " + target);
             if (runtimeRequired && target == BuildTarget.iOS &&
                 (PlayerSettings.iOS.sdkVersion != iOSSdkVersion.DeviceSDK ||
                  !Version.TryParse(PlayerSettings.iOS.targetOSVersionString, out Version minimum) || minimum < new Version(13, 0)))
                 throw new InvalidOperationException("Devcel iOS runtime requires Device SDK (ARM64) and iOS 13.0 or later. Simulator libraries are not bundled.");
             if (runtimeRequired || DevcelPaths.DistributionRoot != DevcelPaths.PackageRoot) DevcelNativePackage.Validate(DevcelPaths.DistributionRoot, requireCli: false);
-            bool found = false;
+            var found = new HashSet<Rule>();
             foreach (var importer in PluginImporter.GetAllImporters())
             {
                 var rule = FindRule(importer.assetPath);
@@ -121,20 +136,22 @@ namespace Devcel.Unity.Editor
                 {
                     if (!Matches(importer, rule))
                         throw new InvalidOperationException("The native PluginImporter OS/CPU/distribution settings are invalid. Run Devcel > Repair Native Plugin Settings: " + importer.assetPath);
-                    if (runtimeRequired && rule == required)
+                    if (runtimeRequired && required.Contains(rule))
                     {
                         DevcelNativePackage.ValidatePlayer(DevcelPaths.DistributionRoot, rule.Path);
                         if (!DevcelNativeBinary.Validate(System.IO.Path.Combine(DevcelPaths.DistributionRoot, rule.Path), rule.Target, out string error))
                             throw new InvalidOperationException(error);
-                        found = true;
+                        found.Add(rule);
                     }
                 }
                 else if (IsRuntimeFile(importer.assetPath) &&
                     (importer.GetCompatibleWithAnyPlatform() || importer.GetCompatibleWithPlatform(target)))
                     throw new InvalidOperationException("Duplicate or unmanaged Devcel runtime found. Place it in the corresponding package Plugins folder: " + importer.assetPath);
             }
-            if (runtimeRequired && !found)
-                throw new InvalidOperationException("Devcel runtime for the Player is missing: " + required.Path + " (provide the actual binary built on the supported OS and its .meta file)");
+            if (runtimeRequired)
+                foreach (var rule in required)
+                    if (!found.Contains(rule))
+                        throw new InvalidOperationException("Devcel runtime for the Player is missing: " + rule.Path + " (provide the actual binary built on the supported OS and its .meta file)");
         }
     }
 

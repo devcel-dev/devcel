@@ -1,5 +1,5 @@
 name: Build Unity mobile runtime
-description: Build the matching ARM64 Player runtime without Unity or signing
+description: Build matching Android ABI or iOS device runtimes without Unity or signing
 inputs:
   system:
     required: true
@@ -23,7 +23,7 @@ runs:
         MOBILE_SYSTEM: ${{ inputs.system }}
       run: |
         if [ "$MOBILE_SYSTEM" = android ]; then
-          rustup target add aarch64-linux-android
+          rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android x86_64-linux-android
         else
           rustup target add aarch64-apple-ios
         fi

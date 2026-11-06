@@ -21,7 +21,7 @@ Paths are relative to the package root.
 | `Plugins/Windows/x86_64/devcel_runtime.dll` | Windows / x86_64 | Windows 64-bit |
 | `Plugins/Linux/x86_64/libdevcel_runtime.so` | Linux / x86_64 | Linux 64-bit |
 | `Plugins/macOS/libdevcel_runtime.dylib` | OSX / AnyCPU | macOS x86_64 + arm64 universal |
-| `Plugins/Android/arm64-v8a/libdevcel_runtime.so` | Disabled | Android ARM64, API 23+ |
+| `Plugins/Android/<abi>/libdevcel_runtime.so` | Disabled | Android ARMv7, ARM64, x86, x86_64; API 23+ |
 | `Plugins/iOS/libdevcel_runtime.a` | Disabled | iOS ARM64 device, iOS 13+ |
 
 Matching `.meta` files are bundled. `DevcelNativePluginPostprocessor` applies settings when known paths import; `DevcelNativePlugins` applies them after Editor startup and through **Devcel → Repair Native Plugin Settings**. Any Platform is false, Editor is enabled only for desktop libraries on their OS/CPU, and only the matching Player is enabled. Mobile plugins never load in the Editor. Preload/define constraints are cleared. Identical settings cause no writes or reimports. Only these known package paths are modified.
@@ -60,4 +60,4 @@ Only `-1` means all content; `0..4294967295` are filter values. Input uses `Long
 
 With no registered sources, native libraries are optional and installing the package alone need not block Android or other builds. Known authoring-data leaks and invalid native settings are still rejected. The gate cannot track arbitrary encrypted archives or user-defined copies of authoring data; inspect the final Player and BuildReport too.
 
-Android ARM64 and iOS ARM64 device builds require the complete Git UPM release package (or an offline tarball containing mobile runtimes) and matching hashes in `player_runtimes`. The build gate checks Android architecture/API and 16 KB-compatible ELF segments, or iOS Device SDK/minimum OS and ARM64 device Mach-O objects in the static archive. Unsupported ABIs, Simulator and WebGL fail explicitly. `DevcelBundle.LoadText` retrieves the bundle; `FromJson` uses the native runtime. See [mobile Players](MOBILE.md) for prerequisites and acceptance.
+Android ARMv7/ARM64/x86/x86_64 and iOS ARM64 device builds require the complete Git UPM release package (or an offline tarball containing mobile runtimes) and matching hashes in `player_runtimes`. The build gate checks each selected Android architecture/API and 16 KB-compatible ELF segments, or iOS Device SDK/minimum OS and ARM64 device Mach-O objects in the static archive. Unsupported ABIs, Simulator and WebGL fail explicitly. `DevcelBundle.LoadText` retrieves the bundle; `FromJson` uses the native runtime. See [mobile Players](MOBILE.md) for prerequisites and acceptance.

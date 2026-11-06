@@ -6,10 +6,10 @@ Release v0.0.2 includes the Git-installable package and Windows, Linux and macOS
 
 | Player target | Bundled library | Required settings |
 |---|---|---|
-| Android ARM64 | `Plugins/Android/arm64-v8a/libdevcel_runtime.so` | ARM64 only, minimum API 23 or later |
+| Android ARMv7, ARM64, x86 and x86_64 | `Plugins/Android/<abi>/libdevcel_runtime.so` | Select the desired bundled ABIs, minimum API 23 or later |
 | iOS ARM64 device | `Plugins/iOS/libdevcel_runtime.a` | Device SDK, minimum iOS 13.0 or later |
 
-Android ARMv7/x86/x86_64, iOS Simulator and WebGL are not included. This first mobile target set intentionally fails those builds instead of shipping an incompatible library. Native binary/header checks and successful CI compilation are not device execution acceptance.
+iOS Simulator and WebGL are not included. Android x86 (32-bit) requires a Unity version that supports that architecture. Existing v0.0.2 distributions only contain Android ARM64; the additional Android ABIs require a later release. Native binary/header checks and successful CI compilation are not device execution acceptance.
 
 ## Import in the Editor
 
@@ -34,7 +34,7 @@ Replace the namespace/root class with your generated names and retain/dispose th
 
 ## Build the Player
 
-For Android, select **ARM64 only**, minimum API 23+, and use IL2CPP for a release build. The runtime is built with Android NDK 28.2.13676358 and 16 KB-compatible load segment alignment. The final APK/AAB also depends on Unity and every other plugin meeting current Android packaging/page-size requirements; inspect and test the final app on the intended devices.
+For Android, select **ARMv7**, **ARM64** **x86** (where supported), and/or **x86_64**, minimum API 23+, and use IL2CPP for a release build. The runtime is built with Android NDK 28.2.13676358 and 16 KB-compatible load segment alignment. The final APK/AAB also depends on Unity and every other plugin meeting current Android packaging/page-size requirements; inspect and test the final app on the intended devices.
 
 For iOS, choose **Device SDK** and minimum iOS 13.0+. Export the Xcode project on macOS. The static library is linked into UnityFramework; `DevcelIosLinker` adds the system libraries reported by the matching Rust build. Set your signing team, build/archive and deploy through Xcode. Simulator libraries are intentionally absent. No CLI or dynamically loaded macOS dylib is used inside the iOS app.
 
@@ -42,7 +42,7 @@ The build gate rejects missing libraries, altered runtime hashes, incorrect plat
 
 ## Build distributable mobile libraries
 
-Use the repository's pinned Rust toolchain from a clean recorded commit. For Android, install NDK 28.2.13676358 and `rustup target add aarch64-linux-android`; for iOS on macOS/Xcode, install `rustup target add aarch64-apple-ios`.
+Use the repository's pinned Rust toolchain from a clean recorded commit. For Android, install NDK 28.2.13676358 and `rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android x86_64-linux-android`; for iOS on macOS/Xcode, install `rustup target add aarch64-apple-ios`.
 
 ```sh
 python scripts/unity_mobile.py --system android --ndk /path/to/ndk/28.2.13676358 --out mobile/android --source-repository devcel-dev/devcel --source-commit <full-sha>
