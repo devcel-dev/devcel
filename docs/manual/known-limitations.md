@@ -16,6 +16,6 @@ Plugins can declare owner-scoped settings tables and contracts, including single
 
 Engine imports read saved authoring files and produce independent complete databases per source. Runtime readers load a database in full. A source's files are individually replaced atomically with ordinary-failure rollback; multi-file publication is not a power-loss transaction. See [import configuration](../../devcel-cli/docs/importer-pull.md).
 
-## CLI interface-field required flag
+## CLI interface-field required flag in v0.0.2
 
-The `interface column required` command declares its Boolean argument positionally. This can trigger a clap parser assertion. Edit the field's required setting in Studio when this command fails, then save the interface. See [CLI interface operations](cli.md#interface-columns).
+The released v0.0.2 CLI can encounter a parser assertion for `interface column required`. For that version, use the [direct-operation workaround](cli.md#interface-columns). The positional Boolean parsing is fixed in the current source and will require a newer release.
