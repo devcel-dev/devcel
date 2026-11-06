@@ -21,7 +21,7 @@ One Git URL supplies Windows x64, Linux x64, Intel macOS and Apple Silicon Edito
 
 Commit `Packages/manifest.json` and `Packages/packages-lock.json` with the game. A dependency looks like `"org.devcel.unity": "https://github.com/devcel-dev/devcel.git?path=/importers/unity"`. Every team member uses the same URL. The immutable tag and lock file pin the package; releases never move an existing tag.
 
-As of 2026-11-04, the published v0.0.1 release contains Windows/Linux importer ZIPs only. The Git-installable package, macOS and mobile distributions described here require a newer release published by this pipeline; they are not downloads available in v0.0.1.
+Release v0.0.2 includes the Git-installable package and Windows, Linux and macOS importer distributions. The older v0.0.1 release contains Windows/Linux importer ZIPs only.
 
 ### Updates and migration
 
@@ -98,6 +98,8 @@ The Inspector searches imported candidates, offers Clear, and retains missing UU
 The typed field's **View** button opens a read-only record preview. It reads resolved values through the generated database and the selected table/interface contract, including interface overrides. Values are refreshed on opening, explicit Refresh, or an imported file change, rather than reopening the database on every Inspector repaint. Short values are right-aligned opposite their field labels; long or multiline values wrap in the value column and can be expanded, nested references are summaries rather than recursive editors, and missing targets produce a warning without clearing the serialized reference. This Editor-only preview does not change the runtime acquisition allocation contract.
 
 Named keys preserve nonempty row labels exactly. Empty labels produce no symbol. Invalid, reserved or colliding symbols produce generation diagnostics instead of renaming records. A label rename changes code symbols but not serialized UUID identity. To author an Inspector object in code, explicitly use `EnemiesReferences.Slime.ToReference()`; this allocates an authoring object and is not the preferred runtime acquisition path.
+
+`Get` acquires a read lock and looks up the UUID in a dictionary. In hot paths such as per-frame updates, resolve a reference once and retain the handle when practical; check `Exists` when a record may have been removed. Profile initialization time, peak memory and hot-path access with your actual data and target Player.
 
 Keep the handle across successful database updates: properties read the current published values, even after row reorder. Strings and scalar values already copied out remain ordinary snapshots. A retained nested handle follows its original record UUID; reread its parent's property after the relationship changes. `Exists` becomes false for deleted records or detached interface views; property access throws rather than returning stale data. Disposal invalidates handles.
 

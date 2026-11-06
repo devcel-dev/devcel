@@ -40,7 +40,7 @@ Open **Devcel Studio** from the application menu. A managed desktop that does no
 
 ## Open on macOS
 
-The published v0.0.1 release has no macOS assets. These steps apply to a newer release that lists the matching DMG, or to a locally built DMG.
+The v0.0.2 release includes Intel and Apple Silicon DMGs. The older v0.0.1 release has no macOS assets.
 
 1. In **About This Mac**, check whether your Mac uses an Intel processor or Apple Silicon.
 2. Download `devcel-studio-<version>-macos-x64.dmg` for Intel or `devcel-studio-<version>-macos-arm64.dmg` for Apple Silicon.

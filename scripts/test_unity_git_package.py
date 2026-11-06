@@ -111,7 +111,11 @@ class GitPackageTests(unittest.TestCase):
             self.assertTrue((clone/'Plugins/Android/arm64-v8a.meta').is_file())
             self.assertFalse((clone/'Tools~.meta').exists())
             for rid in package.RIDS:
-                self.assertEqual((clone/'Tools~/Sources'/rid/'cli-source.tar.gz').read_bytes(), b'source')
+                self.assertFalse((clone/'Tools~/Sources'/rid/'cli-source.tar.gz').exists())
+                entry = next(x for x in manifest['source_archives'] if x['platform'] == rid)
+                self.assertEqual(entry['url'], f'https://github.com/owner/repo/releases/download/v0.1.0/devcel-unity-0.1.0-{rid}.zip')
+                self.assertEqual(entry['archive_entry'], 'devcel-unity/Tools~/cli-source.tar.gz')
+                self.assertEqual(entry['sha256'], __import__('hashlib').sha256(b'source').hexdigest())
                 self.assertTrue((clone/'ThirdPartyNotices'/rid/'THIRD-PARTY-NOTICES.txt').is_file())
             self.assertEqual(json.loads((clone/'package.json').read_text())['version'], '0.1.0')
             (clone/'extra.txt').write_text('rebuild payload drift')
