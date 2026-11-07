@@ -1,6 +1,6 @@
 # Unity and MasterMemory (experimental)
 
-This prototype generates MasterMemory table types and a bundle-to-binary builder from a **full** Devcel runtime JSON bundle. Generate one bundle per assembly; generated assembly options and database type names are fixed. The generator uses Python 3. It handles multiple tables and stable record UUID primary keys. The optional Unity Editor integration rebuilds generated code and a binary asset after a successful import; it does not provide live handles.
+This prototype generates MasterMemory table types and a bundle-to-binary builder from a **full** Devcel runtime JSON bundle. Generate one bundle per assembly; generated assembly options and database type names are fixed. The generator uses Python 3. It handles multiple tables and stable record UUID primary keys. The optional Unity Editor integration rebuilds generated code and a binary asset after a successful import; it also generates update-following handles backed by a versioned row cache.
 
 Install [MasterMemory](https://github.com/Cysharp/MasterMemory) 3.0.4, **MessagePack 3.1.11 or newer in the same 3.1 release line**, and Newtonsoft.Json into your Unity project. MasterMemory recommends NuGetForUnity; Newtonsoft.Json is available as Unity's Newtonsoft package. Follow MasterMemory's Unity and IL2CPP source-generator/resolver instructions, and check versions in your project. MasterMemory 3.0.4's minimum MessagePack 3.1.3 has known security vulnerabilities; do not use that minimum.
 
@@ -43,9 +43,12 @@ For optional Unity Editor Play-mode updates, enable **Build after import** above
 
 ```csharp
 var live = new DevcelMasterMemory.LiveDatabase(binaryBytes, sourceBundlePath);
-var enemy = live.Current.DevcelRow_enemiesTable.FindByRecordId(recordUuid);
-// Read live.Current again after live.Version changes, then reacquire cached rows.
+var enemy = live.Get_enemies(recordUuid); // Create once and retain the handle.
+var hp = enemy.Value_hp;                 // Cached row; follows later reloads.
+// For the fastest reads, retain enemy.Current and reacquire it when live.Version changes.
 ```
+
+The generated table-specific handle caches its row and re-resolves it only when `live.Version` changes. `TryGet(out row)` returns false for a deleted or missing record; field access and `Current` throw `KeyNotFoundException` in that case. A handle is allocated when created, not on each successful field access; profile on your target Player. A directly retained row is a snapshot and avoids handle checks until you reacquire it.
 
 The matching successful import rebuilds a replacement database and swaps `Current` on the Editor main thread. A previously cached row stays a snapshot; compare `Version` at a controlled point and reacquire it to see changes. Dispose `live` on its owner thread when no longer needed. Invalid or incompatible input keeps the previous database. Schema changes require exiting Play mode, regenerating and recompiling. This prototype rebuilds the complete database synchronously on update and may pause the Editor or allocate substantial memory. It is not a background incremental update, a Player networking feature, or an automatic update of cached rows. Measure it with your own data.
 

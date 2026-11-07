@@ -29,15 +29,30 @@ class Program
         using (var live = new LiveDatabase(data, livePath))
         {
             var oldRow = live.Current.DevcelRow_enemiesTable.FindByRecordId("00000000-0000-4000-8000-000000000001");
+            var handle = live.Get_enemies(oldRow.RecordId);
+            for (int i = 0; i < 10000; i++) { if (handle.Value_name != "Enemy 1") throw new Exception("Wrong handle value"); }
+            long beforeHandleReads = GC.GetAllocatedBytesForCurrentThread();
+            for (int i = 0; i < 100000; i++) { if (handle.Value_i8 != -7 || handle.Value_name != "Enemy 1") throw new Exception("Wrong cached value"); }
+            if (GC.GetAllocatedBytesForCurrentThread() != beforeHandleReads) throw new Exception("Handle reads allocated");
             File.WriteAllText(livePath, original.Replace("Enemy 1", "Enemy updated"));
             if (LiveDatabase.ReloadOpenDatabases(livePath) != 1 || live.Version != 1 ||
-                live.Current.DevcelRow_enemiesTable.FindByRecordId(oldRow.RecordId).Value_name != "Enemy updated" || oldRow.Value_name != "Enemy 1")
+                live.Current.DevcelRow_enemiesTable.FindByRecordId(oldRow.RecordId).Value_name != "Enemy updated" || handle.Value_name != "Enemy updated" || oldRow.Value_name != "Enemy 1")
                 throw new Exception("Live replacement or snapshot semantics failed");
             File.WriteAllText(livePath, File.ReadAllText(args[1]));
             try { LiveDatabase.ReloadOpenDatabases(livePath); throw new Exception("Invalid reload accepted"); }
             catch (FormatException) { }
             if (live.Version != 1 || live.Current.DevcelRow_enemiesTable.FindByRecordId(oldRow.RecordId).Value_name != "Enemy updated")
                 throw new Exception("Failed reload replaced the live database");
+            var withoutRow = Newtonsoft.Json.Linq.JObject.Parse(original);
+            ((Newtonsoft.Json.Linq.JArray)withoutRow["tables"][0]["records"]).Clear();
+            File.WriteAllText(livePath, withoutRow.ToString());
+            LiveDatabase.ReloadOpenDatabases(livePath);
+            if (handle.TryGet(out _)) throw new Exception("Deleted record remained in handle cache");
+            try { var missing = handle.Current; throw new Exception("Missing record was returned"); }
+            catch (System.Collections.Generic.KeyNotFoundException) { }
+            File.WriteAllText(livePath, original);
+            LiveDatabase.ReloadOpenDatabases(livePath);
+            if (handle.Value_name != "Enemy 1") throw new Exception("Restored record not found by handle");
         }
         if (LiveDatabase.ReloadOpenDatabases(livePath) != 0) throw new Exception("Disposed database was reloaded");
         for (int i = 1; i < args.Length; i++)

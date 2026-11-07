@@ -1,6 +1,6 @@
 // Devcel MIT license is included in the generated source header.
 // Instances are owned and reloaded on the thread that creates them (Unity main thread).
-public sealed class LiveDatabase : IDisposable {
+public sealed partial class LiveDatabase : IDisposable {
     static readonly List<WeakReference<LiveDatabase>> OpenInstances = new List<WeakReference<LiveDatabase>>();
     readonly string sourcePath;
     readonly int ownerThread;

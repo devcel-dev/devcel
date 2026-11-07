@@ -58,6 +58,7 @@ def generate(bundle):
         "var builder=new DevcelDatabaseBuilder();",
     ]
     declarations = []
+    handles = []
     table_by_uuid = {}
     for table in tables:
         uid = table.get("uuid")
@@ -83,6 +84,7 @@ def generate(bundle):
         decl = [f"[MemoryTable({literal(name)}), MessagePackObject(true)] public sealed class {cls} {{",
                 '[PrimaryKey] public string RecordId { get; set; } = string.Empty;']
         block_start = len(output)
+        handle_properties = []
         schema_checks = []
         output += [
             "{",
@@ -132,6 +134,7 @@ def generate(bundle):
                 ty = "DevcelTableRef_" + hashlib.sha256((table_uuid + "\0" + colname).encode("utf-8")).hexdigest()
                 table_refs.append((ty, allowed))
             prop = "Value_" + colname
+            handle_properties.append(f"public {ty} {prop} => Current.{prop};")
             default = col.get("default_value")
             if default is None: default = ""
             if not isinstance(default, str): raise ValueError("bad default")
@@ -177,6 +180,15 @@ def generate(bundle):
         ]
         decl += ["}"]
         declarations.extend(decl)
+        handles += [
+            f"public sealed class DevcelHandle_{name} {{",
+            "readonly LiveDatabase source; readonly string id; ulong observed; bool resolved;",
+            f"DevcelRow_{name} cached;",
+            f"internal DevcelHandle_{name}(LiveDatabase source, string id) {{ this.source=source; this.id=id ?? throw new ArgumentNullException(nameof(id)); }}",
+            f"public bool TryGet(out DevcelRow_{name} value) {{ var db=source.Current; if (!resolved || observed != source.Version) {{ db.DevcelRow_{name}Table.TryFindByRecordId(id,out cached); observed=source.Version; resolved=true; }} value=cached; return value != null; }}",
+            f'public DevcelRow_{name} Current => TryGet(out var value) ? value : throw new KeyNotFoundException("Devcel record not found: " + id);',
+        ] + handle_properties + ["}",
+            f"public sealed partial class LiveDatabase {{ public DevcelHandle_{name} Get_{name}(string id) => new DevcelHandle_{name}(this,id); }}"]
     output += ["return builder.Build();", "}",
        'static bool ParseBool(string s) { s=s.Trim(); if (s.Length==0) return false; return bool.Parse(s); }']
     for ty in sorted(set(TYPES.values()) - {"string", "bool", "DevcelColor32", "DevcelColorFloat", "DevcelCurve", "DevcelRecordReference", "DevcelTableReference"}):
@@ -202,7 +214,7 @@ def generate(bundle):
         for uid, target_name in sorted(allowed):
             output += [f"public global::DevcelMasterMemory.Tables.DevcelRow_{target_name}Table As_{target_name}(DevcelMemoryDatabase db) => Id == {literal(uid)} ? db.DevcelRow_{target_name}Table : null;"]
         output += ["}"]
-    output += [Path(__file__).with_name("support.cs.txt").read_text(encoding="utf-8"), Path(__file__).with_name("live.cs.txt").read_text(encoding="utf-8"), "}"]
+    output += handles + [Path(__file__).with_name("support.cs.txt").read_text(encoding="utf-8"), Path(__file__).with_name("live.cs.txt").read_text(encoding="utf-8"), "}"]
     return "\n".join(output) + "\n"
 
 def main():
