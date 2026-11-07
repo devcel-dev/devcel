@@ -66,7 +66,7 @@ canonical setting to `main` through a normal fast-forward push. If `main` moved,
 branch protection rejects the push, or a check fails, it stops without creating a
 tag; it never force-pushes or bypasses protection.
 
-The release validates the exact prepared source commit and builds all four desktop targets and both mobile runtimes from it. After collection succeeds, it replaces `importers/unity` with the complete Git UPM package in a child release commit, creates the normal version tag there, and publishes the release. Only `importers/unity` changes; the editable source template remains in `importers/unity-template`. Main and the new release tag are updated atomically after checking that main still equals the build source. Selecting a different version next time repeats this preparation automatically; manually synchronizing version fields is not required. A source tree with already matching versions is verified without creating an unnecessary commit.
+The release validates the exact prepared source commit and builds all four desktop targets and Android, iOS and WebGL runtimes from it. After collection succeeds, it replaces `importers/unity` with the complete Git UPM package in a child release commit, creates the normal version tag there, and publishes the release. Only `importers/unity` changes; the editable source template remains in `importers/unity-template`. Main and the new release tag are updated atomically after checking that main still equals the build source. Selecting a different version next time repeats this preparation automatically; manually synchronizing version fields is not required. A source tree with already matching versions is verified without creating an unnecessary commit.
 
 Repository write access is required. Other branches and tags are rejected before preparation. Enter a SemVer version such as `0.0.2` or `0.0.2-rc.1`; omit the leading `v`, whitespace and build metadata. Prerelease versions create a GitHub prerelease. Existing tags are never overwritten or deleted. Manual preparation checks for an existing tag before changing source files, and atomic tag creation also rejects a concurrent creator.
 
@@ -132,7 +132,7 @@ The `native` manual validation group runs `scripts/check-native-release-artifact
 
 Review bundled native files and keep original notices and reviewed manifests current. See [Third-party licenses](../../third-party/README.md) and [Debian verification](linux.md#debian-13-verification). Native startup, persistence and visual acceptance remain separate platform checks.
 
-Workflow definitions: [CI](https://github.com/devcel-dev/devcel/blob/db0b980a13ec21e06065df2eabf6a932f6a39e0e/.github/workflows/ci.yml), [Release](https://github.com/devcel-dev/devcel/blob/db0b980a13ec21e06065df2eabf6a932f6a39e0e/.github/workflows/release.yml) and [Manual validation](https://github.com/devcel-dev/devcel/blob/db0b980a13ec21e06065df2eabf6a932f6a39e0e/.github/workflows/manual-checks.yml).
+Workflow definitions: [CI](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/.github/workflows/ci.yml), [Release](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/.github/workflows/release.yml) and [Manual validation](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/.github/workflows/manual-checks.yml).
 
 ### Windows portable package
 

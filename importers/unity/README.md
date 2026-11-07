@@ -1,6 +1,6 @@
 # Devcel Unity SDK
 
-For installation, first import, and automatic import, start with the [Unity manual](INSTALL.md). This guide covers settings, runtime APIs, packaging, and verification.
+For installation, first import, and automatic import, start with the [Unity manual](Documentation~/repository/importers/unity/INSTALL.md). This guide covers settings, runtime APIs, packaging, and verification.
 
 - **Authoring and generation:** the `devcel` CLI, backed by `devcel-core`, runs as a subprocess to generate typed C# accessors and version-filtered JSON bundles.
 - **Reading in the Editor and game:** generated `database.Get(reference)` returns live typed handles backed by an eagerly prepared managed read model. Normal acquisition, including strings and nested references, does not allocate managed objects. Low-level raw `Row` access remains available; its string/reference getters can allocate and its rows must be reacquired after reload.
@@ -39,7 +39,7 @@ Sources with identical UUIDs remain separate through Source ID, namespace, outpu
 
 `codeClassName` sets the optional root class; blank means `DevcelDatabase`. Namespace `Game.Master` and class `MasterData` produce `Game.Master.MasterData.Open(...)`. Table, row, and interface type names are unchanged. Play-mode reload uses the same namespace/class name.
 
-Editor settings generate a pull configuration under `Library/Devcel/`, using the shared `devcel pull --config` contract. See [importer-pull.md](Documentation~/repository/devcel-cli/docs/importer-pull.md) for CLI usage, partial failures, and atomicity boundaries. Each source saves `namespace`, optional `class_name`, and the selected environment's `version`. Blank class names and all-content version `-1` are omitted from JSON. Content Version is the numeric `0..4294967295` filter, separate from `schema_version`.
+Editor settings generate a pull configuration under `Library/Devcel/`, using the shared `devcel pull --config` contract. See [importer-pull.md](Documentation~/repository/importers/unity/Documentation~/repository/devcel-cli/docs/importer-pull.md) for CLI usage, partial failures, and atomicity boundaries. Each source saves `namespace`, optional `class_name`, and the selected environment's `version`. Blank class names and all-content version `-1` are omitted from JSON. Content Version is the numeric `0..4294967295` filter, separate from `schema_version`.
 
 ### Version control and relocated checkouts
 
@@ -49,19 +49,19 @@ Editor settings generate a pull configuration under `Library/Devcel/`, using the
 - The CLI comes from the installed package for the Editor's OS/CPU. Reinstall the matching package if its manifest or executable is missing.
 - Loading an existing settings asset leaves it unchanged. Convert old absolute paths through an explicit save on the original machine before sharing. If already relocated, reselect the source. Shared generated C#/runtime JSON and applicable `.meta` files can be consumed without authoring sources or CLI access.
 
-Use the [Unity manual](INSTALL.md) for setup and troubleshooting. Test the native Editor and Player on each target platform.
+Use the [Unity manual](Documentation~/repository/importers/unity/INSTALL.md) for setup and troubleshooting. Test the native Editor and Player on each target platform.
 
 ## Install
 
 ### Building from source
 
-Use the [packaging workflow](Tools~/README.md) to generate an installable UPM folder from a fixed checkout. The editable `importers/unity-template` is not a complete package; generate the package before using its distribution path. Product version, native source fingerprint and payload hashes are generated automatically. Never change those fields to force mismatched tools to load.
+Use the [packaging workflow](Documentation~/repository/importers/unity/Tools~/README.md) to generate an installable UPM folder from a fixed checkout. The editable `importers/unity-template` is not a complete package; generate the package before using its distribution path. Product version, native source fingerprint and payload hashes are generated automatically. Never change those fields to force mismatched tools to load.
 
 ### Full distribution installation
 
 Alternatively extract the matching ZIP and add its `devcel-unity/` folder as a local UPM dependency (`file:../path/to/devcel-unity`), embed it in `Packages/`, or copy it under `Assets/`. This distribution already contains the CLI and runtime; no companion is needed. GitHub source archives are not binary installation packages.
 
-Follow the [Unity manual](INSTALL.md) to register a source and perform the first import. Generated code and bundles remain under project `Assets`, never in `Packages` or `PackageCache`. Each Editor OS/CPU and Player target needs a supported matching native runtime; the installer does not substitute another platform's binary.
+Follow the [Unity manual](Documentation~/repository/importers/unity/INSTALL.md) to register a source and perform the first import. Generated code and bundles remain under project `Assets`, never in `Packages` or `PackageCache`. Each Editor OS/CPU and Player target needs a supported matching native runtime; the installer does not substitute another platform's binary.
 
 ## Default outputs
 

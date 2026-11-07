@@ -32,7 +32,7 @@ Put generated JSON/code outside the source project and reserve its output paths 
 3. The same URL includes all four desktop Editor CLIs, desktop runtimes and Android/iOS ARM64 device runtimes. No native companion or PATH CLI is required.
 4. Open **Devcel > Importer**.
 
-As of 2026-11-04, the published v0.0.1 release contains Windows/Linux importer ZIPs only. The Git-installable package, macOS and mobile distributions described here require a newer release published by this pipeline; they are not downloads available in v0.0.1.
+Release v0.0.2 includes the Git-installable package and Windows, Linux and macOS importer distributions. The older v0.0.1 release contains Windows/Linux importer ZIPs only.
 
 The default branch contains the most recently generated package after the first new release. The editable template is `importers/unity-template`. Preserve the Git dependency in `Packages/manifest.json` and its resolved commit in `Packages/packages-lock.json`.
 
@@ -247,14 +247,14 @@ For manual-only operation, set the common automatic mode to Off. Save in Studio,
 
 - Editor import platforms and Player targets are separate. A single-RID ZIP may not include the native runtime for another target OS.
 - Native layouts currently cover Windows x64, Linux x64, and macOS universal. macOS needs both x86_64 and arm64 slices.
-- Generated complete Git UPM packages include Android ARM64 (API 23+) and iOS ARM64 device (iOS 13+) runtimes. Install the Unity target module and follow the [mobile Player guide](Documentation~/MOBILE.md). Other Android ABIs, iOS Simulator and WebGL remain unsupported. FromJson still requires the native runtime; CLI execution remains Editor-only.
+- Newly generated Git UPM packages include Android ARMv7, ARM64, x86 and x86_64 (API 23+) and iOS device/Simulator (iOS 13+) runtimes. Release v0.0.2 includes Android ARM64 only. Install the Unity target module and follow the [mobile Player guide](Documentation~/MOBILE.md). Android x86 (32-bit) requires a Unity version that supports it; v0.0.2 has no iOS Simulator runtime; WebGL in a newly generated distribution is described in the [WebGL guide](Documentation~/repository/importers/unity-template/Documentation~/WEBGL.md). FromJson still requires the native runtime; CLI execution remains Editor-only.
 - **Import before build** defaults to Off. When enabled, failed imports or changed generated C# stop the build; compile changed code before rebuilding.
 - Configuration and runtime-layout validation still runs when pre-build import is off. Already imported JSON, generated code, and required runtime can build without source projects or the CLI.
 - Player contents use runtime JSON, generated code, and runtime libraries. Keep editor CLI, source TOML, and authoring settings out of Resources and StreamingAssets.
 
 ### Platforms and verification
 
-As of 2026-11-04, the published v0.0.1 release contains Windows/Linux importer ZIPs only. The Git-installable package, macOS and mobile distributions described here require a newer release published by this pipeline; they are not downloads available in v0.0.1. The build pipeline supports win-x64, linux-x64, osx-x64 and osx-arm64. Windows/Linux arm64 Editors are not supported. Linux requires the documented glibc 2.39 baseline; validate the actual artifact on the target system. Build success is not Editor or Player execution acceptance.
+Release v0.0.2 includes the Git-installable package and Windows, Linux and macOS importer distributions. The older v0.0.1 release contains Windows/Linux importer ZIPs only. The build pipeline supports win-x64, linux-x64, osx-x64 and osx-arm64. Windows/Linux arm64 Editors are not supported. Linux requires the documented glibc 2.39 baseline; validate the actual artifact on the target system. Build success is not Editor or Player execution acceptance.
 
 See [Unity package layout](Documentation~/DISTRIBUTION.md), [Bundled CLI](Tools~/README.md).
 
