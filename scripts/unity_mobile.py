@@ -25,6 +25,8 @@ PATHS = {'android': 'Plugins/Android/arm64-v8a/libdevcel_runtime.so',
          'ios': 'Plugins/iOS/libdevcel_runtime.a', 'webgl': 'Plugins/WebGL/libdevcel_runtime.a'}
 TARGETS = {'android': 'aarch64-linux-android', 'ios': 'aarch64-apple-ios', 'webgl': 'wasm32-unknown-emscripten'}
 WEBGL_RUST = '1.85.1'
+IOS_SIMULATOR_PATH = 'Plugins/iOSSimulator/libdevcel_runtime.a'
+IOS_SIMULATOR_TARGETS = ('aarch64-apple-ios-sim', 'x86_64-apple-ios')
 ANDROID_ABIS = {
     'arm64-v8a': ('aarch64-linux-android', 'aarch64-linux-android23-clang', 2, 183),
     'armeabi-v7a': ('armv7-linux-androideabi', 'armv7a-linux-androideabi23-clang', 1, 40),
@@ -141,6 +143,63 @@ def check_binary(raw, system, abi='arm64-v8a'):
             raise ValueError('No iOS device object found')
 
 
+def check_ios_simulator(raw):
+    """Require a fat static archive with arm64 and x86_64 simulator objects."""
+    if len(raw) < 48 or raw[:4] != b'\xca\xfe\xba\xbe':
+        raise ValueError('iOS Simulator runtime must be a universal static archive')
+    count = struct.unpack_from('>I', raw, 4)[0]
+    if count != 2 or len(raw) < 8 + 20 * count:
+        raise ValueError('iOS Simulator requires exactly two CPU slices')
+    seen, spans = set(), []
+    for index in range(count):
+        cpu, _, start, size, align = struct.unpack_from('>IIIII', raw, 8 + index * 20)
+        if cpu not in (0x0100000c, 0x01000007) or cpu in seen or align > 30 or start % (1 << align) or size < 8 or start < 8 + 20 * count or start + size > len(raw):
+            raise ValueError('Invalid iOS Simulator fat archive slice')
+        if any(start < end and previous < start + size for previous, end in spans):
+            raise ValueError('Overlapping iOS Simulator slices')
+        seen.add(cpu); spans.append((start, start + size))
+        data = raw[start:start + size]
+        if not data.startswith(b'!<arch>\n'):
+            raise ValueError('iOS Simulator slice is not a static archive')
+        offset, found = 8, False
+        while offset < len(data):
+            if offset + 60 > len(data) or data[offset + 58:offset + 60] != b'`\n':
+                raise ValueError('Invalid iOS Simulator archive member')
+            name = data[offset:offset + 16].decode('ascii').strip()
+            length = int(data[offset + 48:offset + 58]); first = offset + 60; end = first + length
+            if length < 0 or end > len(data):
+                raise ValueError('Truncated iOS Simulator archive')
+            if name.startswith('#1/'):
+                first += int(name[3:])
+            if first > end:
+                raise ValueError('Invalid iOS Simulator archive name')
+            if data[first:first + 4] == b'\xcf\xfa\xed\xfe':
+                if end - first < 32:
+                    raise ValueError('Truncated Simulator object')
+                object_cpu, _, kind, commands, size_commands = struct.unpack_from('<IIIII', data, first + 4)
+                if object_cpu != cpu or kind != 1 or first + 32 + size_commands > end:
+                    raise ValueError('Wrong Simulator object CPU or type')
+                command = first + 32; limit = command + size_commands
+                platform_found = False
+                for _ in range(commands):
+                    if command + 8 > limit:
+                        raise ValueError('Truncated Simulator load command')
+                    kind, command_size = struct.unpack_from('<II', data, command)
+                    if command_size < 8 or command + command_size > limit:
+                        raise ValueError('Invalid Simulator load command')
+                    if kind == 0x32:
+                        if command_size < 24 or struct.unpack_from('<I', data, command + 8)[0] != 7:
+                            raise ValueError('Simulator object targets another platform')
+                        platform_found = True
+                    elif kind in (0x24, 0x25, 0x2f, 0x30):
+                        raise ValueError('Simulator object has a legacy or non-Simulator target')
+                    command += command_size
+                found |= platform_found
+            offset = end + (length & 1)
+        if offset != len(data) or not found:
+            raise ValueError('Simulator slice has no matching object')
+
+
 def load(path, system, version, commit, repository, source_fingerprint):
     """Validate provenance before admitting any mobile bytes into a UPM package."""
     binary = PATHS[system]
@@ -148,7 +207,7 @@ def load(path, system, version, commit, repository, source_fingerprint):
     with zipfile.ZipFile(path) as archive:
         names = archive.namelist()
         binaries = ([f'Plugins/Android/{abi}/libdevcel_runtime.so' for abi in ANDROID_ABIS]
-                    if system == 'android' else [binary])
+                    if system == 'android' else [binary, IOS_SIMULATOR_PATH] if system == 'ios' else [binary])
         expected = {metadata} | {item + suffix for item in binaries for suffix in ('', '.meta')} | (set(NDK_NOTICES.values()) if system == 'android' else set())
         if len(names) != len(expected) or set(names) != expected:
             raise ValueError('Unexpected mobile artifact contents')
@@ -182,12 +241,21 @@ def load(path, system, version, commit, repository, source_fingerprint):
                 raise ValueError('Android NDK original notice missing or changed')
     if system == 'ios' and (value.get('minimum_os') != '13.0' or not valid_ios_flags(value.get('link_flags'))):
         raise ValueError('Invalid iOS link requirements')
+    if system == 'ios':
+        simulator = value.get('simulator', {})
+        if (simulator.get('path') != IOS_SIMULATOR_PATH or simulator.get('targets') != list(IOS_SIMULATOR_TARGETS) or
+                simulator.get('sha256') != hashlib.sha256(contents[IOS_SIMULATOR_PATH]).hexdigest() or
+                simulator.get('meta_sha256') != hashlib.sha256(contents[IOS_SIMULATOR_PATH + '.meta']).hexdigest() or
+                not valid_ios_flags(simulator.get('link_flags'))):
+            raise ValueError('iOS Simulator source/hash/link requirements mismatch')
+        check_ios_simulator(contents[IOS_SIMULATOR_PATH])
     if system == 'webgl' and value.get('webgl_rust') != WEBGL_RUST:
         raise ValueError('WebGL Rust toolchain mismatch')
     if system in ('ios', 'webgl'):
         check_binary(contents[binary], system)
     return contents, ([{'path': item['path'], 'sha256': item['sha256']} for item in value['variants'].values()]
-                      if system == 'android' else [{'path': binary, 'sha256': value['sha256']}])
+                      if system == 'android' else [{'path': binary, 'sha256': value['sha256']}] +
+                      ([{'path': IOS_SIMULATOR_PATH, 'sha256': value['simulator']['sha256']}] if system == 'ios' else []))
 
 
 def run(*command, env=None):
@@ -252,6 +320,31 @@ def build(system, out, repository, commit, ndk=None):
     meta = (ROOT/'importers/unity-template/Tools~/NativePluginMetadata'/Path(PATHS[system]).relative_to('Plugins')).with_suffix(binary.suffix + '.meta').read_bytes()
     value.update(sha256=hashlib.sha256(raw).hexdigest(), meta_sha256=hashlib.sha256(meta).hexdigest())
     payload = {PATHS[system]: raw, PATHS[system] + '.meta': meta}
+    if system == 'ios':
+        env['SDKROOT'] = run('xcrun', '--sdk', 'iphonesimulator', '--show-sdk-path').strip()
+        slices, simulator_flags = [], None
+        for simulator_target in IOS_SIMULATOR_TARGETS:
+            log = run('cargo', 'rustc', '--locked', '--release', '--lib', '-p', 'devcel-runtime',
+                      '--target', simulator_target, '--crate-type', 'staticlib', '--', '--print', 'native-static-libs', env=env)
+            matches = re.findall(r'native-static-libs:\s*([^\r\n]+)', log)
+            if not matches or not valid_ios_flags(matches[-1].split()):
+                raise ValueError('Missing Simulator static library link requirements')
+            flags_for_target = matches[-1].split()
+            if simulator_flags is not None and simulator_flags != flags_for_target:
+                raise ValueError('Simulator architectures have different native link requirements')
+            simulator_flags = flags_for_target
+            slices.append(output_root/simulator_target/'release/libdevcel_runtime.a')
+        universal = output_root/'devcel-ios-simulator-universal.a'
+        run('xcrun', 'lipo', '-create', *slices, '-output', universal)
+        simulator_raw = universal.read_bytes()
+        check_ios_simulator(simulator_raw)
+        simulator_meta = (ROOT/'importers/unity-template/Tools~/NativePluginMetadata/iOSSimulator/libdevcel_runtime.a.meta').read_bytes()
+        payload[IOS_SIMULATOR_PATH] = simulator_raw
+        payload[IOS_SIMULATOR_PATH + '.meta'] = simulator_meta
+        value['simulator'] = {'path': IOS_SIMULATOR_PATH, 'targets': list(IOS_SIMULATOR_TARGETS),
+                              'sha256': hashlib.sha256(simulator_raw).hexdigest(),
+                              'meta_sha256': hashlib.sha256(simulator_meta).hexdigest(),
+                              'link_flags': simulator_flags}
     if system == 'android':
         value['variants'] = {}
         for abi, (abi_target, clang, _, _) in ANDROID_ABIS.items():

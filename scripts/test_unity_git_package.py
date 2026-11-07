@@ -105,7 +105,7 @@ class GitPackageTests(unittest.TestCase):
             manifest = json.loads((clone/'Tools~/manifest.json').read_text())
             self.assertEqual(set(manifest['supportedPlatforms']), set(package.RIDS))
             self.assertEqual(len(manifest['native_runtimes']), 3)
-            self.assertEqual(len(manifest['player_runtimes']), 6)
+            self.assertEqual(len(manifest['player_runtimes']), 7)
             self.assertNotIn('native_runtime', manifest)
             self.assertIn('folderAsset: yes', (clone/'Plugins.meta').read_text())
             self.assertTrue((clone/'Plugins/Android/arm64-v8a.meta').is_file())

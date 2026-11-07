@@ -25,7 +25,7 @@ runs:
         if [ "$MOBILE_SYSTEM" = android ]; then
           rustup target add aarch64-linux-android armv7-linux-androideabi i686-linux-android x86_64-linux-android
         elif [ "$MOBILE_SYSTEM" = ios ]; then
-          rustup target add aarch64-apple-ios
+          rustup target add aarch64-apple-ios aarch64-apple-ios-sim x86_64-apple-ios
         else
           rustup toolchain install 1.85.1 --profile minimal --target wasm32-unknown-emscripten
         fi

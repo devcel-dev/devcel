@@ -27,6 +27,7 @@ namespace Devcel.Unity.Editor
             new Rule("Plugins/Android/x86/libdevcel_runtime.so", "", "x86", BuildTarget.Android),
             new Rule("Plugins/Android/x86_64/libdevcel_runtime.so", "", "x86_64", BuildTarget.Android),
             new Rule("Plugins/iOS/libdevcel_runtime.a", "", "ARM64", BuildTarget.iOS),
+            new Rule("Plugins/iOSSimulator/libdevcel_runtime.a", "", "", BuildTarget.iOS),
             new Rule("Plugins/WebGL/libdevcel_runtime.a", "", "", BuildTarget.WebGL),
         };
 
@@ -76,7 +77,7 @@ namespace Devcel.Unity.Editor
                 (rule.CPU.Length != 0 && importer.GetPlatformData(rule.Target, "CPU") != rule.CPU) || importer.isPreloaded ||
                 (importer.DefineConstraints != null && importer.DefineConstraints.Length != 0)) return false;
             foreach (BuildTarget target in PlayerTargets())
-                if (importer.GetCompatibleWithPlatform(target) != (target == rule.Target)) return false;
+                if (importer.GetCompatibleWithPlatform(target) != (target == rule.Target && target != BuildTarget.iOS)) return false;
             return true;
         }
 
@@ -89,7 +90,7 @@ namespace Devcel.Unity.Editor
             importer.SetEditorData("OS", rule.OS.Length != 0 ? rule.OS : "AnyOS");
             importer.SetEditorData("CPU", rule.OS.Length != 0 ? rule.CPU : "AnyCPU");
             importer.SetEditorData("DefaultValueInitialized", "true");
-            foreach (BuildTarget target in PlayerTargets()) importer.SetCompatibleWithPlatform(target, target == rule.Target);
+            foreach (BuildTarget target in PlayerTargets()) importer.SetCompatibleWithPlatform(target, target == rule.Target && target != BuildTarget.iOS);
             if (rule.CPU.Length != 0) importer.SetPlatformData(rule.Target, "CPU", rule.CPU);
             importer.isPreloaded = false;
             importer.DefineConstraints = Array.Empty<string>();
@@ -116,7 +117,12 @@ namespace Devcel.Unity.Editor
             foreach (var rule in Rules)
             {
                 if (rule.Target != target) continue;
-                if (target != BuildTarget.Android ||
+                if (target == BuildTarget.iOS)
+                {
+                    bool simulator = PlayerSettings.iOS.sdkVersion == iOSSdkVersion.SimulatorSDK;
+                    if (rule.Path.StartsWith("Plugins/iOSSimulator/", StringComparison.Ordinal) == simulator) required.Add(rule);
+                }
+                else if (target != BuildTarget.Android ||
                     (rule.CPU == "ARM64" && (androidSelected & AndroidArchitecture.ARM64) != 0) ||
                     (rule.CPU == "ARMv7" && (androidSelected & AndroidArchitecture.ARMv7) != 0) ||
                     (rule.CPU == "x86" && androidX86 != 0 && (androidSelected & androidX86) != 0) ||
@@ -125,9 +131,9 @@ namespace Devcel.Unity.Editor
             if (runtimeRequired && required.Count == 0)
                 throw new InvalidOperationException("Devcel native runtime supports Windows x64, Linux x64, macOS universal, Android ARMv7/ARM64/x86/x86_64 and iOS ARM64 devices. Unsupported target: " + target);
             if (runtimeRequired && target == BuildTarget.iOS &&
-                (PlayerSettings.iOS.sdkVersion != iOSSdkVersion.DeviceSDK ||
+                ((PlayerSettings.iOS.sdkVersion != iOSSdkVersion.DeviceSDK && PlayerSettings.iOS.sdkVersion != iOSSdkVersion.SimulatorSDK) ||
                  !Version.TryParse(PlayerSettings.iOS.targetOSVersionString, out Version minimum) || minimum < new Version(13, 0)))
-                throw new InvalidOperationException("Devcel iOS runtime requires Device SDK (ARM64) and iOS 13.0 or later. Simulator libraries are not bundled.");
+                throw new InvalidOperationException("Devcel iOS runtime requires the device or simulator SDK and iOS 13.0 or later.");
             if (runtimeRequired || DevcelPaths.DistributionRoot != DevcelPaths.PackageRoot) DevcelNativePackage.Validate(DevcelPaths.DistributionRoot, requireCli: false);
             var found = new HashSet<Rule>();
             foreach (var importer in PluginImporter.GetAllImporters())

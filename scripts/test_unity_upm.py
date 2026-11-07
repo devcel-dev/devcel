@@ -53,7 +53,7 @@ class UpmTests(unittest.TestCase):
                     manifest = json.load(archive.extractfile('package/Tools~/manifest.json'))
                     self.assertEqual(manifest['native_runtime']['path'], unity_upm.RUNTIMES[platform])
                     self.assertEqual({x['path'] for x in manifest['player_runtimes']},
-                                     {f'Plugins/Android/{abi}/libdevcel_runtime.so' for abi in unity_upm.unity_mobile.ANDROID_ABIS} | {'Plugins/iOS/libdevcel_runtime.a', 'Plugins/WebGL/libdevcel_runtime.a'})
+                                     {f'Plugins/Android/{abi}/libdevcel_runtime.so' for abi in unity_upm.unity_mobile.ANDROID_ABIS} | {'Plugins/iOS/libdevcel_runtime.a', 'Plugins/iOSSimulator/libdevcel_runtime.a', 'Plugins/WebGL/libdevcel_runtime.a'})
                     self.assertIn('package/ThirdPartyNotices/AndroidNDK-NOTICE.txt', archive.getnames())
 
     def test_all_platforms_preserve_every_byte_and_use_upm_root(self):

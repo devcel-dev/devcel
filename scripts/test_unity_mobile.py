@@ -35,6 +35,14 @@ def webgl_binary():
     return b'!<arch>\n' + header + obj
 
 
+def ios_simulator_binary():
+    arm = ios_binary(platform=7, cpu=0x0100000c)
+    x64 = ios_binary(platform=7, cpu=0x01000007)
+    return (struct.pack('>II', 0xcafebabe, 2) +
+            struct.pack('>IIIII', 0x0100000c, 0, 48, len(arm), 0) +
+            struct.pack('>IIIII', 0x01000007, 0, 48 + len(arm), len(x64), 0) + arm + x64)
+
+
 def fixture(path, system):
     raw = android_binary() if system == 'android' else webgl_binary() if system == 'webgl' else ios_binary()
     value = {'schema_version': 1, 'system': system, 'version': '0.1.0', 'source_commit': 'a'*40,
@@ -60,6 +68,13 @@ def fixture(path, system):
             value['variants'][abi] = {'target': target, 'path': binary,
                                       'sha256': hashlib.sha256(contents).hexdigest(),
                                       'meta_sha256': hashlib.sha256(b'meta').hexdigest()}
+    elif system == 'ios':
+        sim = ios_simulator_binary()
+        values[mobile.IOS_SIMULATOR_PATH] = sim
+        values[mobile.IOS_SIMULATOR_PATH + '.meta'] = b'meta'
+        value['simulator'] = {'path': mobile.IOS_SIMULATOR_PATH, 'targets': list(mobile.IOS_SIMULATOR_TARGETS),
+                              'sha256': hashlib.sha256(sim).hexdigest(),
+                              'meta_sha256': hashlib.sha256(b'meta').hexdigest(), 'link_flags': ['-lSystem']}
     values.update({
               f'Tools~/Mobile/{system}.json': json.dumps(value).encode()}
     )
@@ -88,6 +103,7 @@ class MobileTests(unittest.TestCase):
         mobile.check_binary(android_binary(cpu=62), 'android', 'x86_64')
         mobile.check_binary(ios_binary(), 'ios')
         mobile.check_binary(webgl_binary(), 'webgl')
+        mobile.check_ios_simulator(ios_simulator_binary())
         for system, data in [('android', android_binary(4096)), ('android', android_binary(cpu=62)),
                              ('ios', ios_binary(platform=7)), ('ios', ios_binary(cpu=0x01000007)),
                              ('android', android_binary()[:-1]), ('ios', ios_binary()[:-1])]:
@@ -97,6 +113,18 @@ class MobileTests(unittest.TestCase):
             mobile.check_binary(android_binary(cpu=40, elf_class=1), 'android', 'arm64-v8a')
         with self.assertRaises(ValueError):
             mobile.check_binary(ios_binary(), 'webgl')
+        with self.assertRaises(ValueError):
+            mobile.check_ios_simulator(ios_simulator_binary()[:-1])
+        wrong = bytearray(ios_simulator_binary())
+        # Replace the arm64 simulator LC_BUILD_VERSION platform with device iOS.
+        struct.pack_into('<I', wrong, 48 + 8 + 60 + 32 + 8, 2)
+        with self.assertRaises(ValueError):
+            mobile.check_ios_simulator(bytes(wrong))
+        wrong = bytearray(ios_simulator_binary())
+        # Make the second fat slice overlap the first one.
+        struct.pack_into('>I', wrong, 8 + 20 + 8, 48)
+        with self.assertRaises(ValueError):
+            mobile.check_ios_simulator(bytes(wrong))
 
     def test_both_artifacts_validate_exact_identity_and_payloads(self):
         for system in mobile.PATHS:
@@ -148,6 +176,25 @@ class MobileTests(unittest.TestCase):
                 write_zip(path, values)
                 with self.assertRaises(ValueError):
                     mobile.load(path, 'android', '0.1.0', 'a'*40, 'owner/repo', 'b'*64)
+
+    def test_simulator_requires_matching_payload_and_target(self):
+        for kind in ('missing', 'wrong_platform', 'wrong_meta'):
+            with self.subTest(kind=kind), tempfile.TemporaryDirectory() as temp:
+                path = Path(temp)/'runtime.zip'
+                values = fixture(path, 'ios')
+                binary = mobile.IOS_SIMULATOR_PATH
+                if kind == 'missing':
+                    del values[binary]
+                elif kind == 'wrong_meta':
+                    values[binary + '.meta'] = b'tampered'
+                else:
+                    values[binary] = ios_binary()
+                    meta = json.loads(values['Tools~/Mobile/ios.json'])
+                    meta['simulator']['sha256'] = hashlib.sha256(values[binary]).hexdigest()
+                    values['Tools~/Mobile/ios.json'] = json.dumps(meta).encode()
+                write_zip(path, values)
+                with self.assertRaises(ValueError):
+                    mobile.load(path, 'ios', '0.1.0', 'a'*40, 'owner/repo', 'b'*64)
 
 
 if __name__ == '__main__':

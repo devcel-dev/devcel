@@ -38,7 +38,7 @@ namespace Devcel.Unity.Editor
                     }
                     else if (target == BuildTarget.StandaloneOSX) valid = IsUniversalDylib(reader);
                     else if (target == BuildTarget.Android) valid = IsAndroid(reader, path.Replace('\\', '/'));
-                    else if (target == BuildTarget.iOS) valid = IsIosDeviceArchive(reader);
+                    else if (target == BuildTarget.iOS) valid = path.Replace('\\', '/').Contains("/iOSSimulator/") ? IsIosSimulatorArchive(reader) : IsIosDeviceArchive(reader);
                     else if (target == BuildTarget.WebGL) valid = IsWebAssemblyArchive(reader);
                     if (valid) return true;
                 }
@@ -82,6 +82,78 @@ namespace Devcel.Unity.Editor
         {
             uint value = reader.ReadUInt32();
             return ((value & 0xff) << 24) | ((value & 0xff00) << 8) | ((value >> 8) & 0xff00) | (value >> 24);
+        }
+        private static bool IsIosSimulatorArchive(BinaryReader reader)
+        {
+            var stream = reader.BaseStream;
+            if (stream.Length < 48 || BigEndian32(reader) != 0xcafebabe || BigEndian32(reader) != 2) return false;
+            var spans = new System.Collections.Generic.List<(long start, long end)>();
+            bool arm = false, x64 = false;
+            for (int i = 0; i < 2; i++)
+            {
+                stream.Position = 8 + i * 20;
+                uint cpu = BigEndian32(reader); BigEndian32(reader);
+                uint start = BigEndian32(reader), size = BigEndian32(reader), alignment = BigEndian32(reader);
+                if ((cpu != 0x0100000c && cpu != 0x01000007) || (cpu == 0x0100000c && arm) || (cpu == 0x01000007 && x64) ||
+                    alignment > 30 || (start % (1u << (int)alignment)) != 0 || start < 48 || size < 8 || (ulong)start + size > (ulong)stream.Length) return false;
+                foreach (var span in spans) if (start < span.end && span.start < (long)start + size) return false;
+                spans.Add((start, (long)start + size));
+                if (!IsIosSimulatorSlice(reader, start, size, cpu)) return false;
+                arm |= cpu == 0x0100000c; x64 |= cpu == 0x01000007;
+            }
+            return arm && x64;
+        }
+
+        private static bool IsIosSimulatorSlice(BinaryReader reader, long start, long size, uint cpu)
+        {
+            var stream = reader.BaseStream; long limit = start + size; stream.Position = start;
+            if (System.Text.Encoding.ASCII.GetString(reader.ReadBytes(8)) != "!<arch>\n") return false;
+            bool found = false;
+            while (stream.Position < limit)
+            {
+                if (limit - stream.Position < 60) return false;
+                byte[] header = reader.ReadBytes(60);
+                string name = System.Text.Encoding.ASCII.GetString(header, 0, 16).Trim();
+                if (header[58] != (byte)'`' || header[59] != (byte)'\n' ||
+                    !long.TryParse(System.Text.Encoding.ASCII.GetString(header, 48, 10).Trim(), out long length) || length < 0 || length > limit - stream.Position) return false;
+                long first = stream.Position, end = first + length;
+                if (name.StartsWith("#1/"))
+                {
+                    if (!int.TryParse(name.Substring(3), out int nameBytes) || nameBytes < 0 || nameBytes > length) return false;
+                    first += nameBytes;
+                }
+                if (end - first >= 4)
+                {
+                    stream.Position = first;
+                    if (reader.ReadUInt32() == 0xfeedfacf)
+                    {
+                        if (end - first < 32 || reader.ReadUInt32() != cpu) return false;
+                        reader.ReadUInt32();
+                        if (reader.ReadUInt32() != 1) return false;
+                        uint commands = reader.ReadUInt32(), bytes = reader.ReadUInt32();
+                        long command = first + 32, commandLimit = command + bytes;
+                        if (commandLimit > end || commands > bytes / 8) return false;
+                        bool simulator = false;
+                        for (int i = 0; i < commands; i++)
+                        {
+                            stream.Position = command;
+                            if (command + 8 > commandLimit) return false;
+                            uint type = reader.ReadUInt32(), lengthCommand = reader.ReadUInt32();
+                            if (lengthCommand < 8 || command + lengthCommand > commandLimit) return false;
+                            if (type == 0x32)
+                            {
+                                if (lengthCommand < 24 || reader.ReadUInt32() != 7) return false;
+                                simulator = true;
+                            }
+                            else if (type == 0x24 || type == 0x25 || type == 0x2f || type == 0x30) return false;
+                            command += lengthCommand;
+                        }
+                        found |= simulator;
+                    }
+                }
+                stream.Position = end + (length & 1);
+            }
+            return found && stream.Position == limit;
         }
         private static bool IsAndroid(BinaryReader reader, string path)
         {
