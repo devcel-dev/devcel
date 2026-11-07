@@ -817,7 +817,7 @@ def package():
             '--tag', os.environ['RELEASE_TAG'], '--verify-urls')
 
 
-def collect_assets(downloads, destination, tag, expected_commit=None, expected_repository=None, notice_layout=unity_git_package.NOTICE_LAYOUT_VERSION):
+def collect_assets(downloads, destination, tag, expected_commit=None, expected_repository=None, notice_layout=unity_git_package.NOTICE_LAYOUT_VERSION, mobile_layout=2, source_archive_layout=2):
     platforms = {'Linux': ('linux', 'linux-x64'), 'Windows': ('windows', 'win-x64'),
                  'macOS-X64': ('macos-x64', 'osx-x64'), 'macOS-ARM64': ('macos-arm64', 'osx-arm64')}
     expected_studio = {label: studio_asset_name(system, tag)
@@ -881,21 +881,24 @@ def collect_assets(downloads, destination, tag, expected_commit=None, expected_r
             files.append(target)
     # Mobile archives belong to the same immutable release source. They add
     # Player runtimes without replacing the Editor's platform-specific runtime.
-    mobile = {system: downloads/f'release-mobile-{system}'/f'unity-mobile-{system}.zip'
-              for system in ('android', 'ios', 'webgl')}
+    systems = ('android', 'ios') if mobile_layout == 1 else ('android', 'ios', 'webgl')
+    if mobile_layout not in (1, 2) or source_archive_layout not in (1, 2):
+        raise ValueError('Unknown release package layout')
+    mobile = {system: downloads/f'release-mobile-{system}'/f'unity-mobile-{system}.zip' for system in systems}
     for path in mobile.values():
         if not path.is_file() or path.is_symlink() or list(path.parent.iterdir()) != [path]:
-            raise ValueError('Android, iOS and WebGL runtime artifacts are required')
+            raise ValueError('Required '+', '.join(systems)+' runtime artifacts are required')
     for source in list(files):
         prefix = f'devcel-unity-{tag[1:]}-'
         if source.name.startswith(prefix) and source.suffix == '.zip':
             platform = source.name[len(prefix):-4]
-            files.append(unity_upm.create(source, destination, tag[1:], platform, mobile))
+            files.append(unity_upm.create(source, destination, tag[1:], platform, mobile, legacy_mobile=mobile_layout == 1))
     files += unity_git_package.create(
         {rid: destination/f'devcel-unity-{tag[1:]}-{rid}.zip' for rid in unity_git_package.RIDS},
         mobile, destination, tag[1:], expected_commit, expected_repository,
         'github-actions[bot]', '41898282+github-actions[bot]@users.noreply.github.com',
-        legacy_notices=notice_layout == 1)
+        legacy_notices=notice_layout == 1, legacy_mobile=mobile_layout == 1,
+        legacy_source_archives=source_archive_layout == 1)
     sums = destination/'SHA256SUMS.txt'
     sums.write_text(''.join(hashlib.sha256(path.read_bytes()).hexdigest()+'  '+path.name+'\n'
                             for path in sorted(files)), encoding='utf-8', newline='\n')
@@ -945,8 +948,11 @@ def publish(source_root=None, before_create=None, before_publish=None):
         raise ValueError('A release already exists for this tag; inspect it before retrying.')
     repository = os.environ['GH_REPO']
     run(sys.executable, ROOT/'scripts/generate-third-party-notices.py', '--ensure', '--repo', source_root)
+    systems = unity_upm.unity_mobile.source_systems((source_root/'scripts/unity_mobile.py').read_text(encoding='utf-8'))
     files = collect_assets(ROOT/'release-downloads', ROOT/'release-publish', tag, commit, repository,
-                           notice_layout=unity_git_package.source_notice_layout(source_root))
+                           notice_layout=unity_git_package.source_notice_layout(source_root),
+                           mobile_layout=1 if len(systems) == 2 else 2,
+                           source_archive_layout=unity_git_package.source_archive_layout(source_root))
     if existing_git_release:
         prepared = unity_git_package.stage_release(
             ROOT/'release-publish'/f'org.devcel.unity-{tag[1:]}-git.zip',

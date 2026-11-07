@@ -82,7 +82,7 @@ def validate(archive, entries, version, platform):
             raise ValueError('Missing UPM package file: ' + name)
 
 
-def create(source, destination, version, platform, mobile_archives=None):
+def create(source, destination, version, platform, mobile_archives=None, legacy_mobile=False):
     """Return a deterministic tarball path; never overwrite an existing artifact."""
     if not VERSION.fullmatch(version) or platform not in RUNTIMES:
         raise ValueError('Invalid UPM version/platform')
@@ -93,13 +93,14 @@ def create(source, destination, version, platform, mobile_archives=None):
         validate(archive, entries, version, platform)
         additions = {}
         if mobile_archives is not None:
-            if set(mobile_archives) != {'android', 'ios', 'webgl'}:
+            systems = {'android', 'ios'} if legacy_mobile else {'android', 'ios', 'webgl'}
+            if set(mobile_archives) != systems:
                 raise ValueError('Android, iOS and WebGL runtime archives are required')
             manifest = json.loads(archive.read(entries['Tools~/manifest.json']))
             manifest['player_runtimes'] = []
             for system, mobile_archive in mobile_archives.items():
                 contents, runtime = unity_mobile.load(mobile_archive, system, version,
-                    manifest['source_commit'], manifest['source_repository'], manifest['source_fingerprint'])
+                    manifest['source_commit'], manifest['source_repository'], manifest['source_fingerprint'], legacy=legacy_mobile)
                 if set(contents) & (set(entries) | set(additions)):
                     raise ValueError('Mobile payload collides with an existing package file')
                 additions.update(contents)

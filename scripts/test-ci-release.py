@@ -792,6 +792,35 @@ class ReleaseTests(unittest.TestCase):
             self.assertEqual(len((root/'out/SHA256SUMS.txt').read_text().splitlines()), 47)
             self.assertEqual(len(list((root/'out').glob('org.devcel.unity-*.tgz'))), 4)
 
+    def test_collect_legacy_assets_preserves_original_payload(self):
+        import zipfile
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self.fixture(root)
+            mobile = ci.unity_upm.unity_mobile
+            for system in ('android', 'ios'):
+                path = root/f'release-mobile-{system}'/f'unity-mobile-{system}.zip'
+                with zipfile.ZipFile(path) as archive:
+                    values = {name: archive.read(name) for name in archive.namelist()}
+                metadata = f'Tools~/Mobile/{system}.json'
+                value = json.loads(values[metadata]); value.pop('variants', None); value.pop('simulator', None)
+                binary = mobile.PATHS[system]
+                names = {binary, binary+'.meta', metadata}
+                if system == 'android': names.update(mobile.NDK_NOTICES.values())
+                values = {name: raw for name, raw in values.items() if name in names}
+                values[metadata] = json.dumps(value).encode()
+                with zipfile.ZipFile(path, 'w') as archive:
+                    for name, raw in values.items(): archive.writestr(name, raw)
+            (root/'release-mobile-webgl/unity-mobile-webgl.zip').unlink()
+            files = ci.collect_assets(root, root/'out', 'v0.1.0', 'a'*40, 'owner/repo',
+                                      notice_layout=1, mobile_layout=1, source_archive_layout=1)
+            self.assertEqual(len(files), 48)
+            with zipfile.ZipFile(root/'out/org.devcel.unity-0.1.0-git.zip') as archive:
+                manifest = json.loads(archive.read('Tools~/manifest.json'))
+                self.assertEqual(len(manifest['player_runtimes']), 2)
+                self.assertIn('Tools~/Sources/win-x64/cli-source.tar.gz', archive.namelist())
+                self.assertNotIn('Plugins/WebGL/libdevcel_runtime.a', archive.namelist())
+
     def test_publication_requires_both_mobile_artifacts(self):
         for system in ('android', 'ios', 'webgl'):
             with self.subTest(system=system), tempfile.TemporaryDirectory() as temp:
@@ -1079,7 +1108,8 @@ class ReleaseTests(unittest.TestCase):
             with tempfile.TemporaryDirectory() as directory:
                 root = Path(directory)
                 (root/'scripts').mkdir()
-                (root/'scripts/unity_git_package.py').write_text('NOTICE_LAYOUT_VERSION = 2\n')
+                (root/'scripts/unity_git_package.py').write_text('NOTICE_LAYOUT_VERSION = 2\nSOURCE_ARCHIVE_LAYOUT_VERSION = 2\n')
+                (root/'scripts/unity_mobile.py').write_text('PATHS = '+repr(ci.unity_upm.unity_mobile.PATHS)+'\n')
                 output = root/'release-publish'
                 output.mkdir()
                 (output/'SOURCE-ACCESS.json').write_text('{}\n')

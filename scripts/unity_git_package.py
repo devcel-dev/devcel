@@ -24,6 +24,7 @@ import unity_upm
 
 RIDS = ('win-x64', 'linux-x64', 'osx-x64', 'osx-arm64')
 NOTICE_LAYOUT_VERSION = 2
+SOURCE_ARCHIVE_LAYOUT_VERSION = 2
 MAX_BLOB = 100 * 1024 * 1024
 MAX_PACKAGE = 1024 * 1024 * 1024
 
@@ -90,6 +91,37 @@ def source_notice_layout(root):
     if len(markers) != 1 or not isinstance(markers[0], ast.Constant) or type(markers[0].value) is not int or markers[0].value not in (1, 2):
         raise ValueError('Unknown Unity notice layout in release source')
     return markers[0].value
+
+
+def source_archive_layout(root):
+    """Identify the historical bundled-source layout without executing source code."""
+    path = Path(root)/'scripts/unity_git_package.py'
+    if not path.is_file():
+        raise ValueError('Missing Unity package release recipe')
+    tree = ast.parse(path.read_text(encoding='utf-8'), filename=str(path))
+    markers = [n.value for n in tree.body if isinstance(n, ast.Assign)
+               and any(isinstance(t, ast.Name) and t.id == 'SOURCE_ARCHIVE_LAYOUT_VERSION' for t in n.targets)]
+    if markers:
+        if len(markers) != 1 or not isinstance(markers[0], ast.Constant) or markers[0].value != 2:
+            raise ValueError('Unknown Unity source archive layout')
+        return 2
+    paths, urls = set(), set()
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Dict):
+            keys = {k.value for k in node.keys if isinstance(k, ast.Constant) and isinstance(k.value, str)}
+            if {'platform', 'path', 'sha256'} <= keys: paths.add(True)
+            if {'platform', 'url', 'archive_entry', 'sha256'} <= keys: urls.add(True)
+    if paths and urls:
+        functions = [n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == 'assemble']
+        if len(functions) == 1:
+            args = functions[0].args
+            defaults = dict(zip((a.arg for a in args.args[-len(args.defaults):]), args.defaults)) if args.defaults else {}
+            default = defaults.get('legacy_source_archives')
+            if isinstance(default, ast.Constant) and default.value is False:
+                return 2
+    if bool(paths) == bool(urls):
+        raise ValueError('Unknown Unity source archive layout')
+    return 1 if paths else 2
 
 
 def combine_desktop_notices(notices):
@@ -296,7 +328,7 @@ def verify_release_tree(root, existing, prepared):
         raise ValueError('Rebuilt package differs from the immutable release tag Unity package tree; use the original artifacts or a new version, never move the tag.')
 
 
-def create(desktop, mobile, output, version, commit, repository, author_name=None, author_email=None, legacy_notices=False):
+def create(desktop, mobile, output, version, commit, repository, author_name=None, author_email=None, legacy_notices=False, legacy_mobile=False, legacy_source_archives=False):
     """Create a deterministic complete package ZIP and size/provenance report; no Git writes."""
     output = Path(output); output.mkdir(parents=True, exist_ok=True)
     artifact = output/f'org.devcel.unity-{version}-git.zip'
@@ -305,7 +337,8 @@ def create(desktop, mobile, output, version, commit, repository, author_name=Non
         raise ValueError('Git package outputs already exist')
     with tempfile.TemporaryDirectory(prefix='devcel-upm-stage-') as temp:
         package = Path(temp)/'package'
-        result = assemble(desktop, mobile, package, version, commit, repository, legacy_notices=legacy_notices)
+        result = assemble(desktop, mobile, package, version, commit, repository, legacy_notices=legacy_notices,
+                          legacy_mobile=legacy_mobile, legacy_source_archives=legacy_source_archives)
         with zipfile.ZipFile(artifact, 'w', compression=zipfile.ZIP_DEFLATED) as archive:
             for path in sorted(package.rglob('*')):
                 if path.is_file():

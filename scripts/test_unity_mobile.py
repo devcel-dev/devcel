@@ -97,6 +97,14 @@ def write_zip(path, values):
 
 
 class MobileTests(unittest.TestCase):
+    def test_release_targets_are_detected_without_executing_source(self):
+        old = {key: mobile.PATHS[key] for key in ('android', 'ios')}
+        for paths, expected in ((old, ('android', 'ios')), (mobile.PATHS, ('android', 'ios', 'webgl'))):
+            self.assertEqual(mobile.source_systems('PATHS = '+repr(paths)+'\nraise RuntimeError()\n'), expected)
+        for source in ('PATHS = f()', "PATHS = {'android': '/invalid'}", 'pass'):
+            with self.assertRaises(ValueError):
+                mobile.source_systems(source)
+
     def test_legacy_mobile_requires_exact_old_payload_and_provenance(self):
         with tempfile.TemporaryDirectory() as temp:
             for system in ('android', 'ios'):

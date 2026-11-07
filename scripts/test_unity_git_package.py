@@ -76,6 +76,18 @@ class GitPackageTests(unittest.TestCase):
             source.write_text('NOTICE_LAYOUT_VERSION = 3\n',encoding='utf-8')
             with self.assertRaisesRegex(ValueError, 'Unknown Unity notice layout'): package.source_notice_layout(root)
 
+    def test_source_archive_layout_is_read_without_executing_source(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp); (root/'scripts').mkdir(); source = root/'scripts/unity_git_package.py'
+            for code, expected in (("sources.append({'platform': rid, 'path': output, 'sha256': digest})", 1),
+                                   ("sources.append({'platform': rid, 'url': url, 'archive_entry': name, 'sha256': digest})", 2),
+                                   ("SOURCE_ARCHIVE_LAYOUT_VERSION = 2", 2)):
+                source.write_text(code+'\nraise RuntimeError("do not execute")\n', encoding='utf-8')
+                self.assertEqual(package.source_archive_layout(root), expected)
+            source.write_text('unknown()\n', encoding='utf-8')
+            with self.assertRaisesRegex(ValueError, 'Unknown Unity source archive layout'):
+                package.source_archive_layout(root)
+
     def test_legacy_notice_layout_remains_reconstructable(self):
         with tempfile.TemporaryDirectory() as temp:
             root=Path(temp); desktop,mobile=fixture(root); dest=root/'package'

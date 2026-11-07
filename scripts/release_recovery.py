@@ -148,8 +148,16 @@ def inspect(environment=None, now=None):
         raise ValueError('Only verified tag/manual release builds can be recovered')
     if not SHA.fullmatch(run.get('head_sha', '')):
         raise ValueError('Invalid original run commit')
+    source_commit = identity.get('source_commit', identity['commit'])
+    source_file = api(repository, 'contents/scripts/unity_mobile.py?ref='+source_commit)
+    if source_file.get('encoding') != 'base64' or not isinstance(source_file.get('content'), str):
+        raise ValueError('Cannot identify original mobile release layout')
+    encoded = ''.join(source_file['content'].split())
+    systems = ci.unity_upm.unity_mobile.source_systems(base64.b64decode(encoded, validate=True).decode('utf-8'))
+    builds = {name: job for name, job in BUILDS.items()
+              if not name.startswith('release-mobile-') or name.removeprefix('release-mobile-') in systems}
     jobs = rows(api(repository, f'actions/runs/{run_id}/attempts/{attempt}/jobs?per_page=100', True), 'jobs')
-    required = ['validate', *BUILDS.values()]
+    required = ['validate', *builds.values()]
     if run['event'] == 'workflow_dispatch':
         required += ['prepare_manual', 'create_tag']
     selected = {}
@@ -161,11 +169,11 @@ def inspect(environment=None, now=None):
             raise ValueError('Required release job missing, duplicated, failed or from another attempt: '+name)
         selected[name] = matches[0]
     artifacts = rows(api(repository, f'actions/runs/{run_id}/artifacts?per_page=100', True), 'artifacts')
-    if any(a.get('name', '').startswith('release-') and a['name'] not in BUILDS for a in artifacts):
+    if any(a.get('name', '').startswith('release-') and a['name'] not in builds for a in artifacts):
         raise ValueError('Unexpected release artifact set')
     pinned = []
     now = datetime.now(timezone.utc) if now is None else now
-    for name, job_name in BUILDS.items():
+    for name, job_name in builds.items():
         matches = [a for a in artifacts if a.get('name') == name]
         if len(matches) != 1:
             raise ValueError('Missing or duplicate release artifact: '+name)
@@ -181,7 +189,7 @@ def inspect(environment=None, now=None):
             raise ValueError('Artifact expiry/digest/commit/attempt scope mismatch: '+name)
         pinned.append({k: artifact[k] for k in ('id', 'name', 'digest', 'size_in_bytes', 'created_at', 'updated_at', 'expires_at')})
         number(artifact['id'])
-    if len({a['id'] for a in pinned}) != len(BUILDS):
+    if len({a['id'] for a in pinned}) != len(builds):
         raise ValueError('Release artifact identities must be distinct')
     no_release(repository, tag)
     return {'repository': repository, 'repository_id': repo['id'], 'publisher': publisher,

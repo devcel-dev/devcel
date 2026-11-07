@@ -54,6 +54,8 @@ class RecoveryTests(unittest.TestCase):
                 'actions/runs/123/attempts/2/jobs?per_page=100': [{'jobs': self.jobs}],
                 'actions/runs/123/artifacts?per_page=100': [{'artifacts': self.artifacts}],
                 'releases?per_page=100': self.releases}
+        data['contents/scripts/unity_mobile.py?ref='+A] = {'encoding': 'base64', 'content': base64.b64encode(
+            (HERE/'unity_mobile.py').read_bytes()).decode()}
         return copy.deepcopy(data[suffix])
 
     def inspect(self):
@@ -66,6 +68,20 @@ class RecoveryTests(unittest.TestCase):
         self.assertEqual([a['id'] for a in plan['artifacts']], [5, 6, 7, 8, 9, 10, 11])
         self.assertEqual(plan['tag_identity'], {'object': T, 'type': 'tag', 'commit': A})
         self.assertIn('actions/runs/123/attempts/2/jobs?per_page=100', self.calls)
+
+    def test_legacy_source_requires_only_original_mobile_artifacts(self):
+        self.jobs = [j for j in self.jobs if j['name'] != 'mobile (webgl)']
+        self.artifacts = [a for a in self.artifacts if a['name'] != 'release-mobile-webgl']
+        original_api = self.api
+        def old_api(repository, suffix, paginate=False):
+            if suffix == 'contents/scripts/unity_mobile.py?ref='+A:
+                src = "PATHS = {'android': 'Plugins/Android/arm64-v8a/libdevcel_runtime.so', 'ios': 'Plugins/iOS/libdevcel_runtime.a'}"
+                return {'encoding': 'base64', 'content': base64.b64encode(src.encode()).decode()}
+            return original_api(repository, suffix, paginate)
+        with patch.object(r, 'api', side_effect=old_api), patch.object(r.ci, 'run', return_value=''), patch.object(r.ci, 'checked_commit', return_value=B):
+            plan = r.inspect(self.env, NOW)
+        self.assertEqual(len(plan['artifacts']), 6)
+        self.assertNotIn('release-mobile-webgl', [a['name'] for a in plan['artifacts']])
 
     def test_lightweight_tags_are_supported(self):
         self.tag = {'object': {'type': 'commit', 'sha': A}}
@@ -291,7 +307,8 @@ class PublisherSourceTests(unittest.TestCase):
                 directory.mkdir(); self.git(directory, 'init', '-q')
                 (directory/'identity').write_text(directory.name)
                 (directory/'scripts').mkdir()
-                (directory/'scripts/unity_git_package.py').write_text('NOTICE_LAYOUT_VERSION = 2\n')
+                (directory/'scripts/unity_git_package.py').write_text('NOTICE_LAYOUT_VERSION = 2\nSOURCE_ARCHIVE_LAYOUT_VERSION = 2\n')
+                (directory/'scripts/unity_mobile.py').write_text('PATHS = '+repr(r.ci.unity_upm.unity_mobile.PATHS)+'\n')
                 self.git(directory, 'add', 'identity', 'scripts')
                 self.git(directory, '-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid', 'commit', '-qm', directory.name)
             commit = self.git(source, 'rev-parse', 'HEAD')
@@ -326,7 +343,8 @@ class PublisherSourceTests(unittest.TestCase):
     def test_failed_recovery_callbacks_never_create_or_publish(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp); out = root/'release-publish'; out.mkdir()
-            (root/'scripts').mkdir(); (root/'scripts/unity_git_package.py').write_text('NOTICE_LAYOUT_VERSION = 2\n')
+            (root/'scripts').mkdir(); (root/'scripts/unity_git_package.py').write_text('NOTICE_LAYOUT_VERSION = 2\nSOURCE_ARCHIVE_LAYOUT_VERSION = 2\n')
+            (root/'scripts/unity_mobile.py').write_text('PATHS = '+repr(r.ci.unity_upm.unity_mobile.PATHS)+'\n')
             (out/'SOURCE-ACCESS.json').write_text('{}'); (out/'SHA256SUMS.txt').write_text('fixture')
             def fail(): raise ValueError('recovery guard')
             for stage in ('before_create', 'before_publish'):

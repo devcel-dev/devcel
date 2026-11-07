@@ -4,6 +4,7 @@ Internal CI archives are combined with the licensed desktop Unity distribution
 by unity_upm.py; they are not standalone user installation packages.
 """
 import argparse
+import ast
 import hashlib
 import json
 import os
@@ -36,6 +37,24 @@ ANDROID_ABIS = {
 }
 NDK_NOTICES = {'NOTICE': 'ThirdPartyNotices/AndroidNDK-NOTICE.txt',
                'NOTICE.toolchain': 'ThirdPartyNotices/AndroidNDK-NOTICE-toolchain.txt'}
+
+
+def source_systems(source):
+    """Read the literal archive targets from an immutable source without running it."""
+    tree = ast.parse(source)
+    values = [n.value for n in tree.body if isinstance(n, ast.Assign)
+              and any(isinstance(t, ast.Name) and t.id == 'PATHS' for t in n.targets)]
+    if len(values) != 1:
+        raise ValueError('Unknown mobile release layout')
+    try:
+        paths = ast.literal_eval(values[0])
+    except (ValueError, TypeError) as exc:
+        raise ValueError('Unknown mobile release layout') from exc
+    if not isinstance(paths, dict) or set(paths) not in ({'android', 'ios'}, {'android', 'ios', 'webgl'}):
+        raise ValueError('Unknown mobile release layout')
+    if any(paths.get(s) != PATHS[s] for s in paths):
+        raise ValueError('Unknown mobile release payload paths')
+    return tuple(s for s in ('android', 'ios', 'webgl') if s in paths)
 
 
 def valid_ios_flags(flags):
