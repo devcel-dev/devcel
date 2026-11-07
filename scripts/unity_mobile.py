@@ -349,9 +349,13 @@ def build(system, out, repository, commit, ndk=None):
         with tempfile.TemporaryDirectory(prefix='devcel-ios-simulator-link-') as temp:
             probe = Path(temp)/'probe.c'
             probe.write_text('extern unsigned int devcel_rt_api_version(void);\nint main(void) { return devcel_rt_api_version() == 1 ? 0 : 1; }\n', encoding='utf-8')
+            # clang already links libSystem for an iOS executable. Keep the
+            # original list in the package manifest for Unity/Xcode, but avoid
+            # passing a duplicate to this standalone link probe.
+            probe_flags = [flag for flag in simulator_flags if flag != '-lSystem']
             for arch in ('arm64', 'x86_64'):
                 run('xcrun', '--sdk', 'iphonesimulator', 'clang', '-target', arch + '-apple-ios13.0-simulator',
-                    '-isysroot', env['SDKROOT'], probe, universal, *simulator_flags,
+                    '-isysroot', env['SDKROOT'], probe, universal, *probe_flags,
                     '-Wl,-fatal_warnings', '-o', Path(temp)/('probe-' + arch), env=env)
         simulator_meta = (ROOT/'importers/unity-template/Tools~/NativePluginMetadata/iOSSimulator/libdevcel_runtime.a.meta').read_bytes()
         payload[IOS_SIMULATOR_PATH] = simulator_raw
