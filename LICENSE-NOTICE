@@ -29,6 +29,9 @@ All engine SDKs below are MIT licensed (each directory includes LICENSE):
 - importers/defold
 - importers/cocos
 - importers/javascript
+- importers/bevy
+- importers/roblox
+- importers/unity-mastermemory
 
 Matching release source and rebuild directions:
 Use the Release page for the binary's version and its SOURCE-ACCESS.json.

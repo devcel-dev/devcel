@@ -43,6 +43,7 @@ class GitPackageTests(unittest.TestCase):
                 shutil.copytree(repo/'importers/unity-template', dest, ignore=shutil.ignore_patterns('__pycache__'))
                 for name, raw in fixture_entries(rid).items():
                     path = stage/name; path.parent.mkdir(parents=True, exist_ok=True); path.write_bytes(raw)
+                packaging.install_mastermemory_tools(repo, dest/'Tools~')
                 packaging.bundle_documentation(repo, stage, dest, 'unity', dest/'Tools~', 'a'*40, 'owner/repo')
                 values = {p.relative_to(stage).as_posix(): p.read_bytes() for p in dest.rglob('*') if p.is_file()}
                 self.assertTrue(all(b'\r\n' not in raw for name, raw in values.items() if name.endswith('.md')))
@@ -53,6 +54,8 @@ class GitPackageTests(unittest.TestCase):
             package.assemble(desktop, mobile, root/'package', '0.1.0', 'a'*40, 'owner/repo')
             files = {p.relative_to(root/'package').as_posix():p.read_bytes() for p in (root/'package').rglob('*') if p.is_file()}
             self.assertFalse(any('Documentation~/repository/importers/unity/' in name for name in files), 'generated Unity package must not be embedded as documentation')
+            for name in ('generate.py', 'support.cs.txt', 'LICENSE'):
+                self.assertEqual(files['Tools~/MasterMemory/' + name], (repo/'importers/unity-mastermemory'/name).read_bytes())
             self.assertIn('Tools~/README.md', files)
             self.assertIn('Tools~/LICENSE-CLI-MIT.txt', files)
             self.assertNotIn('Tools~/Sources/win-x64/README.md', files)

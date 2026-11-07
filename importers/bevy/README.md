@@ -25,3 +25,7 @@ fn main() -> Result<(), String> {
 ```
 
 Call `reload_if_changed()` only when your import process reports a new file, and handle errors; failed reloads retain the previous snapshot. Existing snapshots stay valid across reloads; obtain a new snapshot to see updated values. Loading/reloading reads and parses the entire file and allocates, so avoid doing it each frame. The snapshot's indexed value reads borrow its data. Test your own target and deployment paths.
+
+## License and dependencies
+
+The Devcel adapter is MIT licensed; see [LICENSE](LICENSE). Bevy ECS and its transitive crates are external dependencies and are not bundled as source or binaries in this adapter. Bevy ECS 0.17 is MIT OR Apache-2.0; inspect the resolved Cargo.lock and provide the applicable third-party licenses and notices with any redistributed game binary. The repository's generated third-party inventory for the main workspace does not automatically cover this independent experimental Cargo workspace.

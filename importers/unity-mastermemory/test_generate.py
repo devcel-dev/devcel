@@ -12,6 +12,8 @@ class GenerateTests(unittest.TestCase):
 
     def test_generates_types_and_checks_schema_even_for_empty_tables(self):
         output = generate(self.bundle)
+        self.assertIn("Permission is hereby granted", output)
+        self.assertIn("Copyright (c) 2024 Devcel Studio Contributors", output)
         self.assertIn('public string Value_name', output)
         self.assertIn('public int Value_health', output)
         self.assertLess(output.index('schema.TryGetValue("health"'), output.index('foreach (var value in records)'))

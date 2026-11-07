@@ -166,12 +166,31 @@ class PackagingSources(unittest.TestCase):
             self.assertFalse((stage/'bindings').exists())
             self.assertFalse((stage/'third-party/generated').exists())
             self.assertFalse((stage/'importers/unity/Editor/NativeRequirements.json').exists())
+            self.assertFalse((stage/'importers/unity/Documentation~').exists())
+            self.assertTrue((stage/'importers/unity-template/Documentation~').is_dir())
             self.assertFalse((stage/'devcel-studio/public/legal/THIRD-PARTY-NOTICES.txt').exists())
             self.assertTrue((stage/'third-party/preferred-sources.json').is_file())
             for name in ('devcel-core/src/lib.rs', 'devcel-runtime/src/lib.rs',
                          'importers/unity/Runtime/Devcel.Unity.Runtime.asmdef',
                          'importers/unity/Editor/DevcelDistributionValidation.cs'):
                 self.assertEqual((stage/name).read_bytes(), (HERE.parent/name).read_bytes())
+
+    def test_mastermemory_local_builds_are_not_in_source_archive(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary); repo = root/'repo'; stage = root/'stage'; stage.mkdir()
+            for item in studio.SOURCE_ITEMS:
+                source = repo/item
+                if Path(item).suffix or item in ('LICENSE-NOTICE', 'README.md', 'CONTRIBUTING.md'):
+                    write(source, 'fixture')
+                else:
+                    source.mkdir(parents=True, exist_ok=True)
+            write(repo/'importers/unity-mastermemory/bin/a.dll', 'not source')
+            write(repo/'importers/unity-mastermemory/Tests/obj/cache.json', 'not source')
+            write(repo/'importers/unity-mastermemory/support.cs.txt', 'source')
+            studio.copy_source(repo, stage)
+            self.assertFalse((stage/'importers/unity-mastermemory/bin/a.dll').exists())
+            self.assertFalse((stage/'importers/unity-mastermemory/Tests/obj/cache.json').exists())
+            self.assertTrue((stage/'importers/unity-mastermemory/support.cs.txt').is_file())
 
     def test_bundled_npm_requires_verified_parent_and_child(self):
         with tempfile.TemporaryDirectory() as temporary:

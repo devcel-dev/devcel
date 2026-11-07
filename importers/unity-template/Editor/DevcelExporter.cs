@@ -63,6 +63,7 @@ namespace Devcel.Unity.Editor
                 project.lastExport = DateTime.Now;
                 project.lastExportCodeChanged = before == null || before != File.ReadAllText(codePath);
                 DevcelPlayModeReload.NotifyExport(project, settings, bundle, project.lastExportCodeChanged);
+                DevcelMasterMemory.NotifyExport(project, bundle);
                 if (refreshAssets) AssetDatabase.Refresh();
                 return true;
             }

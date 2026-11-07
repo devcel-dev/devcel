@@ -179,7 +179,7 @@ def importer_inventory(repo):
     for path in sorted((repo/'importers').glob('*/LICENSE')):
         name='devcel-'+path.parent.name
         result.append({'ecosystem':'devcel','name':name,
-            'license':'MIT','source':'Devcel engine SDK source included in importer package',
+            'license':'MIT','source':'Devcel engine SDK source at the matching release commit; see SOURCE-ACCESS.json',
             'scope':[name],'texts':[{'path':path.relative_to(repo).as_posix(),'text':path.read_bytes().decode('utf-8')}], 'errors':[]})
     return result
 

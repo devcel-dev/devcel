@@ -204,6 +204,18 @@ def bundle_documentation(repo, stage, dest, engine, bundled, source_commit, sour
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(text, encoding='utf-8', newline='\n')
 
+def install_mastermemory_tools(repo, bundled):
+    """Include the optional source generator and its complete first-party license."""
+    source = repo / 'importers/unity-mastermemory'
+    target = bundled / 'MasterMemory'
+    target.mkdir(parents=True, exist_ok=True)
+    for name in ('generate.py', 'support.cs.txt', 'LICENSE'):
+        path = source / name
+        if path.is_symlink() or not path.is_file():
+            raise RuntimeError('Missing or unsafe MasterMemory generator input: ' + str(path))
+        shutil.copyfile(path, target / name)
+
+
 def verify_cli(cli):
     help_text = run(cli, 'pull', '--help')
     for argument in ('--config', '--status', '--source'):
@@ -387,6 +399,7 @@ def main():
                 if engine=='unreal':
                     (dest/'Docs').mkdir(exist_ok=True); shutil.copyfile(manual,dest/'Docs/unreal.md')
             importer_versions.materialize(repo, engine, dest)
+            if engine == 'unity': install_mastermemory_tools(repo, bundled)
             (bundled/args.platform).mkdir(parents=True)
             shutil.copyfile(repo/'docs/development/importer-packaging.md', bundled/'README.md')
             installation_path = (dest/'INSTALL.md').relative_to(stage).as_posix()
