@@ -2,11 +2,11 @@
 
 ## Authoritative definitions
 
-- [Tauri commands](https://github.com/devcel-dev/devcel/blob/db0b980a13ec21e06065df2eabf6a932f6a39e0e/devcel-studio/src-tauri/src/lib.rs): native GUI entry points.
-- [Frontend API](https://github.com/devcel-dev/devcel/tree/db0b980a13ec21e06065df2eabf6a932f6a39e0e/devcel-studio/src/api): TypeScript calls and DTOs.
-- [Operations](https://github.com/devcel-dev/devcel/blob/db0b980a13ec21e06065df2eabf6a932f6a39e0e/devcel-core/src/operations.rs): CLI, P2P and authoring FFI operations/responses.
-- [Columns](https://github.com/devcel-dev/devcel/blob/db0b980a13ec21e06065df2eabf6a932f6a39e0e/devcel-core/src/column.rs): `ColumnSchema`, type settings and required `min_version` / `read_only` fields.
-- [Cell types](https://github.com/devcel-dev/devcel/blob/db0b980a13ec21e06065df2eabf6a932f6a39e0e/devcel-core/src/types.rs): String, Boolean, integers, floats, Color32/ColorFloat, references and curves.
+- [Tauri commands](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/devcel-studio/src-tauri/src/lib.rs): native GUI entry points.
+- [Frontend API](https://github.com/devcel-dev/devcel/tree/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/devcel-studio/src/api): TypeScript calls and DTOs.
+- [Operations](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/devcel-core/src/operations.rs): CLI, P2P and authoring FFI operations/responses.
+- [Columns](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/devcel-core/src/column.rs): `ColumnSchema`, type settings and required `min_version` / `read_only` fields.
+- [Cell types](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/devcel-core/src/types.rs): String, Boolean, integers, floats, Color32/ColorFloat, references and curves.
 
 Use the same checkout's definitions for every parameter.
 
@@ -20,7 +20,7 @@ Use UUID identities, not display names or visual row/column indices. Capture the
 
 Send complete column DTOs, including required `min_version` and `read_only`, and delegate input/conflict validation to Rust. Warning approval uses backend tokens and cannot be reused after target/revision changes. Cancellation, failure and stale replies cannot advance success notifications, history or persistence.
 
-See [CLI](../manual/cli.md), [plugin SDK](https://github.com/devcel-dev/devcel/blob/db0b980a13ec21e06065df2eabf6a932f6a39e0e/devcel-studio/README.md), [runtime export](runtime-export.md) and [interfaces](../manual/interfaces.md).
+See [CLI](../manual/cli.md), [plugin SDK](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/devcel-studio/README.md), [runtime export](runtime-export.md) and [interfaces](../manual/interfaces.md).
 
 ## Row labels and deletion
 

@@ -24,7 +24,7 @@ namespace Devcel.Unity
     {
         public const uint RuntimeApiVersion = 1;
 
-#if UNITY_IOS && !UNITY_EDITOR
+#if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         private const string NativeLibrary = "__Internal";
 #else
         private const string NativeLibrary = "devcel_runtime";

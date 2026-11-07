@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "system": "webgl",
+  "version": "0.0.3",
+  "source_repository": "devcel-dev/devcel",
+  "source_commit": "92be5fb3b31da1856e25ccb21582d46c4eb5f43c",
+  "source_fingerprint": "3f33db348a9a23990942d45acb552ebf8d6d6c56ad4a57646aff77f18f2f4135",
+  "target": "wasm32-unknown-emscripten",
+  "path": "Plugins/WebGL/libdevcel_runtime.a",
+  "rustc": "rustc 1.85.1 (4eb161250 2025-03-15)",
+  "webgl_rust": "1.85.1",
+  "sha256": "3dda78fc1c668c57deb7459c3378f71c839b95c314d311889b077a8f4990f2ca",
+  "meta_sha256": "f89bea080fe6098550a68b61373c29ab4c820147dba16fe0f6d5c9d4603072cc"
+}
