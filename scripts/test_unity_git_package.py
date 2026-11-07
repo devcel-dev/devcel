@@ -65,6 +65,40 @@ class GitPackageTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'documentation link'):
                 package.validate_documentation(files)
 
+    def test_source_notice_layout_is_read_without_executing_source(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp); (root/'scripts').mkdir(); source=root/'scripts/unity_git_package.py'
+            self.assertEqual(package.source_notice_layout(root), 1)
+            source.write_text('raise RuntimeError("must not execute")\n',encoding='utf-8')
+            self.assertEqual(package.source_notice_layout(root), 1)
+            source.write_text('NOTICE_LAYOUT_VERSION = 2\nraise RuntimeError("must not execute")\n',encoding='utf-8')
+            self.assertEqual(package.source_notice_layout(root), 2)
+            source.write_text('NOTICE_LAYOUT_VERSION = 3\n',encoding='utf-8')
+            with self.assertRaisesRegex(ValueError, 'Unknown Unity notice layout'): package.source_notice_layout(root)
+
+    def test_legacy_notice_layout_remains_reconstructable(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp); desktop,mobile=fixture(root); dest=root/'package'
+            package.assemble(desktop,mobile,dest,'0.1.0','a'*40,'owner/repo',legacy_notices=True)
+            original=b'notices'
+            self.assertFalse((dest/'ThirdPartyNotices/NOTICE-SOURCES.json').exists())
+            for rid in package.RIDS:
+                self.assertEqual((dest/'ThirdPartyNotices'/rid/'THIRD-PARTY-NOTICES.txt').read_bytes(), original)
+            self.assertEqual((dest/'ThirdPartyNotices/THIRD-PARTY-NOTICES.txt').read_bytes(),
+                             b''.join(b'\n===== '+rid.encode()+b' =====\n'+original for rid in package.RIDS))
+
+    def test_notice_deduplication_preserves_each_distinct_original(self):
+        import hashlib
+        originals = {rid: (b'notice A\r\n' if rid != 'osx-x64' else b'notice B\n') for rid in package.RIDS}
+        aggregate, encoded = package.combine_desktop_notices(originals)
+        index = json.loads(encoded)
+        self.assertEqual(aggregate.count(b'notice A\r\n'), 1)
+        self.assertEqual(aggregate.count(b'notice B\n'), 1)
+        for rid, raw in originals.items():
+            item = index['sources'][rid]
+            self.assertEqual(aggregate[item['offset']:item['offset']+item['length']], raw)
+            self.assertEqual(item['sha256'], hashlib.sha256(raw).hexdigest())
+
     def test_checked_in_unity_documentation_has_no_recursive_package_copy(self):
         root = Path(__file__).resolve().parents[1]/'importers/unity'
         files = {path.relative_to(root).as_posix(): path.read_bytes() if path.suffix == '.md' else b''
@@ -72,6 +106,18 @@ class GitPackageTests(unittest.TestCase):
         nested = 'Documentation~/repository/importers/unity/Documentation~/repository/'
         self.assertFalse(any(name.startswith(nested) for name in files))
         package.validate_documentation(files)
+
+    def test_checked_in_notice_index_preserves_platform_hashes(self):
+        import hashlib
+        root = Path(__file__).resolve().parents[1]/'importers/unity/ThirdPartyNotices'
+        aggregate = (root/'THIRD-PARTY-NOTICES.txt').read_bytes()
+        index = json.loads((root/'NOTICE-SOURCES.json').read_text(encoding='utf-8'))
+        self.assertEqual(set(index['sources']), set(package.RIDS))
+        for rid, item in index['sources'].items():
+            original = aggregate[item['offset']:item['offset']+item['length']]
+            self.assertEqual(len(original), item['length'])
+            self.assertEqual(hashlib.sha256(original).hexdigest(), item['sha256'])
+            self.assertFalse((root/rid/'THIRD-PARTY-NOTICES.txt').exists())
 
     def test_mastermemory_inputs_normalize_windows_line_endings(self):
         repo = Path(__file__).resolve().parents[1]
@@ -140,7 +186,11 @@ class GitPackageTests(unittest.TestCase):
                 self.assertEqual(entry['url'], f'https://github.com/owner/repo/releases/download/v0.1.0/devcel-unity-0.1.0-{rid}.zip')
                 self.assertEqual(entry['archive_entry'], 'devcel-unity/Tools~/cli-source.tar.gz')
                 self.assertEqual(entry['sha256'], __import__('hashlib').sha256(b'source').hexdigest())
-                self.assertTrue((clone/'ThirdPartyNotices'/rid/'THIRD-PARTY-NOTICES.txt').is_file())
+                notices = (clone/'ThirdPartyNotices/THIRD-PARTY-NOTICES.txt').read_bytes()
+                index = json.loads((clone/'ThirdPartyNotices/NOTICE-SOURCES.json').read_text(encoding='utf-8'))['sources'][rid]
+                original = notices[index['offset']:index['offset']+index['length']]
+                self.assertEqual(original, b'notices')
+                self.assertEqual(__import__('hashlib').sha256(original).hexdigest(), index['sha256'])
             self.assertEqual(json.loads((clone/'package.json').read_text())['version'], '0.1.0')
             (clone/'extra.txt').write_text('rebuild payload drift')
             changed = package.release_commit(clone, repo, source, '0.1.0', author_name='eight-ways',

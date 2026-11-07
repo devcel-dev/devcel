@@ -290,7 +290,9 @@ class PublisherSourceTests(unittest.TestCase):
             for directory in (publisher, source):
                 directory.mkdir(); self.git(directory, 'init', '-q')
                 (directory/'identity').write_text(directory.name)
-                self.git(directory, 'add', 'identity')
+                (directory/'scripts').mkdir()
+                (directory/'scripts/unity_git_package.py').write_text('NOTICE_LAYOUT_VERSION = 2\n')
+                self.git(directory, 'add', 'identity', 'scripts')
                 self.git(directory, '-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid', 'commit', '-qm', directory.name)
             commit = self.git(source, 'rev-parse', 'HEAD')
             self.assertNotEqual(commit, self.git(publisher, 'rev-parse', 'HEAD'))
@@ -324,6 +326,7 @@ class PublisherSourceTests(unittest.TestCase):
     def test_failed_recovery_callbacks_never_create_or_publish(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp); out = root/'release-publish'; out.mkdir()
+            (root/'scripts').mkdir(); (root/'scripts/unity_git_package.py').write_text('NOTICE_LAYOUT_VERSION = 2\n')
             (out/'SOURCE-ACCESS.json').write_text('{}'); (out/'SHA256SUMS.txt').write_text('fixture')
             def fail(): raise ValueError('recovery guard')
             for stage in ('before_create', 'before_publish'):

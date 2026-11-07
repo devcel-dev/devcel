@@ -61,3 +61,7 @@ Only `-1` means all content; `0..4294967295` are filter values. Input uses `Long
 With no registered sources, native libraries are optional and installing the package alone need not block Android or other builds. Known authoring-data leaks and invalid native settings are still rejected. The gate cannot track arbitrary encrypted archives or user-defined copies of authoring data; inspect the final Player and BuildReport too.
 
 Android ARM64 and iOS ARM64 device builds require the complete Git UPM release package (or an offline tarball containing mobile runtimes) and matching hashes in `player_runtimes`. The build gate checks Android architecture/API and 16 KB-compatible ELF segments, or iOS Device SDK/minimum OS and ARM64 device Mach-O objects in the static archive. Unsupported ABIs, Simulator and WebGL fail explicitly. `DevcelBundle.LoadText` retrieves the bundle; `FromJson` uses the native runtime. See [mobile Players](MOBILE.md) for prerequisites and acceptance.
+
+## Third-party notices
+
+The Git package stores each distinct desktop notice once in `ThirdPartyNotices/THIRD-PARTY-NOTICES.txt`. `ThirdPartyNotices/NOTICE-SOURCES.json` identifies each platform's original byte range and SHA-256 (offsets and lengths are measured in bytes, before text decoding); Android NDK notices are separate. The original release ZIPs retain their platform-specific notices.

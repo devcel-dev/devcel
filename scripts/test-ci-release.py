@@ -1078,6 +1078,8 @@ class ReleaseTests(unittest.TestCase):
         def fixture():
             with tempfile.TemporaryDirectory() as directory:
                 root = Path(directory)
+                (root/'scripts').mkdir()
+                (root/'scripts/unity_git_package.py').write_text('NOTICE_LAYOUT_VERSION = 2\n')
                 output = root/'release-publish'
                 output.mkdir()
                 (output/'SOURCE-ACCESS.json').write_text('{}\n')
@@ -1125,7 +1127,8 @@ class ReleaseTests(unittest.TestCase):
 
     def check_new_release_publication(self, resume):
         events = []
-        def collect(*args):
+        def collect(*args, **kwargs):
+            self.assertEqual(kwargs['notice_layout'], 2)
             events.append('collect'); return ['asset']
         def stage(*args):
             events.append('stage'); return 'b'*40

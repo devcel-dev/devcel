@@ -817,7 +817,7 @@ def package():
             '--tag', os.environ['RELEASE_TAG'], '--verify-urls')
 
 
-def collect_assets(downloads, destination, tag, expected_commit=None, expected_repository=None):
+def collect_assets(downloads, destination, tag, expected_commit=None, expected_repository=None, notice_layout=unity_git_package.NOTICE_LAYOUT_VERSION):
     platforms = {'Linux': ('linux', 'linux-x64'), 'Windows': ('windows', 'win-x64'),
                  'macOS-X64': ('macos-x64', 'osx-x64'), 'macOS-ARM64': ('macos-arm64', 'osx-arm64')}
     expected_studio = {label: studio_asset_name(system, tag)
@@ -894,7 +894,8 @@ def collect_assets(downloads, destination, tag, expected_commit=None, expected_r
     files += unity_git_package.create(
         {rid: destination/f'devcel-unity-{tag[1:]}-{rid}.zip' for rid in unity_git_package.RIDS},
         mobile, destination, tag[1:], expected_commit, expected_repository,
-        'github-actions[bot]', '41898282+github-actions[bot]@users.noreply.github.com')
+        'github-actions[bot]', '41898282+github-actions[bot]@users.noreply.github.com',
+        legacy_notices=notice_layout == 1)
     sums = destination/'SHA256SUMS.txt'
     sums.write_text(''.join(hashlib.sha256(path.read_bytes()).hexdigest()+'  '+path.name+'\n'
                             for path in sorted(files)), encoding='utf-8', newline='\n')
@@ -944,7 +945,8 @@ def publish(source_root=None, before_create=None, before_publish=None):
         raise ValueError('A release already exists for this tag; inspect it before retrying.')
     repository = os.environ['GH_REPO']
     run(sys.executable, ROOT/'scripts/generate-third-party-notices.py', '--ensure', '--repo', source_root)
-    files = collect_assets(ROOT/'release-downloads', ROOT/'release-publish', tag, commit, repository)
+    files = collect_assets(ROOT/'release-downloads', ROOT/'release-publish', tag, commit, repository,
+                           notice_layout=unity_git_package.source_notice_layout(source_root))
     if existing_git_release:
         prepared = unity_git_package.stage_release(
             ROOT/'release-publish'/f'org.devcel.unity-{tag[1:]}-git.zip',
