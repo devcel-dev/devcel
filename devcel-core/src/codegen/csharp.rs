@@ -200,7 +200,7 @@ fn emit_table(s: &mut String, table: &super::CgTable, namespace_name: &str, clas
         "        public {base}Row this[int row] {{ get {{ if (row < 0 || row >= Count) throw new ArgumentOutOfRangeException(nameof(row)); return new {base}Row(this, row); }} }}\n"
     ));
     s.push_str(&format!(
-        "        public {base}Row? ById(string uuid)\n        {{\n            int r = DevcelNative.devcel_rt_row_by_uuid(Db, TableIndex, uuid);\n            return r < 0 ? ({base}Row?)null : new {base}Row(this, r);\n        }}\n"
+        "        /// <summary>Find a low-level, generation-bound row by UUID.</summary>\n        /// <remarks>The input is marshalled to UTF-8 for native lookup. Marshalling work alone does not establish a managed GC allocation; profile the target runtime. For live, managed allocation-free reads, use the generated Get/Handle API.</remarks>\n        public {base}Row? ById(string uuid)\n        {{\n            int r = DevcelNative.devcel_rt_row_by_uuid(Db, TableIndex, uuid);\n            return r < 0 ? ({base}Row?)null : new {base}Row(this, r);\n        }}\n"
     ));
     s.push_str(&format!(
         "        public IEnumerable<{base}Row> All\n        {{\n            get {{ int c = Count; for (int i = 0; i < c; i++) yield return this[i]; }}\n        }}\n"
@@ -260,6 +260,7 @@ fn emit_column_accessor(s: &mut String, col: &CgColumn, namespace_name: &str) {
     let access = "_t.DbAt(_generation), _t.TableIndex, _row, _t.".to_string() + &idx;
 
     if col.value_type == ValueType::Reference {
+        s.push_str("        /// <remarks>Low-level reference lookup reads a native UTF-8 string; nonempty results create a managed string. Prefer the generated Handle API for repeated reads.</remarks>\n");
         match &col.reference_target {
             Some(target) => {
                 s.push_str(&format!(
@@ -291,6 +292,9 @@ fn emit_column_accessor(s: &mut String, col: &CgColumn, namespace_name: &str) {
         }
     }
     let ty = scalar_prop_type(&col.value_type);
+    if ty == "string" {
+        s.push_str("        /// <remarks>Low-level native string reads copy nonempty UTF-8 data into a managed string. Prefer the generated Handle API for repeated reads.</remarks>\n");
+    }
     let expr = scalar_getter_expr(&col.value_type, &access);
     s.push_str(&format!(
         "        public {ty} {} => {expr};\n",

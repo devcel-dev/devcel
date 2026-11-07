@@ -130,7 +130,9 @@ def bundle_documentation(repo, stage, dest, engine, bundled, source_commit, sour
     """
     repo = repo.resolve()
     sources = {}
-    original = repo / 'importers' / engine
+    # Unity's checked-in package is generated; never use it as a documentation
+    # source or each release can embed the previous release recursively.
+    original = repo / 'importers' / ('unity-template' if engine == 'unity' else engine)
     if engine == 'godot': original /= 'addons/devcel'
     for path in dest.rglob('*.md'):
         source = original / path.relative_to(dest)
@@ -165,6 +167,19 @@ def bundle_documentation(repo, stage, dest, engine, bundled, source_commit, sour
             target = (source.parent / unquote(url.path)).resolve()
             if not target.is_relative_to(repo) or not target.exists():
                 raise RuntimeError(f'Documentation target missing or outside repository: {source}: {href}')
+            # Links in repository manuals may name the generated Unity package.
+            # Resolve editable documentation to the template, and never embed
+            # generated-only files (especially prior Documentation~/repository trees).
+            generated_unity = repo / 'importers/unity'
+            if engine == 'unity' and target.is_relative_to(generated_unity):
+                template_target = repo / 'importers/unity-template' / target.relative_to(generated_unity)
+                if template_target.is_file():
+                    target = template_target.resolve()
+                else:
+                    kind = 'tree' if target.is_dir() else 'blob'
+                    replacement = f'https://github.com/{source_repository}/{kind}/{quote(source_commit, safe="")}/{quote(target.relative_to(repo).as_posix(), safe="/")}'
+                    edits.append((start, end, replacement))
+                    continue
             # Public docs/images/licenses are distributable documentation. Do not
             # pull GPL Studio code or documentation into an MIT importer through a link.
             is_document = target.is_file() and target.relative_to(repo).parts[0] != 'devcel-studio' and (target.suffix.lower() in ('.md', '.png', '.jpg', '.jpeg', '.svg', '.gif', '.webp') or target.name.startswith(('LICENSE', 'NOTICE')))

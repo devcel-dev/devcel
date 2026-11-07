@@ -124,20 +124,23 @@ using UnityEngine;
 public class ReadMaster : MonoBehaviour
 {
     private MasterDatabase db;
+    private EnemiesHandle enemy;
     private int? lastHp;
 
     void Start()
     {
         db = MasterDatabase.Open(
             DevcelBundle.ResolveStreamingAssetsPath("Devcel/Master/master.json"));
+        enemy = db.Get(new EnemiesKey("11111111-1111-4111-8111-111111111111"));
     }
 
     void Update()
     {
         if (db == null) return;
-        var enemy = db.Enemies.ById("11111111-1111-4111-8111-111111111111");
-        if (!enemy.HasValue) return;
-        int hp = enemy.Value.Hp;
+        if (enemy == null)
+            enemy = db.Get(new EnemiesKey("11111111-1111-4111-8111-111111111111"));
+        if (enemy == null || !enemy.Exists) return;
+        int hp = enemy.Hp;
         if (lastHp != hp)
         {
             Debug.Log($"Slime HP: {hp}");
@@ -152,12 +155,12 @@ public class ReadMaster : MonoBehaviour
 }
 ```
 
-The component reacquires the row each frame and logs only changes. During Play, another Studio edit/save triggers Auto import, then hot reload updates the database.
+The component resolves a Handle once, reads its current value each frame and logs only changes. During Play, another Studio edit/save triggers Auto import, then hot reload updates the database. If the first lookup returns null because the row is missing, the component retries until the row becomes available.
 
-- ById searches by row UUID. Missing or version-excluded rows return null.
+- Get searches by row UUID. Missing or version-excluded rows return null; a retained Handle follows successful updates.
 - Open(path) reads a file; FromJson(text) reads supplied JSON. Both require the native runtime.
 - Dispose databases you open yourself.
-- After ReloadIfChanged, reacquire rows by UUID. A malformed update fails while preserving the current valid database.
+- Retained Handles follow successful reloads; low-level Row values must be reacquired. A malformed update fails while preserving the current valid database.
 - Importer Play hot reload targets file-backed databases. FromJson has no backing file and receives no automatic file notification.
 - If generated C# or the class name changes, wait for compilation and restart Play.
 
@@ -171,7 +174,7 @@ var db = databaseAsset.GetDatabase("master",
 
 The asset owns this database and disposes it through CloseProject, CloseAll, or asset deactivation. The caller leaves disposal to the asset. After replacing a TextAsset, use ReopenDatabase and reacquire rows.
 
-The [MasterMemory proof of concept](../../importers/unity-mastermemory/README.md) demonstrates a separate hand-mapped .NET conversion. It is experimental and is not yet a Unity integration or general code generator.
+The experimental [MasterMemory generator](../../importers/unity-mastermemory/README.md) produces schema and a bundle-to-binary builder. Unity source generation and Windows Mono and IL2CPP Players have been checked using manually placed NuGet dependencies.
 
 ### Allocation and threading contract
 
