@@ -957,7 +957,8 @@ def publish(source_root=None, before_create=None, before_publish=None):
         prepared = unity_git_package.stage_release(
             ROOT/'release-publish'/f'org.devcel.unity-{tag[1:]}-git.zip',
             ROOT/'release-publish'/f'org.devcel.unity-{tag[1:]}-git.json', source_root,
-            'github-actions[bot]', '41898282+github-actions[bot]@users.noreply.github.com')
+            'github-actions[bot]', '41898282+github-actions[bot]@users.noreply.github.com',
+            slim=unity_git_package.source_git_package_layout(source_root) == 2)
         unity_git_package.verify_release_tree(source_root, existing_git_release, prepared)
     release_privacy.check_bytes((ROOT/'release-publish'/release_source.ASSET).read_bytes(), release_source.ASSET)
     release_privacy.check_bytes((ROOT/'release-publish'/'SHA256SUMS.txt').read_bytes(), 'SHA256SUMS.txt')
@@ -977,7 +978,8 @@ def publish(source_root=None, before_create=None, before_publish=None):
         release_commit = unity_git_package.stage_release(
             ROOT/'release-publish'/f'org.devcel.unity-{tag[1:]}-git.zip',
             ROOT/'release-publish'/f'org.devcel.unity-{tag[1:]}-git.json', source_root,
-            'github-actions[bot]', '41898282+github-actions[bot]@users.noreply.github.com')
+            'github-actions[bot]', '41898282+github-actions[bot]@users.noreply.github.com',
+            slim=unity_git_package.source_git_package_layout(source_root) == 2)
         remote = 'https://github.com/'+repository+'.git'
         if existing_prepared_tag:
             if existing_prepared_tag != release_commit+'\trefs/tags/'+tag:

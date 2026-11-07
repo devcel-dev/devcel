@@ -31,6 +31,28 @@ def fixture(root, commit="a"*40):
 
 
 class GitPackageTests(unittest.TestCase):
+    def test_checked_in_git_package_keeps_native_binaries_out_of_history(self):
+        root = Path(__file__).resolve().parents[1]/'importers/unity'
+        self.assertFalse((root/'Plugins').exists())
+        self.assertFalse((root/'Tools~/manifest.json').exists())
+        for rid in package.RIDS:
+            self.assertFalse((root/'Tools~'/rid).exists())
+        bootstrap = json.loads((root/'Editor/NativeBootstrap.json').read_text(encoding='utf-8'))
+        self.assertEqual(bootstrap['version'], json.loads((root/'package.json').read_text(encoding='utf-8'))['version'])
+        self.assertRegex(bootstrap['archive_sha256'], r'^[0-9a-f]{64}$')
+
+    def test_checked_in_sdk_contains_the_current_editor_and_mastermemory_sources(self):
+        root = Path(__file__).resolve().parents[1]/'importers'
+        for section in ('Editor', 'Runtime'):
+            for source in (root/'unity-template'/section).rglob('*'):
+                if source.is_file() and source.suffix in ('.cs', '.asmdef', '.meta'):
+                    target = root/'unity'/source.relative_to(root/'unity-template')
+                    self.assertTrue(target.is_file(), str(target))
+                    self.assertEqual(target.read_bytes(), source.read_bytes(), str(target))
+        for name in ('generate.py', 'support.cs.txt', 'live.cs.txt', 'LICENSE'):
+            self.assertEqual((root/'unity/Tools~/MasterMemory'/name).read_text(encoding='utf-8'),
+                             (root/'unity-mastermemory'/name).read_text(encoding='utf-8'))
+
     def test_real_documentation_graph_and_windows_crlf_inputs(self):
         repo = Path(__file__).resolve().parents[1]
         spec = importlib.util.spec_from_file_location('packaging_fixture', repo/'scripts/package-importers.py')
@@ -197,6 +219,18 @@ class GitPackageTests(unittest.TestCase):
             self.assertFalse(report['git_lfs'])
             self.assertLess(report['largest_file_bytes'], package.MAX_BLOB)
             release = package.stage_release(*outputs, repo, 'eight-ways', '145819685+eight-ways@users.noreply.github.com')
+            slim = package.stage_release(*outputs, repo, 'eight-ways', '145819685+eight-ways@users.noreply.github.com', slim=True)
+            self.assertEqual(package.source_identity(repo, slim), source)
+            slim_files = git('ls-tree', '-r', '--name-only', slim, '--', 'importers/unity').splitlines()
+            self.assertFalse(any(name.startswith('importers/unity/Plugins/') or name.endswith('/Tools~/manifest.json') for name in slim_files))
+            bootstrap = json.loads(git('show', slim+':importers/unity/Editor/NativeBootstrap.json'))
+            self.assertEqual(bootstrap['archive_sha256'], report['archive_sha256'])
+            self.assertEqual(bootstrap['source_commit'], source)
+            bad_report = root/'bad-report.json'
+            bad_report.write_text(json.dumps(dict(report, source_repository='other/repo')), encoding='utf-8')
+            with self.assertRaisesRegex(ValueError, 'does not match'):
+                package.stage_release(outputs[0], bad_report, repo, 'eight-ways',
+                                      '145819685+eight-ways@users.noreply.github.com', slim=True)
             self.assertEqual(package.stage_release(*outputs, repo, 'eight-ways', '145819685+eight-ways@users.noreply.github.com'), release)
             self.assertEqual(package.source_identity(repo, release), source)
             package.verify_release_tree(repo, release, release)
@@ -246,6 +280,11 @@ class GitPackageTests(unittest.TestCase):
             git('add', '.')
             git('-c', 'user.name=eight-ways', '-c', 'user.email=145819685+eight-ways@users.noreply.github.com', 'commit', '-qm', 'Invalid')
             with self.assertRaises(ValueError): package.source_identity(repo, git('rev-parse', 'HEAD'))
+            other_head = git('rev-parse', 'HEAD')
+            self.assertEqual(package.stage_release(*outputs, repo, 'eight-ways',
+                '145819685+eight-ways@users.noreply.github.com', slim=True), slim)
+            self.assertEqual(git('rev-parse', 'HEAD'), other_head)
+            self.assertEqual(git('status', '--porcelain'), '')
 
     def test_identity_sdk_collision_and_size_budget_fail_closed(self):
         for case in ('commit', 'sdk', 'size', 'missing'):

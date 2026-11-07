@@ -1,6 +1,6 @@
 # Bundled Editor CLI
 
-Git UPM releases and installation ZIPs include `Tools~/<rid>/devcel` (`devcel.exe` on Windows). `manifest.json` declares the version, supported runtime identifiers (RIDs), and SHA-256 of each binary.
+Installation ZIPs and the downloaded native companion include `Tools~/<rid>/devcel` (`devcel.exe` on Windows). The lightweight Git UPM package downloads the matching companion through **Devcel > Download Matching Native Tools**. Its native `manifest.json` declares the version, supported runtime identifiers (RIDs), and SHA-256 of each binary.
 
 - The importer uses only the bundled CLI matching the OS and CPU.
 - Unity excludes `Tools~` from its asset pipeline. Keep the CLI, corresponding source, and notices out of Player builds.

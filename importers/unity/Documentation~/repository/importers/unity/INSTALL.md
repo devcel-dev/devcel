@@ -29,12 +29,12 @@ Put generated JSON/code outside the source project and reserve its output paths 
 
 1. Open **Window > Package Manager > + > Add package from git URL** (or **Install package from Git URL**).
 2. Enter `https://github.com/devcel-dev/devcel.git?path=/importers/unity`. To pin a release, append `#v<version>` using a published tag listed by [Releases](https://github.com/devcel-dev/devcel/releases). Git must be installed on your computer.
-3. The same URL includes all four desktop Editor CLIs, desktop runtimes and Android/iOS ARM64 device runtimes. No native companion or PATH CLI is required.
+3. Choose **Devcel > Download Matching Native Tools**. Unity downloads the matching release archive, verifies its SHA-256 and installs a project-local `org.devcel.native` companion with the Editor CLI and Player runtimes. Network access is required; Git LFS and a CLI on PATH are not. Older tagged releases may already bundle the binaries and do not need this step.
 4. Open **Devcel > Importer**.
 
 As of 2026-11-04, the published v0.0.1 release contains Windows/Linux importer ZIPs only. The Git-installable package, macOS and mobile distributions described here require a newer release published by this pipeline; they are not downloads available in v0.0.1.
 
-The default branch contains the most recently generated package after the first new release. The editable template is `importers/unity-template`. Preserve the Git dependency in `Packages/manifest.json` and its resolved commit in `Packages/packages-lock.json`.
+Ignore `Packages/org.devcel.native/` in the game repository; each developer downloads that companion locally. The default branch contains the most recently generated package after the first new release. The editable template is `importers/unity-template`. Preserve the Git dependency in `Packages/manifest.json` and its resolved commit in `Packages/packages-lock.json`.
 
 ![Importer after a successful reimport, with FileWatch enabled](../../docs/manual/images/unity-importer-overview.png)
 

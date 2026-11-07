@@ -103,6 +103,20 @@ class RecoveryTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'outside'):
                 r.tag_identity('owner/repo','v0.1.0')
 
+    def test_slim_git_release_resolves_bootstrap_source_parent(self):
+        entry = {'path':'source', 'mode':'100644', 'type':'blob', 'sha':'c'*40}
+        bootstrap = 'importers/unity/Editor/NativeBootstrap.json'
+        data = {
+            'git/ref/tags/v0.1.0': {'object': {'type':'commit', 'sha':T}},
+            'commits/refs/tags/v0.1.0': {'sha':T, 'parents':[{'sha':A}], 'commit':{'tree':{'sha':'d'*40}}},
+            'git/trees/'+'d'*40+'?recursive=1': {'tree':[entry, {'path':bootstrap, 'mode':'100644', 'type':'blob', 'sha':'f'*40}]},
+            'git/commits/'+A: {'tree':{'sha':'1'*40}},
+            'git/trees/'+'1'*40+'?recursive=1': {'tree':[entry]},
+            'contents/'+bootstrap+'?ref='+T: {'content':base64.b64encode(json.dumps({
+                'source_commit':A, 'source_repository':'owner/repo', 'version':'0.1.0'}).encode()).decode()}}
+        with patch.object(r, 'api', side_effect=lambda repo, suffix: data[suffix]):
+            self.assertEqual(r.tag_identity('owner/repo', 'v0.1.0')['source_commit'], A)
+
     def test_manual_preparation_does_not_assume_run_head_is_built_commit(self):
         for item in (self.run, self.latest):
             item.update(event='workflow_dispatch', head_branch='main', head_sha='c'*40)

@@ -69,6 +69,8 @@ def tag_identity(repository, tag):
             raise ValueError('Incomplete release tree')
         entries = {e['path']: e for e in tree['tree'] if e.get('type') != 'tree'}
         manifest_path = 'importers/unity/Tools~/manifest.json'
+        if manifest_path not in entries:
+            manifest_path = 'importers/unity/Editor/NativeBootstrap.json'
         if manifest_path in entries:
             parents = detail['parents']
             if len(parents) != 1:

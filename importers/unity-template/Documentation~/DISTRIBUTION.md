@@ -38,7 +38,7 @@ The importer selects `Tools~/<rid>/devcel[.exe]` through the manifest. On the ta
 python scripts/package-importers.py --out dist/importers --source-repository <owner/repo> --source-commit <git-commit>
 ```
 
-The packager performs release CLI/runtime builds, metadata checks, source/notice collection, and binary hashing. Release collection combines all four desktop ZIPs and both mobile archives into a complete package under `importers/unity` in a new release commit, before creating the normal `v<version>` tag. OS-specific UPM `.tgz` files remain optional offline alternatives. See [Git UPM release generation](../../../docs/development/importer-packaging.md#git-upm-release-generation). Packaging does not perform a real Unity import or Player execution test. Windows helper scripts use this same build path. macOS requires Xcode and both Rust targets to create a universal runtime dylib.
+The packager performs release CLI/runtime builds, metadata checks, source/notice collection, and binary hashing. Release collection combines all four desktop ZIPs and the Android, iOS and WebGL archives into a verified release archive. The new release commit contains a lightweight `importers/unity` package with the archive SHA-256; the Editor downloads and installs the matching native companion after the Git installation. OS-specific UPM `.tgz` files remain optional offline alternatives. See [Git UPM release generation](../../../docs/development/importer-packaging.md#git-upm-release-generation). Packaging does not perform a real Unity import or Player execution test. Windows helper scripts use this same build path. macOS requires Xcode and both Rust targets to create a universal runtime dylib.
 
 Editor CLI OS and Player runtime OS are separate requirements. A single-RID ZIP may lack the runtime for another Player target; the missing-runtime gate remains active. See [bundled CLI packaging](../../../docs/development/importer-packaging.md) for manifests and coverage.
 
@@ -66,4 +66,4 @@ Android ARMv7/ARM64/x86/x86_64 and iOS device/Simulator builds require the compl
 
 ## Third-party notices
 
-The Git package stores each distinct desktop notice once in `ThirdPartyNotices/THIRD-PARTY-NOTICES.txt`. `ThirdPartyNotices/NOTICE-SOURCES.json` identifies each platform's original byte range and SHA-256 (offsets and lengths are measured in bytes, before text decoding); Android NDK notices are separate. The original release ZIPs retain their platform-specific notices.
+The release archive stores each distinct desktop notice once in `ThirdPartyNotices/THIRD-PARTY-NOTICES.txt`. `ThirdPartyNotices/NOTICE-SOURCES.json` identifies each platform's original byte range and SHA-256 (offsets and lengths are measured in bytes, before text decoding); Android NDK notices are separate. The original release ZIPs retain their platform-specific notices.

@@ -25,6 +25,7 @@ import unity_upm
 RIDS = ('win-x64', 'linux-x64', 'osx-x64', 'osx-arm64')
 NOTICE_LAYOUT_VERSION = 2
 SOURCE_ARCHIVE_LAYOUT_VERSION = 2
+GIT_PACKAGE_LAYOUT_VERSION = 2
 MAX_BLOB = 100 * 1024 * 1024
 MAX_PACKAGE = 1024 * 1024 * 1024
 
@@ -122,6 +123,33 @@ def source_archive_layout(root):
     if bool(paths) == bool(urls):
         raise ValueError('Unknown Unity source archive layout')
     return 1 if paths else 2
+
+
+def source_git_package_layout(root):
+    path = Path(root)/'scripts/unity_git_package.py'
+    if not path.is_file():
+        return 1
+    tree = ast.parse(path.read_text(encoding='utf-8'), filename=str(path))
+    markers = [n.value for n in tree.body if isinstance(n, ast.Assign)
+               and any(isinstance(t, ast.Name) and t.id == 'GIT_PACKAGE_LAYOUT_VERSION' for t in n.targets)]
+    if not markers:
+        return 1
+    if len(markers) != 1 or not isinstance(markers[0], ast.Constant) or type(markers[0].value) is not int or markers[0].value not in (1, 2):
+        raise ValueError('Unknown Unity Git package layout')
+    return markers[0].value
+
+
+def source_git_package_layout_at(root, commit):
+    if not re.fullmatch(r'[0-9a-f]{40}', commit):
+        raise ValueError('Full release source commit required')
+    result = subprocess.run(['git', 'show', commit+':scripts/unity_git_package.py'], cwd=root,
+                            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    if result.returncode:
+        raise ValueError('Release source does not contain the Unity package recipe')
+    with tempfile.TemporaryDirectory(prefix='devcel-source-layout-') as temp:
+        scripts = Path(temp)/'scripts'; scripts.mkdir()
+        (scripts/'unity_git_package.py').write_bytes(result.stdout)
+        return source_git_package_layout(temp)
 
 
 def combine_desktop_notices(notices):
@@ -290,7 +318,10 @@ def release_commit(package, repository_root, source_commit, version, *, author_n
         timestamp = git('show', '-s', '--format=%cI', source_commit)
         env.update(GIT_AUTHOR_DATE=timestamp, GIT_COMMITTER_DATE=timestamp)
         git('read-tree', source_commit)
-        git('rm', '-r', '--cached', '--ignore-unmatch', '--', PACKAGE_PATH)
+        # This is an isolated temporary index and worktree. The requested source
+        # may differ from the repository's current HEAD, so force removal there
+        # without touching the user's index or checkout.
+        git('rm', '-r', '-f', '--cached', '--ignore-unmatch', '--', PACKAGE_PATH)
         git('add', '--force', '--all', '--', PACKAGE_PATH)
         for path in (stage/PACKAGE_PATH).glob('Tools~/*/devcel'):
             git('update-index', '--chmod=+x', path.relative_to(stage).as_posix())
@@ -312,7 +343,15 @@ def source_identity(root, release_commit):
     changes = git('diff-tree', '--no-commit-id', '--name-status', '-r', source, release_commit).splitlines()
     if not changes or any(len(line.split('\t')) != 2 or not line.split('\t')[1].startswith(PACKAGE_PATH+'/') for line in changes):
         raise ValueError('Release commit may only change the generated Unity package subtree')
-    manifest = json.loads(git('show', release_commit+':'+PACKAGE_PATH+'/Tools~/manifest.json'))
+    manifest_path = PACKAGE_PATH+'/Tools~/manifest.json'
+    bootstrap_path = PACKAGE_PATH+'/Editor/NativeBootstrap.json'
+    tree_paths = git('ls-tree', '-r', '--name-only', release_commit, '--', PACKAGE_PATH).splitlines()
+    if manifest_path in tree_paths:
+        manifest = json.loads(git('show', release_commit+':'+manifest_path))
+    elif bootstrap_path in tree_paths:
+        manifest = json.loads(git('show', release_commit+':'+bootstrap_path))
+    else:
+        raise ValueError('Release package has no native provenance manifest')
     package = json.loads(git('show', release_commit+':'+PACKAGE_PATH+'/package.json'))
     if manifest.get('source_commit') != source or manifest.get('version') != package.get('version'):
         raise ValueError('Release package source/version mismatch')
@@ -351,7 +390,7 @@ def create(desktop, mobile, output, version, commit, repository, author_name=Non
     return [artifact, report]
 
 
-def stage_release(archive, report, root, author_name, author_email):
+def stage_release(archive, report, root, author_name, author_email, slim=False):
     """Prepare a release commit locally. Never push, tag, or update a source branch."""
     metadata = json.loads(Path(report).read_text(encoding='utf-8'))
     if hashlib.sha256(Path(archive).read_bytes()).hexdigest() != metadata['archive_sha256']:
@@ -367,6 +406,30 @@ def stage_release(archive, report, root, author_name, author_email):
             if sum(item.file_size for item in source.infolist()) > MAX_PACKAGE:
                 raise ValueError('Git package size budget exceeded')
             source.extractall(temp)
+        if slim:
+            package = Path(temp)
+            manifest = json.loads((package/'Tools~/manifest.json').read_text(encoding='utf-8'))
+            required = json.loads((package/'Editor/NativeRequirements.json').read_text(encoding='utf-8'))
+            if (any(manifest.get(key) != metadata.get(key) for key in ('version', 'source_commit', 'source_repository')) or
+                    not re.fullmatch(r'[0-9a-f]{64}', manifest.get('source_fingerprint', '')) or
+                    required.get('source_fingerprint') != manifest['source_fingerprint']):
+                raise ValueError('Native archive does not match the source/version/fingerprint in the package report')
+            for name in ('Plugins',):
+                path = package/name
+                if path.exists(): shutil.rmtree(path)
+                (package/(name+'.meta')).unlink(missing_ok=True)
+            tools = package/'Tools~'
+            for name in (*RIDS, 'Mobile', 'Sources', 'manifest.json'):
+                path = tools/name
+                if path.is_dir(): shutil.rmtree(path)
+                elif path.exists(): path.unlink()
+            bootstrap = {'schema_version': 1, 'version': metadata['version'],
+                         'source_commit': metadata['source_commit'], 'source_repository': metadata['source_repository'],
+                         'archive_sha256': metadata['archive_sha256']}
+            (package/'Editor/NativeBootstrap.json').write_text(json.dumps(bootstrap, indent=2)+'\n', encoding='utf-8', newline='\n')
+            meta = ('fileFormatVersion: 2\nguid: '+hashlib.sha256(b'org.devcel.unity/Editor/NativeBootstrap.json').hexdigest()[:32]+
+                    '\nDefaultImporter:\n  externalObjects: {}\n  userData:\n  assetBundleName:\n  assetBundleVariant:\n')
+            (package/'Editor/NativeBootstrap.json.meta').write_text(meta, encoding='utf-8', newline='\n')
         return release_commit(temp, root, metadata['source_commit'], metadata['version'],
                               author_name=author_name, author_email=author_email)
 

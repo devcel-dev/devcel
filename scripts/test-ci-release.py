@@ -1108,7 +1108,7 @@ class ReleaseTests(unittest.TestCase):
             with tempfile.TemporaryDirectory() as directory:
                 root = Path(directory)
                 (root/'scripts').mkdir()
-                (root/'scripts/unity_git_package.py').write_text('NOTICE_LAYOUT_VERSION = 2\nSOURCE_ARCHIVE_LAYOUT_VERSION = 2\n')
+                (root/'scripts/unity_git_package.py').write_text('NOTICE_LAYOUT_VERSION = 2\nSOURCE_ARCHIVE_LAYOUT_VERSION = 2\nGIT_PACKAGE_LAYOUT_VERSION = 2\n')
                 (root/'scripts/unity_mobile.py').write_text('PATHS = '+repr(ci.unity_upm.unity_mobile.PATHS)+'\n')
                 output = root/'release-publish'
                 output.mkdir()
@@ -1160,7 +1160,8 @@ class ReleaseTests(unittest.TestCase):
         def collect(*args, **kwargs):
             self.assertEqual(kwargs['notice_layout'], 2)
             events.append('collect'); return ['asset']
-        def stage(*args):
+        def stage(*args, **kwargs):
+            self.assertTrue(kwargs['slim'])
             events.append('stage'); return 'b'*40
         def command(*args, **kwargs):
             if args[:2] == ('git', 'ls-remote'):

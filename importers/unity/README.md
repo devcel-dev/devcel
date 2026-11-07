@@ -17,21 +17,23 @@ https://github.com/devcel-dev/devcel.git?path=/importers/unity
 
 Install Git on the Editor machine. The default branch supplies the latest generated package; append `#v<version>` to select a published release tag. The editable source template is `importers/unity-template`.
 
-One Git URL supplies Windows x64, Linux x64, Intel macOS and Apple Silicon Editor CLIs; Windows/Linux x64 and macOS universal runtimes; and Android ARM64/iOS ARM64 device runtimes. The Editor selects its CLI automatically, including an Intel process under Rosetta. Platform-specific plugin metadata selects Player libraries. No separate `org.devcel.native`, PATH CLI, registry or Git LFS is required. See the [mobile Player guide](Documentation~/MOBILE.md) for target modules and device requirements.
+After installing the Git package, choose **Devcel > Download Matching Native Tools**. The Editor downloads the matching release archive, verifies its SHA-256 and installs a project-local `org.devcel.native` companion. The archive supplies the supported Editor CLIs and Player runtimes; the Git package itself does not store those binaries. Git LFS is not required. Private releases and offline setups can extract the matching `org.devcel.unity-<version>-git.zip` release asset and choose **Devcel > Install Matching Native Tools**. See the [mobile Player guide](Documentation~/MOBILE.md) for target modules and device requirements.
 
-Commit `Packages/manifest.json` and `Packages/packages-lock.json` with the game. A dependency looks like `"org.devcel.unity": "https://github.com/devcel-dev/devcel.git?path=/importers/unity"`. Every team member uses the same URL. The immutable tag and lock file pin the package; releases never move an existing tag.
+Add `Packages/org.devcel.native/` to the game repository’s `.gitignore`; each developer downloads the matching native tools locally. Commit `Packages/manifest.json` and `Packages/packages-lock.json` with the game. A dependency looks like `"org.devcel.unity": "https://github.com/devcel-dev/devcel.git?path=/importers/unity"`. Every team member uses the same URL. The immutable tag and lock file pin the package; releases never move an existing tag.
 
-As of 2026-11-04, the published v0.0.1 release contains Windows/Linux importer ZIPs only. The Git-installable package, macOS and mobile distributions described here require a newer release published by this pipeline; they are not downloads available in v0.0.1.
+Release v0.0.2 and later include Git-installable packages. The older v0.0.1 release contains Windows/Linux importer ZIPs only.
 
 ### Updates and migration
 
-Stop Play mode, remove an older Assets-based or embedded SDK copy and any `org.devcel.native` companion through Package Manager, preserving settings under `Assets/DevcelUnity/Editor` and generated game data. Add the complete Git package once.
+Stop Play mode, remove an older Assets-based or embedded SDK copy and any `org.devcel.native` companion through Package Manager, preserving settings under `Assets/DevcelUnity/Editor` and generated game data. Add the Git package once, then download its matching native tools from the Devcel menu.
 
-To upgrade or roll back, change the Git URL to the desired published release tag, resolve the package in Package Manager, commit both package manifest and lock file, and restart Unity to unload the previous native library. Reimport sources to regenerate matching C#. Never combine SDK/CLI/runtime files from different distributions or edit `Library/PackageCache`.
+To upgrade or roll back, change the Git URL to the desired published release tag, resolve the package in Package Manager, commit both package manifest and lock file, remove the old `org.devcel.native` companion, download the matching version, and restart Unity to unload the previous native library. Reimport sources to regenerate matching C#. Never combine SDK/CLI/runtime files from different distributions or edit `Library/PackageCache`.
 
 OS-specific `.tgz` files remain an offline alternative: use **Add package from tarball**, keep the file at a stable project-relative location outside Assets/Packages and share it with the game. Choose the Editor RID (`win-x64`, `linux-x64`, `osx-x64`, `osx-arm64`); these tarballs are not interchangeable across desktop OSes. Older ZIPs use **Add package from disk** on the extracted `devcel-unity/package.json` and may lack mobile runtimes.
 
 ## Import workflow
+
+The optional experimental MasterMemory backend adds typed generated tables, handles and Editor live updates. Install its separately licensed dependencies and Python 3 as described in the [MasterMemory guide](https://github.com/devcel-dev/devcel/tree/main/importers/unity-mastermemory); the regular managed backend remains available.
 
 Open **Devcel → Importer** and use the wizard to review the `.devcelproj.toml`, Source ID, namespace, root class name, per-environment Content Version, and JSON/code outputs. Click **Save and Import**. Subsequent saved changes in Studio import automatically. Add multiple sources as needed. With automatic import off, or to retry a failure, use the source's Import action, Import All, or **Devcel → Import All**. Inspect status and errors per source. Imports always use saved authoring data.
 
