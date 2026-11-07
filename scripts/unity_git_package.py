@@ -117,8 +117,9 @@ def combine_desktop_notices(notices):
     return bytes(aggregate), (json.dumps(index, indent=2)+'\n').encode('utf-8')
 
 
-def assemble(desktop, mobile, destination, version, commit, repository, legacy_notices=False):
-    if set(desktop) != set(RIDS) or set(mobile) != {'android', 'ios', 'webgl'}:
+def assemble(desktop, mobile, destination, version, commit, repository, legacy_notices=False, legacy_mobile=False, legacy_source_archives=False):
+    systems = ('android', 'ios') if legacy_mobile else ('android', 'ios', 'webgl')
+    if set(desktop) != set(RIDS) or set(mobile) != set(systems):
         raise ValueError('Four Editor RIDs and Android, iOS and WebGL artifacts are required')
     if not unity_upm.VERSION.fullmatch(version):
         raise ValueError('Invalid package version')
@@ -161,6 +162,12 @@ def assemble(desktop, mobile, destination, version, commit, repository, legacy_n
                     if name == 'Tools~/manifest.json' or name in shared:
                         continue
                     if name == 'Tools~/cli-source.tar.gz':
+                        if legacy_source_archives:
+                            output = 'Tools~/Sources/' + rid + '/cli-source.tar.gz'
+                            files[output] = archive.read(entry)
+                            sources.append({'platform': rid, 'path': output.removeprefix('Tools~/'),
+                                            'sha256': manifest['source_sha256']})
+                            continue
                         # The unchanged matching source archive remains in the
                         # published per-RID Unity ZIP, not in Git history.
                         url = f'https://github.com/{repository}/releases/download/v{version}/devcel-unity-{version}-{rid}.zip'
@@ -188,8 +195,8 @@ def assemble(desktop, mobile, destination, version, commit, repository, legacy_n
         files['ThirdPartyNotices/THIRD-PARTY-NOTICES.txt'] = aggregate
         files['ThirdPartyNotices/NOTICE-SOURCES.json'] = notice_index
     players = []
-    for system in ('android', 'ios', 'webgl'):
-        additions, runtime = unity_mobile.load(mobile[system], system, version, commit, repository, required_fingerprint)
+    for system in systems:
+        additions, runtime = unity_mobile.load(mobile[system], system, version, commit, repository, required_fingerprint, legacy=legacy_mobile)
         if set(additions) & set(files):
             raise ValueError('Mobile payload collision')
         files.update(additions)

@@ -87,6 +87,37 @@ class GitPackageTests(unittest.TestCase):
             self.assertEqual((dest/'ThirdPartyNotices/THIRD-PARTY-NOTICES.txt').read_bytes(),
                              b''.join(b'\n===== '+rid.encode()+b' =====\n'+original for rid in package.RIDS))
 
+    def test_legacy_package_keeps_only_original_mobile_and_source_archives(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            desktop, mobile = fixture(root)
+            for system in ('android', 'ios'):
+                path = mobile[system]
+                with __import__('zipfile').ZipFile(path) as archive:
+                    values = {name: archive.read(name) for name in archive.namelist()}
+                metadata = f'Tools~/Mobile/{system}.json'
+                manifest = json.loads(values[metadata])
+                manifest.pop('variants', None)
+                manifest.pop('simulator', None)
+                binary = package.unity_mobile.PATHS[system]
+                names = {binary, binary+'.meta', metadata}
+                if system == 'android':
+                    names.update(package.unity_mobile.NDK_NOTICES.values())
+                values = {name: raw for name, raw in values.items() if name in names}
+                values[metadata] = json.dumps(manifest).encode()
+                write_zip(path, values)
+            mobile.pop('webgl')
+            dest = root/'legacy-package'
+            package.assemble(desktop, mobile, dest, '0.1.0', 'a'*40, 'owner/repo',
+                             legacy_notices=True, legacy_mobile=True, legacy_source_archives=True)
+            manifest = json.loads((dest/'Tools~/manifest.json').read_text())
+            self.assertEqual(len(manifest['player_runtimes']), 2)
+            for rid in package.RIDS:
+                self.assertEqual((dest/'Tools~/Sources'/rid/'cli-source.tar.gz').read_bytes(), b'source')
+                entry = next(item for item in manifest['source_archives'] if item['platform'] == rid)
+                self.assertEqual(entry['path'], f'Sources/{rid}/cli-source.tar.gz')
+            self.assertFalse((dest/'Plugins/WebGL').exists())
+
     def test_notice_deduplication_preserves_each_distinct_original(self):
         import hashlib
         originals = {rid: (b'notice A\r\n' if rid != 'osx-x64' else b'notice B\n') for rid in package.RIDS}
