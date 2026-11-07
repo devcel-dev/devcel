@@ -54,7 +54,7 @@ class GitPackageTests(unittest.TestCase):
             package.assemble(desktop, mobile, root/'package', '0.1.0', 'a'*40, 'owner/repo')
             files = {p.relative_to(root/'package').as_posix():p.read_bytes() for p in (root/'package').rglob('*') if p.is_file()}
             self.assertFalse(any('Documentation~/repository/importers/unity/' in name for name in files), 'generated Unity package must not be embedded as documentation')
-            for name in ('generate.py', 'support.cs.txt', 'LICENSE'):
+            for name in ('generate.py', 'support.cs.txt', 'live.cs.txt', 'LICENSE'):
                 self.assertEqual(files['Tools~/MasterMemory/' + name], (repo/'importers/unity-mastermemory'/name).read_bytes())
             self.assertIn('Tools~/README.md', files)
             self.assertIn('Tools~/LICENSE-CLI-MIT.txt', files)

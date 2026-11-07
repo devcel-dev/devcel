@@ -23,6 +23,23 @@ class Program
         long start = GC.GetAllocatedBytesForCurrentThread();
         for (int i = 0; i < 100000; i++) { row.Value_item.Resolve(db); row.Value_curve.Sample(0.5); }
         if (GC.GetAllocatedBytesForCurrentThread() != start) throw new Exception("Typed reads allocated");
+        string livePath = Path.Combine(Path.GetDirectoryName(args[0]), "live-test.json");
+        string original = File.ReadAllText(args[0]);
+        File.WriteAllText(livePath, original);
+        using (var live = new LiveDatabase(data, livePath))
+        {
+            var oldRow = live.Current.DevcelRow_enemiesTable.FindByRecordId("00000000-0000-4000-8000-000000000001");
+            File.WriteAllText(livePath, original.Replace("Enemy 1", "Enemy updated"));
+            if (LiveDatabase.ReloadOpenDatabases(livePath) != 1 || live.Version != 1 ||
+                live.Current.DevcelRow_enemiesTable.FindByRecordId(oldRow.RecordId).Value_name != "Enemy updated" || oldRow.Value_name != "Enemy 1")
+                throw new Exception("Live replacement or snapshot semantics failed");
+            File.WriteAllText(livePath, File.ReadAllText(args[1]));
+            try { LiveDatabase.ReloadOpenDatabases(livePath); throw new Exception("Invalid reload accepted"); }
+            catch (FormatException) { }
+            if (live.Version != 1 || live.Current.DevcelRow_enemiesTable.FindByRecordId(oldRow.RecordId).Value_name != "Enemy updated")
+                throw new Exception("Failed reload replaced the live database");
+        }
+        if (LiveDatabase.ReloadOpenDatabases(livePath) != 0) throw new Exception("Disposed database was reloaded");
         for (int i = 1; i < args.Length; i++)
         {
             try { BuildData.FromJson(File.ReadAllText(args[i])); throw new Exception("Invalid bundle accepted: " + args[i]); }

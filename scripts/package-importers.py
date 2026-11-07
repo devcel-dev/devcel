@@ -209,7 +209,7 @@ def install_mastermemory_tools(repo, bundled):
     source = repo / 'importers/unity-mastermemory'
     target = bundled / 'MasterMemory'
     target.mkdir(parents=True, exist_ok=True)
-    for name in ('generate.py', 'support.cs.txt', 'LICENSE'):
+    for name in ('generate.py', 'support.cs.txt', 'live.cs.txt', 'LICENSE'):
         path = source / name
         if path.is_symlink() or not path.is_file():
             raise RuntimeError('Missing or unsafe MasterMemory generator input: ' + str(path))

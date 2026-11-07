@@ -16,12 +16,32 @@ namespace Devcel.Unity.Editor
         private const string PendingBundle = "Devcel.MasterMemory.PendingBundle";
         private const string PendingScript = "Devcel.MasterMemory.PendingScript";
         private const string PendingScriptHash = "Devcel.MasterMemory.PendingScriptHash";
+        private const string PendingAfterPlay = "Devcel.MasterMemory.PendingAfterPlay";
         private static string Key(string key) => "Devcel.MasterMemory." + DevcelPaths.ProjectRoot + "." + key;
         internal static bool Enabled { get => EditorPrefs.GetBool(Key("Enabled"), false); set { if (Enabled != value) EditorPrefs.SetBool(Key("Enabled"), value); } }
         internal static string Source { get => EditorPrefs.GetString(Key("Source"), ""); set { value = value ?? ""; if (Source != value) EditorPrefs.SetString(Key("Source"), value); } }
         internal static string Python { get => EditorPrefs.GetString(Key("Python"), Application.platform == RuntimePlatform.WindowsEditor ? "python" : "python3"); set { value = value ?? ""; if (Python != value) EditorPrefs.SetString(Key("Python"), value); } }
 
-        static DevcelMasterMemory() { EditorApplication.delayCall += FinishPending; }
+        static DevcelMasterMemory()
+        {
+            EditorApplication.delayCall += FinishPending;
+            EditorApplication.playModeStateChanged += state =>
+            {
+                if (state != PlayModeStateChange.EnteredEditMode || !SessionState.GetBool(PendingAfterPlay, false)) return;
+                SessionState.EraseBool(PendingAfterPlay);
+                EditorApplication.delayCall += () =>
+                {
+                    if (!Enabled) return;
+                    try
+                    {
+                        var project = DevcelImporterSettings.Instance.projects.Find(p => p != null && p.projectName == Source);
+                        if (project == null) throw new InvalidOperationException("MasterMemory source no longer exists.");
+                        Generate(project, Path.Combine(DevcelPaths.ToAbsolute(project.GetJsonOutputFolder()), project.bundleFileName));
+                    }
+                    catch (Exception ex) { DevcelImporterSettings.LogError("MasterMemory post-Play rebuild: " + ex.Message); }
+                };
+            };
+        }
 
         private static string Hash(string path)
         {
@@ -60,12 +80,34 @@ namespace Devcel.Unity.Editor
         internal static void NotifyExport(DevcelProjectConfig project, string bundle)
         {
             if (!Enabled || project == null || project.projectName != Source) return;
+            if (EditorApplication.isPlaying) SessionState.SetBool(PendingAfterPlay, true);
             // ExportAll may still be inside StartAssetEditing. Defer until it finishes.
             EditorApplication.delayCall += () =>
             {
                 if (!Enabled || project.projectName != Source) return;
-                try { Generate(project, bundle); }
-                catch (Exception ex) { DevcelImporterSettings.LogError("MasterMemory: " + ex.Message); }
+                try
+                {
+                    if (EditorApplication.isPlaying)
+                    {
+                        if (!DevcelImporterSettings.Instance.reloadInPlayMode) return;
+                        if (project.lastExportCodeChanged)
+                        {
+                            DevcelImporterSettings.LogWarning("MasterMemory: schema changed; exit Play mode and reimport before reloading.");
+                            return;
+                        }
+                        Type live = AppDomain.CurrentDomain.GetAssemblies().Select(a => a.GetType("DevcelMasterMemory.LiveDatabase", false)).FirstOrDefault(t => t != null);
+                        var reload = live?.GetMethod("ReloadOpenDatabases", BindingFlags.Public | BindingFlags.Static, null, new[] { typeof(string) }, null);
+                        if (reload == null || reload.ReturnType != typeof(int)) throw new InvalidOperationException("Generated MasterMemory live database is unavailable; regenerate before Play mode.");
+                        int count = (int)reload.Invoke(null, new object[] { bundle });
+                        if (count > 0) DevcelImporterSettings.Log("MasterMemory: Hot-reloaded " + count + " databases.");
+                    }
+                    else Generate(project, bundle);
+                }
+                catch (Exception ex)
+                {
+                    var cause = ex is TargetInvocationException invocation && invocation.InnerException != null ? invocation.InnerException : ex;
+                    DevcelImporterSettings.LogError("MasterMemory: " + cause.Message);
+                }
             };
         }
 

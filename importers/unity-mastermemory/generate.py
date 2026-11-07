@@ -202,7 +202,7 @@ def generate(bundle):
         for uid, target_name in sorted(allowed):
             output += [f"public global::DevcelMasterMemory.Tables.DevcelRow_{target_name}Table As_{target_name}(DevcelMemoryDatabase db) => Id == {literal(uid)} ? db.DevcelRow_{target_name}Table : null;"]
         output += ["}"]
-    output += [Path(__file__).with_name("support.cs.txt").read_text(encoding="utf-8"), "}"]
+    output += [Path(__file__).with_name("support.cs.txt").read_text(encoding="utf-8"), Path(__file__).with_name("live.cs.txt").read_text(encoding="utf-8"), "}"]
     return "\n".join(output) + "\n"
 
 def main():
