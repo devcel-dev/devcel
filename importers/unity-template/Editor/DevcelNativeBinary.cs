@@ -145,7 +145,9 @@ namespace Devcel.Unity.Editor
                                 if (lengthCommand < 24 || reader.ReadUInt32() != 7) return false;
                                 simulator = true;
                             }
-                            else if (type == 0x24 || type == 0x25 || type == 0x2f || type == 0x30) return false;
+                            // Legacy LC_VERSION_MIN_IPHONEOS (0x25) is ambiguous;
+                            // it is allowed but cannot establish Simulator identity.
+                            else if (type == 0x24 || type == 0x2f || type == 0x30) return false;
                             command += lengthCommand;
                         }
                         found |= simulator;

@@ -35,9 +35,16 @@ def webgl_binary():
     return b'!<arch>\n' + header + obj
 
 
-def ios_simulator_binary():
-    arm = ios_binary(platform=7, cpu=0x0100000c)
-    x64 = ios_binary(platform=7, cpu=0x01000007)
+def ios_simulator_binary(include_legacy=False, only_legacy=False):
+    def archive(cpu):
+        current = ios_binary(platform=7, cpu=cpu)
+        obj = struct.pack('<IIIIIIII', 0xfeedfacf, cpu, 0, 1, 1, 16, 0, 0)
+        obj += struct.pack('<IIII', 0x25, 16, 0x000d0000, 0x00120000)
+        header = b'old.o/          ' + b'0           ' + b'0     0     ' + b'100644  ' + str(len(obj)).encode().ljust(10) + b'`\n'
+        legacy = b'!<arch>\n' + header + obj
+        return legacy if only_legacy else current + legacy[8:] if include_legacy else current
+    arm = archive(0x0100000c)
+    x64 = archive(0x01000007)
     return (struct.pack('>II', 0xcafebabe, 2) +
             struct.pack('>IIIII', 0x0100000c, 0, 48, len(arm), 0) +
             struct.pack('>IIIII', 0x01000007, 0, 48 + len(arm), len(x64), 0) + arm + x64)
@@ -104,6 +111,7 @@ class MobileTests(unittest.TestCase):
         mobile.check_binary(ios_binary(), 'ios')
         mobile.check_binary(webgl_binary(), 'webgl')
         mobile.check_ios_simulator(ios_simulator_binary())
+        mobile.check_ios_simulator(ios_simulator_binary(include_legacy=True))
         for system, data in [('android', android_binary(4096)), ('android', android_binary(cpu=62)),
                              ('ios', ios_binary(platform=7)), ('ios', ios_binary(cpu=0x01000007)),
                              ('android', android_binary()[:-1]), ('ios', ios_binary()[:-1])]:
@@ -115,6 +123,8 @@ class MobileTests(unittest.TestCase):
             mobile.check_binary(ios_binary(), 'webgl')
         with self.assertRaises(ValueError):
             mobile.check_ios_simulator(ios_simulator_binary()[:-1])
+        with self.assertRaises(ValueError):
+            mobile.check_ios_simulator(ios_simulator_binary(only_legacy=True))
         wrong = bytearray(ios_simulator_binary())
         # Replace the arm64 simulator LC_BUILD_VERSION platform with device iOS.
         struct.pack_into('<I', wrong, 48 + 8 + 60 + 32 + 8, 2)

@@ -13,6 +13,7 @@ import re
 import struct
 import subprocess
 import sys
+import tempfile
 import zipfile
 
 from product_version import read_version
@@ -191,8 +192,12 @@ def check_ios_simulator(raw):
                         if command_size < 24 or struct.unpack_from('<I', data, command + 8)[0] != 7:
                             raise ValueError('Simulator object targets another platform')
                         platform_found = True
-                    elif kind in (0x24, 0x25, 0x2f, 0x30):
-                        raise ValueError('Simulator object has a legacy or non-Simulator target')
+                    elif kind in (0x24, 0x2f, 0x30):
+                        raise ValueError('Simulator object targets a non-iOS platform')
+                    # Apple/Rust support libraries may use LC_VERSION_MIN_IPHONEOS
+                    # (0x25), which does not distinguish device from Simulator.
+                    # It is not evidence of Simulator; each slice still needs a
+                    # modern LC_BUILD_VERSION explicitly identifying Simulator.
                     command += command_size
                 found |= platform_found
             offset = end + (length & 1)
@@ -338,6 +343,16 @@ def build(system, out, repository, commit, ndk=None):
         run('xcrun', 'lipo', '-create', *slices, '-output', universal)
         simulator_raw = universal.read_bytes()
         check_ios_simulator(simulator_raw)
+        # Legacy LC_VERSION_MIN_IPHONEOS alone cannot distinguish a device
+        # object from a Simulator object. Link both Simulator architectures
+        # and treat linker warnings (including wrong-platform objects) as errors.
+        with tempfile.TemporaryDirectory(prefix='devcel-ios-simulator-link-') as temp:
+            probe = Path(temp)/'probe.c'
+            probe.write_text('extern unsigned int devcel_rt_api_version(void);\nint main(void) { return devcel_rt_api_version() == 1 ? 0 : 1; }\n', encoding='utf-8')
+            for arch in ('arm64', 'x86_64'):
+                run('xcrun', '--sdk', 'iphonesimulator', 'clang', '-target', arch + '-apple-ios13.0-simulator',
+                    '-isysroot', env['SDKROOT'], probe, universal, *simulator_flags,
+                    '-Wl,-fatal_warnings', '-o', Path(temp)/('probe-' + arch), env=env)
         simulator_meta = (ROOT/'importers/unity-template/Tools~/NativePluginMetadata/iOSSimulator/libdevcel_runtime.a.meta').read_bytes()
         payload[IOS_SIMULATOR_PATH] = simulator_raw
         payload[IOS_SIMULATOR_PATH + '.meta'] = simulator_meta
