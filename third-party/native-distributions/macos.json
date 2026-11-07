@@ -3,7 +3,28 @@
   "platform": "macos",
   "format": "app/dmg",
   "review_status": "pending",
-  "extraction_evidence": null,
+  "extraction_evidence": {
+    "scope": "Historical inspection of published v0.0.3 DMGs only; Windows 7-Zip extraction and static Mach-O inspection. This does not verify macOS signatures, execution, notarization, or identity against the original signed build. The overall review remains pending.",
+    "source_commit_recorded_by_bundled_cli": "92be5fb3b31da1856e25ccb21582d46c4eb5f43c",
+    "extraction": "7-Zip 26.06 DMG/HFS extraction of devcel-studio.app; check-native-distribution.py magic-byte inventory; llvm-objdump --macho --dylibs-used",
+    "third_party_notices_sha256": "220f7c28f7ec5b8514afaa19c4e4b7560fe8bbfabf4e7664fc50547d4de626f0",
+    "bundled_cli_mit_license_sha256": "044fd1d7357124af6f8fb42e11249f62df34663b9cbe3eea2af48c33bc907f95",
+    "artifacts": [
+      {
+        "name": "devcel-studio-0.0.3-macos-arm64.dmg",
+        "sha256": "b7666414254534a6d845d201e9ad0a7eb1bc5bed41268a67a041e2b2d7c5764f",
+        "studio_sha256": "2da5fb5a2d802e1340f43cf518f2ee47b21a70e72f0c98147f4698e9ad25640b",
+        "cli_sha256": "9ea2da04e6c0825adf6d585fcdb2d7e6cc0152a1c9b4e98b6089268292387664"
+      },
+      {
+        "name": "devcel-studio-0.0.3-macos-x64.dmg",
+        "sha256": "7e41d7e1c2559d895d8697f648166697c327abf439ad678393a742dca94c970d",
+        "studio_sha256": "b3a1a6bf318a95e1c7aeda6a8104562dace676d5ed6c552b8c7e8cb1b8d32472",
+        "cli_sha256": "e14857d9f8adcb8ba6357f6fe1fce16adca0f5de991c4ca0006012cdeaaaae36"
+      }
+    ],
+    "observations": "Each extracted app has exactly two Mach-O files (Studio and CLI); each CLI hash matches its own packaged manifest and its license equals the repository MIT CLI license. Both apps contain the same third-party notice aggregate. The inspected load commands name system frameworks and /usr/lib libraries; no non-system dynamic library path was observed. This does not establish that statically linked dependency notices are complete."
+  },
   "bootstrapper_and_system_runtime_review": null,
   "native_components": []
 }
