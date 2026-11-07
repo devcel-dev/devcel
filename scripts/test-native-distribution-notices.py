@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import contextlib, importlib.util, io, json, pathlib, tempfile, unittest
+import contextlib, importlib.util, io, json, os, pathlib, subprocess, tempfile, unittest
 spec=importlib.util.spec_from_file_location('native',pathlib.Path(__file__).with_name('check-native-distribution.py'))
 n=importlib.util.module_from_spec(spec);spec.loader.exec_module(n)
 class NativeNoticeTests(unittest.TestCase):
@@ -93,8 +93,21 @@ class NativeNoticeTests(unittest.TestCase):
         self.assertEqual(json.loads(destination.read_text()),report)
         self.assertEqual(json.loads(output.getvalue().removeprefix('NATIVE_REVIEW_REPORT ')),report)
     def test_payload_escape_is_blocked(self):
-        (self.root/'escaped.so').symlink_to('/etc/passwd')
-        with self.assertRaisesRegex(RuntimeError,'escapes'):n.inventory(self.root)
+        with tempfile.TemporaryDirectory() as outside:
+            outside = pathlib.Path(outside).resolve()
+            (outside/'external.so').write_bytes(b'\x7fELFexternal')
+            if os.name == 'nt':
+                link = self.root/'escaped'
+                # A directory junction exercises Windows reparse points without
+                # requiring SeCreateSymbolicLinkPrivilege or Developer Mode.
+                subprocess.run(['cmd.exe', '/C', 'mklink', '/J', str(link), str(outside)], check=True, capture_output=True)
+                try:
+                    with self.assertRaisesRegex(RuntimeError,'escapes'): n.inventory(self.root)
+                finally:
+                    os.rmdir(link)  # Remove the junction itself before either temporary directory is cleaned up.
+            else:
+                (self.root/'escaped.so').symlink_to(outside/'external.so')
+                with self.assertRaisesRegex(RuntimeError,'escapes'): n.inventory(self.root)
 
 class MacNoticeTests(unittest.TestCase):
     def test_macos_resources_require_exact_generated_notice_bytes(self):
@@ -113,5 +126,26 @@ class MacNoticeTests(unittest.TestCase):
                 with self.assertRaisesRegex(RuntimeError, 'changed'): artifacts.verify_macos_notices(app, root)
                 payload.unlink()
                 with self.assertRaisesRegex(RuntimeError, 'differs'): artifacts.verify_macos_notices(app, root)
+
+    def test_macos_notice_directory_rejects_external_link(self):
+        from unittest.mock import patch
+        spec = importlib.util.spec_from_file_location('artifacts_links', pathlib.Path(__file__).with_name('check-native-release-artifacts.py'))
+        artifacts = importlib.util.module_from_spec(spec); spec.loader.exec_module(artifacts)
+        with tempfile.TemporaryDirectory() as directory, tempfile.TemporaryDirectory() as outside:
+            root=pathlib.Path(directory).resolve(); outside=pathlib.Path(outside).resolve()
+            app=root/'devcel-studio.app'; legal=app/'Contents/Resources/legal'; legal.mkdir(parents=True)
+            source=root/'notice.txt'; source.write_bytes(b'notice')
+            (legal/'THIRD-PARTY-NOTICES.txt').write_bytes(b'notice')
+            link=legal/'external'
+            if os.name == 'nt':
+                subprocess.run(['cmd.exe', '/C', 'mklink', '/J', str(link), str(outside)], check=True, capture_output=True)
+            else:
+                link.symlink_to(outside, target_is_directory=True)
+            try:
+                with patch.object(artifacts, 'distribution_files', return_value={'THIRD-PARTY-NOTICES.txt': source}):
+                    with self.assertRaisesRegex(RuntimeError, 'Linked macOS'): artifacts.verify_macos_notices(app,root)
+            finally:
+                if os.name == 'nt': os.rmdir(link)
+                else: link.unlink()
 
 if __name__=='__main__':unittest.main()

@@ -174,7 +174,7 @@ var db = databaseAsset.GetDatabase("master",
 
 The asset owns this database and disposes it through CloseProject, CloseAll, or asset deactivation. The caller leaves disposal to the asset. After replacing a TextAsset, use ReopenDatabase and reacquire rows.
 
-The experimental [MasterMemory generator](../../importers/unity-mastermemory/README.md) produces schema and a bundle-to-binary builder. Unity source generation and Windows Mono and IL2CPP Players have been checked using manually placed NuGet dependencies.
+The experimental [MasterMemory integration](../../importers/unity-mastermemory/README.md) generates typed tables, cached live handles and a binary builder. Its optional Editor bridge supports data-only reloads during Play; retained raw rows remain snapshots. It requires separately installed MasterMemory, MessagePack, Newtonsoft.Json and Python on the Editor machine. Windows Mono and IL2CPP Player checks used manually placed NuGet dependencies; other targets and NuGetForUnity installation need validation.
 
 ### Allocation and threading contract
 
