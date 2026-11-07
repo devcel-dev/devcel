@@ -55,6 +55,13 @@ def valid_ios_flags(flags):
     return True
 
 
+def simulator_probe_flags(flags):
+    if not valid_ios_flags(flags):
+        raise ValueError('Invalid Simulator link requirements')
+    # clang already supplies libSystem for a Simulator executable.
+    return [flag for flag in flags if flag != '-lSystem']
+
+
 def check_binary(raw, system, abi='arm64-v8a'):
     if system == 'android':
         _, _, elf_class, machine = ANDROID_ABIS[abi]
@@ -352,7 +359,7 @@ def build(system, out, repository, commit, ndk=None):
             # clang already links libSystem for an iOS executable. Keep the
             # original list in the package manifest for Unity/Xcode, but avoid
             # passing a duplicate to this standalone link probe.
-            probe_flags = [flag for flag in simulator_flags if flag != '-lSystem']
+            probe_flags = simulator_probe_flags(simulator_flags)
             for arch in ('arm64', 'x86_64'):
                 run('xcrun', '--sdk', 'iphonesimulator', 'clang', '-target', arch + '-apple-ios13.0-simulator',
                     '-isysroot', env['SDKROOT'], probe, universal, *probe_flags,

@@ -102,6 +102,10 @@ class MobileTests(unittest.TestCase):
         for flags in (None, [], ['-framework'], ['-framework', '../Bad'], ['-Wl,@file'], ['-lfoo;run'], [None]):
             with self.subTest(flags=flags):
                 self.assertFalse(mobile.valid_ios_flags(flags))
+        self.assertEqual(mobile.simulator_probe_flags(['-lSystem', '-lc', '-framework', 'Security']),
+                         ['-lc', '-framework', 'Security'])
+        with self.assertRaises(ValueError):
+            mobile.simulator_probe_flags(['-Wl,@file'])
 
     def test_cpu_platform_alignment_and_truncation(self):
         mobile.check_binary(android_binary(), 'android')
