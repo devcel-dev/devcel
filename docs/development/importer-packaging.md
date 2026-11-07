@@ -116,7 +116,7 @@ For independently built artifacts, run `scripts/unity_git_package.py --help` to 
 python scripts/publish_unity_git.py --archive org.devcel.unity-<version>-git.zip --report org.devcel.unity-<version>-git.json --repo /path/to/source-checkout --author-name <name> --author-email <email>
 ```
 
-This command writes local Git objects only. It does not create a tag, change the checkout/index/main, push, or publish a release. It reports the exact source/release commits and intended Git URL. The source commit must exist in that checkout. After explicit authorization, a maintainer may publish only the new `v<version>` tag at the reported release commit and publish the corresponding artifacts. The automated manual release path performs this preparation after its builds and uses a non-force push of that one tag.
+This command writes local Git objects only. It does not create a tag, change the checkout/index/main, push, or publish a release. It reports the exact source/release commits and intended Git URL. The source commit must exist in that checkout. After explicit authorization, a maintainer may publish the new `v<version>` tag at the reported release commit and publish the corresponding artifacts. The automated manual release path performs this preparation after its builds and atomically advances main and creates the tag with a non-force push, after checking that main still points to the build source.
 
 Never replace or move an existing tag to add UPM support. v0.0.1 remains Windows/Linux ZIP-only; Git installation is available from v0.0.2. For a fork build, record its actual repository slug throughout instead of relabeling its assets as official. Preparing or merging tooling does not authorize a release or new tag in the upstream repository.
 
