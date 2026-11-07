@@ -5,6 +5,7 @@ import json
 import math
 import uuid
 import os
+import struct
 from pathlib import Path
 import tempfile
 
@@ -13,6 +14,14 @@ def finite(value):
     if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value):
         raise ValueError("expected finite number")
     return value
+
+
+def float32(value):
+    try:
+        result = struct.unpack("<f", struct.pack("<f", finite(value)))[0]
+    except (OverflowError, struct.error) as error:
+        raise ValueError("float32 out of range") from error
+    return finite(result)
 
 
 def curve(text, config):
@@ -98,7 +107,9 @@ def convert(bundle):
                     if not isinstance(components,list) or len(components)!=4: raise ValueError("color requires four components")
                     for n in components: finite(n)
                     if kind == "Color32" and any(type(n) is not int or n<0 or n>255 for n in components): raise ValueError("invalid Color32")
-                    if kind == "ColorFloat" and not 0 <= components[3] <= 1: raise ValueError("invalid color alpha")
+                    if kind == "ColorFloat":
+                        if not 0 <= components[3] <= 1: raise ValueError("invalid color alpha")
+                        components = [float32(n) for n in components]
                     values[name] = dict(zip(("r","g","b","a"),components), __devcel_kind=kind)
                 elif kind == "Curve": values[name] = curve(text, col.get("curve_config"))
                 elif kind == "Boolean":
@@ -110,7 +121,7 @@ def convert(bundle):
                     if not lower<=v<=upper: raise ValueError("integer out of range")
                     values[name] = v
                 elif kind in ("F32","F64"):
-                    v=float(text) if text else 0.0; values[name]=finite(v)
+                    v=float(text) if text else 0.0; values[name]=float32(v) if kind == "F32" else finite(v)
                 elif kind in ("U64", "I64"):
                     n=int(text) if text else 0
                     lower=0 if kind=="U64" else -(1<<63); upper=(1<<64)-1 if kind=="U64" else (1<<63)-1

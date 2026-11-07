@@ -38,6 +38,8 @@ class ExportTests(unittest.TestCase):
         self.assertEqual(values["curve"]["__devcel_kind"], "curve")
         b["tables"][0]["records"][0]["values"]["color"] = "[256,0,0,0]"
         with self.assertRaises(ValueError): convert(b)
+        b=self.bundle(); b["tables"][0]["records"][0]["values"]["hdr"] = "[1e300,0,0,1]"
+        with self.assertRaisesRegex(ValueError, "float32"): convert(b)
 
     def test_incompatible_table_reference_and_missing_target_fail(self):
         b=self.bundle()
