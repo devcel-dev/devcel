@@ -754,7 +754,7 @@ class ReleaseTests(unittest.TestCase):
             (directory/ci.studio_asset_name(system.lower(), 'v0.1.0')).write_bytes(b'fixture')
         (root/'release-Windows/devcel-studio-0.1.0-windows-x64.zip').write_bytes(b'portable')
         (root/'release-Linux/SOURCE-ACCESS.json').write_bytes(b'source')
-        for system in ('android', 'ios'):
+        for system in ('android', 'ios', 'webgl'):
             mobile_fixture(root/f'release-mobile-{system}'/f'unity-mobile-{system}.zip', system)
 
     def test_collect_rejects_old_importer_filename_and_manifest_identity(self):
@@ -789,12 +789,12 @@ class ReleaseTests(unittest.TestCase):
             self.assertEqual(len(list((root/'out').glob('org.devcel.unity-*.tgz'))), 4)
 
     def test_publication_requires_both_mobile_artifacts(self):
-        for system in ('android', 'ios'):
+        for system in ('android', 'ios', 'webgl'):
             with self.subTest(system=system), tempfile.TemporaryDirectory() as temp:
                 root = Path(temp)
                 self.fixture(root)
                 (root/f'release-mobile-{system}'/f'unity-mobile-{system}.zip').unlink()
-                with self.assertRaisesRegex(ValueError, 'mobile runtime artifact sets'):
+                with self.assertRaisesRegex(ValueError, 'runtime artifacts are required'):
                     ci.collect_assets(root, root/'out', 'v0.1.0')
 
     def test_studio_asset_names_match_release_version_and_platform(self):

@@ -16,6 +16,8 @@ jobs:
             os: ubuntu-24.04
           - system: ios
             os: macos-15
+          - system: webgl
+            os: ubuntu-24.04
     runs-on: ${{ matrix.os }}
     timeout-minutes: 45
     steps:

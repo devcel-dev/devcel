@@ -63,7 +63,7 @@ class RecoveryTests(unittest.TestCase):
     def test_exact_build_artifacts_are_pinned_to_distinct_publisher_and_source(self):
         plan = self.inspect()
         self.assertEqual((plan['publisher'], plan['commit']), (B, A))
-        self.assertEqual([a['id'] for a in plan['artifacts']], [5, 6, 7, 8, 9, 10])
+        self.assertEqual([a['id'] for a in plan['artifacts']], [5, 6, 7, 8, 9, 10, 11])
         self.assertEqual(plan['tag_identity'], {'object': T, 'type': 'tag', 'commit': A})
         self.assertIn('actions/runs/123/attempts/2/jobs?per_page=100', self.calls)
 
@@ -208,7 +208,7 @@ class RecoveryTests(unittest.TestCase):
                 r.prepare()
                 self.assertEqual(json.loads(r.plan_path().read_text()), plan)
             self.assertEqual(output.read_text().splitlines(),
-                             ['tag=v0.1.0', 'commit='+A, 'run_id=123', 'artifact_ids=5,6,7,8,9,10'])
+                             ['tag=v0.1.0', 'commit='+A, 'run_id=123', 'artifact_ids=5,6,7,8,9,10,11'])
         with patch.dict(os.environ, {'RUNNER_TEMP': str(r.ROOT)}):
             with self.assertRaisesRegex(ValueError, 'outside'): r.plan_path()
 

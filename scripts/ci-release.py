@@ -882,10 +882,10 @@ def collect_assets(downloads, destination, tag, expected_commit=None, expected_r
     # Mobile archives belong to the same immutable release source. They add
     # Player runtimes without replacing the Editor's platform-specific runtime.
     mobile = {system: downloads/f'release-mobile-{system}'/f'unity-mobile-{system}.zip'
-              for system in ('android', 'ios')}
+              for system in ('android', 'ios', 'webgl')}
     for path in mobile.values():
         if not path.is_file() or path.is_symlink() or list(path.parent.iterdir()) != [path]:
-            raise ValueError('Both exact mobile runtime artifact sets are required')
+            raise ValueError('Android, iOS and WebGL runtime artifacts are required')
     for source in list(files):
         prefix = f'devcel-unity-{tag[1:]}-'
         if source.name.startswith(prefix) and source.suffix == '.zip':

@@ -63,8 +63,8 @@ fn emit_native(s: &mut String) {
     s.push_str(
         r#"    internal static class DevcelNative
     {
-        // iOS device Players statically link the runtime into UnityFramework.
-#if UNITY_IOS && !UNITY_EDITOR
+        // iOS and WebGL Players statically link the runtime into the Player.
+#if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         const string DLL = "__Internal";
 #else
         const string DLL = "devcel_runtime";
