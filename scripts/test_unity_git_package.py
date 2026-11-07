@@ -65,6 +65,14 @@ class GitPackageTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'documentation link'):
                 package.validate_documentation(files)
 
+    def test_checked_in_unity_documentation_has_no_recursive_package_copy(self):
+        root = Path(__file__).resolve().parents[1]/'importers/unity'
+        files = {path.relative_to(root).as_posix(): path.read_bytes() if path.suffix == '.md' else b''
+                 for path in root.rglob('*') if path.is_file()}
+        nested = 'Documentation~/repository/importers/unity/Documentation~/repository/'
+        self.assertFalse(any(name.startswith(nested) for name in files))
+        package.validate_documentation(files)
+
     def test_mastermemory_inputs_normalize_windows_line_endings(self):
         repo = Path(__file__).resolve().parents[1]
         spec = importlib.util.spec_from_file_location('packaging_newlines', repo/'scripts/package-importers.py')
