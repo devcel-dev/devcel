@@ -37,6 +37,8 @@ cases = [('android-arm64-16k', 'Android', 'Plugins/Android/arm64-v8a', android_b
          ('ios-reject-x64', 'iOS', 'Plugins/iOS', ios_binary(cpu=0x01000007), False),
          ('ios-truncated', 'iOS', 'Plugins/iOS', ios_binary()[:-1], False),
          ('ios-simulator-universal', 'iOS', 'Plugins/iOSSimulator', ios_simulator_binary(), True),
+         ('ios-simulator-with-legacy', 'iOS', 'Plugins/iOSSimulator', ios_simulator_binary(include_legacy=True), True),
+         ('ios-simulator-only-legacy', 'iOS', 'Plugins/iOSSimulator', ios_simulator_binary(only_legacy=True), False),
          ('ios-simulator-reject-device', 'iOS', 'Plugins/iOSSimulator', ios_binary(), False),
          ('ios-simulator-truncated', 'iOS', 'Plugins/iOSSimulator', ios_simulator_binary()[:-1], False),
          ('webgl', 'WebGL', 'Plugins/WebGL', webgl_binary(), True),
