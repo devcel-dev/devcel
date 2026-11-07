@@ -311,6 +311,27 @@ fn emit_database(s: &mut String, model: &CgModel, namespace_name: &str, class_na
         string? _path;
         internal readonly object ReadGate = new object();
 
+#if UNITY_5_3_OR_NEWER
+        // Unity databases are created, read, replaced and disposed on the main thread.
+        readonly int _ownerThread = System.Threading.Thread.CurrentThread.ManagedThreadId;
+        internal void EnsureOwnerThread()
+        {
+            if (System.Threading.Thread.CurrentThread.ManagedThreadId != _ownerThread)
+                throw new InvalidOperationException("Devcel Unity databases must be accessed on their owning main thread.");
+        }
+        internal readonly struct ReadScope : IDisposable { public void Dispose() { } }
+        internal ReadScope EnterRead() { EnsureOwnerThread(); return default; }
+#else
+        internal void EnsureOwnerThread() { }
+        internal readonly struct ReadScope : IDisposable
+        {
+            readonly object _gate;
+            internal ReadScope(object gate) { _gate = gate; System.Threading.Monitor.Enter(gate); }
+            public void Dispose() { System.Threading.Monitor.Exit(_gate); }
+        }
+        internal ReadScope EnterRead() => new ReadScope(ReadGate);
+#endif
+
         /// <summary>Reload live Open(path) instances for this absolute bundle path. Returns the changed instance count.
         /// Call on the same thread used to access rows; rows are invalidated when their database reloads.</summary>
         public static int ReloadOpenDatabases(string absolutePath)
@@ -338,6 +359,7 @@ fn emit_database(s: &mut String, model: &CgModel, namespace_name: &str, class_na
 
         internal IntPtr CheckedHandle(long generation)
         {
+            EnsureOwnerThread();
             if (Handle == IntPtr.Zero) throw new ObjectDisposedException(nameof(DevcelDatabase));
             if (generation != Generation) throw new InvalidOperationException("Devcel row was invalidated by reload; obtain it again by ID");
             return Handle;
@@ -389,6 +411,7 @@ fn emit_database(s: &mut String, model: &CgModel, namespace_name: &str, class_na
         /// <summary>Reload changes. Existing rows become invalid; reacquire them by ID.</summary>
         public bool ReloadIfChanged()
         {
+            EnsureOwnerThread();
             lock (RegistryLock) lock (ReadGate) return ReloadCore();
         }
 
@@ -410,6 +433,7 @@ fn emit_database(s: &mut String, model: &CgModel, namespace_name: &str, class_na
         public bool TryReplaceDatabase(IDisposable candidate)
         {
             if (!(candidate is DevcelDatabase replacement) || ReferenceEquals(replacement, this)) return false;
+            EnsureOwnerThread(); replacement.EnsureOwnerThread();
             lock (RegistryLock) lock (ReadGate) lock (replacement.ReadGate)
             {
                 CheckedHandle(Generation); replacement.CheckedHandle(replacement.Generation);
@@ -442,8 +466,13 @@ fn emit_database(s: &mut String, model: &CgModel, namespace_name: &str, class_na
             }
         }
 #endif
-        ~DevcelDatabase() { Dispose(); }
+        ~DevcelDatabase() { DisposeCore(); }
         public void Dispose()
+        {
+            EnsureOwnerThread();
+            DisposeCore();
+        }
+        void DisposeCore()
         {
             lock (RegistryLock) lock (ReadGate)
             {

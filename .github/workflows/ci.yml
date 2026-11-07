@@ -1,5 +1,7 @@
 name: CI
 on:
+  push:
+    branches: [main]
   pull_request:
     branches: [main]
     types: [opened, synchronize, reopened, ready_for_review, edited]
@@ -10,7 +12,7 @@ env:
   # Cache complete release artifacts; incremental compilation stays disabled.
   CARGO_INCREMENTAL: '0'
 concurrency:
-  group: ci-${{ github.event.pull_request.number }}
+  group: ci-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 jobs:
   check:

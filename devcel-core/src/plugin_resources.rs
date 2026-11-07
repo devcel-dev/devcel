@@ -1079,6 +1079,7 @@ mod tests {
             display_name: "Preferences".into(),
             description: String::new(),
             metadata: crate::table::TableMetadata {
+                schema_version: 1,
                 data_name: "Preferences".into(),
                 parent_uuid: String::new(),
                 interface_order: vec![],

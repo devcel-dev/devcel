@@ -171,6 +171,14 @@ var db = databaseAsset.GetDatabase("master",
 
 The asset owns this database and disposes it through CloseProject, CloseAll, or asset deactivation. The caller leaves disposal to the asset. After replacing a TextAsset, use ReopenDatabase and reacquire rows.
 
+The [MasterMemory proof of concept](../../importers/unity-mastermemory/README.md) demonstrates a separate hand-mapped .NET conversion. It is experimental and is not yet a Unity integration or general code generator.
+
+### Allocation and threading contract
+
+The generated Handle API prepares its read model at load or reload. After publication, `Get`, `TryGet`, successful handle property reads, expected-missing checks, and traversal of concrete generated collections allocate zero managed bytes, including the first acquisition. Cache handles in hot paths to avoid repeated UUID dictionary lookup. Loading, reloading, logging, exceptions, creating Inspector references, and casting an enumerator to `IEnumerable<T>` are outside this guarantee. The low-level Row API is separate; native string conversion there can allocate. Profile on the target Player with your data.
+
+In Unity, create, read, reload, replace and dispose a database on the Unity main thread, with updates at a controlled point between reads. Handle reads take no read lock. A database detects access from a different thread than its creating thread; creating it on the Unity main thread remains the caller's responsibility. Generated C# used outside Unity retains synchronization for concurrent access. See the [SDK guide](../../importers/unity-template/README.md) for snapshot and reload semantics.
+
 ## 5. Settings and paths
 
 Settings are stored in projects within Assets/DevcelUnity/Editor/DevcelImporterSettings.asset. Paths are relative to the Unity project root, the parent of Assets. The example source is `../ManualBasics/ManualBasics.devcelproj.toml`.

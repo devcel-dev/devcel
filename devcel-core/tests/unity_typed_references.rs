@@ -377,3 +377,23 @@ fn managed_memory_helpers_cannot_collide_with_table_properties() {
         );
     }
 }
+
+#[test]
+fn unity_read_scopes_are_main_thread_only_and_other_targets_keep_monitor() {
+    let (_dir, mut project, _) = fixture(&["Slime"]);
+    let code = codegen::generate_code_with_class_name(
+        &mut project,
+        CodegenTarget::CSharp,
+        Some("Game.Master"),
+        Some("GameDatabase"),
+    )
+    .unwrap();
+    assert!(code.contains("#if UNITY_5_3_OR_NEWER"));
+    assert!(
+        code.contains("internal ReadScope EnterRead() { EnsureOwnerThread(); return default; }")
+    );
+    assert!(code.contains("System.Threading.Monitor.Enter(gate)"));
+    assert!(code.contains("System.Threading.Monitor.Exit(_gate)"));
+    assert!(code.contains("using (EnterRead())"));
+    assert!(code.contains("~GameDatabase() { DisposeCore(); }"));
+}

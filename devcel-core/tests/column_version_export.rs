@@ -38,6 +38,7 @@ fn data(name: &str, columns: Vec<ColumnSchema>, records: Vec<Record>) -> TableDa
         uuid: uuid::Uuid::new_v4().to_string(),
         display_name: name.into(),
         metadata: TableMetadata {
+            schema_version: 1,
             interface_order: Vec::new(),
             initial_transposed: false,
             edit_permissions: Default::default(),
