@@ -11,7 +11,7 @@ class ExportTests(unittest.TestCase):
         self.assertIn("HttpService:JSONDecode", module)
 
     def test_rejects_unsupported_and_malformed_inputs(self):
-        for source in ('{}', '{', '{"manifest":{"schema_version":2,"mode":"full"},"tables":[]}'):
+        for source in ('{}', '{', '{"manifest":{"schema_version":2,"mode":"full"},"tables":[]}', '{"manifest":{"schema_version":true,"mode":"full"},"tables":[]}', '{"manifest":{"schema_version":1,"mode":"full"},"tables":[],"x":NaN}'):
             with self.assertRaises((ValueError, json.JSONDecodeError)):
                 render(source)
 

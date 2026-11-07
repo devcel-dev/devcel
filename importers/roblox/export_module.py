@@ -8,11 +8,15 @@ import tempfile
 
 
 def render(text: str) -> str:
-    bundle = json.loads(text)
+    def reject_constant(value: str):
+        raise ValueError(f"invalid JSON number: {value}")
+
+    bundle = json.loads(text, parse_constant=reject_constant)
     if not isinstance(bundle, dict) or not isinstance(bundle.get("manifest"), dict):
         raise ValueError("missing bundle manifest")
     manifest = bundle["manifest"]
-    if manifest.get("schema_version") != 1 or manifest.get("mode") != "full":
+    version = manifest.get("schema_version")
+    if type(version) is not int or version != 1 or manifest.get("mode") != "full":
         raise ValueError("expected a full Devcel bundle with schema_version 1")
     if not isinstance(bundle.get("tables"), list):
         raise ValueError("bundle tables must be an array")
