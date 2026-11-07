@@ -39,7 +39,7 @@ Sources with identical UUIDs remain separate through Source ID, namespace, outpu
 
 `codeClassName` sets the optional root class; blank means `DevcelDatabase`. Namespace `Game.Master` and class `MasterData` produce `Game.Master.MasterData.Open(...)`. Table, row, and interface type names are unchanged. Play-mode reload uses the same namespace/class name.
 
-Editor settings generate a pull configuration under `Library/Devcel/`, using the shared `devcel pull --config` contract. See [importer-pull.md](Documentation~/repository/importers/unity/Documentation~/repository/devcel-cli/docs/importer-pull.md) for CLI usage, partial failures, and atomicity boundaries. Each source saves `namespace`, optional `class_name`, and the selected environment's `version`. Blank class names and all-content version `-1` are omitted from JSON. Content Version is the numeric `0..4294967295` filter, separate from `schema_version`.
+Editor settings generate a pull configuration under `Library/Devcel/`, using the shared `devcel pull --config` contract. See [importer-pull.md](Documentation~/repository/devcel-cli/docs/importer-pull.md) for CLI usage, partial failures, and atomicity boundaries. Each source saves `namespace`, optional `class_name`, and the selected environment's `version`. Blank class names and all-content version `-1` are omitted from JSON. Content Version is the numeric `0..4294967295` filter, separate from `schema_version`.
 
 ### Version control and relocated checkouts
 

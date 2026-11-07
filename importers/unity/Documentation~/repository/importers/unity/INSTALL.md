@@ -1,8 +1,8 @@
 # Import data into Unity
 
-[Manual](Documentation~/repository/docs/manual/README.md) / [Getting started](Documentation~/repository/docs/manual/getting-started.md) / [CLI](Documentation~/repository/docs/manual/cli.md) / [Synchronization](Documentation~/repository/docs/manual/collaboration.md)
+[Manual](../../docs/manual/README.md) / [Getting started](../../docs/manual/getting-started.md) / [CLI](../../docs/manual/cli.md) / [Synchronization](../../docs/manual/collaboration.md)
 
-Import saved Devcel tables into Unity and check Studio edits in a running game. Start with a working copy of [ManualBasics](Documentation~/repository/examples/manual-basics/README.md).
+Import saved Devcel tables into Unity and check Studio edits in a running game. Start with a working copy of [ManualBasics](../../examples/manual-basics/README.md).
 
 ## 1. Prepare the projects
 
@@ -36,7 +36,7 @@ As of 2026-11-04, the published v0.0.1 release contains Windows/Linux importer Z
 
 The default branch contains the most recently generated package after the first new release. The editable template is `importers/unity-template`. Preserve the Git dependency in `Packages/manifest.json` and its resolved commit in `Packages/packages-lock.json`.
 
-![Importer after a successful reimport, with FileWatch enabled](Documentation~/repository/docs/manual/images/unity-importer-overview.png)
+![Importer after a successful reimport, with FileWatch enabled](../../docs/manual/images/unity-importer-overview.png)
 
 For upgrades or rollback, select a different published `v<version>` in the Git URL, resolve packages, commit the manifest and lock file, restart Unity, and regenerate game sources. Remove older embedded/Assets SDK copies and an `org.devcel.native` companion when migrating. The [SDK installation guide](../../../../README.md) includes migration and offline ZIP/tarball alternatives.
 
@@ -62,11 +62,11 @@ Choose **+ Add source project…**. **Devcel → Setup Wizard** opens the same w
    - Review source, environment, version, type names, and destinations
    - Choose Save and import, then wait for import and Unity compilation
 
-![Source selection with a project-relative path](Documentation~/repository/docs/manual/images/unity-wizard-source.png)
+![Source selection with a project-relative path](../../docs/manual/images/unity-wizard-source.png)
 
-![Generation destinations and type names](Documentation~/repository/docs/manual/images/unity-wizard-generation.png)
+![Generation destinations and type names](../../docs/manual/images/unity-wizard-generation.png)
 
-![Review before saving and importing](Documentation~/repository/docs/manual/images/unity-wizard-review.png)
+![Review before saving and importing](../../docs/manual/images/unity-wizard-review.png)
 
 Expected files:
 
@@ -76,13 +76,13 @@ Assets/StreamingAssets/Devcel/Master/master.json
 Assets/DevcelUnity/Editor/DevcelImporterSettings.asset
 ```
 
-Unity's code destination is a **folder**; the generated filename is Devcel.cs. Check JSON manifest.content_version equals 1 and the generated C# namespace/class are Game.Master/MasterDatabase. See the [sample guide](Documentation~/repository/examples/manual-basics/README.md) for expected data.
+Unity's code destination is a **folder**; the generated filename is Devcel.cs. Check JSON manifest.content_version equals 1 and the generated C# namespace/class are Game.Master/MasterDatabase. See the [sample guide](../../examples/manual-basics/README.md) for expected data.
 
 ### Tag filters for this source
 
 In the source wizard’s **Generation settings**, configure **Tag filters (this source only)**. Use **Refresh project tag presets** after changing the saved vocabulary, then review the filters and choose **Save and import**.
 
-![Per-source tag filters and content version, reached by scrolling](Documentation~/repository/docs/manual/images/unity-wizard-tag-filters.png)
+![Per-source tag filters and content version, reached by scrolling](../../docs/manual/images/unity-wizard-tag-filters.png)
 
 The four filters are **row include**, **row exclude**, **column include**, and **column exclude**. Each source keeps its own selections. An empty include list includes all rows or columns; multiple includes use OR (any matching tag), and exclusions take priority. Content Version also applies.
 
@@ -190,7 +190,7 @@ Per-source environments[].contentVersion accepts 0–4,294,967,295; only -1 mean
 - Register the target environment on every source before changing **Common settings → Current environment**.
 - Missing, duplicate, or out-of-range settings are rejected. Player builds retain the selected environment rather than automatically choosing Production.
 
-Editing values does not increment content versions. See [Versions](Documentation~/repository/docs/manual/versions.md).
+Editing values does not increment content versions. See [Versions](../../docs/manual/versions.md).
 
 ## 6. Add multiple sources
 
@@ -278,4 +278,4 @@ Wait for active imports before retrying. After a crash, check status, reimport, 
 
 **Check status and errors** distinguishes Imported, Verified (inputs/configuration match outputs), and Import needed.
 
-For cache/owner conflicts, verify no other work uses the outputs, stop watchers/CLI, back up and remove only the affected configuration's stale cache/owner files, then reimport. Preserve active locks. See [Status and recovery](Documentation~/repository/docs/manual/collaboration.md#6-status-and-recovery).
+For cache/owner conflicts, verify no other work uses the outputs, stop watchers/CLI, back up and remove only the affected configuration's stale cache/owner files, then reimport. Preserve active locks. See [Status and recovery](../../docs/manual/collaboration.md#6-status-and-recovery).
