@@ -55,7 +55,7 @@ class GitPackageTests(unittest.TestCase):
             files = {p.relative_to(root/'package').as_posix():p.read_bytes() for p in (root/'package').rglob('*') if p.is_file()}
             self.assertFalse(any('Documentation~/repository/importers/unity/' in name for name in files), 'generated Unity package must not be embedded as documentation')
             for name in ('generate.py', 'support.cs.txt', 'live.cs.txt', 'LICENSE'):
-                self.assertEqual(files['Tools~/MasterMemory/' + name], (repo/'importers/unity-mastermemory'/name).read_bytes())
+                self.assertEqual(files['Tools~/MasterMemory/' + name], (repo/'importers/unity-mastermemory'/name).read_text(encoding='utf-8').encode('utf-8'))
             self.assertIn('Tools~/README.md', files)
             self.assertIn('Tools~/LICENSE-CLI-MIT.txt', files)
             self.assertNotIn('Tools~/Sources/win-x64/README.md', files)
@@ -64,6 +64,18 @@ class GitPackageTests(unittest.TestCase):
             files.pop('Tools~/README.md')
             with self.assertRaisesRegex(ValueError, 'documentation link'):
                 package.validate_documentation(files)
+
+    def test_mastermemory_inputs_normalize_windows_line_endings(self):
+        repo = Path(__file__).resolve().parents[1]
+        spec = importlib.util.spec_from_file_location('packaging_newlines', repo/'scripts/package-importers.py')
+        packaging = importlib.util.module_from_spec(spec); spec.loader.exec_module(packaging)
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp); source = root/'importers/unity-mastermemory'; source.mkdir(parents=True)
+            for name in ('generate.py', 'support.cs.txt', 'live.cs.txt', 'LICENSE'):
+                (source/name).write_bytes(b'first\r\nsecond\r\n')
+            packaging.install_mastermemory_tools(root, root/'Tools~')
+            for path in (root/'Tools~/MasterMemory').iterdir():
+                self.assertEqual(path.read_bytes(), b'first\nsecond\n')
 
     def test_one_tag_has_all_platforms_sources_and_notices_and_clones_locally(self):
         with tempfile.TemporaryDirectory() as temp:

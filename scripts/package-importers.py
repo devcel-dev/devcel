@@ -213,7 +213,8 @@ def install_mastermemory_tools(repo, bundled):
         path = source / name
         if path.is_symlink() or not path.is_file():
             raise RuntimeError('Missing or unsafe MasterMemory generator input: ' + str(path))
-        shutil.copyfile(path, target / name)
+        # These inputs are combined across OS artifacts; normalize checkout line endings.
+        (target / name).write_text(path.read_text(encoding='utf-8'), encoding='utf-8', newline='\n')
 
 
 def verify_cli(cli):
