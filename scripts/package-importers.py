@@ -32,7 +32,6 @@ def package_scratch():
 PLATFORMS = {
     'linux-x64': ('x86_64-unknown-linux-gnu', 'libdevcel_runtime.so', 'Linux/x86_64'),
     'win-x64': ('x86_64-pc-windows-msvc', 'devcel_runtime.dll', 'Windows/x86_64'),
-    'osx-x64': ('x86_64-apple-darwin', 'libdevcel_runtime.dylib', 'macOS'),
     'osx-arm64': ('aarch64-apple-darwin', 'libdevcel_runtime.dylib', 'macOS'),
 }
 
@@ -130,7 +129,9 @@ def bundle_documentation(repo, stage, dest, engine, bundled, source_commit, sour
     """
     repo = repo.resolve()
     sources = {}
-    original = repo / 'importers' / engine
+    # Unity's checked-in package is generated; never use it as a documentation
+    # source or each release can embed the previous release recursively.
+    original = repo / 'importers' / ('unity-template' if engine == 'unity' else engine)
     if engine == 'godot': original /= 'addons/devcel'
     for path in dest.rglob('*.md'):
         source = original / path.relative_to(dest)
@@ -165,6 +166,19 @@ def bundle_documentation(repo, stage, dest, engine, bundled, source_commit, sour
             target = (source.parent / unquote(url.path)).resolve()
             if not target.is_relative_to(repo) or not target.exists():
                 raise RuntimeError(f'Documentation target missing or outside repository: {source}: {href}')
+            # Links in repository manuals may name the generated Unity package.
+            # Resolve editable documentation to the template, and never embed
+            # generated-only files (especially prior Documentation~/repository trees).
+            generated_unity = repo / 'importers/unity'
+            if engine == 'unity' and target.is_relative_to(generated_unity):
+                template_target = repo / 'importers/unity-template' / target.relative_to(generated_unity)
+                if template_target.is_file():
+                    target = template_target.resolve()
+                else:
+                    kind = 'tree' if target.is_dir() else 'blob'
+                    replacement = f'https://github.com/{source_repository}/{kind}/{quote(source_commit, safe="")}/{quote(target.relative_to(repo).as_posix(), safe="/")}'
+                    edits.append((start, end, replacement))
+                    continue
             # Public docs/images/licenses are distributable documentation. Do not
             # pull GPL Studio code or documentation into an MIT importer through a link.
             is_document = target.is_file() and target.relative_to(repo).parts[0] != 'devcel-studio' and (target.suffix.lower() in ('.md', '.png', '.jpg', '.jpeg', '.svg', '.gif', '.webp') or target.name.startswith(('LICENSE', 'NOTICE')))
@@ -188,6 +202,19 @@ def bundle_documentation(repo, stage, dest, engine, bundled, source_commit, sour
         for start, end, value in reversed(edits): text = text[:start] + value + text[end:]
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(text, encoding='utf-8', newline='\n')
+
+def install_mastermemory_tools(repo, bundled):
+    """Include the optional source generator and its complete first-party license."""
+    source = repo / 'importers/unity-mastermemory'
+    target = bundled / 'MasterMemory'
+    target.mkdir(parents=True, exist_ok=True)
+    for name in ('generate.py', 'support.cs.txt', 'live.cs.txt', 'LICENSE'):
+        path = source / name
+        if path.is_symlink() or not path.is_file():
+            raise RuntimeError('Missing or unsafe MasterMemory generator input: ' + str(path))
+        # These inputs are combined across OS artifacts; normalize checkout line endings.
+        (target / name).write_text(path.read_text(encoding='utf-8'), encoding='utf-8', newline='\n')
+
 
 def verify_cli(cli):
     help_text = run(cli, 'pull', '--help')
@@ -372,6 +399,7 @@ def main():
                 if engine=='unreal':
                     (dest/'Docs').mkdir(exist_ok=True); shutil.copyfile(manual,dest/'Docs/unreal.md')
             importer_versions.materialize(repo, engine, dest)
+            if engine == 'unity': install_mastermemory_tools(repo, bundled)
             (bundled/args.platform).mkdir(parents=True)
             shutil.copyfile(repo/'docs/development/importer-packaging.md', bundled/'README.md')
             installation_path = (dest/'INSTALL.md').relative_to(stage).as_posix()

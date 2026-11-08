@@ -1,0 +1,131 @@
+// Copyright (c) 2024 Devcel Studio Contributors. MIT License; see LICENSE.
+// Curve interpolation follows devcel-runtime/src/curve.rs.
+[MessagePackObject]
+public struct DevcelColor32
+{
+    [Key(0)] public byte R { get; set; }
+    [Key(1)] public byte G { get; set; }
+    [Key(2)] public byte B { get; set; }
+    [Key(3)] public byte A { get; set; }
+}
+[MessagePackObject]
+public struct DevcelColorFloat
+{
+    [Key(0)] public float R { get; set; }
+    [Key(1)] public float G { get; set; }
+    [Key(2)] public float B { get; set; }
+    [Key(3)] public float A { get; set; }
+}
+[MessagePackObject]
+public struct DevcelCurveSegment
+{
+    [Key(0)] public double X0 { get; set; }
+    [Key(1)] public double X1 { get; set; }
+    [Key(2)] public double X2 { get; set; }
+    [Key(3)] public double X3 { get; set; }
+    [Key(4)] public double Y0 { get; set; }
+    [Key(5)] public double Y1 { get; set; }
+    [Key(6)] public double Y2 { get; set; }
+    [Key(7)] public double Y3 { get; set; }
+    [Key(8)] public bool Constant { get; set; }
+}
+[MessagePackObject]
+public sealed class DevcelCurve
+{
+    [Key(0)] public DevcelCurveSegment[] Segments { get; set; }
+    [Key(1)] public double EndValue { get; set; }
+    static double Bezier(double a, double b, double c, double d, double t)
+    {
+        double u=1-t; return u*u*u*a+3*u*u*t*b+3*u*t*t*c+t*t*t*d;
+    }
+    public double Sample(double x)
+    {
+        if (double.IsNaN(x)) return 0;
+        if (x <= 0) return Segments[0].Y0;
+        if (x >= 1) return EndValue;
+        int loIndex=0, hiIndex=Segments.Length;
+        while (loIndex<hiIndex) { int mid=loIndex+(hiIndex-loIndex)/2; if (Segments[mid].X3<=x) loIndex=mid+1; else hiIndex=mid; }
+        var s=Segments[loIndex];
+        if (s.Constant || x==s.X0) return s.Y0;
+        double lo=0, hi=1;
+        for(int i=0;i<40;i++) { double t=(lo+hi)*0.5, bx=Bezier(s.X0,s.X1,s.X2,s.X3,t); if(bx==x) return Bezier(s.Y0,s.Y1,s.Y2,s.Y3,t); if(bx<x) lo=t; else hi=t; }
+        return Bezier(s.Y0,s.Y1,s.Y2,s.Y3,(lo+hi)*0.5);
+    }
+}
+
+public static partial class BuildData
+{
+    static string ParseReference(string s) { if (string.IsNullOrEmpty(s)) return string.Empty; if (!Guid.TryParse(s, out _)) throw new FormatException("Invalid reference UUID"); return s; }
+    static JArray ColorArray(string s)
+    {
+        var a=JArray.Parse(s); if(a.Count!=4) throw new FormatException("Color requires four components"); return a;
+    }
+    static byte ColorByte(JToken v)
+    {
+        if(v.Type!=JTokenType.Integer) throw new FormatException("Color32 component must be an integer");
+        long n=(long)v; if(n<0 || n>255) throw new FormatException("Color32 out of range"); return (byte)n;
+    }
+    static double Number(JToken v)
+    {
+        if(v == null || (v.Type!=JTokenType.Integer && v.Type!=JTokenType.Float)) throw new FormatException("Expected finite number");
+        double n=(double)v; if(double.IsNaN(n) || double.IsInfinity(n)) throw new FormatException("Expected finite number"); return n;
+    }
+    static DevcelColor32 ParseColor32(string s)
+    {
+        var a=ColorArray(s); return new DevcelColor32 { R=ColorByte(a[0]), G=ColorByte(a[1]), B=ColorByte(a[2]), A=ColorByte(a[3]) };
+    }
+    static DevcelColorFloat ParseColorFloat(string s)
+    {
+        var a=ColorArray(s); var r=(float)Number(a[0]); var g=(float)Number(a[1]); var b=(float)Number(a[2]); var alpha=Number(a[3]);
+        if(alpha<0 || alpha>1 || float.IsInfinity(r) || float.IsInfinity(g) || float.IsInfinity(b)) throw new FormatException("Invalid ColorFloat");
+        return new DevcelColorFloat { R=r, G=g, B=b, A=(float)alpha };
+    }
+    sealed class CurvePoint
+    {
+        public double X,Y,InLength,OutLength; public string Mode; public double? InSlope,OutSlope;
+    }
+    static double? OptionalNumber(JObject obj,string key) { var v=obj[key]; return v==null ? (double?)null : Number(v); }
+    static DevcelCurve ParseCurve(string text,double? start,double? end)
+    {
+        var root = string.IsNullOrEmpty(text) ? JObject.Parse(@"{""points"":[{""x"":0,""y"":0,""mode"":""auto""},{""x"":1,""y"":1,""mode"":""auto""}]}") : JObject.Parse(text);
+        var raw=root["points"] as JArray; if(raw==null || raw.Count<2) throw new FormatException("Curve needs at least two points");
+        var points=new CurvePoint[raw.Count]; double previous=-1;
+        for(int i=0;i<raw.Count;i++)
+        {
+            var o=raw[i] as JObject ?? throw new FormatException("Invalid curve point");
+            var x=Number(o["x"]); var y=Number(o["y"]); var mode=(string)o["mode"];
+            if(x<0 || x>1 || x<=previous) throw new FormatException("Invalid curve position");
+            if(mode!="constant" && mode!="linear" && mode!="auto" && mode!="autoLength" && mode!="free") throw new FormatException("Invalid tangent mode");
+            var il=OptionalNumber(o,"inLen") ?? 1; var ol=OptionalNumber(o,"outLen") ?? 1;
+            if(il<0 || il>3 || ol<0 || ol>3) throw new FormatException("Invalid tangent length");
+            points[i]=new CurvePoint { X=x,Y=y,Mode=mode,InLength=il,OutLength=ol,InSlope=OptionalNumber(o,"inSlope"),OutSlope=OptionalNumber(o,"outSlope") }; previous=x;
+        }
+        int last=points.Length-1; if(points[0].X!=0 || points[last].X!=1) throw new FormatException("Invalid curve endpoints");
+        if(start.HasValue) points[0].Y=start.Value; if(end.HasValue) points[last].Y=end.Value;
+        double Auto(int i) { var l=points[Math.Max(i-1,0)]; var r=points[Math.Min(i+1,last)]; return (r.Y-l.Y)/Math.Max(r.X-l.X,1e-9); }
+        (double slope,double length) Handle(int i,bool outgoing)
+        {
+            var p=points[i]; if(p.Mode=="constant") return (0,1);
+            if(p.Mode=="linear") { var other=points[outgoing ? i+1 : i-1]; return ((other.Y-p.Y)/Math.Max(Math.Abs(other.X-p.X),1e-9)*(outgoing?1:-1),1); }
+            var explicitSlope=outgoing ? p.OutSlope : p.InSlope;
+            return (p.Mode=="free" ? explicitSlope ?? Auto(i) : Auto(i),outgoing ? p.OutLength : p.InLength);
+        }
+        var segments=new DevcelCurveSegment[last];
+        for(int i=0;i<last;i++)
+        {
+            var a=points[i]; var b=points[i+1]; var o=Handle(i,true); var n=Handle(i+1,false);
+            var ol=(b.X-a.X)/3*o.length; var il=(b.X-a.X)/3*n.length; bool constant=a.Mode=="constant";
+            var segment=new DevcelCurveSegment { X0=a.X,X1=a.X+ol,X2=b.X-il,X3=b.X,Y0=a.Y,Y1=constant?a.Y:a.Y+o.slope*ol,Y2=constant?b.Y:b.Y-n.slope*il,Y3=b.Y,Constant=constant };
+            if(double.IsInfinity(segment.Y1) || double.IsNaN(segment.Y1) || double.IsInfinity(segment.Y2) || double.IsNaN(segment.Y2)) throw new FormatException("Curve control points overflow");
+            segments[i]=segment;
+        }
+        return new DevcelCurve { Segments=segments, EndValue=points[last].Y };
+    }
+}
+
+[MessagePackObject]
+public struct DevcelRecordReference
+{
+    [Key(0)] public string Id { get; set; }
+    [IgnoreMember] public bool IsEmpty => string.IsNullOrEmpty(Id);
+}

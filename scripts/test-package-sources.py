@@ -21,6 +21,26 @@ def write(path, text):
 
 
 class PackagingSources(unittest.TestCase):
+    def test_checked_in_git_sdk_discloses_older_native_tools(self):
+        repo = HERE.parent
+        import unity_toolchain
+        required = json.loads((repo/'importers/unity/Editor/NativeRequirements.json').read_text(encoding='utf-8'))
+        if required['source_fingerprint'] != unity_toolchain.fingerprint(repo):
+            readme = (repo/'importers/unity/README.md').read_text(encoding='utf-8')
+            self.assertIn('published', readme)
+            self.assertIn('next matching native distribution', readme)
+
+    def test_checked_in_mobile_guide_matches_current_template(self):
+        repo = HERE.parent
+        template = (repo/'importers/unity-template/Documentation~/MOBILE.md').read_text(encoding='utf-8')
+        packaged = (repo/'importers/unity/Documentation~/MOBILE.md').read_text(encoding='utf-8')
+        self.assertEqual(packaged, template)
+        self.assertIn('Release v0.0.3 supplies', packaged)
+        self.assertNotIn('Simulator libraries are intentionally absent', packaged)
+        install = (repo/'importers/unity/Documentation~/repository/importers/unity/INSTALL.md').read_text(encoding='utf-8')
+        self.assertNotIn('Other Android ABIs, iOS Simulator and WebGL remain unsupported', install)
+        self.assertNotIn('As of 2026-11-04, the published v0.0.1', install)
+
     def test_scratch_cleanup_is_only_deferred_on_github_hosted_runners(self):
         for actions, runner, retained in (('', '', False), ('true', 'self-hosted', False),
                                           ('', 'github-hosted', False), ('true', 'github-hosted', True)):
@@ -166,12 +186,31 @@ class PackagingSources(unittest.TestCase):
             self.assertFalse((stage/'bindings').exists())
             self.assertFalse((stage/'third-party/generated').exists())
             self.assertFalse((stage/'importers/unity/Editor/NativeRequirements.json').exists())
+            self.assertFalse((stage/'importers/unity/Documentation~').exists())
+            self.assertTrue((stage/'importers/unity-template/Documentation~').is_dir())
             self.assertFalse((stage/'devcel-studio/public/legal/THIRD-PARTY-NOTICES.txt').exists())
             self.assertTrue((stage/'third-party/preferred-sources.json').is_file())
             for name in ('devcel-core/src/lib.rs', 'devcel-runtime/src/lib.rs',
                          'importers/unity/Runtime/Devcel.Unity.Runtime.asmdef',
                          'importers/unity/Editor/DevcelDistributionValidation.cs'):
                 self.assertEqual((stage/name).read_bytes(), (HERE.parent/name).read_bytes())
+
+    def test_mastermemory_local_builds_are_not_in_source_archive(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary); repo = root/'repo'; stage = root/'stage'; stage.mkdir()
+            for item in studio.SOURCE_ITEMS:
+                source = repo/item
+                if Path(item).suffix or item in ('LICENSE-NOTICE', 'README.md', 'CONTRIBUTING.md'):
+                    write(source, 'fixture')
+                else:
+                    source.mkdir(parents=True, exist_ok=True)
+            write(repo/'importers/unity-mastermemory/bin/a.dll', 'not source')
+            write(repo/'importers/unity-mastermemory/Tests/obj/cache.json', 'not source')
+            write(repo/'importers/unity-mastermemory/support.cs.txt', 'source')
+            studio.copy_source(repo, stage)
+            self.assertFalse((stage/'importers/unity-mastermemory/bin/a.dll').exists())
+            self.assertFalse((stage/'importers/unity-mastermemory/Tests/obj/cache.json').exists())
+            self.assertTrue((stage/'importers/unity-mastermemory/support.cs.txt').is_file())
 
     def test_bundled_npm_requires_verified_parent_and_child(self):
         with tempfile.TemporaryDirectory() as temporary:

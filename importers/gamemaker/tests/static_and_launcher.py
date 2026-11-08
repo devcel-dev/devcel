@@ -26,7 +26,7 @@ group.add_argument('--static-only', action='store_true')
 group.add_argument('--require-launcher', action='store_true')
 args = parser.parse_args()
 engine = pathlib.Path(__file__).resolve().parents[1]
-CURRENT_VERSION = json.loads((engine.parents[1]/'devcel-studio/package.json').read_text(encoding='utf-8'))['version']
+CURRENT_VERSION = json.loads((engine.parents[1]/'devcel-studio/src-tauri/tauri.conf.json').read_text(encoding='utf-8'))['version']
 
 def load_json(path):
     return json.loads(path.read_text(encoding='utf-8'))
@@ -79,7 +79,7 @@ if args.static_only:
     sys.exit(0)
 
 host = (platform.system(), platform.machine())
-rids = {('Linux', 'x86_64'): 'linux-x64', ('Darwin', 'x86_64'): 'osx-x64',
+rids = {('Linux', 'x86_64'): 'linux-x64',
         ('Darwin', 'arm64'): 'osx-arm64'}
 rid = rids.get(host)
 required = ['sh', 'uname', 'sed', 'grep', 'chmod', 'dirname',

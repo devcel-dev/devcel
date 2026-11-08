@@ -13,7 +13,8 @@ if __name__ == '__main__':
     parser.add_argument('--author-email', required=True)
     args = parser.parse_args()
     metadata = json.loads(args.report.read_text())
-    commit = unity_git_package.stage_release(args.archive, args.report, args.repo, args.author_name, args.author_email)
+    slim = unity_git_package.source_git_package_layout_at(args.repo, metadata['source_commit']) == 2
+    commit = unity_git_package.stage_release(args.archive, args.report, args.repo, args.author_name, args.author_email, slim=slim)
     print(json.dumps({'release_commit': commit, 'source_commit': metadata['source_commit'],
         'tag': metadata['tag'], 'published': False,
         'git_url': 'https://github.com/'+metadata['source_repository']+'.git?path=/importers/unity#'+metadata['tag']}, indent=2))

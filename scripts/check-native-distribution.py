@@ -5,7 +5,7 @@ The input must be a complete extracted payload, not the outer installer. This
 scanner never runs binaries. Extraction/bootstrapper review is explicit metadata.
 """
 from __future__ import annotations
-import argparse, hashlib, json, pathlib, sys
+import argparse, hashlib, json, pathlib, stat, sys
 
 MAGIC = (b'\x7fELF', b'MZ', b'\xfe\xed\xfa\xce', b'\xce\xfa\xed\xfe', b'\xfe\xed\xfa\xcf', b'\xcf\xfa\xed\xfe', b'\xca\xfe\xba\xbe', b'\xbe\xba\xfe\xca', b'\xca\xfe\xba\xbf')
 
@@ -13,15 +13,17 @@ def sha256(path):
     with path.open('rb') as source:return hashlib.file_digest(source,'sha256').hexdigest()
 
 def inventory(root):
+    root = root.resolve()
     found=[]
-    for path in sorted(root.rglob('*')):
-        if path.is_symlink() and not path.resolve().is_relative_to(root):
-            raise RuntimeError(f'Payload symlink escapes extracted root: {path.relative_to(root)}')
+    for path in root.rglob('*'):
+        is_link = path.is_symlink() or bool(getattr(path.lstat(), 'st_file_attributes', 0) & getattr(stat, 'FILE_ATTRIBUTE_REPARSE_POINT', 0x400))
+        if is_link and not path.resolve().is_relative_to(root):
+            raise RuntimeError(f'Payload link escapes extracted root: {path.relative_to(root)}')
         if not path.is_file():continue
         with path.open('rb') as source:prefix=source.read(4)
         if any(prefix.startswith(magic) for magic in MAGIC):
             found.append({'path':path.relative_to(root).as_posix(),'sha256':sha256(path)})
-    return found
+    return sorted(found, key=lambda item: item['path'])
 
 # Tauri 2.12.2 patches the first UNK token for each bundle, then restores
 # the original executable. Compare the ENTIRE resulting file, not only code

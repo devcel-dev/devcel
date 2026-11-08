@@ -26,7 +26,7 @@ Paths are relative to the package root.
 
 Matching `.meta` files are bundled. `DevcelNativePluginPostprocessor` applies settings when known paths import; `DevcelNativePlugins` applies them after Editor startup and through **Devcel → Repair Native Plugin Settings**. Any Platform is false, Editor is enabled only for desktop libraries on their OS/CPU, and only the matching Player is enabled. Mobile plugins never load in the Editor. Preload/define constraints are cleared. Identical settings cause no writes or reimports. Only these known package paths are modified.
 
-macOS AnyCPU still requires both CPU slices. The Player gate checks PE x64 DLL, ELF64 x86_64 shared-object, or Mach-O universal-dylib headers. Header checks do not establish ABI, dependency, code-signing, or execution correctness. Restart Unity after replacing a native library because it cannot be unloaded within the current session.
+The macOS library remains universal for existing Unity plugin validation; new releases support Apple Silicon only. macOS AnyCPU still requires both CPU slices. The Player gate checks PE x64 DLL, ELF64 x86_64 shared-object, or Mach-O universal-dylib headers. Header checks do not establish ABI, dependency, code-signing, or execution correctness. Restart Unity after replacing a native library because it cannot be unloaded within the current session.
 
 ## Build a CLI-containing package
 
@@ -36,7 +36,7 @@ The importer selects `Tools~/<rid>/devcel[.exe]` through the manifest. On the ta
 python scripts/package-importers.py --out dist/importers --source-repository <owner/repo> --source-commit <git-commit>
 ```
 
-The packager performs release CLI/runtime builds, metadata checks, source/notice collection, and binary hashing. Release collection combines all four desktop ZIPs and both mobile archives into a complete package under `importers/unity` in a new release commit, before creating the normal `v<version>` tag. OS-specific UPM `.tgz` files remain optional offline alternatives. See [Git UPM release generation](repository/importers/unity/Tools~/README.md#git-upm-release-generation). Packaging does not perform a real Unity import or Player execution test. Windows helper scripts use this same build path. macOS requires Xcode and both Rust targets to create a universal runtime dylib.
+The packager performs release CLI/runtime builds, metadata checks, source/notice collection, and binary hashing. Release collection combines all three desktop ZIPs and the Android, iOS and WebGL archives into a verified release archive. The new release commit contains a lightweight `importers/unity` package with the archive SHA-256; the Editor downloads and installs the matching native companion after the Git installation. OS-specific UPM `.tgz` files remain optional offline alternatives. See [Git UPM release generation](repository/importers/unity/Tools~/README.md#git-upm-release-generation). Packaging does not perform a real Unity import or Player execution test. Windows helper scripts use this same build path. macOS requires Xcode and both Rust targets to create a universal runtime dylib.
 
 Editor CLI OS and Player runtime OS are separate requirements. A single-RID ZIP may lack the runtime for another Player target; the missing-runtime gate remains active. See [bundled CLI packaging](repository/importers/unity/Tools~/README.md) for manifests and coverage.
 
@@ -61,3 +61,7 @@ Only `-1` means all content; `0..4294967295` are filter values. Input uses `Long
 With no registered sources, native libraries are optional and installing the package alone need not block Android or other builds. Known authoring-data leaks and invalid native settings are still rejected. The gate cannot track arbitrary encrypted archives or user-defined copies of authoring data; inspect the final Player and BuildReport too.
 
 Android ARM64 and iOS ARM64 device builds require the complete Git UPM release package (or an offline tarball containing mobile runtimes) and matching hashes in `player_runtimes`. The build gate checks Android architecture/API and 16 KB-compatible ELF segments, or iOS Device SDK/minimum OS and ARM64 device Mach-O objects in the static archive. Unsupported ABIs, Simulator and WebGL fail explicitly. `DevcelBundle.LoadText` retrieves the bundle; `FromJson` uses the native runtime. See [mobile Players](MOBILE.md) for prerequisites and acceptance.
+
+## Third-party notices
+
+The release archive stores each distinct desktop notice once in `ThirdPartyNotices/THIRD-PARTY-NOTICES.txt`. `ThirdPartyNotices/NOTICE-SOURCES.json` identifies each platform's original byte range and SHA-256 (offsets and lengths are measured in bytes, before text decoding); Android NDK notices are separate. The original release ZIPs retain their platform-specific notices.

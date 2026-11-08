@@ -1,0 +1,102 @@
+// Copy into the Devcel package Editor folder of a disposable Unity project only.
+using System;
+using System.IO;
+using System.Security.Cryptography;
+using UnityEditor;
+using UnityEngine;
+
+namespace Devcel.Unity.Editor
+{
+    [InitializeOnLoad]
+    internal static class DevcelMasterMemorySmoke
+    {
+        private const string Active = "Devcel.MasterMemorySmoke.Active";
+        private const string Phase = "Devcel.MasterMemorySmoke.Phase";
+        private const string Previous = "Devcel.MasterMemorySmoke.Previous";
+        private static double started;
+        private static string Fixture => Path.Combine(DevcelPaths.ProjectRoot, "DevcelFixture");
+        private static string Bundle => Path.Combine(Application.streamingAssetsPath, "live.json");
+        private static string Binary => Path.ChangeExtension(Bundle, ".mastermemory.bytes");
+        private static string Script => DevcelPaths.ToAbsolute("Assets/BridgeOutput/DevcelMasterMemory.cs");
+        private static DevcelProjectConfig Project() => new DevcelProjectConfig {
+            projectName = "fixture", devcelProjectPath = Path.Combine(Fixture, "ManualBasics.devcelproj.toml"),
+            codeOutputFolder = "Assets/BridgeOutput", jsonOutputFolder = "Assets/StreamingAssets",
+            bundleFileName = "live.json", minimal = false,
+        };
+
+        static DevcelMasterMemorySmoke()
+        {
+            if (SessionState.GetBool(Active, false)) EditorApplication.update += Poll;
+        }
+
+        private static void Export()
+        {
+            var settings = DevcelImporterSettings.Instance;
+            settings.projects.Clear();
+            var project = Project(); settings.projects.Add(project);
+            if (!DevcelExporter.ExportAll()) throw new Exception("Devcel import failed: " + project.lastError);
+        }
+
+        public static void Run()
+        {
+            try
+            {
+                if (!File.Exists(Path.Combine(Fixture, ".devcel-mastermemory-smoke")))
+                    throw new Exception("A marked, disposable DevcelFixture is required.");
+                if (File.Exists(Bundle) || File.Exists(Binary) || File.Exists(Script))
+                    throw new Exception("Use a clean disposable project with no pre-existing outputs.");
+                var python = Environment.GetEnvironmentVariable("DEVCEL_SMOKE_PYTHON");
+                if (string.IsNullOrWhiteSpace(python)) throw new Exception("Set DEVCEL_SMOKE_PYTHON to Python 3.");
+                DevcelMasterMemory.Enabled = true; DevcelMasterMemory.Source = "fixture"; DevcelMasterMemory.Python = python;
+                SessionState.SetBool(Active, true); SessionState.SetInt(Phase, 0);
+                started = EditorApplication.timeSinceStartup; EditorApplication.update += Poll; Export();
+            }
+            catch (Exception ex) { Fail(ex); }
+        }
+
+        private static void Poll()
+        {
+            try
+            {
+                if (EditorApplication.isCompiling || EditorApplication.isUpdating) return;
+                if (started == 0) started = EditorApplication.timeSinceStartup;
+                if (EditorApplication.timeSinceStartup - started > 180) throw new Exception("Smoke test timed out.");
+                if (!File.Exists(Binary)) return;
+                string hash;
+                using (var sha = SHA256.Create()) hash = Convert.ToBase64String(sha.ComputeHash(File.ReadAllBytes(Binary)));
+                int phase = SessionState.GetInt(Phase, 0);
+                if (phase == 0)
+                {
+                    SessionState.SetString(Previous, hash);
+                    string source = Path.Combine(Fixture, "Tables/enemies.table.toml");
+                    string text = File.ReadAllText(source);
+                    if (!text.Contains("hp = \"100\"")) throw new Exception("Unexpected fixture; refusing to edit it.");
+                    File.WriteAllText(source, text.Replace("hp = \"100\"", "hp = \"101\""));
+                    SessionState.SetInt(Phase, 1); Export(); return;
+                }
+                if (phase == 1 && hash != SessionState.GetString(Previous, ""))
+                {
+                    byte[] original = File.ReadAllBytes(Binary);
+                    string prefix = "Devcel.MasterMemory." + DevcelPaths.ProjectRoot + ".";
+                    EditorPrefs.DeleteKey(prefix + "script:" + Script); EditorPrefs.DeleteKey(prefix + "binary:" + Binary);
+                    File.WriteAllText(Binary, "mismatch");
+                    bool rejected = false;
+                    try { DevcelMasterMemory.Adopt(Project(), Bundle); } catch (IOException) { rejected = true; }
+                    if (!rejected) throw new Exception("Incorrect output was adopted.");
+                    File.WriteAllBytes(Binary, original); DevcelMasterMemory.Adopt(Project(), Bundle);
+                    File.WriteAllText(Binary, "user-owned-change"); rejected = false;
+                    try { DevcelMasterMemory.Generate(Project(), Bundle); } catch (IOException) { rejected = true; }
+                    if (!rejected || File.ReadAllText(Binary) != "user-owned-change") throw new Exception("Overwrite protection failed.");
+                    Debug.Log("DEVCEL_MASTERMEMORY_EDITOR_SMOKE_PASS");
+                    SessionState.EraseBool(Active); EditorApplication.Exit(0);
+                }
+            }
+            catch (Exception ex) { Fail(ex); }
+        }
+
+        private static void Fail(Exception ex)
+        {
+            Debug.LogException(ex); SessionState.EraseBool(Active); EditorApplication.Exit(1);
+        }
+    }
+}

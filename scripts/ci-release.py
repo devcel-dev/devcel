@@ -667,7 +667,7 @@ def platform_config():
     if sys.platform == 'linux':
         return 'linux', 'linux-x64', 'deb', 'devcel-studio'
     if sys.platform == 'darwin':
-        arch = {'x86_64': 'x64', 'arm64': 'arm64', 'aarch64': 'arm64'}.get(platform.machine())
+        arch = {'arm64': 'arm64', 'aarch64': 'arm64'}.get(platform.machine())
         if arch:
             # Request app explicitly: dmg-only bundling deletes its intermediate app.
             return 'macos-'+arch, 'osx-'+arch, 'app,dmg', 'devcel-studio'
@@ -720,6 +720,10 @@ def build_native():
         run('cargo', 'build', '--locked', '--release', '-p', 'devcel-cli')
     cli_config = studio_cli.stage(ROOT, cargo_target(), importer_platform)
     options = ['--bundles', bundles] if bundles else ['--no-bundle']
+    # Tauri hides bundle_dmg.sh output at its default log level, making
+    # hdiutil and filesystem failures indistinguishable in release logs.
+    if system.startswith('macos-'):
+        options.append('--verbose')
     run('npm', 'run', 'tauri', '--', 'build', *options,
         '--config', cli_config, cwd=ROOT/'devcel-studio')
     target = cargo_target()
@@ -817,14 +821,20 @@ def package():
             '--tag', os.environ['RELEASE_TAG'], '--verify-urls')
 
 
-def collect_assets(downloads, destination, tag, expected_commit=None, expected_repository=None):
+def collect_assets(downloads, destination, tag, expected_commit=None, expected_repository=None, notice_layout=unity_git_package.NOTICE_LAYOUT_VERSION, mobile_layout=2, source_archive_layout=2, desktop_layout=2):
     platforms = {'Linux': ('linux', 'linux-x64'), 'Windows': ('windows', 'win-x64'),
                  'macOS-X64': ('macos-x64', 'osx-x64'), 'macOS-ARM64': ('macos-arm64', 'osx-arm64')}
+    if desktop_layout == 2:
+        del platforms['macOS-X64']
+        if (downloads/'release-macOS-X64').exists():
+            raise ValueError('Unexpected Intel Mac artifact for an Apple Silicon release')
+    elif desktop_layout != 1:
+        raise ValueError('Unknown desktop platform layout')
     expected_studio = {label: studio_asset_name(system, tag)
                        for label, (system, _) in platforms.items()}
     roots = [downloads/('release-'+label) for label in platforms]
     if any(not path.is_dir() for path in roots):
-        raise ValueError('All four native release artifact sets are required.')
+        raise ValueError('All selected native release artifact sets are required.')
     destination.mkdir(parents=True, exist_ok=True)
     files = []
     for directory in roots:
@@ -881,20 +891,24 @@ def collect_assets(downloads, destination, tag, expected_commit=None, expected_r
             files.append(target)
     # Mobile archives belong to the same immutable release source. They add
     # Player runtimes without replacing the Editor's platform-specific runtime.
-    mobile = {system: downloads/f'release-mobile-{system}'/f'unity-mobile-{system}.zip'
-              for system in ('android', 'ios', 'webgl')}
+    systems = ('android', 'ios') if mobile_layout == 1 else ('android', 'ios', 'webgl')
+    if mobile_layout not in (1, 2) or source_archive_layout not in (1, 2):
+        raise ValueError('Unknown release package layout')
+    mobile = {system: downloads/f'release-mobile-{system}'/f'unity-mobile-{system}.zip' for system in systems}
     for path in mobile.values():
         if not path.is_file() or path.is_symlink() or list(path.parent.iterdir()) != [path]:
-            raise ValueError('Android, iOS and WebGL runtime artifacts are required')
+            raise ValueError('Required '+', '.join(systems)+' runtime artifacts are required')
     for source in list(files):
         prefix = f'devcel-unity-{tag[1:]}-'
         if source.name.startswith(prefix) and source.suffix == '.zip':
             platform = source.name[len(prefix):-4]
-            files.append(unity_upm.create(source, destination, tag[1:], platform, mobile))
+            files.append(unity_upm.create(source, destination, tag[1:], platform, mobile, legacy_mobile=mobile_layout == 1))
     files += unity_git_package.create(
-        {rid: destination/f'devcel-unity-{tag[1:]}-{rid}.zip' for rid in unity_git_package.RIDS},
+        {rid: destination/f'devcel-unity-{tag[1:]}-{rid}.zip' for rid in (unity_git_package.LEGACY_RIDS if desktop_layout == 1 else unity_git_package.RIDS)},
         mobile, destination, tag[1:], expected_commit, expected_repository,
-        'github-actions[bot]', '41898282+github-actions[bot]@users.noreply.github.com')
+        'github-actions[bot]', '41898282+github-actions[bot]@users.noreply.github.com',
+        legacy_notices=notice_layout == 1, legacy_mobile=mobile_layout == 1,
+        legacy_source_archives=source_archive_layout == 1, legacy_desktop=desktop_layout == 1)
     sums = destination/'SHA256SUMS.txt'
     sums.write_text(''.join(hashlib.sha256(path.read_bytes()).hexdigest()+'  '+path.name+'\n'
                             for path in sorted(files)), encoding='utf-8', newline='\n')
@@ -944,12 +958,18 @@ def publish(source_root=None, before_create=None, before_publish=None):
         raise ValueError('A release already exists for this tag; inspect it before retrying.')
     repository = os.environ['GH_REPO']
     run(sys.executable, ROOT/'scripts/generate-third-party-notices.py', '--ensure', '--repo', source_root)
-    files = collect_assets(ROOT/'release-downloads', ROOT/'release-publish', tag, commit, repository)
+    systems = unity_upm.unity_mobile.source_systems((source_root/'scripts/unity_mobile.py').read_text(encoding='utf-8'))
+    files = collect_assets(ROOT/'release-downloads', ROOT/'release-publish', tag, commit, repository,
+                           notice_layout=unity_git_package.source_notice_layout(source_root),
+                           mobile_layout=1 if len(systems) == 2 else 2,
+                           source_archive_layout=unity_git_package.source_archive_layout(source_root),
+                           desktop_layout=unity_git_package.source_desktop_layout(source_root))
     if existing_git_release:
         prepared = unity_git_package.stage_release(
             ROOT/'release-publish'/f'org.devcel.unity-{tag[1:]}-git.zip',
             ROOT/'release-publish'/f'org.devcel.unity-{tag[1:]}-git.json', source_root,
-            'github-actions[bot]', '41898282+github-actions[bot]@users.noreply.github.com')
+            'github-actions[bot]', '41898282+github-actions[bot]@users.noreply.github.com',
+            slim=unity_git_package.source_git_package_layout(source_root) == 2)
         unity_git_package.verify_release_tree(source_root, existing_git_release, prepared)
     release_privacy.check_bytes((ROOT/'release-publish'/release_source.ASSET).read_bytes(), release_source.ASSET)
     release_privacy.check_bytes((ROOT/'release-publish'/'SHA256SUMS.txt').read_bytes(), 'SHA256SUMS.txt')
@@ -969,7 +989,8 @@ def publish(source_root=None, before_create=None, before_publish=None):
         release_commit = unity_git_package.stage_release(
             ROOT/'release-publish'/f'org.devcel.unity-{tag[1:]}-git.zip',
             ROOT/'release-publish'/f'org.devcel.unity-{tag[1:]}-git.json', source_root,
-            'github-actions[bot]', '41898282+github-actions[bot]@users.noreply.github.com')
+            'github-actions[bot]', '41898282+github-actions[bot]@users.noreply.github.com',
+            slim=unity_git_package.source_git_package_layout(source_root) == 2)
         remote = 'https://github.com/'+repository+'.git'
         if existing_prepared_tag:
             if existing_prepared_tag != release_commit+'\trefs/tags/'+tag:

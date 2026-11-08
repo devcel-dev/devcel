@@ -9,7 +9,7 @@ local function platform()
     local p=editor.platform
     local map={['x86_64-win32']='win-x64',['arm64-win32']='win-arm64',
         ['x86_64-linux']='linux-x64',['arm64-linux']='linux-arm64',
-        ['x86_64-macos']='osx-x64',['arm64-macos']='osx-arm64'}
+        ['arm64-macos']='osx-arm64'}
     assert(map[p],"Unsupported editor platform: "..tostring(p)); return map[p]
 end
 local function cli()

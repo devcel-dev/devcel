@@ -1,0 +1,40 @@
+// Devcel MIT license is included in the generated source header.
+// Instances are owned and reloaded on the thread that creates them (Unity main thread).
+public sealed partial class LiveDatabase : IDisposable {
+    static readonly List<WeakReference<LiveDatabase>> OpenInstances = new List<WeakReference<LiveDatabase>>();
+    readonly string sourcePath;
+    readonly int ownerThread;
+    bool disposed;
+    public DevcelMemoryDatabase Current { get { CheckThread(); return current; } }
+    DevcelMemoryDatabase current;
+    public ulong Version { get; private set; }
+    public LiveDatabase(byte[] data, string sourceBundlePath) {
+        if (data == null) throw new ArgumentNullException(nameof(data));
+        if (string.IsNullOrWhiteSpace(sourceBundlePath)) throw new ArgumentException("A source bundle path is required.", nameof(sourceBundlePath));
+        ownerThread = Environment.CurrentManagedThreadId;
+        sourcePath = System.IO.Path.GetFullPath(sourceBundlePath);
+        current = new DevcelMemoryDatabase(data);
+        OpenInstances.Add(new WeakReference<LiveDatabase>(this));
+    }
+    void CheckThread() {
+        if (ownerThread != Environment.CurrentManagedThreadId) throw new InvalidOperationException("LiveDatabase must be accessed on its owner thread.");
+        if (disposed) throw new ObjectDisposedException(nameof(LiveDatabase));
+    }
+    public void Dispose() { CheckThread(); disposed = true; current = null; }
+    // Editor calls this on the main thread after a successful export. Construct the
+    // replacement first: malformed or incompatible input never replaces live data.
+    public static int ReloadOpenDatabases(string sourceBundlePath) {
+        string path = System.IO.Path.GetFullPath(sourceBundlePath);
+        var comparison = System.IO.Path.DirectorySeparatorChar == '\\' ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal;
+        var matches = new List<LiveDatabase>();
+        for (int i = OpenInstances.Count - 1; i >= 0; i--) {
+            if (!OpenInstances[i].TryGetTarget(out var target) || target.disposed) { OpenInstances.RemoveAt(i); continue; }
+            if (string.Equals(target.sourcePath, path, comparison)) { target.CheckThread(); matches.Add(target); }
+        }
+        if (matches.Count == 0) return 0;
+        var data = BuildData.FromJson(System.IO.File.ReadAllText(path));
+        var replacement = new DevcelMemoryDatabase(data);
+        foreach (var target in matches) { target.current = replacement; target.Version++; }
+        return matches.Count;
+    }
+}

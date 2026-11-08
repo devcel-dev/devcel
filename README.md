@@ -8,8 +8,9 @@
 
 # Devcel
 
+[![CI](https://github.com/devcel-dev/devcel/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/devcel-dev/devcel/actions/workflows/ci.yml)
 [![Latest release](https://img.shields.io/github/v/release/devcel-dev/devcel)](https://github.com/devcel-dev/devcel/releases/latest)
-[![Studio downloads: Windows and Linux](https://img.shields.io/badge/Studio_downloads-Windows_%7C_Linux-blue)](https://github.com/devcel-dev/devcel/releases/latest)
+[![Studio downloads: Windows x64, macOS Apple Silicon and Linux x64](https://img.shields.io/badge/Studio_downloads-Windows_x64_%7C_macOS_Apple_Silicon_%7C_Linux_x64-blue)](https://github.com/devcel-dev/devcel/releases/latest)
 [![Studio license: GPL-3.0](https://img.shields.io/badge/Studio-GPL--3.0-blue)](devcel-studio/LICENSE)
 [![Core, CLI, runtime, and SDK licenses: MIT](https://img.shields.io/badge/Core%2FCLI%2Fruntime%2FSDKs-MIT-blue)](LICENSE-NOTICE)
 
@@ -17,7 +18,7 @@ Devcel is a table editor for game master data. Define tables and edit their cont
 
 ![Devcel Studio showing RPG enemy data, calculated health, color swatches, and growth curves.](docs/images/studio-overview.jpg)
 
-**[Get Studio](https://github.com/devcel-dev/devcel/releases)** · **[Get started](docs/manual/getting-started.md)** · **[Read the manual](docs/manual/README.md)**
+**[Get Studio](https://github.com/devcel-dev/devcel/releases/latest)** · **[Get started](docs/manual/getting-started.md)** · **[Read the manual](docs/manual/README.md)**
 
 ## Define, calculate, and version game data
 
@@ -26,6 +27,8 @@ Devcel is a table editor for game master data. Define tables and edit their cont
 - **Formulas.** Derive stats and prices from other fields instead of updating dependent values by hand. [Formulas](docs/manual/formulas.md) recalculate when inputs change; runtime exports contain their evaluated results.
 - **Content Versions.** Assign versions to rows and columns to [control what ships](docs/manual/versions.md). Keep upcoming content in the project while exporting only the data and generated code for the target version.
 - **Interfaces.** Define shared fields such as `hp` and `attack` once, then apply the [Interface](docs/manual/interfaces.md) to player and enemy tables. Review and synchronize definition changes while each table keeps its own row values.
+
+Unity and Godot are first-class integrations. Other integrations, including Bevy, are experimental and should be validated for your target platforms. See the [engine integration overview](importers/README.md).
 
 Connect these tables to your game to shorten the edit-and-test cycle. With automatic import and runtime reloading configured, saved edits can reach the running game without a restart. Follow the [Unity](docs/manual/unity.md) or [Godot](docs/manual/godot.md#3-edit-in-studio-and-check-automatic-import) setup guide; the [importer overview](importers/README.md) covers other integrations.
 
@@ -69,3 +72,5 @@ See the [documentation index](docs/README.md) and [importer overview](importers/
 ## Licensing
 
 Licenses apply per component. Core, CLI, runtime, and engine SDK first-party code are MIT licensed; Studio is GPL-3.0. See [LICENSE-NOTICE](LICENSE-NOTICE) for component boundaries. Consult each component's LICENSE and retain applicable third-party notices.
+
+The versioned authoring TOML contract and migration policy are documented in [Authoring format v1](docs/reference/authoring-format-v1.md).

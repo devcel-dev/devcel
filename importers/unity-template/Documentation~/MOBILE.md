@@ -1,8 +1,8 @@
 # Android and iOS Players
 
-Install the complete package using the [Git URL instructions](../README.md#package-installation). One release tag includes all desktop Editor CLIs/runtimes and both mobile targets below. Older desktop ZIPs and desktop-only tarballs lack mobile libraries and fail the mobile build check.
+Install the Git SDK and matching native companion using the [Git URL instructions](../README.md#package-installation). The release archive supplies desktop Editor tools and the mobile targets below. Older desktop ZIPs and desktop-only tarballs lack mobile libraries and fail the mobile build check.
 
-Release v0.0.2 includes the Git-installable package and Windows, Linux and macOS importer distributions. The older v0.0.1 release contains Windows/Linux importer ZIPs only.
+Release v0.0.3 supplies the Android ABIs, iOS device and Simulator, and WebGL runtimes below. Release v0.0.2 includes a Git-installable package but has Android ARM64 and iOS device runtimes only; v0.0.1 contains Windows/Linux importer ZIPs only.
 
 | Player target | Bundled library | Required settings |
 |---|---|---|
@@ -35,7 +35,7 @@ Replace the namespace/root class with your generated names and retain/dispose th
 
 ## Build the Player
 
-For Android, select **ARMv7**, **ARM64** **x86** (where supported), and/or **x86_64**, minimum API 23+, and use IL2CPP for a release build. The runtime is built with Android NDK 28.2.13676358 and 16 KB-compatible load segment alignment. The final APK/AAB also depends on Unity and every other plugin meeting current Android packaging/page-size requirements; inspect and test the final app on the intended devices.
+For Android, select **ARMv7**, **ARM64**, **x86** (where supported), and/or **x86_64**, minimum API 23+, and use IL2CPP for a release build. The runtime is built with Android NDK 28.2.13676358 and 16 KB-compatible load segment alignment. The final APK/AAB also depends on Unity and every other plugin meeting current Android packaging/page-size requirements; inspect and test the final app on the intended devices.
 
 For iOS, choose **Device SDK** and minimum iOS 13.0+. Export the Xcode project on macOS. The static library is linked into UnityFramework; `DevcelIosLinker` adds the system libraries reported by the matching Rust build. Set your signing team, build/archive and deploy through Xcode. For Simulator builds select **Simulator SDK**; the build selects the universal simulator archive instead of the device archive. Xcode on macOS is required for the final link and Simulator execution. No CLI or dynamically loaded macOS dylib is used inside the iOS app.
 
@@ -52,7 +52,7 @@ python scripts/unity_mobile.py --system webgl --out mobile/webgl --source-reposi
 python scripts/unity_upm.py dist/devcel-unity-<version>-<editor-rid>.zip --out dist/upm --version <version> --platform <editor-rid> --mobile-android mobile/android/unity-mobile-android.zip --mobile-ios mobile/ios/unity-mobile-ios.zip --mobile-webgl mobile/webgl/unity-mobile-webgl.zip
 ```
 
-The mobile ZIPs are internal build inputs, not installable packages. Publication verifies that their version, repository, commit and native source fingerprint match the desktop package, validates binary formats and hashes, and adds them to the common Git package and each OS-specific release tarball. The source desktop CLI archive contains the same runtime source and pinned Rust dependency sources. Android NDK original notices are also bundled. The iOS build additionally links a small native probe for each Simulator architecture with linker warnings treated as errors; this checks linking, not execution or a Unity Player. The native mobile manifest records target toolchains, minimum OS/API and iOS link libraries. Recovering a release requires Android, iOS and WebGL artifacts as well as all four desktop build artifacts.
+The mobile ZIPs are internal build inputs, not installable packages. Publication verifies that their version, repository, commit and native source fingerprint match the desktop package, validates binary formats and hashes, and adds them to the downloadable native archive and each OS-specific release tarball. The source desktop CLI archive contains the same runtime source and pinned Rust dependency sources. Android NDK original notices are also bundled. The iOS build additionally links a small native probe for each Simulator architecture with linker warnings treated as errors; this checks linking, not execution or a Unity Player. The native mobile manifest records target toolchains, minimum OS/API and iOS link libraries. Recovering a release requires the mobile artifacts supported by its original source as well as all desktop build artifacts required by the original release.
 
 ## Acceptance on actual devices
 

@@ -14,16 +14,20 @@ import debian_version
 import studio_cli
 from legal_distribution import distribution_files
 
+def is_link(path):
+    return path.is_symlink() or bool(getattr(path.lstat(), 'st_file_attributes', 0) & getattr(stat, 'FILE_ATTRIBUTE_REPARSE_POINT', 0x400))
+
+
 def verify_deb_notices(root, repo):
     """Require the full generated legal tree in each actual Debian payload."""
     expected_root=repo/'third-party/generated'
     payload_root=root/'usr/lib/devcel-studio/legal'
     def files(directory):
         found={}
-        if not directory.is_dir() or directory.is_symlink():
+        if not directory.is_dir() or is_link(directory) or not directory.resolve().is_relative_to(root.resolve()):
             raise RuntimeError('Missing or linked Debian legal directory')
         for path in directory.rglob('*'):
-            if path.is_symlink():raise RuntimeError('Linked Debian notice file')
+            if is_link(path):raise RuntimeError('Linked Debian notice file')
             if path.is_file():found[path.relative_to(directory).as_posix()]=native.sha256(path)
         return found
     expected={name:native.sha256(path) for name,path in distribution_files(expected_root).items()};actual=files(payload_root)
@@ -38,11 +42,16 @@ def verify_deb_notices(root, repo):
 def verify_macos_notices(app, repo):
     expected = distribution_files(repo/'third-party/generated')
     legal = app/'Contents/Resources/legal'
-    actual = {p.relative_to(legal).as_posix(): p for p in legal.rglob('*') if p.is_file()}
-    if legal.is_symlink() or not legal.is_dir() or set(actual) != set(expected):
+    if not legal.is_dir() or is_link(legal) or not legal.resolve().is_relative_to(app.resolve()):
+        raise RuntimeError('Missing or linked macOS legal directory')
+    actual = {}
+    for path in legal.rglob('*'):
+        if is_link(path): raise RuntimeError('Linked macOS notice file')
+        if path.is_file(): actual[path.relative_to(legal).as_posix()] = path
+    if set(actual) != set(expected):
         raise RuntimeError('macOS legal payload differs from generated notices')
     for name, source in expected.items():
-        if actual[name].is_symlink() or actual[name].read_bytes() != source.read_bytes():
+        if is_link(actual[name]) or actual[name].read_bytes() != source.read_bytes():
             raise RuntimeError('macOS notice missing, linked or changed: '+name)
     return {'verified_files': len(expected), 'payload_root': 'Contents/Resources/legal'}
 

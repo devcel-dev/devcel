@@ -1,12 +1,12 @@
 # Import data into Unity
 
-[Manual](Documentation~/repository/docs/manual/README.md) / [Getting started](Documentation~/repository/docs/manual/getting-started.md) / [CLI](Documentation~/repository/docs/manual/cli.md) / [Synchronization](Documentation~/repository/docs/manual/collaboration.md)
+[Manual](../../docs/manual/README.md) / [Getting started](../../docs/manual/getting-started.md) / [CLI](../../docs/manual/cli.md) / [Synchronization](../../docs/manual/collaboration.md)
 
-Import saved Devcel tables into Unity and check Studio edits in a running game. Start with a working copy of [ManualBasics](Documentation~/repository/examples/manual-basics/README.md).
+Import saved Devcel tables into Unity and check Studio edits in a running game. Start with a working copy of [ManualBasics](../../examples/manual-basics/README.md).
 
 ## 1. Prepare the projects
 
-You need a saved manifest and its Tables folder, plus the complete Git UPM package. A source-code archive does not include the required executable.
+You need a saved manifest and its Tables folder, the Git UPM SDK and its matching native companion. A source-code archive does not include the required executable.
 
 The Devcel Unity package declares Unity **2021.3** as its minimum. Packaging generates its `package.json` version and native manifest from the canonical Studio product version in `tauri.conf.json`. Its native source fingerprint and payload hashes bind the SDK to the bundled tools; the runtime's **API_VERSION is 1**.
 
@@ -29,14 +29,14 @@ Put generated JSON/code outside the source project and reserve its output paths 
 
 1. Open **Window > Package Manager > + > Add package from git URL** (or **Install package from Git URL**).
 2. Enter `https://github.com/devcel-dev/devcel.git?path=/importers/unity`. To pin a release, append `#v<version>` using a published tag listed by [Releases](https://github.com/devcel-dev/devcel/releases). Git must be installed on your computer.
-3. The same URL includes all four desktop Editor CLIs, desktop runtimes and Android/iOS ARM64 device runtimes. No native companion or PATH CLI is required.
+3. Choose **Devcel > Download Matching Native Tools**. Unity downloads the matching release archive, verifies its SHA-256 and installs a project-local `org.devcel.native` companion with the Editor CLI and Player runtimes. Network access is required; Git LFS and a CLI on PATH are not. Older tagged releases may already bundle the binaries and do not need this step.
 4. Open **Devcel > Importer**.
 
-As of 2026-11-04, the published v0.0.1 release contains Windows/Linux importer ZIPs only. The Git-installable package, macOS and mobile distributions described here require a newer release published by this pipeline; they are not downloads available in v0.0.1.
+Release v0.0.2 and later include Git-installable packages and Windows, Linux and macOS importer distributions. The older v0.0.1 release contains Windows/Linux importer ZIPs only.
 
-The default branch contains the most recently generated package after the first new release. The editable template is `importers/unity-template`. Preserve the Git dependency in `Packages/manifest.json` and its resolved commit in `Packages/packages-lock.json`.
+Ignore `Packages/org.devcel.native/` in the game repository; each developer downloads that companion locally. The default branch contains the most recently generated package after the first new release. The editable template is `importers/unity-template`. Preserve the Git dependency in `Packages/manifest.json` and its resolved commit in `Packages/packages-lock.json`.
 
-![Importer after a successful reimport, with FileWatch enabled](Documentation~/repository/docs/manual/images/unity-importer-overview.png)
+![Importer after a successful reimport, with FileWatch enabled](../../docs/manual/images/unity-importer-overview.png)
 
 For upgrades or rollback, select a different published `v<version>` in the Git URL, resolve packages, commit the manifest and lock file, restart Unity, and regenerate game sources. Remove older embedded/Assets SDK copies and an `org.devcel.native` companion when migrating. The [SDK installation guide](../../../../README.md) includes migration and offline ZIP/tarball alternatives.
 
@@ -62,11 +62,11 @@ Choose **+ Add source project…**. **Devcel → Setup Wizard** opens the same w
    - Review source, environment, version, type names, and destinations
    - Choose Save and import, then wait for import and Unity compilation
 
-![Source selection with a project-relative path](Documentation~/repository/docs/manual/images/unity-wizard-source.png)
+![Source selection with a project-relative path](../../docs/manual/images/unity-wizard-source.png)
 
-![Generation destinations and type names](Documentation~/repository/docs/manual/images/unity-wizard-generation.png)
+![Generation destinations and type names](../../docs/manual/images/unity-wizard-generation.png)
 
-![Review before saving and importing](Documentation~/repository/docs/manual/images/unity-wizard-review.png)
+![Review before saving and importing](../../docs/manual/images/unity-wizard-review.png)
 
 Expected files:
 
@@ -76,13 +76,13 @@ Assets/StreamingAssets/Devcel/Master/master.json
 Assets/DevcelUnity/Editor/DevcelImporterSettings.asset
 ```
 
-Unity's code destination is a **folder**; the generated filename is Devcel.cs. Check JSON manifest.content_version equals 1 and the generated C# namespace/class are Game.Master/MasterDatabase. See the [sample guide](Documentation~/repository/examples/manual-basics/README.md) for expected data.
+Unity's code destination is a **folder**; the generated filename is Devcel.cs. Check JSON manifest.content_version equals 1 and the generated C# namespace/class are Game.Master/MasterDatabase. See the [sample guide](../../examples/manual-basics/README.md) for expected data.
 
 ### Tag filters for this source
 
 In the source wizard’s **Generation settings**, configure **Tag filters (this source only)**. Use **Refresh project tag presets** after changing the saved vocabulary, then review the filters and choose **Save and import**.
 
-![Per-source tag filters and content version, reached by scrolling](Documentation~/repository/docs/manual/images/unity-wizard-tag-filters.png)
+![Per-source tag filters and content version, reached by scrolling](../../docs/manual/images/unity-wizard-tag-filters.png)
 
 The four filters are **row include**, **row exclude**, **column include**, and **column exclude**. Each source keeps its own selections. An empty include list includes all rows or columns; multiple includes use OR (any matching tag), and exclusions take priority. Content Version also applies.
 
@@ -190,7 +190,7 @@ Per-source environments[].contentVersion accepts 0–4,294,967,295; only -1 mean
 - Register the target environment on every source before changing **Common settings → Current environment**.
 - Missing, duplicate, or out-of-range settings are rejected. Player builds retain the selected environment rather than automatically choosing Production.
 
-Editing values does not increment content versions. See [Versions](Documentation~/repository/docs/manual/versions.md).
+Editing values does not increment content versions. See [Versions](../../docs/manual/versions.md).
 
 ## 6. Add multiple sources
 
@@ -246,15 +246,15 @@ For manual-only operation, set the common automatic mode to Off. Save in Studio,
 ## 9. Build and runtime requirements
 
 - Editor import platforms and Player targets are separate. A single-RID ZIP may not include the native runtime for another target OS.
-- Native layouts currently cover Windows x64, Linux x64, and macOS universal. macOS needs both x86_64 and arm64 slices.
-- Generated complete Git UPM packages include Android ARM64 (API 23+) and iOS ARM64 device (iOS 13+) runtimes. Install the Unity target module and follow the [mobile Player guide](../../../MOBILE.md). Other Android ABIs, iOS Simulator and WebGL remain unsupported. FromJson still requires the native runtime; CLI execution remains Editor-only.
+- Native layouts cover Windows x64, Linux x64, and macOS. New macOS releases support Apple Silicon only; the current universal runtime retains both CPU slices for compatibility with existing Unity plugin validation.
+- Release v0.0.3 includes Android ARMv7, ARM64, x86 and x86_64 (API 23+), iOS device and Simulator (iOS 13+), and WebGL runtimes. Install the Unity target module and follow the [mobile Player guide](../../../MOBILE.md). The earlier v0.0.2 release contains Android ARM64 and iOS device runtimes only. FromJson still requires the native runtime; CLI execution remains Editor-only.
 - **Import before build** defaults to Off. When enabled, failed imports or changed generated C# stop the build; compile changed code before rebuilding.
 - Configuration and runtime-layout validation still runs when pre-build import is off. Already imported JSON, generated code, and required runtime can build without source projects or the CLI.
 - Player contents use runtime JSON, generated code, and runtime libraries. Keep editor CLI, source TOML, and authoring settings out of Resources and StreamingAssets.
 
 ### Platforms and verification
 
-As of 2026-11-04, the published v0.0.1 release contains Windows/Linux importer ZIPs only. The Git-installable package, macOS and mobile distributions described here require a newer release published by this pipeline; they are not downloads available in v0.0.1. The build pipeline supports win-x64, linux-x64, osx-x64 and osx-arm64. Windows/Linux arm64 Editors are not supported. Linux requires the documented glibc 2.39 baseline; validate the actual artifact on the target system. Build success is not Editor or Player execution acceptance.
+Release v0.0.2 and later include Git-installable packages and Windows, Linux and macOS importer distributions. The older v0.0.1 release contains Windows/Linux importer ZIPs only. The build pipeline supports win-x64, linux-x64 and osx-arm64. Windows/Linux arm64 Editors are not supported. Linux requires the documented glibc 2.39 baseline; validate the actual artifact on the target system. Build success is not Editor or Player execution acceptance.
 
 See [Unity package layout](../../../DISTRIBUTION.md), [Bundled CLI](Tools~/README.md).
 
@@ -278,4 +278,4 @@ Wait for active imports before retrying. After a crash, check status, reimport, 
 
 **Check status and errors** distinguishes Imported, Verified (inputs/configuration match outputs), and Import needed.
 
-For cache/owner conflicts, verify no other work uses the outputs, stop watchers/CLI, back up and remove only the affected configuration's stale cache/owner files, then reimport. Preserve active locks. See [Status and recovery](Documentation~/repository/docs/manual/collaboration.md#6-status-and-recovery).
+For cache/owner conflicts, verify no other work uses the outputs, stop watchers/CLI, back up and remove only the affected configuration's stale cache/owner files, then reimport. Preserve active locks. See [Status and recovery](../../docs/manual/collaboration.md#6-status-and-recovery).

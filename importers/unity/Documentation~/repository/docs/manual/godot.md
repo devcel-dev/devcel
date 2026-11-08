@@ -281,7 +281,7 @@ For manual-only operation, edit Automatic import to Off and save. That settings 
 
 ### Platforms and verification
 
-Release v0.0.2 includes linux-x64, win-x64, osx-x64 and osx-arm64 importer ZIPs. The older v0.0.1 release includes Linux and Windows ZIPs only. Windows/Linux arm64 packages are not provided. The documented Linux build baseline requires glibc 2.39; verify the actual artifact against its target environment.
+Release v0.0.2 includes linux-x64, win-x64, osx-x64 and osx-arm64 importer ZIPs. New releases support macOS Apple Silicon only. The older v0.0.1 release includes Linux and Windows ZIPs only. Windows/Linux arm64 packages are not provided. The documented Linux build baseline requires glibc 2.39; verify the actual artifact against its target environment.
 
 See [Bundled CLI packages](../../../../Tools~/README.md) for packaging and platform checks.
 

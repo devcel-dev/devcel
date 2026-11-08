@@ -31,6 +31,34 @@ def fixture(root, commit="a"*40):
 
 
 class GitPackageTests(unittest.TestCase):
+    def test_desktop_layout_recognizes_legacy_and_rejects_unknown(self):
+        self.assertEqual(package.desktop_layout_from_source('# pre-layout release\n'), 1)
+        self.assertEqual(package.desktop_layout_from_source('DESKTOP_LAYOUT_VERSION = 2\n'), 2)
+        with self.assertRaisesRegex(ValueError, 'Unknown desktop'):
+            package.desktop_layout_from_source('DESKTOP_LAYOUT_VERSION = 3\n')
+
+    def test_checked_in_git_package_keeps_native_binaries_out_of_history(self):
+        root = Path(__file__).resolve().parents[1]/'importers/unity'
+        self.assertFalse((root/'Plugins').exists())
+        self.assertFalse((root/'Tools~/manifest.json').exists())
+        for rid in package.RIDS:
+            self.assertFalse((root/'Tools~'/rid).exists())
+        bootstrap = json.loads((root/'Editor/NativeBootstrap.json').read_text(encoding='utf-8'))
+        self.assertEqual(bootstrap['version'], json.loads((root/'package.json').read_text(encoding='utf-8'))['version'])
+        self.assertRegex(bootstrap['archive_sha256'], r'^[0-9a-f]{64}$')
+
+    def test_checked_in_sdk_contains_the_current_editor_and_mastermemory_sources(self):
+        root = Path(__file__).resolve().parents[1]/'importers'
+        for section in ('Editor', 'Runtime'):
+            for source in (root/'unity-template'/section).rglob('*'):
+                if source.is_file() and source.suffix in ('.cs', '.asmdef', '.meta'):
+                    target = root/'unity'/source.relative_to(root/'unity-template')
+                    self.assertTrue(target.is_file(), str(target))
+                    self.assertEqual(target.read_bytes(), source.read_bytes(), str(target))
+        for name in ('generate.py', 'support.cs.txt', 'live.cs.txt', 'LICENSE'):
+            self.assertEqual((root/'unity/Tools~/MasterMemory'/name).read_text(encoding='utf-8'),
+                             (root/'unity-mastermemory'/name).read_text(encoding='utf-8'))
+
     def test_real_documentation_graph_and_windows_crlf_inputs(self):
         repo = Path(__file__).resolve().parents[1]
         spec = importlib.util.spec_from_file_location('packaging_fixture', repo/'scripts/package-importers.py')
@@ -43,6 +71,7 @@ class GitPackageTests(unittest.TestCase):
                 shutil.copytree(repo/'importers/unity-template', dest, ignore=shutil.ignore_patterns('__pycache__'))
                 for name, raw in fixture_entries(rid).items():
                     path = stage/name; path.parent.mkdir(parents=True, exist_ok=True); path.write_bytes(raw)
+                packaging.install_mastermemory_tools(repo, dest/'Tools~')
                 packaging.bundle_documentation(repo, stage, dest, 'unity', dest/'Tools~', 'a'*40, 'owner/repo')
                 values = {p.relative_to(stage).as_posix(): p.read_bytes() for p in dest.rglob('*') if p.is_file()}
                 self.assertTrue(all(b'\r\n' not in raw for name, raw in values.items() if name.endswith('.md')))
@@ -52,6 +81,9 @@ class GitPackageTests(unittest.TestCase):
                 write_zip(desktop[rid], values)
             package.assemble(desktop, mobile, root/'package', '0.1.0', 'a'*40, 'owner/repo')
             files = {p.relative_to(root/'package').as_posix():p.read_bytes() for p in (root/'package').rglob('*') if p.is_file()}
+            self.assertFalse(any('Documentation~/repository/importers/unity/' in name for name in files), 'generated Unity package must not be embedded as documentation')
+            for name in ('generate.py', 'support.cs.txt', 'live.cs.txt', 'LICENSE'):
+                self.assertEqual(files['Tools~/MasterMemory/' + name], (repo/'importers/unity-mastermemory'/name).read_text(encoding='utf-8').encode('utf-8'))
             self.assertIn('Tools~/README.md', files)
             self.assertIn('Tools~/LICENSE-CLI-MIT.txt', files)
             self.assertNotIn('Tools~/Sources/win-x64/README.md', files)
@@ -60,6 +92,115 @@ class GitPackageTests(unittest.TestCase):
             files.pop('Tools~/README.md')
             with self.assertRaisesRegex(ValueError, 'documentation link'):
                 package.validate_documentation(files)
+
+    def test_source_notice_layout_is_read_without_executing_source(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp); (root/'scripts').mkdir(); source=root/'scripts/unity_git_package.py'
+            self.assertEqual(package.source_notice_layout(root), 1)
+            source.write_text('raise RuntimeError("must not execute")\n',encoding='utf-8')
+            self.assertEqual(package.source_notice_layout(root), 1)
+            source.write_text('NOTICE_LAYOUT_VERSION = 2\nraise RuntimeError("must not execute")\n',encoding='utf-8')
+            self.assertEqual(package.source_notice_layout(root), 2)
+            source.write_text('NOTICE_LAYOUT_VERSION = 3\n',encoding='utf-8')
+            with self.assertRaisesRegex(ValueError, 'Unknown Unity notice layout'): package.source_notice_layout(root)
+
+    def test_source_archive_layout_is_read_without_executing_source(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp); (root/'scripts').mkdir(); source = root/'scripts/unity_git_package.py'
+            for code, expected in (("sources.append({'platform': rid, 'path': output, 'sha256': digest})", 1),
+                                   ("sources.append({'platform': rid, 'url': url, 'archive_entry': name, 'sha256': digest})", 2),
+                                   ("SOURCE_ARCHIVE_LAYOUT_VERSION = 2", 2)):
+                source.write_text(code+'\nraise RuntimeError("do not execute")\n', encoding='utf-8')
+                self.assertEqual(package.source_archive_layout(root), expected)
+            source.write_text('unknown()\n', encoding='utf-8')
+            with self.assertRaisesRegex(ValueError, 'Unknown Unity source archive layout'):
+                package.source_archive_layout(root)
+
+    def test_legacy_notice_layout_remains_reconstructable(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp); desktop,mobile=fixture(root); dest=root/'package'
+            package.assemble(desktop,mobile,dest,'0.1.0','a'*40,'owner/repo',legacy_notices=True)
+            original=b'notices'
+            self.assertFalse((dest/'ThirdPartyNotices/NOTICE-SOURCES.json').exists())
+            for rid in package.RIDS:
+                self.assertEqual((dest/'ThirdPartyNotices'/rid/'THIRD-PARTY-NOTICES.txt').read_bytes(), original)
+            self.assertEqual((dest/'ThirdPartyNotices/THIRD-PARTY-NOTICES.txt').read_bytes(),
+                             b''.join(b'\n===== '+rid.encode()+b' =====\n'+original for rid in package.RIDS))
+
+    def test_legacy_package_keeps_only_original_mobile_and_source_archives(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            desktop, mobile = fixture(root)
+            for system in ('android', 'ios'):
+                path = mobile[system]
+                with __import__('zipfile').ZipFile(path) as archive:
+                    values = {name: archive.read(name) for name in archive.namelist()}
+                metadata = f'Tools~/Mobile/{system}.json'
+                manifest = json.loads(values[metadata])
+                manifest.pop('variants', None)
+                manifest.pop('simulator', None)
+                binary = package.unity_mobile.PATHS[system]
+                names = {binary, binary+'.meta', metadata}
+                if system == 'android':
+                    names.update(package.unity_mobile.NDK_NOTICES.values())
+                values = {name: raw for name, raw in values.items() if name in names}
+                values[metadata] = json.dumps(manifest).encode()
+                write_zip(path, values)
+            mobile.pop('webgl')
+            dest = root/'legacy-package'
+            package.assemble(desktop, mobile, dest, '0.1.0', 'a'*40, 'owner/repo',
+                             legacy_notices=True, legacy_mobile=True, legacy_source_archives=True)
+            manifest = json.loads((dest/'Tools~/manifest.json').read_text())
+            self.assertEqual(len(manifest['player_runtimes']), 2)
+            for rid in package.RIDS:
+                self.assertEqual((dest/'Tools~/Sources'/rid/'cli-source.tar.gz').read_bytes(), b'source')
+                entry = next(item for item in manifest['source_archives'] if item['platform'] == rid)
+                self.assertEqual(entry['path'], f'Sources/{rid}/cli-source.tar.gz')
+            self.assertFalse((dest/'Plugins/WebGL').exists())
+
+    def test_notice_deduplication_preserves_each_distinct_original(self):
+        import hashlib
+        originals = {rid: (b'notice A\r\n' if rid != 'osx-arm64' else b'notice B\n') for rid in package.RIDS}
+        aggregate, encoded = package.combine_desktop_notices(originals)
+        index = json.loads(encoded)
+        self.assertEqual(aggregate.count(b'notice A\r\n'), 1)
+        self.assertEqual(aggregate.count(b'notice B\n'), 1)
+        for rid, raw in originals.items():
+            item = index['sources'][rid]
+            self.assertEqual(aggregate[item['offset']:item['offset']+item['length']], raw)
+            self.assertEqual(item['sha256'], hashlib.sha256(raw).hexdigest())
+
+    def test_checked_in_unity_documentation_has_no_recursive_package_copy(self):
+        root = Path(__file__).resolve().parents[1]/'importers/unity'
+        files = {path.relative_to(root).as_posix(): path.read_bytes() if path.suffix == '.md' else b''
+                 for path in root.rglob('*') if path.is_file()}
+        nested = 'Documentation~/repository/importers/unity/Documentation~/repository/'
+        self.assertFalse(any(name.startswith(nested) for name in files))
+        package.validate_documentation(files)
+
+    def test_checked_in_notice_index_preserves_platform_hashes(self):
+        import hashlib
+        root = Path(__file__).resolve().parents[1]/'importers/unity/ThirdPartyNotices'
+        aggregate = (root/'THIRD-PARTY-NOTICES.txt').read_bytes()
+        index = json.loads((root/'NOTICE-SOURCES.json').read_text(encoding='utf-8'))
+        self.assertEqual(set(index['sources']), set(package.LEGACY_RIDS))
+        for rid, item in index['sources'].items():
+            original = aggregate[item['offset']:item['offset']+item['length']]
+            self.assertEqual(len(original), item['length'])
+            self.assertEqual(hashlib.sha256(original).hexdigest(), item['sha256'])
+            self.assertFalse((root/rid/'THIRD-PARTY-NOTICES.txt').exists())
+
+    def test_mastermemory_inputs_normalize_windows_line_endings(self):
+        repo = Path(__file__).resolve().parents[1]
+        spec = importlib.util.spec_from_file_location('packaging_newlines', repo/'scripts/package-importers.py')
+        packaging = importlib.util.module_from_spec(spec); spec.loader.exec_module(packaging)
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp); source = root/'importers/unity-mastermemory'; source.mkdir(parents=True)
+            for name in ('generate.py', 'support.cs.txt', 'live.cs.txt', 'LICENSE'):
+                (source/name).write_bytes(b'first\r\nsecond\r\n')
+            packaging.install_mastermemory_tools(root, root/'Tools~')
+            for path in (root/'Tools~/MasterMemory').iterdir():
+                self.assertEqual(path.read_bytes(), b'first\nsecond\n')
 
     def test_one_tag_has_all_platforms_sources_and_notices_and_clones_locally(self):
         with tempfile.TemporaryDirectory() as temp:
@@ -84,6 +225,18 @@ class GitPackageTests(unittest.TestCase):
             self.assertFalse(report['git_lfs'])
             self.assertLess(report['largest_file_bytes'], package.MAX_BLOB)
             release = package.stage_release(*outputs, repo, 'eight-ways', '145819685+eight-ways@users.noreply.github.com')
+            slim = package.stage_release(*outputs, repo, 'eight-ways', '145819685+eight-ways@users.noreply.github.com', slim=True)
+            self.assertEqual(package.source_identity(repo, slim), source)
+            slim_files = git('ls-tree', '-r', '--name-only', slim, '--', 'importers/unity').splitlines()
+            self.assertFalse(any(name.startswith('importers/unity/Plugins/') or name.endswith('/Tools~/manifest.json') for name in slim_files))
+            bootstrap = json.loads(git('show', slim+':importers/unity/Editor/NativeBootstrap.json'))
+            self.assertEqual(bootstrap['archive_sha256'], report['archive_sha256'])
+            self.assertEqual(bootstrap['source_commit'], source)
+            bad_report = root/'bad-report.json'
+            bad_report.write_text(json.dumps(dict(report, source_repository='other/repo')), encoding='utf-8')
+            with self.assertRaisesRegex(ValueError, 'does not match'):
+                package.stage_release(outputs[0], bad_report, repo, 'eight-ways',
+                                      '145819685+eight-ways@users.noreply.github.com', slim=True)
             self.assertEqual(package.stage_release(*outputs, repo, 'eight-ways', '145819685+eight-ways@users.noreply.github.com'), release)
             self.assertEqual(package.source_identity(repo, release), source)
             package.verify_release_tree(repo, release, release)
@@ -116,7 +269,11 @@ class GitPackageTests(unittest.TestCase):
                 self.assertEqual(entry['url'], f'https://github.com/owner/repo/releases/download/v0.1.0/devcel-unity-0.1.0-{rid}.zip')
                 self.assertEqual(entry['archive_entry'], 'devcel-unity/Tools~/cli-source.tar.gz')
                 self.assertEqual(entry['sha256'], __import__('hashlib').sha256(b'source').hexdigest())
-                self.assertTrue((clone/'ThirdPartyNotices'/rid/'THIRD-PARTY-NOTICES.txt').is_file())
+                notices = (clone/'ThirdPartyNotices/THIRD-PARTY-NOTICES.txt').read_bytes()
+                index = json.loads((clone/'ThirdPartyNotices/NOTICE-SOURCES.json').read_text(encoding='utf-8'))['sources'][rid]
+                original = notices[index['offset']:index['offset']+index['length']]
+                self.assertEqual(original, b'notices')
+                self.assertEqual(__import__('hashlib').sha256(original).hexdigest(), index['sha256'])
             self.assertEqual(json.loads((clone/'package.json').read_text())['version'], '0.1.0')
             (clone/'extra.txt').write_text('rebuild payload drift')
             changed = package.release_commit(clone, repo, source, '0.1.0', author_name='eight-ways',
@@ -129,13 +286,18 @@ class GitPackageTests(unittest.TestCase):
             git('add', '.')
             git('-c', 'user.name=eight-ways', '-c', 'user.email=145819685+eight-ways@users.noreply.github.com', 'commit', '-qm', 'Invalid')
             with self.assertRaises(ValueError): package.source_identity(repo, git('rev-parse', 'HEAD'))
+            other_head = git('rev-parse', 'HEAD')
+            self.assertEqual(package.stage_release(*outputs, repo, 'eight-ways',
+                '145819685+eight-ways@users.noreply.github.com', slim=True), slim)
+            self.assertEqual(git('rev-parse', 'HEAD'), other_head)
+            self.assertEqual(git('status', '--porcelain'), '')
 
     def test_identity_sdk_collision_and_size_budget_fail_closed(self):
         for case in ('commit', 'sdk', 'size', 'missing'):
             with self.subTest(case=case), tempfile.TemporaryDirectory() as temp:
                 root = Path(temp)
                 desktop, mobile = fixture(root)
-                if case == 'missing': desktop.pop('osx-x64')
+                if case == 'missing': desktop.pop('osx-arm64')
                 if case == 'sdk':
                     values = fixture_entries('linux-x64'); values['devcel-unity/Runtime/extra.cs'] = b'drift'
                     write_zip(desktop['linux-x64'], values)

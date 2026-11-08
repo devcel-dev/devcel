@@ -21,13 +21,16 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 45
     steps:
+      # Artifact provenance must name the commit actually being packaged. PR
+      # workflows otherwise check out a temporary merge commit by default.
       - uses: actions/checkout@v7
         with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
       - uses: ./.github/actions/build-unity-mobile
         with:
           system: ${{ matrix.system }}
-          source-commit: ${{ github.sha }}
+          source-commit: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/upload-artifact@v7
         with:
           name: unity-mobile-${{ matrix.system }}
