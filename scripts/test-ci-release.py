@@ -922,6 +922,7 @@ class ReleaseTests(unittest.TestCase):
                 ci.build_native()
                 calls = [c.args for c in run.call_args_list]
                 self.assertEqual(calls[2][:7], ('npm', 'run', 'tauri', '--', 'build', '--bundles', 'app,dmg'))
+                self.assertIn('--verbose', calls[2])
                 self.assertEqual(calls[-1], ('codesign', '--verify', '--deep', '--strict',
                                             Path(temp)/'release/bundle/macos/devcel-studio.app'))
                 self.assertEqual(validate.call_args.args, (Path(temp)/'release/bundle/macos/devcel-studio.app/Contents/Resources/bin', 'osx-'+rid))

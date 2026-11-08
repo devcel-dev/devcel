@@ -720,6 +720,10 @@ def build_native():
         run('cargo', 'build', '--locked', '--release', '-p', 'devcel-cli')
     cli_config = studio_cli.stage(ROOT, cargo_target(), importer_platform)
     options = ['--bundles', bundles] if bundles else ['--no-bundle']
+    # Tauri hides bundle_dmg.sh output at its default log level, making
+    # hdiutil and filesystem failures indistinguishable in release logs.
+    if system.startswith('macos-'):
+        options.append('--verbose')
     run('npm', 'run', 'tauri', '--', 'build', *options,
         '--config', cli_config, cwd=ROOT/'devcel-studio')
     target = cargo_target()
