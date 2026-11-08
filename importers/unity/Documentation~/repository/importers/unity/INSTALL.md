@@ -6,7 +6,7 @@ Import saved Devcel tables into Unity and check Studio edits in a running game. 
 
 ## 1. Prepare the projects
 
-You need a saved manifest and its Tables folder, plus the complete Git UPM package. A source-code archive does not include the required executable.
+You need a saved manifest and its Tables folder, the Git UPM SDK and its matching native companion. A source-code archive does not include the required executable.
 
 The Devcel Unity package declares Unity **2021.3** as its minimum. Packaging generates its `package.json` version and native manifest from the canonical Studio product version in `tauri.conf.json`. Its native source fingerprint and payload hashes bind the SDK to the bundled tools; the runtime's **API_VERSION is 1**.
 

@@ -86,7 +86,7 @@ Published assets include:
 - `devcel-studio-<version>-linux-x64.deb`: Linux deb package for Ubuntu 24.04 x64 and Debian 13 x64
 - `devcel-studio-<version>-macos-x64.dmg` and `devcel-studio-<version>-macos-arm64.dmg`: ad-hoc-signed macOS app bundles; not Apple-notarized
 - Windows, Linux and macOS packages for Unity, Godot, Unreal Engine, RPG Maker, WOLF RPG Editor, GameMaker, Defold, Cocos Creator and JavaScript
-- `org.devcel.unity-<version>-git.zip` and `-git.json`: complete Git package staging input and measured size/provenance report; users normally install the Git URL. OS-specific `.tgz` files remain offline alternatives.
+- `org.devcel.unity-<version>-git.zip` and `-git.json`: complete native distribution and its measured size/provenance report; the Git SDK pins and downloads this archive. OS-specific `.tgz` files remain offline alternatives.
 - `SOURCE-ACCESS.json` and `SHA256SUMS.txt`; matching commit source downloads, rebuild instructions and dependency-source directions are linked prominently in the Release body
 
 Studio filenames must match the exact release version and platform. The Linux publication copy is renamed without changing the native deb filename, package metadata or binary bytes. All four Studio assets are included in `SHA256SUMS.txt`.

@@ -162,6 +162,8 @@ class ReleaseTests(unittest.TestCase):
         ci_text = (directory/'ci.yml').read_text()
         release = (directory/'release.yml').read_text()
         self.assertIn('on:\n  push:\n    branches: [main]\n  pull_request:\n    branches: [main]\n', ci_text)
+        self.assertIn('types: [opened, synchronize, reopened, ready_for_review]', ci_text)
+        self.assertNotIn('ready_for_review, edited', ci_text)
         self.assertNotIn('contents: write', ci_text)
         self.assertNotIn('workflow_dispatch:', ci_text)
         mobile = (directory/'unity-mobile.yml').read_text()
