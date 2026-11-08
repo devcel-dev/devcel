@@ -40,6 +40,21 @@
         }
       },
       "outcome": "All listed code-page hashes, both Studio special slots, and all ten CodeResources entries matched. Both CodeDirectories carry the ad-hoc-signature flag. This does not authenticate the publisher or prove that all redistributed dependency notices are complete."
+    },
+    "cross_platform_notice_comparison": {
+      "scope": "Published v0.0.3 macOS ARM64/x64 and Windows x64 releases, after verifying all three asset hashes against the published SHA256SUMS.",
+      "windows_notice_sha256": "186de077b43d03b97c075f240f18e46f01d2b731ccb3e81126a1b4960fe5e4be",
+      "result": "Both notice aggregates contain 1071 sections across the same 1065 distinct package headers, including six repeated headers. Comparing all sections as multisets, 1070 match byte-for-byte; the libdbus-sys 0.2.7 section contains the same five text blocks and hashes in a different order. The difference is not treated as a missing license, and matching aggregates do not prove completeness of statically linked dependencies.",
+      "windows_asset_sha256": "2343517efc44af024a67fccab99abd30738c5c3db529903c82555da6fe34c7e1"
+    },
+    "lockfile_notice_coverage": {
+      "source_commit": "92be5fb3b31da1856e25ccb21582d46c4eb5f43c",
+      "method": "Read Cargo.lock, package-lock.json and devcel-studio/package-lock.json from the recorded source commit without executing it; compare every registry package name/version and every npm node_modules package name/version against the published macOS notice section headers.",
+      "cargo_registry_versions": 581,
+      "cargo_registry_versions_present": 581,
+      "npm_lock_versions": 462,
+      "npm_lock_versions_present": 462,
+      "limitations": "This checks name/version coverage only, not whether every package text is legally complete, which packages were actually linked, the authenticity of every upstream text, Apple system component licensing, or any later release."
     }
   },
   "bootstrapper_and_system_runtime_review": null,
