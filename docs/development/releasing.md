@@ -6,6 +6,8 @@
 
 Pull requests targeting `main` build release-mode Studio distributions on Windows x64, Linux x64, macOS Apple Silicon with pinned toolchains. Updates, reopening, marking ready, or retargeting to `main` start a build; a newer run cancels the preceding run. Ordinary branch pushes, schedules and manual dispatch do not start this workflow. macOS uses an Apple Silicon `macos-15` runner; Intel Mac is not supported for new releases.
 
+For a final distribution candidate, add the `release-candidate` label before pushing the candidate commit. The PR build packages unpublished desktop artifacts from the exact PR head and retains them for seven days; the mobile workflow retains matching runtime inputs. These are build inputs for local packaging and runtime acceptance, not published releases or substitutes for running the software. Adding a label alone does not start a run. No tag or release is created by the PR build.
+
 CI and Release run production builds, catalog/SDK generation, packaging, license-text inclusion and release identity/source metadata processing. They do not run lint, type checking, regressions, UI/Rust behavior tests, test compilation or native package inspections. The release frontend hook reuses the already-built CLI to generate catalogs, synchronizes the plugin SDK and runs Vite once.
 
 ## Explicit validation

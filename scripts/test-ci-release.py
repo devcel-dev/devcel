@@ -730,6 +730,12 @@ class ReleaseTests(unittest.TestCase):
         ci_text = (ROOT/'.github/workflows/ci.yml').read_text()
         self.assertNotIn('python scripts/ci-release.py inspect_native', ci_text)
         self.assertNotIn('ci-release.py publish', ci_text)
+        self.assertIn("ref: ${{ (contains(github.event.pull_request.labels.*.name, 'release-candidate') && github.event.pull_request.head.sha) || github.sha }}", ci_text)
+        self.assertIn('SOURCE_COMMIT: ${{ github.event.pull_request.head.sha }}', ci_text)
+        self.assertIn('SOURCE_REPOSITORY: ${{ github.event.pull_request.head.repo.full_name }}', ci_text)
+        self.assertIn('python scripts/ci-release.py package', ci_text)
+        self.assertIn('path: release-assets/*', ci_text)
+        self.assertIn("contains(github.event.pull_request.labels.*.name, 'release-candidate')", ci_text)
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             target = root/'target'
