@@ -4,6 +4,7 @@ Internal CI archives are combined with the licensed desktop Unity distribution
 by unity_upm.py; they are not standalone user installation packages.
 """
 import argparse
+import ast
 import hashlib
 import json
 import os
@@ -36,6 +37,24 @@ ANDROID_ABIS = {
 }
 NDK_NOTICES = {'NOTICE': 'ThirdPartyNotices/AndroidNDK-NOTICE.txt',
                'NOTICE.toolchain': 'ThirdPartyNotices/AndroidNDK-NOTICE-toolchain.txt'}
+
+
+def source_systems(source):
+    """Read the literal archive targets from an immutable source without running it."""
+    tree = ast.parse(source)
+    values = [n.value for n in tree.body if isinstance(n, ast.Assign)
+              and any(isinstance(t, ast.Name) and t.id == 'PATHS' for t in n.targets)]
+    if len(values) != 1:
+        raise ValueError('Unknown mobile release layout')
+    try:
+        paths = ast.literal_eval(values[0])
+    except (ValueError, TypeError) as exc:
+        raise ValueError('Unknown mobile release layout') from exc
+    if not isinstance(paths, dict) or set(paths) not in ({'android', 'ios'}, {'android', 'ios', 'webgl'}):
+        raise ValueError('Unknown mobile release layout')
+    if any(paths.get(s) != PATHS[s] for s in paths):
+        raise ValueError('Unknown mobile release payload paths')
+    return tuple(s for s in ('android', 'ios', 'webgl') if s in paths)
 
 
 def valid_ios_flags(flags):
@@ -212,13 +231,15 @@ def check_ios_simulator(raw):
             raise ValueError('Simulator slice has no matching object')
 
 
-def load(path, system, version, commit, repository, source_fingerprint):
+def load(path, system, version, commit, repository, source_fingerprint, legacy=False):
     """Validate provenance before admitting any mobile bytes into a UPM package."""
+    if legacy and system not in ('android', 'ios'):
+        raise ValueError('Legacy mobile artifacts only support Android and iOS')
     binary = PATHS[system]
     metadata = f'Tools~/Mobile/{system}.json'
     with zipfile.ZipFile(path) as archive:
         names = archive.namelist()
-        binaries = ([f'Plugins/Android/{abi}/libdevcel_runtime.so' for abi in ANDROID_ABIS]
+        binaries = ([binary] if legacy else [f'Plugins/Android/{abi}/libdevcel_runtime.so' for abi in ANDROID_ABIS]
                     if system == 'android' else [binary, IOS_SIMULATOR_PATH] if system == 'ios' else [binary])
         expected = {metadata} | {item + suffix for item in binaries for suffix in ('', '.meta')} | (set(NDK_NOTICES.values()) if system == 'android' else set())
         if len(names) != len(expected) or set(names) != expected:
@@ -236,7 +257,7 @@ def load(path, system, version, commit, repository, source_fingerprint):
         raise ValueError('Mobile runtime source/version/hash mismatch')
     if system == 'android' and (value.get('minimum_api') != 23 or value.get('ndk') != NDK_VERSION):
         raise ValueError('Android build requirements mismatch')
-    if system == 'android':
+    if system == 'android' and not legacy:
         variants = value.get('variants', {})
         if set(variants) != set(ANDROID_ABIS):
             raise ValueError('Android ABI list mismatch')
@@ -248,12 +269,15 @@ def load(path, system, version, commit, repository, source_fingerprint):
                     item.get('meta_sha256') != hashlib.sha256(contents[path + '.meta']).hexdigest()):
                 raise ValueError('Android ABI source/hash mismatch: ' + abi)
             check_binary(contents[path], system, abi)
+    if system == 'android':
+        if legacy:
+            check_binary(contents[binary], system)
         for name in NDK_NOTICES.values():
             if not contents[name] or value.get('notice_hashes', {}).get(name) != hashlib.sha256(contents[name]).hexdigest():
                 raise ValueError('Android NDK original notice missing or changed')
     if system == 'ios' and (value.get('minimum_os') != '13.0' or not valid_ios_flags(value.get('link_flags'))):
         raise ValueError('Invalid iOS link requirements')
-    if system == 'ios':
+    if system == 'ios' and not legacy:
         simulator = value.get('simulator', {})
         if (simulator.get('path') != IOS_SIMULATOR_PATH or simulator.get('targets') != list(IOS_SIMULATOR_TARGETS) or
                 simulator.get('sha256') != hashlib.sha256(contents[IOS_SIMULATOR_PATH]).hexdigest() or
@@ -265,6 +289,8 @@ def load(path, system, version, commit, repository, source_fingerprint):
         raise ValueError('WebGL Rust toolchain mismatch')
     if system in ('ios', 'webgl'):
         check_binary(contents[binary], system)
+    if legacy:
+        return contents, [{'path': binary, 'sha256': value['sha256']}]
     return contents, ([{'path': item['path'], 'sha256': item['sha256']} for item in value['variants'].values()]
                       if system == 'android' else [{'path': binary, 'sha256': value['sha256']}] +
                       ([{'path': IOS_SIMULATOR_PATH, 'sha256': value['simulator']['sha256']}] if system == 'ios' else []))

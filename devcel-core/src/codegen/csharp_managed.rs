@@ -58,15 +58,15 @@ fn prop(s: &mut String, c: &CgColumn, name: &str, token: &str, iface: Option<&st
     let guard = iface
         .map(|i| format!("Require{i}()"))
         .unwrap_or_else(|| "RequireCurrent()".into());
-    s.push_str(&format!("        {public}{} {qualifier}{name} {{ get {{ lock (_db.ReadGate) return {guard}.{token}; }} }}\n",ty(c)));
+    s.push_str(&format!("        {public}{} {qualifier}{name} {{ get {{ using (_db.EnterRead()) return {guard}.{token}; }} }}\n",ty(c)));
     if c.value_type == ValueType::TableRef {
-        s.push_str(&format!("        {public}DevcelTableHandle? {qualifier}{name}Table {{ get {{ lock (_db.ReadGate) return {guard}.{token}Table; }} }}\n"));
+        s.push_str(&format!("        {public}DevcelTableHandle? {qualifier}{name}Table {{ get {{ using (_db.EnterRead()) return {guard}.{token}Table; }} }}\n"));
     }
     if c.value_type == ValueType::DateTime {
-        s.push_str(&format!("        {public}DateTimeOffset? {qualifier}{name}Rfc3339 {{ get {{ lock (_db.ReadGate) return {guard}.{token}Rfc3339; }} }}\n"));
+        s.push_str(&format!("        {public}DateTimeOffset? {qualifier}{name}Rfc3339 {{ get {{ using (_db.EnterRead()) return {guard}.{token}Rfc3339; }} }}\n"));
     }
     if c.value_type == ValueType::Curve {
-        s.push_str(&format!("        {public}double {qualifier}Sample{name}(double x) {{ lock (_db.ReadGate) return {guard}.Row.Sample{}(x); }}\n",c.accessor));
+        s.push_str(&format!("        {public}double {qualifier}Sample{name}(double x) {{ using (_db.EnterRead()) return {guard}.Row.Sample{}(x); }}\n",c.accessor));
     }
 }
 pub(super) fn emit(s: &mut String, model: &CgModel, namespace: &str, class_name: &str) {
@@ -140,7 +140,7 @@ pub(super) fn emit(s: &mut String, model: &CgModel, namespace: &str, class_name:
         State? _state;
         internal int ResolutionCount {{ get; private set; }}
         internal {b}Handle({db} db, string uuid) {{ _db=db; Uuid=uuid; }}
-        public bool Exists {{ get {{ lock (_db.ReadGate) {{ _db.CheckReadModel(); return _state != null; }} }} }}
+        public bool Exists {{ get {{ using (_db.EnterRead()) {{ _db.CheckReadModel(); return _state != null; }} }} }}
         State RequireCurrent() {{ _db.CheckReadModel(); return _state ?? throw new KeyNotFoundException("Referenced record is unavailable: " + Uuid); }}
         internal sealed class State {{ internal {b}Row Row;
 "#,uuid=escape(&t.uuid)));
@@ -165,7 +165,7 @@ pub(super) fn emit(s: &mut String, model: &CgModel, namespace: &str, class_name:
             super::csharp::emit_select_accessor(s, t, c);
         }
         for (n, bindings) in &t.csharp_interfaces {
-            s.push_str(&format!("        internal bool Has{n} {{ get {{ lock (_db.ReadGate) {{ _db.CheckReadModel(); return _state != null && _state.Has{n}; }} }} }}\n        bool I{n}Handle.Exists => Has{n};\n        State Require{n}() {{ var state=RequireCurrent(); if (!state.Has{n}) throw new KeyNotFoundException(\"Referenced interface is unavailable\"); return state; }}\n"));
+            s.push_str(&format!("        internal bool Has{n} {{ get {{ using (_db.EnterRead()) {{ _db.CheckReadModel(); return _state != null && _state.Has{n}; }} }} }}\n        bool I{n}Handle.Exists => Has{n};\n        State Require{n}() {{ var state=RequireCurrent(); if (!state.Has{n}) throw new KeyNotFoundException(\"Referenced interface is unavailable\"); return state; }}\n"));
             for (m, c) in bindings {
                 prop(s, c, m, &format!("P{}", c.accessor), Some(n));
             }
@@ -188,11 +188,11 @@ pub(super) fn emit_database(s: &mut String, model: &CgModel) {
 "#);
     for t in &model.tables {
         let b = &t.type_base;
-        s.push_str(&format!("        internal Dictionary<string, {b}Handle> Live{b} = new Dictionary<string, {b}Handle>(StringComparer.Ordinal);\n        Dictionary<string, WeakReference<{b}Handle>> Retired{b} = new Dictionary<string, WeakReference<{b}Handle>>(StringComparer.Ordinal);\n        internal {b}Handle[] Members{b} = Array.Empty<{b}Handle>();\n        public {b}Handle? Get({b}Reference? reference) => Get(new {b}Key(reference?.Uuid ?? string.Empty));\n        public {b}Handle? Get({b}Key key) {{ lock (ReadGate) {{ CheckReadModel(); return key.Uuid != null && Live{b}.TryGetValue(key.Uuid, out var value) ? value : null; }} }}\n        public bool TryGet({b}Reference? reference, out {b}Handle? row) {{ row=Get(reference); return row != null; }}\n        public bool TryGet({b}Key key, out {b}Handle? row) {{ row=Get(key); return row != null; }}\n"));
+        s.push_str(&format!("        internal Dictionary<string, {b}Handle> Live{b} = new Dictionary<string, {b}Handle>(StringComparer.Ordinal);\n        Dictionary<string, WeakReference<{b}Handle>> Retired{b} = new Dictionary<string, WeakReference<{b}Handle>>(StringComparer.Ordinal);\n        internal {b}Handle[] Members{b} = Array.Empty<{b}Handle>();\n        public {b}Handle? Get({b}Reference? reference) => Get(new {b}Key(reference?.Uuid ?? string.Empty));\n        public {b}Handle? Get({b}Key key) {{ using (EnterRead()) {{ CheckReadModel(); return key.Uuid != null && Live{b}.TryGetValue(key.Uuid, out var value) ? value : null; }} }}\n        public bool TryGet({b}Reference? reference, out {b}Handle? row) {{ row=Get(reference); return row != null; }}\n        public bool TryGet({b}Key key, out {b}Handle? row) {{ row=Get(key); return row != null; }}\n"));
     }
     for i in &model.interfaces {
         let n = &i.type_name;
-        s.push_str(&format!("        public I{n}Handle? Get(I{n}Reference? reference) => reference == null ? Get(default(I{n}Key)) : Get(new I{n}Key(reference.TableUuid, reference.Uuid));\n        public I{n}Handle? Get(I{n}Key key) {{ lock(ReadGate) {{ CheckReadModel(); if (key.Uuid == null) return null; switch(key.TableUuid) {{\n"));
+        s.push_str(&format!("        public I{n}Handle? Get(I{n}Reference? reference) => reference == null ? Get(default(I{n}Key)) : Get(new I{n}Key(reference.TableUuid, reference.Uuid));\n        public I{n}Handle? Get(I{n}Key key) {{ using (EnterRead()) {{ CheckReadModel(); if (key.Uuid == null) return null; switch(key.TableUuid) {{\n"));
         for t in &model.tables {
             if t.csharp_interfaces.iter().any(|(x, _)| x == n) {
                 let b = &t.type_base;
@@ -261,10 +261,10 @@ fn emit_tables(s: &mut String, model: &CgModel, db: &str) {
             "            _is{b} = _{b} != null && _index>=0 && _index==_db.{b}.TableIndex;\n"
         ));
     }
-    s.push_str("        }\n        public bool Exists { get { lock(_db.ReadGate) { _db.CheckReadModel(); return _index>=0; } } }\n        public int Count { get { lock(_db.ReadGate) { _db.CheckReadModel(); if(_index<0) throw new KeyNotFoundException(\"Referenced table is unavailable\"); return _count; } } }\n");
+    s.push_str("        }\n        public bool Exists { get { using (_db.EnterRead()) { _db.CheckReadModel(); return _index>=0; } } }\n        public int Count { get { using (_db.EnterRead()) { _db.CheckReadModel(); if(_index<0) throw new KeyNotFoundException(\"Referenced table is unavailable\"); return _count; } } }\n");
     for t in &model.tables {
         let b = &t.type_base;
-        s.push_str(&format!("        public {b}Collection? As{b}() {{ lock(_db.ReadGate) {{ _db.CheckReadModel(); return _is{b} ? _{b} : null; }} }}\n"));
+        s.push_str(&format!("        public {b}Collection? As{b}() {{ using (_db.EnterRead()) {{ _db.CheckReadModel(); return _is{b} ? _{b} : null; }} }}\n"));
     }
     s.push_str("    }\n");
     for t in &model.tables {
@@ -275,22 +275,22 @@ fn emit_tables(s: &mut String, model: &CgModel, db: &str) {
         readonly DevcelTableHandle _constraint;
         internal {b}Collection({db} db,DevcelTableHandle constraint) {{ _db=db; _constraint=constraint; }}
         void Validate() {{ _db.CheckReadModel(); if(!ReferenceEquals(_constraint.As{b}(),this)) throw new KeyNotFoundException("Referenced table or required interface is unavailable"); }}
-        public bool Exists {{ get {{ lock(_db.ReadGate) return ReferenceEquals(_constraint.As{b}(),this); }} }}
-        public int Count {{ get {{ lock(_db.ReadGate) {{ Validate(); return _db.Members{b}.Length; }} }} }}
-        public {b}Handle? ById(string uuid) {{ lock(_db.ReadGate) {{ Validate(); return _db.Get(new {b}Key(uuid)); }} }}
-        public {b}Handle this[int index] {{ get {{ lock(_db.ReadGate) {{ Validate(); return _db.Members{b}[index]; }} }} }}
+        public bool Exists {{ get {{ using (_db.EnterRead()) return ReferenceEquals(_constraint.As{b}(),this); }} }}
+        public int Count {{ get {{ using (_db.EnterRead()) {{ Validate(); return _db.Members{b}.Length; }} }} }}
+        public {b}Handle? ById(string uuid) {{ using (_db.EnterRead()) {{ Validate(); return _db.Get(new {b}Key(uuid)); }} }}
+        public {b}Handle this[int index] {{ get {{ using (_db.EnterRead()) {{ Validate(); return _db.Members{b}[index]; }} }} }}
         public {b}Collection All => this;
-        public Enumerator GetEnumerator() {{ lock(_db.ReadGate) {{ Validate(); return new Enumerator(this,_db.Members{b}); }} }}
+        public Enumerator GetEnumerator() {{ using (_db.EnterRead()) {{ Validate(); return new Enumerator(this,_db.Members{b}); }} }}
         IEnumerator<{b}Handle> IEnumerable<{b}Handle>.GetEnumerator() => GetEnumerator();
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => GetEnumerator();
         public struct Enumerator : IEnumerator<{b}Handle>
         {{
             readonly {b}Collection _owner; readonly {b}Handle[] _items; int _index;
             internal Enumerator({b}Collection owner,{b}Handle[] items) {{ _owner=owner;_items=items;_index=-1; }}
-            public bool MoveNext() {{ lock(_owner._db.ReadGate) {{ _owner.Validate();return ++_index<_items.Length; }} }}
-            public {b}Handle Current {{ get {{ lock(_owner._db.ReadGate) {{ _owner.Validate();return _items[_index]; }} }} }}
+            public bool MoveNext() {{ using (_owner._db.EnterRead()) {{ _owner.Validate();return ++_index<_items.Length; }} }}
+            public {b}Handle Current {{ get {{ using (_owner._db.EnterRead()) {{ _owner.Validate();return _items[_index]; }} }} }}
             object System.Collections.IEnumerator.Current => Current;
-            public void Reset() {{ lock(_owner._db.ReadGate) {{ _owner.Validate();_index=-1; }} }}
+            public void Reset() {{ using (_owner._db.EnterRead()) {{ _owner.Validate();_index=-1; }} }}
             public void Dispose() {{ }}
         }}
     }}

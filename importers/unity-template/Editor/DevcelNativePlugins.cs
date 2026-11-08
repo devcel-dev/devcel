@@ -129,7 +129,7 @@ namespace Devcel.Unity.Editor
                     (rule.CPU == "x86_64" && androidX64 != 0 && (androidSelected & androidX64) != 0)) required.Add(rule);
             }
             if (runtimeRequired && required.Count == 0)
-                throw new InvalidOperationException("Devcel native runtime supports Windows x64, Linux x64, macOS universal, Android ARMv7/ARM64/x86/x86_64 and iOS ARM64 devices. Unsupported target: " + target);
+                throw new InvalidOperationException("Devcel native runtime supports Windows x64, Linux x64, macOS Apple Silicon, Android ARMv7/ARM64/x86/x86_64 and iOS ARM64 devices. Unsupported target: " + target);
             if (runtimeRequired && target == BuildTarget.iOS &&
                 ((PlayerSettings.iOS.sdkVersion != iOSSdkVersion.DeviceSDK && PlayerSettings.iOS.sdkVersion != iOSSdkVersion.SimulatorSDK) ||
                  !Version.TryParse(PlayerSettings.iOS.targetOSVersionString, out Version minimum) || minimum < new Version(13, 0)))

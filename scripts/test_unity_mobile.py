@@ -97,6 +97,42 @@ def write_zip(path, values):
 
 
 class MobileTests(unittest.TestCase):
+    def test_release_targets_are_detected_without_executing_source(self):
+        old = {key: mobile.PATHS[key] for key in ('android', 'ios')}
+        for paths, expected in ((old, ('android', 'ios')), (mobile.PATHS, ('android', 'ios', 'webgl'))):
+            self.assertEqual(mobile.source_systems('PATHS = '+repr(paths)+'\nraise RuntimeError()\n'), expected)
+        for source in ('PATHS = f()', "PATHS = {'android': '/invalid'}", 'pass'):
+            with self.assertRaises(ValueError):
+                mobile.source_systems(source)
+
+    def test_legacy_mobile_requires_exact_old_payload_and_provenance(self):
+        with tempfile.TemporaryDirectory() as temp:
+            for system in ('android', 'ios'):
+                path = Path(temp)/system/'runtime.zip'
+                values = fixture(path, system)
+                metadata = f'Tools~/Mobile/{system}.json'
+                manifest = json.loads(values[metadata])
+                manifest.pop('variants', None)
+                manifest.pop('simulator', None)
+                allowed = {mobile.PATHS[system], mobile.PATHS[system] + '.meta', metadata}
+                if system == 'android':
+                    allowed.update(mobile.NDK_NOTICES.values())
+                values = {name: value for name, value in values.items() if name in allowed}
+                values[metadata] = json.dumps(manifest).encode()
+                write_zip(path, values)
+                args = (path, system, '0.1.0', 'a'*40, 'owner/repo', 'b'*64)
+                contents, runtimes = mobile.load(*args, legacy=True)
+                self.assertEqual(set(contents), allowed)
+                self.assertEqual(runtimes, [{'path': mobile.PATHS[system], 'sha256': manifest['sha256']}])
+                with self.assertRaises(ValueError):
+                    mobile.load(*args)
+                with self.assertRaises(ValueError):
+                    mobile.load(path, system, '0.1.0', 'c'*40, 'owner/repo', 'b'*64, legacy=True)
+                values[mobile.PATHS[system]] += b'changed'
+                write_zip(path, values)
+                with self.assertRaises(ValueError):
+                    mobile.load(*args, legacy=True)
+
     def test_ios_link_flags_allow_only_system_libraries_and_framework_names(self):
         self.assertTrue(mobile.valid_ios_flags(['-lSystem', '-liconv', '-framework', 'Security']))
         for flags in (None, [], ['-framework'], ['-framework', '../Bad'], ['-Wl,@file'], ['-lfoo;run'], [None]):

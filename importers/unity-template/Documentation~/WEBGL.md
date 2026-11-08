@@ -1,6 +1,6 @@
 # WebGL Player
 
-A release containing the WebGL runtime is required; v0.0.2 does not include it. Install the complete Git package from the repository README and regenerate the C# accessors with the CLI from the same release. The generated native imports use `__Internal` for WebGL Players, and the package build gate validates the WebAssembly archive and its manifest hash.
+A release containing the WebGL runtime is required; v0.0.2 does not include it. Install the Git SDK and its matching native companion using the repository README, then regenerate the C# accessors with the CLI from the same release. The generated native imports use `__Internal` for WebGL Players, and the package build gate validates the WebAssembly archive and its manifest hash.
 
 Use Unity WebGL Build Support and build with IL2CPP. The supplied static archive is built with Rust 1.85.1 for `wasm32-unknown-emscripten`; the local integration was checked with Unity 6000.3.28f1. Other Unity/Emscripten versions require separate validation. Serve the Player with HTTP(S), not a local `file:` URL.
 

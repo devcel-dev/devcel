@@ -54,6 +54,9 @@ class RecoveryTests(unittest.TestCase):
                 'actions/runs/123/attempts/2/jobs?per_page=100': [{'jobs': self.jobs}],
                 'actions/runs/123/artifacts?per_page=100': [{'artifacts': self.artifacts}],
                 'releases?per_page=100': self.releases}
+        data['contents/scripts/unity_mobile.py?ref='+A] = {'encoding': 'base64', 'content': base64.b64encode(
+            (HERE/'unity_mobile.py').read_bytes()).decode()}
+        data['contents/scripts/unity_git_package.py?ref='+A] = {'encoding': 'base64', 'content': base64.b64encode(b'# legacy release\n').decode()}
         return copy.deepcopy(data[suffix])
 
     def inspect(self):
@@ -66,6 +69,33 @@ class RecoveryTests(unittest.TestCase):
         self.assertEqual([a['id'] for a in plan['artifacts']], [5, 6, 7, 8, 9, 10, 11])
         self.assertEqual(plan['tag_identity'], {'object': T, 'type': 'tag', 'commit': A})
         self.assertIn('actions/runs/123/attempts/2/jobs?per_page=100', self.calls)
+
+    def test_legacy_source_requires_only_original_mobile_artifacts(self):
+        self.jobs = [j for j in self.jobs if j['name'] != 'mobile (webgl)']
+        self.artifacts = [a for a in self.artifacts if a['name'] != 'release-mobile-webgl']
+        original_api = self.api
+        def old_api(repository, suffix, paginate=False):
+            if suffix == 'contents/scripts/unity_mobile.py?ref='+A:
+                src = "PATHS = {'android': 'Plugins/Android/arm64-v8a/libdevcel_runtime.so', 'ios': 'Plugins/iOS/libdevcel_runtime.a'}"
+                return {'encoding': 'base64', 'content': base64.b64encode(src.encode()).decode()}
+            return original_api(repository, suffix, paginate)
+        with patch.object(r, 'api', side_effect=old_api), patch.object(r.ci, 'run', return_value=''), patch.object(r.ci, 'checked_commit', return_value=B):
+            plan = r.inspect(self.env, NOW)
+        self.assertEqual(len(plan['artifacts']), 6)
+        self.assertNotIn('release-mobile-webgl', [a['name'] for a in plan['artifacts']])
+
+    def test_apple_silicon_release_does_not_require_intel_artifacts(self):
+        self.jobs = [j for j in self.jobs if j['name'] != 'build (macos-15-intel)']
+        self.artifacts = [a for a in self.artifacts if a['name'] != 'release-macOS-X64']
+        original_api = self.api
+        def new_api(repository, suffix, paginate=False):
+            if suffix == 'contents/scripts/unity_git_package.py?ref='+A:
+                return {'encoding': 'base64', 'content': base64.b64encode(b'DESKTOP_LAYOUT_VERSION = 2\n').decode()}
+            return original_api(repository, suffix, paginate)
+        with patch.object(r, 'api', side_effect=new_api), patch.object(r.ci, 'run', return_value=''), patch.object(r.ci, 'checked_commit', return_value=B):
+            plan = r.inspect(self.env, NOW)
+        self.assertNotIn('release-macOS-X64', [a['name'] for a in plan['artifacts']])
+        self.assertEqual(len(plan['artifacts']), 6)
 
     def test_lightweight_tags_are_supported(self):
         self.tag = {'object': {'type': 'commit', 'sha': A}}
@@ -86,6 +116,20 @@ class RecoveryTests(unittest.TestCase):
             data['git/trees/'+'1'*40+'?recursive=1']['tree'] = [dict(entry, sha='2'*40)]
             with self.assertRaisesRegex(ValueError, 'outside'):
                 r.tag_identity('owner/repo','v0.1.0')
+
+    def test_slim_git_release_resolves_bootstrap_source_parent(self):
+        entry = {'path':'source', 'mode':'100644', 'type':'blob', 'sha':'c'*40}
+        bootstrap = 'importers/unity/Editor/NativeBootstrap.json'
+        data = {
+            'git/ref/tags/v0.1.0': {'object': {'type':'commit', 'sha':T}},
+            'commits/refs/tags/v0.1.0': {'sha':T, 'parents':[{'sha':A}], 'commit':{'tree':{'sha':'d'*40}}},
+            'git/trees/'+'d'*40+'?recursive=1': {'tree':[entry, {'path':bootstrap, 'mode':'100644', 'type':'blob', 'sha':'f'*40}]},
+            'git/commits/'+A: {'tree':{'sha':'1'*40}},
+            'git/trees/'+'1'*40+'?recursive=1': {'tree':[entry]},
+            'contents/'+bootstrap+'?ref='+T: {'content':base64.b64encode(json.dumps({
+                'source_commit':A, 'source_repository':'owner/repo', 'version':'0.1.0'}).encode()).decode()}}
+        with patch.object(r, 'api', side_effect=lambda repo, suffix: data[suffix]):
+            self.assertEqual(r.tag_identity('owner/repo', 'v0.1.0')['source_commit'], A)
 
     def test_manual_preparation_does_not_assume_run_head_is_built_commit(self):
         for item in (self.run, self.latest):
@@ -290,7 +334,10 @@ class PublisherSourceTests(unittest.TestCase):
             for directory in (publisher, source):
                 directory.mkdir(); self.git(directory, 'init', '-q')
                 (directory/'identity').write_text(directory.name)
-                self.git(directory, 'add', 'identity')
+                (directory/'scripts').mkdir()
+                (directory/'scripts/unity_git_package.py').write_text('NOTICE_LAYOUT_VERSION = 2\nSOURCE_ARCHIVE_LAYOUT_VERSION = 2\n')
+                (directory/'scripts/unity_mobile.py').write_text('PATHS = '+repr(r.ci.unity_upm.unity_mobile.PATHS)+'\n')
+                self.git(directory, 'add', 'identity', 'scripts')
                 self.git(directory, '-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid', 'commit', '-qm', directory.name)
             commit = self.git(source, 'rev-parse', 'HEAD')
             self.assertNotEqual(commit, self.git(publisher, 'rev-parse', 'HEAD'))
@@ -324,6 +371,8 @@ class PublisherSourceTests(unittest.TestCase):
     def test_failed_recovery_callbacks_never_create_or_publish(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp); out = root/'release-publish'; out.mkdir()
+            (root/'scripts').mkdir(); (root/'scripts/unity_git_package.py').write_text('NOTICE_LAYOUT_VERSION = 2\nSOURCE_ARCHIVE_LAYOUT_VERSION = 2\n')
+            (root/'scripts/unity_mobile.py').write_text('PATHS = '+repr(r.ci.unity_upm.unity_mobile.PATHS)+'\n')
             (out/'SOURCE-ACCESS.json').write_text('{}'); (out/'SHA256SUMS.txt').write_text('fixture')
             def fail(): raise ValueError('recovery guard')
             for stage in ('before_create', 'before_publish'):

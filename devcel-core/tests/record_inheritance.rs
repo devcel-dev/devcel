@@ -21,6 +21,7 @@ fn data(columns: Vec<ColumnSchema>, records: Vec<Record>) -> TableData {
         uuid: uuid::Uuid::new_v4().to_string(),
         display_name: "inheritance".into(),
         metadata: TableMetadata {
+            schema_version: 1,
             interface_order: Vec::new(),
             initial_transposed: false,
             edit_permissions: Default::default(),

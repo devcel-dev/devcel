@@ -67,7 +67,7 @@ Approve/permit dependencies first and enable them in settings. A disabled depend
 
 Permission operations, source retrieval and deletion require the inspected digest. Restoration checks both current digest (or uninstalled state for deleted items) and target digest.
 
-Plugin API 2.0.0 supports plugin-owned settings and translation tables. See the independent [resource fixture](https://github.com/devcel-dev/devcel/tree/db0b980a13ec21e06065df2eabf6a932f6a39e0e/examples/plugin-owned-tables) and the [SDK settings contract](https://github.com/devcel-dev/devcel/blob/db0b980a13ec21e06065df2eabf6a932f6a39e0e/devcel-studio/docs/plugin-api-reference.md#settings-api).
+Plugin API 2.0.0 supports plugin-owned settings and translation tables. See the independent [resource fixture](https://github.com/devcel-dev/devcel/tree/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/examples/plugin-owned-tables) and the [SDK settings contract](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/devcel-studio/docs/plugin-api-reference.md#settings-api).
 
 Add `capabilities: ["settings-tables", "translation-tables"]` only for the resource kinds actually declared, plus:
 

@@ -1,8 +1,10 @@
 name: CI
 on:
+  push:
+    branches: [main]
   pull_request:
     branches: [main]
-    types: [opened, synchronize, reopened, ready_for_review, edited]
+    types: [opened, synchronize, reopened, ready_for_review]
 permissions:
   contents: read
 env:
@@ -10,14 +12,14 @@ env:
   # Cache complete release artifacts; incremental compilation stays disabled.
   CARGO_INCREMENTAL: '0'
 concurrency:
-  group: ci-${{ github.event.pull_request.number }}
+  group: ci-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 jobs:
   check:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-24.04, windows-2022, macos-15-intel, macos-15]
+        os: [ubuntu-24.04, windows-2022, macos-15]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 120
     env:
@@ -27,6 +29,9 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
+          # Candidate artifacts must use the same source revision as mobile.
+          # Ordinary PR builds keep GitHub's prospective merge revision.
+          ref: ${{ (contains(github.event.pull_request.labels.*.name, 'release-candidate') && github.event.pull_request.head.sha) || github.sha }}
           persist-credentials: false
       - uses: actions/setup-python@v7
         with:
@@ -90,7 +95,27 @@ jobs:
           key: apt-v1-${{ matrix.os }}-${{ runner.arch }}-${{ hashFiles('scripts/ci-apt-cache.py') }}-${{ steps.apt-plan.outputs.key }}
       - run: npm ci --prefix devcel-studio
       - name: Build native distribution
+        if: github.event_name != 'pull_request' || !contains(github.event.pull_request.labels.*.name, 'release-candidate')
         run: python scripts/ci-release.py build_native
+      - name: Prepare release candidate identity
+        if: github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'release-candidate')
+        env:
+          SOURCE_COMMIT: ${{ github.event.pull_request.head.sha }}
+          SOURCE_REPOSITORY: ${{ github.event.pull_request.head.repo.full_name }}
+        run: |
+          python -c "import os,sys; sys.path.insert(0,'scripts'); from product_version import read_version; from pathlib import Path; f=open(os.environ['GITHUB_ENV'],'a',encoding='utf-8'); f.write('RELEASE_TAG=v'+read_version(Path.cwd())+'\n'); f.write('SOURCE_COMMIT='+os.environ['SOURCE_COMMIT']+'\n'); f.write('SOURCE_REPOSITORY='+os.environ['SOURCE_REPOSITORY']+'\n')"
+      - name: Build release candidate artifacts
+        if: github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'release-candidate')
+        run: python scripts/ci-release.py package
+      - name: Retain release candidate artifacts
+        if: github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'release-candidate')
+        uses: actions/upload-artifact@v7
+        with:
+          name: release-${{ runner.os }}${{ runner.os == 'macOS' && format('-{0}', runner.arch) || '' }}
+          path: release-assets/*
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0
       - name: Remove generated packages before caching
         if: ${{ !cancelled() }}
         run: python scripts/ci-release.py clean_native_outputs

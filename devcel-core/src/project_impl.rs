@@ -520,6 +520,7 @@ impl Project {
             uuid: uuid::Uuid::new_v4().to_string(),
             display_name: base_name.clone(),
             metadata: TableMetadata {
+                schema_version: 1,
                 interface_order: Vec::new(),
                 initial_transposed: false,
                 edit_permissions: Default::default(),

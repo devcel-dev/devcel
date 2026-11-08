@@ -161,6 +161,7 @@ pub fn registration_table(
             uuid: identity(owner, id, "table"),
             display_name: format!("{owner} / {id}"),
             metadata: TableMetadata {
+                schema_version: 1,
                 interface_order: Vec::new(),
                 parent_uuid: String::new(),
                 data_name: format!(
@@ -392,6 +393,7 @@ pub fn catalog_table() -> TableData {
         uuid: crate::plugin_resources::REGISTRY_UUID.into(),
         display_name: "Plugin resources".into(),
         metadata: TableMetadata {
+            schema_version: 1,
             interface_order: Vec::new(),
             parent_uuid: String::new(),
             data_name: crate::plugin_resources::REGISTRY_NAME.into(),

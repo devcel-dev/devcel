@@ -1,3 +1,4 @@
+pub mod authoring_format;
 pub mod cell_rules;
 pub mod change_detection;
 pub mod codegen;

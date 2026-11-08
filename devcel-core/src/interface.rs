@@ -22,10 +22,32 @@ pub struct Interface {
     pub description: Option<String>,
     pub columns: Vec<ColumnSchema>,
     pub extends: Vec<Uuid>,
+    #[serde(default)]
+    pub metadata: InterfaceMetadata,
 
     /// GUID-based change history (DAG structure)
     #[serde(serialize_with = "crate::ordered_map::serialize")]
     pub history: HashMap<Uuid, InterfaceVersion>,
+}
+
+/// The interface authoring schema is independent of its content history IDs.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct InterfaceMetadata {
+    #[serde(
+        default = "crate::authoring_format::default_schema_version",
+        deserialize_with = "crate::authoring_format::deserialize_schema_version",
+        serialize_with = "crate::authoring_format::serialize_schema_version"
+    )]
+    pub schema_version: u32,
+}
+
+impl Default for InterfaceMetadata {
+    fn default() -> Self {
+        Self {
+            schema_version: crate::authoring_format::CURRENT_SCHEMA_VERSION,
+        }
+    }
 }
 
 /// Interface version information
@@ -287,6 +309,7 @@ impl Interface {
             description,
             columns: Vec::new(),
             extends: Vec::new(),
+            metadata: InterfaceMetadata::default(),
             history,
         }
     }

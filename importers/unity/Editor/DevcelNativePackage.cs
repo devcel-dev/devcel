@@ -27,6 +27,8 @@ namespace Devcel.Unity.Editor
         {
             string requiredFile = Path.Combine(DevcelPaths.PackageRoot, "Editor/NativeRequirements.json");
             var required = JsonUtility.FromJson<Requirements>(File.ReadAllText(requiredFile));
+            if (!File.Exists(Path.Combine(root, "Tools~/manifest.json")))
+                throw new IOException("Matching Devcel native tools are missing. Choose Devcel > Download Matching Native Tools, or install the matching release archive offline.");
             SafePath(root, Path.Combine(root, "Tools~/manifest.json"));
             var manifest = JsonUtility.FromJson<Manifest>(File.ReadAllText(Path.Combine(root, "Tools~/manifest.json")));
             if (required == null || required.schema_version != 1 || string.IsNullOrEmpty(required.source_fingerprint) ||

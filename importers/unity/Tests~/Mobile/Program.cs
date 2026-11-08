@@ -1,7 +1,7 @@
 using System;
 namespace UnityEditor
 {
-    public enum BuildTarget { StandaloneLinux64, StandaloneWindows64, StandaloneOSX, Android, iOS }
+    public enum BuildTarget { StandaloneLinux64, StandaloneWindows64, StandaloneOSX, Android, iOS, WebGL }
 }
 internal static class Program
 {

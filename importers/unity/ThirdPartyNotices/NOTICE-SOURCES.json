@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "aggregate": "THIRD-PARTY-NOTICES.txt",
+  "sources": {
+    "win-x64": {
+      "sha256": "72f0219c0a0bc35d42721d26dc4d73696fef138d936ed6c1e540f80c17544861",
+      "offset": 0,
+      "length": 3441142
+    },
+    "linux-x64": {
+      "sha256": "72f0219c0a0bc35d42721d26dc4d73696fef138d936ed6c1e540f80c17544861",
+      "offset": 0,
+      "length": 3441142
+    },
+    "osx-x64": {
+      "sha256": "72f0219c0a0bc35d42721d26dc4d73696fef138d936ed6c1e540f80c17544861",
+      "offset": 0,
+      "length": 3441142
+    },
+    "osx-arm64": {
+      "sha256": "72f0219c0a0bc35d42721d26dc4d73696fef138d936ed6c1e540f80c17544861",
+      "offset": 0,
+      "length": 3441142
+    }
+  }
+}

@@ -5,7 +5,6 @@ HERE=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 ROOT=${1:-"$PWD"}
 case "$(uname -s)/$(uname -m)" in
     Linux/x86_64) RID=linux-x64; HASH=sha256sum ;;
-    Darwin/x86_64) RID=osx-x64; HASH=shasum ;;
     Darwin/arm64) RID=osx-arm64; HASH=shasum ;;
     *) echo 'This OS/CPU is not supported by this release ZIP.' >&2; exit 1 ;;
 esac

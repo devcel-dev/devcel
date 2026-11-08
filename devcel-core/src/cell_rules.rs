@@ -1920,6 +1920,7 @@ pub(crate) mod canonical_revision_tests {
             uuid: Uuid::from_u128(6).to_string(),
             display_name: "table".into(),
             metadata: TableMetadata {
+                schema_version: 1,
                 interface_order: vec![
                     Uuid::from_u128(12),
                     Uuid::from_u128(10),

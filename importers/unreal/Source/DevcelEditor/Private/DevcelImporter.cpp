@@ -251,8 +251,6 @@ bool FDevcelImporter::PrepareCli(FString& Error)
     Rid = TEXT("win-x64");
 #elif PLATFORM_MAC && PLATFORM_CPU_ARM_FAMILY
     Rid = TEXT("osx-arm64");
-#elif PLATFORM_MAC
-    Rid = TEXT("osx-x64");
 #elif PLATFORM_LINUX && !PLATFORM_CPU_ARM_FAMILY
     Rid = TEXT("linux-x64");
 #else

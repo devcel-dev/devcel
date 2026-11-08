@@ -83,7 +83,7 @@ This command builds the current OS/target's executable. Use the Windows aggregat
 
 Before distribution, test launch, project creation, editing, save and reopen on the destination OS/CPU. Identify the installer/executable and provide [installation instructions](../manual/installation.md). Standard builds disable in-app updating and leave its endpoint/public key unset; document the actual update mechanism used by the distribution.
 
-Configuration: [`tauri.conf.json`](https://github.com/devcel-dev/devcel/blob/db0b980a13ec21e06065df2eabf6a932f6a39e0e/devcel-studio/src-tauri/tauri.conf.json). CLI-bundled game importers are built separately: [Godot](../manual/godot.md), [Unity](../../../../INSTALL.md), [bundling contract](../../../../Tools~/README.md).
+Configuration: [`tauri.conf.json`](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/devcel-studio/src-tauri/tauri.conf.json). CLI-bundled game importers are built separately: [Godot](../manual/godot.md), [Unity](../../../../INSTALL.md), [bundling contract](../../../../Tools~/README.md).
 
 ## Windows local build
 

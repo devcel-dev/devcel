@@ -153,7 +153,7 @@ namespace Devcel.Unity.Editor
 #if UNITY_EDITOR_WIN
                 return "win-" + arch;
 #elif UNITY_EDITOR_OSX
-                return "osx-" + arch;
+                return arch == "arm64" ? "osx-arm64" : "unsupported";
 #else
                 return "linux-" + arch;
 #endif
@@ -197,6 +197,8 @@ namespace Devcel.Unity.Editor
         public static string PrepareCliPath()
         {
             string root = Path.GetFullPath(DistributionRoot);
+            if (!File.Exists(Path.Combine(root, "Tools~/manifest.json")))
+                throw new IOException("Matching Devcel native tools are missing. Choose Devcel > Download Matching Native Tools, or install the matching release archive offline.");
             if (root != Path.GetFullPath(PackageRoot)) DevcelNativePackage.Validate(root);
             string executable = ValidateCliPayload(root);
 #if !UNITY_EDITOR_WIN

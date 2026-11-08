@@ -59,6 +59,13 @@ impl Default for TableEditPermissions {
 #[derive(Serialize, Deserialize, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct TableMetadata {
+    /// On-disk authoring schema; absent in legacy files means version 1.
+    #[serde(
+        default = "crate::authoring_format::default_schema_version",
+        deserialize_with = "crate::authoring_format::deserialize_schema_version",
+        serialize_with = "crate::authoring_format::serialize_schema_version"
+    )]
+    pub schema_version: u32,
     pub interface_order: Vec<uuid::Uuid>,
     #[serde(default, skip_serializing_if = "String::is_empty")]
     pub parent_uuid: String,

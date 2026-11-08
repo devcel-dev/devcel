@@ -972,6 +972,7 @@ mod native_snapshot_regression_tests {
             uuid: uuid::Uuid::new_v4().to_string(),
             display_name: name.into(),
             metadata: TableMetadata {
+                schema_version: 1,
                 interface_order: Vec::new(),
                 initial_transposed: false,
                 edit_permissions: Default::default(),
