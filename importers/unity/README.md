@@ -19,6 +19,8 @@ Install Git on the Editor machine. The default branch supplies the latest genera
 
 After installing the Git package, choose **Devcel > Download Matching Native Tools**. The Editor downloads the matching release archive, verifies its SHA-256 and installs a project-local `org.devcel.native` companion. The archive supplies the supported Editor CLIs and Player runtimes; the Git package itself does not store those binaries. Git LFS is not required. Private releases and offline setups can extract the matching `org.devcel.unity-<version>-git.zip` release asset and choose **Devcel > Install Matching Native Tools**. See the [mobile Player guide](Documentation~/MOBILE.md) for target modules and device requirements.
 
+This checked-in package currently installs the published v0.0.3 tools. Their generated Unity accessors still use a read lock; the lock-free Unity generator in the current source requires the next matching native distribution. The release process replaces this generated package when that distribution is published.
+
 Add `Packages/org.devcel.native/` to the game repository’s `.gitignore`; each developer downloads the matching native tools locally. Commit `Packages/manifest.json` and `Packages/packages-lock.json` with the game. A dependency looks like `"org.devcel.unity": "https://github.com/devcel-dev/devcel.git?path=/importers/unity"`. Every team member uses the same URL. The immutable tag and lock file pin the package; releases never move an existing tag.
 
 Release v0.0.2 and later include Git-installable packages. The older v0.0.1 release contains Windows/Linux importer ZIPs only.

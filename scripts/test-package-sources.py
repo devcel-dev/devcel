@@ -21,6 +21,15 @@ def write(path, text):
 
 
 class PackagingSources(unittest.TestCase):
+    def test_checked_in_git_sdk_discloses_older_native_tools(self):
+        repo = HERE.parent
+        import unity_toolchain
+        required = json.loads((repo/'importers/unity/Editor/NativeRequirements.json').read_text(encoding='utf-8'))
+        if required['source_fingerprint'] != unity_toolchain.fingerprint(repo):
+            readme = (repo/'importers/unity/README.md').read_text(encoding='utf-8')
+            self.assertIn('published', readme)
+            self.assertIn('next matching native distribution', readme)
+
     def test_scratch_cleanup_is_only_deferred_on_github_hosted_runners(self):
         for actions, runner, retained in (('', '', False), ('true', 'self-hosted', False),
                                           ('', 'github-hosted', False), ('true', 'github-hosted', True)):
