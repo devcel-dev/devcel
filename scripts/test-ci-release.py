@@ -55,7 +55,7 @@ class ReleaseTests(unittest.TestCase):
         text = (ROOT/'.github/workflows/ci.yml').read_text()
         jobs = text.split('jobs:\n', 1)[1]
         self.assertEqual(re.findall(r'^  ([a-z_]+):$', jobs, re.MULTILINE), ['check'])
-        self.assertIn('os: [ubuntu-24.04, windows-2022, macos-15-intel, macos-15]', jobs)
+        self.assertIn('os: [ubuntu-24.04, windows-2022, macos-15]', jobs)
         prefix = jobs.split('    strategy:', 1)[0]
         self.assertNotIn('needs:', prefix)
         self.assertNotIn('if:', prefix)
@@ -181,9 +181,10 @@ class ReleaseTests(unittest.TestCase):
         for text in (ci_text, release):
             for forbidden in ('schedule:', 'pull_request_target:', 'branches: ["*"]'):
                 self.assertNotIn(forbidden, text)
-            self.assertIn('os: [ubuntu-24.04, windows-2022, macos-15-intel, macos-15]', text)
             self.assertIn('persist-credentials: false', text)
             self.assertIn("env:\n  PYTHONUTF8: '1'\n", text)
+        self.assertIn('os: [ubuntu-24.04, windows-2022, macos-15]', ci_text)
+        self.assertIn('os: ${{ fromJSON(needs.validate.outputs.desktop_matrix) }}', release)
 
     def test_manual_and_tag_release_share_pinned_jobs(self):
         release = (ROOT/'.github/workflows/release.yml').read_text()
@@ -658,7 +659,10 @@ class ReleaseTests(unittest.TestCase):
         for name, command in (('ci.yml', 'build_native'), ('release.yml', 'package')):
             text = (ROOT/'.github/workflows'/name).read_text()
             self.assertIn('python scripts/ci-release.py '+command, text)
-            self.assertIn('os: [ubuntu-24.04, windows-2022, macos-15-intel, macos-15]', text)
+            if name == 'ci.yml':
+                self.assertIn('os: [ubuntu-24.04, windows-2022, macos-15]', text)
+            else:
+                self.assertIn('os: ${{ fromJSON(needs.validate.outputs.desktop_matrix) }}', text)
             for forbidden in ('strict_checks', 'compact_checks', 'inspect_native', 'cargo test', '--no-run', 'RUSTFLAGS: -D warnings'):
                 self.assertNotIn(forbidden, text)
         text = (ROOT/'.github/workflows/manual-checks.yml').read_text()
@@ -744,9 +748,11 @@ class ReleaseTests(unittest.TestCase):
             self.assertEqual((root/'native-review-artifacts/bundled-cli/devcel.exe').read_bytes(), b'cli')
             self.assertFalse((root/'release-assets').exists())
 
-    def fixture(self, root):
-        for system, platform in [('Linux', 'linux-x64'), ('Windows', 'win-x64'),
-                                 ('macOS-X64', 'osx-x64'), ('macOS-ARM64', 'osx-arm64')]:
+    def fixture(self, root, legacy_desktop=False):
+        platforms = [('Linux', 'linux-x64'), ('Windows', 'win-x64'), ('macOS-ARM64', 'osx-arm64')]
+        if legacy_desktop:
+            platforms.append(('macOS-X64', 'osx-x64'))
+        for system, platform in platforms:
             directory = root/('release-'+system)
             directory.mkdir()
             for engine in ('unity', 'godot', 'unreal', 'rpgmaker', 'wolf', 'gamemaker', 'defold', 'cocos', 'javascript'):
@@ -790,15 +796,22 @@ class ReleaseTests(unittest.TestCase):
             root = Path(temp)
             self.fixture(root)
             files = ci.collect_assets(root, root/'out', 'v0.1.0')
-            self.assertEqual(len(files), 48)
-            self.assertEqual(len((root/'out/SHA256SUMS.txt').read_text().splitlines()), 47)
-            self.assertEqual(len(list((root/'out').glob('org.devcel.unity-*.tgz'))), 4)
+            self.assertEqual(len(files), 37)
+            self.assertEqual(len((root/'out/SHA256SUMS.txt').read_text().splitlines()), 36)
+            self.assertEqual(len(list((root/'out').glob('org.devcel.unity-*.tgz'))), 3)
+
+    def test_new_release_rejects_unexpected_intel_artifacts(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self.fixture(root, legacy_desktop=True)
+            with self.assertRaisesRegex(ValueError, 'Unexpected Intel Mac artifact'):
+                ci.collect_assets(root, root/'out', 'v0.1.0')
 
     def test_collect_legacy_assets_preserves_original_payload(self):
         import zipfile
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
-            self.fixture(root)
+            self.fixture(root, legacy_desktop=True)
             mobile = ci.unity_upm.unity_mobile
             for system in ('android', 'ios'):
                 path = root/f'release-mobile-{system}'/f'unity-mobile-{system}.zip'
@@ -815,7 +828,7 @@ class ReleaseTests(unittest.TestCase):
                     for name, raw in values.items(): archive.writestr(name, raw)
             (root/'release-mobile-webgl/unity-mobile-webgl.zip').unlink()
             files = ci.collect_assets(root, root/'out', 'v0.1.0', 'a'*40, 'owner/repo',
-                                      notice_layout=1, mobile_layout=1, source_archive_layout=1)
+                                      notice_layout=1, mobile_layout=1, source_archive_layout=1, desktop_layout=1)
             self.assertEqual(len(files), 48)
             with zipfile.ZipFile(root/'out/org.devcel.unity-0.1.0-git.zip') as archive:
                 manifest = json.loads(archive.read('Tools~/manifest.json'))
@@ -863,7 +876,7 @@ class ReleaseTests(unittest.TestCase):
                         ci.collect_assets(root, root/'out', 'v0.1.0')
 
     def test_collect_rejects_missing_or_duplicate_studio_assets(self):
-        for system in ('Linux', 'Windows', 'macOS-X64', 'macOS-ARM64'):
+        for system in ('Linux', 'Windows', 'macOS-ARM64'):
             for duplicate in (False, True):
                 with self.subTest(system=system, duplicate=duplicate), tempfile.TemporaryDirectory() as temp:
                     root = Path(temp); self.fixture(root)
@@ -881,7 +894,7 @@ class ReleaseTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp); self.fixture(root)
             payloads = {}
-            for system in ('Linux', 'Windows', 'macOS-X64', 'macOS-ARM64'):
+            for system in ('Linux', 'Windows', 'macOS-ARM64'):
                 name = ci.studio_asset_name(system.lower(), 'v0.1.0')
                 payloads[name] = (system+'\r\n').encode()+bytes(range(256))
                 (root/('release-'+system)/name).write_bytes(payloads[name])
@@ -901,7 +914,7 @@ class ReleaseTests(unittest.TestCase):
                 ci.collect_assets(root, root/'out', 'v0.1.0')
 
     def test_macos_native_platform_and_toolchains(self):
-        for machine, rid in (('x86_64', 'x64'), ('arm64', 'arm64')):
+        for machine, rid in (('arm64', 'arm64'),):
             with patch.object(ci.sys, 'platform', 'darwin'), patch.object(ci.platform, 'machine', return_value=machine):
                 self.assertEqual(ci.platform_config(), ('macos-'+rid, 'osx-'+rid, 'app,dmg', 'devcel-studio'))
                 with patch.object(ci, 'run') as run:
@@ -909,6 +922,8 @@ class ReleaseTests(unittest.TestCase):
                 self.assertIn(('rustup', 'target', 'add', '--toolchain', '1.99.0',
                                'x86_64-apple-darwin', 'aarch64-apple-darwin'), [c.args for c in run.call_args_list])
         with patch.object(ci.sys, 'platform', 'darwin'), patch.object(ci.platform, 'machine', return_value='other'):
+            with self.assertRaises(ValueError): ci.platform_config()
+        with patch.object(ci.sys, 'platform', 'darwin'), patch.object(ci.platform, 'machine', return_value='x86_64'):
             with self.assertRaises(ValueError): ci.platform_config()
 
     def test_macos_build_checks_sealed_payload_and_propagates_signing_failure(self):
@@ -933,11 +948,11 @@ class ReleaseTests(unittest.TestCase):
                 with self.assertRaises(subprocess.CalledProcessError): ci.build_native()
 
     def test_missing_macos_architecture_stops_publication(self):
-        for label in ('macOS-X64', 'macOS-ARM64'):
+        for label in ('macOS-ARM64',):
             with self.subTest(label=label), tempfile.TemporaryDirectory() as temp:
                 root = Path(temp); self.fixture(root)
                 ci.shutil.rmtree(root/('release-'+label))
-                with self.assertRaisesRegex(ValueError, 'All four'):
+                with self.assertRaisesRegex(ValueError, 'All selected'):
                     ci.collect_assets(root, root/'out', 'v0.1.0')
 
     def test_macos_cli_signed_before_manifest_hash_and_configured_ad_hoc(self):

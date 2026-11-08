@@ -14,7 +14,7 @@ Follow [Tauri prerequisites](https://v2.tauri.app/start/prerequisites/):
 - macOS: Xcode or Xcode Command Line Tools for desktop development.
 - Linux: GTK 3, WebKitGTK 4.1 and C/C++ build tools. See [Linux development](linux.md).
 
-Automated distribution targets are Windows x64, Linux x64, macOS Intel and macOS Apple Silicon; see [CI and releases](releasing.md). macOS produces one native DMG per CPU. Actual platform coverage must be recorded separately alongside the checks described in [Contributing](../../CONTRIBUTING.md#check-the-result).
+Automated distribution targets are Windows x64, Linux x64 and macOS Apple Silicon; see [CI and releases](releasing.md). New releases do not support Intel Macs. Actual platform coverage must be recorded separately alongside the checks described in [Contributing](../../CONTRIBUTING.md#check-the-result).
 
 ### Keep Node selectors synchronized
 
@@ -111,7 +111,7 @@ Both modes write `build_log.txt` and `build_summary.txt` in the timestamped outp
 
 ## macOS local build
 
-Use a native terminal on the intended Intel or Apple Silicon Mac, with Xcode
+Use a native terminal on an Apple Silicon Mac, with Xcode
 Command Line Tools, Python 3.11+ (also available as `python` for the Tauri build hook)
 and the pinned Node version installed. Do not use
 a Rosetta terminal to produce the Apple Silicon distribution. From the repo root:

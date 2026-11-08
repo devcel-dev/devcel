@@ -1,6 +1,6 @@
 """Assemble one complete Git-installable Unity package without publishing refs.
 
-Four native desktop ZIPs and Android, iOS and WebGL artifacts must share a source identity.
+Desktop ZIPs and Android, iOS and WebGL artifacts must share a source identity.
 The generated package is added to a release commit before its normal v<version> tag.
 No network, remote push, or source branch modification occurs here.
 """
@@ -22,7 +22,9 @@ from urllib.parse import unquote, urlsplit
 import unity_mobile
 import unity_upm
 
-RIDS = ('win-x64', 'linux-x64', 'osx-x64', 'osx-arm64')
+RIDS = ('win-x64', 'linux-x64', 'osx-arm64')
+LEGACY_RIDS = ('win-x64', 'linux-x64', 'osx-x64', 'osx-arm64')
+DESKTOP_LAYOUT_VERSION = 2
 NOTICE_LAYOUT_VERSION = 2
 SOURCE_ARCHIVE_LAYOUT_VERSION = 2
 GIT_PACKAGE_LAYOUT_VERSION = 2
@@ -152,12 +154,30 @@ def source_git_package_layout_at(root, commit):
         return source_git_package_layout(temp)
 
 
-def combine_desktop_notices(notices):
+def source_desktop_layout(root):
+    path = Path(root)/'scripts/unity_git_package.py'
+    if not path.is_file():
+        return 1
+    return desktop_layout_from_source(path.read_text(encoding='utf-8'))
+
+
+def desktop_layout_from_source(source):
+    tree = ast.parse(source)
+    markers = [n.value for n in tree.body if isinstance(n, ast.Assign)
+               and any(isinstance(t, ast.Name) and t.id == 'DESKTOP_LAYOUT_VERSION' for t in n.targets)]
+    if not markers:
+        return 1
+    if len(markers) != 1 or not isinstance(markers[0], ast.Constant) or type(markers[0].value) is not int or markers[0].value not in (1, 2):
+        raise ValueError('Unknown desktop platform layout')
+    return markers[0].value
+
+
+def combine_desktop_notices(notices, rids=RIDS):
     """Store each distinct original notice once and retain verifiable RID mappings."""
-    if set(notices) != set(RIDS):
-        raise ValueError('Four desktop notice sources are required')
+    if set(notices) != set(rids):
+        raise ValueError('Desktop notice sources do not match the selected layout')
     groups = {}
-    for rid in RIDS:
+    for rid in rids:
         raw = notices[rid]
         digest = hashlib.sha256(raw).hexdigest()
         if digest in groups and groups[digest]['data'] != raw:
@@ -177,10 +197,11 @@ def combine_desktop_notices(notices):
     return bytes(aggregate), (json.dumps(index, indent=2)+'\n').encode('utf-8')
 
 
-def assemble(desktop, mobile, destination, version, commit, repository, legacy_notices=False, legacy_mobile=False, legacy_source_archives=False):
+def assemble(desktop, mobile, destination, version, commit, repository, legacy_notices=False, legacy_mobile=False, legacy_source_archives=False, legacy_desktop=False):
+    rids = LEGACY_RIDS if legacy_desktop else RIDS
     systems = ('android', 'ios') if legacy_mobile else ('android', 'ios', 'webgl')
-    if set(desktop) != set(RIDS) or set(mobile) != set(systems):
-        raise ValueError('Four Editor RIDs and Android, iOS and WebGL artifacts are required')
+    if set(desktop) != set(rids) or set(mobile) != set(systems):
+        raise ValueError('Editor RIDs and mobile artifacts do not match the selected layout')
     if not unity_upm.VERSION.fullmatch(version):
         raise ValueError('Invalid package version')
     if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]*/[A-Za-z0-9][A-Za-z0-9_.-]*', repository):
@@ -190,7 +211,7 @@ def assemble(desktop, mobile, destination, version, commit, repository, legacy_n
         raise ValueError('Git package destination must not exist')
     files, common, binaries, runtimes, sources, notices = {}, None, {}, {}, [], {}
     required_fingerprint = None
-    for rid in RIDS:
+    for rid in rids:
         with zipfile.ZipFile(desktop[rid]) as archive:
             entries = unity_upm.package_entries(archive)
             if any('.git' in [part.lower() for part in name.split('/')] for name in entries):
@@ -249,9 +270,9 @@ def assemble(desktop, mobile, destination, version, commit, repository, legacy_n
             notices[rid] = archive.read(entries['ThirdPartyNotices/THIRD-PARTY-NOTICES.txt'])
     if legacy_notices:
         files['ThirdPartyNotices/THIRD-PARTY-NOTICES.txt'] = b''.join(
-            b'\n===== ' + rid.encode() + b' =====\n' + notices[rid] for rid in RIDS)
+            b'\n===== ' + rid.encode() + b' =====\n' + notices[rid] for rid in rids)
     else:
-        aggregate, notice_index = combine_desktop_notices(notices)
+        aggregate, notice_index = combine_desktop_notices(notices, rids)
         files['ThirdPartyNotices/THIRD-PARTY-NOTICES.txt'] = aggregate
         files['ThirdPartyNotices/NOTICE-SOURCES.json'] = notice_index
     players = []
@@ -263,7 +284,7 @@ def assemble(desktop, mobile, destination, version, commit, repository, legacy_n
         players.extend(runtime)
     manifest = {'schema_version': 1, 'version': version, 'source_commit': commit,
                 'source_repository': repository, 'source_fingerprint': required_fingerprint,
-                'supportedPlatforms': list(RIDS), 'binaries': binaries,
+                'supportedPlatforms': list(rids), 'binaries': binaries,
                 'native_runtimes': list(runtimes.values()), 'player_runtimes': players,
                 'source_archives': sources}
     files['Tools~/manifest.json'] = (json.dumps(manifest, indent=2)+'\n').encode()
@@ -367,7 +388,7 @@ def verify_release_tree(root, existing, prepared):
         raise ValueError('Rebuilt package differs from the immutable release tag Unity package tree; use the original artifacts or a new version, never move the tag.')
 
 
-def create(desktop, mobile, output, version, commit, repository, author_name=None, author_email=None, legacy_notices=False, legacy_mobile=False, legacy_source_archives=False):
+def create(desktop, mobile, output, version, commit, repository, author_name=None, author_email=None, legacy_notices=False, legacy_mobile=False, legacy_source_archives=False, legacy_desktop=False):
     """Create a deterministic complete package ZIP and size/provenance report; no Git writes."""
     output = Path(output); output.mkdir(parents=True, exist_ok=True)
     artifact = output/f'org.devcel.unity-{version}-git.zip'
@@ -377,7 +398,7 @@ def create(desktop, mobile, output, version, commit, repository, author_name=Non
     with tempfile.TemporaryDirectory(prefix='devcel-upm-stage-') as temp:
         package = Path(temp)/'package'
         result = assemble(desktop, mobile, package, version, commit, repository, legacy_notices=legacy_notices,
-                          legacy_mobile=legacy_mobile, legacy_source_archives=legacy_source_archives)
+                          legacy_mobile=legacy_mobile, legacy_source_archives=legacy_source_archives, legacy_desktop=legacy_desktop)
         with zipfile.ZipFile(artifact, 'w', compression=zipfile.ZIP_DEFLATED) as archive:
             for path in sorted(package.rglob('*')):
                 if path.is_file():
@@ -419,7 +440,7 @@ def stage_release(archive, report, root, author_name, author_email, slim=False):
                 if path.exists(): shutil.rmtree(path)
                 (package/(name+'.meta')).unlink(missing_ok=True)
             tools = package/'Tools~'
-            for name in (*RIDS, 'Mobile', 'Sources', 'manifest.json'):
+            for name in (*LEGACY_RIDS, 'Mobile', 'Sources', 'manifest.json'):
                 path = tools/name
                 if path.is_dir(): shutil.rmtree(path)
                 elif path.exists(): path.unlink()
@@ -445,7 +466,8 @@ if __name__ == '__main__':
     parser.add_argument('--source-commit', required=True)
     parser.add_argument('--source-repository', required=True)
     parser.add_argument('--legacy-notices', action='store_true', help='Reproduce the original per-RID notice layout for an old release source')
+    parser.add_argument('--legacy-desktop', action='store_true', help='Require the historical Intel Mac input as well as the current desktop RIDs')
     args = parser.parse_args()
-    print(create({rid: args.desktop_dir/f'devcel-unity-{args.version}-{rid}.zip' for rid in RIDS},
+    print(create({rid: args.desktop_dir/f'devcel-unity-{args.version}-{rid}.zip' for rid in (LEGACY_RIDS if args.legacy_desktop else RIDS)},
         {'android': args.mobile_android, 'ios': args.mobile_ios, 'webgl': args.mobile_webgl}, args.out, args.version,
-        args.source_commit, args.source_repository, legacy_notices=args.legacy_notices))
+        args.source_commit, args.source_repository, legacy_notices=args.legacy_notices, legacy_desktop=args.legacy_desktop))

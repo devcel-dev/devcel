@@ -156,8 +156,14 @@ def inspect(environment=None, now=None):
         raise ValueError('Cannot identify original mobile release layout')
     encoded = ''.join(source_file['content'].split())
     systems = ci.unity_upm.unity_mobile.source_systems(base64.b64decode(encoded, validate=True).decode('utf-8'))
+    recipe = api(repository, 'contents/scripts/unity_git_package.py?ref='+source_commit)
+    if recipe.get('encoding') != 'base64' or not isinstance(recipe.get('content'), str):
+        raise ValueError('Cannot identify original desktop release layout')
+    desktop_layout = ci.unity_git_package.desktop_layout_from_source(
+        base64.b64decode(''.join(recipe['content'].split()), validate=True).decode('utf-8'))
     builds = {name: job for name, job in BUILDS.items()
-              if not name.startswith('release-mobile-') or name.removeprefix('release-mobile-') in systems}
+              if (desktop_layout == 1 or name != 'release-macOS-X64') and
+              (not name.startswith('release-mobile-') or name.removeprefix('release-mobile-') in systems)}
     jobs = rows(api(repository, f'actions/runs/{run_id}/attempts/{attempt}/jobs?per_page=100', True), 'jobs')
     required = ['validate', *builds.values()]
     if run['event'] == 'workflow_dispatch':

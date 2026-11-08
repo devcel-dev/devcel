@@ -32,7 +32,6 @@ def package_scratch():
 PLATFORMS = {
     'linux-x64': ('x86_64-unknown-linux-gnu', 'libdevcel_runtime.so', 'Linux/x86_64'),
     'win-x64': ('x86_64-pc-windows-msvc', 'devcel_runtime.dll', 'Windows/x86_64'),
-    'osx-x64': ('x86_64-apple-darwin', 'libdevcel_runtime.dylib', 'macOS'),
     'osx-arm64': ('aarch64-apple-darwin', 'libdevcel_runtime.dylib', 'macOS'),
 }
 

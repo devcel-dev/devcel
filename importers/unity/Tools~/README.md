@@ -16,7 +16,7 @@ Importer distributions include a CLI for the target OS/CPU, a manifest, licenses
 | Cocos | `devcel-cocos/bin/<rid>/devcel[.exe]` |
 | JavaScript | `devcel-javascript/bin/<rid>/devcel[.exe]` |
 
-The packager targets `linux-x64`, `win-x64`, `osx-x64`, and `osx-arm64`. Each package contains only its named/manifest RID. Resolvers also recognize Linux/Windows ARM64, but this packager does not produce those distributions. Unsupported OS/CPU combinations fail explicitly.
+The packager targets `linux-x64`, `win-x64`, and `osx-arm64`. Each package contains only its named/manifest RID. Resolvers also recognize Linux/Windows ARM64, but this packager does not produce those distributions. Unsupported OS/CPU combinations fail explicitly.
 
 Install Unity using its complete Git UPM release (or a local generated package); install Godot at the game project root and enable the addon. Unreal's source plugin must be built using the matching UE toolchain. Cocos extension contents belong under `extensions/devcel-importer/`. Defold's `devcel` directory belongs in the game project. JavaScript games include the runtime only. WOLF itself is Windows-only; other platform CLI packages support preparing CSV, not running WOLF.
 

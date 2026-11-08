@@ -31,6 +31,12 @@ def fixture(root, commit="a"*40):
 
 
 class GitPackageTests(unittest.TestCase):
+    def test_desktop_layout_recognizes_legacy_and_rejects_unknown(self):
+        self.assertEqual(package.desktop_layout_from_source('# pre-layout release\n'), 1)
+        self.assertEqual(package.desktop_layout_from_source('DESKTOP_LAYOUT_VERSION = 2\n'), 2)
+        with self.assertRaisesRegex(ValueError, 'Unknown desktop'):
+            package.desktop_layout_from_source('DESKTOP_LAYOUT_VERSION = 3\n')
+
     def test_checked_in_git_package_keeps_native_binaries_out_of_history(self):
         root = Path(__file__).resolve().parents[1]/'importers/unity'
         self.assertFalse((root/'Plugins').exists())
@@ -154,7 +160,7 @@ class GitPackageTests(unittest.TestCase):
 
     def test_notice_deduplication_preserves_each_distinct_original(self):
         import hashlib
-        originals = {rid: (b'notice A\r\n' if rid != 'osx-x64' else b'notice B\n') for rid in package.RIDS}
+        originals = {rid: (b'notice A\r\n' if rid != 'osx-arm64' else b'notice B\n') for rid in package.RIDS}
         aggregate, encoded = package.combine_desktop_notices(originals)
         index = json.loads(encoded)
         self.assertEqual(aggregate.count(b'notice A\r\n'), 1)
@@ -177,7 +183,7 @@ class GitPackageTests(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]/'importers/unity/ThirdPartyNotices'
         aggregate = (root/'THIRD-PARTY-NOTICES.txt').read_bytes()
         index = json.loads((root/'NOTICE-SOURCES.json').read_text(encoding='utf-8'))
-        self.assertEqual(set(index['sources']), set(package.RIDS))
+        self.assertEqual(set(index['sources']), set(package.LEGACY_RIDS))
         for rid, item in index['sources'].items():
             original = aggregate[item['offset']:item['offset']+item['length']]
             self.assertEqual(len(original), item['length'])
@@ -291,7 +297,7 @@ class GitPackageTests(unittest.TestCase):
             with self.subTest(case=case), tempfile.TemporaryDirectory() as temp:
                 root = Path(temp)
                 desktop, mobile = fixture(root)
-                if case == 'missing': desktop.pop('osx-x64')
+                if case == 'missing': desktop.pop('osx-arm64')
                 if case == 'sdk':
                     values = fixture_entries('linux-x64'); values['devcel-unity/Runtime/extra.cs'] = b'drift'
                     write_zip(desktop['linux-x64'], values)

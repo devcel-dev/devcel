@@ -28,7 +28,7 @@ Paths are relative to the package root.
 
 Matching `.meta` files are bundled. `DevcelNativePluginPostprocessor` applies settings when known paths import; `DevcelNativePlugins` applies them after Editor startup and through **Devcel → Repair Native Plugin Settings**. Any Platform is false, Editor is enabled only for desktop libraries on their OS/CPU, and only the matching Player is enabled. Mobile plugins never load in the Editor. Preload/define constraints are cleared. Identical settings cause no writes or reimports. Only these known package paths are modified.
 
-macOS AnyCPU still requires both CPU slices. The Player gate checks PE x64 DLL, ELF64 x86_64 shared-object, or Mach-O universal-dylib headers. Header checks do not establish ABI, dependency, code-signing, or execution correctness. Restart Unity after replacing a native library because it cannot be unloaded within the current session.
+The macOS library remains universal for existing Unity plugin validation; new releases support Apple Silicon only. macOS AnyCPU still requires both CPU slices. The Player gate checks PE x64 DLL, ELF64 x86_64 shared-object, or Mach-O universal-dylib headers. Header checks do not establish ABI, dependency, code-signing, or execution correctness. Restart Unity after replacing a native library because it cannot be unloaded within the current session.
 
 ## Build a CLI-containing package
 
@@ -38,7 +38,7 @@ The importer selects `Tools~/<rid>/devcel[.exe]` through the manifest. On the ta
 python scripts/package-importers.py --out dist/importers --source-repository <owner/repo> --source-commit <git-commit>
 ```
 
-The packager performs release CLI/runtime builds, metadata checks, source/notice collection, and binary hashing. Release collection combines all four desktop ZIPs and the Android, iOS and WebGL archives into a verified release archive. The new release commit contains a lightweight `importers/unity` package with the archive SHA-256; the Editor downloads and installs the matching native companion after the Git installation. OS-specific UPM `.tgz` files remain optional offline alternatives. See [Git UPM release generation](../../../docs/development/importer-packaging.md#git-upm-release-generation). Packaging does not perform a real Unity import or Player execution test. Windows helper scripts use this same build path. macOS requires Xcode and both Rust targets to create a universal runtime dylib.
+The packager performs release CLI/runtime builds, metadata checks, source/notice collection, and binary hashing. Release collection combines all three desktop ZIPs and the Android, iOS and WebGL archives into a verified release archive. The new release commit contains a lightweight `importers/unity` package with the archive SHA-256; the Editor downloads and installs the matching native companion after the Git installation. OS-specific UPM `.tgz` files remain optional offline alternatives. See [Git UPM release generation](../../../docs/development/importer-packaging.md#git-upm-release-generation). Packaging does not perform a real Unity import or Player execution test. Windows helper scripts use this same build path. macOS requires Xcode and both Rust targets to create a universal runtime dylib.
 
 Editor CLI OS and Player runtime OS are separate requirements. A single-RID ZIP may lack the runtime for another Player target; the missing-runtime gate remains active. See [bundled CLI packaging](../../../docs/development/importer-packaging.md) for manifests and coverage.
 

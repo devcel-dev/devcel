@@ -29,7 +29,7 @@ Stop Play mode, remove an older Assets-based or embedded SDK copy and any `org.d
 
 To upgrade or roll back, change the Git URL to the desired published release tag, resolve the package in Package Manager, commit both package manifest and lock file, remove the old `org.devcel.native` companion, download the matching version, and restart Unity to unload the previous native library. Reimport sources to regenerate matching C#. Never combine SDK/CLI/runtime files from different distributions or edit `Library/PackageCache`.
 
-OS-specific `.tgz` files remain an offline alternative: use **Add package from tarball**, keep the file at a stable project-relative location outside Assets/Packages and share it with the game. Choose the Editor RID (`win-x64`, `linux-x64`, `osx-x64`, `osx-arm64`); these tarballs are not interchangeable across desktop OSes. Older ZIPs use **Add package from disk** on the extracted `devcel-unity/package.json` and may lack mobile runtimes.
+OS-specific `.tgz` files remain an offline alternative: use **Add package from tarball**, keep the file at a stable project-relative location outside Assets/Packages and share it with the game. Choose the Editor RID (`win-x64`, `linux-x64`, `osx-arm64`); these tarballs are not interchangeable across desktop OSes. Older ZIPs use **Add package from disk** on the extracted `devcel-unity/package.json` and may lack mobile runtimes.
 
 ## Import workflow
 

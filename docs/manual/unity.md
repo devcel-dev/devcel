@@ -257,7 +257,7 @@ For manual-only operation, set the common automatic mode to Off. Save in Studio,
 ## 9. Build and runtime requirements
 
 - Editor import platforms and Player targets are separate. A single-RID ZIP may not include the native runtime for another target OS.
-- Native layouts currently cover Windows x64, Linux x64, and macOS universal. macOS needs both x86_64 and arm64 slices.
+- Native layouts cover Windows x64, Linux x64, and macOS. New macOS releases support Apple Silicon only; the current universal runtime retains both CPU slices for compatibility with existing Unity plugin validation.
 - The matching native distribution for newly generated Git UPM packages includes Android ARMv7, ARM64, x86 and x86_64 (API 23+) and iOS device/Simulator (iOS 13+) runtimes. Release v0.0.2 includes Android ARM64 only. Install the Unity target module and follow the [mobile Player guide](../../importers/unity/Documentation~/MOBILE.md). Android x86 (32-bit) requires a Unity version that supports it; v0.0.2 has no iOS Simulator runtime; WebGL in a newly generated distribution is described in the [WebGL guide](../../importers/unity-template/Documentation~/WEBGL.md). FromJson still requires the native runtime; CLI execution remains Editor-only.
 - **Import before build** defaults to Off. When enabled, failed imports or changed generated C# stop the build; compile changed code before rebuilding.
 - Configuration and runtime-layout validation still runs when pre-build import is off. Already imported JSON, generated code, and required runtime can build without source projects or the CLI.
@@ -265,7 +265,7 @@ For manual-only operation, set the common automatic mode to Off. Save in Studio,
 
 ### Platforms and verification
 
-Release v0.0.2 includes the Git-installable package and Windows, Linux and macOS importer distributions. The older v0.0.1 release contains Windows/Linux importer ZIPs only. The build pipeline supports win-x64, linux-x64, osx-x64 and osx-arm64. Windows/Linux arm64 Editors are not supported. Linux requires the documented glibc 2.39 baseline; validate the actual artifact on the target system. Build success is not Editor or Player execution acceptance.
+Release v0.0.2 includes the Git-installable package and Windows, Linux and macOS importer distributions. The older v0.0.1 release contains Windows/Linux importer ZIPs only. The build pipeline supports win-x64, linux-x64 and osx-arm64. Windows/Linux arm64 Editors are not supported. Linux requires the documented glibc 2.39 baseline; validate the actual artifact on the target system. Build success is not Editor or Player execution acceptance.
 
 See [Unity package layout](../../importers/unity/Documentation~/DISTRIBUTION.md), [Bundled CLI](../development/importer-packaging.md).
 

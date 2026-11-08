@@ -16,7 +16,7 @@ Importer distributions include a CLI for the target OS/CPU, a manifest, licenses
 | Cocos | `devcel-cocos/bin/<rid>/devcel[.exe]` |
 | JavaScript | `devcel-javascript/bin/<rid>/devcel[.exe]` |
 
-The packager targets `linux-x64`, `win-x64`, `osx-x64`, and `osx-arm64`. Each package contains only its named/manifest RID. Resolvers also recognize Linux/Windows ARM64, but this packager does not produce those distributions. Unsupported OS/CPU combinations fail explicitly.
+The packager targets `linux-x64`, `win-x64`, and `osx-arm64`. Each package contains only its named/manifest RID. Resolvers also recognize Linux/Windows ARM64, but this packager does not produce those distributions. Unsupported OS/CPU combinations fail explicitly.
 
 Install Unity using its complete Git UPM release (or a local generated package); install Godot at the game project root and enable the addon. Unreal's source plugin must be built using the matching UE toolchain. Cocos extension contents belong under `extensions/devcel-importer/`. Defold's `devcel` directory belongs in the game project. JavaScript games include the runtime only. WOLF itself is Windows-only; other platform CLI packages support preparing CSV, not running WOLF.
 
@@ -100,7 +100,7 @@ The source repository must be an explicit GitHub `OWNER/REPO` slug and the sourc
 
 Users install the normal release tag with `https://github.com/<release-repository>.git?path=/importers/unity#v<version>`. There is no UPM-specific tag or permanent distribution branch. The source SDK template remains unversioned: packaging generates `package.json` from the canonical Tauri version. Between releases, `importers/unity` remains the last published complete package even when development changes `importers/unity-template`; the untagged URL therefore does not expose unreleased SDK changes.
 
-For a new manual release, version preparation records a source commit on main. All four desktop builds and both mobile builds use that exact commit. Release collection produces the common `org.devcel.unity-<version>-git.zip` and `-git.json` report alongside the offline tarballs and checksums. These ZIP/report files are publication inputs; users normally install the Git URL.
+For a new manual release, version preparation records a source commit on main. All three desktop builds and the Android, iOS and WebGL builds use that exact commit. Release collection produces the common `org.devcel.unity-<version>-git.zip` and `-git.json` report alongside the offline tarballs and checksums. These ZIP/report files are publication inputs; users normally install the Git URL.
 
 Only after all builds and artifact checks succeed, publication creates a child commit replacing `importers/unity` in that source tree and creates the normal `v<version>` tag there. All paths outside `importers/unity` remain byte-identical to the parent. The release updates main and the new tag together after verifying main still points to the build source. The generated manifest records the build source parent, and publication/recovery validate this relationship separately from the tagged release commit. There is no self-referential commit hash: native artifacts record the parent from which they were built.
 
@@ -110,7 +110,7 @@ Assembly rejects files at or above 100 MiB and a package over 1 GiB. The report 
 
 ### Local preparation and publication permissions
 
-For independently built artifacts, run `scripts/unity_git_package.py --help` to assemble the four desktop ZIPs and both mobile archives. Then prepare the child commit locally:
+For independently built artifacts, run `scripts/unity_git_package.py --help` to assemble the three desktop ZIPs and Android, iOS and WebGL archives. Then prepare the child commit locally:
 
 ```sh
 python scripts/publish_unity_git.py --archive org.devcel.unity-<version>-git.zip --report org.devcel.unity-<version>-git.json --repo /path/to/source-checkout --author-name <name> --author-email <email>

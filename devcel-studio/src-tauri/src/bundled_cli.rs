@@ -32,8 +32,6 @@ fn regular(path: &Path, max_bytes: u64) -> Result<(), String> {
 fn platform_id() -> &'static str {
     if cfg!(all(target_os = "macos", target_arch = "aarch64")) {
         "osx-arm64"
-    } else if cfg!(all(target_os = "macos", target_arch = "x86_64")) {
-        "osx-x64"
     } else if cfg!(all(windows, target_arch = "x86_64")) {
         "win-x64"
     } else if cfg!(all(target_os = "linux", target_arch = "x86_64")) {

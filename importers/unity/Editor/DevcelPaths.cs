@@ -153,7 +153,7 @@ namespace Devcel.Unity.Editor
 #if UNITY_EDITOR_WIN
                 return "win-" + arch;
 #elif UNITY_EDITOR_OSX
-                return "osx-" + arch;
+                return arch == "arm64" ? "osx-arm64" : "unsupported";
 #else
                 return "linux-" + arch;
 #endif

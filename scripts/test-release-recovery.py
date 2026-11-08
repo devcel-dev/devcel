@@ -56,6 +56,7 @@ class RecoveryTests(unittest.TestCase):
                 'releases?per_page=100': self.releases}
         data['contents/scripts/unity_mobile.py?ref='+A] = {'encoding': 'base64', 'content': base64.b64encode(
             (HERE/'unity_mobile.py').read_bytes()).decode()}
+        data['contents/scripts/unity_git_package.py?ref='+A] = {'encoding': 'base64', 'content': base64.b64encode(b'# legacy release\n').decode()}
         return copy.deepcopy(data[suffix])
 
     def inspect(self):
@@ -82,6 +83,19 @@ class RecoveryTests(unittest.TestCase):
             plan = r.inspect(self.env, NOW)
         self.assertEqual(len(plan['artifacts']), 6)
         self.assertNotIn('release-mobile-webgl', [a['name'] for a in plan['artifacts']])
+
+    def test_apple_silicon_release_does_not_require_intel_artifacts(self):
+        self.jobs = [j for j in self.jobs if j['name'] != 'build (macos-15-intel)']
+        self.artifacts = [a for a in self.artifacts if a['name'] != 'release-macOS-X64']
+        original_api = self.api
+        def new_api(repository, suffix, paginate=False):
+            if suffix == 'contents/scripts/unity_git_package.py?ref='+A:
+                return {'encoding': 'base64', 'content': base64.b64encode(b'DESKTOP_LAYOUT_VERSION = 2\n').decode()}
+            return original_api(repository, suffix, paginate)
+        with patch.object(r, 'api', side_effect=new_api), patch.object(r.ci, 'run', return_value=''), patch.object(r.ci, 'checked_commit', return_value=B):
+            plan = r.inspect(self.env, NOW)
+        self.assertNotIn('release-macOS-X64', [a['name'] for a in plan['artifacts']])
+        self.assertEqual(len(plan['artifacts']), 6)
 
     def test_lightweight_tags_are_supported(self):
         self.tag = {'object': {'type': 'commit', 'sha': A}}

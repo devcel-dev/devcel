@@ -50,7 +50,7 @@ python scripts/unity_mobile.py --system ios --out mobile/ios --source-repository
 python scripts/unity_upm.py dist/devcel-unity-<version>-<editor-rid>.zip --out dist/upm --version <version> --platform <editor-rid> --mobile-android mobile/android/unity-mobile-android.zip --mobile-ios mobile/ios/unity-mobile-ios.zip
 ```
 
-The mobile ZIPs are internal build inputs, not installable packages. Publication verifies that their version, repository, commit and native source fingerprint match the desktop package, validates binary formats and hashes, and adds them to the downloadable native archive and each OS-specific release tarball. The source desktop CLI archive contains the same runtime source and pinned Rust dependency sources. Android NDK original notices are also bundled. The native mobile manifest records target toolchains, minimum OS/API and iOS link libraries. Recovering a release requires both mobile job artifacts as well as all four desktop build artifacts.
+The mobile ZIPs are internal build inputs, not installable packages. Publication verifies that their version, repository, commit and native source fingerprint match the desktop package, validates binary formats and hashes, and adds them to the downloadable native archive and each OS-specific release tarball. The source desktop CLI archive contains the same runtime source and pinned Rust dependency sources. Android NDK original notices are also bundled. The native mobile manifest records target toolchains, minimum OS/API and iOS link libraries. Recovering a release requires both mobile job artifacts as well as all desktop build artifacts required by the original release.
 
 ## Acceptance on actual devices
 
