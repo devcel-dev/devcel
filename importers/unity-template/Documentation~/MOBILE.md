@@ -2,7 +2,7 @@
 
 Install the Git SDK and matching native companion using the [Git URL instructions](../README.md#package-installation). The release archive supplies desktop Editor tools and the mobile targets below. Older desktop ZIPs and desktop-only tarballs lack mobile libraries and fail the mobile build check.
 
-Release v0.0.2 includes the Git-installable package and Windows, Linux and macOS importer distributions. The older v0.0.1 release contains Windows/Linux importer ZIPs only.
+Release v0.0.3 supplies the Android ABIs, iOS device and Simulator, and WebGL runtimes below. Release v0.0.2 includes a Git-installable package but has Android ARM64 and iOS device runtimes only; v0.0.1 contains Windows/Linux importer ZIPs only.
 
 | Player target | Bundled library | Required settings |
 |---|---|---|
@@ -35,7 +35,7 @@ Replace the namespace/root class with your generated names and retain/dispose th
 
 ## Build the Player
 
-For Android, select **ARMv7**, **ARM64** **x86** (where supported), and/or **x86_64**, minimum API 23+, and use IL2CPP for a release build. The runtime is built with Android NDK 28.2.13676358 and 16 KB-compatible load segment alignment. The final APK/AAB also depends on Unity and every other plugin meeting current Android packaging/page-size requirements; inspect and test the final app on the intended devices.
+For Android, select **ARMv7**, **ARM64**, **x86** (where supported), and/or **x86_64**, minimum API 23+, and use IL2CPP for a release build. The runtime is built with Android NDK 28.2.13676358 and 16 KB-compatible load segment alignment. The final APK/AAB also depends on Unity and every other plugin meeting current Android packaging/page-size requirements; inspect and test the final app on the intended devices.
 
 For iOS, choose **Device SDK** and minimum iOS 13.0+. Export the Xcode project on macOS. The static library is linked into UnityFramework; `DevcelIosLinker` adds the system libraries reported by the matching Rust build. Set your signing team, build/archive and deploy through Xcode. For Simulator builds select **Simulator SDK**; the build selects the universal simulator archive instead of the device archive. Xcode on macOS is required for the final link and Simulator execution. No CLI or dynamically loaded macOS dylib is used inside the iOS app.
 

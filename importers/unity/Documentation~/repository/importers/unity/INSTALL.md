@@ -32,7 +32,7 @@ Put generated JSON/code outside the source project and reserve its output paths 
 3. Choose **Devcel > Download Matching Native Tools**. Unity downloads the matching release archive, verifies its SHA-256 and installs a project-local `org.devcel.native` companion with the Editor CLI and Player runtimes. Network access is required; Git LFS and a CLI on PATH are not. Older tagged releases may already bundle the binaries and do not need this step.
 4. Open **Devcel > Importer**.
 
-As of 2026-11-04, the published v0.0.1 release contains Windows/Linux importer ZIPs only. The Git-installable package, macOS and mobile distributions described here require a newer release published by this pipeline; they are not downloads available in v0.0.1.
+Release v0.0.2 and later include Git-installable packages and Windows, Linux and macOS importer distributions. The older v0.0.1 release contains Windows/Linux importer ZIPs only.
 
 Ignore `Packages/org.devcel.native/` in the game repository; each developer downloads that companion locally. The default branch contains the most recently generated package after the first new release. The editable template is `importers/unity-template`. Preserve the Git dependency in `Packages/manifest.json` and its resolved commit in `Packages/packages-lock.json`.
 
@@ -247,14 +247,14 @@ For manual-only operation, set the common automatic mode to Off. Save in Studio,
 
 - Editor import platforms and Player targets are separate. A single-RID ZIP may not include the native runtime for another target OS.
 - Native layouts cover Windows x64, Linux x64, and macOS. New macOS releases support Apple Silicon only; the current universal runtime retains both CPU slices for compatibility with existing Unity plugin validation.
-- Generated complete Git UPM packages include Android ARM64 (API 23+) and iOS ARM64 device (iOS 13+) runtimes. Install the Unity target module and follow the [mobile Player guide](../../../MOBILE.md). Other Android ABIs, iOS Simulator and WebGL remain unsupported. FromJson still requires the native runtime; CLI execution remains Editor-only.
+- Release v0.0.3 includes Android ARMv7, ARM64, x86 and x86_64 (API 23+), iOS device and Simulator (iOS 13+), and WebGL runtimes. Install the Unity target module and follow the [mobile Player guide](../../../MOBILE.md). The earlier v0.0.2 release contains Android ARM64 and iOS device runtimes only. FromJson still requires the native runtime; CLI execution remains Editor-only.
 - **Import before build** defaults to Off. When enabled, failed imports or changed generated C# stop the build; compile changed code before rebuilding.
 - Configuration and runtime-layout validation still runs when pre-build import is off. Already imported JSON, generated code, and required runtime can build without source projects or the CLI.
 - Player contents use runtime JSON, generated code, and runtime libraries. Keep editor CLI, source TOML, and authoring settings out of Resources and StreamingAssets.
 
 ### Platforms and verification
 
-As of 2026-11-04, the published v0.0.1 release contains Windows/Linux importer ZIPs only. The Git-installable package, macOS and mobile distributions described here require a newer release published by this pipeline; they are not downloads available in v0.0.1. The build pipeline supports win-x64, linux-x64 and osx-arm64. Windows/Linux arm64 Editors are not supported. Linux requires the documented glibc 2.39 baseline; validate the actual artifact on the target system. Build success is not Editor or Player execution acceptance.
+Release v0.0.2 and later include Git-installable packages and Windows, Linux and macOS importer distributions. The older v0.0.1 release contains Windows/Linux importer ZIPs only. The build pipeline supports win-x64, linux-x64 and osx-arm64. Windows/Linux arm64 Editors are not supported. Linux requires the documented glibc 2.39 baseline; validate the actual artifact on the target system. Build success is not Editor or Player execution acceptance.
 
 See [Unity package layout](../../../DISTRIBUTION.md), [Bundled CLI](Tools~/README.md).
 

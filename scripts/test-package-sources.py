@@ -30,6 +30,17 @@ class PackagingSources(unittest.TestCase):
             self.assertIn('published', readme)
             self.assertIn('next matching native distribution', readme)
 
+    def test_checked_in_mobile_guide_matches_current_template(self):
+        repo = HERE.parent
+        template = (repo/'importers/unity-template/Documentation~/MOBILE.md').read_text(encoding='utf-8')
+        packaged = (repo/'importers/unity/Documentation~/MOBILE.md').read_text(encoding='utf-8')
+        self.assertEqual(packaged, template)
+        self.assertIn('Release v0.0.3 supplies', packaged)
+        self.assertNotIn('Simulator libraries are intentionally absent', packaged)
+        install = (repo/'importers/unity/Documentation~/repository/importers/unity/INSTALL.md').read_text(encoding='utf-8')
+        self.assertNotIn('Other Android ABIs, iOS Simulator and WebGL remain unsupported', install)
+        self.assertNotIn('As of 2026-11-04, the published v0.0.1', install)
+
     def test_scratch_cleanup_is_only_deferred_on_github_hosted_runners(self):
         for actions, runner, retained in (('', '', False), ('true', 'self-hosted', False),
                                           ('', 'github-hosted', False), ('true', 'github-hosted', True)):
