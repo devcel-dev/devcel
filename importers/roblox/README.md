@@ -24,3 +24,13 @@ The module decodes its data once when required; this allocates and keeps the dec
 Author and version the TOML source in Git, then regenerate and publish the module with the game. This does not migrate or version player save data in DataStore. Do not place secrets or server-only data in ReplicatedStorage. There is no Studio plugin, automatic import or live reload yet. Rojo 7.7.1 has been checked locally by building a place and inspecting its generated ModuleScript. The typed converter was tested with the official Luau CLI using a mocked HttpService, including references, RGBA values and curve samples against the Devcel runtime. Studio import, Roblox engine execution, large-data performance and platform limits still need validation before relying on this experimental integration.
 
 The Devcel exporter is MIT licensed; see [LICENSE](LICENSE). Rojo and Roblox Studio are separate tools and are not included in this adapter.
+
+## Local Studio smoke test
+
+After signing in to Roblox Studio, run the optional local test with official Studio and Rojo executables:
+
+```sh
+python importers/roblox/test_studio.py --studio /path/to/RobloxStudio --rojo /path/to/rojo
+```
+
+The test creates a temporary place with an exported ModuleScript, opens it with Studio's `RunScript` CLI and checks typed colors, references, curves, numeric values and 64-bit strings. It does not publish a place. Studio must be signed in and able to open local places. This smoke test does not replace testing a deployed game, large data sets or device-specific behavior.
