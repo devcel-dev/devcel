@@ -24,7 +24,7 @@ See [AutoSync/README.md](AutoSync/README.md) for the tested cases, output files,
 
 The harness uses Unity API mocks. It does not establish actual asset serialization, native Editor UI, domain reload, Play mode, Player packaging, or Windows/macOS behavior.
 
-Use Unity Editor 2021.3 or later with the OS/CPU-matched package. Follow the [Unity manual](../Documentation~/repository/importers/unity/INSTALL.md) in a disposable project, then check automatic imports, code recompilation, data-only Play reload, relocated relative paths, and recovery after an invalid source. For Player tests, follow [packaging requirements](../Documentation~/DISTRIBUTION.md) and inspect the final build on its target platform, including its native runtime and exclusion of authoring files.
+Use Unity Editor 2021.3 or later with the OS/CPU-matched package. Follow the [Unity manual](../INSTALL.md) in a disposable project, then check automatic imports, code recompilation, data-only Play reload, relocated relative paths, and recovery after an invalid source. For Player tests, follow [packaging requirements](../Documentation~/DISTRIBUTION.md) and inspect the final build on its target platform, including its native runtime and exclusion of authoring files.
 
 Old row handles must be reacquired after a successful Unity runtime reload. A failed update must retain the previous valid database. TextAsset-backed databases need explicit reopen; only matching file-backed databases receive automatic Play-mode reloads.
 

@@ -6,6 +6,8 @@
 
 Pull requests targeting `main` build release-mode Studio distributions on Windows x64, Linux x64, macOS Apple Silicon with pinned toolchains. Updates, reopening, marking ready, or retargeting to `main` start a build; a newer run cancels the preceding run. Ordinary branch pushes, schedules and manual dispatch do not start this workflow. macOS uses an Apple Silicon `macos-15` runner; Intel Mac is not supported for new releases.
 
+For a final distribution candidate, add the `release-candidate` label before pushing the candidate commit. The PR build packages unpublished desktop artifacts from the exact PR head and retains them for seven days; the mobile workflow retains matching runtime inputs. These are build inputs for local packaging and runtime acceptance, not published releases or substitutes for running the software. Adding a label alone does not start a run. No tag or release is created by the PR build.
+
 CI and Release run production builds, catalog/SDK generation, packaging, license-text inclusion and release identity/source metadata processing. They do not run lint, type checking, regressions, UI/Rust behavior tests, test compilation or native package inspections. The release frontend hook reuses the already-built CLI to generate catalogs, synchronizes the plugin SDK and runs Vite once.
 
 ## Explicit validation
@@ -66,7 +68,7 @@ canonical setting to `main` through a normal fast-forward push. If `main` moved,
 branch protection rejects the push, or a check fails, it stops without creating a
 tag; it never force-pushes or bypasses protection.
 
-The release validates the exact prepared source commit and builds all three desktop targets and Android, iOS and WebGL runtimes from it. After collection succeeds, it replaces `importers/unity` with the complete Git UPM package in a child release commit, creates the normal version tag there, and publishes the release. Only `importers/unity` changes; the editable source template remains in `importers/unity-template`. Main and the new release tag are updated atomically after checking that main still equals the build source. Selecting a different version next time repeats this preparation automatically; manually synchronizing version fields is not required. A source tree with already matching versions is verified without creating an unnecessary commit.
+The release validates the exact prepared source commit and builds all three desktop targets and Android, iOS and WebGL runtimes from it. After collection succeeds, it replaces `importers/unity` with a lightweight Git UPM package in a child release commit, creates the normal version tag there, and publishes the complete native distribution as a release asset. The Git package pins the archive SHA-256 and Unity installs its native companion on request. Only `importers/unity` changes; the editable source template remains in `importers/unity-template`. Main and the new release tag are updated atomically after checking that main still equals the build source. Selecting a different version next time repeats this preparation automatically; manually synchronizing version fields is not required. A source tree with already matching versions is verified without creating an unnecessary commit.
 
 Repository write access is required. Other branches and tags are rejected before preparation. Enter a SemVer version such as `0.0.2` or `0.0.2-rc.1`; omit the leading `v`, whitespace and build metadata. Prerelease versions create a GitHub prerelease. Existing tags are never overwritten or deleted. Manual preparation checks for an existing tag before changing source files, and atomic tag creation also rejects a concurrent creator.
 
@@ -78,7 +80,7 @@ Importer packaging on GitHub-hosted runners leaves its final temporary source di
 
 No personal access token or additional secret is needed. Source preparation and final publication use the built-in `GITHUB_TOKEN`. The earlier `create_tag` job now only checks that the new tag is absent; publication creates it after all builds and assembly. [Events created with this token do not start another push workflow](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow), so a manual release builds each platform once.
 
-All three desktop native build jobs and the Android, iOS and WebGL runtime jobs must pass before publication. Desktop jobs build Studio packages and all nine importer packages with native bundled CLI binaries. Mobile jobs build Android ARMv7/ARM64/x86/x86_64, iOS device/Simulator and WebGL runtime libraries from the same commit. Publication verifies their provenance and adds them to the downloadable native archive and each offline Unity UPM tarball. The Linux job generates a compact `SOURCE-ACCESS.json` with immutable commit/source links, exact registry artifacts and reviewed preferred dependency-source locations, and checks the upstream source URLs. See [Source delivery](source-delivery.md). The publication job verifies the complete asset set, creates SHA-256 checksums and the immutable release commit/tag, creates a draft, uploads the assets, and publishes it after every upload succeeds. Existing generated tags must retain their exact build-source parent; no existing tag is moved. The Unity URL is `https://github.com/<release-repository>.git?path=/importers/unity#v<version>`. See [Git UPM generation](../../../../Tools~/README.md#git-upm-release-generation) for collision handling, size bounds and local preparation. Validation and build jobs have read-only repository permissions; only dispatch-only source preparation, tag creation and publication receive `contents: write`.
+All three desktop native build jobs and the Android, iOS and WebGL runtime jobs must pass before publication. Desktop jobs build Studio packages and all nine importer packages with native bundled CLI binaries. The Android artifact contains ARM64, ARMv7, x86 and x86-64 runtimes; the iOS artifact contains device and Simulator libraries; the WebGL artifact contains a WebAssembly library. Publication verifies their provenance and adds them to the downloadable native archive and each offline Unity UPM tarball. The Linux job generates a compact `SOURCE-ACCESS.json` with immutable commit/source links, exact registry artifacts and reviewed preferred dependency-source locations, and checks the upstream source URLs. See [Source delivery](source-delivery.md). The publication job verifies the complete asset set, creates SHA-256 checksums and the immutable release commit/tag, creates a draft, uploads the assets, and publishes it after every upload succeeds. Existing generated tags must retain their exact build-source parent; no existing tag is moved. The Unity URL is `https://github.com/<release-repository>.git?path=/importers/unity#v<version>`. See [Git UPM generation](../../../../Tools~/README.md#git-upm-release-generation) for collision handling, size bounds and local preparation. Validation and build jobs have read-only repository permissions; only dispatch-only source preparation, tag creation and publication receive `contents: write`.
 
 Published assets include:
 
@@ -86,7 +88,7 @@ Published assets include:
 - `devcel-studio-<version>-linux-x64.deb`: Linux deb package for Ubuntu 24.04 x64 and Debian 13 x64
 - `devcel-studio-<version>-macos-arm64.dmg`: ad-hoc-signed macOS app bundles; not Apple-notarized
 - Windows, Linux and macOS packages for Unity, Godot, Unreal Engine, RPG Maker, WOLF RPG Editor, GameMaker, Defold, Cocos Creator and JavaScript
-- `org.devcel.unity-<version>-git.zip` and `-git.json`: complete Git package staging input and measured size/provenance report; users normally install the Git URL. OS-specific `.tgz` files remain offline alternatives.
+- `org.devcel.unity-<version>-git.zip` and `-git.json`: complete native distribution and its measured size/provenance report; the Git SDK pins and downloads this archive. OS-specific `.tgz` files remain offline alternatives.
 - `SOURCE-ACCESS.json` and `SHA256SUMS.txt`; matching commit source downloads, rebuild instructions and dependency-source directions are linked prominently in the Release body
 
 Studio filenames must match the exact release version and platform. The Linux publication copy is renamed without changing the native deb filename, package metadata or binary bytes. All four Studio assets are included in `SHA256SUMS.txt`.
@@ -99,7 +101,7 @@ If a build fails before final tag creation, open that same Actions run and choos
 
 ## Release from a branch
 
-New source-only tag pushes are rejected. Existing legacy source-only tags can still be recovered or rebuilt as ZIP distributions, but never become Git-installable through recovery. For a new Git-installable branch release, fix the Tauri version and source commit, build the three desktop and three mobile artifacts from that commit, and use the [local Git package preparation](../../../../Tools~/README.md#local-preparation-and-publication-permissions) to create the child release commit before publishing its normal `vVERSION` tag. Do not tag the incomplete source and later move the tag. Prefer the manual release workflow for the complete automated sequence. Both approaches require release authorization; merging changes alone does not authorize publishing upstream.
+New source-only tag pushes are rejected. Existing legacy source-only tags cannot become Git-installable through recovery; rebuilding an old tag is also subject to the trusted-recipe check above. For a new Git-installable branch release, fix the Tauri version and source commit, build the three desktop and three mobile artifacts from that commit, and use the [local Git package preparation](../../../../Tools~/README.md#local-preparation-and-publication-permissions) to create the child release commit before publishing its normal `vVERSION` tag. Do not tag the incomplete source and later move the tag. Prefer the manual release workflow for the complete automated sequence. Both approaches require release authorization; merging changes alone does not authorize publishing upstream.
 
 ## Recover publication from completed builds
 
@@ -112,7 +114,7 @@ Recovery does not prepare versions, create or replace tags, or build packages.
 
 The selected run must belong to this repository's release workflow, originate
 from a version-tag push or a default-branch manual release, and have successful
-validation, all desktop native build jobs required by the original source and the mobile jobs required by the original source. Recovery pins artifact IDs and digests
+validation and all build jobs required by the original source: three desktop jobs (four for historical Intel-compatible releases) and its Android and iOS jobs, plus WebGL when that source supports it. Recovery reconstructs the original source-archive and notice layout; it does not add platforms to an old release. Recovery pins artifact IDs and digests
 from that attempt and rejects missing, duplicate, expired, or changed artifacts.
 A manual release's initial run commit can precede its version-preparation commit;
 the built source is checked independently against the unchanged release tag,
@@ -132,7 +134,7 @@ The `native` manual validation group runs `scripts/check-native-release-artifact
 
 Review bundled native files and keep original notices and reviewed manifests current. See [Third-party licenses](../../third-party/README.md) and [Debian verification](linux.md#debian-13-verification). Native startup, persistence and visual acceptance remain separate platform checks.
 
-Workflow definitions: [CI](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/.github/workflows/ci.yml), [Release](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/.github/workflows/release.yml) and [Manual validation](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/.github/workflows/manual-checks.yml).
+Workflow definitions: [CI](https://github.com/devcel-dev/devcel/blob/cf728cbd0e5ab872874402cf6a3bb96d52d77cdc/.github/workflows/ci.yml), [Release](https://github.com/devcel-dev/devcel/blob/cf728cbd0e5ab872874402cf6a3bb96d52d77cdc/.github/workflows/release.yml) and [Manual validation](https://github.com/devcel-dev/devcel/blob/cf728cbd0e5ab872874402cf6a3bb96d52d77cdc/.github/workflows/manual-checks.yml).
 
 ### Windows portable package
 

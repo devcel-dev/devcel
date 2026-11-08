@@ -10,7 +10,7 @@ An accepted WebGPU HDR rendering path reports API capability. Actual HDR output 
 
 ## Settings and plugins
 
-Plugins can declare owner-scoped settings tables and contracts, including singleton and multirow data, through the plugin resource and settings APIs. These APIs enforce package ownership and declared contracts; they do not grant unrestricted access to other plugins' settings. Plugins execute inside the host with substantial authority; review the package and its requested actions before enabling it. See [plugin development](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/devcel-studio/docs/plugin-development-guide.md).
+Plugins can declare owner-scoped settings tables and contracts, including singleton and multirow data, through the plugin resource and settings APIs. These APIs enforce package ownership and declared contracts; they do not grant unrestricted access to other plugins' settings. Plugins execute inside the host with substantial authority; review the package and its requested actions before enabling it. See [plugin development](https://github.com/devcel-dev/devcel/blob/cf728cbd0e5ab872874402cf6a3bb96d52d77cdc/devcel-studio/docs/plugin-development-guide.md).
 
 ## Import and persistence boundaries
 

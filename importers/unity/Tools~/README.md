@@ -75,7 +75,7 @@ Always build distributable binaries from the source matching their stated licens
 
 ## Unity Package Manager release assets
 
-Release publication converts each validated Unity ZIP into `org.devcel.unity-<version>-<rid>.tgz` and includes it in `SHA256SUMS.txt`. Each tarball has a `package/` root and retains the desktop package files, including plugin `.meta` files, notices and matching source, except the outer `INSTALL.txt`. Publication also adds the verified Android ARM64 and iOS ARM64 device runtimes, their build metadata and NDK notices, and extends the native manifest with `player_runtimes` hashes. The Editor runtime stays platform-specific. The conversion checks version, repository, commit, native source fingerprint, binary formats and payload hashes; it never runs the CLI or establishes Unity compatibility.
+Release publication converts each validated Unity ZIP into `org.devcel.unity-<version>-<rid>.tgz` and includes it in `SHA256SUMS.txt`. Each tarball has a `package/` root and retains the desktop package files, including plugin `.meta` files, notices and matching source, except the outer `INSTALL.txt`. Publication also adds the verified Android ARMv7, ARM64, x86 and x86_64 runtimes, iOS device and Simulator runtimes, and the WebGL runtime, along with build metadata, NDK notices and `player_runtimes` hashes. The Editor runtime stays platform-specific. The conversion checks version, repository, commit, native source fingerprint, binary formats and payload hashes; it never runs the CLI or establishes Unity compatibility.
 
 The version remains generated from `devcel-studio/src-tauri/tauri.conf.json`; do not add a version to the source Unity template. Recovery deterministically recreates the same tarballs from the recorded ZIP bytes, without rebuilding binaries. For a local generated ZIP, run:
 
@@ -84,9 +84,9 @@ python scripts/unity_upm.py dist/importers/devcel-unity-<version>-<rid>.zip --ou
 python scripts/test_unity_upm.py
 ```
 
-The complete tarball needs no `org.devcel.native` companion. That legacy companion installer remains for separately generated SDK/native setups; do not combine it with a full tarball. See the [Unity SDK guide](../README.md) for installation and explicit updates. Test tarball installation in Unity and import/Player execution separately from archive checks.
+The complete tarball needs no `org.devcel.native` companion. Git installations use a separate matching native companion; do not combine that companion with a full tarball. See the [Unity SDK guide](../README.md) for installation and explicit updates. Test tarball installation in Unity and import/Player execution separately from archive checks.
 
-The local command above produces a desktop-only tarball. Supply all `--mobile-android`, `--mobile-ios` and `--mobile-webgl` archives to include mobile Players; the release pipeline requires both. See [mobile build and acceptance instructions](../Documentation~/MOBILE.md). Release recovery also pins the Android, iOS and WebGL build job artifacts. The desktop ZIPs remain desktop-only installation alternatives.
+The local command above produces a desktop-only tarball. Supply all `--mobile-android`, `--mobile-ios` and `--mobile-webgl` archives to include mobile Players; the release pipeline requires all three. See [mobile build and acceptance instructions](../Documentation~/MOBILE.md). Release recovery also pins the Android, iOS and WebGL build job artifacts. The desktop ZIPs remain desktop-only installation alternatives.
 
 ## Platform acceptance
 
@@ -100,7 +100,7 @@ The source repository must be an explicit GitHub `OWNER/REPO` slug and the sourc
 
 Users install the normal release tag with `https://github.com/<release-repository>.git?path=/importers/unity#v<version>`. There is no UPM-specific tag or permanent distribution branch. The source SDK template remains unversioned: packaging generates `package.json` from the canonical Tauri version. Between releases, `importers/unity` remains the last published SDK package even when development changes `importers/unity-template`; the untagged URL therefore does not expose unreleased SDK changes.
 
-For a new manual release, version preparation records a source commit on main. All four desktop builds and Android, iOS and WebGL builds use that exact commit. Release collection produces the common `org.devcel.unity-<version>-git.zip` and `-git.json` report alongside the offline tarballs and checksums. The ZIP is also the SHA-256-pinned native download used by the lightweight Git SDK; users normally install the Git URL and then select the Devcel download menu.
+For a new manual release, version preparation records a source commit on main. All three desktop builds and Android, iOS and WebGL builds use that exact commit. Release collection produces the common `org.devcel.unity-<version>-git.zip` and `-git.json` report alongside the offline tarballs and checksums. The ZIP is also the SHA-256-pinned native download used by the lightweight Git SDK; users normally install the Git URL and then select the Devcel download menu.
 
 Only after all builds and artifact checks succeed, publication creates a child commit replacing `importers/unity` in that source tree and creates the normal `v<version>` tag there. All paths outside `importers/unity` remain byte-identical to the parent. The release updates main and the new tag together after verifying main still points to the build source. The generated manifest records the build source parent, and publication/recovery validate this relationship separately from the tagged release commit. There is no self-referential commit hash: native artifacts record the parent from which they were built.
 
@@ -110,13 +110,13 @@ Assembly rejects files at or above 100 MiB and a package over 1 GiB. The report 
 
 ### Local preparation and publication permissions
 
-For independently built artifacts, run `scripts/unity_git_package.py --help` to assemble the four desktop ZIPs and Android, iOS and WebGL archives. Then prepare the child commit locally:
+For independently built artifacts, run `scripts/unity_git_package.py --help` to assemble the three desktop ZIPs and Android, iOS and WebGL archives. Then prepare the child commit locally:
 
 ```sh
 python scripts/publish_unity_git.py --archive org.devcel.unity-<version>-git.zip --report org.devcel.unity-<version>-git.json --repo /path/to/source-checkout --author-name <name> --author-email <email>
 ```
 
-This command writes local Git objects only. It does not create a tag, change the checkout/index/main, push, or publish a release. It reports the exact source/release commits and intended Git URL. The source commit must exist in that checkout. After explicit authorization, a maintainer may publish only the new `v<version>` tag at the reported release commit and publish the corresponding artifacts. The automated manual release path performs this preparation after its builds and uses a non-force push of that one tag.
+This command writes local Git objects only. It does not create a tag, change the checkout/index/main, push, or publish a release. It reports the exact source/release commits and intended Git URL. The source commit must exist in that checkout. After explicit authorization, a maintainer may publish the new `v<version>` tag at the reported release commit and publish the corresponding artifacts. The automated manual release path performs this preparation after its builds and atomically advances main and creates the tag with a non-force push, after checking that main still points to the build source.
 
 Never replace or move an existing tag to add UPM support. v0.0.1 remains Windows/Linux ZIP-only; Git installation is available from v0.0.2. For a fork build, record its actual repository slug throughout instead of relabeling its assets as official. Preparing or merging tooling does not authorize a release or new tag in the upstream repository.
 

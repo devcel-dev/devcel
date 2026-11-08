@@ -8,6 +8,12 @@ Studio/CLI editing → version-filtered, formula-evaluated export → Runtime JS
 
 The native runtime parses a complete bundle into optimized snapshots. Generated scalar accessors avoid repeated parsing; string access may copy depending on the language. Standard importers use Auto to import saved changes after initial setup. Custom integrations can call `devcel export ...` or `devcel pull ...`.
 
+## C# acquisition and marshalling
+
+The generated C# has two distinct layers. `database.Get(key)` returns a managed live Handle; successful acquisition and handle property reads use the prepared read model and are designed to allocate zero managed bytes. Load/reload, Inspector reference creation, exceptions and boxed interface enumeration are outside that contract. Unity callers use the main thread; see the [Unity guide](../../../../INSTALL.md#allocation-and-threading-contract).
+
+The low-level `Table.ById(string)` passes its input UUID to native code with UTF-8 marshalling and returns a nullable value-type Row. UTF-16 to UTF-8 conversion is work, but **marshalling does not by itself establish a managed GC allocation**. In a Windows Unity 6000.3.28f1 Mono Player test, 100,000 warmed-up `ById` calls with a pre-existing UUID string reported 0 managed bytes on the calling thread; this did not measure native buffers. Temporary buffer strategy and allocation behavior depend on runtime and platform, so profile IL2CPP and other targets before generalizing that result. A low-level scalar getter calls native code. A nonempty native string getter converts the result to a managed `string`; a low-level reference getter reads that string and then resolves the row. Empty strings may use `string.Empty`. Caching a Handle can avoid repeated dictionary lookup; caching a raw Row is only valid until reload or disposal. Do not infer end-to-end per-frame allocations just from a P/Invoke signature.
+
 ## CLI export
 
 ```bash

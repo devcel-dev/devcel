@@ -35341,6 +35341,35 @@ DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
+devcel: devcel-bevy
+License: MIT
+Source: Devcel engine SDK source at the matching release commit; see SOURCE-ACCESS.json
+Scope: ["devcel-bevy"]
+
+--- importers/bevy/LICENSE ---
+MIT License
+
+Copyright (c) 2024 Devcel Studio Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
 devcel: devcel-cli
 License: MIT
 Source: Workspace source at the matching release commit; see SOURCE-ACCESS.json on the Release page
@@ -35372,7 +35401,7 @@ SOFTWARE.
 ==============================================================================
 devcel: devcel-cocos
 License: MIT
-Source: Devcel engine SDK source included in importer package
+Source: Devcel engine SDK source at the matching release commit; see SOURCE-ACCESS.json
 Scope: ["devcel-cocos"]
 
 --- importers/cocos/LICENSE ---
@@ -35430,7 +35459,7 @@ SOFTWARE.
 ==============================================================================
 devcel: devcel-defold
 License: MIT
-Source: Devcel engine SDK source included in importer package
+Source: Devcel engine SDK source at the matching release commit; see SOURCE-ACCESS.json
 Scope: ["devcel-defold"]
 
 --- importers/defold/LICENSE ---
@@ -35459,7 +35488,7 @@ SOFTWARE.
 ==============================================================================
 devcel: devcel-gamemaker
 License: MIT
-Source: Devcel engine SDK source included in importer package
+Source: Devcel engine SDK source at the matching release commit; see SOURCE-ACCESS.json
 Scope: ["devcel-gamemaker"]
 
 --- importers/gamemaker/LICENSE ---
@@ -35488,7 +35517,7 @@ SOFTWARE.
 ==============================================================================
 devcel: devcel-godot
 License: MIT
-Source: Devcel engine SDK source included in importer package
+Source: Devcel engine SDK source at the matching release commit; see SOURCE-ACCESS.json
 Scope: ["devcel-godot"]
 
 --- importers/godot/LICENSE ---
@@ -35517,7 +35546,7 @@ SOFTWARE.
 ==============================================================================
 devcel: devcel-javascript
 License: MIT
-Source: Devcel engine SDK source included in importer package
+Source: Devcel engine SDK source at the matching release commit; see SOURCE-ACCESS.json
 Scope: ["devcel-javascript"]
 
 --- importers/javascript/LICENSE ---
@@ -35544,9 +35573,38 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
+devcel: devcel-roblox
+License: MIT
+Source: Devcel engine SDK source at the matching release commit; see SOURCE-ACCESS.json
+Scope: ["devcel-roblox"]
+
+--- importers/roblox/LICENSE ---
+MIT License
+
+Copyright (c) 2024 Devcel Studio Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
 devcel: devcel-rpgmaker
 License: MIT
-Source: Devcel engine SDK source included in importer package
+Source: Devcel engine SDK source at the matching release commit; see SOURCE-ACCESS.json
 Scope: ["devcel-rpgmaker"]
 
 --- importers/rpgmaker/LICENSE ---
@@ -35604,7 +35662,7 @@ SOFTWARE.
 ==============================================================================
 devcel: devcel-unity
 License: MIT
-Source: Devcel engine SDK source included in importer package
+Source: Devcel engine SDK source at the matching release commit; see SOURCE-ACCESS.json
 Scope: ["devcel-unity"]
 
 --- importers/unity/LICENSE ---
@@ -35631,9 +35689,38 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ==============================================================================
+devcel: devcel-unity-mastermemory
+License: MIT
+Source: Devcel engine SDK source at the matching release commit; see SOURCE-ACCESS.json
+Scope: ["devcel-unity-mastermemory"]
+
+--- importers/unity-mastermemory/LICENSE ---
+MIT License
+
+Copyright (c) 2024 Devcel Studio Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
 devcel: devcel-unity-template
 License: MIT
-Source: Devcel engine SDK source included in importer package
+Source: Devcel engine SDK source at the matching release commit; see SOURCE-ACCESS.json
 Scope: ["devcel-unity-template"]
 
 --- importers/unity-template/LICENSE ---
@@ -35662,7 +35749,7 @@ SOFTWARE.
 ==============================================================================
 devcel: devcel-unreal
 License: MIT
-Source: Devcel engine SDK source included in importer package
+Source: Devcel engine SDK source at the matching release commit; see SOURCE-ACCESS.json
 Scope: ["devcel-unreal"]
 
 --- importers/unreal/LICENSE ---
@@ -35691,7 +35778,7 @@ SOFTWARE.
 ==============================================================================
 devcel: devcel-wolf
 License: MIT
-Source: Devcel engine SDK source included in importer package
+Source: Devcel engine SDK source at the matching release commit; see SOURCE-ACCESS.json
 Scope: ["devcel-wolf"]
 
 --- importers/wolf/LICENSE ---

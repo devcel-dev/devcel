@@ -14,7 +14,7 @@ Follow [Tauri prerequisites](https://v2.tauri.app/start/prerequisites/):
 - macOS: Xcode or Xcode Command Line Tools for desktop development.
 - Linux: GTK 3, WebKitGTK 4.1 and C/C++ build tools. See [Linux development](linux.md).
 
-Automated distribution targets are Windows x64, Linux x64, macOS Intel and macOS Apple Silicon; see [CI and releases](releasing.md). macOS produces one native DMG per CPU. Actual platform coverage must be recorded separately alongside the checks described in [Contributing](../../CONTRIBUTING.md#check-the-result).
+Automated distribution targets are Windows x64, Linux x64 and macOS Apple Silicon; see [CI and releases](releasing.md). New releases do not support Intel Macs. Actual platform coverage must be recorded separately alongside the checks described in [Contributing](../../CONTRIBUTING.md#check-the-result).
 
 ### Keep Node selectors synchronized
 
@@ -83,7 +83,7 @@ This command builds the current OS/target's executable. Use the Windows aggregat
 
 Before distribution, test launch, project creation, editing, save and reopen on the destination OS/CPU. Identify the installer/executable and provide [installation instructions](../manual/installation.md). Standard builds disable in-app updating and leave its endpoint/public key unset; document the actual update mechanism used by the distribution.
 
-Configuration: [`tauri.conf.json`](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/devcel-studio/src-tauri/tauri.conf.json). CLI-bundled game importers are built separately: [Godot](../manual/godot.md), [Unity](../../../../INSTALL.md), [bundling contract](../../../../Tools~/README.md).
+Configuration: [`tauri.conf.json`](https://github.com/devcel-dev/devcel/blob/cf728cbd0e5ab872874402cf6a3bb96d52d77cdc/devcel-studio/src-tauri/tauri.conf.json). CLI-bundled game importers are built separately: [Godot](../manual/godot.md), [Unity](../../../../INSTALL.md), [bundling contract](../../../../Tools~/README.md).
 
 ## Windows local build
 
@@ -111,7 +111,7 @@ Both modes write `build_log.txt` and `build_summary.txt` in the timestamped outp
 
 ## macOS local build
 
-Use a native terminal on the intended Intel or Apple Silicon Mac, with Xcode
+Use a native terminal on an Apple Silicon Mac, with Xcode
 Command Line Tools, Python 3.11+ (also available as `python` for the Tauri build hook)
 and the pinned Node version installed. Do not use
 a Rosetta terminal to produce the Apple Silicon distribution. From the repo root:

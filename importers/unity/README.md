@@ -1,6 +1,6 @@
 # Devcel Unity SDK
 
-For installation, first import, and automatic import, start with the [Unity manual](Documentation~/repository/importers/unity/INSTALL.md). This guide covers settings, runtime APIs, packaging, and verification.
+For installation, first import, and automatic import, start with the [Unity manual](INSTALL.md). This guide covers settings, runtime APIs, packaging, and verification.
 
 - **Authoring and generation:** the `devcel` CLI, backed by `devcel-core`, runs as a subprocess to generate typed C# accessors and version-filtered JSON bundles.
 - **Reading in the Editor and game:** generated `database.Get(reference)` returns live typed handles backed by an eagerly prepared managed read model. Normal acquisition, including strings and nested references, does not allocate managed objects. Low-level raw `Row` access remains available; its string/reference getters can allocate and its rows must be reacquired after reload.
@@ -17,13 +17,11 @@ https://github.com/devcel-dev/devcel.git?path=/importers/unity
 
 Install Git on the Editor machine. The default branch supplies the latest generated package; append `#v<version>` to select a published release tag. The editable source template is `importers/unity-template`.
 
-After installing the Git package, choose **Devcel > Download Matching Native Tools**. The Editor downloads the matching release archive, verifies its SHA-256 and installs a project-local `org.devcel.native` companion. The archive supplies the supported Editor CLIs and Player runtimes; the Git package itself does not store those binaries. Git LFS is not required. Private releases and offline setups can extract the matching `org.devcel.unity-<version>-git.zip` release asset and choose **Devcel > Install Matching Native Tools**. See the [mobile Player guide](Documentation~/MOBILE.md) for target modules and device requirements.
-
-This checked-in package currently installs the published v0.0.3 tools. Their generated Unity accessors still use a read lock; the lock-free Unity generator in the current source requires the next matching native distribution. The release process replaces this generated package when that distribution is published.
+After installing the Git package, choose **Devcel > Download Matching Native Tools**. The Editor downloads the release archive, checks its SHA-256 against the Git package, and installs its CLI and Player libraries as a project-local `org.devcel.native` package. The distribution contains Windows x64, Linux x64, Apple Silicon macOS Editor CLIs; Windows/Linux x64, macOS, Android ARMv7/ARM64/x86/x86_64, iOS device/Simulator and WebGL runtimes. A network connection and a public GitHub Release are needed for this one-time download; no Git LFS is required. For private releases or offline use, extract the matching `org.devcel.unity-<version>-git.zip` release asset and choose **Devcel > Install Matching Native Tools** instead. The Git package does not commit the native binaries to its history. See the [mobile Player guide](Documentation~/MOBILE.md) for target modules and device requirements.
 
 Add `Packages/org.devcel.native/` to the game repository’s `.gitignore`; each developer downloads the matching native tools locally. Commit `Packages/manifest.json` and `Packages/packages-lock.json` with the game. A dependency looks like `"org.devcel.unity": "https://github.com/devcel-dev/devcel.git?path=/importers/unity"`. Every team member uses the same URL. The immutable tag and lock file pin the package; releases never move an existing tag.
 
-Release v0.0.2 and later include Git-installable packages. The older v0.0.1 release contains Windows/Linux importer ZIPs only.
+Release v0.0.2 includes the Git-installable package and Windows, Linux and macOS importer distributions. The older v0.0.1 release contains Windows/Linux importer ZIPs only.
 
 ### Updates and migration
 
@@ -35,7 +33,7 @@ OS-specific `.tgz` files remain an offline alternative: use **Add package from t
 
 ## Import workflow
 
-The optional experimental MasterMemory backend adds typed generated tables, handles and Editor live updates. Install its separately licensed dependencies and Python 3 as described in the [MasterMemory guide](https://github.com/devcel-dev/devcel/tree/main/importers/unity-mastermemory); the regular managed backend remains available.
+The optional experimental MasterMemory backend adds typed generated tables, handles and Editor live updates. Install its separately licensed dependencies and Python 3 as described in the [MasterMemory guide](Documentation~/repository/importers/unity-mastermemory/README.md); the regular managed backend remains available.
 
 Open **Devcel → Importer** and use the wizard to review the `.devcelproj.toml`, Source ID, namespace, root class name, per-environment Content Version, and JSON/code outputs. Click **Save and Import**. Subsequent saved changes in Studio import automatically. Add multiple sources as needed. With automatic import off, or to retry a failure, use the source's Import action, Import All, or **Devcel → Import All**. Inspect status and errors per source. Imports always use saved authoring data.
 
@@ -53,19 +51,19 @@ Editor settings generate a pull configuration under `Library/Devcel/`, using the
 - The CLI comes from the installed package for the Editor's OS/CPU. Reinstall the matching package if its manifest or executable is missing.
 - Loading an existing settings asset leaves it unchanged. Convert old absolute paths through an explicit save on the original machine before sharing. If already relocated, reselect the source. Shared generated C#/runtime JSON and applicable `.meta` files can be consumed without authoring sources or CLI access.
 
-Use the [Unity manual](Documentation~/repository/importers/unity/INSTALL.md) for setup and troubleshooting. Test the native Editor and Player on each target platform.
+Use the [Unity manual](INSTALL.md) for setup and troubleshooting. Test the native Editor and Player on each target platform.
 
 ## Install
 
 ### Building from source
 
-Use the [packaging workflow](Documentation~/repository/importers/unity/Tools~/README.md) to generate an installable UPM folder from a fixed checkout. The editable `importers/unity-template` is not a complete package; generate the package before using its distribution path. Product version, native source fingerprint and payload hashes are generated automatically. Never change those fields to force mismatched tools to load.
+Use the [packaging workflow](Tools~/README.md) to generate an installable UPM folder from a fixed checkout. The editable `importers/unity-template` is not a complete package; generate the package before using its distribution path. Product version, native source fingerprint and payload hashes are generated automatically. Never change those fields to force mismatched tools to load.
 
 ### Full distribution installation
 
 Alternatively extract the matching ZIP and add its `devcel-unity/` folder as a local UPM dependency (`file:../path/to/devcel-unity`), embed it in `Packages/`, or copy it under `Assets/`. This distribution already contains the CLI and runtime; no companion is needed. GitHub source archives are not binary installation packages.
 
-Follow the [Unity manual](Documentation~/repository/importers/unity/INSTALL.md) to register a source and perform the first import. Generated code and bundles remain under project `Assets`, never in `Packages` or `PackageCache`. Each Editor OS/CPU and Player target needs a supported matching native runtime; the installer does not substitute another platform's binary.
+Follow the [Unity manual](INSTALL.md) to register a source and perform the first import. Generated code and bundles remain under project `Assets`, never in `Packages` or `PackageCache`. Each Editor OS/CPU and Player target needs a supported matching native runtime; the installer does not substitute another platform's binary.
 
 ## Default outputs
 
@@ -103,11 +101,13 @@ The typed field's **View** button opens a read-only record preview. It reads res
 
 Named keys preserve nonempty row labels exactly. Empty labels produce no symbol. Invalid, reserved or colliding symbols produce generation diagnostics instead of renaming records. A label rename changes code symbols but not serialized UUID identity. To author an Inspector object in code, explicitly use `EnemiesReferences.Slime.ToReference()`; this allocates an authoring object and is not the preferred runtime acquisition path.
 
+`Get` looks up the UUID in a dictionary. In Unity, create, read, reload, replace and dispose each database on the Unity main thread; acquisition and property reads do not take a read lock. A database detects access from a thread other than the one that created it. Non-Unity generated C# retains read synchronization. In hot paths such as per-frame updates, resolve a reference once and retain the handle when practical; check `Exists` when a record may have been removed. Profile initialization time, peak memory and hot-path access with your actual data and target Player.
+
 Keep the handle across successful database updates: properties read the current published values, even after row reorder. Strings and scalar values already copied out remain ordinary snapshots. A retained nested handle follows its original record UUID; reread its parent's property after the relationship changes. `Exists` becomes false for deleted records or detached interface views; property access throws rather than returning stale data. Disposal invalidates handles.
 
 Managed objects, strings, indexes and interface views are prepared during load/reload. `Get`, successful property reads, `TryGet`, expected-missing checks and concrete collection traversal allocate zero managed bytes, including the first acquisition after publication. Concrete `foreach` uses a struct enumerator; casting to `IEnumerable<T>` boxes the enumerator, so prefer the concrete collection/indexer. Exception creation, Inspector construction, logging, and load/reload preparation are outside this acquisition guarantee. See the [allocation and regression harness](Tests~/TypedReferences/README.md) for measured coverage.
 
-Generated reload/dispose APIs synchronize with reads. Direct external mutation/close through the low-level native `Handle` bypasses this contract and is unsupported. An invalid native bundle reload retains the last good data. A managed publication failure blocks reads until retry succeeds. Failure during database-owner replacement closes both native owners and leaves the original owner disposed; construct a new owner to recover. These failure modes never return partially published values.
+In Unity, call reload/dispose at a main-thread control point between reads. Generated C# outside Unity synchronizes reload/dispose with reads. Direct external mutation/close through the low-level native `Handle` bypasses this contract and is unsupported. An invalid native bundle reload retains the last good data. A managed publication failure blocks reads until retry succeeds. Failure during database-owner replacement closes both native owners and leaves the original owner disposed; construct a new owner to recover. These failure modes never return partially published values.
 
 ## Read with generated code
 
@@ -132,7 +132,7 @@ yield return DevcelBundle.LoadText("Devcel/MyGame/master.json", json => {
 });
 ```
 
-The matching native distribution and release UPM tarballs contain Android ARMv7/ARM64/x86/x86_64 and iOS device/Simulator runtimes. Use `LoadText` and `FromJson` on Android, where StreamingAssets may live inside the APK. See [mobile Players](Documentation~/MOBILE.md) for settings, native linking, build prerequisites and device acceptance. The matching distribution also contains a WebGL runtime.
+Matching native distributions and release UPM tarballs contain Android ARMv7/ARM64/x86/x86_64 and iOS device/Simulator runtimes; v0.0.2 contains Android ARM64 only. Use `LoadText` and `FromJson` on Android, where StreamingAssets may live inside the APK. See [mobile Players](Documentation~/MOBILE.md) for settings, native linking, build prerequisites and device acceptance. Newly generated releases also include a WebGL runtime; see [WebGL Player](Documentation~/WEBGL.md). Newly generated distributions include iOS Simulator runtimes; v0.0.2 does not.
 
 ## Color32 / ColorFloat
 
@@ -203,7 +203,7 @@ Build artifacts such as `devcel.exe` and native libraries are ignored by Git and
 
 See [DISTRIBUTION.md](Documentation~/DISTRIBUTION.md). Managed code is constrained by asmdefs, native code by PluginImporter. The read-only runtime supports desktop Players and the [bundled mobile targets](Documentation~/MOBILE.md); the CLI stays in `Tools~`, settings in `Assets/DevcelUnity/Editor`.
 
-Settings use schema `1` and long `contentVersion`; missing/mismatched schemas are rejected without modifying the asset. Bundled `.meta` files and idempotent repair cover Windows x64, Linux x64, macOS universal, Android ARM64 and iOS ARM64 device runtimes. Missing libraries, wrong CPUs, and invalid settings stop builds. Numeric versions are `0..4294967295`; only `-1` means all content. Release builds keep the selected environment.
+Settings use schema `1` and long `contentVersion`; missing/mismatched schemas are rejected without modifying the asset. Bundled `.meta` files and idempotent repair cover Windows x64, Linux x64, macOS universal, Android ARMv7/ARM64/x86/x86_64 and iOS device/Simulator runtimes. Missing libraries, wrong CPUs, and invalid settings stop builds. Numeric versions are `0..4294967295`; only `-1` means all content. Release builds keep the selected environment.
 
 ## Tests
 

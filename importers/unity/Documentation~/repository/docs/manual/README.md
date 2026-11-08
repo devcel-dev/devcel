@@ -51,3 +51,5 @@ The engine guides cover initial setup, automatic import after editing in Studio,
 ## Build and development documentation
 
 To build or modify Studio, see [Studio development and builds](../development/build-studio.md). Other technical material is listed in the [documentation index](../README.md).
+
+Authoring source compatibility and migration: [TOML format version 1](../reference/authoring-format-v1.md).

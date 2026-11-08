@@ -385,10 +385,10 @@ Allowing ordinary input-rule violations during runtime export does not turn an u
 
 ## Implementation references
 
-- [Formula engine](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/devcel-core/src/formula_engine.rs): grammar, operators, functions, typed evaluation
-- [Project formula context](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/devcel-core/src/formula_context.rs): queries, eligible rows, identifier resolution
-- [Types](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/devcel-core/src/types.rs) and [column validation](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/devcel-core/src/column.rs): conversion and validation
-- [Column-version export tests](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/devcel-core/tests/column_version_export.rs): using excluded columns as dependencies
+- [Formula engine](https://github.com/devcel-dev/devcel/blob/cf728cbd0e5ab872874402cf6a3bb96d52d77cdc/devcel-core/src/formula_engine.rs): grammar, operators, functions, typed evaluation
+- [Project formula context](https://github.com/devcel-dev/devcel/blob/cf728cbd0e5ab872874402cf6a3bb96d52d77cdc/devcel-core/src/formula_context.rs): queries, eligible rows, identifier resolution
+- [Types](https://github.com/devcel-dev/devcel/blob/cf728cbd0e5ab872874402cf6a3bb96d52d77cdc/devcel-core/src/types.rs) and [column validation](https://github.com/devcel-dev/devcel/blob/cf728cbd0e5ab872874402cf6a3bb96d52d77cdc/devcel-core/src/column.rs): conversion and validation
+- [Column-version export tests](https://github.com/devcel-dev/devcel/blob/cf728cbd0e5ab872874402cf6a3bb96d52d77cdc/devcel-core/tests/column_version_export.rs): using excluded columns as dependencies
 
 ## Collections, temporary tables, and local recursion
 

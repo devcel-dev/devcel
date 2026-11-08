@@ -67,7 +67,7 @@ You can already continue to [Package and test](#5-package-and-test-in-studio). A
 
 ## 2. Add a TypeScript button that reads a table
 
-Copy the [plugin template](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/devcel-studio/templates/plugin-template/README.md) from the same source version as your Studio build. Its entire `src/types/` directory is the SDK; retain those definitions.
+Copy the [plugin template](https://github.com/devcel-dev/devcel/blob/cf728cbd0e5ab872874402cf6a3bb96d52d77cdc/devcel-studio/templates/plugin-template/README.md) from the same source version as your Studio build. Its entire `src/types/` directory is the SDK; retain those definitions.
 
 Install the Node.js/npm versions specified by the template, then run in your copy:
 
@@ -155,7 +155,7 @@ Save the first section's manifest as `package/plugin.json`. The metadata matches
 
 ## 3. APIs and extension points
 
-See [PluginAPI](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/devcel-studio/templates/plugin-template/src/types/pluginTypes.ts) for exact signatures and [TableData](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/devcel-studio/templates/plugin-template/src/types/tableTypes.ts) for table structures.
+See [PluginAPI](https://github.com/devcel-dev/devcel/blob/cf728cbd0e5ab872874402cf6a3bb96d52d77cdc/devcel-studio/templates/plugin-template/src/types/pluginTypes.ts) for exact signatures and [TableData](https://github.com/devcel-dev/devcel/blob/cf728cbd0e5ab872874402cf6a3bb96d52d77cdc/devcel-studio/templates/plugin-template/src/types/tableTypes.ts) for table structures.
 
 | API | Uses and constraints |
 | --- | --- |
@@ -168,7 +168,7 @@ See [PluginAPI](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25cc
 | `i18n` | Read/subscribe to locale, register plugin messages, translate; release returned registrations/subscriptions |
 | `settings` | get, getAll, watch for defined keys |
 
-Settings are declared by the plugin and restricted to its owner namespace. Use `getTable`/`watchTable` for declared singleton tables and `getRows`/`watchRows` for multirow tables. `get`/`watch` use local `tableId.columnName` keys. Declare editable settings and translation resources as shown in the [independent resource fixture](https://github.com/devcel-dev/devcel/tree/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/examples/plugin-owned-tables). This notification-only example declares no resources, so its `getAll()` is empty.
+Settings are declared by the plugin and restricted to its owner namespace. Use `getTable`/`watchTable` for declared singleton tables and `getRows`/`watchRows` for multirow tables. `get`/`watch` use local `tableId.columnName` keys. Declare editable settings and translation resources as shown in the [independent resource fixture](https://github.com/devcel-dev/devcel/tree/cf728cbd0e5ab872874402cf6a3bb96d52d77cdc/examples/plugin-owned-tables). This notification-only example declares no resources, so its `getAll()` is empty.
 
 `extensions` can declare `menus`, `toolbarButtons`, `contextMenus`, `sidePanels`, `dialogs`, `dataProcessors`, `exporters`, `importers`, and `themes`. Consult the SDK for structures:
 
@@ -207,7 +207,7 @@ For cell edits, use the template's `setEffectiveCellValue` helper. A nonempty
 raw input overrides inheritance; an exact empty input deletes the key and follows
 the parent, then the column default. Preserve unchanged raw inputs and parent
 links. Whitespace and formula expressions remain intact. See the
-[raw cell contract](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/devcel-studio/docs/plugin-api-reference.md#raw-cells-and-inheritance).
+[raw cell contract](https://github.com/devcel-dev/devcel/blob/cf728cbd0e5ab872874402cf6a3bb96d52d77cdc/devcel-studio/docs/plugin-api-reference.md#raw-cells-and-inheritance).
 
 ## 4. Handle shutdown, reactivation, and errors
 
@@ -268,4 +268,4 @@ Increment code and manifest versions together, rebuild, and recreate the ZIP. Re
 | Table update rejected | UUID, session, revision, restrictions, validation, navigation |
 | Duplicate execution after reactivation | Duplicate hooks/subscriptions, timers, stale Promises |
 
-Disable/restore does not roll back external file changes. See [Settings and plugins](settings-and-plugins.md), [Plugin API Reference](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/devcel-studio/docs/plugin-api-reference.md).
+Disable/restore does not roll back external file changes. See [Settings and plugins](settings-and-plugins.md), [Plugin API Reference](https://github.com/devcel-dev/devcel/blob/cf728cbd0e5ab872874402cf6a3bb96d52d77cdc/devcel-studio/docs/plugin-api-reference.md).

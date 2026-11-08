@@ -333,7 +333,7 @@ Default export output is devcel-studio/src/app/i18n/generated. Use an explicit s
 
 ## 5. Direct operations
 
-Operations use `{"op":"OperationName","data":{...}}`. Fieldless operations omit data; operations with fields, such as LintProject, require it. See [operations.rs](https://github.com/devcel-dev/devcel/blob/92be5fb3b31da1856e25ccb21582d46c4eb5f43c/devcel-core/src/operations.rs).
+Operations use `{"op":"OperationName","data":{...}}`. Fieldless operations omit data; operations with fields, such as LintProject, require it. See [operations.rs](https://github.com/devcel-dev/devcel/blob/cf728cbd0e5ab872874402cf6a3bb96d52d77cdc/devcel-core/src/operations.rs).
 
 For easier shell quoting, save operation.json and read it from stdin:
 

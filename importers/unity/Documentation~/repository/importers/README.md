@@ -1,9 +1,13 @@
 # Devcel Importers
 
+Unity and Godot are first-class integrations. All other engine integrations are experimental; their APIs, packaging and platform coverage may change, so validate them in your project.
+
 Choose an importer for your engine. Unity uses the complete Git UPM package described in its guide; other engines use an installation ZIP for the Editor operating system and CPU. GitHub source archives do not include an executable CLI.
 
 - [Unity](../../../README.md): Editor wizard, generated C# types, and automatic import of saved changes
 - [Godot](godot/README.md): Editor dock, GDScript reader, and automatic import of saved changes
+- [Bevy](bevy/README.md): experimental Rust resource and on-demand reload
+- [Roblox](roblox/README.md): experimental Luau ModuleScript export
 - [RPG Maker MV/MZ](rpgmaker/README.md): Test-play settings, per-source import, and complete loading at game startup; no live reload
 - [WOLF RPG Editor](wolf/README.md): Settings UI and files for the official CSV importer; complete the final import into a dedicated variable-database type in WOLF
 - [Unreal Engine 5](../docs/manual/importers/unreal.md): Slate wizard, Data Assets, Blueprint/C++ reader, and PIE data updates
