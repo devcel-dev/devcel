@@ -23,7 +23,24 @@
         "cli_sha256": "e14857d9f8adcb8ba6357f6fe1fce16adca0f5de991c4ca0006012cdeaaaae36"
       }
     ],
-    "observations": "Each extracted app has exactly two Mach-O files (Studio and CLI); each CLI hash matches its own packaged manifest and its license equals the repository MIT CLI license. Both apps contain the same third-party notice aggregate. The inspected load commands name system frameworks and /usr/lib libraries; no non-system dynamic library path was observed. This does not establish that statically linked dependency notices are complete."
+    "observations": "Each extracted app has exactly two Mach-O files (Studio and CLI); each CLI hash matches its own packaged manifest and its license equals the repository MIT CLI license. Both apps contain the same third-party notice aggregate. The inspected load commands name system frameworks and /usr/lib libraries; no non-system dynamic library path was observed. This does not establish that statically linked dependency notices are complete.",
+    "offline_signature_structure": {
+      "scope": "Published v0.0.3 DMGs only; independent offline consistency checks, not macOS codesign verification, identity verification or notarization.",
+      "procedure": "Parse each extracted thin Mach-O LC_CODE_SIGNATURE superblob and SHA-256 CodeDirectory. Recompute each covered code page; for both Studio binaries also compare the Info.plist and CodeResources special-slot hashes. Independently compare every CodeResources files2 SHA-256 entry against extracted bytes.",
+      "results": {
+        "arm64": {
+          "studio_pages": 15962,
+          "cli_pages": 4419,
+          "code_resources_entries": 5
+        },
+        "x64": {
+          "studio_pages": 16555,
+          "cli_pages": 4729,
+          "code_resources_entries": 5
+        }
+      },
+      "outcome": "All listed code-page hashes, both Studio special slots, and all ten CodeResources entries matched. Both CodeDirectories carry the ad-hoc-signature flag. This does not authenticate the publisher or prove that all redistributed dependency notices are complete."
+    }
   },
   "bootstrapper_and_system_runtime_review": null,
   "native_components": []
